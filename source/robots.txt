@@ -2,6 +2,12 @@
 layout: nil
 ---
 User-agent: *
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 Disallow: 
 
 Sitemap: {{ site.url }}/sitemap.xml 
+=======
+Disallow:
+
+Sitemap: {{ site.url }}/sitemap.xml
+>>>>>>> Greyshade Theme

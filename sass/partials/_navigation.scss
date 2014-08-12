@@ -23,11 +23,19 @@ body > nav {
       border: 1px solid $nav-border;
       color: #888;
       &:focus {
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
         color: #444;
         border-color: #80b1df;
         @include box-shadow(#80b1df 0 0 4px, #80b1df 0 0 3px inset);
         background-color: #fff;
         outline: none;
+=======
+	color: #444;
+	border-color: #80b1df;
+	@include box-shadow(#80b1df 0 0 4px, #80b1df 0 0 3px inset);
+	background-color: #fff;
+	outline: none;
+>>>>>>> Greyshade Theme
       }
     }
   }
@@ -66,8 +74,13 @@ body > nav {
       border-left: 1px solid $nav-border-left;
       margin-left: .8em;
       a {
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
         padding-left: .8em;
         border-left: 1px solid $nav-border-right;
+=======
+	padding-left: .8em;
+	border-left: 1px solid $nav-border-right;
+>>>>>>> Greyshade Theme
       }
     }
     form {
@@ -76,9 +89,15 @@ body > nav {
       padding-left: .8em;
       width: $sidebar-width-medium - $pad-medium*2 - $sidebar-pad-medium + 20px;
       .search {
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
         width: 93%;
         font-size: .95em;
         line-height: 1.2em;
+=======
+	width: 93%;
+	font-size: .95em;
+	line-height: 1.2em;
+>>>>>>> Greyshade Theme
       }
     }
     ul[data-subscription$=email] + form {
@@ -121,12 +140,20 @@ body > nav {
   body > nav {
     @media only screen and (min-width: 550px) {
       ul[data-subscription$=email] + form {
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
         width: $sidebar-width-medium - $pad-medium*2 - $sidebar-pad-medium - 32px;
+=======
+	width: $sidebar-width-medium - $pad-medium*2 - $sidebar-pad-medium - 32px;
+>>>>>>> Greyshade Theme
       }
     }
     @media only screen and (min-width: 992px) {
       ul[data-subscription$=email] + form {
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
         width: $sidebar-width-wide - $pad-wide - $sidebar-pad-wide*2 - 32px;
+=======
+	width: $sidebar-width-wide - $pad-wide - $sidebar-pad-wide*2 - 32px;
+>>>>>>> Greyshade Theme
       }
     }
   }
@@ -134,4 +161,7 @@ body > nav {
   a[rel=subscribe-rss]{ @include mask-subscription-nav('rss.png'); }
   a[rel=subscribe-email]{ @include mask-subscription-nav('email.png'); }
 }
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 
+=======
+>>>>>>> Greyshade Theme

@@ -60,7 +60,11 @@
 				<element name="volumeSliderProgress" src="divider.png" />
 			</elements>
 		</component>
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 		
+=======
+
+>>>>>>> Greyshade Theme
 		<component name="display">
 			<settings>
 				<setting name="bufferinterval" value="250" />
@@ -74,7 +78,11 @@
 				<element name="bufferIcon" src="bufferIcon.png" />
 			</elements>
 		</component>
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 		
+=======
+
+>>>>>>> Greyshade Theme
 		<component name="dock">
 			<settings>
 				<setting name="fontcolor" value="0xFFFFFF" />

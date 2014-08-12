@@ -51,7 +51,10 @@ article{
 		font-size: 0.9em;
 		padding: 1px 3px;
 		margin: 0 3px;
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 		@include border-radius(5px);
+=======
+>>>>>>> Greyshade Theme
 	}
 	pre{
 		font-size: 1 / 0.9em;
@@ -59,23 +62,35 @@ article{
 		margin-top: 10px;
 		padding: 5px 15px;
 		overflow-x: auto;
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 		@include border-radius(5px);
+=======
+>>>>>>> Greyshade Theme
 		code{
 			background: none;
 			border: none;
 			padding: 0;
 			margin: 0;
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 			@include border-radius(0);
+=======
+>>>>>>> Greyshade Theme
 		}
 	}
 }
 
 figure.code{
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 	background: $pre-bg;
 	border: 1px solid $pre-border;
 	margin-top: 10px;
 	padding: 5px 15px;
 	@include border-radius(5px);
+=======
+	border: 1px solid $pre-border;
+	margin-top: 10px;
+	padding: 5px 15px;
+>>>>>>> Greyshade Theme
 	figcaption{
 		font-size: 0.9em;
 		position: relative;
@@ -83,7 +98,11 @@ figure.code{
 			margin: -5px -15px 0;
 			padding: 5px 15px;
 			display: block;
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 			@include background(linear-gradient(top, $pre-border, $pre-bg));
+=======
+			background: #ececec;
+>>>>>>> Greyshade Theme
 			&:empty{
 				display: none;
 			}
@@ -99,7 +118,10 @@ figure.code{
 		border: none;
 		padding: 0;
 		margin: 0;
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 		@include border-radius(0);
+=======
+>>>>>>> Greyshade Theme
 	}
 	.highlight{
 		overflow-x: auto;
@@ -111,6 +133,10 @@ figure.code{
 		text-align: right;
 	}
 	table{
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
+=======
+		background: white;
+>>>>>>> Greyshade Theme
 		border: none;
 		text-align: left;
 		margin-top: 0;
@@ -124,16 +150,28 @@ figure.code{
 	}
 }
 .entry-content .gist{
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 	background: $pre-bg;
 	color: $color-gray01;
 	padding: 30px 15px 5px;
+=======
+	// background: $pre-bg;
+	color: $color-gray01;
+	padding: 15px 15px 5px 0px;
+>>>>>>> Greyshade Theme
 	margin-top: 10px;
 	border: 1px solid $pre-border;
 	position: relative;
 	overflow: hidden;
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 	@include border-radius(5px);
 	.gist-file{
 		margin: 0;
+=======
+	.gist-file{
+		margin: 0;
+		border: none;
+>>>>>>> Greyshade Theme
 		.gist-data{
 			background: none;
 			border: none;
@@ -141,13 +179,24 @@ figure.code{
 				font: 0.9em $font-mono;
 				line-height: 1.5;
 			}
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
+=======
+			table {
+				background: white;
+				border: none;
+			}
+>>>>>>> Greyshade Theme
 		}
 		.gist-meta{
 			font: 300 0.9em $font-default;
 			line-height: 1.5;
 			margin: 0 -16px -6px;
 			padding: 5px 15px;
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 			@include background(linear-gradient(top, $pre-bg, $pre-border));
+=======
+			background: #ececec;
+>>>>>>> Greyshade Theme
 			a{
 				color: $color-main;
 				&:first-of-type{
@@ -162,7 +211,11 @@ figure.code{
 					left: 0;
 					padding: 5px 15px;
 					width: 100%;
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 					@include background(linear-gradient(top, $pre-border, $pre-bg));
+=======
+					background: #ececec;
+>>>>>>> Greyshade Theme
 				}
 			}
 		}

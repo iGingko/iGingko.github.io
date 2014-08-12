@@ -3,6 +3,7 @@ layout: default
 single: true
 ---
 
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 <div>
 <article class="hentry" role="article">
   {% include article.html %}
@@ -41,3 +42,15 @@ single: true
   {% endif %}
 </aside>
 {% endunless %}
+=======
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">{% include article.html %}</article>
+{% unless page.sharing == false %}
+	{% include post/sharing.html %}
+{% endunless %}
+{% if site.disqus_short_name and page.comments == true %}
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite">{% include post/disqus_thread.html %}</div>
+</section>
+{% endif %}
+>>>>>>> Greyshade Theme

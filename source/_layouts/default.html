@@ -1,5 +1,6 @@
 {% capture root_url %}{{ site.root | strip_slash }}{% endcapture %}
 {% include head.html %}
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 <body {% if page.body_id %} id="{{ page.body_id }}" {% endif %} {% if page.sidebar == false %} class="no-sidebar" {% endif %} {% if page.sidebar == 'collapse' or site.sidebar == 'collapse' %} class="collapse-sidebar sidebar-footer" {% endif %}>
   <header role="banner">{% include header.html %}</header>
   <nav role="navigation">{% include navigation.html %}</nav>
@@ -10,5 +11,26 @@
   </div>
   <footer role="contentinfo">{% include footer.html %}</footer>
   {% include after_footer.html %}
+=======
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner">{% include header.html %}</header>
+			</div>
+		</div>
+		<div class="mid-col">
+			{% unless page.banner == false %}
+				{% include banner.html %}
+			{% endunless %}
+			<div class="mid-col-container">
+				<div id="content" class="inner">{{ content | expand_urls: root_url }}</div>
+			</div>
+			<footer id="footer" class="inner">{% include footer.html %}</footer>
+		</div>
+	</div>
+	{% include after_footer.html %}
+>>>>>>> Greyshade Theme
 </body>
 </html>

@@ -31,6 +31,7 @@ article{
 			padding-left: 30px;
 			position: relative;
 			&:before{
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 				content: "\f061";
 				font: 1.3em $font-icon;
 				line-height: 1.6em;
@@ -40,6 +41,17 @@ article{
 		}
 		p, blockquote, ul, ol, dl, table, iframe, h1, h2, h3, h4, h5, h6, .video-container{
 			margin-top: 10px;
+=======
+				// content: "\f061";
+				// font: 1.3em $font-icon;
+				// line-height: 1.6em;
+				// position: absolute;
+				// left: 0;
+			}
+		}
+		p, blockquote, ul, ol, dl, table, iframe, h1, h2, h3, h4, h5, h6, .video-container{
+			margin-top: 20px;
+>>>>>>> Greyshade Theme
 		}
 		ul, ol, dl{
 			margin-left: 20px;
@@ -54,7 +66,11 @@ article{
 			font-style: italic;
 		}
 		p{
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 			margin-top: 10px;	
+=======
+			margin-top: 10px;
+>>>>>>> Greyshade Theme
 		}
 		h2{
 			font-weight: 300;

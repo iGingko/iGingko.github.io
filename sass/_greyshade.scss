@@ -6,8 +6,16 @@ html {
 
 body {
 	background: #3D4349;
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 	font-family: "Open Sans", "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;
 	height: 100%;
+=======
+	font-family: $font;
+	background: $color-sidebar;
+	height: 100%;
+	color: #333;
+	font-size: 11px;
+>>>>>>> Greyshade Theme
 }
 
 ::selection, ::-moz-selection, ::-webkit-selection {
@@ -73,10 +81,17 @@ body {
 	}
 	.mid-col {
 		position: absolute;
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
   	right: 0;
   	min-height: 100%;
 		width: 77%;
 		background: whitesmoke;
+=======
+		right: 0;
+		min-height: 100%;
+		width: 77%;
+		background: white;
+>>>>>>> Greyshade Theme
 		#banner {
 			width: 100%;
 			small {
@@ -89,16 +104,50 @@ body {
 		  width: auto;
 		}
 		.mid-col-container {
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 			padding: 0px 70px 0px 40px;
+=======
+			padding: 0px 70px 0px 100px;
+			max-width: 800px;
+>>>>>>> Greyshade Theme
 			#content {
 				width: 100%;
 				article {
 					border-top: none;
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 					.title {
 						margin-left: 0px;
 					}
 					.entry-content {
 						margin-left: 0px;
+=======
+					padding: 80px 0px;
+					.title {
+						margin-left: 0px;
+						font-size: 3em;
+						font-weight: 500;
+					}
+					&.single-post .title{
+						text-align: center;
+						text-decoration: underline;
+					}
+					.entry-content {
+						margin-left: 0px;
+						line-height: 1.4em;
+						font-size: 1.5em;
+						p {
+							margin-top: 10px;
+						}
+						.github-widget p {
+							margin-top: 0px;
+						}
+						.more-link:before {
+							line-height: 1.2em;
+						}
+						.more-link {
+							padding-left: 0px;
+						}
+>>>>>>> Greyshade Theme
 						.gist .gist-file .gist-data {
 							.line_numbers {
 								line-height: inherit;
@@ -109,15 +158,28 @@ body {
 						}
 						h2 {
 							font-size: 1.3em;
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 							color: #574C4C;
 							border-bottom: none;
+=======
+							color: #333;
+							margin-top: 30px;
+							font-weight: bold;
+>>>>>>> Greyshade Theme
 						}
 						h2::before {
 							border-bottom: none;
 						}
 						blockquote {
 							border-left: 5px solid $greyshade;
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 							background: #FCFCFC;
+=======
+							background: #F7F7F7;
+							p {
+								margin-top: 0px;
+							}
+>>>>>>> Greyshade Theme
 						}
 						table {
 							line-height: 1.2em;
@@ -173,21 +235,43 @@ body {
 	.left-col {
 		width: 23%;
 		position: fixed;
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 		opacity: .3;
+=======
+		color: $color-gray05;
+		height: 100%;
+		font-size: 1.3em;
+		opacity: $opacity-sidebar;
+>>>>>>> Greyshade Theme
 		-webkit-transition: all .2s ease-in;
 		-moz-transition: all .2s ease-in;
 		-o-transition: all .2s ease-in;
 		-ms-transition: all .2s ease-in;
 		transition: all .2s ease-in;
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 		height: 100%;
 		.intrude-less {
 			width: 80%;
 		}
+=======
+
+		.intrude-less {
+			width: 80%;
+		}
+
+>>>>>>> Greyshade Theme
 		#header {
 			width: 100%;
 			padding: 20% 0% 0% 15%;
 			#main-nav {
 				margin-top: 10px;
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
+=======
+
+				p {
+					line-height: 1.4em;
+				}
+>>>>>>> Greyshade Theme
 			}
 			.profilepic {
 				img {
@@ -210,6 +294,12 @@ body {
 				}
 				.social {
 					margin-bottom: 10px;
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
+=======
+					a {
+						margin-right: 5px;
+					}
+>>>>>>> Greyshade Theme
 				}
 			}
 		}
@@ -244,7 +334,11 @@ body {
 			margin: 0 0;
 	}
 }
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 @media screen and (max-width: 700px){
+=======
+@media screen and (max-width: 830px){
+>>>>>>> Greyshade Theme
 	.container {
 		.credit-box {
 			display: none;
@@ -288,4 +382,8 @@ body {
 			}
 		}
 	}
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 }
+=======
+}
+>>>>>>> Greyshade Theme

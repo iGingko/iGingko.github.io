@@ -1,4 +1,5 @@
 ---
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 layout: page
 footer: false
 ---
@@ -15,3 +16,11 @@ footer: false
 </article>
 {% endfor %}
 </div>
+=======
+layout: default
+---
+
+{% for post in site.categories[page.category] %}
+	{% include archive_post.html %}
+{% endfor %}
+>>>>>>> Greyshade Theme

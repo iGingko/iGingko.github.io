@@ -1,3 +1,4 @@
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 $blockquote: $type-border !default;
 $sans: "PT Sans", "Helvetica Neue", Arial, sans-serif !default;
 $serif: "PT Serif", Georgia, Times, "Times New Roman", serif !default;
@@ -126,6 +127,8 @@ article blockquote {
   }
 }
 
+=======
+>>>>>>> Greyshade Theme
 .pullquote-right:before,
 .pullquote-left:before {
   /* Reset metrics. */
@@ -151,6 +154,7 @@ article blockquote {
   /* Make left pullquotes align properly. */
   float: left;
   margin: .5em 1.5em 1em 0;
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 }
 
 /* @extend this to force long lines of continuous text to wrap */
@@ -162,3 +166,6 @@ article blockquote {
   word-wrap: break-word;
 }
 
+=======
+}
+>>>>>>> Greyshade Theme

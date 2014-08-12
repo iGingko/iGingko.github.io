@@ -1,4 +1,5 @@
 ---
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 layout: page
 title: Blog Archive
 footer: false
@@ -16,3 +17,15 @@ footer: false
 </article>
 {% endfor %}
 </div>
+=======
+layout: default
+title: Blog Archives
+---
+
+<div itemscope itemtype="http://schema.org/Blog">
+{% for post in site.posts reverse %}
+	{% include archive_post.html %}
+{% endfor %}
+  </section>
+</div>
+>>>>>>> Greyshade Theme

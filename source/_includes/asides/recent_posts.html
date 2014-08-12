@@ -3,7 +3,11 @@
   <ul id="recent_posts">
     {% for post in site.posts limit: site.recent_posts %}
       <li class="post">
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
         <a href="{{ root_url }}{{ post.url }}">{% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}</a>
+=======
+	<a href="{{ root_url }}{{ post.url }}">{% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}</a>
+>>>>>>> Greyshade Theme
       </li>
     {% endfor %}
   </ul>

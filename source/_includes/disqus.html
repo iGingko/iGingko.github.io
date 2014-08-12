@@ -3,6 +3,7 @@
 <script type="text/javascript">
       var disqus_shortname = '{{ site.disqus_short_name }}';
       {% if page.comments == true %}
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
         {% comment %} `page.comments` can be only be set to true on pages/posts, so we embed the comments here. {% endcomment %}
         // var disqus_developer = 1;
         var disqus_identifier = '{{ site.url }}{{ page.url }}';
@@ -15,6 +16,20 @@
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
       dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+=======
+	{% comment %} `page.comments` can be only be set to true on pages/posts, so we embed the comments here. {% endcomment %}
+	// var disqus_developer = 1;
+	var disqus_identifier = '{{ site.url }}{{ page.url }}';
+	var disqus_url = '{{ site.url }}{{ page.url }}';
+	var disqus_script = 'embed.js';
+      {% else %}
+	{% comment %} As `page.comments` is empty, we must be on the index page. {% endcomment %}
+	var disqus_script = 'count.js';
+      {% endif %}
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+>>>>>>> Greyshade Theme
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>

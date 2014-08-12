@@ -1,10 +1,23 @@
 @import "compass";
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 @include global-reset;
+=======
+
+@import "base";
+@import "parts";
+@import "plugins";
+>>>>>>> Greyshade Theme
 
 @import "custom/colors";
 @import "custom/fonts";
 @import "custom/layout";
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 @import "base";
 @import "partials";
 @import "plugins/**/*";
 @import "custom/styles";
+=======
+@import "custom/styles";
+
+@import "greyshade";
+>>>>>>> Greyshade Theme

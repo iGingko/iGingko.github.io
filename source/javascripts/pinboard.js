@@ -43,8 +43,13 @@ function Pinboard_Linkroll() {
     }
     if (it.t.length > 0) {
       for (var i = 0; i < it.t.length; i++) {
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
         var tag = it.t[i];
         str += " <a class=\"pin-tag\" href=\"https://pinboard.in/u:"+ this.cook(it.a) + "/t:" + this.cook(tag) + "\">" + this.cook(tag).replace(/^\s+|\s+$/g, '') + "</a> ";
+=======
+	var tag = it.t[i];
+	str += " <a class=\"pin-tag\" href=\"https://pinboard.in/u:"+ this.cook(it.a) + "/t:" + this.cook(tag) + "\">" + this.cook(tag).replace(/^\s+|\s+$/g, '') + "</a> ";
+>>>>>>> Greyshade Theme
       }
     }
     str += "</p></li>\n";
@@ -53,4 +58,7 @@ function Pinboard_Linkroll() {
 }
 Pinboard_Linkroll.prototype = new Pinboard_Linkroll();
 pinboardNS_fetch_script("https://feeds.pinboard.in/json/v1/u:"+pinboard_user+"/?cb=pinboardNS_show_bmarks\&count="+pinboard_count);
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 
+=======
+>>>>>>> Greyshade Theme

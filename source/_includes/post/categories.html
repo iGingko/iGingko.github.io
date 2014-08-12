@@ -1,5 +1,6 @@
 {% capture category %}{% if post %}{{ post.categories | category_links | size }}{% else %}{{ page.categories | category_links | size }}{% endif %}{% endcapture %}
 {% unless category == '0' %}
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
 <span class="categories">
   {% if post %}
     {{ post.categories | category_links }}
@@ -7,4 +8,11 @@
     {{ page.categories | category_links }}
   {% endif %}
 </span>
+=======
+{% if post %}
+	{{ post.categories | category_links }}
+{% else %}
+	{{ page.categories | category_links }}
+{% endif %}
+>>>>>>> Greyshade Theme
 {% endunless %}

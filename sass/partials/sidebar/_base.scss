@@ -17,7 +17,11 @@ aside.sidebar {
       border-bottom: 1px solid $sidebar-border;
       @extend .side-shadow-border;
       + p {
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
         padding-top: .4em;
+=======
+	padding-top: .4em;
+>>>>>>> Greyshade Theme
       }
     }
   }
@@ -88,6 +92,7 @@ aside.sidebar {
       right: -20px;
       width: 19px;
       &:hover {
+<<<<<<< 7d91e70b3fac383b1cb05e6fc4bb76f058f29c67
         background: mix($sidebar-border, $sidebar-bg);
       }
       &:after {
@@ -100,6 +105,20 @@ aside.sidebar {
         border: 0;
         border-right-width: 0;
         background: none;
+=======
+	background: mix($sidebar-border, $sidebar-bg);
+      }
+      &:after {
+	border-left: 1px solid $sidebar-border;
+	text-shadow: #fff 0 1px;
+	content: "\00AB";
+	left: 0px; right: 0;
+	text-align: center;
+	text-indent: 0;
+	border: 0;
+	border-right-width: 0;
+	background: none;
+>>>>>>> Greyshade Theme
       }
     }
   }
