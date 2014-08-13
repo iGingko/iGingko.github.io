@@ -3,17 +3,16 @@
 # ----------------------- #
 
 url: http://iGingko.me
-title: Connor's Blog
-subtitle: Tecnology And Humanity.
+title: iGingko
+subtitle: Talk is cheap, Show me the code!.
 author: Connor
 simple_search: https://www.google.com/search
-description:
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
 # http://www.ruby-doc.org/core-1.9.2/Time.html#method-i-strftime
 # Additionally, %o will give you the ordinal representation of the day
-date_format: "ordinal"
+date_format: "%F %a"
 
 # RSS / Email (optional) subscription links (change if using something like Feedburner)
 subscribe_rss: /atom.xml
@@ -64,7 +63,7 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
 # ----------------------- #
 
 # Github repositories
-github_user:
+github_user: iGingko
 github_repo_count: 0
 github_show_profile_link: true
 github_skip_forks: true
@@ -77,7 +76,7 @@ google_plus_one_size: medium
 # Google Plus Profile
 # Hidden: No visible button, just add author information to search results
 googleplus_user:
-googleplus_hidden: false
+googleplus_hidden: true
 
 # Pinboard
 pinboard_user:
@@ -88,14 +87,18 @@ delicious_user:
 delicious_count: 3
 
 # Disqus Comments
-disqus_short_name:
-disqus_show_comment_count: false
+disqus_short_name: iGingko      
+disqus_show_comment_count: true
 
 # Google Analytics
 google_analytics_tracking_id:
 
 # Facebook Like
-facebook_like: false
+facebook_like: true
 
+weibo_user: 1307895851
+dribble_user: iGingko
+weibo_share: true
 
-
+# comment and share
+comment_and_share: true

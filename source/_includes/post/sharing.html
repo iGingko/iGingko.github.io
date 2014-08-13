@@ -15,6 +15,9 @@
 	{% if site.google_plus_one %}
 	<a class="addthis_button_google_plusone_share"></a>
 	{% endif %}
+    {% if site.comment_share %}
+      {% include post/share_comment.html %}
+    {% endif %}
 	<a class="addthis_button_compact"></a>
 	<a class="addthis_counter addthis_bubble_style"></a>
 	</div>
