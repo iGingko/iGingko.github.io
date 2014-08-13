@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Connor's Blog]]></title>
+  <link href="http://iGingko.github.io/atom.xml" rel="self"/>
+  <link href="http://iGingko.github.io/"/>
+  <updated>2014-08-13T11:22:41+08:00</updated>
+  <id>http://iGingko.github.io/</id>
+  <author>
+    <name><![CDATA[Connor]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Greyshade Test]]></title>
+    <link href="http://iGingko.github.io/blog/2014/08/13/greyshade-test/"/>
+    <updated>2014-08-13T11:22:29+08:00</updated>
+    <id>http://iGingko.github.io/blog/2014/08/13/greyshade-test</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[My First Blog]]></title>
+    <link href="http://iGingko.github.io/blog/2014/08/12/my-first-blog/"/>
+    <updated>2014-08-12T15:36:10+08:00</updated>
+    <id>http://iGingko.github.io/blog/2014/08/12/my-first-blog</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+</feed>
