@@ -87,7 +87,7 @@ delicious_user:
 delicious_count: 3
 
 # Disqus Comments
-disqus_short_name: iGingko      
+disqus_short_name: igingko      
 disqus_show_comment_count: true
 
 # Google Analytics
@@ -110,4 +110,4 @@ weibo_share: true
 dribbble_user: iGingko
 
 # comment and share
-comment_and_share: true
+#comment_and_share: true
