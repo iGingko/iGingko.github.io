@@ -1,12 +1,11 @@
 ---
 layout: post
-title: "the-object-model"
+title: "Objective-C 对象模型"
 date: 2014-08-24 15:40:45 +0800
 comments: true
 categories: 
 ---
 
-# Objective-C对象模型
 
 ##前言
 通过对Runtime的[开源代码](http://www.opensource.apple.com/tarballs/objc4/)的分析，得出Objective-C的对象模型的实现细节，以及Objective-C语言对象中对`isa swizzling`和`method swizzling`的支持。
