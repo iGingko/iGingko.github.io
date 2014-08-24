@@ -1,11 +1,21 @@
 ---
 layout: post
+<<<<<<< 8f24ed2715c3803071f3f8dcc2a481bb149bd7d2
 title: "Objective-C 对象模型"
 date: 2014-08-24 15:40:45 +0800
 comments: true
 categories: 
 ---
 
+=======
+title: "the-object-model"
+date: 2014-08-24 15:40:45 +0800
+comments: true
+categories:
+---
+
+# Objective-C对象模型
+>>>>>>> 对象模型
 
 ##前言
 通过对Runtime的[开源代码](http://www.opensource.apple.com/tarballs/objc4/)的分析，得出Objective-C的对象模型的实现细节，以及Objective-C语言对象中对`isa swizzling`和`method swizzling`的支持。
@@ -14,7 +24,11 @@ categories:
 > - Objective-C是一门面向对象，并且在C的基础上加入了Smalltalk式的消息机制而形成的编程语言，是C的超级，它主要被苹果公司用于开发Mac OS X和iOS操作系统。
 - Objective-C是C的扩展，设计思路上借鉴了Smalltalk的面向对象和消息机制的思想。从我个人使用过的面向对象语言来看Objc是对消息传递支持的最彻底也最显式的。其它的C++、Java、Python、Ruby都体现的不明显，更倾向于对象的封装和抽象.
 - Objc和C++基本上是两门语言，没有太大的关系。Objc本身是静态语言，编译后就是机器码，执行效率很高，但引入了很多类似Python、Ruby的动态特性，像动态类型推断，id，selector，block等特性，所以又非常灵活。
+<<<<<<< 8f24ed2715c3803071f3f8dcc2a481bb149bd7d2
 -用惯了Java或C++会觉得Objc的语法很怪，但是放空自己去学习这门语言的话，你会很快爱上它的消息式的编程风格，加上强悍的XCode，无论是写mac应用还是ios应用，都会非常得心应手。 
+=======
+-用惯了Java或C++会觉得Objc的语法很怪，但是放空自己去学习这门语言的话，你会很快爱上它的消息式的编程风格，加上强悍的XCode，无论是写mac应用还是ios应用，都会非常得心应手。
+>>>>>>> 对象模型
 
 ##苹果为什么会选择Objective-C
 关于苹果为什么采用Ojbc的问题，说明一下，其实不是苹果采用了Objc，而是乔布斯创建的Next公司的操作系统NextStep采用了Ojbc作为原生语言。NextStep是以Mach和BSD为基础，Objc是其语言和运行库，后来的事大家都清楚，苹果买了NextStep，乔帮主回归，NextStep也成了Max OS X的基础。以后发展越来越好，Objc反而成了Apple的当家语言，现在基本上是Apple在维护Objc的发展。
@@ -28,9 +42,15 @@ categories:
 
     //NSObject.h -- NSProxy.h
     @interface NSObject <NSObject> {
+<<<<<<< 8f24ed2715c3803071f3f8dcc2a481bb149bd7d2
         Class isa  OBJC_ISA_AVAILABILITY;
     }
     
+=======
+	Class isa  OBJC_ISA_AVAILABILITY;
+    }
+
+>>>>>>> 对象模型
 > - 对象中的数据组成形式为isa varFromGrandFather varFromFather VarFromSon
 - 从内存形式上看，对象内的成员变量，是从祖类继承而来，在对象内部生成副本
 - 从对象的内存组织上来看，对象本身不关心行为(对象的方法或实例方法)，重点都在数据组织上
@@ -40,6 +60,7 @@ categories:
 - 类中的实例方法是以链表形式存在,运行时候,可以修改链表中的实例方法,即可以增删改查,这与C中的函数默认都是extern的不同
 
 #####Runtime.h中OC类和对象的声明
+<<<<<<< 8f24ed2715c3803071f3f8dcc2a481bb149bd7d2
     
     //runtime.h
     struct objc_object {
@@ -48,13 +69,28 @@ categories:
         //varFromGrandFather
         //varFromFather
         //VarFromSon
+=======
+
+    //runtime.h
+    struct objc_object {
+	Class isa  OBJC_ISA_AVAILABILITY;
+	//struct objc_class *isa;
+	//varFromGrandFather
+	//varFromFather
+	//VarFromSon
+>>>>>>> 对象模型
     };
     /*
     这是由编译器为每个类产生的数据结构,这个结构定义了一个类.这个结构是通过编译器在执行时产生,在运行时发    送消息时使用.因此,一些成员改变了类型.编译器产生"char* const"类型的字符串指针替代了下面的成员变量    "super_class"
     */
     struct objc_class {
+<<<<<<< 8f24ed2715c3803071f3f8dcc2a481bb149bd7d2
         Class isa  OBJC_ISA_AVAILABILITY;
         //struct objc_class *isa;
+=======
+	Class isa  OBJC_ISA_AVAILABILITY;
+	//struct objc_class *isa;
+>>>>>>> 对象模型
     };
 
 在objc.h里，声明了两个类型：`Class`和`id`,分别代表`类`和`实例对象`,可以看作是泛型。
@@ -66,6 +102,7 @@ categories:
     //objc-private.h
     struct objc_object {
     private:
+<<<<<<< 8f24ed2715c3803071f3f8dcc2a481bb149bd7d2
         uintptr_t isa; //isa 指针，如果不是TaggedPointer，指向 Class
 
     public:
@@ -120,6 +157,62 @@ categories:
         cache_t cache;
         uintptr_t data_NEVER_USE;
         /*....省略若干方法...*/
+=======
+	uintptr_t isa; //isa 指针，如果不是TaggedPointer，指向 Class
+
+    public:
+
+	// ISA() assumes this is NOT a tagged pointer object
+	Class ISA()
+	{
+	    assert(!isTaggedPointer());
+	    return (Class)isa;
+	}
+
+	// getIsa() allows this to be a tagged pointer object
+	Class getIsa()
+	{
+    #if SUPPORT_TAGGED_POINTERS
+	    if (isTaggedPointer()) {
+		uintptr_t slot =
+		    ((uintptr_t)this >> TAG_SLOT_SHIFT) & TAG_SLOT_MASK;
+		return objc_tag_classes[slot];
+	    }
+    #endif
+	    return ISA();
+	}
+
+	// changeIsa() should be used to change the isa of existing objects.
+	// If this is a new object, use initIsa() for performance.
+	Class changeIsa(Class cls);
+
+	// initIsa() should be used to init the isa of new objects only.
+	// If this object already has an isa, use changeIsa() for correctness.
+	void initIsa(Class cls)
+	{
+	    assert(!isTaggedPointer());
+	    isa = (uintptr_t)cls;
+	}
+
+	bool isTaggedPointer()
+	{
+    #if SUPPORT_TAGGED_POINTERS
+	    return ((uintptr_t)this & TAG_MASK);
+    #else
+	    return false;
+    #endif
+	}
+    };
+
+#### objc-runtime-new.h 这里定义了OC类
+    //objc-runtime-new.h
+    struct objc_class : objc_object {
+	// Class ISA;
+	Class superclass;
+	cache_t cache;
+	uintptr_t data_NEVER_USE;
+	/*....省略若干方法...*/
+>>>>>>> 对象模型
     };
 >一般程序语言，对象的尽头都是自己生了自己，自己下个蛋，爬出来了自己。似乎是个悖论，但确实如此。作为根类的NSObject就是这样一个家伙
 
@@ -184,16 +277,26 @@ A:因为对象在内存中的排布可以看成一个结构体，该结构体的
 3. 注册这个类，然后就可以使用了（使用 objc_registerClassPair).
 
 下面的代码在运行时创建了一个 NSError 的子类同时为它添加了一个方法：
+<<<<<<< 8f24ed2715c3803071f3f8dcc2a481bb149bd7d2
     
     Class newClass =
         objc_allocateClassPair([NSError class], "RuntimeErrorSubclass", 0);
     class_addMethod(newClass, @selector(report), (IMP)ReportFunction, "v@:");
     objc_registerClassPair(newClass);
     
+=======
+
+    Class newClass =
+	objc_allocateClassPair([NSError class], "RuntimeErrorSubclass", 0);
+    class_addMethod(newClass, @selector(report), (IMP)ReportFunction, "v@:");
+    objc_registerClassPair(newClass);
+
+>>>>>>> 对象模型
 添加的方法使用叫ReportFunction 的函数作为实现，定义如下：
 
     void ReportFunction(id self, SEL _cmd)
     {
+<<<<<<< 8f24ed2715c3803071f3f8dcc2a481bb149bd7d2
         NSLog(@"This object is %p.", self);
         NSLog(@"Class is %@, and super is %@.", [self class], [self superclass]);
 
@@ -208,6 +311,22 @@ A:因为对象在内存中的排布可以看成一个结构体，该结构体的
         NSLog(@"NSObject's meta class is %p", object_getClass([NSObject class]));
     }
     
+=======
+	NSLog(@"This object is %p.", self);
+	NSLog(@"Class is %@, and super is %@.", [self class], [self superclass]);
+
+	Class currentClass = [self class];
+	for (int i = 1; i < 5; i++)
+	{
+	    NSLog(@"Following the isa pointer %d times gives %p", i, currentClass);
+	    currentClass = object_getClass(currentClass);
+	}
+
+	NSLog(@"NSObject's class is %p", [NSObject class]);
+	NSLog(@"NSObject's meta class is %p", object_getClass([NSObject class]));
+    }
+
+>>>>>>> 对象模型
 ### Method Swizzling (方法调配)
 Objective-C提供了以下API来动态替换类方法或实例方法的实现：
 - `class_replaceMethod` 替换类方法的定义
@@ -237,18 +356,30 @@ selector名称对应的方法可以在运行期改变。类的方法列表会把
     @interface NSString (EOCMyAdditions)
     - (NSString *)eoc_myLoercaseString;
     @end
+<<<<<<< 8f24ed2715c3803071f3f8dcc2a481bb149bd7d2
     
+=======
+
+>>>>>>> 对象模型
     @implementation NSString (EOCMyAdditions)
 
     - (NSString *)eoc_myLoercaseString{
     NSString *lowercase = [self eoc_myLoercaseString];
     NSLog(@"%@ = > %@",self,lowercase);
+<<<<<<< 8f24ed2715c3803071f3f8dcc2a481bb149bd7d2
     
+=======
+
+>>>>>>> 对象模型
     return lowercase;
     }
 
     @end
+<<<<<<< 8f24ed2715c3803071f3f8dcc2a481bb149bd7d2
     
+=======
+
+>>>>>>> 对象模型
 使用时情况如下:
 
     Method originalMethod = class_getInstanceMethod([NSString class], @selector(lowercaseString));
@@ -257,4 +388,7 @@ selector名称对应的方法可以在运行期改变。类的方法列表会把
     NSString *testStr = @"Hello World";
     NSString *lowercaseString = [testStr lowercaseString];
     NSLog(@"%@",lowercaseString);
+<<<<<<< 8f24ed2715c3803071f3f8dcc2a481bb149bd7d2
 
+=======
+>>>>>>> 对象模型
