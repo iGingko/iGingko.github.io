@@ -3,6 +3,12 @@
   
   
   <url>
+    <loc>http://iGingko.me/blog/2014/08/26/objective-c-message-mechanism/</loc>
+    <lastmod>2014-08-26T16:46:15+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://iGingko.me/blog/2014/08/24/the-object-model/</loc>
     <lastmod>2014-08-24T15:40:45+08:00</lastmod>
     <priority>0.8</priority>
@@ -11,28 +17,28 @@
   
   <url>
     <loc>http://iGingko.me/blog/archives/</loc>
-    <lastmod>2014-08-24T17:00:45+08:00</lastmod>
+    <lastmod>2014-08-26T16:55:30+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://iGingko.me/</loc>
-    <lastmod>2014-08-24T17:00:45+08:00</lastmod>
+    <lastmod>2014-08-26T16:55:30+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
     <loc>http://iGingko.me/blog/categories/</loc>
-    <lastmod>2014-08-24T17:00:45+08:00</lastmod>
+    <lastmod>2014-08-26T16:55:30+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://iGingko.me/about/</loc>
-    <lastmod>2014-08-24T17:00:45+08:00</lastmod>
+    <lastmod>2014-08-26T16:55:30+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
