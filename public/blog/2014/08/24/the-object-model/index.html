@@ -1,0 +1,455 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Objective-C 对象模型 - iGingko</title>
+	<meta name="author" content="Connor">
+
+
+	<meta name="description" content="Objective-C 对象模型 前言 通过对Runtime的开源代码的分析，得出Objective-C的对象模型的实现细节，以及Objective-C语言对象中对isa swizzling和method swizzling的支持。 概述 Objective-C是一门面向对象， &hellip;">
+
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="iGingko" type="application/atom+xml">
+
+	<link rel="canonical" href="http://iGingko.me/blog/2014/08/24/the-object-model/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		document.write("<img src='/images/Logo.jpg' alt='Profile Picture' style='width: 160px;' />");
+	</script>
+</div>
+<h1><a href="/">iGingko</a></h1>
+<p class="subtitle">Talk is cheap, Show me the code!.</p>
+<nav id="main-nav"><ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About Me</a></li>
+</ul>
+
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+
+		<a class="weibo" href="http://www.weibo.com/1307895851" title="Weibo">Weibo</a>
+
+
+
+		<a class="google" href="https://plus.google.com/106727423024678549919" rel="author" title="Google+">Google+</a>
+
+
+		<a class="twitter" href="http://twitter.com/iGingko" title="Twitter">Twitter</a>
+
+
+		<a class="github" href="https://github.com/iGingko" title="GitHub">GitHub</a>
+
+
+		<a class="dribbble" href="http://www.dribbble.com/iGingko" title="Dribbble">Dribbble</a>
+
+
+
+
+
+
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+
+	</div>
+</nav>
+<hgroup>
+  <p class="subtitle"> You know ultimately it comes down to taste, it comes down to trying to expose yourself to the best things that humans have done, and try to bring these things into what you are doing.
+    -- Steve Job </p>
+</hgroup>
+
+</header>
+			</div>
+		</div>
+		<div class="mid-col">
+
+
+
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Objective-C 对象模型</h1>
+	<div class="entry-content" itemprop="articleBody"><h2>前言</h2>
+
+<p>通过对Runtime的<a href="http://www.opensource.apple.com/tarballs/objc4/">开源代码</a>的分析，得出Objective-C的对象模型的实现细节，以及Objective-C语言对象中对<code>isa swizzling</code>和<code>method swizzling</code>的支持。</p>
+
+<h2>概述</h2>
+
+<blockquote><ul>
+<li>Objective-C是一门面向对象，并且在C的基础上加入了Smalltalk式的消息机制而形成的编程语言，是C的超级，它主要被苹果公司用于开发Mac OS X和iOS操作系统。</li>
+<li>Objective-C是C的扩展，设计思路上借鉴了Smalltalk的面向对象和消息机制的思想。从我个人使用过的面向对象语言来看Objc是对消息传递支持的最彻底也最显式的。其它的C++、Java、Python、Ruby都体现的不明显，更倾向于对象的封装和抽象.</li>
+<li>Objc和C++基本上是两门语言，没有太大的关系。Objc本身是静态语言，编译后就是机器码，执行效率很高，但引入了很多类似Python、Ruby的动态特性，像动态类型推断，id，selector，block等特性，所以又非常灵活。
+-用惯了Java或C++会觉得Objc的语法很怪，但是放空自己去学习这门语言的话，你会很快爱上它的消息式的编程风格，加上强悍的XCode，无论是写mac应用还是ios应用，都会非常得心应手。</li>
+</ul>
+</blockquote>
+
+<h2>苹果为什么会选择Objective-C</h2>
+
+<p>关于苹果为什么采用Ojbc的问题，说明一下，其实不是苹果采用了Objc，而是乔布斯创建的Next公司的操作系统NextStep采用了Ojbc作为原生语言。NextStep是以Mach和BSD为基础，Objc是其语言和运行库，后来的事大家都清楚，苹果买了NextStep，乔帮主回归，NextStep也成了Max OS X的基础。以后发展越来越好，Objc反而成了Apple的当家语言，现在基本上是Apple在维护Objc的发展。</p>
+
+<h2>通过源代码分析OC对象模型</h2>
+
+<h3>Objective-C类和对象的声明</h3>
+
+<pre><code>//objc.h
+typedef struct objc_class *Class;//代表类 Objective-C class
+typedef struct objc_object *id;//代表对象，也就是类的实例 instance of a class.
+
+//NSObject.h -- NSProxy.h
+@interface NSObject &lt;NSObject&gt; {
+    Class isa  OBJC_ISA_AVAILABILITY;
+}
+</code></pre>
+
+<blockquote><ul>
+<li>对象中的数据组成形式为isa varFromGrandFather varFromFather VarFromSon</li>
+<li>从内存形式上看，对象内的成员变量，是从祖类继承而来，在对象内部生成副本</li>
+<li>从对象的内存组织上来看，对象本身不关心行为(对象的方法或实例方法)，重点都在数据组织上</li>
+<li>isa是一个指针,指向了该对象的类.实质上,同一个类的实例,都指向同一个类对象(类也是一种特殊对象).类中包含了实例方法,也就是说,同一个类的所有实例共用了这些实例方法.消息就是发送给对象,对象转交给其isa指向类去处理</li>
+<li>Objective-C的这种设计,既可以友好地实现面向对象,又可以有效地节约内存.降低冗余数据.对象对方法的调用是通过isa间接去调用,这样就造成了方法调用的动态性</li>
+<li>一个对象并不晓得它能否应答一个方法,它本身既不包含方法的实现,也不包含有方法的指针,而是间接通过isa转到自己的类才能知道</li>
+<li>类中的实例方法是以链表形式存在,运行时候,可以修改链表中的实例方法,即可以增删改查,这与C中的函数默认都是extern的不同</li>
+</ul>
+</blockquote>
+
+<h5>Runtime.h中OC类和对象的声明</h5>
+
+<pre><code>//runtime.h
+struct objc_object {
+    Class isa  OBJC_ISA_AVAILABILITY;
+    //struct objc_class *isa;
+    //varFromGrandFather
+    //varFromFather
+    //VarFromSon
+};
+/*
+这是由编译器为每个类产生的数据结构,这个结构定义了一个类.这个结构是通过编译器在执行时产生,在运行时发    送消息时使用.因此,一些成员改变了类型.编译器产生"char* const"类型的字符串指针替代了下面的成员变量    "super_class"
+*/
+struct objc_class {
+    Class isa  OBJC_ISA_AVAILABILITY;
+    //struct objc_class *isa;
+};
+</code></pre>
+
+<p>在objc.h里，声明了两个类型：<code>Class</code>和<code>id</code>,分别代表<code>类</code>和<code>实例对象</code>,可以看作是泛型。
+在Runtime.h里，我们看到OC类和对象其实就是两个结构体，其中第一个变量就是一个指向自己所属类的<code>isa</code>指针</p>
+
+<blockquote><p>在OC中，一个对象的类由它的isa指针决定，isa指针指向这个对象所属的Class.或者可以这么说:<em>凡是地址是isa指针的结构体，都可以看做OC类</em></p></blockquote>
+
+<h3>Objective-C类和对象的定义</h3>
+
+<h4>objc-private.h 这里定义了OC对象</h4>
+
+<pre><code>//objc-private.h
+struct objc_object {
+private:
+    uintptr_t isa; //isa 指针，如果不是TaggedPointer，指向 Class
+
+public:
+
+    // ISA() assumes this is NOT a tagged pointer object
+    Class ISA()
+    {
+	assert(!isTaggedPointer());
+	return (Class)isa;
+    }
+
+    // getIsa() allows this to be a tagged pointer object
+    Class getIsa()
+    {
+#if SUPPORT_TAGGED_POINTERS
+	if (isTaggedPointer()) {
+	    uintptr_t slot =
+		((uintptr_t)this &gt;&gt; TAG_SLOT_SHIFT) &amp; TAG_SLOT_MASK;
+	    return objc_tag_classes[slot];
+	}
+#endif
+	return ISA();
+    }
+
+    // changeIsa() should be used to change the isa of existing objects.
+    // If this is a new object, use initIsa() for performance.
+    Class changeIsa(Class cls);
+
+    // initIsa() should be used to init the isa of new objects only.
+    // If this object already has an isa, use changeIsa() for correctness.
+    void initIsa(Class cls)
+    {
+	assert(!isTaggedPointer());
+	isa = (uintptr_t)cls;
+    }
+
+    bool isTaggedPointer()
+    {
+#if SUPPORT_TAGGED_POINTERS
+	return ((uintptr_t)this &amp; TAG_MASK);
+#else
+	return false;
+#endif
+    }
+};
+</code></pre>
+
+<h4>objc-runtime-new.h 这里定义了OC类</h4>
+
+<pre><code>//objc-runtime-new.h
+struct objc_class : objc_object {
+    // Class ISA;
+    Class superclass;
+    cache_t cache;
+    uintptr_t data_NEVER_USE;
+    /*....省略若干方法...*/
+};
+</code></pre>
+
+<blockquote><p>一般程序语言，对象的尽头都是自己生了自己，自己下个蛋，爬出来了自己。似乎是个悖论，但确实如此。作为根类的NSObject就是这样一个家伙</p></blockquote>
+
+<p><img src="/images/posts/struct.png" alt="Alt text" /></p>
+
+<ul>
+<li>super_class 指向父类的指针.因为Objective-C借鉴了SimTALK,在类的继承实现上,是通过一条继承链实现的.super_class就是整个继承链的核心字段.</li>
+<li>name 类的名字</li>
+<li>version 版本</li>
+<li>info 信息</li>
+<li>instance_size 实例的内存大小</li>
+<li>ivars  是一个指向实例变量列表的指针</li>
+<li>methodLists       是一个指向实例方法列表的指针</li>
+<li>cache 缓存了常用的实例方法</li>
+<li>protools 是一个指向协议列表的指针</li>
+</ul>
+
+
+<blockquote><p>我们知道,在Objective-C中,我们一般的定义形式是声明一个类的实例变量,属性,实例方法和类方法.并不能声明类变量.所以一般而言类对象的数据形式就是如上图的那些固定的字段.方法、属性和协议都存储在类定义的可写字段中，这些信息可以在运行时被改变。ivar存储在只读段，所以不能修改</p></blockquote>
+
+<h2>OC对象模型分析</h2>
+
+<ul>
+<li>从OC类的定义中可以看出，OC的类继承自OC对象，每个类也有一个<code>isa</code>指针，每个类也能接收消息。例如:<code>[NSObject alloc]</code>,就是在向NSObject这个类发送名为<code>alloc</code>的消息，所以每个类也可以看做是一个对象。那么类也必须是另一个类的实例，这个类就是元类(<code>metaclass</code>).</li>
+<li>就像类保存了实例对象的方法列表一样，元类也保存了类的方法列表缓存<code>cache_t cache</code>，方法cache是为了提高访问效率而设定的，用来缓存调用过的方法，这样下次再调用的时候就能提高查找效率。</li>
+<li>元类(<code>metaclass</code>)也是一个对象，那么原来的对象指向哪里呢？为了设计上的完整，所有的元类的isa指针都指向一个根元类(<code>root metaclass</code>).根元类（root metaclass）本身的isa指向自己，这样就形成了一个闭环。在实际编程中，我们几乎不会遇到向元类发消息的情况，那它的isa指针在实际上很少用到。不过这么设计保证了面向对象的干净，即所有事物都是对象，都有isa指针。</li>
+<li><p>我们再来看看继承关系，由于类方法的定义是保存在元类(metaclass)中，而方法调用的规则是，如果该类没有一个方法的实现，则向它的父类继续查找。所以，为了保证父类的类方法可以在子类中可以被调用，所以子类的元类会继承父类的元类，换而言之，类对象和元类对象有着同样的继承关系。</p></li>
+<li><p><img src="/images/posts/class.png" alt="Alt text" /></p></li>
+</ul>
+
+
+<p>根据上图，我们可以看到以下几点：
+- Root Class是指NSObject
+- NSObject类包括它的对象实例方法
+- NSObject的元类(q其实也就是根元类，这比较特殊)包括它的类方法，例如alloc方法
+- NSObject的元类继承自NSObject类
+- 创建一个OC类其实是创建一个类对（ClassPair）－类和元类，类的isa指针指向元类，元类的isa指向根元类，即图中的NSObject元类，根元类的isa指向它自己，形成闭环，保证isa指针永远不会为空 —同时这也会使得一个类（Class）可以 响应NSObject的所有实例方法
+- isa指针指向就是消息传递的方向，通过isa指针没找到的消息，则继续通过superClass指针查找
+- 对象中含有<code>实例变量</code>，类中含有<code>实例方法列表</code>，元类中含有<code>类方法列表</code>；NSobject的元类的superClass指向NSobject实例，所以理论上给元类发消息，能找到NSObject的实例方法，但我们在实际中很少用到</p>
+
+<h3>为什么要有元类</h3>
+
+<ol>
+<li>可以分离类方法和实例方法</li>
+<li>元类总是会保证Class对象会从基类继承所有的实例和类方法</li>
+</ol>
+
+
+<h3>成员变量的不可变与方法的可变</h3>
+
+<p>Q:<code>为什么对象不能添加成员变量？</code>
+A:因为对象在内存中的排布可以看成一个结构体，该结构体的大小不能动态变化，所以无法在运行时动态给对象增加成员变量</p>
+
+<p>相对的，对象的方法定义都保存在类的可变区域中。Objective-C 2.0并未在头文件中将实现暴露出来，但在Objective-C 1.0中，我们可以看到方法的定义列表是一个名为<code>methodLists</code>的指针的指针（详见类的结构图)。通过修改该指针指向的指针的值，就可以实现动态地为某一个类增加成员方法。这也是Category实现的原理。同时也说明了为什么<code>Category</code>只可为对象增加成员方法，却不能增加成员变量。</p>
+
+<p>需要特别说明一下，通过objc_setAssociatedObject 和 objc_getAssociatedObject方法可以变相地给对象增加成员变量，但由于实现机制不一样，所以并不是真正改变了对象的内存结构。</p>
+
+<h3>isa-swizzling 在运行时动态创建一个类</h3>
+
+<p><strong>修改类的isa被称为isa-swizzling技术。isa-swizzling就是类型混合指针机制。KVO主要通过isa-swizzling，来实现其内部查找定位的。</strong></p>
+
+<blockquote><p>KVO（key－value observer）就是通过isa swizzling来实现的。 当我们为一个类的某个属性添加observer时候，框架自动创建这个类的一个子类，并且修改这个类的isa指向这个新的子类。 由于在ios中函数调用都是转化为isa查表形式，所以这次查得时新的子类的表， 也就是说对类的函数调用被子类给拦截了，在拦截的实现中就可以通知observer了。</p></blockquote>
+
+<p>动态创建一个类需要三个步骤</p>
+
+<blockquote><ol>
+<li>为“class pair”－类和元类 创建存储空间（使用 objc_allocateClassPair).</li>
+<li>为这个类添加所需的 methods 和 ivars（使用 class_addMethod).</li>
+<li>注册这个类，然后就可以使用了（使用 objc_registerClassPair).</li>
+</ol>
+</blockquote>
+
+<p>下面的代码在运行时创建了一个 NSError 的子类同时为它添加了一个方法：</p>
+
+<pre><code>Class newClass =
+    objc_allocateClassPair([NSError class], "RuntimeErrorSubclass", 0);
+class_addMethod(newClass, @selector(report), (IMP)ReportFunction, "v@:");
+objc_registerClassPair(newClass);
+</code></pre>
+
+<p>添加的方法使用叫ReportFunction 的函数作为实现，定义如下：</p>
+
+<pre><code>void ReportFunction(id self, SEL _cmd)
+{
+    NSLog(@"This object is %p.", self);
+    NSLog(@"Class is %@, and super is %@.", [self class], [self superclass]);
+
+    Class currentClass = [self class];
+    for (int i = 1; i &lt; 5; i++)
+    {
+	NSLog(@"Following the isa pointer %d times gives %p", i, currentClass);
+	currentClass = object_getClass(currentClass);
+    }
+
+    NSLog(@"NSObject's class is %p", [NSObject class]);
+    NSLog(@"NSObject's meta class is %p", object_getClass([NSObject class]));
+}
+</code></pre>
+
+<h3>Method Swizzling (方法调配)</h3>
+
+<p>Objective-C提供了以下API来动态替换类方法或实例方法的实现：
+- <code>class_replaceMethod</code> 替换类方法的定义
+- <code>method_exchangeImplementations</code> 交换2个方法的实现
+- <code>method_setImplementation</code> 设置1个方法的实现</p>
+
+<p>上面三个方法的差别:</p>
+
+<ul>
+<li><code>class_replaceMethod</code> ,有两种不同的行为。当类中没有想替换的原方法时，该方法会调用<code>class_addMethod</code>来为该类增加一个方法，也因为如此，<code>class_replaceMethod</code>在调用时需要传入types参数，而<code>method_exchangeImplementations</code>和<code>method_setImplementation</code>却不需要。</li>
+<li>method_exchangeImplementations 的内部实现相当于调用了2次method_setImplementation方法。</li>
+</ul>
+
+
+<p>总结一下3个API的使用场景:
+- <code>class_replaceMethod</code>, 当需要替换的方法可能有不存在的情况时，可以考虑使用该方法。
+- <code>method_exchangeImplementations</code>，当需要交换2个方法的实现时使用。
+- <code>method_setImplementation</code> 最简单的用法，当仅仅需要为一个方法设置其实现方式时使用。
+- <code>ckass_getInstanceMethod</code> 根据给定的选择从类中抽取与之相关的方法</p>
+
+<h3>用Method-Swizzling 调试“黑盒方法”</h3>
+
+<p>selector名称对应的方法可以在运行期改变。类的方法列表会把选择子的名称映射到相关的方法实现上，使得“动态消息派发系统”能根据此找到应该调用的方法。这些方法均以函数指针的形式来表示，这种指针叫做IMP,原型如下：<code>id(*IMP)(id,SEL,……)</code></p>
+
+<h5>实现两个方法的交换</h5>
+
+<pre><code>Method originalMethod = class_getInstanceMethond([NSString class],@selector(lowercasestring));
+Method swappedMethod = class_getInstanceMethod([NSString class],@selector(uppercaseString));
+method_exchangeImplementations(originalMethod,swappedMethod);
+</code></pre>
+
+<p>然后在实际应用中，像这样直接交换两个方法实现的意义并不大。但是可以通过这一手段来为既有的方法实现新增功能.比如在调用lowercaseString时记录某些信息。</p>
+
+<pre><code>@interface NSString (EOCMyAdditions)
+- (NSString *)eoc_myLoercaseString;
+@end
+
+@implementation NSString (EOCMyAdditions)
+
+- (NSString *)eoc_myLoercaseString{
+NSString *lowercase = [self eoc_myLoercaseString];
+NSLog(@"%@ = &gt; %@",self,lowercase);
+
+return lowercase;
+}
+
+@end
+</code></pre>
+
+<p>使用时情况如下:</p>
+
+<pre><code>Method originalMethod = class_getInstanceMethod([NSString class], @selector(lowercaseString));
+Method swappedMethod  = class_getInstanceMethod([NSString class], @selector(eoc_myLoercaseString));
+method_exchangeImplementations(originalMethod, swappedMethod);
+NSString *testStr = @"Hello World";
+NSString *lowercaseString = [testStr lowercaseString];
+NSLog(@"%@",lowercaseString);
+</code></pre>
+</div>
+
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style addthis_16x16_style">
+
+	<a class="addthis_button_sinaweibo"></a>
+
+
+	<a class="addthis_button_facebook"></a>
+
+
+	<a class="addthis_button_twitter"></a>
+
+
+
+	<a class="addthis_button_google_plusone_share"></a>
+
+
+	<a class="addthis_button_compact"></a>
+	<a class="addthis_counter addthis_bubble_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Connor -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'igingko';
+
+
+	// var disqus_developer = 1;
+	var disqus_identifier = 'http://iGingko.me/blog/2014/08/24/the-object-model/';
+	var disqus_url = 'http://iGingko.me/blog/2014/08/24/the-object-model/';
+	var disqus_script = 'embed.js';
+
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>
