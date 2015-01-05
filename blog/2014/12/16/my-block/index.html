@@ -1,0 +1,300 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Block详解 - iGingko</title>
+	<meta name="author" content="Connor">
+
+	
+	<meta name="description" content="Block详解 Block 是什么 闭包是一个函数指针，再加上该函数执行的外部的上下文变量，而Block实际上就是Objective-C语言对闭包的实现
+Block是封装了代码逻辑(代码块)的OC对象
+一个Block就是一个匿名的内联代码集合体
+在某种意义上, &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="iGingko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://iGingko.me/blog/2014/12/16/my-block/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		document.write("<img src='/images/Logo.jpg' alt='Profile Picture' style='width: 160px;' />");
+	</script>
+</div>
+<h1><a href="/">iGingko</a></h1>
+<p class="subtitle">Talk is cheap, Show me the code!.</p>
+<nav id="main-nav"><ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About Me</a></li>
+</ul>
+
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		<a class="weibo" href="http://www.weibo.com/1307895851" title="Weibo">Weibo</a>
+		
+		
+		
+		<a class="google" href="https://plus.google.com/106727423024678549919" rel="author" title="Google+">Google+</a>
+		
+		
+		<a class="twitter" href="http://twitter.com/iGingko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/iGingko" title="GitHub">GitHub</a>
+		
+		
+		<a class="dribbble" href="http://www.dribbble.com/iGingko" title="Dribbble">Dribbble</a>
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+<hgroup>
+  <p class="subtitle"> You know ultimately it comes down to taste, it comes down to trying to expose yourself to the best things that humans have done, and try to bring these things into what you are doing.							
+    -- Steve Job </p>
+</hgroup>
+
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Block详解</h1>
+	<div class="entry-content" itemprop="articleBody"><h2>Block 是什么</h2>
+
+<blockquote><ul>
+<li>闭包是一个函数指针，再加上该函数执行的外部的上下文变量，而Block实际上就是Objective-C语言对闭包的实现</li>
+<li>Block是封装了代码逻辑(代码块)的OC对象</li>
+<li>一个Block就是一个匿名的内联代码集合体</li>
+<li>在某种意义上,也可以把Block理解成为OC的匿名函数</li>
+<li>块是以扩展的形式加入到GCC编译器的，在近期版本的CLang中也可以使用</li>
+</ul>
+</blockquote>
+
+<p>总而言之，<strong>Block是实现闭包功能并封装了代码逻辑的OC对象</strong></p>
+
+<h2>怎样使用Block</h2>
+
+<h3>声明</h3>
+
+<p><img src="/images/posts/blocks.png" alt="Block Structure" /></p>
+
+<p>基本语法如下</p>
+
+<pre><code>returnvalue (^BlockName)(parameters)
+</code></pre>
+
+<p>每个块都具备“固有类型”，所以也可以通过<strong>typedef</strong>来定义类型</p>
+
+<pre><code>typedef int (^EOCScomeBlock)(BOOL flag,int value)
+</code></pre>
+
+<h3>实现</h3>
+
+<pre><code>int (^AddBlock)(int,int) = ^(int a, int b){
+    return a + b;
+}
+</code></pre>
+
+<h2>Block的内部结构</h2>
+
+<p><img src="/images/posts/block-struct.jpg" alt="Block Structure" /></p>
+
+<p>如图所示，BLock一共分为6个部分:</p>
+
+<ol>
+<li>块本身是对象，在存放块对象的内存区域中，首个变量是指向Class对象的指针，该指针叫做isa</li>
+<li>flags,用于按Bit位表示一些block的附加信息，</li>
+<li>reverted 保留变量</li>
+<li>invoke，这是内存布局中最重要的变量，这是个函数指针，指向块的实现代码(函数调用地址)。函数原型至少要接受一个void*型的参数，此参数代表块</li>
+<li>descriptor标示该Block的附加描述信息，主要是Size大小，以及copy和dispose辅助函数的指针。辅助函数在Copy以及dispose的时候要指向一些其它操作，比如说，前者要保留捕获的对象，而后者则将之释放</li>
+<li>variables, capture过来的变量，block能够访问它外部的局部变量，就是因为将这些变量复制到了结构体中。但需要注意的时拷贝的病不是对象本身，而是指向这些对象的指针变量。</li>
+</ol>
+
+
+<h2>全局快、栈块和堆块</h2>
+
+<p>在MRC下，定义块的时候所占的内存都是分配在栈中的,也就是说，块只在定义它的那个范围内有效。如下代码就有危险:</p>
+
+<pre><code>void (^block)();
+if (){
+    block = ^{};
+}else {
+    block = ^{};
+}
+block();
+</code></pre>
+
+<p>在上面的代码中，if 和else中的代码都是分配在栈中的，等离开了相应的范围之后，编译器就有可能把分配给Block的内存覆盖掉，于是这两个Block只能保证在对应的范围内有效。</p>
+
+<p>为了解决上面的问题，可以给块对象发送<strong>Copy</strong>消息，这样的话就会把块对象从栈中拷贝到堆中，块就成了带引用计数的对象了。修改之后的代码如下:</p>
+
+<pre><code>void (^block)();
+if (){
+    block =[^{} copy];
+}else {
+    block = [^{} copy];
+}
+block();
+</code></pre>
+
+<p>上面说的时栈块和堆块，除此之外还有一种块叫做全局块，这种块不会捕捉任何状态(比如外围的变量等)，运行时也无须有状态来参与。块使用整个内存区域，在编译器已经完全确定了，因此，全局块可以声明在全局内存汇总，而不需要每次用到的时候在栈中创建。另外，对全局块的拷贝操作是个空操作，因为全局块不能被系统所回收。这种块实际上相当于单例。</p>
+
+<p><strong>在ARC下，无论哪种块都是被分配在堆中的</strong></p>
+
+<h2>Block的闭包性</h2>
+
+<p>在block内部，可以像普通函数一样访问数据：局部变量、传递给block的参数，全局变量/函数。并且由于block具有<strong>闭包性</strong>，所以还能访问非局部变量(non-local variable)。非局部变量定义在block之外，但是在block内部有它的作用域。例如，getFullCarName可以使用定义在block前面的make变量</p>
+
+<pre><code>NSString *make = @"Honda";
+NSString *(^getFullCarName)(NSString *) = ^(NSString *model) {
+    return [make stringByAppendingFormat:@" %@", model];
+};
+NSLog(@"%@", getFullCarName(@"Accord"));    // Honda Accord
+</code></pre>
+
+<p>非局部变量会以const变量被拷贝并存储到block中，也就是说block对其是只读的。如果尝试在block内部给make变量赋值，会抛出编译器错误。</p>
+
+<p><img src="/images/posts/const-non-local-variables.png" alt="Block Structure" /></p>
+
+<p>以const拷贝的方式访问非局部变量，意味着block实际上并不是真正的访问了非局部变量——只不过在block中创建了非局部变量的一个快照。当定义block时，无论非局部变量的值是什么，都将被冻结，并且block会一直使用这个值，即使在之后的代码中修改了非局部变量的值。下面通过代码来看看，在创建好block之后，修改make变量的值，会发生什么</p>
+
+<pre><code>NSString *make = @"Honda";
+NSString *(^getFullCarName)(NSString *) = ^(NSString *model) {
+    return [make stringByAppendingFormat:@" %@", model];
+};
+NSLog(@"%@", getFullCarName(@"Accord"));    // Honda Accord
+
+// Try changing the non-local variable (it won't change the block)
+make = @"Porsche";
+NSLog(@"%@", getFullCarName(@"911 Turbo")); // Honda 911 Turbo
+</code></pre>
+
+<p>block的闭包性为block与上下文交互的时候带来极大的便利性，当block需要额外的数据时，可以避免使用参数——只需要简单的使用非局部变量即可。</p>
+
+<h2>修改局部变量</h2>
+
+<p>冻结中的非局部变量是一个常量值，这也是一种默认的安全行为——因为这可以防止在block中的代码对非局部变量做了意外的修改。那么如果我们希望在block中对非局部变量值进行修改要如何做呢——用__block存储修饰符(storage modifier)来声明非局部变量：</p>
+
+<pre><code>__block NSString *make = @"Honda";
+</code></pre>
+
+<p>这将告诉block对非局部变量做引用处理，在block外部make变量和内部的make变量创建一个直接的链接(direct link)。现在就可以在block外部修改make，然后反应到block内部，反过来，也是一样。</p>
+
+<p><img src="/images/posts/mutable-non-local-variables.png" alt="Block Structure" /></p>
+
+<h2>Block作用</h2>
+
+<ul>
+<li>作为回调，取代Delegate,可以让代码变得简单，以及减少函数声明的数量</li>
+<li>block能够在函数内部声明实现，并捕捉词法范围内的状态，并能在一定条件下修改这些状态</li>
+<li>用Blcok作为回调，可以让代码逻辑变得紧凑，并切可以直接访问局部变量</li>
+<li>BLock可以使用在任务完成回调处理、消息监听回调处理、错误回调处理、枚举回调、视图动画变化、排序</li>
+</ul>
+
+</div>
+
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style addthis_16x16_style">
+	
+	<a class="addthis_button_sinaweibo"></a>
+	
+	
+	<a class="addthis_button_facebook"></a>
+	
+	
+	<a class="addthis_button_twitter"></a>
+	
+	
+	
+	<a class="addthis_button_google_plusone_share"></a>
+	
+    
+	<a class="addthis_button_compact"></a>
+	<a class="addthis_counter addthis_bubble_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2015 - Connor -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'igingko';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://iGingko.me/blog/2014/12/16/my-block/';
+        var disqus_url = 'http://iGingko.me/blog/2014/12/16/my-block/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>
