@@ -7,6 +7,7 @@ title: iGingko
 subtitle: Talk is cheap, Show me the code!.
 author: Connor
 simple_search: https://www.google.com/search
+lsi: true
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
