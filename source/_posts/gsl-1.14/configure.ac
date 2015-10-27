@@ -20,6 +20,7 @@ dnl gsl-1.5    libgsl 6:0:6  libgslcblas 0:0:0
 dnl gsl-1.6    libgsl 7:0:7  libgslcblas 0:0:0
 dnl gsl-1.7    libgsl 8:0:8  libgslcblas 0:0:0
 dnl gsl-1.8    libgsl 9:0:9  libgslcblas 0:0:0
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 dnl gsl-1.9    libgsl 10:0:10 libgslcblas 0:0:0 
 dnl gsl-1.10   libgsl 10:0:10 (*) libgslcblas 0:0:0 
 dnl gsl-1.11   libgsl 12:0:12  libgslcblas 0:0:0 
@@ -27,6 +28,15 @@ dnl gsl-1.12   libgsl 13:0:13  libgslcblas 0:0:0
 dnl gsl-1.13   libgsl 14:0:14  libgslcblas 0:0:0 
 dnl gsl-1.14   libgsl 15:0:15  libgslcblas 0:0:0 
 dnl 
+=======
+dnl gsl-1.9    libgsl 10:0:10 libgslcblas 0:0:0
+dnl gsl-1.10   libgsl 10:0:10 (*) libgslcblas 0:0:0
+dnl gsl-1.11   libgsl 12:0:12  libgslcblas 0:0:0
+dnl gsl-1.12   libgsl 13:0:13  libgslcblas 0:0:0
+dnl gsl-1.13   libgsl 14:0:14  libgslcblas 0:0:0
+dnl gsl-1.14   libgsl 15:0:15  libgslcblas 0:0:0
+dnl
+>>>>>>> config
 dnl (*) There was an error on this release.  Firstly, the versioning
 dnl numbers were not updated.  Secondly, 2 functions were removed, but
 dnl the age not reset--this should have been 11:0:0.  However these
@@ -35,7 +45,11 @@ dnl will assume 11:0:11.
 dnl
 dnl How to update library version number
 dnl ====================================
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 dnl 
+=======
+dnl
+>>>>>>> config
 dnl C: increment if the interface has additions, changes, removals.
 dnl
 dnl R: increment any time the source changes; set to 0 if you
@@ -62,10 +76,17 @@ AC_SUBST(GSL_LT_CBLAS_VERSION)
 
 case "$VERSION" in
     *+)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ;;
     *)
         AC_DEFINE(RELEASED,[],[Defined if this is an official release])
         ;;
+=======
+	;;
+    *)
+	AC_DEFINE(RELEASED,[],[Defined if this is an official release])
+	;;
+>>>>>>> config
 esac
 
 dnl Split VERSION into GSL_VERSION_MAJOR and GSL_VERSION_MINOR
@@ -105,7 +126,11 @@ GSL_LIBS="-L$libdir -lgsl"
 AC_SUBST(GSL_CFLAGS)
 AC_SUBST(GSL_LIBS)
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 if test "$ac_cv_c_inline" != no ; then 
+=======
+if test "$ac_cv_c_inline" != no ; then
+>>>>>>> config
 dnl Check for "extern inline", using a modified version of the test
 dnl for AC_C_INLINE from acspecific.mt
 dnl
@@ -122,6 +147,7 @@ dnl
       AC_CACHE_CHECK([for C99-style inline], ac_cv_c_c99inline,
       [ac_cv_c_c99inline=no
       dnl next line is a necessary condition
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[extern inline void* foo() { foo(); return &foo ; };]], 
       [[  return foo() != 0 ]])],[ac_cv_c_c99inline="yes"],[])
       dnl but not sufficient, extern must work but inline on its own should not
@@ -133,6 +159,19 @@ dnl
       if test "$ac_cv_c_c99inline" != no ; then
          AC_DEFINE(HAVE_INLINE,[1],[Define if you have inline])
          AC_DEFINE(HAVE_C99_INLINE,[1],[Define if you have inline with C99 behavior])
+=======
+      AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[extern inline void* foo() { foo(); return &foo ; };]],
+      [[  return foo() != 0 ]])],[ac_cv_c_c99inline="yes"],[])
+      dnl but not sufficient, extern must work but inline on its own should not
+      if test "$ac_cv_c_c99inline" != no ; then
+	    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[inline void* foo() { foo(); return &foo ; };]],
+	    [[  return foo() != 0 ]])],[],ac_cv_c_c99inline="no")
+      fi
+      ])
+      if test "$ac_cv_c_c99inline" != no ; then
+	 AC_DEFINE(HAVE_INLINE,[1],[Define if you have inline])
+	 AC_DEFINE(HAVE_C99_INLINE,[1],[Define if you have inline with C99 behavior])
+>>>>>>> config
       fi
    fi
 fi
@@ -170,7 +209,11 @@ AC_EGREP_CPP(yes,
 #ifdef EXIT_SUCCESS
 yes
 #endif
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 ], 
+=======
+],
+>>>>>>> config
 ac_cv_decl_exit_success_and_failure=yes,
 ac_cv_decl_exit_success_and_failure=no)
 )
@@ -187,10 +230,17 @@ fi
 
 dnl Remember to put a definition in acconfig.h for each of these
 AC_CHECK_DECLS(feenableexcept,,,[#define _GNU_SOURCE 1
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 #include <fenv.h>]) 
 AC_CHECK_DECLS(fesettrapenable,,,[#define _GNU_SOURCE 1
 #include <fenv.h>]) 
 AC_CHECK_DECLS(hypot,,,[#include <math.h>]) 
+=======
+#include <fenv.h>])
+AC_CHECK_DECLS(fesettrapenable,,,[#define _GNU_SOURCE 1
+#include <fenv.h>])
+AC_CHECK_DECLS(hypot,,,[#include <math.h>])
+>>>>>>> config
 AC_CHECK_DECLS(expm1,,,[#include <math.h>])
 AC_CHECK_DECLS(acosh,,,[#include <math.h>])
 AC_CHECK_DECLS(asinh,,,[#include <math.h>])
@@ -211,7 +261,11 @@ case "$host" in
        AC_MSG_RESULT([avoiding OpenBSD system log1p - using gsl version])
        ;;
     *)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         AC_CHECK_DECLS(log1p,,,[#include <math.h>])
+=======
+	AC_CHECK_DECLS(log1p,,,[#include <math.h>])
+>>>>>>> config
        ;;
 esac
 
@@ -219,10 +273,17 @@ AC_CACHE_CHECK([for long double stdio], ac_cv_func_printf_longdouble,
 [AC_RUN_IFELSE([AC_LANG_SOURCE([[
 #include <stdlib.h>
 #include <stdio.h>
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int main (void) 
 { 
 const char * s = "5678.25"; long double x = 1.234 ; 
 fprintf(stderr,"%Lg\n",x) ; 
+=======
+int main (void)
+{
+const char * s = "5678.25"; long double x = 1.234 ;
+fprintf(stderr,"%Lg\n",x) ;
+>>>>>>> config
 sscanf(s, "%Lg", &x);
 if (x == 5678.25) {exit (0);} else {exit(1); };
 }]])],[ac_cv_func_printf_longdouble="yes"],[ac_cv_func_printf_longdouble="no"],[ac_cv_func_printf_longdouble="no"])])
@@ -234,6 +295,7 @@ fi
 AC_CACHE_CHECK([for extended floating point registers],ac_cv_c_extended_fp,
 [case "$host" in
     *sparc*-*-*)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ac_cv_c_extended_fp=no
         ;;     
     *powerpc*-*-*)
@@ -257,6 +319,31 @@ AC_CACHE_CHECK([for extended floating point registers],ac_cv_c_extended_fp,
     *) 
         ac_cv_c_extended_fp=unknown
         ;;
+=======
+	ac_cv_c_extended_fp=no
+	;;
+    *powerpc*-*-*)
+	ac_cv_c_extended_fp=no
+	;;
+    *hppa*-*-*)
+	ac_cv_c_extended_fp=no
+	;;
+    *alpha*-*-*)
+	ac_cv_c_extended_fp=no
+	;;
+    *68k*-*-*)
+	ac_cv_c_extended_fp=yes
+	;;
+    *86-*-*)
+	ac_cv_c_extended_fp=yes
+	;;
+    x86_64-*-*)
+	ac_cv_c_extended_fp=yes
+	;;
+    *)
+	ac_cv_c_extended_fp=unknown
+	;;
+>>>>>>> config
 esac
 ])
 
@@ -266,6 +353,7 @@ fi
 
 AC_CACHE_CHECK([for IEEE arithmetic interface type], ac_cv_c_ieee_interface,
 [case "$host" in
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     sparc-*-linux*) 
         ac_cv_c_ieee_interface=gnusparc
         ;;
@@ -320,6 +408,62 @@ AC_CACHE_CHECK([for IEEE arithmetic interface type], ac_cv_c_ieee_interface,
     *)
         ac_cv_c_ieee_interface=unknown
         ;;
+=======
+    sparc-*-linux*)
+	ac_cv_c_ieee_interface=gnusparc
+	;;
+    m68k-*-linux*)
+	ac_cv_c_ieee_interface=gnum68k
+	;;
+    powerpc-*-linux*)
+	ac_cv_c_ieee_interface=gnuppc
+	;;
+    *86-*-gnu | *86_64-*-gnu | *86-*-linux* | *86_64-*-linux*)
+	ac_cv_c_ieee_interface=gnux86
+	;;
+    *-*-sunos4*)
+	ac_cv_c_ieee_interface=sunos4
+	;;
+    *-*-solaris*)
+	ac_cv_c_ieee_interface=solaris
+	;;
+    *-*-hpux11*)
+	ac_cv_c_ieee_interface=hpux11
+	;;
+    *-*-hpux*)
+	ac_cv_c_ieee_interface=hpux
+	;;
+    *-*-osf*)
+	ac_cv_c_ieee_interface=tru64
+	;;
+    *-*-aix*)
+	ac_cv_c_ieee_interface=aix
+	;;
+    *-*-irix*)
+	ac_cv_c_ieee_interface=irix
+	;;
+    powerpc-*-*darwin*)
+	ac_cv_c_ieee_interface=darwin
+	;;
+    *86-*-*darwin*)
+	ac_cv_c_ieee_interface=darwin86
+	;;
+    *-*-*netbsd*)
+	ac_cv_c_ieee_interface=netbsd
+	;;
+    *-*-*openbsd*)
+	ac_cv_c_ieee_interface=openbsd
+	;;
+    *-*-*bsd*)
+	ac_cv_c_ieee_interface=freebsd
+	;;
+    *-*-os2*)
+	ac_cv_c_ieee_interface=os2emx
+	;;
+    *)
+	ac_cv_c_ieee_interface=unknown
+	;;
+>>>>>>> config
 esac
 ])
 
@@ -342,15 +486,24 @@ if test "$ac_cv_c_ieee_interface" = "gnux86" ; then
 #include <stdlib.h>
 #define _FPU_SETMXCSR(cw_sse) asm volatile ("ldmxcsr %0" : : "m" (*&cw_sse))
 ]], [[ unsigned int mode = 0x1f80 ; _FPU_SETMXCSR(mode); exit(0); ]])],[ac_cv_c_fpu_sse="yes"],[ac_cv_c_fpu_sse="no"],[
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+=======
+	AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+>>>>>>> config
 #include <stdlib.h>
 #define _FPU_SETMXCSR(cw_sse) asm volatile ("ldmxcsr %0" : : "m" (*&cw_sse))
 ]], [[ unsigned int mode = 0x1f80 ; _FPU_SETMXCSR(mode); exit(0); ]])],[ac_cv_c_fpu_sse="yes"],[ac_cv_c_fpu_sse="no"])
 ])])
 
     if test $ac_cv_c_fpu_sse = yes; then
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         AC_DEFINE([HAVE_FPU_X86_SSE], 1,
                   [Define if x86 processor has sse extensions.])
+=======
+	AC_DEFINE([HAVE_FPU_X86_SSE], 1,
+		  [Define if x86 processor has sse extensions.])
+>>>>>>> config
    fi
 fi
 
@@ -382,6 +535,7 @@ AC_CACHE_CHECK([for IEEE compiler flags], ac_cv_c_ieee_flags,
 [
 case "$host" in
     alpha*-*-*)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         if test X"$GCC" = Xyes ; then
             ieee_flags='-mieee -mfp-rounding-mode=d'
         else
@@ -389,6 +543,15 @@ case "$host" in
             ieee_flags='-ieee -fprm d'
         fi
         ;;
+=======
+	if test X"$GCC" = Xyes ; then
+	    ieee_flags='-mieee -mfp-rounding-mode=d'
+	else
+	    # This assumes Compaq's C compiler.
+	    ieee_flags='-ieee -fprm d'
+	fi
+	;;
+>>>>>>> config
 esac
 if test X"$ieee_flags" != X ; then
   CFLAGS="$ieee_flags $CFLAGS"
@@ -408,8 +571,13 @@ dnl
 AC_CACHE_CHECK([for IEEE comparisons], ac_cv_c_ieee_comparisons,
 [AC_RUN_IFELSE([AC_LANG_SOURCE([[
 #include <math.h>
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int main (void) 
 { 
+=======
+int main (void)
+{
+>>>>>>> config
    int status; double inf, nan;
    inf = exp(1.0e10);
    nan = inf / inf ;
@@ -426,12 +594,21 @@ dnl Check for IEEE denormalized arithmetic
 dnl
 AC_CACHE_CHECK([for IEEE denormalized values], ac_cv_c_ieee_denormals,
 [AC_RUN_IFELSE([AC_LANG_SOURCE([[
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 #include <math.h> 
 int main (void) 
 { 
    int i, status; 
    volatile double z = 1e-308;
    for (i = 0; i < 5; i++) { z = z / 10.0 ; };        
+=======
+#include <math.h>
+int main (void)
+{
+   int i, status;
+   volatile double z = 1e-308;
+   for (i = 0; i < 5; i++) { z = z / 10.0 ; };
+>>>>>>> config
    for (i = 0; i < 5; i++) { z = z * 10.0 ; };
    status = (z == 0.0);
    exit (status);

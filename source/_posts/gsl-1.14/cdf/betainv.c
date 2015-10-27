@@ -21,8 +21,13 @@
  */
 
 /*
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * Invert the Beta distribution. 
  * 
+=======
+ * Invert the Beta distribution.
+ *
+>>>>>>> config
  * References:
  *
  * Roger W. Abernathy and Robert P. Smith. "Applying Series Expansion
@@ -45,7 +50,11 @@
 
 #include "error.h"
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static double 
+=======
+static double
+>>>>>>> config
 bisect (double x, double P, double a, double b, double xtol, double Ptol)
 {
   double x0 = 0, x1 = 1, Px;
@@ -54,8 +63,13 @@ bisect (double x, double P, double a, double b, double xtol, double Ptol)
     Px = gsl_cdf_beta_P (x, a, b);
     if (fabs(Px - P) < Ptol) {
       /* return as soon as approximation is good enough, including on
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          the first iteration */
       return x;  
+=======
+	 the first iteration */
+      return x;
+>>>>>>> config
     } else if (Px < P) {
       x0 = x;
     } else if (Px > P) {
@@ -64,7 +78,11 @@ bisect (double x, double P, double a, double b, double xtol, double Ptol)
     x = 0.5 * (x0 + x1);
   }
   return x;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 }  
+=======
+}
+>>>>>>> config
 
 
 double
@@ -114,6 +132,7 @@ gsl_cdf_beta_Pinv (const double P, const double a, const double b)
 
       double lx = (log (a) + lg_a + lg_b - lg_ab + log (P)) / a;
       if (lx <= 0) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         x = exp (lx);             /* first approximation */
         x *= pow (1 - x, -(b - 1) / a);   /* second approximation */
       } else {
@@ -122,6 +141,16 @@ gsl_cdf_beta_Pinv (const double P, const double a, const double b)
 
       if (x > mean)
         x = mean;
+=======
+	x = exp (lx);             /* first approximation */
+	x *= pow (1 - x, -(b - 1) / a);   /* second approximation */
+      } else {
+	x = mean;
+      }
+
+      if (x > mean)
+	x = mean;
+>>>>>>> config
     }
   else
     {
@@ -152,6 +181,7 @@ gsl_cdf_beta_Pinv (const double P, const double a, const double b)
       double step = step0;
 
       if (fabs (step1) < fabs (step0))
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           step += step1;
         }
@@ -172,13 +202,39 @@ gsl_cdf_beta_Pinv (const double P, const double a, const double b)
 
       if (fabs (step0) > 1e-10 * x)
         goto start;
+=======
+	{
+	  step += step1;
+	}
+      else
+	{
+	  /* scale back step to a reasonable size when too large */
+	  step *= 2 * fabs (step0 / step1);
+	};
+
+      if (x + step > 0 && x + step < 1)
+	{
+	  x += step;
+	}
+      else
+	{
+	  x = sqrt (x) * sqrt (mean);   /* try a new starting point */
+	}
+
+      if (fabs (step0) > 1e-10 * x)
+	goto start;
+>>>>>>> config
     }
 
   end:
 
     if (fabs(dP) > GSL_SQRT_DBL_EPSILON * P)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         GSL_ERROR_VAL("inverse failed to converge", GSL_EFAILED, GSL_NAN);
+=======
+	GSL_ERROR_VAL("inverse failed to converge", GSL_EFAILED, GSL_NAN);
+>>>>>>> config
       }
 
     return x;

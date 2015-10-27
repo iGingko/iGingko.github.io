@@ -1,17 +1,31 @@
 /* integration/qags.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -38,6 +52,7 @@ static int qags (const gsl_function * f, const double a, const double
 
 int
 gsl_integration_qags (const gsl_function *f,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       double a, double b,
                       double epsabs, double epsrel, size_t limit,
                       gsl_integration_workspace * workspace,
@@ -47,6 +62,17 @@ gsl_integration_qags (const gsl_function *f,
                      workspace, 
                      result, abserr, 
                      &gsl_integration_qk21) ;
+=======
+		      double a, double b,
+		      double epsabs, double epsrel, size_t limit,
+		      gsl_integration_workspace * workspace,
+		      double * result, double * abserr)
+{
+  int status = qags (f, a, b, epsabs, epsrel, limit,
+		     workspace,
+		     result, abserr,
+		     &gsl_integration_qk21) ;
+>>>>>>> config
   return status ;
 }
 
@@ -61,9 +87,15 @@ static double i_transform (double t, void *params);
 
 int
 gsl_integration_qagi (gsl_function * f,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       double epsabs, double epsrel, size_t limit,
                       gsl_integration_workspace * workspace,
                       double *result, double *abserr)
+=======
+		      double epsabs, double epsrel, size_t limit,
+		      gsl_integration_workspace * workspace,
+		      double *result, double *abserr)
+>>>>>>> config
 {
   int status;
 
@@ -72,16 +104,28 @@ gsl_integration_qagi (gsl_function * f,
   f_transform.function = &i_transform;
   f_transform.params = f;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   status = qags (&f_transform, 0.0, 1.0, 
                  epsabs, epsrel, limit,
                  workspace,
                  result, abserr,
                  &gsl_integration_qk15);
+=======
+  status = qags (&f_transform, 0.0, 1.0,
+		 epsabs, epsrel, limit,
+		 workspace,
+		 result, abserr,
+		 &gsl_integration_qk15);
+>>>>>>> config
 
   return status;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static double 
+=======
+static double
+>>>>>>> config
 i_transform (double t, void *params)
 {
   gsl_function *f = (gsl_function *) params;
@@ -93,7 +137,11 @@ i_transform (double t, void *params)
 
 /* QAGIL: Evaluate an integral over an infinite range using the
    transformation,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    
+=======
+
+>>>>>>> config
    integrate(f(x),-Inf,b) = integrate(f(b-(1-t)/t)/t^2,0,1)
 
    */
@@ -104,10 +152,17 @@ static double il_transform (double t, void *params);
 
 int
 gsl_integration_qagil (gsl_function * f,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                        double b,
                        double epsabs, double epsrel, size_t limit,
                        gsl_integration_workspace * workspace,
                        double *result, double *abserr)
+=======
+		       double b,
+		       double epsabs, double epsrel, size_t limit,
+		       gsl_integration_workspace * workspace,
+		       double *result, double *abserr)
+>>>>>>> config
 {
   int status;
 
@@ -120,16 +175,28 @@ gsl_integration_qagil (gsl_function * f,
   f_transform.function = &il_transform;
   f_transform.params = &transform_params;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   status = qags (&f_transform, 0.0, 1.0, 
                  epsabs, epsrel, limit,
                  workspace,
                  result, abserr,
                  &gsl_integration_qk15);
+=======
+  status = qags (&f_transform, 0.0, 1.0,
+		 epsabs, epsrel, limit,
+		 workspace,
+		 result, abserr,
+		 &gsl_integration_qk15);
+>>>>>>> config
 
   return status;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static double 
+=======
+static double
+>>>>>>> config
 il_transform (double t, void *params)
 {
   struct il_params *p = (struct il_params *) params;
@@ -153,10 +220,17 @@ static double iu_transform (double t, void *params);
 
 int
 gsl_integration_qagiu (gsl_function * f,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                        double a,
                        double epsabs, double epsrel, size_t limit,
                        gsl_integration_workspace * workspace,
                        double *result, double *abserr)
+=======
+		       double a,
+		       double epsabs, double epsrel, size_t limit,
+		       gsl_integration_workspace * workspace,
+		       double *result, double *abserr)
+>>>>>>> config
 {
   int status;
 
@@ -169,16 +243,28 @@ gsl_integration_qagiu (gsl_function * f,
   f_transform.function = &iu_transform;
   f_transform.params = &transform_params;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   status = qags (&f_transform, 0.0, 1.0, 
                  epsabs, epsrel, limit,
                  workspace,
                  result, abserr,
                  &gsl_integration_qk15);
+=======
+  status = qags (&f_transform, 0.0, 1.0,
+		 epsabs, epsrel, limit,
+		 workspace,
+		 result, abserr,
+		 &gsl_integration_qk15);
+>>>>>>> config
 
   return status;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static double 
+=======
+static double
+>>>>>>> config
 iu_transform (double t, void *params)
 {
   struct iu_params *p = (struct iu_params *) params;
@@ -237,7 +323,11 @@ qags (const gsl_function * f,
   if (epsabs <= 0 && (epsrel < 50 * GSL_DBL_EPSILON || epsrel < 0.5e-28))
     {
       GSL_ERROR ("tolerance cannot be acheived with given epsabs and epsrel",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_EBADTOL);
+=======
+		 GSL_EBADTOL);
+>>>>>>> config
     }
 
   /* Perform the first integration */
@@ -254,7 +344,11 @@ qags (const gsl_function * f,
       *abserr = abserr0;
 
       GSL_ERROR ("cannot reach tolerance because of roundoff error"
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  "on first attempt", GSL_EROUND);
+=======
+		 "on first attempt", GSL_EROUND);
+>>>>>>> config
     }
   else if ((abserr0 <= tolerance && abserr0 != resasc0) || abserr0 == 0.0)
     {
@@ -318,11 +412,19 @@ qags (const gsl_function * f,
       last_e_i = e_i;
 
       /* Improve previous approximations to the integral and test for
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          accuracy.
 
          We write these expressions in the same way as the original
          QUADPACK code so that the rounding errors are the same, which
          makes testing easier. */
+=======
+	 accuracy.
+
+	 We write these expressions in the same way as the original
+	 QUADPACK code so that the rounding errors are the same, which
+	 makes testing easier. */
+>>>>>>> config
 
       errsum = errsum + error12 - e_i;
       area = area + area12 - r_i;
@@ -330,6 +432,7 @@ qags (const gsl_function * f,
       tolerance = GSL_MAX_DBL (epsabs, epsrel * fabs (area));
 
       if (resasc1 != error1 && resasc2 != error2)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double delta = r_i - area12;
 
@@ -349,10 +452,32 @@ qags (const gsl_function * f,
               roundoff_type3++;
             }
         }
+=======
+	{
+	  double delta = r_i - area12;
+
+	  if (fabs (delta) <= 1.0e-5 * fabs (area12) && error12 >= 0.99 * e_i)
+	    {
+	      if (!extrapolate)
+		{
+		  roundoff_type1++;
+		}
+	      else
+		{
+		  roundoff_type2++;
+		}
+	    }
+	  if (iteration > 10 && error12 > e_i)
+	    {
+	      roundoff_type3++;
+	    }
+	}
+>>>>>>> config
 
       /* Test for roundoff and eventually set error flag */
 
       if (roundoff_type1 + roundoff_type2 >= 10 || roundoff_type3 >= 20)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           error_type = 2;       /* round off error */
         }
@@ -369,12 +494,31 @@ qags (const gsl_function * f,
         {
           error_type = 4;
         }
+=======
+	{
+	  error_type = 2;       /* round off error */
+	}
+
+      if (roundoff_type2 >= 5)
+	{
+	  error_type2 = 1;
+	}
+
+      /* set error flag in the case of bad integrand behaviour at
+	 a point of the integration range */
+
+      if (subinterval_too_small (a1, a2, b2))
+	{
+	  error_type = 4;
+	}
+>>>>>>> config
 
       /* append the newly-created intervals to the list */
 
       update (workspace, a1, b1, area1, error1, a2, b2, area2, error2);
 
       if (errsum <= tolerance)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           goto compute_result;
         }
@@ -402,10 +546,40 @@ qags (const gsl_function * f,
         {
           continue;
         }
+=======
+	{
+	  goto compute_result;
+	}
+
+      if (error_type)
+	{
+	  break;
+	}
+
+      if (iteration >= limit - 1)
+	{
+	  error_type = 1;
+	  break;
+	}
+
+      if (iteration == 2)       /* set up variables on first iteration */
+	{
+	  error_over_large_intervals = errsum;
+	  ertest = tolerance;
+	  append_table (&table, area);
+	  continue;
+	}
+
+      if (disallow_extrapolation)
+	{
+	  continue;
+	}
+>>>>>>> config
 
       error_over_large_intervals += -last_e_i;
 
       if (current_level < workspace->maximum_level)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           error_over_large_intervals += error12;
         }
@@ -427,6 +601,29 @@ qags (const gsl_function * f,
           if (increase_nrmax (workspace))
             continue;
         }
+=======
+	{
+	  error_over_large_intervals += error12;
+	}
+
+      if (!extrapolate)
+	{
+	  /* test whether the interval to be bisected next is the
+	     smallest interval. */
+
+	  if (large_interval (workspace))
+	    continue;
+
+	  extrapolate = 1;
+	  workspace->nrmax = 1;
+	}
+
+      if (!error_type2 && error_over_large_intervals > ertest)
+	{
+	  if (increase_nrmax (workspace))
+	    continue;
+	}
+>>>>>>> config
 
       /* Perform extrapolation */
 
@@ -437,6 +634,7 @@ qags (const gsl_function * f,
       ktmin++;
 
       if (ktmin > 5 && err_ext < 0.001 * errsum)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           error_type = 5;
         }
@@ -451,10 +649,27 @@ qags (const gsl_function * f,
           if (err_ext <= ertest)
             break;
         }
+=======
+	{
+	  error_type = 5;
+	}
+
+      if (abseps < err_ext)
+	{
+	  ktmin = 0;
+	  err_ext = abseps;
+	  res_ext = reseps;
+	  correc = error_over_large_intervals;
+	  ertest = GSL_MAX_DBL (epsabs, epsrel * fabs (reseps));
+	  if (err_ext <= ertest)
+	    break;
+	}
+>>>>>>> config
 
       /* Prepare bisection of the smallest interval. */
 
       if (table.n == 1)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           disallow_extrapolation = 1;
         }
@@ -463,6 +678,16 @@ qags (const gsl_function * f,
         {
           break;
         }
+=======
+	{
+	  disallow_extrapolation = 1;
+	}
+
+      if (error_type == 5)
+	{
+	  break;
+	}
+>>>>>>> config
 
       /* work on interval with largest error */
 
@@ -482,6 +707,7 @@ qags (const gsl_function * f,
   if (error_type || error_type2)
     {
       if (error_type2)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           err_ext += correc;
         }
@@ -502,6 +728,28 @@ qags (const gsl_function * f,
         {
           goto return_error;
         }
+=======
+	{
+	  err_ext += correc;
+	}
+
+      if (error_type == 0)
+	error_type = 3;
+
+      if (res_ext != 0.0 && area != 0.0)
+	{
+	  if (err_ext / fabs (res_ext) > errsum / fabs (area))
+	    goto compute_result;
+	}
+      else if (err_ext > errsum)
+	{
+	  goto compute_result;
+	}
+      else if (area == 0.0)
+	{
+	  goto return_error;
+	}
+>>>>>>> config
     }
 
   /*  Test on divergence. */
@@ -534,7 +782,11 @@ return_error:
 
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (error_type == 0) 
+=======
+  if (error_type == 0)
+>>>>>>> config
     {
       return GSL_SUCCESS;
     }
@@ -545,22 +797,38 @@ return_error:
   else if (error_type == 2)
     {
       GSL_ERROR ("cannot reach tolerance because of roundoff error",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_EROUND);
+=======
+		 GSL_EROUND);
+>>>>>>> config
     }
   else if (error_type == 3)
     {
       GSL_ERROR ("bad integrand behavior found in the integration interval",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_ESING);
+=======
+		 GSL_ESING);
+>>>>>>> config
     }
   else if (error_type == 4)
     {
       GSL_ERROR ("roundoff error detected in the extrapolation table",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_EROUND);
+=======
+		 GSL_EROUND);
+>>>>>>> config
     }
   else if (error_type == 5)
     {
       GSL_ERROR ("integral is divergent, or slowly convergent",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_EDIVERGE);
+=======
+		 GSL_EDIVERGE);
+>>>>>>> config
     }
   else
     {

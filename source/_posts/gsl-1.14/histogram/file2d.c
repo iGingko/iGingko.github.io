@@ -1,17 +1,31 @@
 /* histogram/file2d.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -60,7 +74,11 @@ gsl_histogram2d_fwrite (FILE * stream, const gsl_histogram2d * h)
 
 int
 gsl_histogram2d_fprintf (FILE * stream, const gsl_histogram2d * h,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                          const char *range_format, const char *bin_format)
+=======
+			 const char *range_format, const char *bin_format)
+>>>>>>> config
 {
   size_t i, j;
   const size_t nx = h->nx;
@@ -70,6 +88,7 @@ gsl_histogram2d_fprintf (FILE * stream, const gsl_histogram2d * h,
   for (i = 0; i < nx; i++)
     {
       for (j = 0; j < ny; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           status = fprintf (stream, range_format, h->xrange[i]);
 
@@ -147,6 +166,85 @@ gsl_histogram2d_fprintf (FILE * stream, const gsl_histogram2d * h,
         {
           GSL_ERROR ("putc failed", GSL_EFAILED);
         }
+=======
+	{
+	  status = fprintf (stream, range_format, h->xrange[i]);
+
+	  if (status < 0)
+	    {
+	      GSL_ERROR ("fprintf failed", GSL_EFAILED);
+	    }
+
+	  status = putc (' ', stream);
+
+	  if (status == EOF)
+	    {
+	      GSL_ERROR ("putc failed", GSL_EFAILED);
+	    }
+
+	  status = fprintf (stream, range_format, h->xrange[i + 1]);
+
+	  if (status < 0)
+	    {
+	      GSL_ERROR ("fprintf failed", GSL_EFAILED);
+	    }
+
+	  status = putc (' ', stream);
+
+	  if (status == EOF)
+	    {
+	      GSL_ERROR ("putc failed", GSL_EFAILED);
+	    }
+
+	  status = fprintf (stream, range_format, h->yrange[j]);
+
+	  if (status < 0)
+	    {
+	      GSL_ERROR ("fprintf failed", GSL_EFAILED);
+	    }
+
+	  status = putc (' ', stream);
+
+	  if (status == EOF)
+	    {
+	      GSL_ERROR ("putc failed", GSL_EFAILED);
+	    }
+
+	  status = fprintf (stream, range_format, h->yrange[j + 1]);
+
+	  if (status < 0)
+	    {
+	      GSL_ERROR ("fprintf failed", GSL_EFAILED);
+	    }
+
+	  status = putc (' ', stream);
+
+	  if (status == EOF)
+	    {
+	      GSL_ERROR ("putc failed", GSL_EFAILED);
+	    }
+
+	  status = fprintf (stream, bin_format, h->bin[i * ny + j]);
+
+	  if (status < 0)
+	    {
+	      GSL_ERROR ("fprintf failed", GSL_EFAILED);
+	    }
+
+	  status = putc ('\n', stream);
+
+	  if (status == EOF)
+	    {
+	      GSL_ERROR ("putc failed", GSL_EFAILED);
+	    }
+	}
+      status = putc ('\n', stream);
+
+      if (status == EOF)
+	{
+	  GSL_ERROR ("putc failed", GSL_EFAILED);
+	}
+>>>>>>> config
     }
 
   return GSL_SUCCESS;
@@ -163,6 +261,7 @@ gsl_histogram2d_fscanf (FILE * stream, gsl_histogram2d * h)
   for (i = 0; i < nx; i++)
     {
       for (j = 0; j < ny; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           int status = fscanf (stream,
                                "%lg %lg %lg %lg %lg",
@@ -175,6 +274,20 @@ gsl_histogram2d_fscanf (FILE * stream, gsl_histogram2d * h)
               GSL_ERROR ("fscanf failed", GSL_EFAILED);
             }
         }
+=======
+	{
+	  int status = fscanf (stream,
+			       "%lg %lg %lg %lg %lg",
+			       h->xrange + i, &xupper,
+			       h->yrange + j, &yupper,
+			       h->bin + i * ny + j);
+
+	  if (status != 5)
+	    {
+	      GSL_ERROR ("fscanf failed", GSL_EFAILED);
+	    }
+	}
+>>>>>>> config
       h->yrange[ny] = yupper;
     }
 

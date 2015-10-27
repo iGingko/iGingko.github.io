@@ -26,8 +26,13 @@
  *
  * where Y is a gamma random variable with parameters k+1 and 1.
  *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * Reference: 
  * 
+=======
+ * Reference:
+ *
+>>>>>>> config
  * W. Feller, "An Introduction to Probability and Its
  * Applications," volume 1. Wiley, 1968. Exercise 46, page 173,
  * chapter 6.

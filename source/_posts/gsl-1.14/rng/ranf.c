@@ -1,17 +1,31 @@
 /* rng/ranf.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -25,7 +39,11 @@
 /* This is the CRAY RANF generator. The generator returns the
    upper 32 bits from each term of the sequence,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    x_{n+1} = (a x_n) mod m 
+=======
+   x_{n+1} = (a x_n) mod m
+>>>>>>> config
 
    using 48-bit unsigned arithmetic, with a = 0x2875A2E7B175 and m =
    2^48. The seed specifies the lower 32 bits of the initial value,
@@ -70,6 +88,7 @@ ranf_advance (void *vstate)
   const unsigned long int x2 = (unsigned long int) state->x2 ;
 
   unsigned long int r ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   r = a0 * x0 ;
   state->x0 = (r & 0xFFFF) ;
@@ -78,22 +97,44 @@ ranf_advance (void *vstate)
   r += a0 * x1 + a1 * x0 ;
   state->x1 = (r & 0xFFFF) ;
   
+=======
+
+  r = a0 * x0 ;
+  state->x0 = (r & 0xFFFF) ;
+
+  r >>= 16 ;
+  r += a0 * x1 + a1 * x0 ;
+  state->x1 = (r & 0xFFFF) ;
+
+>>>>>>> config
   r >>= 16 ;
   r += a0 * x2 + a1 * x1 + a2 * x0 ;
   state->x2 = (r & 0xFFFF) ;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static unsigned long int 
+=======
+static unsigned long int
+>>>>>>> config
 ranf_get (void *vstate)
 {
   unsigned long int x1, x2;
 
   ranf_state_t *state = (ranf_state_t *) vstate;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   ranf_advance (state) ;  
 
   x1 = (unsigned long int) state->x1;
   x2 = (unsigned long int) state->x2;
   
+=======
+  ranf_advance (state) ;
+
+  x1 = (unsigned long int) state->x1;
+  x2 = (unsigned long int) state->x2;
+
+>>>>>>> config
   return (x2 << 16) + x1;
 }
 
@@ -102,11 +143,19 @@ ranf_get_double (void * vstate)
 {
   ranf_state_t *state = (ranf_state_t *) vstate;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   ranf_advance (state) ; 
 
   return (ldexp((double) state->x2, -16)
           + ldexp((double) state->x1, -32) 
           + ldexp((double) state->x0, -48)) ;
+=======
+  ranf_advance (state) ;
+
+  return (ldexp((double) state->x2, -16)
+	  + ldexp((double) state->x1, -32)
+	  + ldexp((double) state->x0, -48)) ;
+>>>>>>> config
 }
 
 static void
@@ -127,7 +176,11 @@ ranf_set (void *vstate, unsigned long int s)
       x1 = 0x53FC ;
       x2 = 0x9482 ;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else 
+=======
+  else
+>>>>>>> config
     {
       x0 = (s | 1) & 0xFFFF ;
       x1 = s >> 16 & 0xFFFF ;
@@ -136,11 +189,19 @@ ranf_set (void *vstate, unsigned long int s)
 
   r = b0 * x0 ;
   state->x0 = (r & 0xFFFF) ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  
   r >>= 16 ;
   r += b0 * x1 + b1 * x0 ;
   state->x1 = (r & 0xFFFF) ;
   
+=======
+
+  r >>= 16 ;
+  r += b0 * x1 + b1 * x0 ;
+  state->x1 = (r & 0xFFFF) ;
+
+>>>>>>> config
   r >>= 16 ;
   r += b0 * x2 + b1 * x1 + b2 * x0 ;
   state->x2 = (r & 0xFFFF) ;

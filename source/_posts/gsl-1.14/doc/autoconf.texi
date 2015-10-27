@@ -39,8 +39,13 @@ above:
 
 @example
 AX_PATH_GSL(GSL_VERSION,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
            [action-if-found],
            [action-if-not-found])
+=======
+	   [action-if-found],
+	   [action-if-not-found])
+>>>>>>> config
 @end example
 
 @noindent
@@ -82,7 +87,11 @@ fi
 
 @noindent
 and the macro will then be defined in the compilation flags or by
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 including the file @file{config.h} before any library headers.  
+=======
+including the file @file{config.h} before any library headers.
+>>>>>>> config
 
 The following autoconf test will check for @code{extern inline},
 
@@ -94,7 +103,11 @@ AC_CACHE_CHECK([for extern inline], ac_cv_c_extern_inline,
 [ac_cv_c_extern_inline=no
 AC_TRY_COMPILE([extern $ac_cv_c_inline double foo(double x);
 extern $ac_cv_c_inline double foo(double x) @{ return x+1.0; @};
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 double foo (double x) @{ return x + 1.0; @};], 
+=======
+double foo (double x) @{ return x + 1.0; @};],
+>>>>>>> config
 [  foo(1.0)  ],
 [ac_cv_c_extern_inline="yes"])
 ])

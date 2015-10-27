@@ -1,23 +1,41 @@
 /* ieee-utils/fp-darwin.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2001 Rodney Sparapani <rsparapa@mcw.edu>
  * 
+=======
+ *
+ * Copyright (C) 2001 Rodney Sparapani <rsparapa@mcw.edu>
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 #include <architecture/ppc/fp_regs.h> 
+=======
+#include <architecture/ppc/fp_regs.h>
+>>>>>>> config
 #include <gsl/gsl_ieee_utils.h>
 #include <gsl/gsl_errno.h>
 
@@ -67,7 +85,11 @@ gsl_ieee_set_mode (int precision, int rounding, int exception_mask)
   else
     {
       GSL_ERROR ("powerpc does not support the denormalized operand exception. "
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  "Use 'mask-denormalized' to work around this.", GSL_EUNSUP) ;
+=======
+		 "Use 'mask-denormalized' to work around this.", GSL_EUNSUP) ;
+>>>>>>> config
     }
 
   if (exception_mask & GSL_IEEE_MASK_DIVISION_BY_ZERO)
@@ -85,7 +107,11 @@ gsl_ieee_set_mode (int precision, int rounding, int exception_mask)
     }
   else
     {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       fp_scr.xe = 01 ;                  
+=======
+      fp_scr.xe = 01 ;
+>>>>>>> config
     }
 
   set_fp_scr(fp_scr);

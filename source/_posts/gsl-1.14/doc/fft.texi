@@ -16,6 +16,7 @@ details and derivations of the underlying algorithms consult the
 document @cite{GSL FFT Algorithms} (@pxref{FFT References and Further Reading})
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Mathematical Definitions::    
 * Overview of complex data FFTs::  
 * Radix-2 FFT routines for complex data::  
@@ -28,6 +29,20 @@ document @cite{GSL FFT Algorithms} (@pxref{FFT References and Further Reading})
 
 @node Mathematical Definitions
 @section Mathematical Definitions 
+=======
+* Mathematical Definitions::
+* Overview of complex data FFTs::
+* Radix-2 FFT routines for complex data::
+* Mixed-radix FFT routines for complex data::
+* Overview of real data FFTs::
+* Radix-2 FFT routines for real data::
+* Mixed-radix FFT routines for real data::
+* FFT References and Further Reading::
+@end menu
+
+@node Mathematical Definitions
+@section Mathematical Definitions
+>>>>>>> config
 @cindex FFT mathematical definition
 
 Fast Fourier Transforms are efficient algorithms for
@@ -35,21 +50,33 @@ calculating the discrete fourier transform (DFT),
 @tex
 \beforedisplay
 $$
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 x_j = \sum_{k=0}^{n-1} z_k \exp(-2\pi i j k / n) 
+=======
+x_j = \sum_{k=0}^{n-1} z_k \exp(-2\pi i j k / n)
+>>>>>>> config
 $$
 \afterdisplay
 @end tex
 @ifinfo
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 x_j = \sum_@{k=0@}^@{n-1@} z_k \exp(-2\pi i j k / n) 
+=======
+x_j = \sum_@{k=0@}^@{n-1@} z_k \exp(-2\pi i j k / n)
+>>>>>>> config
 @end example
 @end ifinfo
 
 The DFT usually arises as an approximation to the continuous fourier
 transform when functions are sampled at discrete intervals in space or
 time.  The naive evaluation of the discrete fourier transform is a
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 matrix-vector multiplication 
+=======
+matrix-vector multiplication
+>>>>>>> config
 @c{$W\vec{z}$}
 @math{W\vec@{z@}}. A general matrix-vector multiplication takes
 @math{O(n^2)} operations for @math{n} data-points.  Fast fourier
@@ -57,7 +84,11 @@ transform algorithms use a divide-and-conquer strategy to factorize the
 matrix @math{W} into smaller sub-matrices, corresponding to the integer
 factors of the length @math{n}.  If @math{n} can be factorized into a
 product of integers
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @c{$f_1 f_2 \ldots f_m$} 
+=======
+@c{$f_1 f_2 \ldots f_m$}
+>>>>>>> config
 @math{f_1 f_2 ... f_m} then the DFT can be computed in @math{O(n \sum
 f_i)} operations.  For a radix-2 FFT this gives an operation count of
 @math{O(n \log_2 n)}.
@@ -70,14 +101,22 @@ definition of the @dfn{forward fourier transform},
 @tex
 \beforedisplay
 $$
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 x_j = \sum_{k=0}^{n-1} z_k \exp(-2\pi i j k / n) 
+=======
+x_j = \sum_{k=0}^{n-1} z_k \exp(-2\pi i j k / n)
+>>>>>>> config
 $$
 \afterdisplay
 @end tex
 @ifinfo
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 x_j = \sum_@{k=0@}^@{n-1@} z_k \exp(-2\pi i j k / n) 
+=======
+x_j = \sum_@{k=0@}^@{n-1@} z_k \exp(-2\pi i j k / n)
+>>>>>>> config
 @end example
 
 @end ifinfo
@@ -171,7 +210,11 @@ A @dfn{stride} parameter allows the user to perform transforms on the
 elements @code{z[stride*i]} instead of @code{z[i]}.  A stride greater
 than 1 can be used to take an in-place FFT of the column of a matrix. A
 stride of 1 accesses the array without any additional spacing between
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 elements.  
+=======
+elements.
+>>>>>>> config
 
 To perform an FFT on a vector argument, such as @code{gsl_vector_complex
 * v}, use the following definitions (or their equivalents) when calling
@@ -204,7 +247,11 @@ index    z               x = FFT(z)
 2        z(t = 2)        x(f = 2/(n Delta))
 .        ........        ..................
 n/2      z(t = n/2)      x(f = +1/(2 Delta),
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                -1/(2 Delta))
+=======
+			       -1/(2 Delta))
+>>>>>>> config
 .        ........        ..................
 n-3      z(t = n-3)      x(f = -3/(n Delta))
 n-2      z(t = n-2)      x(f = -2/(n Delta))
@@ -300,7 +347,11 @@ $$
 @end tex
 
 @sp 1
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @center @image{fft-complex-radix2-t,2.8in} 
+=======
+@center @image{fft-complex-radix2-t,2.8in}
+>>>>>>> config
 @center @image{fft-complex-radix2-f,2.8in}
 @quotation
 A pulse and its discrete fourier transform, output from
@@ -416,7 +467,11 @@ This is the number of factors that the length @code{n} was decomposed into.
 
 @item size_t factor[64]
 This is the array of factors.  Only the first @code{nf} elements are
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 used. 
+=======
+used.
+>>>>>>> config
 
 @comment (FIXME: This is a fixed length array and therefore probably in
 @comment violation of the GNU Coding Standards).
@@ -597,10 +652,17 @@ locations (which is desirable for better locality of memory accesses).
 
 This section describes radix-2 FFT algorithms for real data.  They use
 the Cooley-Tukey algorithm to compute in-place FFTs for lengths which
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 are a power of 2. 
 
 The radix-2 FFT functions for real data are declared in the header files
 @file{gsl_fft_real.h} 
+=======
+are a power of 2.
+
+The radix-2 FFT functions for real data are declared in the header files
+@file{gsl_fft_real.h}
+>>>>>>> config
 
 @deftypefun int gsl_fft_real_radix2_transform (double @var{data}[], size_t @var{stride}, size_t @var{n})
 
@@ -610,9 +672,15 @@ half-complex sequence, which is stored in-place.  The arrangement of the
 half-complex terms uses the following scheme: for @math{k < n/2} the
 real part of the @math{k}-th term is stored in location @math{k}, and
 the corresponding imaginary part is stored in location @math{n-k}.  Terms
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 with @math{k > n/2} can be reconstructed using the symmetry 
 @c{$z_k = z^*_{n-k}$}
 @math{z_k = z^*_@{n-k@}}. 
+=======
+with @math{k > n/2} can be reconstructed using the symmetry
+@c{$z_k = z^*_{n-k}$}
+@math{z_k = z^*_@{n-k@}}.
+>>>>>>> config
 The terms for @math{k=0} and @math{k=n/2} are both purely
 real, and count as a special case.  Their real parts are stored in
 locations @math{0} and @math{n/2} respectively, while their imaginary
@@ -623,6 +691,7 @@ The following table shows the correspondence between the output
 data as a complex sequence with zero imaginary part (assuming @var{stride=1}),
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 complex[0].real    =    data[0] 
 complex[0].imag    =    0 
 complex[1].real    =    data[1] 
@@ -630,12 +699,25 @@ complex[1].imag    =    data[n-1]
 ...............         ................
 complex[k].real    =    data[k]
 complex[k].imag    =    data[n-k] 
+=======
+complex[0].real    =    data[0]
+complex[0].imag    =    0
+complex[1].real    =    data[1]
+complex[1].imag    =    data[n-1]
+...............         ................
+complex[k].real    =    data[k]
+complex[k].imag    =    data[n-k]
+>>>>>>> config
 ...............         ................
 complex[n/2].real  =    data[n/2]
 complex[n/2].imag  =    0
 ...............         ................
 complex[k'].real   =    data[k]        k' = n - k
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 complex[k'].imag   =   -data[n-k] 
+=======
+complex[k'].imag   =   -data[n-k]
+>>>>>>> config
 ...............         ................
 complex[n-1].real  =    data[1]
 complex[n-1].imag  =   -data[n-1]
@@ -662,23 +744,40 @@ order.
 @deftypefun int gsl_fft_halfcomplex_radix2_unpack (const double @var{halfcomplex_coefficient}[], gsl_complex_packed_array @var{complex_coefficient}, size_t @var{stride}, size_t @var{n})
 This function converts @var{halfcomplex_coefficient}, an array of
 half-complex coefficients as returned by @code{gsl_fft_real_radix2_transform}, into an ordinary complex array, @var{complex_coefficient}.  It fills in the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 complex array using the symmetry 
+=======
+complex array using the symmetry
+>>>>>>> config
 @c{$z_k = z_{n-k}^*$}
 @math{z_k = z_@{n-k@}^*}
 to reconstruct the redundant elements.  The algorithm for the conversion
 is,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @example  
 complex_coefficient[0].real 
   = halfcomplex_coefficient[0];
 complex_coefficient[0].imag 
+=======
+@example
+complex_coefficient[0].real
+  = halfcomplex_coefficient[0];
+complex_coefficient[0].imag
+>>>>>>> config
   = 0.0;
 
 for (i = 1; i < n - i; i++)
   @{
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     double hc_real 
       = halfcomplex_coefficient[i*stride];
     double hc_imag 
+=======
+    double hc_real
+      = halfcomplex_coefficient[i*stride];
+    double hc_imag
+>>>>>>> config
       = halfcomplex_coefficient[(n-i)*stride];
     complex_coefficient[i*stride].real = hc_real;
     complex_coefficient[i*stride].imag = hc_imag;
@@ -688,9 +787,15 @@ for (i = 1; i < n - i; i++)
 
 if (i == n - i)
   @{
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     complex_coefficient[i*stride].real 
       = halfcomplex_coefficient[(n - 1)*stride];
     complex_coefficient[i*stride].imag 
+=======
+    complex_coefficient[i*stride].real
+      = halfcomplex_coefficient[(n - 1)*stride];
+    complex_coefficient[i*stride].imag
+>>>>>>> config
       = 0.0;
   @}
 @end example
@@ -718,7 +823,11 @@ stored.  The imaginary part of the zero-frequency component is never
 stored.  It is known to be zero (since the zero frequency component is
 simply the sum of the input data (all real)).  For a sequence of even
 length the imaginary part of the frequency @math{n/2} is not stored
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 either, since the symmetry 
+=======
+either, since the symmetry
+>>>>>>> config
 @c{$z_k = z_{n-k}^*$}
 @math{z_k = z_@{n-k@}^*} implies that this is
 purely real too.
@@ -732,9 +841,15 @@ sequence were passed to @code{gsl_fft_complex_backward} as a complex
 sequence (with imaginary parts set to @code{0}),
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 complex[0].real  =  halfcomplex[0] 
 complex[0].imag  =  0
 complex[1].real  =  halfcomplex[1] 
+=======
+complex[0].real  =  halfcomplex[0]
+complex[0].imag  =  0
+complex[1].real  =  halfcomplex[1]
+>>>>>>> config
 complex[1].imag  =  halfcomplex[2]
 complex[2].real  =  halfcomplex[3]
 complex[2].imag  =  halfcomplex[4]
@@ -756,6 +871,7 @@ In the even case there are two values which are purely real,
 @example
 complex[0].real  =  halfcomplex[0]
 complex[0].imag  =  0
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 complex[1].real  =  halfcomplex[1] 
 complex[1].imag  =  halfcomplex[2] 
 complex[2].real  =  halfcomplex[3] 
@@ -766,6 +882,18 @@ complex[4].real  =  halfcomplex[3]
 complex[4].imag  = -halfcomplex[4]
 complex[5].real  =  halfcomplex[1] 
 complex[5].imag  = -halfcomplex[2] 
+=======
+complex[1].real  =  halfcomplex[1]
+complex[1].imag  =  halfcomplex[2]
+complex[2].real  =  halfcomplex[3]
+complex[2].imag  =  halfcomplex[4]
+complex[3].real  =  halfcomplex[5]
+complex[3].imag  =  0
+complex[4].real  =  halfcomplex[3]
+complex[4].imag  = -halfcomplex[4]
+complex[5].real  =  halfcomplex[1]
+complex[5].imag  = -halfcomplex[2]
+>>>>>>> config
 @end example
 
 @noindent
@@ -837,7 +965,11 @@ described above.  There is no restriction on the length @var{n}.
 Efficient modules are provided for subtransforms of length 2, 3, 4 and
 5.  Any remaining factors are computed with a slow, @math{O(n^2)},
 general-n module.  The caller must supply a @var{wavetable} containing
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 trigonometric lookup tables and a workspace @var{work}. 
+=======
+trigonometric lookup tables and a workspace @var{work}.
+>>>>>>> config
 @end deftypefun
 
 @deftypefun int gsl_fft_real_unpack (const double @var{real_coefficient}[], gsl_complex_packed_array @var{complex_coefficient}, size_t @var{stride}, size_t @var{n})
@@ -850,9 +982,15 @@ algorithm for the conversion is simply,
 @example
 for (i = 0; i < n; i++)
   @{
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     complex_coefficient[i*stride].real 
       = real_coefficient[i*stride];
     complex_coefficient[i*stride].imag 
+=======
+    complex_coefficient[i*stride].real
+      = real_coefficient[i*stride];
+    complex_coefficient[i*stride].imag
+>>>>>>> config
       = 0.0;
   @}
 @end example
@@ -863,23 +1001,40 @@ for (i = 0; i < n; i++)
 This function converts @var{halfcomplex_coefficient}, an array of
 half-complex coefficients as returned by @code{gsl_fft_real_transform}, into an
 ordinary complex array, @var{complex_coefficient}.  It fills in the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 complex array using the symmetry 
+=======
+complex array using the symmetry
+>>>>>>> config
 @c{$z_k = z_{n-k}^*$}
 @math{z_k = z_@{n-k@}^*}
 to reconstruct the redundant elements.  The algorithm for the conversion
 is,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @example  
 complex_coefficient[0].real 
   = halfcomplex_coefficient[0];
 complex_coefficient[0].imag 
+=======
+@example
+complex_coefficient[0].real
+  = halfcomplex_coefficient[0];
+complex_coefficient[0].imag
+>>>>>>> config
   = 0.0;
 
 for (i = 1; i < n - i; i++)
   @{
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     double hc_real 
       = halfcomplex_coefficient[(2 * i - 1)*stride];
     double hc_imag 
+=======
+    double hc_real
+      = halfcomplex_coefficient[(2 * i - 1)*stride];
+    double hc_imag
+>>>>>>> config
       = halfcomplex_coefficient[(2 * i)*stride];
     complex_coefficient[i*stride].real = hc_real;
     complex_coefficient[i*stride].imag = hc_imag;
@@ -889,9 +1044,15 @@ for (i = 1; i < n - i; i++)
 
 if (i == n - i)
   @{
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     complex_coefficient[i*stride].real 
       = halfcomplex_coefficient[(n - 1)*stride];
     complex_coefficient[i*stride].imag 
+=======
+    complex_coefficient[i*stride].real
+      = halfcomplex_coefficient[(n - 1)*stride];
+    complex_coefficient[i*stride].imag
+>>>>>>> config
       = 0.0;
   @}
 @end example
@@ -921,7 +1082,11 @@ signal is also real.
 @sp 1
 @center @image{fft-real-mixedradix,3.4in}
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @center Low-pass filtered version of a real pulse, 
+=======
+@center Low-pass filtered version of a real pulse,
+>>>>>>> config
 @center output from the example program.
 @end iftex
 
@@ -952,7 +1117,11 @@ There are several introductory books on the FFT with example programs,
 such as @cite{The Fast Fourier Transform} by Brigham and @cite{DFT/FFT
 and Convolution Algorithms} by Burrus and Parks,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @itemize @w{} 
+=======
+@itemize @w{}
+>>>>>>> config
 @item
 E. Oran Brigham.
 @cite{The Fast Fourier Transform}.
@@ -969,7 +1138,11 @@ Both these introductory books cover the radix-2 FFT in some detail.
 The mixed-radix algorithm at the heart of the @sc{fftpack} routines is
 reviewed in Clive Temperton's paper,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @itemize @w{} 
+=======
+@itemize @w{}
+>>>>>>> config
 @item
 Clive Temperton.
 Self-sorting mixed-radix fast fourier transforms.
@@ -1000,7 +1173,11 @@ FFT programs in @cite{Programs for Digital Signal Processing}.  It is a
 useful reference for implementations of many different FFT
 algorithms,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @itemize @w{} 
+=======
+@itemize @w{}
+>>>>>>> config
 @item
 Digital Signal Processing Committee and IEEE Acoustics, Speech, and Signal
 Processing Committee, editors.
@@ -1011,7 +1188,11 @@ IEEE Press, 1979.
 @comment  There is also an annotated bibliography of papers on the FFT and related
 @comment  topics by Burrus,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment  @itemize @w{} 
+=======
+@comment  @itemize @w{}
+>>>>>>> config
 @comment  @item C. S. Burrus.  Notes on the FFT.
 @comment  @end itemize
 @comment  @noindent
@@ -1035,5 +1216,8 @@ The source code for @sc{fftpack} is available from Netlib,
 @item
 FFTPACK, @uref{http://www.netlib.org/fftpack/}
 @end itemize
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
+=======
+>>>>>>> config

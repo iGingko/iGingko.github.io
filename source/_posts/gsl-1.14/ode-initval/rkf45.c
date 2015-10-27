@@ -1,17 +1,31 @@
 /* ode-initval/rkf45.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2001, 2004, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 2001, 2004, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -179,6 +193,7 @@ rkf45_alloc (size_t dim)
 
 static int
 rkf45_apply (void *vstate,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             size_t dim,
             double t,
             double h,
@@ -186,6 +201,15 @@ rkf45_apply (void *vstate,
             double yerr[],
             const double dydt_in[],
             double dydt_out[], const gsl_odeiv_system * sys)
+=======
+	    size_t dim,
+	    double t,
+	    double h,
+	    double y[],
+	    double yerr[],
+	    const double dydt_in[],
+	    double dydt_out[], const gsl_odeiv_system * sys)
+>>>>>>> config
 {
   rkf45_state_t *state = (rkf45_state_t *) vstate;
 
@@ -210,13 +234,21 @@ rkf45_apply (void *vstate,
   else
     {
       int s = GSL_ODEIV_FN_EVAL (sys, t, y, k1);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
       if (s != GSL_SUCCESS)
 	{
 	  return s;
 	}
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   for (i = 0; i < dim; i++)
     ytmp[i] = y[i] +  ah[0] * h * k1[i];
 
@@ -229,20 +261,32 @@ rkf45_apply (void *vstate,
 	return s;
       }
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   for (i = 0; i < dim; i++)
     ytmp[i] = y[i] + h * (b3[0] * k1[i] + b3[1] * k2[i]);
 
   /* k3 step */
   {
     int s = GSL_ODEIV_FN_EVAL (sys, t + ah[1] * h, ytmp, k3);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     if (s != GSL_SUCCESS)
       {
 	return s;
       }
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   for (i = 0; i < dim; i++)
     ytmp[i] = y[i] + h * (b4[0] * k1[i] + b4[1] * k2[i] + b4[2] * k3[i]);
 
@@ -255,11 +299,19 @@ rkf45_apply (void *vstate,
 	return s;
       }
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   for (i = 0; i < dim; i++)
     ytmp[i] =
       y[i] + h * (b5[0] * k1[i] + b5[1] * k2[i] + b5[2] * k3[i] +
                   b5[3] * k4[i]);
+=======
+
+  for (i = 0; i < dim; i++)
+    ytmp[i] =
+      y[i] + h * (b5[0] * k1[i] + b5[1] * k2[i] + b5[2] * k3[i] +
+		  b5[3] * k4[i]);
+>>>>>>> config
 
   /* k5 step */
   {
@@ -270,11 +322,19 @@ rkf45_apply (void *vstate,
 	return s;
       }
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   for (i = 0; i < dim; i++)
     ytmp[i] =
       y[i] + h * (b6[0] * k1[i] + b6[1] * k2[i] + b6[2] * k3[i] +
                   b6[3] * k4[i] + b6[4] * k5[i]);
+=======
+
+  for (i = 0; i < dim; i++)
+    ytmp[i] =
+      y[i] + h * (b6[0] * k1[i] + b6[1] * k2[i] + b6[2] * k3[i] +
+		  b6[3] * k4[i] + b6[4] * k5[i]);
+>>>>>>> config
 
   /* k6 step and final sum */
   {
@@ -285,7 +345,11 @@ rkf45_apply (void *vstate,
 	return s;
       }
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   for (i = 0; i < dim; i++)
     {
       const double d_i = c1 * k1[i] + c3 * k3[i] + c4 * k4[i] + c5 * k5[i] + c6 * k6[i];
@@ -297,7 +361,11 @@ rkf45_apply (void *vstate,
   if (dydt_out != NULL)
     {
       int s = GSL_ODEIV_FN_EVAL (sys, t + h, y, dydt_out);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
       if (s != GSL_SUCCESS)
 	{
 	  /* Restore initial values */
@@ -306,6 +374,7 @@ rkf45_apply (void *vstate,
 	  return s;
 	}
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   /* difference between 4th and 5th order */
   for (i = 0; i < dim; i++)
@@ -314,6 +383,16 @@ rkf45_apply (void *vstate,
                      + ec[5] * k5[i] + ec[6] * k6[i]);
     }
      
+=======
+
+  /* difference between 4th and 5th order */
+  for (i = 0; i < dim; i++)
+    {
+      yerr[i] = h * (ec[1] * k1[i] + ec[3] * k3[i] + ec[4] * k4[i]
+		     + ec[5] * k5[i] + ec[6] * k6[i]);
+    }
+
+>>>>>>> config
   return GSL_SUCCESS;
 }
 

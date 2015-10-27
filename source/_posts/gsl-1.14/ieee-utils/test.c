@@ -1,17 +1,31 @@
 /* ieee-utils/test.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -75,7 +89,11 @@ main (void)
     float f = minus_onef;
     const char mantissa[] = "00000000000000000000000";
     gsl_ieee_float_rep r;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     while (f < 0) {
       f *= 0.1f;
     }
@@ -117,7 +135,11 @@ main (void)
     gsl_test_int (r.exponent, 0, "float x = -1.3304..., exponent is 0");
     gsl_test_str (r.mantissa, mantissa, "float x = -1.3304..., mantissa");
     gsl_test_int (r.type, GSL_IEEE_TYPE_NORMAL,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   "float x = -1.3304..., type is NORMAL");
+=======
+		  "float x = -1.3304..., type is NORMAL");
+>>>>>>> config
   }
 
   /* Check for a large positive NORMAL number (e.g. 3.37e31) (float) */
@@ -147,13 +169,21 @@ main (void)
     gsl_test_int (r.exponent, -102, "float x = 3.37e-31, exponent is -102");
     gsl_test_str (r.mantissa, mantissa, "float x = 3.37e-31, mantissa");
     gsl_test_int (r.type, GSL_IEEE_TYPE_NORMAL,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   "float x = 3.37e-31, type is NORMAL");
+=======
+		  "float x = 3.37e-31, type is NORMAL");
+>>>>>>> config
   }
 
   /* Check for FLT_MIN (smallest possible number that is not denormal) */
 
   {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     float f = FLT_MIN;  
+=======
+    float f = FLT_MIN;
+>>>>>>> config
     const char mantissa[] = "00000000000000000000000";
     gsl_ieee_float_rep r;
     gsl_ieee_float_to_rep (&f, &r);
@@ -184,7 +214,11 @@ main (void)
 
 #ifdef TEST_DENORMAL
   {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     float f = FLT_MIN;  
+=======
+    float f = FLT_MIN;
+>>>>>>> config
     char mantissa[] = "10000000000000000000000";
 
     int i;
@@ -192,6 +226,7 @@ main (void)
 
     for (i = 0; i < 23; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         float x = f / (float)pow (2.0, 1 + (float) i);
         mantissa[i] = '1';
         gsl_ieee_float_to_rep (&x, &r);
@@ -204,6 +239,20 @@ main (void)
         gsl_test_int (r.type, GSL_IEEE_TYPE_DENORMAL,
                       "float x = FLT_MIN/2^%d, type is DENORMAL", i + 1);
         mantissa[i] = '0';
+=======
+	float x = f / (float)pow (2.0, 1 + (float) i);
+	mantissa[i] = '1';
+	gsl_ieee_float_to_rep (&x, &r);
+
+	gsl_test_int (r.sign, 0, "float x = FLT_MIN/2^%d, sign is +", i + 1);
+	gsl_test_int (r.exponent, -127,
+		      "float x = FLT_MIN/2^%d, exponent is -127", i + 1);
+	gsl_test_str (r.mantissa, mantissa,
+		      "float x = FLT_MIN/2^%d, mantissa", i + 1);
+	gsl_test_int (r.type, GSL_IEEE_TYPE_DENORMAL,
+		      "float x = FLT_MIN/2^%d, type is DENORMAL", i + 1);
+	mantissa[i] = '0';
+>>>>>>> config
       }
   }
 #endif
@@ -211,7 +260,11 @@ main (void)
   /* Check for positive INFINITY (e.g. 2*FLT_MAX) */
 
   {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     float f = FLT_MAX;  
+=======
+    float f = FLT_MAX;
+>>>>>>> config
     const char mantissa[] = "00000000000000000000000";
 
     gsl_ieee_float_rep r;
@@ -229,7 +282,11 @@ main (void)
   /* Check for negative INFINITY (e.g. -2*FLT_MAX) */
 
   {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     float f = FLT_MAX;  
+=======
+    float f = FLT_MAX;
+>>>>>>> config
     const char mantissa[] = "00000000000000000000000";
 
     gsl_ieee_float_rep r;
@@ -328,7 +385,11 @@ main (void)
     gsl_test_int (r.exponent, 0, "double x = -1.3304..., exponent is 0");
     gsl_test_str (r.mantissa, mantissa, "double x = -1.3304..., mantissa");
     gsl_test_int (r.type, GSL_IEEE_TYPE_NORMAL,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   "double x = -1.3304..., type is NORMAL");
+=======
+		  "double x = -1.3304..., type is NORMAL");
+>>>>>>> config
   }
 
   /* Check for a large positive NORMAL number (e.g. 3.37e297) */
@@ -344,7 +405,11 @@ main (void)
     gsl_test_int (r.exponent, 988, "double x = 3.37e297, exponent is 998");
     gsl_test_str (r.mantissa, mantissa, "double x = 3.37e297, mantissa");
     gsl_test_int (r.type, GSL_IEEE_TYPE_NORMAL,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   "double x = 3.37e297, type is NORMAL");
+=======
+		  "double x = 3.37e297, type is NORMAL");
+>>>>>>> config
   }
 
   /* Check for a small positive NORMAL number (e.g. 3.37e-297) */
@@ -360,7 +425,11 @@ main (void)
     gsl_test_int (r.exponent, -985, "double x = 3.37e-297, exponent is -985");
     gsl_test_str (r.mantissa, mantissa, "double x = 3.37e-297, mantissa");
     gsl_test_int (r.type, GSL_IEEE_TYPE_NORMAL,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   "double x = 3.37e-297, type is NORMAL");
+=======
+		  "double x = 3.37e-297, type is NORMAL");
+>>>>>>> config
   }
 
   /* Check for DBL_MIN (smallest possible number that is not denormal) */
@@ -376,7 +445,11 @@ main (void)
     gsl_test_int (r.exponent, -1022, "double x = DBL_MIN, exponent is -1022");
     gsl_test_str (r.mantissa, mantissa, "double x = DBL_MIN, mantissa");
     gsl_test_int (r.type, GSL_IEEE_TYPE_NORMAL,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   "double x = DBL_MIN, type is NORMAL");
+=======
+		  "double x = DBL_MIN, type is NORMAL");
+>>>>>>> config
   }
 
   /* Check for DBL_MAX (largest possible number that is not Inf) */
@@ -392,7 +465,11 @@ main (void)
     gsl_test_int (r.exponent, 1023, "double x = DBL_MAX, exponent is 1023");
     gsl_test_str (r.mantissa, mantissa, "double x = DBL_MAX, mantissa");
     gsl_test_int (r.type, GSL_IEEE_TYPE_NORMAL,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   "double x = DBL_MAX, type is NORMAL");
+=======
+		  "double x = DBL_MAX, type is NORMAL");
+>>>>>>> config
   }
 
   /* Check for DENORMAL numbers (e.g. DBL_MIN/2^n) */
@@ -407,6 +484,7 @@ main (void)
 
     for (i = 0; i < 52; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         double x = d / pow (2.0, 1 + (double) i);
         mantissa[i] = '1';
         gsl_ieee_double_to_rep (&x, &r);
@@ -419,6 +497,20 @@ main (void)
         gsl_test_int (r.type, GSL_IEEE_TYPE_DENORMAL,
                       "double x = DBL_MIN/2^%d, type is DENORMAL", i + 1);
         mantissa[i] = '0';
+=======
+	double x = d / pow (2.0, 1 + (double) i);
+	mantissa[i] = '1';
+	gsl_ieee_double_to_rep (&x, &r);
+
+	gsl_test_int (r.sign, 0, "double x = DBL_MIN/2^%d, sign is +", i + 1);
+	gsl_test_int (r.exponent, -1023,
+		      "double x = DBL_MIN/2^%d, exponent", i + 1);
+	gsl_test_str (r.mantissa, mantissa,
+		      "double x = DBL_MIN/2^%d, mantissa", i + 1);
+	gsl_test_int (r.type, GSL_IEEE_TYPE_DENORMAL,
+		      "double x = DBL_MIN/2^%d, type is DENORMAL", i + 1);
+	mantissa[i] = '0';
+>>>>>>> config
       }
   }
 #endif

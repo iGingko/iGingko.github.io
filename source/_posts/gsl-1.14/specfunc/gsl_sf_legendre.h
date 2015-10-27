@@ -1,17 +1,31 @@
 /* specfunc/gsl_sf_legendre.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2004 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2004 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -259,12 +273,20 @@ double gsl_sf_conicalP_cyl_reg(const int m, const double lambda, const double x)
  * Of particular interest is the flat limit, which is
  * Flat-Lim := {lambda->Inf, eta->0, lambda*eta fixed}.
  */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
 /* Zeroth radial eigenfunction of the Laplacian on the
  * 3-dimensional hyperbolic space.
  *
  * legendre_H3d_0(lambda,eta) := sin(lambda*eta)/(lambda*sinh(eta))
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * Normalization:
  * Flat-Lim legendre_H3d_0(lambda,eta) = j_0(lambda*eta)
  *
@@ -281,7 +303,11 @@ double gsl_sf_legendre_H3d_0(const double lambda, const double eta);
  * legendre_H3d_1(lambda,eta) :=
  *    1/sqrt(lambda^2 + 1) sin(lam eta)/(lam sinh(eta))
  *    (coth(eta) - lambda cot(lambda*eta))
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * Normalization:
  * Flat-Lim legendre_H3d_1(lambda,eta) = j_1(lambda*eta)
  *

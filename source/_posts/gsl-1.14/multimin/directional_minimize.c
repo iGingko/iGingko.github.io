@@ -1,17 +1,31 @@
 /* multimin/directional_minimize.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Fabrice Rossi
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Fabrice Rossi
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -19,7 +33,11 @@
 
 static void
 take_step (const gsl_vector * x, const gsl_vector * p,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
            double step, double lambda, gsl_vector * x1, gsl_vector * dx)
+=======
+	   double step, double lambda, gsl_vector * x1, gsl_vector * dx)
+>>>>>>> config
 {
   gsl_vector_set_zero (dx);
   gsl_blas_daxpy (-step * lambda, p, dx);
@@ -28,6 +46,7 @@ take_step (const gsl_vector * x, const gsl_vector * p,
   gsl_blas_daxpy (1.0, dx, x1);
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static void 
 intermediate_point (gsl_multimin_function_fdf * fdf,
                     const gsl_vector * x, const gsl_vector * p,
@@ -37,6 +56,17 @@ intermediate_point (gsl_multimin_function_fdf * fdf,
                     double fa, double fc,
                     gsl_vector * x1, gsl_vector * dx, gsl_vector * gradient,
                     double * step, double * f)
+=======
+static void
+intermediate_point (gsl_multimin_function_fdf * fdf,
+		    const gsl_vector * x, const gsl_vector * p,
+		    double lambda,
+		    double pg,
+		    double stepa, double stepc,
+		    double fa, double fc,
+		    gsl_vector * x1, gsl_vector * dx, gsl_vector * gradient,
+		    double * step, double * f)
+>>>>>>> config
 {
   double stepb, fb;
 
@@ -72,6 +102,7 @@ trial:
 
 static void
 minimize (gsl_multimin_function_fdf * fdf,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           const gsl_vector * x, const gsl_vector * p,
           double lambda,
           double stepa, double stepb, double stepc,
@@ -79,6 +110,15 @@ minimize (gsl_multimin_function_fdf * fdf,
           gsl_vector * x1, gsl_vector * dx1, 
           gsl_vector * x2, gsl_vector * dx2, gsl_vector * gradient,          
           double * step, double * f, double * gnorm)
+=======
+	  const gsl_vector * x, const gsl_vector * p,
+	  double lambda,
+	  double stepa, double stepb, double stepc,
+	  double fa, double fb, double fc, double tol,
+	  gsl_vector * x1, gsl_vector * dx1,
+	  gsl_vector * x2, gsl_vector * dx2, gsl_vector * gradient,
+	  double * step, double * f, double * gnorm)
+>>>>>>> config
 {
   /* Starting at (x0, f0) move along the direction p to find a minimum
      f(x0 - lambda * p), returning the new point x1 = x0-lambda*p,
@@ -124,11 +164,16 @@ mid_trial:
 
     if (e2 != 0.0)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         du = e1 / e2;
+=======
+	du = e1 / e2;
+>>>>>>> config
       }
 
     if (du > 0.0 && du < (stepc - stepb) && fabs(du) < 0.5 * old2)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         stepm = u + du;
       }
     else if (du < 0.0 && du > (stepa - stepb) && fabs(du) < 0.5 * old2)
@@ -142,6 +187,21 @@ mid_trial:
     else
       {
         stepm = stepb - 0.38 * (stepb - stepa);
+=======
+	stepm = u + du;
+      }
+    else if (du < 0.0 && du > (stepa - stepb) && fabs(du) < 0.5 * old2)
+      {
+	stepm = u + du;
+      }
+    else if ((stepc - stepb) > (stepb - stepa))
+      {
+	stepm = 0.38 * (stepc - stepb) + stepb;
+      }
+    else
+      {
+	stepm = stepb - 0.38 * (stepb - stepa);
+>>>>>>> config
       }
   }
 
@@ -156,6 +216,7 @@ mid_trial:
   if (fm > fb)
     {
       if (fm < fv)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           w = v;
           v = stepm;
@@ -178,6 +239,30 @@ mid_trial:
           stepc = stepm;
           fc = fm;
         }
+=======
+	{
+	  w = v;
+	  v = stepm;
+	  fw = fv;
+	  fv = fm;
+	}
+      else if (fm < fw)
+	{
+	  w = stepm;
+	  fw = fm;
+	}
+
+      if (stepm < stepb)
+	{
+	  stepa = stepm;
+	  fa = fm;
+	}
+      else
+	{
+	  stepc = stepm;
+	  fc = fm;
+	}
+>>>>>>> config
       goto mid_trial;
     }
   else if (fm <= fb)
@@ -210,6 +295,7 @@ mid_trial:
       *gnorm = gnorm1;
 
       if (fabs (pg * lambda / gnorm1) < tol)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
 #ifdef DEBUG
           printf("ok!\n");
@@ -231,6 +317,29 @@ mid_trial:
           stepb = stepm;
           fb = fm;
         }
+=======
+	{
+#ifdef DEBUG
+	  printf("ok!\n");
+#endif
+	  return; /* SUCCESS */
+	}
+
+      if (stepm < stepb)
+	{
+	  stepc = stepb;
+	  fc = fb;
+	  stepb = stepm;
+	  fb = fm;
+	}
+      else
+	{
+	  stepa = stepb;
+	  fa = fb;
+	  stepb = stepm;
+	  fb = fm;
+	}
+>>>>>>> config
       goto mid_trial;
     }
 }

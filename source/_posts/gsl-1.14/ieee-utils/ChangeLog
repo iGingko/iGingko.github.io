@@ -43,12 +43,20 @@ Mon Aug 26 20:57:29 2002  Brian Gough  <bjg@network-theory.co.uk>
 Sat May 11 22:30:43 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* test.c (TEST_DENORMAL): test denormals only when available, as
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	tested in configure script
+=======
+	tested in configure script
+>>>>>>> config
 
 Mon Sep 10 14:23:52 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* fp-netbsd.c fp-openbsd.c (gsl_ieee_set_mode): tried to correct
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	the logic for the denormalized exception.
+=======
+	the logic for the denormalized exception.
+>>>>>>> config
 
 Tue Jul 10 13:10:12 2001  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -75,7 +83,11 @@ Fri Apr 13 15:07:10 2001  Brian Gough  <bjg@network-theory.co.uk>
 Wed Mar 28 13:12:20 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* fp-netbsd.c: added netbsd support from Jason Beegan
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	<jasontd@indigo.ie>
+=======
+	<jasontd@indigo.ie>
+>>>>>>> config
 
 Thu Mar 15 14:11:29 2001  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -84,24 +96,41 @@ Thu Mar 15 14:11:29 2001  Brian Gough  <bjg@network-theory.co.uk>
 Fri Mar  2 16:58:36 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* fp-os2emx.c: add ieee support for OS/2 from Henry Sobotka
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	<sobotka@axess.com>
+=======
+	<sobotka@axess.com>
+>>>>>>> config
 
 Thu Jul 20 19:41:56 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* fp-freebsd.c (gsl_ieee_set_mode): added fp-freebsd.c from
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	Vladimir Kushnir
+=======
+	Vladimir Kushnir
+>>>>>>> config
 
 Mon Jun 12 19:23:53 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* Makefile.am (noinst_HEADERS): added aix and irix to makefile
 
 	* fp-x86linux.c (gsl_ieee_set_mode): Handle libc5, where
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	_FPU_SETCW is not available, by defining the macro. Suggested by
  	OKUJI Yoshinori <okuji@gnu.org>
 
 Wed Jun  7 19:18:15 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* fp-ppclinux.c: added support for ppc linux 
+=======
+	_FPU_SETCW is not available, by defining the macro. Suggested by
+	OKUJI Yoshinori <okuji@gnu.org>
+
+Wed Jun  7 19:18:15 2000  Brian Gough  <bjg@network-theory.co.uk>
+
+	* fp-ppclinux.c: added support for ppc linux
+>>>>>>> config
 
 Tue Jun  6 19:59:50 2000  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -110,10 +139,17 @@ Tue Jun  6 19:59:50 2000  Brian Gough  <bjg@network-theory.co.uk>
 Thu May 18 11:53:13 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* test.c: turned off tests for denormals on irix, since they are
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	supported
 
 	* fp.c: added IRIX and AIX to the top-level fp.c file -- somehow
  	they had been forgotten!
+=======
+	supported
+
+	* fp.c: added IRIX and AIX to the top-level fp.c file -- somehow
+	they had been forgotten!
+>>>>>>> config
 
 2000-05-14  Steve Robbins  <steve@nyongwa.montreal.qc.ca>
 
@@ -123,18 +159,31 @@ Thu May 18 11:53:13 2000  Brian Gough  <bjg@network-theory.co.uk>
 Sun Apr  2 14:25:52 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* fp-m68klinux.c: added file for m68k support (not complete, some
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	macros need to be checked)
+=======
+	macros need to be checked)
+>>>>>>> config
 
 Thu Mar 16 15:34:08 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* read.c (gsl_ieee_read_mode_string): changed token separator to ,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	instead of ;
+=======
+	instead of ;
+>>>>>>> config
 
 Thu Feb 24 19:20:50 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* fp-tru64.c (gsl_ieee_set_mode): added an #ifdef for
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	IEEE_TRAP_ENABLE_DNO, which may or may not be defined depending on
  	the version of Digital Unix.
+=======
+	IEEE_TRAP_ENABLE_DNO, which may or may not be defined depending on
+	the version of Digital Unix.
+>>>>>>> config
 
 Mon Feb 14 14:03:22 2000  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -147,6 +196,7 @@ Fri Nov  5 15:01:55 1999  Brian Gough  <bjg@network-theory.co.uk>
 Thu Oct  7 13:03:00 1999  Brian Gough  <bjg@network-theory.co.uk>
 
 	* make_rep.c: more careful conversion from unsigned to signed integer
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	for sign attribute to prevent warnings
 
 Sat Aug 21 01:05:01 1999  Tim Mooney <mooney@plains.NoDak.edu>
@@ -160,15 +210,38 @@ Fri Aug 20 12:17:53 1999  Brian Gough  <bjg@network-theory.co.uk>
 
 Wed Aug 18 21:36:01 1999  Tim Mooney <mooney@plains.NoDak.edu>
  
+=======
+	for sign attribute to prevent warnings
+
+Sat Aug 21 01:05:01 1999  Tim Mooney <mooney@plains.NoDak.edu>
+
+    * fp-aix.c: added, based on fp-solaris.
+
+Fri Aug 20 12:17:53 1999  Brian Gough  <bjg@network-theory.co.uk>
+
+	* fp-tru64.c (gsl_ieee_set_mode): note that INEXACT is not easily
+	supported on Tru64, and give an error if anyone tries to use it
+
+Wed Aug 18 21:36:01 1999  Tim Mooney <mooney@plains.NoDak.edu>
+
+>>>>>>> config
     * fp-irix.c: added, based on fp-solaris.  IRIX 6 has a rounding and
     exception interface that is identical to Solaris, right down to the enums.
 
 Tue Aug 17 18:36:01 1999  Tim Mooney <mooney@plains.NoDak.edu>
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  
     * fp-tru64.c: added, based on solaris and HP-UX fp-* files.
   	Rounding mode and trap control requires that the compiler be
  	passed special options, see the comments in fp-tru64.c.
  
+=======
+
+    * fp-tru64.c: added, based on solaris and HP-UX fp-* files.
+	Rounding mode and trap control requires that the compiler be
+	passed special options, see the comments in fp-tru64.c.
+
+>>>>>>> config
 Fri Jul 23 19:00:51 1999  Brian Gough  <bjg@network-theory.co.uk>
 
 	* print.c: added fprintf versions of the printf functions
@@ -176,19 +249,33 @@ Fri Jul 23 19:00:51 1999  Brian Gough  <bjg@network-theory.co.uk>
 Sat May  8 20:39:28 1999  Brian Gough  <bjg@network-theory.co.uk>
 
 	* fp-linux.c (gsl_ieee_set_mode): changed from using the function
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	__fput_setcw() to the macro _FPU_SETCW() since Khimenko Victor
  	<khim@sch57.msk.ru> reports that __setfpucw() is not in the shared
  	lib version of glibc-2.1.1
+=======
+	__fput_setcw() to the macro _FPU_SETCW() since Khimenko Victor
+	<khim@sch57.msk.ru> reports that __setfpucw() is not in the shared
+	lib version of glibc-2.1.1
+>>>>>>> config
 
 Fri Apr  2 20:52:59 1999  Brian Gough  <bjg@netsci.freeserve.co.uk>
 
 	* endian.c (setup_dynamic_endianness): removed useless test,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	u.c[i]<0 for unsigned
+=======
+	u.c[i]<0 for unsigned
+>>>>>>> config
 
 Fri Aug 21 15:36:22 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* fp-unknown.c (gsl_ieee_set_mode): made return type int, as it
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	should be
+=======
+	should be
+>>>>>>> config
 
 Mon Jun 15 22:02:00 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
@@ -197,7 +284,11 @@ Mon Jun 15 22:02:00 1998  Brian Gough  <bjg@vvv.lanl.gov>
 Tue Jun  2 19:29:34 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* gsl_ieee_utils.h: renamed GSL_IEEE_CATCH_INEXACT to
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	GSL_IEEE_TRAP_INEXACT, which is a better name
+=======
+	GSL_IEEE_TRAP_INEXACT, which is a better name
+>>>>>>> config
 
 Mon Jun  1 15:27:08 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
@@ -206,7 +297,11 @@ Mon Jun  1 15:27:08 1998  Brian Gough  <bjg@vvv.lanl.gov>
 	* fp-solaris.c: support for solaris IEEE interface
 
 	* renamed fp-mode-string.c to fp-env.c, in order to avoid short
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	filename problems
+=======
+	filename problems
+>>>>>>> config
 
 	* added support for setting the IEEE mode from the environment
 	variable GSL_IEEE_MODE (only works for the Linux kernel so far)
@@ -214,12 +309,21 @@ Mon Jun  1 15:27:08 1998  Brian Gough  <bjg@vvv.lanl.gov>
 Mon May 18 16:20:17 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* The determination of endianness is now done on each call instead
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	of at configure time (autoconf complains about what would happen
  	to the test if it were cross compiling). Ok, so it's a bit slower
+=======
+	of at configure time (autoconf complains about what would happen
+	to the test if it were cross compiling). Ok, so it's a bit slower
+>>>>>>> config
 	but this isn't a performance critical routine.
 
 Sat May 16 23:10:09 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* This directory contains some routines for examining IEEE format
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	numbers at the bit level
 
+=======
+	numbers at the bit level
+>>>>>>> config

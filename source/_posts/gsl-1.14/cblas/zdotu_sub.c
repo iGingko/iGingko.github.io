@@ -4,7 +4,11 @@
 
 void
 cblas_zdotu_sub (const int N, const void *X, const int incX, const void *Y,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              const int incY, void *result)
+=======
+	     const int incY, void *result)
+>>>>>>> config
 {
 #define BASE double
 #define CONJ_SIGN 1.0

@@ -1,4 +1,8 @@
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 noinst_LTLIBRARIES = libgslspecfunc.la 
+=======
+noinst_LTLIBRARIES = libgslspecfunc.la
+>>>>>>> config
 
 pkginclude_HEADERS = gsl_sf.h gsl_sf_airy.h gsl_sf_bessel.h gsl_sf_clausen.h gsl_sf_coulomb.h gsl_sf_coupling.h gsl_sf_dawson.h gsl_sf_debye.h gsl_sf_dilog.h gsl_sf_elementary.h gsl_sf_ellint.h gsl_sf_elljac.h gsl_sf_erf.h gsl_sf_exp.h gsl_sf_expint.h gsl_sf_fermi_dirac.h gsl_sf_gamma.h gsl_sf_gegenbauer.h gsl_sf_hyperg.h gsl_sf_laguerre.h gsl_sf_lambert.h gsl_sf_legendre.h gsl_sf_log.h gsl_sf_mathieu.h gsl_sf_pow_int.h gsl_sf_psi.h gsl_sf_result.h gsl_sf_synchrotron.h gsl_sf_transport.h gsl_sf_trig.h gsl_sf_zeta.h gsl_specfunc.h
 
@@ -15,5 +19,8 @@ check_PROGRAMS = test
 test_LDADD = libgslspecfunc.la ../eigen/libgsleigen.la ../linalg/libgsllinalg.la  ../sort/libgslsort.la ../matrix/libgslmatrix.la ../vector/libgslvector.la ../blas/libgslblas.la ../cblas/libgslcblas.la ../block/libgslblock.la ../complex/libgslcomplex.la ../ieee-utils/libgslieeeutils.la  ../err/libgslerr.la ../test/libgsltest.la ../sys/libgslsys.la ../utils/libutils.la
 
 test_SOURCES = test_sf.c test_sf.h test_airy.c test_bessel.c test_coulomb.c test_dilog.c test_gamma.c test_hyperg.c test_legendre.c test_mathieu.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
 
+=======
+>>>>>>> config

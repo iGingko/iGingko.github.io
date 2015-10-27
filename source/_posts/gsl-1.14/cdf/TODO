@@ -14,9 +14,15 @@
     gsl_cdf_pascal_P (unsigned int k, double p, unsigned int n);
     gsl_cdf_pascal_Q (unsigned int k, double p, unsigned int n);
     gsl_cdf_hypergeometric_P (unsigned int k, unsigned int n1,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                               unsigned int n2, unsigned int t);
     gsl_cdf_hypergeometric_Q (unsigned int k, unsigned int n1,
                               unsigned int n2, unsigned int t);
+=======
+			      unsigned int n2, unsigned int t);
+    gsl_cdf_hypergeometric_Q (unsigned int k, unsigned int n1,
+			      unsigned int n2, unsigned int t);
+>>>>>>> config
 
 * Unify the beta_inc function with the special functions, put all the
   functionaity in gsl_sf_beta_inc, providing a new function for the

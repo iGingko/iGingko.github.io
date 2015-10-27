@@ -1,17 +1,31 @@
 /* multiroots/gsl_multiroots.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -52,8 +66,13 @@ typedef struct gsl_multiroot_function_struct gsl_multiroot_function ;
 #define GSL_MULTIROOT_FN_EVAL(F,x,y) (*((F)->f))(x,(F)->params,(y))
 
 int gsl_multiroot_fdjacobian (gsl_multiroot_function * F,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                               const gsl_vector * x, const gsl_vector * f,
                               double epsrel, gsl_matrix * jacobian);
+=======
+			      const gsl_vector * x, const gsl_vector * f,
+			      double epsrel, gsl_matrix * jacobian);
+>>>>>>> config
 
 
 typedef struct
@@ -78,6 +97,7 @@ typedef struct
   }
 gsl_multiroot_fsolver;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_multiroot_fsolver * 
 gsl_multiroot_fsolver_alloc (const gsl_multiroot_fsolver_type * T, 
                                      size_t n); 
@@ -87,6 +107,17 @@ void gsl_multiroot_fsolver_free (gsl_multiroot_fsolver * s);
 int gsl_multiroot_fsolver_set (gsl_multiroot_fsolver * s, 
                                gsl_multiroot_function * f, 
                                const gsl_vector * x);
+=======
+gsl_multiroot_fsolver *
+gsl_multiroot_fsolver_alloc (const gsl_multiroot_fsolver_type * T,
+				     size_t n);
+
+void gsl_multiroot_fsolver_free (gsl_multiroot_fsolver * s);
+
+int gsl_multiroot_fsolver_set (gsl_multiroot_fsolver * s,
+			       gsl_multiroot_function * f,
+			       const gsl_vector * x);
+>>>>>>> config
 
 int gsl_multiroot_fsolver_iterate (gsl_multiroot_fsolver * s);
 
@@ -138,12 +169,21 @@ gsl_multiroot_fdfsolver;
 
 gsl_multiroot_fdfsolver *
 gsl_multiroot_fdfsolver_alloc (const gsl_multiroot_fdfsolver_type * T,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                       size_t n);
 
 int
 gsl_multiroot_fdfsolver_set (gsl_multiroot_fdfsolver * s, 
                              gsl_multiroot_function_fdf * fdf,
                              const gsl_vector * x);
+=======
+				      size_t n);
+
+int
+gsl_multiroot_fdfsolver_set (gsl_multiroot_fdfsolver * s,
+			     gsl_multiroot_function_fdf * fdf,
+			     const gsl_vector * x);
+>>>>>>> config
 
 int
 gsl_multiroot_fdfsolver_iterate (gsl_multiroot_fdfsolver * s);
@@ -156,8 +196,13 @@ gsl_vector * gsl_multiroot_fdfsolver_root (const gsl_multiroot_fdfsolver * s);
 gsl_vector * gsl_multiroot_fdfsolver_dx (const gsl_multiroot_fdfsolver * s);
 gsl_vector * gsl_multiroot_fdfsolver_f (const gsl_multiroot_fdfsolver * s);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int gsl_multiroot_test_delta (const gsl_vector * dx, const gsl_vector * x, 
                               double epsabs, double epsrel);
+=======
+int gsl_multiroot_test_delta (const gsl_vector * dx, const gsl_vector * x,
+			      double epsabs, double epsrel);
+>>>>>>> config
 
 int gsl_multiroot_test_residual (const gsl_vector * f, double epsabs);
 

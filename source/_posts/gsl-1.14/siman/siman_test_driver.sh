@@ -4,7 +4,11 @@
 EXIT_STATUS=0
 
 for seed in "" 12345 ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 do 
+=======
+do
+>>>>>>> config
 ./siman_test > siman_test.out 2>&1
 SECOND_LAST_ENERGY=`tail -2 siman_test.out1 | head -1 | awk '{print $4}'`
 LAST_ENERGY=`tail -1 siman_test.out1 | awk '{print $4}'`

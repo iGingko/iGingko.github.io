@@ -1,18 +1,33 @@
 /* monte/gsl_monte_vegas.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Michael Booth
  * Copyright (C) 2009 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Michael Booth
+ * Copyright (C) 2009 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -39,8 +54,13 @@
 
 __BEGIN_DECLS
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 enum {GSL_VEGAS_MODE_IMPORTANCE = 1, 
       GSL_VEGAS_MODE_IMPORTANCE_ONLY = 0, 
+=======
+enum {GSL_VEGAS_MODE_IMPORTANCE = 1,
+      GSL_VEGAS_MODE_IMPORTANCE_ONLY = 0,
+>>>>>>> config
       GSL_VEGAS_MODE_STRATIFIED = -1};
 
 typedef struct {
@@ -58,7 +78,11 @@ typedef struct {
   double * x;
   int * bin;
   int * box;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   /* distribution */
   double * d;
 
@@ -71,7 +95,11 @@ typedef struct {
 
   /* scratch variables preserved between calls to vegas1/2/3  */
   double jac;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   double wtd_int_sum; 
+=======
+  double wtd_int_sum;
+>>>>>>> config
   double sum_wgts;
   double chi_sum;
   double chisq;
@@ -88,12 +116,21 @@ typedef struct {
 
 } gsl_monte_vegas_state;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int gsl_monte_vegas_integrate(gsl_monte_function * f, 
                               double xl[], double xu[], 
                               size_t dim, size_t calls,
                               gsl_rng * r,
                               gsl_monte_vegas_state *state,
                               double* result, double* abserr);
+=======
+int gsl_monte_vegas_integrate(gsl_monte_function * f,
+			      double xl[], double xu[],
+			      size_t dim, size_t calls,
+			      gsl_rng * r,
+			      gsl_monte_vegas_state *state,
+			      double* result, double* abserr);
+>>>>>>> config
 
 gsl_monte_vegas_state* gsl_monte_vegas_alloc(size_t dim);
 
@@ -122,4 +159,7 @@ void gsl_monte_vegas_params_set (gsl_monte_vegas_state * state,
 __END_DECLS
 
 #endif /* __GSL_MONTE_VEGAS_H__ */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

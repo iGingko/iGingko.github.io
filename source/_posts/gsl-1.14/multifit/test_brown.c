@@ -103,11 +103,18 @@ brown_df (const gsl_vector * x, void *params, gsl_matrix * df)
 
 int
 brown_fdf (const gsl_vector * x, void *params,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
            gsl_vector * f, gsl_matrix * df)
+=======
+	   gsl_vector * f, gsl_matrix * df)
+>>>>>>> config
 {
   brown_f (x, params, f);
   brown_df (x, params, df);
 
   return GSL_SUCCESS;
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

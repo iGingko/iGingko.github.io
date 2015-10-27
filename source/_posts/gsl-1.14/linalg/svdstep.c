@@ -1,17 +1,32 @@
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* linalg/svdstep.c 
  *
  * Copyright (C) 2007, 2010 Brian Gough
  * 
+=======
+/* linalg/svdstep.c
+ *
+ * Copyright (C) 2007, 2010 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -31,9 +46,15 @@ chop_small_elements (gsl_vector * d, gsl_vector * f)
       double d_ip1 = gsl_vector_get (d, i + 1);
 
       if (fabs (f_i) < GSL_DBL_EPSILON * (fabs (d_i) + fabs (d_ip1)))
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           gsl_vector_set (f, i, 0.0);
         }
+=======
+	{
+	  gsl_vector_set (f, i, 0.0);
+	}
+>>>>>>> config
 
       d_i = d_ip1;
     }
@@ -54,7 +75,11 @@ trailing_eigenvalue (const gsl_vector * d, const gsl_vector * f)
 
 #if GOLUB_VAN_LOAN_8_3_2
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   /* Golub and van Loan, Algorithm 8.3.2 
+=======
+  /* Golub and van Loan, Algorithm 8.3.2
+>>>>>>> config
      The full SVD algorithm is described in section 8.6.2 */
 
   double ta = da * da + fa * fa;
@@ -68,7 +93,11 @@ trailing_eigenvalue (const gsl_vector * d, const gsl_vector * f)
     {
       mu = tb - (tab * tab) / (dt + hypot (dt, tab));
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else 
+=======
+  else
+>>>>>>> config
     {
       mu = tb + (tab * tab) / ((-dt) + hypot (dt, tab));
     }
@@ -80,6 +109,7 @@ trailing_eigenvalue (const gsl_vector * d, const gsl_vector * f)
        the possibility of NaNs in the formula above.
 
        The matrix is [ da^2 + fa^2,  da fb      ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                        da fb      , db^2 + fb^2 ]
        and mu is the eigenvalue closest to the bottom right element.
     */
@@ -90,12 +120,25 @@ trailing_eigenvalue (const gsl_vector * d, const gsl_vector * f)
     
     double dt = (ta - tb) / 2.0;
     
+=======
+		       da fb      , db^2 + fb^2 ]
+       and mu is the eigenvalue closest to the bottom right element.
+    */
+
+    double ta = da * da + fa * fa;
+    double tb = db * db + fb * fb;
+    double tab = da * fb;
+
+    double dt = (ta - tb) / 2.0;
+
+>>>>>>> config
     double S = ta + tb;
     double da2 = da * da, db2 = db * db;
     double fa2 = fa * fa, fb2 = fb * fb;
     double P = (da2 * db2) + (fa2 * db2) + (fa2 * fb2);
     double D = hypot(dt, tab);
     double r1 = S/2 + D;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     if (dt >= 0)
       {
@@ -109,6 +152,21 @@ trailing_eigenvalue (const gsl_vector * d, const gsl_vector * f)
       }
   }
     
+=======
+
+    if (dt >= 0)
+      {
+	/* tb < ta, choose smaller root */
+	mu = (r1 > 0) ?  P / r1 : 0.0;
+      }
+    else
+      {
+	/* tb > ta, choose larger root */
+	mu = r1;
+      }
+  }
+
+>>>>>>> config
 #endif
 
   return mu;
@@ -147,6 +205,7 @@ create_schur (double d0, double f0, double d1, double * c, double * s)
     {
       double t;
       double tau = (f0*f0 + (d1 + d0)*(d1 - d0)) / apq;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
       if (tau >= 0.0)
         {
@@ -156,6 +215,17 @@ create_schur (double d0, double f0, double d1, double * c, double * s)
         {
           t = -1.0/(-tau + hypot(1.0, tau));
         }
+=======
+
+      if (tau >= 0.0)
+	{
+	  t = 1.0/(tau + hypot(1.0, tau));
+	}
+      else
+	{
+	  t = -1.0/(-tau + hypot(1.0, tau));
+	}
+>>>>>>> config
 
       *c = 1.0 / hypot(1.0, t);
       *s = t * (*c);
@@ -178,7 +248,11 @@ svd2 (gsl_vector * d, gsl_vector * f, gsl_matrix * U, gsl_matrix * V)
 
   double d0 = gsl_vector_get (d, 0);
   double f0 = gsl_vector_get (f, 0);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   double d1 = gsl_vector_get (d, 1);
 
   if (d0 == 0.0)
@@ -196,12 +270,21 @@ svd2 (gsl_vector * d, gsl_vector * f, gsl_matrix * U, gsl_matrix * V)
       /* Compute U <= U G */
 
       for (i = 0; i < M; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double Uip = gsl_matrix_get (U, i, 0);
           double Uiq = gsl_matrix_get (U, i, 1);
           gsl_matrix_set (U, i, 0, c * Uip - s * Uiq);
           gsl_matrix_set (U, i, 1, s * Uip + c * Uiq);
         }
+=======
+	{
+	  double Uip = gsl_matrix_get (U, i, 0);
+	  double Uiq = gsl_matrix_get (U, i, 1);
+	  gsl_matrix_set (U, i, 0, c * Uip - s * Uiq);
+	  gsl_matrix_set (U, i, 1, s * Uip + c * Uiq);
+	}
+>>>>>>> config
 
       /* Compute V <= V X */
 
@@ -223,12 +306,21 @@ svd2 (gsl_vector * d, gsl_vector * f, gsl_matrix * U, gsl_matrix * V)
       /* Compute V <= V G */
 
       for (i = 0; i < N; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double Vip = gsl_matrix_get (V, i, 0);
           double Viq = gsl_matrix_get (V, i, 1);
           gsl_matrix_set (V, i, 0, c * Vip - s * Viq);
           gsl_matrix_set (V, i, 1, s * Vip + c * Viq);
         }
+=======
+	{
+	  double Vip = gsl_matrix_get (V, i, 0);
+	  double Viq = gsl_matrix_get (V, i, 1);
+	  gsl_matrix_set (V, i, 0, c * Vip - s * Viq);
+	  gsl_matrix_set (V, i, 1, s * Vip + c * Viq);
+	}
+>>>>>>> config
 
       return;
     }
@@ -239,6 +331,7 @@ svd2 (gsl_vector * d, gsl_vector * f, gsl_matrix * U, gsl_matrix * V)
       create_schur (d0, f0, d1, &c, &s);
 
       /* compute B <= B G */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
       a11 = c * d0 - s * f0;
       a21 = - s * d1;
@@ -290,6 +383,59 @@ svd2 (gsl_vector * d, gsl_vector * f, gsl_matrix * U, gsl_matrix * V)
           gsl_matrix_set (U, i, 0, c * Uip - s * Uiq);
           gsl_matrix_set (U, i, 1, s * Uip + c * Uiq);
         }
+=======
+
+      a11 = c * d0 - s * f0;
+      a21 = - s * d1;
+
+      a12 = s * d0 + c * f0;
+      a22 = c * d1;
+
+      /* Compute V <= V G */
+
+      for (i = 0; i < N; i++)
+	{
+	  double Vip = gsl_matrix_get (V, i, 0);
+	  double Viq = gsl_matrix_get (V, i, 1);
+	  gsl_matrix_set (V, i, 0, c * Vip - s * Viq);
+	  gsl_matrix_set (V, i, 1, s * Vip + c * Viq);
+	}
+
+      /* Eliminate off-diagonal elements, bring column with largest
+	 norm to first column */
+
+      if (hypot(a11, a21) < hypot(a12,a22))
+	{
+	  double t1, t2;
+
+	  /* B <= B X */
+
+	  t1 = a11; a11 = a12; a12 = t1;
+	  t2 = a21; a21 = a22; a22 = t2;
+
+	  /* V <= V X */
+
+	  gsl_matrix_swap_columns(V, 0, 1);
+	}
+
+      create_givens (a11, a21, &c, &s);
+
+      /* compute B <= G^T B */
+
+      gsl_vector_set (d, 0, c * a11 - s * a21);
+      gsl_vector_set (f, 0, c * a12 - s * a22);
+      gsl_vector_set (d, 1, s * a12 + c * a22);
+
+      /* Compute U <= U G */
+
+      for (i = 0; i < M; i++)
+	{
+	  double Uip = gsl_matrix_get (U, i, 0);
+	  double Uiq = gsl_matrix_get (U, i, 1);
+	  gsl_matrix_set (U, i, 0, c * Uip - s * Uiq);
+	  gsl_matrix_set (U, i, 1, s * Uip + c * Uiq);
+	}
+>>>>>>> config
 
       return;
     }
@@ -313,11 +459,16 @@ chase_out_intermediate_zero (gsl_vector * d, gsl_vector * f, gsl_matrix * U, siz
   for (k = k0; k < n - 1; k++)
     {
       create_givens (y, -x, &c, &s);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
       /* Compute U <= U G */
 
 #ifdef USE_BLAS
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gsl_vector_view Uk0 = gsl_matrix_column(U,k0);
         gsl_vector_view Ukp1 = gsl_matrix_column(U,k+1);
         gsl_blas_drot(&Uk0.vector, &Ukp1.vector, c, -s);
@@ -351,6 +502,41 @@ chase_out_intermediate_zero (gsl_vector * d, gsl_vector * f, gsl_matrix * U, siz
           x = -s * z ;
           y = gsl_vector_get (d, k + 2); 
         }
+=======
+	gsl_vector_view Uk0 = gsl_matrix_column(U,k0);
+	gsl_vector_view Ukp1 = gsl_matrix_column(U,k+1);
+	gsl_blas_drot(&Uk0.vector, &Ukp1.vector, c, -s);
+      }
+#else
+      {
+	size_t i;
+
+	for (i = 0; i < M; i++)
+	  {
+	    double Uip = gsl_matrix_get (U, i, k0);
+	    double Uiq = gsl_matrix_get (U, i, k + 1);
+	    gsl_matrix_set (U, i, k0, c * Uip - s * Uiq);
+	    gsl_matrix_set (U, i, k + 1, s * Uip + c * Uiq);
+	  }
+      }
+#endif
+
+      /* compute B <= G^T B */
+
+      gsl_vector_set (d, k + 1, s * x + c * y);
+
+      if (k == k0)
+	gsl_vector_set (f, k, c * x - s * y );
+
+      if (k < n - 2)
+	{
+	  double z = gsl_vector_get (f, k + 1);
+	  gsl_vector_set (f, k + 1, c * z);
+
+	  x = -s * z ;
+	  y = gsl_vector_get (d, k + 2);
+	}
+>>>>>>> config
     }
 }
 
@@ -376,6 +562,7 @@ chase_out_trailing_zero (gsl_vector * d, gsl_vector * f, gsl_matrix * V)
 
 #ifdef USE_BLAS
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gsl_vector_view Vp = gsl_matrix_column(V,k);
         gsl_vector_view Vq = gsl_matrix_column(V,n-1);
         gsl_blas_drot(&Vp.vector, &Vq.vector, c, -s);
@@ -391,10 +578,28 @@ chase_out_trailing_zero (gsl_vector * d, gsl_vector * f, gsl_matrix * V)
             gsl_matrix_set (V, i, k, c * Vip - s * Viq);
             gsl_matrix_set (V, i, n - 1, s * Vip + c * Viq);
           }
+=======
+	gsl_vector_view Vp = gsl_matrix_column(V,k);
+	gsl_vector_view Vq = gsl_matrix_column(V,n-1);
+	gsl_blas_drot(&Vp.vector, &Vq.vector, c, -s);
+      }
+#else
+      {
+	size_t i;
+
+	for (i = 0; i < N; i++)
+	  {
+	    double Vip = gsl_matrix_get (V, i, k);
+	    double Viq = gsl_matrix_get (V, i, n - 1);
+	    gsl_matrix_set (V, i, k, c * Vip - s * Viq);
+	    gsl_matrix_set (V, i, n - 1, s * Vip + c * Viq);
+	  }
+>>>>>>> config
       }
 #endif
 
       /* compute B <= B G */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
       gsl_vector_set (d, k, c * x - s * y);
 
@@ -409,6 +614,22 @@ chase_out_trailing_zero (gsl_vector * d, gsl_vector * f, gsl_matrix * V)
           x = gsl_vector_get (d, k - 1); 
           y = s * z ;
         }
+=======
+
+      gsl_vector_set (d, k, c * x - s * y);
+
+      if (k == n - 2)
+	gsl_vector_set (f, k, s * x + c * y );
+
+      if (k > 0)
+	{
+	  double z = gsl_vector_get (f, k - 1);
+	  gsl_vector_set (f, k - 1, c * z);
+
+	  x = gsl_vector_get (d, k - 1);
+	  y = s * z ;
+	}
+>>>>>>> config
     }
 }
 
@@ -440,12 +661,21 @@ qrstep (gsl_vector * d, gsl_vector * f, gsl_matrix * U, gsl_matrix * V)
   for (i = 0; i < n - 1; i++)
     {
       double d_i = gsl_vector_get (d, i);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
       if (d_i == 0.0)
         {
           chase_out_intermediate_zero (d, f, U, i);
           return;
         }
+=======
+
+      if (d_i == 0.0)
+	{
+	  chase_out_intermediate_zero (d, f, U, i);
+	  return;
+	}
+>>>>>>> config
     }
 
   /* Chase out any zero at the end of the diagonal */
@@ -453,10 +683,17 @@ qrstep (gsl_vector * d, gsl_vector * f, gsl_matrix * U, gsl_matrix * V)
   {
     double d_nm1 = gsl_vector_get (d, n - 1);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     if (d_nm1 == 0.0) 
       {
         chase_out_trailing_zero (d, f, V);
         return;
+=======
+    if (d_nm1 == 0.0)
+      {
+	chase_out_trailing_zero (d, f, V);
+	return;
+>>>>>>> config
       }
   }
 
@@ -466,6 +703,7 @@ qrstep (gsl_vector * d, gsl_vector * f, gsl_matrix * U, gsl_matrix * V)
   {
     double d0 = gsl_vector_get (d, 0);
     double f0 = gsl_vector_get (f, 0);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     double d1 = gsl_vector_get (d, 1);
     double f1 = gsl_vector_get (f, 1);
@@ -485,6 +723,27 @@ qrstep (gsl_vector * d, gsl_vector * f, gsl_matrix * U, gsl_matrix * V)
     ap = d0;
     bp = f0;
     
+=======
+
+    double d1 = gsl_vector_get (d, 1);
+    double f1 = gsl_vector_get (f, 1);
+
+    {
+      double mu = trailing_eigenvalue (d, f);
+
+      y = d0 * d0 - mu;
+      z = d0 * f0;
+    }
+
+    /* Set up the recurrence for Givens rotations on a bidiagonal matrix */
+
+    ak = 0;
+    bk = 0;
+
+    ap = d0;
+    bp = f0;
+
+>>>>>>> config
     aq = d1;
     bq = f1;
   }
@@ -498,6 +757,7 @@ qrstep (gsl_vector * d, gsl_vector * f, gsl_matrix * U, gsl_matrix * V)
 
 #ifdef USE_BLAS
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gsl_vector_view Vk = gsl_matrix_column(V,k);
         gsl_vector_view Vkp1 = gsl_matrix_column(V,k+1);
         gsl_blas_drot(&Vk.vector, &Vkp1.vector, c, -s);
@@ -510,11 +770,26 @@ qrstep (gsl_vector * d, gsl_vector * f, gsl_matrix * U, gsl_matrix * V)
           gsl_matrix_set (V, i, k, c * Vip - s * Viq);
           gsl_matrix_set (V, i, k + 1, s * Vip + c * Viq);
         }
+=======
+	gsl_vector_view Vk = gsl_matrix_column(V,k);
+	gsl_vector_view Vkp1 = gsl_matrix_column(V,k+1);
+	gsl_blas_drot(&Vk.vector, &Vkp1.vector, c, -s);
+      }
+#else
+      for (i = 0; i < N; i++)
+	{
+	  double Vip = gsl_matrix_get (V, i, k);
+	  double Viq = gsl_matrix_get (V, i, k + 1);
+	  gsl_matrix_set (V, i, k, c * Vip - s * Viq);
+	  gsl_matrix_set (V, i, k + 1, s * Vip + c * Viq);
+	}
+>>>>>>> config
 #endif
 
       /* compute B <= B G */
 
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         double bk1 = c * bk - s * z;
 
         double ap1 = c * ap - s * bp;
@@ -545,6 +820,38 @@ qrstep (gsl_vector * d, gsl_vector * f, gsl_matrix * U, gsl_matrix * V)
 
         y = ak;
         z = zk;
+=======
+	double bk1 = c * bk - s * z;
+
+	double ap1 = c * ap - s * bp;
+	double bp1 = s * ap + c * bp;
+	double zp1 = -s * aq;
+
+	double aq1 = c * aq;
+
+	if (k > 0)
+	  {
+	    gsl_vector_set (f, k - 1, bk1);
+	  }
+
+	ak = ap1;
+	bk = bp1;
+	zk = zp1;
+
+	ap = aq1;
+
+	if (k < n - 2)
+	  {
+	    bp = gsl_vector_get (f, k + 1);
+	  }
+	else
+	  {
+	    bp = 0.0;
+	  }
+
+	y = ak;
+	z = zk;
+>>>>>>> config
       }
 
       create_givens (y, z, &c, &s);
@@ -553,6 +860,7 @@ qrstep (gsl_vector * d, gsl_vector * f, gsl_matrix * U, gsl_matrix * V)
 
 #ifdef USE_BLAS
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gsl_vector_view Uk = gsl_matrix_column(U,k);
         gsl_vector_view Ukp1 = gsl_matrix_column(U,k+1);
         gsl_blas_drot(&Uk.vector, &Ukp1.vector, c, -s);
@@ -565,11 +873,26 @@ qrstep (gsl_vector * d, gsl_vector * f, gsl_matrix * U, gsl_matrix * V)
           gsl_matrix_set (U, i, k, c * Uip - s * Uiq);
           gsl_matrix_set (U, i, k + 1, s * Uip + c * Uiq);
         }
+=======
+	gsl_vector_view Uk = gsl_matrix_column(U,k);
+	gsl_vector_view Ukp1 = gsl_matrix_column(U,k+1);
+	gsl_blas_drot(&Uk.vector, &Ukp1.vector, c, -s);
+      }
+#else
+      for (i = 0; i < M; i++)
+	{
+	  double Uip = gsl_matrix_get (U, i, k);
+	  double Uiq = gsl_matrix_get (U, i, k + 1);
+	  gsl_matrix_set (U, i, k, c * Uip - s * Uiq);
+	  gsl_matrix_set (U, i, k + 1, s * Uip + c * Uiq);
+	}
+>>>>>>> config
 #endif
 
       /* compute B <= G^T B */
 
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         double ak1 = c * ak - s * zk;
         double bk1 = c * bk - s * ap;
         double zk1 = -s * bp;
@@ -597,11 +920,43 @@ qrstep (gsl_vector * d, gsl_vector * f, gsl_matrix * U, gsl_matrix * V)
 
         y = bk;
         z = zk;
+=======
+	double ak1 = c * ak - s * zk;
+	double bk1 = c * bk - s * ap;
+	double zk1 = -s * bp;
+
+	double ap1 = s * bk + c * ap;
+	double bp1 = c * bp;
+
+	gsl_vector_set (d, k, ak1);
+
+	ak = ak1;
+	bk = bk1;
+	zk = zk1;
+
+	ap = ap1;
+	bp = bp1;
+
+	if (k < n - 2)
+	  {
+	    aq = gsl_vector_get (d, k + 2);
+	  }
+	else
+	  {
+	    aq = 0.0;
+	  }
+
+	y = bk;
+	z = zk;
+>>>>>>> config
       }
     }
 
   gsl_vector_set (f, n - 2, bk);
   gsl_vector_set (d, n - 1, ap);
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
+=======
+>>>>>>> config

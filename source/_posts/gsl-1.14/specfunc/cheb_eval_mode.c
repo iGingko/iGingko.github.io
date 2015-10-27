@@ -1,8 +1,14 @@
 static inline int
 cheb_eval_mode_e(const cheb_series * cs,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  const double x,
                  gsl_mode_t mode,
                  gsl_sf_result * result)
+=======
+		 const double x,
+		 gsl_mode_t mode,
+		 gsl_sf_result * result)
+>>>>>>> config
 {
   int j;
   double d  = 0.0;

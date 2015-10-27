@@ -1,17 +1,31 @@
 /* sys/infnan.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2001, 2004, 2007, 2010 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 2001, 2004, 2007, 2010 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -63,7 +77,11 @@ gsl_isinf (const double x)
     return +1;
   else if (fpc == _FPCLASS_NINF)
     return -1;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else 
+=======
+  else
+>>>>>>> config
     return 0;
 }
 
@@ -123,11 +141,19 @@ gsl_isinf (const double x)
      non-zero value (actually: 1) if x is an infinity (positive or
      negative).  (This is all that C99 requires.) */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (isinf(x)) 
     {
       return (x > 0) ? 1 : -1;
     } 
   else 
+=======
+  if (isinf(x))
+    {
+      return (x > 0) ? 1 : -1;
+    }
+  else
+>>>>>>> config
     {
       return 0;
     }
@@ -137,11 +163,19 @@ gsl_isinf (const double x)
 int
 gsl_isinf (const double x)
 {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (! gsl_finite(x) && ! gsl_isnan(x)) 
     {
       return (x > 0 ? +1 : -1); 
     } 
   else 
+=======
+  if (! gsl_finite(x) && ! gsl_isnan(x))
+    {
+      return (x > 0 ? +1 : -1);
+    }
+  else
+>>>>>>> config
     {
       return 0;
     }
@@ -149,4 +183,7 @@ gsl_isinf (const double x)
 
 # endif
 #endif
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

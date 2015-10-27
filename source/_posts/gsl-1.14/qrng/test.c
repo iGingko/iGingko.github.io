@@ -23,7 +23,11 @@ void test_sobol(void)
   gsl_qrng_get(g, v);
   status += ( v[0] != 0.375 || v[1] != 0.375 );
   gsl_qrng_free(g);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   gsl_test (status, "Sobol d=2");
 
   status = 0;
@@ -77,12 +81,21 @@ void test_halton(void)
 	gsl_qrng_get(g, v);
 	gsl_qrng_get(g, v);
 	gsl_qrng_get(g, v);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gsl_test_rel (v[0], 3.0/4.0, 1e-3, "halton(2) k=2 v[0]");
         gsl_test_rel (v[1], 1.0/9.0, 1e-3, "halton(2) k=2 v[1]");
 
 	gsl_qrng_get(g, v);
         gsl_test_rel (v[0], 1.0/8.0, 1e-3, "halton(2) k=3 v[0]");
         gsl_test_rel (v[1], 4.0/9.0, 1e-3, "halton(2) k=3 v[1]");
+=======
+	gsl_test_rel (v[0], 3.0/4.0, 1e-3, "halton(2) k=2 v[0]");
+	gsl_test_rel (v[1], 1.0/9.0, 1e-3, "halton(2) k=2 v[1]");
+
+	gsl_qrng_get(g, v);
+	gsl_test_rel (v[0], 1.0/8.0, 1e-3, "halton(2) k=3 v[0]");
+	gsl_test_rel (v[1], 4.0/9.0, 1e-3, "halton(2) k=3 v[1]");
+>>>>>>> config
 
 	gsl_qrng_free(g);
 
@@ -91,6 +104,7 @@ void test_halton(void)
 	gsl_qrng_get(g, v);
 	gsl_qrng_get(g, v);
 	gsl_qrng_get(g, v);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gsl_test_rel (v[0], 0.75, 1e-3, "halton(3) k=3 v[0]");
         gsl_test_rel (v[1], 1.0/9.0, 1e-3, "halton(3) k=3 v[1]");
         gsl_test_rel (v[2], 0.6, 1e-3, "halton(3) k=3 v[2]");
@@ -99,11 +113,22 @@ void test_halton(void)
         gsl_test_rel (v[0], 0.125, 1e-3, "halton(3) k=4 v[0]");
         gsl_test_rel (v[1], 4.0/9.0, 1e-3, "halton(3) k=4 v[1]");
         gsl_test_rel (v[2], 0.8, 1e-3, "halton(3) k=4 v[2]");
+=======
+	gsl_test_rel (v[0], 0.75, 1e-3, "halton(3) k=3 v[0]");
+	gsl_test_rel (v[1], 1.0/9.0, 1e-3, "halton(3) k=3 v[1]");
+	gsl_test_rel (v[2], 0.6, 1e-3, "halton(3) k=3 v[2]");
+
+	gsl_qrng_get(g, v);
+	gsl_test_rel (v[0], 0.125, 1e-3, "halton(3) k=4 v[0]");
+	gsl_test_rel (v[1], 4.0/9.0, 1e-3, "halton(3) k=4 v[1]");
+	gsl_test_rel (v[2], 0.8, 1e-3, "halton(3) k=4 v[2]");
+>>>>>>> config
 
 	gsl_qrng_init(g);
 	gsl_qrng_get(g, v);
 	gsl_qrng_get(g, v);
 	gsl_qrng_get(g, v);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gsl_test_rel (v[0], 0.75, 1e-3, "halton(3) reinitialized k=3 v[0]");
         gsl_test_rel (v[1], 1.0/9.0, 1e-3, "halton(3) reinitialized k=3 v[1]");
         gsl_test_rel (v[2], 0.6, 1e-3, "halton(3) reinitialized k=3 v[2]");
@@ -112,6 +137,16 @@ void test_halton(void)
         gsl_test_rel (v[0], 0.125, 1e-3, "halton(3) reinitialized k=4 v[0]");
         gsl_test_rel (v[1], 4.0/9.0, 1e-3, "halton(3) reinitialized k=4 v[1]");
         gsl_test_rel (v[2], 0.8, 1e-3, "halton(3) reinitialized k=4 v[2]");
+=======
+	gsl_test_rel (v[0], 0.75, 1e-3, "halton(3) reinitialized k=3 v[0]");
+	gsl_test_rel (v[1], 1.0/9.0, 1e-3, "halton(3) reinitialized k=3 v[1]");
+	gsl_test_rel (v[2], 0.6, 1e-3, "halton(3) reinitialized k=3 v[2]");
+
+	gsl_qrng_get(g, v);
+	gsl_test_rel (v[0], 0.125, 1e-3, "halton(3) reinitialized k=4 v[0]");
+	gsl_test_rel (v[1], 4.0/9.0, 1e-3, "halton(3) reinitialized k=4 v[1]");
+	gsl_test_rel (v[2], 0.8, 1e-3, "halton(3) reinitialized k=4 v[2]");
+>>>>>>> config
 
 	gsl_qrng_free(g);
 }
@@ -132,12 +167,21 @@ void test_reversehalton(void)
 	 * 0.75 0.222222
 	 * 0.125 0.888889*/
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gsl_test_rel (v[0], 3.0/4.0, 1e-3, "reversehalton(2) k=2 v[0]");
         gsl_test_rel (v[1], 2.0/9.0, 1e-3, "reversehalton(2) k=2 v[1]");
 
 	gsl_qrng_get(g, v);
         gsl_test_rel (v[0], 1.0/8.0, 1e-3, "reversehalton(2) k=2 v[0]");
         gsl_test_rel (v[1], 8.0/9.0, 1e-3, "reversehalton(2) k=2 v[1]");
+=======
+	gsl_test_rel (v[0], 3.0/4.0, 1e-3, "reversehalton(2) k=2 v[0]");
+	gsl_test_rel (v[1], 2.0/9.0, 1e-3, "reversehalton(2) k=2 v[1]");
+
+	gsl_qrng_get(g, v);
+	gsl_test_rel (v[0], 1.0/8.0, 1e-3, "reversehalton(2) k=2 v[0]");
+	gsl_test_rel (v[1], 8.0/9.0, 1e-3, "reversehalton(2) k=2 v[1]");
+>>>>>>> config
 
 	gsl_qrng_free(g);
 
@@ -147,6 +191,7 @@ void test_reversehalton(void)
 	gsl_qrng_get(g, v);
 	gsl_qrng_get(g, v);
 	gsl_qrng_get(g, v);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gsl_test_rel (v[0], 0.75, 1e-3, "reversehalton(3) k=3 v[0]");
         gsl_test_rel (v[1], 2.0/9.0, 1e-3, "reversehalton(3) k=3 v[1]");
         gsl_test_rel (v[2], 0.4, 1e-3, "reversehalton(3) k=3 v[2]");
@@ -155,12 +200,23 @@ void test_reversehalton(void)
         gsl_test_rel (v[0], 0.125, 1e-3, "reversehalton(3) k=3 v[0]");
         gsl_test_rel (v[1], 8.0/9.0, 1e-3, "reversehalton(3) k=3 v[1]");
         gsl_test_rel (v[2], 0.2, 1e-3, "reversehalton(3) k=3 v[2]");
+=======
+	gsl_test_rel (v[0], 0.75, 1e-3, "reversehalton(3) k=3 v[0]");
+	gsl_test_rel (v[1], 2.0/9.0, 1e-3, "reversehalton(3) k=3 v[1]");
+	gsl_test_rel (v[2], 0.4, 1e-3, "reversehalton(3) k=3 v[2]");
+
+	gsl_qrng_get(g, v);
+	gsl_test_rel (v[0], 0.125, 1e-3, "reversehalton(3) k=3 v[0]");
+	gsl_test_rel (v[1], 8.0/9.0, 1e-3, "reversehalton(3) k=3 v[1]");
+	gsl_test_rel (v[2], 0.2, 1e-3, "reversehalton(3) k=3 v[2]");
+>>>>>>> config
 
 	status = 0;
 	gsl_qrng_init(g);
 	gsl_qrng_get(g, v);
 	gsl_qrng_get(g, v);
 	gsl_qrng_get(g, v);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gsl_test_rel (v[0], 0.75, 1e-3, "reversehalton(3) reinitialized k=3 v[0]");
         gsl_test_rel (v[1], 2.0/9.0, 1e-3, "reversehalton(3) reinitialized k=3 v[1]");
         gsl_test_rel (v[2], 0.4, 1e-3, "reversehalton(3) reinitialized k=3 v[2]");
@@ -169,6 +225,16 @@ void test_reversehalton(void)
         gsl_test_rel (v[0], 0.125, 1e-3, "reversehalton(3) reinitialized k=3 v[0]");
         gsl_test_rel (v[1], 8.0/9.0, 1e-3, "reversehalton(3) reinitialized k=3 v[1]");
         gsl_test_rel (v[2], 0.2, 1e-3, "reversehalton(3) reinitialized k=3 v[2]");
+=======
+	gsl_test_rel (v[0], 0.75, 1e-3, "reversehalton(3) reinitialized k=3 v[0]");
+	gsl_test_rel (v[1], 2.0/9.0, 1e-3, "reversehalton(3) reinitialized k=3 v[1]");
+	gsl_test_rel (v[2], 0.4, 1e-3, "reversehalton(3) reinitialized k=3 v[2]");
+
+	gsl_qrng_get(g, v);
+	gsl_test_rel (v[0], 0.125, 1e-3, "reversehalton(3) reinitialized k=3 v[0]");
+	gsl_test_rel (v[1], 8.0/9.0, 1e-3, "reversehalton(3) reinitialized k=3 v[1]");
+	gsl_test_rel (v[2], 0.2, 1e-3, "reversehalton(3) reinitialized k=3 v[2]");
+>>>>>>> config
 
 	gsl_qrng_free(g);
 }

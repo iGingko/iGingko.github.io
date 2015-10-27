@@ -1,17 +1,31 @@
 /* specfunc/gsl_sf_mathieu.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2002 Lowell Johnson
  * 
+=======
+ *
+ * Copyright (C) 2002 Lowell Johnson
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
@@ -39,7 +53,11 @@ __BEGIN_DECLS
 
 #define GSL_SF_MATHIEU_COEFF 100
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 typedef struct 
+=======
+typedef struct
+>>>>>>> config
 {
   size_t size;
   size_t even_order;
@@ -76,13 +94,18 @@ int gsl_sf_mathieu_b_coeff(int order, double qq, double aa, double coeff[]);
 
 /* Allocate computational storage space for eigenvalue solution. */
 gsl_sf_mathieu_workspace *gsl_sf_mathieu_alloc(const size_t nn,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                                const double qq);
+=======
+					       const double qq);
+>>>>>>> config
 void gsl_sf_mathieu_free(gsl_sf_mathieu_workspace *workspace);
 
 /* Compute an angular Mathieu function. */
 int gsl_sf_mathieu_ce(int order, double qq, double zz, gsl_sf_result *result);
 int gsl_sf_mathieu_se(int order, double qq, double zz, gsl_sf_result *result);
 int gsl_sf_mathieu_ce_array(int nmin, int nmax, double qq, double zz,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                             gsl_sf_mathieu_workspace *work,
                             double result_array[]);
 int gsl_sf_mathieu_se_array(int nmin, int nmax, double qq, double zz,
@@ -100,6 +123,25 @@ int gsl_sf_mathieu_Mc_array(int kind, int nmin, int nmax, double qq,
 int gsl_sf_mathieu_Ms_array(int kind, int nmin, int nmax, double qq,
                             double zz, gsl_sf_mathieu_workspace *work,
                             double result_array[]);
+=======
+			    gsl_sf_mathieu_workspace *work,
+			    double result_array[]);
+int gsl_sf_mathieu_se_array(int nmin, int nmax, double qq, double zz,
+			    gsl_sf_mathieu_workspace *work,
+			    double result_array[]);
+
+/* Compute a radial Mathieu function. */
+int gsl_sf_mathieu_Mc(int kind, int order, double qq, double zz,
+		      gsl_sf_result *result);
+int gsl_sf_mathieu_Ms(int kind, int order, double qq, double zz,
+		      gsl_sf_result *result);
+int gsl_sf_mathieu_Mc_array(int kind, int nmin, int nmax, double qq,
+			    double zz, gsl_sf_mathieu_workspace *work,
+			    double result_array[]);
+int gsl_sf_mathieu_Ms_array(int kind, int nmin, int nmax, double qq,
+			    double zz, gsl_sf_mathieu_workspace *work,
+			    double result_array[]);
+>>>>>>> config
 
 
 __END_DECLS

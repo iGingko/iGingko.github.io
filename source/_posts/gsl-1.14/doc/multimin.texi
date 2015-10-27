@@ -12,6 +12,7 @@ minimizers to be used in multi-threaded programs. The minimization
 algorithms can be used to maximize a function by inverting its sign.
 
 The header file @file{gsl_multimin.h} contains prototypes for the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 minimization functions and related declarations.  
 
 @menu
@@ -25,6 +26,21 @@ minimization functions and related declarations.
 * Multimin Algorithms without Derivatives::  
 * Multimin Examples::           
 * Multimin References and Further Reading::  
+=======
+minimization functions and related declarations.
+
+@menu
+* Multimin Overview::
+* Multimin Caveats::
+* Initializing the Multidimensional Minimizer::
+* Providing a function to minimize::
+* Multimin Iteration::
+* Multimin Stopping Criteria::
+* Multimin Algorithms with Derivatives::
+* Multimin Algorithms without Derivatives::
+* Multimin Examples::
+* Multimin References and Further Reading::
+>>>>>>> config
 @end menu
 
 @node Multimin Overview
@@ -52,7 +68,11 @@ functions the gradient @math{g = \nabla f} vanishes at the minimum. In
 general there are no bracketing methods available for the
 minimization of @math{n}-dimensional functions.  The algorithms
 proceed from an initial guess using a search algorithm which attempts
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 to move in a downhill direction. 
+=======
+to move in a downhill direction.
+>>>>>>> config
 
 Algorithms making use of the gradient of the function perform a
 one-dimensional line minimisation along this direction until the lowest
@@ -134,8 +154,13 @@ minimization is specified by @var{tol}.  The precise meaning of this
 parameter depends on the method used.  Typically the line minimization
 is considered successful if the gradient of the function @math{g} is
 orthogonal to the current search direction @math{p} to a relative
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 accuracy of @var{tol}, where @c{$p\cdot g < tol |p| |g|$} 
 @math{dot(p,g) < tol |p| |g|}.  A @var{tol} value of 0.1 is 
+=======
+accuracy of @var{tol}, where @c{$p\cdot g < tol |p| |g|$}
+@math{dot(p,g) < tol |p| |g|}.  A @var{tol} value of 0.1 is
+>>>>>>> config
 suitable for most purposes, since line minimization only needs to
 be carried out approximately.    Note that setting @var{tol} to zero will
 force the use of ``exact'' line-searches, which are extremely expensive.
@@ -145,7 +170,11 @@ This function initializes the minimizer @var{s} to minimize the function
 @var{f}, starting from the initial point
 @var{x}. The size of the initial trial steps is given in vector
 @var{step_size}. The precise meaning of this parameter depends on the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 method used. 
+=======
+method used.
+>>>>>>> config
 @end deftypefun
 
 @deftypefun void gsl_multimin_fdfminimizer_free (gsl_multimin_fdfminimizer * @var{s})
@@ -159,8 +188,13 @@ This function frees all the memory associated with the minimizer
 This function returns a pointer to the name of the minimizer.  For example,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 printf ("s is a '%s' minimizer\n", 
         gsl_multimin_fdfminimizer_name (s));
+=======
+printf ("s is a '%s' minimizer\n",
+	gsl_multimin_fdfminimizer_name (s));
+>>>>>>> config
 @end example
 
 @noindent
@@ -192,7 +226,11 @@ should be returned.
 @item void (* df) (const gsl_vector * @var{x}, void * @var{params}, gsl_vector * @var{g})
 this function should store the @var{n}-dimensional gradient
 @c{$g_i = \partial f(x,\hbox{\it params}) / \partial x_i$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{g_i = d f(x,params) / d x_i} in the vector @var{g} for argument @var{x} 
+=======
+@math{g_i = d f(x,params) / d x_i} in the vector @var{g} for argument @var{x}
+>>>>>>> config
 and parameters @var{params}, returning an appropriate error code if the
 function cannot be computed.
 
@@ -246,9 +284,15 @@ The function can be initialized using the following code,
 @example
 gsl_multimin_function_fdf my_func;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* Paraboloid center at (1,2), scale factors (10, 20), 
    minimum value 30 */
 double p[5] = @{ 1.0, 2.0, 10.0, 20.0, 30.0 @}; 
+=======
+/* Paraboloid center at (1,2), scale factors (10, 20),
+   minimum value 30 */
+double p[5] = @{ 1.0, 2.0, 10.0, 20.0, 30.0 @};
+>>>>>>> config
 
 my_func.n = 2;  /* number of function components */
 my_func.f = &my_f;
@@ -284,7 +328,11 @@ functions,
 @deftypefunx {gsl_vector *} gsl_multimin_fdfminimizer_gradient (const gsl_multimin_fdfminimizer * @var{s})
 @deftypefunx double gsl_multimin_fminimizer_size (const gsl_multimin_fminimizer * @var{s})
 These functions return the current best estimate of the location of the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 minimum, the value of the function at that point, its gradient, 
+=======
+minimum, the value of the function at that point, its gradient,
+>>>>>>> config
 and minimizer specific characteristic size for the minimizer @var{s}.
 @end deftypefun
 
@@ -343,7 +391,11 @@ is given by @c{$\delta{f} = g\,\delta{x}$}
 
 @deftypefun int gsl_multimin_test_size (const double @var{size}, double @var{epsabs})
 This function tests the minimizer specific characteristic
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 size (if applicable to the used minimizer) against absolute tolerance @var{epsabs}. 
+=======
+size (if applicable to the used minimizer) against absolute tolerance @var{epsabs}.
+>>>>>>> config
 The test returns @code{GSL_SUCCESS} if the size is smaller than tolerance,
 otherwise @code{GSL_CONTINUE} is returned.
 @end deftypefun
@@ -363,14 +415,22 @@ evaluation point.
 This is the Fletcher-Reeves conjugate gradient algorithm. The conjugate
 gradient algorithm proceeds as a succession of line minimizations. The
 sequence of search directions is used to build up an approximation to the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 curvature of the function in the neighborhood of the minimum.  
+=======
+curvature of the function in the neighborhood of the minimum.
+>>>>>>> config
 
 An initial search direction @var{p} is chosen using the gradient, and line
 minimization is carried out in that direction.  The accuracy of the line
 minimization is specified by the parameter @var{tol}.  The minimum
 along this line occurs when the function gradient @var{g} and the search direction
 @var{p} are orthogonal.  The line minimization terminates when
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @c{$p\cdot g < tol |p| |g|$} 
+=======
+@c{$p\cdot g < tol |p| |g|$}
+>>>>>>> config
 @math{dot(p,g) < tol |p| |g|}.  The
 search direction is updated  using the Fletcher-Reeves formula
 @math{p' = g' - \beta g} where @math{\beta=-|g'|^2/|g|^2}, and
@@ -434,10 +494,17 @@ at each evaluation point.
 @cindex Nelder-Mead simplex algorithm for minimization
 @cindex simplex algorithm, minimization
 @cindex minimization, simplex algorithm
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 These methods use the Simplex algorithm of Nelder and Mead. 
 Starting from the initial vector @math{@var{x} = p_0}, the algorithm
 constructs an additional @math{n} vectors @math{p_i}
 using the step size vector @c{$s = \var{step\_size}$} 
+=======
+These methods use the Simplex algorithm of Nelder and Mead.
+Starting from the initial vector @math{@var{x} = p_0}, the algorithm
+constructs an additional @math{n} vectors @math{p_i}
+using the step size vector @c{$s = \var{step\_size}$}
+>>>>>>> config
 @math{s = @var{step_size}} as follows:
 @tex
 \beforedisplay
@@ -455,9 +522,15 @@ $$
 @ifinfo
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 p_0 = (x_0, x_1, ... , x_n) 
 p_1 = (x_0 + s_0, x_1, ... , x_n) 
 p_2 = (x_0, x_1 + s_1, ... , x_n) 
+=======
+p_0 = (x_0, x_1, ... , x_n)
+p_1 = (x_0 + s_0, x_1, ... , x_n)
+p_2 = (x_0, x_1 + s_1, ... , x_n)
+>>>>>>> config
 ... = ...
 p_n = (x_0, x_1, ... , x_n + s_n)
 @end example
@@ -513,7 +586,11 @@ function given earlier in this chapter.
 
 @smallexample
 @verbatiminclude examples/multimin.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @end smallexample  
+=======
+@end smallexample
+>>>>>>> config
 
 @noindent
 The initial step-size is chosen as 0.01, a conservative estimate in this
@@ -583,7 +660,11 @@ more recent references can be found in,
 @end itemize
 
 @noindent
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 The simplex algorithm is described in the following paper, 
+=======
+The simplex algorithm is described in the following paper,
+>>>>>>> config
 
 @itemize @w{}
 @item J.A. Nelder and R. Mead,

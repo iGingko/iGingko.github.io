@@ -1,4 +1,8 @@
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 noinst_LTLIBRARIES = libgslwavelet.la 
+=======
+noinst_LTLIBRARIES = libgslwavelet.la
+>>>>>>> config
 
 pkginclude_HEADERS = gsl_wavelet.h gsl_wavelet2d.h
 
@@ -13,5 +17,8 @@ TESTS = $(check_PROGRAMS)
 test_LDADD = libgslwavelet.la ../blas/libgslblas.la ../cblas/libgslcblas.la ../matrix/libgslmatrix.la ../vector/libgslvector.la ../block/libgslblock.la ../ieee-utils/libgslieeeutils.la  ../err/libgslerr.la ../test/libgsltest.la ../sys/libgslsys.la ../utils/libutils.la
 
 test_SOURCES = test.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
+=======
+>>>>>>> config

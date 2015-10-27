@@ -26,7 +26,11 @@ iterate (void *vstate, gsl_multifit_function_fdf * fdf, gsl_vector * x, gsl_vect
 
   double p1 = 0.1, p25 = 0.25, p5 = 0.5, p75 = 0.75, p0001 = 0.0001;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (state->fnorm == 0.0) 
+=======
+  if (state->fnorm == 0.0)
+>>>>>>> config
     {
       return GSL_SUCCESS;
     }
@@ -40,7 +44,11 @@ iterate (void *vstate, gsl_multifit_function_fdf * fdf, gsl_vector * x, gsl_vect
 
   compute_gradient_direction (r, perm, qtf, diag, gradient);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   { 
+=======
+  {
+>>>>>>> config
     size_t iamax = gsl_blas_idamax (gradient);
 
     gnorm = fabs(gsl_vector_get (gradient, iamax) / state->fnorm);
@@ -49,7 +57,11 @@ iterate (void *vstate, gsl_multifit_function_fdf * fdf, gsl_vector * x, gsl_vect
   /* Determine the Levenberg-Marquardt parameter */
 
 lm_iteration:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   iter++ ;
 
   {
@@ -69,12 +81,21 @@ lm_iteration:
   if (state->iter == 1)
     {
       if (pnorm < state->delta)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
 #ifdef DEBUG
           printf("set delta = pnorm = %g\n" , pnorm);
 #endif
           state->delta = pnorm;
         }
+=======
+	{
+#ifdef DEBUG
+	  printf("set delta = pnorm = %g\n" , pnorm);
+#endif
+	  state->delta = pnorm;
+	}
+>>>>>>> config
     }
 
   /* Evaluate function at x + p */
@@ -110,10 +131,17 @@ lm_iteration:
 
   /* Compute the scaled predicted reduction = |J dx|^2 + 2 par |D dx|^2 */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   { 
     double t1 = fnorm1p / state->fnorm;
     double t2 = (sqrt(state->par) * pnorm) / state->fnorm;
     
+=======
+  {
+    double t1 = fnorm1p / state->fnorm;
+    double t2 = (sqrt(state->par) * pnorm) / state->fnorm;
+
+>>>>>>> config
     prered = t1 * t1 + t2 * t2 / p5;
     dirder = -(t1 * t1 + t2 * t2);
   }
@@ -142,6 +170,7 @@ lm_iteration:
       printf("ratio > p25\n");
 #endif
       if (state->par == 0 || ratio >= p75)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           state->delta = pnorm / p5;
           state->par *= p5;
@@ -149,6 +178,15 @@ lm_iteration:
           printf("updated step bounds: delta = %g, par = %g\n", state->delta, state->par);
 #endif
         }
+=======
+	{
+	  state->delta = pnorm / p5;
+	  state->par *= p5;
+#ifdef DEBUG
+	  printf("updated step bounds: delta = %g, par = %g\n", state->delta, state->par);
+#endif
+	}
+>>>>>>> config
     }
   else
     {
@@ -158,10 +196,17 @@ lm_iteration:
       printf("ratio < p25\n");
 #endif
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       if (p1 * fnorm1 >= state->fnorm || temp < p1 ) 
         {
           temp = p1;
         }
+=======
+      if (p1 * fnorm1 >= state->fnorm || temp < p1 )
+	{
+	  temp = p1;
+	}
+>>>>>>> config
 
       state->delta = temp * GSL_MIN_DBL (state->delta, pnorm/p1);
 
@@ -181,9 +226,15 @@ lm_iteration:
 
       /* return immediately if evaluation raised error */
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         int status = GSL_MULTIFIT_FN_EVAL_DF (fdf, x_trial, J);
         if (status)
           return status;
+=======
+	int status = GSL_MULTIFIT_FN_EVAL_DF (fdf, x_trial, J);
+	if (status)
+	  return status;
+>>>>>>> config
       }
 
       /* wa2_j  = diag_j * x_j */
@@ -194,6 +245,7 @@ lm_iteration:
       /* Rescale if necessary */
 
       if (scale)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           update_diag (J, diag);
         }
@@ -208,6 +260,22 @@ lm_iteration:
     }
   else if (fabs(actred) <= GSL_DBL_EPSILON  && prered <= GSL_DBL_EPSILON 
            && p5 * ratio <= 1.0)
+=======
+	{
+	  update_diag (J, diag);
+	}
+
+      {
+	int signum;
+	gsl_matrix_memcpy (r, J);
+	gsl_linalg_QRPT_decomp (r, tau, perm, &signum, work1);
+      }
+
+      return GSL_SUCCESS;
+    }
+  else if (fabs(actred) <= GSL_DBL_EPSILON  && prered <= GSL_DBL_EPSILON
+	   && p5 * ratio <= 1.0)
+>>>>>>> config
     {
       return GSL_ETOLF ;
     }

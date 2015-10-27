@@ -12,5 +12,8 @@ check_PROGRAMS = test
 
 test_SOURCES = test.c
 test_LDADD = libgslrandist.la ../rng/libgslrng.la ../specfunc/libgslspecfunc.la ../integration/libgslintegration.la ../complex/libgslcomplex.la ../ieee-utils/libgslieeeutils.la ../err/libgslerr.la ../test/libgsltest.la ../sys/libgslsys.la ../utils/libutils.la
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
+=======
+>>>>>>> config

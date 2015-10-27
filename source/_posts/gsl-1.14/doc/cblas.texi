@@ -8,6 +8,7 @@ consult the documentation available from Netlib (@pxref{BLAS References
 and Further Reading}).
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Level 1 CBLAS Functions::     
 * Level 2 CBLAS Functions::     
 * Level 3 CBLAS Functions::     
@@ -16,6 +17,16 @@ and Further Reading}).
 
 @node Level 1 CBLAS Functions
 @section Level 1 
+=======
+* Level 1 CBLAS Functions::
+* Level 2 CBLAS Functions::
+* Level 3 CBLAS Functions::
+* GSL CBLAS Examples::
+@end menu
+
+@node Level 1 CBLAS Functions
+@section Level 1
+>>>>>>> config
 
 @deftypefun float cblas_sdsdot (const int @var{N}, const float @var{alpha}, const float * @var{x}, const int @var{incx}, const float * @var{y}, const int @var{incy})
 @end deftypefun
@@ -156,7 +167,11 @@ and Further Reading}).
 @end deftypefun
 
 @node Level 2 CBLAS Functions
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @section Level 2 
+=======
+@section Level 2
+>>>>>>> config
 
 @deftypefun void cblas_sgemv (const enum CBLAS_ORDER @var{order}, const enum CBLAS_TRANSPOSE @var{TransA}, const int @var{M}, const int @var{N}, const float @var{alpha}, const float * @var{A}, const int @var{lda}, const float * @var{x}, const int @var{incx}, const float @var{beta}, float * @var{y}, const int @var{incy})
 @end deftypefun
@@ -357,7 +372,11 @@ and Further Reading}).
 @end deftypefun
 
 @node Level 3 CBLAS Functions
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @section Level 3 
+=======
+@section Level 3
+>>>>>>> config
 
 
 @deftypefun void cblas_sgemm (const enum CBLAS_ORDER @var{Order}, const enum CBLAS_TRANSPOSE @var{TransA}, const enum CBLAS_TRANSPOSE @var{TransB}, const int @var{M}, const int @var{N}, const int @var{K}, const float @var{alpha}, const float * @var{A}, const int @var{lda}, const float * @var{B}, const int @var{ldb}, const float @var{beta}, float * @var{C}, const int @var{ldc})
@@ -483,7 +502,11 @@ $$
 @example
 [ 0.11 0.12 0.13 ]  [ 1011 1012 ]     [ 367.76 368.12 ]
 [ 0.21 0.22 0.23 ]  [ 1021 1022 ]  =  [ 674.06 674.72 ]
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                     [ 1031 1032 ]
+=======
+		    [ 1031 1032 ]
+>>>>>>> config
 @end example
 
 @end ifinfo

@@ -36,7 +36,11 @@ test_filip ()
 {
   size_t i, j;
   {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     gsl_multifit_linear_workspace * work = 
+=======
+    gsl_multifit_linear_workspace * work =
+>>>>>>> config
       gsl_multifit_linear_alloc (filip_n, filip_p);
 
     gsl_matrix * X = gsl_matrix_alloc (filip_n, filip_p);
@@ -48,6 +52,7 @@ test_filip ()
 
     double chisq;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     double expected_c[11] = { -1467.48961422980,      
                               -2772.17959193342,      
                               -2316.37108160893,      
@@ -80,6 +85,40 @@ test_filip ()
           {
             gsl_matrix_set(X, i, j, pow(filip_x[i], j));
           }
+=======
+    double expected_c[11] = { -1467.48961422980,
+			      -2772.17959193342,
+			      -2316.37108160893,
+			      -1127.97394098372,
+			      -354.478233703349,
+			      -75.1242017393757,
+			      -10.8753180355343,
+			      -1.06221498588947,
+			      -0.670191154593408E-01,
+			      -0.246781078275479E-02,
+			      -0.402962525080404E-04 };
+
+    double expected_sd[11]  = { 298.084530995537,
+			       559.779865474950,
+			       466.477572127796,
+			       227.204274477751,
+			       71.6478660875927,
+			       15.2897178747400,
+			       2.23691159816033,
+			       0.221624321934227,
+			       0.142363763154724E-01,
+			       0.535617408889821E-03,
+			       0.896632837373868E-05 };
+
+    double expected_chisq = 0.795851382172941E-03;
+
+    for (i = 0 ; i < filip_n; i++)
+      {
+	for (j = 0; j < filip_p; j++)
+	  {
+	    gsl_matrix_set(X, i, j, pow(filip_x[i], j));
+	  }
+>>>>>>> config
       }
 
     gsl_multifit_linear (X, &y.vector, c, cov, &chisq, work);
@@ -124,7 +163,11 @@ test_filip ()
   }
 
   {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     gsl_multifit_linear_workspace * work = 
+=======
+    gsl_multifit_linear_workspace * work =
+>>>>>>> config
       gsl_multifit_linear_alloc (filip_n, filip_p);
 
     gsl_matrix * X = gsl_matrix_alloc (filip_n, filip_p);
@@ -136,6 +179,7 @@ test_filip ()
 
     double chisq;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     double expected_c[11] = { -1467.48961422980,      
                               -2772.17959193342,      
                               -2316.37108160893,      
@@ -147,6 +191,19 @@ test_filip ()
                               -0.670191154593408E-01, 
                               -0.246781078275479E-02, 
                               -0.402962525080404E-04 };
+=======
+    double expected_c[11] = { -1467.48961422980,
+			      -2772.17959193342,
+			      -2316.37108160893,
+			      -1127.97394098372,
+			      -354.478233703349,
+			      -75.1242017393757,
+			      -10.8753180355343,
+			      -1.06221498588947,
+			      -0.670191154593408E-01,
+			      -0.246781078275479E-02,
+			      -0.402962525080404E-04 };
+>>>>>>> config
 
     /* computed using GNU Calc */
 
@@ -164,12 +221,21 @@ test_filip ()
 
     double expected_chisq = 0.795851382172941E-03;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     for (i = 0 ; i < filip_n; i++) 
       {
         for (j = 0; j < filip_p; j++) 
           {
             gsl_matrix_set(X, i, j, pow(filip_x[i], j));
           }
+=======
+    for (i = 0 ; i < filip_n; i++)
+      {
+	for (j = 0; j < filip_p; j++)
+	  {
+	    gsl_matrix_set(X, i, j, pow(filip_x[i], j));
+	  }
+>>>>>>> config
       }
 
     gsl_vector_set_all (w, 1.0);
@@ -189,6 +255,7 @@ test_filip ()
     gsl_test_rel (gsl_vector_get(c,10), expected_c[10], 1e-7, "filip gsl_fit_multilinear c10") ;
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     for (i = 0; i < filip_p; i++) 
       {
         for (j = 0; j < filip_p; j++)
@@ -196,6 +263,15 @@ test_filip ()
             gsl_test_rel (gsl_matrix_get(cov,i,j), expected_cov[i][j], 1e-6,
                           "filip gsl_fit_wmultilinear cov(%d,%d)", i, j) ;
           }
+=======
+    for (i = 0; i < filip_p; i++)
+      {
+	for (j = 0; j < filip_p; j++)
+	  {
+	    gsl_test_rel (gsl_matrix_get(cov,i,j), expected_cov[i][j], 1e-6,
+			  "filip gsl_fit_wmultilinear cov(%d,%d)", i, j) ;
+	  }
+>>>>>>> config
       }
 
     gsl_test_rel (chisq, expected_chisq, 1e-7, "filip gsl_fit_wmultilinear chisq") ;

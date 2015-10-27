@@ -1,17 +1,31 @@
 /* err/test_errnos.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -35,9 +49,15 @@ main (void)
 {
   int i, j, n = 0 ;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   struct { 
     int number; 
     const char * name; 
+=======
+  struct {
+    int number;
+    const char * name;
+>>>>>>> config
   } errors[MAX_ERRS] ;
 
   CHECK(GSL_SUCCESS);
@@ -76,7 +96,11 @@ main (void)
   CHECK(GSL_ETOLG);
   CHECK(GSL_EOF);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   for (i = 0 ; i < n ; i++) 
+=======
+  for (i = 0 ; i < n ; i++)
+>>>>>>> config
     {
       if (verbose) printf ("%s = %d\n", errors[i].name, errors[i].number) ;
     }
@@ -85,6 +109,7 @@ main (void)
     {
       int status = 0;
       for (j = 0; j < n; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           if (j != i)
               status |= (errors[i].number == errors[j].number);
@@ -92,6 +117,15 @@ main (void)
 
       gsl_test (status, "%s is distinct from other error values",
                 errors[i].name);
+=======
+	{
+	  if (j != i)
+	      status |= (errors[i].number == errors[j].number);
+	}
+
+      gsl_test (status, "%s is distinct from other error values",
+		errors[i].name);
+>>>>>>> config
     }
 
   for (i = 0; i < n; i++)
@@ -99,6 +133,7 @@ main (void)
       int status = 0;
       int e1 = errors[i].number ;
       for (j = 0; j < n; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           if (j != i)
             {
@@ -114,3 +149,19 @@ main (void)
   exit (gsl_test_summary ());
 }
 
+=======
+	{
+	  if (j != i)
+	    {
+	      int e2 = errors[j].number;
+	      status |= (gsl_strerror(e1) == gsl_strerror(e2)) ;
+	    }
+	}
+      gsl_test (status, "%s has a distinct error message",
+		errors[i].name);
+    }
+
+
+  exit (gsl_test_summary ());
+}
+>>>>>>> config

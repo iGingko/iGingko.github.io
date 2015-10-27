@@ -1,17 +1,31 @@
 /* histogram/test1d_resample.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -52,13 +66,20 @@ test1d_resample (void)
 
     for (i = 0; i < 100000; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         double u = urand();
         double x = gsl_histogram_pdf_sample (p, u);
         gsl_histogram_increment (hh, x);
+=======
+	double u = urand();
+	double x = gsl_histogram_pdf_sample (p, u);
+	gsl_histogram_increment (hh, x);
+>>>>>>> config
       }
 
     for (i = 0; i < 100; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         double y = gsl_histogram_get (hh, i) / 2500;
         double x, xmax;
         size_t k;
@@ -87,6 +108,36 @@ test1d_resample (void)
                 printf ("%g vs %g err=%g sigma=%g\n", y, ya, err, sigma);
               }
           }
+=======
+	double y = gsl_histogram_get (hh, i) / 2500;
+	double x, xmax;
+	size_t k;
+	double ya;
+
+	gsl_histogram_get_range (hh, i, &x, &xmax);
+
+	gsl_histogram_find (h, x, &k);
+	ya = gsl_histogram_get (h, k);
+
+	if (ya == 0)
+	  {
+	    if (y != 0)
+	      {
+		printf ("%d: %g vs %g\n", (int) i, y, ya);
+		status = 1;
+	      }
+	  }
+	else
+	  {
+	    double err = 1 / sqrt (gsl_histogram_get (hh, i));
+	    double sigma = fabs ((y - ya) / (ya * err));
+	    if (sigma > 3)
+	      {
+		status = 1;
+		printf ("%g vs %g err=%g sigma=%g\n", y, ya, err, sigma);
+	      }
+	  }
+>>>>>>> config
       }
 
     gsl_histogram_pdf_free (p) ;

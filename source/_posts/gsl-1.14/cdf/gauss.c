@@ -37,8 +37,13 @@
  * to Continuous Functions," Communications of the ACM, v5 1962.
  *
  * W.J. Kennedy Jr., J.E. Gentle. "Statistical Computing." Marcel Dekker. 1980.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  *  
+=======
+ *
+ *
+>>>>>>> config
  */
 
 #include <config.h>
@@ -55,7 +60,11 @@
 /*
  * IEEE double precision dependent constants.
  *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * GAUSS_EPSILON: Smallest positive value such that 
+=======
+ * GAUSS_EPSILON: Smallest positive value such that
+>>>>>>> config
  *                gsl_cdf_gaussian(x) > 0.5.
  * GAUSS_XUPPER: Largest value x such that gsl_cdf_gaussian(x) < 1.0.
  * GAUSS_XLOWER: Smallest value x such that gsl_cdf_gaussian(x) > 0.0.
@@ -178,7 +187,11 @@ gauss_medium (const double x)
 }
 
 /*
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * Normal cdf for 
+=======
+ * Normal cdf for
+>>>>>>> config
  * {sqrt(32) < x < GAUSS_XUPPER} union { GAUSS_XLOWER < x < -sqrt(32) }.
  */
 static double
@@ -248,9 +261,15 @@ gsl_cdf_ugaussian_P (const double x)
       result = gauss_medium (x);
 
       if (x > 0.0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           result = 1.0 - result;
         }
+=======
+	{
+	  result = 1.0 - result;
+	}
+>>>>>>> config
 
       return result;
     }
@@ -269,9 +288,15 @@ gsl_cdf_ugaussian_P (const double x)
       result = gauss_large (x);
 
       if (x > 0.0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           result = 1.0 - result;
         }
+=======
+	{
+	  result = 1.0 - result;
+	}
+>>>>>>> config
     }
 
   return result;
@@ -293,6 +318,7 @@ gsl_cdf_ugaussian_Q (const double x)
       result = gauss_small (x);
 
       if (x < 0.0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           result = fabs (result) + 0.5;
         }
@@ -300,6 +326,15 @@ gsl_cdf_ugaussian_Q (const double x)
         {
           result = 0.5 - result;
         }
+=======
+	{
+	  result = fabs (result) + 0.5;
+	}
+      else
+	{
+	  result = 0.5 - result;
+	}
+>>>>>>> config
 
       return result;
     }
@@ -308,9 +343,15 @@ gsl_cdf_ugaussian_Q (const double x)
       result = gauss_medium (x);
 
       if (x < 0.0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           result = 1.0 - result;
         }
+=======
+	{
+	  result = 1.0 - result;
+	}
+>>>>>>> config
 
       return result;
     }
@@ -329,9 +370,15 @@ gsl_cdf_ugaussian_Q (const double x)
       result = gauss_large (x);
 
       if (x < 0.0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           result = 1.0 - result;
         }
+=======
+	{
+	  result = 1.0 - result;
+	}
+>>>>>>> config
 
     }
 

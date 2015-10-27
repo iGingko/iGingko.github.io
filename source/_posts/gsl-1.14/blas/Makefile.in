@@ -229,7 +229,11 @@ top_srcdir = @top_srcdir@
 noinst_LTLIBRARIES = libgslblas.la
 pkginclude_HEADERS = gsl_blas.h gsl_blas_types.h
 INCLUDES = -I$(top_srcdir)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 libgslblas_la_SOURCES = blas.c 
+=======
+libgslblas_la_SOURCES = blas.c
+>>>>>>> config
 all: all-am
 
 .SUFFIXES:
@@ -239,7 +243,11 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__confi
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
 	      ( cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh ) \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	        && { if test -f $@; then exit 0; else break; fi; }; \
+=======
+		&& { if test -f $@; then exit 0; else break; fi; }; \
+>>>>>>> config
 	      exit 1;; \
 	  esac; \
 	done; \
@@ -273,7 +281,11 @@ clean-noinstLTLIBRARIES:
 	  echo "rm -f \"$${dir}/so_locations\""; \
 	  rm -f "$${dir}/so_locations"; \
 	done
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 libgslblas.la: $(libgslblas_la_OBJECTS) $(libgslblas_la_DEPENDENCIES) 
+=======
+libgslblas.la: $(libgslblas_la_OBJECTS) $(libgslblas_la_DEPENDENCIES)
+>>>>>>> config
 	$(LINK)  $(libgslblas_la_OBJECTS) $(libgslblas_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:

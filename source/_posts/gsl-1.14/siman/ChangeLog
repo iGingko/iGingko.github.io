@@ -16,7 +16,11 @@
 
 	* siman.c (safe_exp): added a safe_exp function to avoid underflow
 	for large uphill steps
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	
+=======
+
+>>>>>>> config
 2003-03-31  Brian Gough  <bjg@network-theory.co.uk>
 
 	* siman.c (gsl_siman_solve): avoid reevaluation for best_E
@@ -89,24 +93,39 @@ Wed Oct 28 15:06:58 1998  Brian Gough  <bjg@vvv.lanl.gov>
 Thu Aug 20 12:22:28 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* siman.c: use (char *) judiciously to avoid warnings about void
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	pointer arithmetic (see randist/shuffle.c for similar examples)
 
 	* siman_test.c: perform several tests, using the exact answer as
  	the comparison value, rather than checking for stationarity.
+=======
+	pointer arithmetic (see randist/shuffle.c for similar examples)
+
+	* siman_test.c: perform several tests, using the exact answer as
+	the comparison value, rather than checking for stationarity.
+>>>>>>> config
 
 Sun Jun 28 14:11:04 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* Converted to work with rng-style random number generators
 
 	* gsl_siman.h: gsl_siman_step_t type functions now take a gsl_rng
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	random number generator as their first argument
 
 	* siman.c (gsl_siman_solve): Now takes a gsl_rng random number
  	generator as the first argument
+=======
+	random number generator as their first argument
+
+	* siman.c (gsl_siman_solve): Now takes a gsl_rng random number
+	generator as the first argument
+>>>>>>> config
 
 Fri Jun 19 11:17:24 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* siman.c (gsl_siman_solve_many): changed the variable 'throw' to
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	'u' (for uniform-random-number) so that we can compile with c++
  	where throw is a reserved word.
 	
@@ -118,6 +137,19 @@ Sat May 23 13:59:55 1998  Brian Gough  <bjg@vvv.lanl.gov>
  	the test would fail due to the randomness). We can let the user do
  	the seeding if they need that.
 	
+=======
+	'u' (for uniform-random-number) so that we can compile with c++
+	where throw is a reserved word.
+
+Sat May 23 13:59:55 1998  Brian Gough  <bjg@vvv.lanl.gov>
+
+	* siman.c: made the solving functions deterministic by removing
+	the random seed, gsl_ran_seed(time(0L)). When the function is
+	non-deterministic it is hard to debug and test (about 1 time in 20
+	the test would fail due to the randomness). We can let the user do
+	the seeding if they need that.
+
+>>>>>>> config
 1998-02-09  Mark Galassi  <rosalia@nis.lanl.gov>
 
 	* siman_test_driver.sh (LAST_ENERGY): fixed a typo; the tests now

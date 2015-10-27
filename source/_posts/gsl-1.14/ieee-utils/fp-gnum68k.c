@@ -1,17 +1,31 @@
 /* ieee-utils/fp-gnum68k.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -66,6 +80,7 @@ gsl_ieee_set_mode (int precision, int rounding, int exception_mask)
 
   if (exception_mask & GSL_IEEE_MASK_INVALID)
     mode |= _FPU_MASK_OPERR ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   if (exception_mask & GSL_IEEE_MASK_DENORMALIZED)
     {
@@ -77,6 +92,19 @@ gsl_ieee_set_mode (int precision, int rounding, int exception_mask)
       /*mode |= _FPU_MASK_DM ; ???? */ 
     }
   
+=======
+
+  if (exception_mask & GSL_IEEE_MASK_DENORMALIZED)
+    {
+      /* do nothing */
+    }
+  else
+    {
+      GSL_ERROR ("the denormalized operand exception has not been implemented for m68k yet. Use 'mask-denormalized' to work around this.", GSL_EUNSUP) ;
+      /*mode |= _FPU_MASK_DM ; ???? */
+    }
+
+>>>>>>> config
   if (exception_mask & GSL_IEEE_MASK_DIVISION_BY_ZERO)
     mode |= _FPU_MASK_DZ ;
 

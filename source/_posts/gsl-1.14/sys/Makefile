@@ -112,17 +112,30 @@ CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2
 CPP = gcc -E
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 CPPFLAGS = 
+=======
+CPPFLAGS =
+>>>>>>> config
 CYGPATH_W = echo
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
 DSYMUTIL = dsymutil
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 DUMPBIN = 
 ECHO_C = \c
 ECHO_N = 
 ECHO_T = 
 EGREP = /usr/bin/grep -E
 EXEEXT = 
+=======
+DUMPBIN =
+ECHO_C = \c
+ECHO_N =
+ECHO_T =
+EGREP = /usr/bin/grep -E
+EXEEXT =
+>>>>>>> config
 FGREP = /usr/bin/grep -F
 GREP = /usr/bin/grep
 GSL_CFLAGS = -I${prefix}/include
@@ -131,6 +144,7 @@ GSL_LT_CBLAS_VERSION = 0:0:0
 GSL_LT_VERSION = 15:0:15
 GSL_MAJOR_VERSION = 1
 GSL_MINOR_VERSION = 14
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 HAVE_AIX_IEEE_INTERFACE = 
 HAVE_DARWIN86_IEEE_INTERFACE = 
 HAVE_DARWIN_IEEE_INTERFACE = 
@@ -148,12 +162,32 @@ HAVE_OS2EMX_IEEE_INTERFACE =
 HAVE_SOLARIS_IEEE_INTERFACE = 
 HAVE_SUNOS4_IEEE_INTERFACE = 
 HAVE_TRU64_IEEE_INTERFACE = 
+=======
+HAVE_AIX_IEEE_INTERFACE =
+HAVE_DARWIN86_IEEE_INTERFACE =
+HAVE_DARWIN_IEEE_INTERFACE =
+HAVE_FREEBSD_IEEE_INTERFACE =
+HAVE_GNUM68K_IEEE_INTERFACE =
+HAVE_GNUPPC_IEEE_INTERFACE =
+HAVE_GNUSPARC_IEEE_INTERFACE =
+HAVE_GNUX86_IEEE_INTERFACE =
+HAVE_HPUX11_IEEE_INTERFACE =
+HAVE_HPUX_IEEE_INTERFACE =
+HAVE_IRIX_IEEE_INTERFACE =
+HAVE_NETBSD_IEEE_INTERFACE =
+HAVE_OPENBSD_IEEE_INTERFACE =
+HAVE_OS2EMX_IEEE_INTERFACE =
+HAVE_SOLARIS_IEEE_INTERFACE =
+HAVE_SUNOS4_IEEE_INTERFACE =
+HAVE_TRU64_IEEE_INTERFACE =
+>>>>>>> config
 INSTALL = /usr/local/bin/ginstall -c
 INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 LD = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 LDFLAGS = 
 LIBOBJS = 
 LIBS = -lm 
@@ -161,6 +195,15 @@ LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIPO = lipo
 LN_S = ln -s
 LTLIBOBJS = 
+=======
+LDFLAGS =
+LIBOBJS =
+LIBS = -lm
+LIBTOOL = $(SHELL) $(top_builddir)/libtool
+LIPO = lipo
+LN_S = ln -s
+LTLIBOBJS =
+>>>>>>> config
 MAINT = #
 MAKEINFO = ${SHELL} /Users/connor/Documents/Octopress/source/_posts/gsl-1.14/missing --run makeinfo
 MKDIR_P = /usr/local/bin/gmkdir -p
@@ -171,16 +214,28 @@ OBJEXT = o
 OTOOL = otool
 OTOOL64 = :
 PACKAGE = gsl
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 PACKAGE_BUGREPORT = 
 PACKAGE_NAME = gsl
 PACKAGE_STRING = gsl 1.14
 PACKAGE_TARNAME = gsl
 PACKAGE_URL = 
+=======
+PACKAGE_BUGREPORT =
+PACKAGE_NAME = gsl
+PACKAGE_STRING = gsl 1.14
+PACKAGE_TARNAME = gsl
+PACKAGE_URL =
+>>>>>>> config
 PACKAGE_VERSION = 1.14
 PATH_SEPARATOR = :
 RANLIB = ranlib
 SED = /usr/bin/sed
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 SET_MAKE = 
+=======
+SET_MAKE =
+>>>>>>> config
 SHELL = /bin/sh
 STRIP = strip
 VERSION = 1.14
@@ -189,15 +244,26 @@ abs_srcdir = /Users/connor/Documents/Octopress/source/_posts/gsl-1.14/sys
 abs_top_builddir = /Users/connor/Documents/Octopress/source/_posts/gsl-1.14
 abs_top_srcdir = /Users/connor/Documents/Octopress/source/_posts/gsl-1.14
 ac_ct_CC = gcc
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 ac_ct_DUMPBIN = 
 am__include = include
 am__leading_dot = .
 am__quote = 
+=======
+ac_ct_DUMPBIN =
+am__include = include
+am__leading_dot = .
+am__quote =
+>>>>>>> config
 am__tar = ${AMTAR} chof - "$$tardir"
 am__untar = ${AMTAR} xf -
 bindir = ${exec_prefix}/bin
 build = x86_64-apple-darwin15.0.0
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 build_alias = 
+=======
+build_alias =
+>>>>>>> config
 build_cpu = x86_64
 build_os = darwin15.0.0
 build_vendor = apple
@@ -208,7 +274,11 @@ docdir = ${datarootdir}/doc/${PACKAGE_TARNAME}
 dvidir = ${docdir}
 exec_prefix = ${prefix}
 host = x86_64-apple-darwin15.0.0
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 host_alias = 
+=======
+host_alias =
+>>>>>>> config
 host_cpu = x86_64
 host_os = darwin15.0.0
 host_vendor = apple
@@ -232,11 +302,19 @@ sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 srcdir = .
 sysconfdir = ${prefix}/etc
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 target_alias = 
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
 noinst_LTLIBRARIES = libgslsys.la 
+=======
+target_alias =
+top_build_prefix = ../
+top_builddir = ..
+top_srcdir = ..
+noinst_LTLIBRARIES = libgslsys.la
+>>>>>>> config
 pkginclude_HEADERS = gsl_sys.h
 libgslsys_la_SOURCES = minmax.c prec.c hypot.c log1p.c expm1.c coerce.c invhyp.c pow_int.c infnan.c fdiv.c fcmp.c ldfrexp.c
 INCLUDES = -I$(top_srcdir)
@@ -252,7 +330,11 @@ $(srcdir)/Makefile.in: # $(srcdir)/Makefile.am  $(am__configure_deps)
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
 	      ( cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh ) \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	        && { if test -f $@; then exit 0; else break; fi; }; \
+=======
+		&& { if test -f $@; then exit 0; else break; fi; }; \
+>>>>>>> config
 	      exit 1;; \
 	  esac; \
 	done; \
@@ -286,7 +368,11 @@ clean-noinstLTLIBRARIES:
 	  echo "rm -f \"$${dir}/so_locations\""; \
 	  rm -f "$${dir}/so_locations"; \
 	done
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 libgslsys.la: $(libgslsys_la_OBJECTS) $(libgslsys_la_DEPENDENCIES) 
+=======
+libgslsys.la: $(libgslsys_la_OBJECTS) $(libgslsys_la_DEPENDENCIES)
+>>>>>>> config
 	$(LINK)  $(libgslsys_la_OBJECTS) $(libgslsys_la_LIBADD) $(LIBS)
 
 clean-checkPROGRAMS:
@@ -297,7 +383,11 @@ clean-checkPROGRAMS:
 	list=`for p in $$list; do echo "$$p"; done | sed 's/$(EXEEXT)$$//'`; \
 	echo " rm -f" $$list; \
 	rm -f $$list
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 test$(EXEEXT): $(test_OBJECTS) $(test_DEPENDENCIES) 
+=======
+test$(EXEEXT): $(test_OBJECTS) $(test_DEPENDENCIES)
+>>>>>>> config
 	@rm -f test$(EXEEXT)
 	$(LINK) $(test_OBJECTS) $(test_LDADD) $(LIBS)
 

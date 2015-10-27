@@ -1,4 +1,8 @@
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @cindex sorting 
+=======
+@cindex sorting
+>>>>>>> config
 @cindex heapsort
 This chapter describes functions for sorting data, both directly and
 indirectly (using an index).  All the functions use the @dfn{heapsort}
@@ -12,12 +16,21 @@ order of equal elements will be consistent across different platforms
 when using these functions.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Sorting objects::             
 * Sorting vectors::             
 * Selecting the k smallest or largest elements::  
 * Computing the rank::          
 * Sorting Examples::            
 * Sorting References and Further Reading::  
+=======
+* Sorting objects::
+* Sorting vectors::
+* Selecting the k smallest or largest elements::
+* Computing the rank::
+* Sorting Examples::
+* Sorting References and Further Reading::
+>>>>>>> config
 @end menu
 
 @node Sorting objects
@@ -42,7 +55,11 @@ function @var{compare}.  The type of the comparison function is defined by,
 
 @example
 int (*gsl_comparison_fn_t) (const void * a,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                             const void * b)
+=======
+			    const void * b)
+>>>>>>> config
 @end example
 
 @noindent
@@ -57,7 +74,11 @@ ascending numerical order.
 @example
 int
 compare_doubles (const double * a,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  const double * b)
+=======
+		 const double * b)
+>>>>>>> config
 @{
     if (*a > *b)
        return 1;
@@ -72,8 +93,13 @@ compare_doubles (const double * a,
 The appropriate function call to perform the sort is,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_heapsort (array, count, sizeof(double), 
               compare_doubles);
+=======
+gsl_heapsort (array, count, sizeof(double),
+	      compare_doubles);
+>>>>>>> config
 @end example
 
 Note that unlike @code{qsort} the heapsort algorithm cannot be made into
@@ -223,7 +249,11 @@ is the inverse of the index permutation, @var{p}.  It can be computed
 using the following algorithm,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 for (i = 0; i < p->size; i++) 
+=======
+for (i = 0; i < p->size; i++)
+>>>>>>> config
 @{
     size_t pi = p->data[i];
     rank->data[pi] = i;
@@ -253,7 +283,11 @@ print_rank (gsl_vector * v)
    @{
     double vi = gsl_vector_get(v, i);
     printf ("element = %d, value = %g, rank = %d\n",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              i, vi, rank->data[i]);
+=======
+	     i, vi, rank->data[i]);
+>>>>>>> config
    @}
 
   gsl_permutation_free (perm);
@@ -288,7 +322,11 @@ array,
 The output lists the 5 smallest values, in ascending order,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 $ ./a.out 
+=======
+$ ./a.out
+>>>>>>> config
 @verbatiminclude examples/sortsmall.out
 @end example
 
@@ -308,8 +346,14 @@ Searching} (Vol 3, 3rd Ed, 1997), Addison-Wesley, ISBN 0201896850.
 The Heapsort algorithm is described in the following book,
 
 @itemize @w{}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @item Robert Sedgewick, @cite{Algorithms in C}, Addison-Wesley, 
 ISBN 0201514257.
 @end itemize
 
 
+=======
+@item Robert Sedgewick, @cite{Algorithms in C}, Addison-Wesley,
+ISBN 0201514257.
+@end itemize
+>>>>>>> config

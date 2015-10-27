@@ -1,17 +1,31 @@
 /* cdf/test.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2002 Jason H Stover.
  * 
+=======
+ *
+ * Copyright (C) 2002 Jason H Stover.
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307, USA.
@@ -277,10 +291,17 @@ test_logarithmic_cdf_Q (unsigned int k)
 #endif
 
 void
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 test_discrete_cdf_P (double (*pdf)(unsigned int), 
                      double (*cdf_P)(unsigned int), 
                      struct range (*range)(void), 
                      const char * desc)
+=======
+test_discrete_cdf_P (double (*pdf)(unsigned int),
+		     double (*cdf_P)(unsigned int),
+		     struct range (*range)(void),
+		     const char * desc)
+>>>>>>> config
 {
   double sum;
   double tol = TEST_TOL2;
@@ -302,10 +323,17 @@ test_discrete_cdf_P (double (*pdf)(unsigned int),
 }
 
 void
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 test_discrete_cdf_Q (double (*pdf)(unsigned int), 
                      double (*cdf_Q)(unsigned int), 
                      struct range (*range)(void), 
                      const char * desc)
+=======
+test_discrete_cdf_Q (double (*pdf)(unsigned int),
+		     double (*cdf_Q)(unsigned int),
+		     struct range (*range)(void),
+		     const char * desc)
+>>>>>>> config
 {
   double sum;
   double tol = TEST_TOL2;
@@ -327,10 +355,17 @@ test_discrete_cdf_Q (double (*pdf)(unsigned int),
 }
 
 void
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 test_discrete_cdf_PQ (double (*cdf_P)(unsigned int), 
                       double (*cdf_Q)(unsigned int), 
                       struct range (*range)(void), 
                       const char * desc)
+=======
+test_discrete_cdf_PQ (double (*cdf_P)(unsigned int),
+		      double (*cdf_Q)(unsigned int),
+		      struct range (*range)(void),
+		      const char * desc)
+>>>>>>> config
 {
   double sum;
   double tol = GSL_DBL_EPSILON;
@@ -348,10 +383,17 @@ test_discrete_cdf_PQ (double (*cdf_P)(unsigned int),
       sum = Pi + Qi;
       gsl_test_rel (sum, 1.0, tol, desc, i);
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         int s1 = (Pi<0 || Pi>1);     
         int s2 = (Qi<0 || Qi>1);     
         gsl_test(s1, "Pi in range [0,1] (%.18e)", Pi);
         gsl_test(s2, "Qi in range [0,1] (%.18e)", Qi);
+=======
+	int s1 = (Pi<0 || Pi>1);
+	int s2 = (Qi<0 || Qi>1);
+	gsl_test(s1, "Pi in range [0,1] (%.18e)", Pi);
+	gsl_test(s2, "Qi in range [0,1] (%.18e)", Qi);
+>>>>>>> config
       }
     }
 
@@ -381,6 +423,7 @@ main (void)
   TEST_DISCRETE(logarithmic);
 #endif
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   test_discrete_cdf_PQ(&test_hypergeometric2_cdf_P, 
                        &test_hypergeometric2_cdf_Q, 
                        &test_hypergeometric2a_range, 
@@ -390,10 +433,22 @@ main (void)
                        &test_hypergeometric2_cdf_Q, 
                        &test_hypergeometric2b_range, 
                        "test gsl_cdf_hypergeometric_P+Q (k=%d)") ; 
+=======
+  test_discrete_cdf_PQ(&test_hypergeometric2_cdf_P,
+		       &test_hypergeometric2_cdf_Q,
+		       &test_hypergeometric2a_range,
+		       "test gsl_cdf_hypergeometric_P+Q (k=%d)") ;
+
+  test_discrete_cdf_PQ(&test_hypergeometric2_cdf_P,
+		       &test_hypergeometric2_cdf_Q,
+		       &test_hypergeometric2b_range,
+		       "test gsl_cdf_hypergeometric_P+Q (k=%d)") ;
+>>>>>>> config
 
 
   /* exit (gsl_test_summary ()); */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   /* Tests for gaussian cumulative distribution function 
      Function values computed with PARI, 28 digits precision */
   
@@ -411,6 +466,25 @@ main (void)
   test_gammainv (); 
   test_chisqinv (); 
   test_tdistinv (); 
+=======
+  /* Tests for gaussian cumulative distribution function
+     Function values computed with PARI, 28 digits precision */
+
+  test_ugaussian ();
+  test_exponential ();
+  test_exppow ();
+  test_tdist ();
+  test_fdist ();
+  test_gamma ();
+  test_chisq ();
+  test_beta ();
+
+  test_ugaussianinv ();
+  test_exponentialinv ();
+  test_gammainv ();
+  test_chisqinv ();
+  test_tdistinv ();
+>>>>>>> config
   test_betainv ();
   test_finv ();
 
@@ -431,7 +505,11 @@ main (void)
   test_auto_pareto ();
   test_auto_logistic ();
   test_auto_gammalarge ();
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   exit (gsl_test_summary ());
 }
 
@@ -581,7 +659,11 @@ void test_exppow (void)
 
   /* Tests for student's T distribution */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   /* p(x,nu) = (1/2)*(1+sign(x)*betaI(x^2/(nu+x^2),1/2,nu/2))   
+=======
+  /* p(x,nu) = (1/2)*(1+sign(x)*betaI(x^2/(nu+x^2),1/2,nu/2))
+>>>>>>> config
      q(x,nu) = (1/2)*(1-sign(x)*betaI(x^2/(nu+x^2),1/2,nu/2))    */
 
 void test_tdist (void) {
@@ -797,7 +879,11 @@ void test_fdist (void) {
 
 
   /* computed with gp-pari */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
      
+=======
+
+>>>>>>> config
   TEST (gsl_cdf_fdist_P, (3.479082213465832574, 1, 4040712), 0.93785072763723411967, TEST_TOL6);
   TEST (gsl_cdf_fdist_P, (3.002774644786533109, 1, 4040712), 0.91687787379476055771, TEST_TOL6);
   TEST (gsl_cdf_fdist_P, (3.000854441173130827, 1, 4040712), 0.91677930719813578619, TEST_TOL6);
@@ -1400,6 +1486,9 @@ void test_tdistinv (void) {
   TEST (gsl_cdf_tdist_Qinv, (9.76799239508425455e-1, 300.0), -2.0, TEST_TOL6);
   TEST (gsl_cdf_tdist_Qinv, (1.000000000000000000e0, 300.0), GSL_NEGINF, TEST_TOL6);
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
 
+=======
+>>>>>>> config

@@ -1,17 +1,31 @@
 /* cheb/gsl_chebyshev.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -80,7 +94,11 @@ void gsl_cheb_free(gsl_cheb_series * cs);
  *
  */
 int gsl_cheb_init(gsl_cheb_series * cs, const gsl_function * func,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   const double a, const double b);
+=======
+		  const double a, const double b);
+>>>>>>> config
 
 /* Return the order, size of coefficient array and coefficient array ptr */
 size_t gsl_cheb_order (const gsl_cheb_series * cs);
@@ -91,17 +109,29 @@ double *gsl_cheb_coeffs (const gsl_cheb_series * cs);
  * No errors can occur for a struct obtained from gsl_cheb_new().
  */
 double gsl_cheb_eval(const gsl_cheb_series * cs, const double x);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int gsl_cheb_eval_err(const gsl_cheb_series * cs, const double x, 
                       double * result, double * abserr);
+=======
+int gsl_cheb_eval_err(const gsl_cheb_series * cs, const double x,
+		      double * result, double * abserr);
+>>>>>>> config
 
 
 /* Evaluate a Chebyshev series at a given point, to (at most) the given order.
  * No errors can occur for a struct obtained from gsl_cheb_new().
  */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 double gsl_cheb_eval_n(const gsl_cheb_series * cs, const size_t order, 
                        const double x);
 int gsl_cheb_eval_n_err(const gsl_cheb_series * cs, const size_t order, 
                         const double x, double * result, double * abserr);
+=======
+double gsl_cheb_eval_n(const gsl_cheb_series * cs, const size_t order,
+		       const double x);
+int gsl_cheb_eval_n_err(const gsl_cheb_series * cs, const size_t order,
+			const double x, double * result, double * abserr);
+>>>>>>> config
 
 
 /* Evaluate a Chebyshev series at a given point, using the default

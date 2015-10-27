@@ -20,7 +20,11 @@
 
 #ifndef HAVE_INLINE       /* enable compilation of definitions in .h files */
 #define HAVE_INLINE
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 #endif     
+=======
+#endif
+>>>>>>> config
 
 /* Compile range checking code for inline functions used in the library */
 #undef GSL_RANGE_CHECK
@@ -32,6 +36,10 @@
 #define GSL_RANGE_COND(x) (gsl_check_range && (x))
 
 #endif
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 #else 
+=======
+#else
+>>>>>>> config
 #error must be called with COMPILE_INLINE_STATIC
 #endif

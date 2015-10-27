@@ -66,7 +66,11 @@ functions
   problems on Tru64, testing and other patches., bug fix for nm_simplex
   algorithm.
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * John Fisher <johnfish@uclink4.berkeley.edu> testing on powerpc linux 
+=======
+* John Fisher <johnfish@uclink4.berkeley.edu> testing on powerpc linux
+>>>>>>> config
   and support for fp-ppclinux.c
 
 * OKUJI Yoshinori <okuji@gnu.org> for a patch for fp-x86linux.c for libc5
@@ -156,7 +160,11 @@ for linear algebra, interpolation, additional tridiagonal solvers
 
 * Christian T. Steigies <cts@debian.org> for documentation bug report
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Atakan Gurkan <ato@northwestern.edu> for bug reports and patches for the 
+=======
+* Atakan Gurkan <ato@northwestern.edu> for bug reports and patches for the
+>>>>>>> config
 random number generators.
 
 * David Ronis <ronis@ronispc.chem.mcgill.ca> for bug reports and
@@ -348,7 +356,11 @@ for Brent minimisation algorithm.
 
 * Gabriel Withington <gabriel.withington@umassmed.edu> typo in docs
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Stewart V. Wright <swright+gsl@physics.adelaide.edu.au> patch for missing 
+=======
+* Stewart V. Wright <swright+gsl@physics.adelaide.edu.au> patch for missing
+>>>>>>> config
 spline functions
 
 * Richard Mathar <mathar@strw.leidenuniv.nl> additional Debye
@@ -358,7 +370,11 @@ functions n=5,6, handle case x==1 in 2F1.
 
 * Yoram Burak <yorambu@kitp.ucsb.edu> bug report for scaled bessel function In_scaled
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Mario Santos <mgrsantos@ist.utl.pt> bug report for spherical bessel function 
+=======
+* Mario Santos <mgrsantos@ist.utl.pt> bug report for spherical bessel function
+>>>>>>> config
 
 * Vincent Plagnol <vincent.plagnol@normalesup.org> bug report for gsl_randist_binomial_pdf
 

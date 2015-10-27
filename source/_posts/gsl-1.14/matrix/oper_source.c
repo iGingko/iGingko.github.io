@@ -1,23 +1,41 @@
 /* matrix/oper_source.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int 
+=======
+int
+>>>>>>> config
 FUNCTION(gsl_matrix, add) (TYPE(gsl_matrix) * a, const TYPE(gsl_matrix) * b)
 {
   const size_t M = a->size1;
@@ -27,7 +45,11 @@ FUNCTION(gsl_matrix, add) (TYPE(gsl_matrix) * a, const TYPE(gsl_matrix) * b)
     {
       GSL_ERROR ("matrices must have same dimensions", GSL_EBADLEN);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else 
+=======
+  else
+>>>>>>> config
     {
       const size_t tda_a = a->tda;
       const size_t tda_b = b->tda;
@@ -35,6 +57,7 @@ FUNCTION(gsl_matrix, add) (TYPE(gsl_matrix) * a, const TYPE(gsl_matrix) * b)
       size_t i, j;
 
       for (i = 0; i < M; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           for (j = 0; j < N; j++)
             {
@@ -42,11 +65,24 @@ FUNCTION(gsl_matrix, add) (TYPE(gsl_matrix) * a, const TYPE(gsl_matrix) * b)
             }
         }
       
+=======
+	{
+	  for (j = 0; j < N; j++)
+	    {
+	      a->data[i * tda_a + j] += b->data[i * tda_b + j];
+	    }
+	}
+
+>>>>>>> config
       return GSL_SUCCESS;
     }
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int 
+=======
+int
+>>>>>>> config
 FUNCTION(gsl_matrix, sub) (TYPE(gsl_matrix) * a, const TYPE(gsl_matrix) * b)
 {
   const size_t M = a->size1;
@@ -56,7 +92,11 @@ FUNCTION(gsl_matrix, sub) (TYPE(gsl_matrix) * a, const TYPE(gsl_matrix) * b)
     {
       GSL_ERROR ("matrices must have same dimensions", GSL_EBADLEN);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else 
+=======
+  else
+>>>>>>> config
     {
       const size_t tda_a = a->tda;
       const size_t tda_b = b->tda;
@@ -64,6 +104,7 @@ FUNCTION(gsl_matrix, sub) (TYPE(gsl_matrix) * a, const TYPE(gsl_matrix) * b)
       size_t i, j;
 
       for (i = 0; i < M; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           for (j = 0; j < N; j++)
             {
@@ -71,11 +112,24 @@ FUNCTION(gsl_matrix, sub) (TYPE(gsl_matrix) * a, const TYPE(gsl_matrix) * b)
             }
         }
       
+=======
+	{
+	  for (j = 0; j < N; j++)
+	    {
+	      a->data[i * tda_a + j] -= b->data[i * tda_b + j];
+	    }
+	}
+
+>>>>>>> config
       return GSL_SUCCESS;
     }
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int 
+=======
+int
+>>>>>>> config
 FUNCTION(gsl_matrix, mul_elements) (TYPE(gsl_matrix) * a, const TYPE(gsl_matrix) * b)
 {
   const size_t M = a->size1;
@@ -85,7 +139,11 @@ FUNCTION(gsl_matrix, mul_elements) (TYPE(gsl_matrix) * a, const TYPE(gsl_matrix)
     {
       GSL_ERROR ("matrices must have same dimensions", GSL_EBADLEN);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else 
+=======
+  else
+>>>>>>> config
     {
       const size_t tda_a = a->tda;
       const size_t tda_b = b->tda;
@@ -93,6 +151,7 @@ FUNCTION(gsl_matrix, mul_elements) (TYPE(gsl_matrix) * a, const TYPE(gsl_matrix)
       size_t i, j;
 
       for (i = 0; i < M; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           for (j = 0; j < N; j++)
             {
@@ -100,11 +159,24 @@ FUNCTION(gsl_matrix, mul_elements) (TYPE(gsl_matrix) * a, const TYPE(gsl_matrix)
             }
         }
       
+=======
+	{
+	  for (j = 0; j < N; j++)
+	    {
+	      a->data[i * tda_a + j] *= b->data[i * tda_b + j];
+	    }
+	}
+
+>>>>>>> config
       return GSL_SUCCESS;
     }
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int 
+=======
+int
+>>>>>>> config
 FUNCTION(gsl_matrix, div_elements) (TYPE(gsl_matrix) * a, const TYPE(gsl_matrix) * b)
 {
   const size_t M = a->size1;
@@ -114,7 +186,11 @@ FUNCTION(gsl_matrix, div_elements) (TYPE(gsl_matrix) * a, const TYPE(gsl_matrix)
     {
       GSL_ERROR ("matrices must have same dimensions", GSL_EBADLEN);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else 
+=======
+  else
+>>>>>>> config
     {
       const size_t tda_a = a->tda;
       const size_t tda_b = b->tda;
@@ -122,6 +198,7 @@ FUNCTION(gsl_matrix, div_elements) (TYPE(gsl_matrix) * a, const TYPE(gsl_matrix)
       size_t i, j;
 
       for (i = 0; i < M; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           for (j = 0; j < N; j++)
             {
@@ -129,16 +206,30 @@ FUNCTION(gsl_matrix, div_elements) (TYPE(gsl_matrix) * a, const TYPE(gsl_matrix)
             }
         }
       
+=======
+	{
+	  for (j = 0; j < N; j++)
+	    {
+	      a->data[i * tda_a + j] /= b->data[i * tda_b + j];
+	    }
+	}
+
+>>>>>>> config
       return GSL_SUCCESS;
     }
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int 
+=======
+int
+>>>>>>> config
 FUNCTION(gsl_matrix, scale) (TYPE(gsl_matrix) * a, const double x)
 {
   const size_t M = a->size1;
   const size_t N = a->size2;
   const size_t tda = a->tda;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   size_t i, j;
   
@@ -154,6 +245,23 @@ FUNCTION(gsl_matrix, scale) (TYPE(gsl_matrix) * a, const double x)
 }
 
 int 
+=======
+
+  size_t i, j;
+
+  for (i = 0; i < M; i++)
+    {
+      for (j = 0; j < N; j++)
+	{
+	  a->data[i * tda + j] *= x;
+	}
+    }
+
+  return GSL_SUCCESS;
+}
+
+int
+>>>>>>> config
 FUNCTION(gsl_matrix, add_constant) (TYPE(gsl_matrix) * a, const double x)
 {
   const size_t M = a->size1;
@@ -165,16 +273,28 @@ FUNCTION(gsl_matrix, add_constant) (TYPE(gsl_matrix) * a, const double x)
   for (i = 0; i < M; i++)
     {
       for (j = 0; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           a->data[i * tda + j] += x;
         }
     }
   
+=======
+	{
+	  a->data[i * tda + j] += x;
+	}
+    }
+
+>>>>>>> config
   return GSL_SUCCESS;
 }
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int 
+=======
+int
+>>>>>>> config
 FUNCTION(gsl_matrix, add_diagonal) (TYPE(gsl_matrix) * a, const double x)
 {
   const size_t M = a->size1;

@@ -1,17 +1,31 @@
 /* randist/gausstail.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -36,14 +50,24 @@ gsl_ran_gaussian_tail (const gsl_rng * r, const double a, const double sigma)
   if (s < 1)
     {
       /* For small s, use a direct rejection method. The limit s < 1
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          can be adjusted to optimise the overall efficiency */
+=======
+	 can be adjusted to optimise the overall efficiency */
+>>>>>>> config
 
       double x;
 
       do
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           x = gsl_ran_gaussian (r, 1.0);
         }
+=======
+	{
+	  x = gsl_ran_gaussian (r, 1.0);
+	}
+>>>>>>> config
       while (x < s);
       return x * sigma;
     }
@@ -58,6 +82,7 @@ gsl_ran_gaussian_tail (const gsl_rng * r, const double a, const double sigma)
       double u, v, x;
 
       do
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           u = gsl_rng_uniform (r);
           do
@@ -67,6 +92,17 @@ gsl_ran_gaussian_tail (const gsl_rng * r, const double a, const double sigma)
           while (v == 0.0);
           x = sqrt (s * s - 2 * log (v));
         }
+=======
+	{
+	  u = gsl_rng_uniform (r);
+	  do
+	    {
+	      v = gsl_rng_uniform (r);
+	    }
+	  while (v == 0.0);
+	  x = sqrt (s * s - 2 * log (v));
+	}
+>>>>>>> config
       while (x * u > s);
       return x * sigma;
     }

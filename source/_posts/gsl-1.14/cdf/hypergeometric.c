@@ -28,7 +28,11 @@
  *
  * References:
  *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * T. Wu. An accurate computation of the hypergeometric distribution 
+=======
+ * T. Wu. An accurate computation of the hypergeometric distribution
+>>>>>>> config
  * function. ACM Transactions on Mathematical Software. Volume 19, number 1,
  * March 1993.
  *  This algorithm is not used, since it requires factoring the
@@ -37,7 +41,11 @@
  *  time than the algorithm used here.
  *
  * W. Feller. An Introduction to Probability Theory and Its Applications,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * third edition. 1968. Chapter 2, section 6. 
+=======
+ * third edition. 1968. Chapter 2, section 6.
+>>>>>>> config
  */
 
 #include <config.h>
@@ -51,7 +59,11 @@
 
 static double
 lower_tail (const unsigned int k, const unsigned int n1,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             const unsigned int n2, const unsigned int t)
+=======
+	    const unsigned int n2, const unsigned int t)
+>>>>>>> config
 {
   double relerr;
   int i = k;
@@ -59,29 +71,49 @@ lower_tail (const unsigned int k, const unsigned int n1,
 
   s = gsl_ran_hypergeometric_pdf (i, n1, n2, t);
   P = s;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   while (i > 0)
     {
       double factor =
         (i / (n1 - i + 1.0)) * ((n2 + i - t) / (t - i + 1.0));
+=======
+
+  while (i > 0)
+    {
+      double factor =
+	(i / (n1 - i + 1.0)) * ((n2 + i - t) / (t - i + 1.0));
+>>>>>>> config
       s *= factor;
       P += s;
       relerr = s / P;
       if (relerr < GSL_DBL_EPSILON)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         break;
+=======
+	break;
+>>>>>>> config
       i--;
     }
 
   return P;
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
 static double 
 upper_tail (const unsigned int k, const unsigned int n1,
             const unsigned int n2, const unsigned int t)
+=======
+
+static double
+upper_tail (const unsigned int k, const unsigned int n1,
+	    const unsigned int n2, const unsigned int t)
+>>>>>>> config
 {
   double relerr;
   unsigned int i = k + 1;
   double s, Q;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   s = gsl_ran_hypergeometric_pdf (i, n1, n2, t);
   Q = s;
@@ -90,11 +122,25 @@ upper_tail (const unsigned int k, const unsigned int n1,
     {
       double factor =
         ((n1 - i) / (i + 1.0)) * ((t - i) / (n2 + i + 1.0 - t));
+=======
+
+  s = gsl_ran_hypergeometric_pdf (i, n1, n2, t);
+  Q = s;
+
+  while (i < t)
+    {
+      double factor =
+	((n1 - i) / (i + 1.0)) * ((t - i) / (n2 + i + 1.0 - t));
+>>>>>>> config
       s *= factor;
       Q += s;
       relerr = s / Q;
       if (relerr < GSL_DBL_EPSILON)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         break;
+=======
+	break;
+>>>>>>> config
       i++;
     }
 
@@ -109,8 +155,13 @@ upper_tail (const unsigned int k, const unsigned int n1,
  */
 double
 gsl_cdf_hypergeometric_P (const unsigned int k,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                           const unsigned int n1,
                           const unsigned int n2, const unsigned int t)
+=======
+			  const unsigned int n1,
+			  const unsigned int n2, const unsigned int t)
+>>>>>>> config
 {
   double P;
 
@@ -131,6 +182,7 @@ gsl_cdf_hypergeometric_P (const unsigned int k,
       double midpoint = ((double)t * n1) / ((double)n1 + (double)n2);
 
       if (k >= midpoint)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           P = 1 - upper_tail (k, n1, n2, t);
         }
@@ -138,6 +190,15 @@ gsl_cdf_hypergeometric_P (const unsigned int k,
         {
           P = lower_tail (k, n1, n2, t);
         }
+=======
+	{
+	  P = 1 - upper_tail (k, n1, n2, t);
+	}
+      else
+	{
+	  P = lower_tail (k, n1, n2, t);
+	}
+>>>>>>> config
     }
 
   return P;
@@ -148,8 +209,13 @@ gsl_cdf_hypergeometric_P (const unsigned int k,
  */
 double
 gsl_cdf_hypergeometric_Q (const unsigned int k,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                           const unsigned int n1,
                           const unsigned int n2, const unsigned int t)
+=======
+			  const unsigned int n1,
+			  const unsigned int n2, const unsigned int t)
+>>>>>>> config
 {
   double Q;
 
@@ -170,6 +236,7 @@ gsl_cdf_hypergeometric_Q (const unsigned int k,
       double midpoint = ((double)t * n1) / ((double)n1 + (double)n2);
 
       if (k < midpoint)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           Q = 1 - lower_tail (k, n1, n2, t);
         }
@@ -177,6 +244,15 @@ gsl_cdf_hypergeometric_Q (const unsigned int k,
         {
           Q = upper_tail (k, n1, n2, t);
         }
+=======
+	{
+	  Q = 1 - lower_tail (k, n1, n2, t);
+	}
+      else
+	{
+	  Q = upper_tail (k, n1, n2, t);
+	}
+>>>>>>> config
     }
 
   return Q;

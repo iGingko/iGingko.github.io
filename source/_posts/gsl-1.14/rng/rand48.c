@@ -1,17 +1,31 @@
 /* rng/rand48.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -26,7 +40,11 @@
 /* This is the Unix rand48() generator. The generator returns the
    upper 32 bits from each term of the sequence,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    x_{n+1} = (a x_n + c) mod m 
+=======
+   x_{n+1} = (a x_n + c) mod m
+>>>>>>> config
 
    using 48-bit unsigned arithmetic, with a = 0x5DEECE66D , c = 0xB
    and m = 2^48. The seed specifies the upper 32 bits of the initial
@@ -66,16 +84,27 @@ rand48_advance (void *vstate)
   const unsigned long int x2 = (unsigned long int) state->x2 ;
 
   unsigned long int a ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   a = a0 * x0 + c0 ;
   state->x0 = (a & 0xFFFF) ;
  
+=======
+
+  a = a0 * x0 + c0 ;
+  state->x0 = (a & 0xFFFF) ;
+
+>>>>>>> config
   a >>= 16 ;
 
   /* although the next line may overflow we only need the top 16 bits
      in the following stage, so it does not matter */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   a += a0 * x1 + a1 * x0 ; 
+=======
+  a += a0 * x1 + a1 * x0 ;
+>>>>>>> config
   state->x1 = (a & 0xFFFF) ;
 
   a >>= 16 ;
@@ -83,7 +112,11 @@ rand48_advance (void *vstate)
   state->x2 = (a & 0xFFFF) ;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static unsigned long int 
+=======
+static unsigned long int
+>>>>>>> config
 rand48_get (void *vstate)
 {
   unsigned long int x1, x2;
@@ -102,11 +135,19 @@ rand48_get_double (void * vstate)
 {
   rand48_state_t *state = (rand48_state_t *) vstate;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   rand48_advance (state) ;  
 
   return (ldexp((double) state->x2, -16)
           + ldexp((double) state->x1, -32) 
           + ldexp((double) state->x0, -48)) ;
+=======
+  rand48_advance (state) ;
+
+  return (ldexp((double) state->x2, -16)
+	  + ldexp((double) state->x1, -32)
+	  + ldexp((double) state->x0, -48)) ;
+>>>>>>> config
 }
 
 static void
@@ -120,7 +161,11 @@ rand48_set (void *vstate, unsigned long int s)
       state->x1 = 0xABCD ;
       state->x2 = 0x1234 ;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else 
+=======
+  else
+>>>>>>> config
     {
       state->x0 = 0x330E ;
       state->x1 = s & 0xFFFF ;

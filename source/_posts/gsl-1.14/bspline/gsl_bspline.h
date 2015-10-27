@@ -74,6 +74,7 @@ int
 gsl_bspline_knots(const gsl_vector *breakpts, gsl_bspline_workspace *w);
 
 int gsl_bspline_knots_uniform(const double a, const double b,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                               gsl_bspline_workspace *w);
 
 int
@@ -86,6 +87,20 @@ gsl_bspline_eval_nonzero(const double x,
                          size_t *istart,
                          size_t *iend,
                          gsl_bspline_workspace *w);
+=======
+			      gsl_bspline_workspace *w);
+
+int
+gsl_bspline_eval(const double x, gsl_vector *B,
+		 gsl_bspline_workspace *w);
+
+int
+gsl_bspline_eval_nonzero(const double x,
+			 gsl_vector *Bk,
+			 size_t *istart,
+			 size_t *iend,
+			 gsl_bspline_workspace *w);
+>>>>>>> config
 
 gsl_bspline_deriv_workspace *
 gsl_bspline_deriv_alloc(const size_t k);
@@ -95,6 +110,7 @@ gsl_bspline_deriv_free(gsl_bspline_deriv_workspace *w);
 
 int
 gsl_bspline_deriv_eval(const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                        const size_t nderiv,
                        gsl_matrix *dB,
                        gsl_bspline_workspace *w,
@@ -108,6 +124,21 @@ gsl_bspline_deriv_eval_nonzero(const double x,
                                size_t *iend,
                                gsl_bspline_workspace *w,
                                gsl_bspline_deriv_workspace *dw);
+=======
+		       const size_t nderiv,
+		       gsl_matrix *dB,
+		       gsl_bspline_workspace *w,
+		       gsl_bspline_deriv_workspace *dw);
+
+int
+gsl_bspline_deriv_eval_nonzero(const double x,
+			       const size_t nderiv,
+			       gsl_matrix *dB,
+			       size_t *istart,
+			       size_t *iend,
+			       gsl_bspline_workspace *w,
+			       gsl_bspline_deriv_workspace *dw);
+>>>>>>> config
 
 __END_DECLS
 

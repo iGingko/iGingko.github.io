@@ -16,7 +16,11 @@
    paper M.L.Glasser, I.J.Zucker, Proc.Natl.Acad.Sci.USA 74
    1800 (1977) */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* For simplicity we compute the integral over the region 
+=======
+/* For simplicity we compute the integral over the region
+>>>>>>> config
    (0,0,0) -> (pi,pi,pi) and multiply by 8 */
 
 double exact = 1.3932039296856768591842462603255;
@@ -36,7 +40,11 @@ display_results (char *title, double result, double error)
   printf ("sigma  = % .6f\n", error);
   printf ("exact  = % .6f\n", exact);
   printf ("error  = % .6f = %.2g sigma\n", result - exact,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           fabs (result - exact) / error);
+=======
+	  fabs (result - exact) / error);
+>>>>>>> config
 }
 
 int
@@ -61,8 +69,13 @@ main (void)
 
   {
     gsl_monte_plain_state *s = gsl_monte_plain_alloc (3);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     gsl_monte_plain_integrate (&G, xl, xu, 3, calls, r, s, 
                                &res, &err);
+=======
+    gsl_monte_plain_integrate (&G, xl, xu, 3, calls, r, s,
+			       &res, &err);
+>>>>>>> config
     gsl_monte_plain_free (s);
 
     display_results ("plain", res, err);
@@ -71,7 +84,11 @@ main (void)
   {
     gsl_monte_miser_state *s = gsl_monte_miser_alloc (3);
     gsl_monte_miser_integrate (&G, xl, xu, 3, calls, r, s,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                &res, &err);
+=======
+			       &res, &err);
+>>>>>>> config
     gsl_monte_miser_free (s);
 
     display_results ("miser", res, err);
@@ -81,17 +98,28 @@ main (void)
     gsl_monte_vegas_state *s = gsl_monte_vegas_alloc (3);
 
     gsl_monte_vegas_integrate (&G, xl, xu, 3, 10000, r, s,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                &res, &err);
+=======
+			       &res, &err);
+>>>>>>> config
     display_results ("vegas warm-up", res, err);
 
     printf ("converging...\n");
 
     do
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gsl_monte_vegas_integrate (&G, xl, xu, 3, calls/5, r, s,
                                    &res, &err);
         printf ("result = % .6f sigma = % .6f "
                 "chisq/dof = %.1f\n", res, err, gsl_monte_vegas_chisq (s));
+=======
+	gsl_monte_vegas_integrate (&G, xl, xu, 3, calls/5, r, s,
+				   &res, &err);
+	printf ("result = % .6f sigma = % .6f "
+		"chisq/dof = %.1f\n", res, err, gsl_monte_vegas_chisq (s));
+>>>>>>> config
       }
     while (fabs (gsl_monte_vegas_chisq (s) - 1.0) > 0.5);
 

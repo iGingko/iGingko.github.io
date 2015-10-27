@@ -1,17 +1,31 @@
 /* blas/source_tbsv_r.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -37,6 +51,7 @@
       const INDEX j_max = GSL_MIN(N, i + K + 1);
       INDEX jx = OFFSET(N, incX) + j_min * incX;
       for (j = j_min; j < j_max; j++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         const BASE Aij = A[lda * i + (j - i)];
         tmp -= Aij * X[jx];
         jx += incX;
@@ -45,11 +60,25 @@
         X[ix] = tmp / A[lda * i + 0];
       } else {
         X[ix] = tmp;
+=======
+	const BASE Aij = A[lda * i + (j - i)];
+	tmp -= Aij * X[jx];
+	jx += incX;
+      }
+      if (nonunit) {
+	X[ix] = tmp / A[lda * i + 0];
+      } else {
+	X[ix] = tmp;
+>>>>>>> config
       }
       ix -= incX;
     }
   } else if ((order == CblasRowMajor && Trans == CblasNoTrans && Uplo == CblasLower)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              || (order == CblasColMajor && Trans == CblasTrans && Uplo == CblasUpper)) {
+=======
+	     || (order == CblasColMajor && Trans == CblasTrans && Uplo == CblasUpper)) {
+>>>>>>> config
 
     /* forward substitution */
     INDEX ix = OFFSET(N, incX);
@@ -60,6 +89,7 @@
       const INDEX j_max = i;
       INDEX jx = OFFSET(N, incX) + j_min * incX;
       for (j = j_min; j < j_max; j++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         const BASE Aij = A[lda * i + (K + j - i)];
         tmp -= Aij * X[jx];
         jx += incX;
@@ -68,11 +98,25 @@
         X[ix] = tmp / A[lda * i + K];
       } else {
         X[ix] = tmp;
+=======
+	const BASE Aij = A[lda * i + (K + j - i)];
+	tmp -= Aij * X[jx];
+	jx += incX;
+      }
+      if (nonunit) {
+	X[ix] = tmp / A[lda * i + K];
+      } else {
+	X[ix] = tmp;
+>>>>>>> config
       }
       ix += incX;
     }
   } else if ((order == CblasRowMajor && Trans == CblasTrans && Uplo == CblasUpper)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              || (order == CblasColMajor && Trans == CblasNoTrans && Uplo == CblasLower)) {
+=======
+	     || (order == CblasColMajor && Trans == CblasNoTrans && Uplo == CblasLower)) {
+>>>>>>> config
 
     /* form  x := inv( A' )*x */
 
@@ -84,6 +128,7 @@
       const INDEX j_max = i;
       INDEX jx = OFFSET(N, incX) + j_min * incX;
       for (j = j_min; j < j_max; j++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         const BASE Aji = A[(i - j) + lda * j];
         tmp -= Aji * X[jx];
         jx += incX;
@@ -92,11 +137,25 @@
         X[ix] = tmp / A[0 + lda * i];
       } else {
         X[ix] = tmp;
+=======
+	const BASE Aji = A[(i - j) + lda * j];
+	tmp -= Aji * X[jx];
+	jx += incX;
+      }
+      if (nonunit) {
+	X[ix] = tmp / A[0 + lda * i];
+      } else {
+	X[ix] = tmp;
+>>>>>>> config
       }
       ix += incX;
     }
   } else if ((order == CblasRowMajor && Trans == CblasTrans && Uplo == CblasLower)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              || (order == CblasColMajor && Trans == CblasNoTrans && Uplo == CblasUpper)) {
+=======
+	     || (order == CblasColMajor && Trans == CblasNoTrans && Uplo == CblasUpper)) {
+>>>>>>> config
 
     /* backsubstitution */
     INDEX ix = OFFSET(N, incX) + (N - 1) * incX;
@@ -106,6 +165,7 @@
       const INDEX j_max = GSL_MIN(N, i + K + 1);
       INDEX jx = OFFSET(N, incX) + j_min * incX;
       for (j = j_min; j < j_max; j++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         const BASE Aji = A[(K + i - j) + lda * j];
         tmp -= Aji * X[jx];
         jx += incX;
@@ -114,6 +174,16 @@
         X[ix] = tmp / A[K + lda * i];
       } else {
         X[ix] = tmp;
+=======
+	const BASE Aji = A[(K + i - j) + lda * j];
+	tmp -= Aji * X[jx];
+	jx += incX;
+      }
+      if (nonunit) {
+	X[ix] = tmp / A[K + lda * i];
+      } else {
+	X[ix] = tmp;
+>>>>>>> config
       }
       ix -= incX;
     }

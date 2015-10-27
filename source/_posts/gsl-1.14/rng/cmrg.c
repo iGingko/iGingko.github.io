@@ -1,17 +1,31 @@
 /* rng/cmrg.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -40,7 +54,11 @@
    m1 = 2^31 - 1 = 2147483647
    m2 = 2^31 - 2000169 = 2145483479
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    We initialize the generator with 
+=======
+   We initialize the generator with
+>>>>>>> config
 
    x_1 = s_1 MOD m1, x_2 = s_2 MOD m1, x_3 = s_3 MOD m1
    y_1 = s_4 MOD m2, y_2 = s_5 MOD m2, y_3 = s_6 MOD m2
@@ -135,14 +153,22 @@ cmrg_get (void *vstate)
     if (state->y1 < 0)
       state->y1 += m2;
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   if (state->x1 < state->y1)
     return (state->x1 - state->y1 + m1);
   else
     return (state->x1 - state->y1);
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static double 
+=======
+static double
+>>>>>>> config
 cmrg_get_double (void *vstate)
 {
   return cmrg_get (vstate) / 2147483647.0 ;

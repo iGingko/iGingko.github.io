@@ -1,17 +1,31 @@
 /* err/test_results.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -55,17 +69,29 @@ initialise (void)
   if (*p == '\0') /* environment variable is empty */
     return ;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   verbose = strtoul (p, 0, 0);  
+=======
+  verbose = strtoul (p, 0, 0);
+>>>>>>> config
 
   return;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static void 
+=======
+static void
+>>>>>>> config
 update (int s)
 {
   tests++;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (s == 0) 
+=======
+  if (s == 0)
+>>>>>>> config
     {
       passed++;
     }
@@ -88,6 +114,7 @@ gsl_test (int status, const char *test_description,...)
 
 #if HAVE_VPRINTF
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         va_list ap;
 #ifdef STDC_HEADERS
         va_start (ap, test_description);
@@ -96,11 +123,25 @@ gsl_test (int status, const char *test_description,...)
 #endif
         vprintf (test_description, ap);
         va_end (ap);
+=======
+	va_list ap;
+#ifdef STDC_HEADERS
+	va_start (ap, test_description);
+#else
+	va_start (ap);
+#endif
+	vprintf (test_description, ap);
+	va_end (ap);
+>>>>>>> config
       }
 #endif
 
       if (status && !verbose)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         printf(" [%u]", tests);
+=======
+	printf(" [%u]", tests);
+>>>>>>> config
 
       printf("\n");
       fflush (stdout);
@@ -110,7 +151,11 @@ gsl_test (int status, const char *test_description,...)
 
 void
 gsl_test_rel (double result, double expected, double relative_error,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
               const char *test_description,...)
+=======
+	      const char *test_description,...)
+>>>>>>> config
 {
   int status ;
 
@@ -118,6 +163,7 @@ gsl_test_rel (double result, double expected, double relative_error,
 
   /* Check for NaN vs inf vs number */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (gsl_isnan(result) || gsl_isnan(expected)) 
     {
       status = gsl_isnan(result) != gsl_isnan(expected); 
@@ -132,6 +178,22 @@ gsl_test_rel (double result, double expected, double relative_error,
       status = -1;
     }
   else if (expected != 0 ) 
+=======
+  if (gsl_isnan(result) || gsl_isnan(expected))
+    {
+      status = gsl_isnan(result) != gsl_isnan(expected);
+    }
+  else if (gsl_isinf(result) || gsl_isinf(expected))
+    {
+      status = gsl_isinf(result) != gsl_isinf(expected);
+    }
+  else if ((expected > 0 && expected < GSL_DBL_MIN)
+	   || (expected < 0 && expected > -(GSL_DBL_MIN)))
+    {
+      status = -1;
+    }
+  else if (expected != 0 )
+>>>>>>> config
     {
       status = (fabs(result-expected)/fabs(expected) > relative_error) ;
     }
@@ -148,6 +210,7 @@ gsl_test_rel (double result, double expected, double relative_error,
 
 #if HAVE_VPRINTF
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         va_list ap;
 #ifdef STDC_HEADERS
         va_start (ap, test_description);
@@ -156,10 +219,21 @@ gsl_test_rel (double result, double expected, double relative_error,
 #endif
         vprintf (test_description, ap);
         va_end (ap);
+=======
+	va_list ap;
+#ifdef STDC_HEADERS
+	va_start (ap, test_description);
+#else
+	va_start (ap);
+#endif
+	vprintf (test_description, ap);
+	va_end (ap);
+>>>>>>> config
       }
 #endif
 
       if (status == 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           if (strlen(test_description) < 45)
             {
@@ -182,6 +256,30 @@ gsl_test_rel (double result, double expected, double relative_error,
 
       if (status && !verbose)
         printf(" [%u]", tests);
+=======
+	{
+	  if (strlen(test_description) < 45)
+	    {
+	      printf(" (%g observed vs %g expected)", result, expected) ;
+	    }
+	  else
+	    {
+	      printf(" (%g obs vs %g exp)", result, expected) ;
+	    }
+	}
+      else
+	{
+	  printf(" (%.18g observed vs %.18g expected)", result, expected) ;
+	}
+
+      if (status == -1)
+	{
+	  printf(" [test uses subnormal value]") ;
+	}
+
+      if (status && !verbose)
+	printf(" [%u]", tests);
+>>>>>>> config
 
       printf ("\n") ;
       fflush (stdout);
@@ -190,7 +288,11 @@ gsl_test_rel (double result, double expected, double relative_error,
 
 void
 gsl_test_abs (double result, double expected, double absolute_error,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
               const char *test_description,...)
+=======
+	      const char *test_description,...)
+>>>>>>> config
 {
   int status ;
 
@@ -198,6 +300,7 @@ gsl_test_abs (double result, double expected, double absolute_error,
 
   /* Check for NaN vs inf vs number */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (gsl_isnan(result) || gsl_isnan(expected)) 
     {
       status = gsl_isnan(result) != gsl_isnan(expected); 
@@ -212,6 +315,22 @@ gsl_test_abs (double result, double expected, double absolute_error,
       status = -1;
     }
   else 
+=======
+  if (gsl_isnan(result) || gsl_isnan(expected))
+    {
+      status = gsl_isnan(result) != gsl_isnan(expected);
+    }
+  else if (gsl_isinf(result) || gsl_isinf(expected))
+    {
+      status = gsl_isinf(result) != gsl_isinf(expected);
+    }
+  else if ((expected > 0 && expected < GSL_DBL_MIN)
+	   || (expected < 0 && expected > -(GSL_DBL_MIN)))
+    {
+      status = -1;
+    }
+  else
+>>>>>>> config
     {
       status = fabs(result-expected) > absolute_error ;
     }
@@ -224,6 +343,7 @@ gsl_test_abs (double result, double expected, double absolute_error,
 
 #if HAVE_VPRINTF
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         va_list ap;
         
 #ifdef STDC_HEADERS
@@ -233,10 +353,22 @@ gsl_test_abs (double result, double expected, double absolute_error,
 #endif
         vprintf (test_description, ap);
         va_end (ap);
+=======
+	va_list ap;
+
+#ifdef STDC_HEADERS
+	va_start (ap, test_description);
+#else
+	va_start (ap);
+#endif
+	vprintf (test_description, ap);
+	va_end (ap);
+>>>>>>> config
       }
 #endif
 
       if (status == 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           if (strlen(test_description) < 45)
             {
@@ -259,6 +391,30 @@ gsl_test_abs (double result, double expected, double absolute_error,
 
       if (status && !verbose)
         printf(" [%u]", tests);
+=======
+	{
+	  if (strlen(test_description) < 45)
+	    {
+	      printf(" (%g observed vs %g expected)", result, expected) ;
+	    }
+	  else
+	    {
+	      printf(" (%g obs vs %g exp)", result, expected) ;
+	    }
+	}
+      else
+	{
+	  printf(" (%.18g observed vs %.18g expected)", result, expected) ;
+	}
+
+      if (status == -1)
+	{
+	  printf(" [test uses subnormal value]") ;
+	}
+
+      if (status && !verbose)
+	printf(" [%u]", tests);
+>>>>>>> config
 
       printf ("\n") ;
       fflush (stdout);
@@ -268,28 +424,48 @@ gsl_test_abs (double result, double expected, double absolute_error,
 
 void
 gsl_test_factor (double result, double expected, double factor,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  const char *test_description,...)
+=======
+		 const char *test_description,...)
+>>>>>>> config
 {
   int status;
 
   if (!tests) initialise();
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   if ((expected > 0 && expected < GSL_DBL_MIN)
       || (expected < 0 && expected > -(GSL_DBL_MIN)))
     {
       status = -1;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else if (result == expected) 
     {
       status = 0;
     }
   else if (expected == 0.0) 
+=======
+  else if (result == expected)
+    {
+      status = 0;
+    }
+  else if (expected == 0.0)
+>>>>>>> config
     {
       status = (result > expected || result < expected);
     }
   else
     {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       double u = result / expected; 
+=======
+      double u = result / expected;
+>>>>>>> config
       status = (u > factor || u < 1.0 / factor) ;
     }
 
@@ -301,6 +477,7 @@ gsl_test_factor (double result, double expected, double factor,
 
 #if HAVE_VPRINTF
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         va_list ap;
         
 #ifdef STDC_HEADERS
@@ -335,6 +512,42 @@ gsl_test_factor (double result, double expected, double factor,
 
       if (status && !verbose)
         printf(" [%u]", tests);
+=======
+	va_list ap;
+
+#ifdef STDC_HEADERS
+	va_start (ap, test_description);
+#else
+	va_start (ap);
+#endif
+	vprintf (test_description, ap);
+	va_end (ap);
+      }
+#endif
+      if (status == 0)
+	{
+	  if (strlen(test_description) < 45)
+	    {
+	      printf(" (%g observed vs %g expected)", result, expected) ;
+	    }
+	  else
+	    {
+	      printf(" (%g obs vs %g exp)", result, expected) ;
+	    }
+	}
+      else
+	{
+	  printf(" (%.18g observed vs %.18g expected)", result, expected) ;
+	}
+
+      if (status == -1)
+	{
+	  printf(" [test uses subnormal value]") ;
+	}
+
+      if (status && !verbose)
+	printf(" [%u]", tests);
+>>>>>>> config
 
       printf ("\n") ;
       fflush (stdout);
@@ -356,6 +569,7 @@ gsl_test_int (int result, int expected, const char *test_description,...)
 
 #if HAVE_VPRINTF
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         va_list ap;
         
 #ifdef STDC_HEADERS
@@ -378,6 +592,30 @@ gsl_test_int (int result, int expected, const char *test_description,...)
 
       if (status && !verbose)
         printf(" [%u]", tests);
+=======
+	va_list ap;
+
+#ifdef STDC_HEADERS
+	va_start (ap, test_description);
+#else
+	va_start (ap);
+#endif
+	vprintf (test_description, ap);
+	va_end (ap);
+      }
+#endif
+      if (status == 0)
+	{
+	  printf(" (%d observed vs %d expected)", result, expected) ;
+	}
+      else
+	{
+	  printf(" (%d observed vs %d expected)", result, expected) ;
+	}
+
+      if (status && !verbose)
+	printf(" [%u]", tests);
+>>>>>>> config
 
       printf ("\n");
       fflush (stdout);
@@ -385,8 +623,13 @@ gsl_test_int (int result, int expected, const char *test_description,...)
 }
 
 void
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_test_str (const char * result, const char * expected, 
               const char *test_description,...)
+=======
+gsl_test_str (const char * result, const char * expected,
+	      const char *test_description,...)
+>>>>>>> config
 {
   int status = strcmp(result,expected) ;
 
@@ -400,6 +643,7 @@ gsl_test_str (const char * result, const char * expected,
 
 #if HAVE_VPRINTF
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         va_list ap;
         
 #ifdef STDC_HEADERS
@@ -418,6 +662,26 @@ gsl_test_str (const char * result, const char * expected,
 
       if (status && !verbose)
         printf(" [%u]", tests);
+=======
+	va_list ap;
+
+#ifdef STDC_HEADERS
+	va_start (ap, test_description);
+#else
+	va_start (ap);
+#endif
+	vprintf (test_description, ap);
+	va_end (ap);
+      }
+#endif
+      if (status)
+	{
+	  printf(" (%s observed vs %s expected)", result, expected) ;
+	}
+
+      if (status && !verbose)
+	printf(" [%u]", tests);
+>>>>>>> config
 
       printf ("\n");
       fflush (stdout);
@@ -444,15 +708,24 @@ gsl_test_summary (void)
   if (tests != passed + failed)
     {
       if (verbose)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         printf ("TEST RESULTS DO NOT ADD UP %d != %d + %d\n",
                 tests, passed, failed);
+=======
+	printf ("TEST RESULTS DO NOT ADD UP %d != %d + %d\n",
+		tests, passed, failed);
+>>>>>>> config
       return EXIT_FAILURE;
     }
 
   if (passed == tests)
     {
       if (!verbose)         /* display a summary of passed tests */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         printf ("Completed [%d/%d]\n", passed, tests);
+=======
+	printf ("Completed [%d/%d]\n", passed, tests);
+>>>>>>> config
 
       return EXIT_SUCCESS;
     }

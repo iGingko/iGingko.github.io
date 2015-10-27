@@ -1,17 +1,31 @@
 /* matrix/oper_complex_source.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -19,7 +33,11 @@
 
 int
 FUNCTION (gsl_matrix, add) (TYPE (gsl_matrix) * a,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                             const TYPE (gsl_matrix) * b)
+=======
+			    const TYPE (gsl_matrix) * b)
+>>>>>>> config
 {
   const size_t M = a->size1;
   const size_t N = a->size2;
@@ -36,6 +54,7 @@ FUNCTION (gsl_matrix, add) (TYPE (gsl_matrix) * a,
       size_t i, j;
 
       for (i = 0; i < M; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           for (j = 0; j < N; j++)
             {
@@ -46,6 +65,18 @@ FUNCTION (gsl_matrix, add) (TYPE (gsl_matrix) * a,
               a->data[aij + 1] += b->data[bij + 1];
             }
         }
+=======
+	{
+	  for (j = 0; j < N; j++)
+	    {
+	      const size_t aij = 2 * (i * tda_a + j);
+	      const size_t bij = 2 * (i * tda_b + j);
+
+	      a->data[aij] += b->data[bij];
+	      a->data[aij + 1] += b->data[bij + 1];
+	    }
+	}
+>>>>>>> config
 
       return GSL_SUCCESS;
     }
@@ -53,7 +84,11 @@ FUNCTION (gsl_matrix, add) (TYPE (gsl_matrix) * a,
 
 int
 FUNCTION (gsl_matrix, sub) (TYPE (gsl_matrix) * a,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                             const TYPE (gsl_matrix) * b)
+=======
+			    const TYPE (gsl_matrix) * b)
+>>>>>>> config
 {
   const size_t M = a->size1;
   const size_t N = a->size2;
@@ -70,6 +105,7 @@ FUNCTION (gsl_matrix, sub) (TYPE (gsl_matrix) * a,
       size_t i, j;
 
       for (i = 0; i < M; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           for (j = 0; j < N; j++)
             {
@@ -80,6 +116,18 @@ FUNCTION (gsl_matrix, sub) (TYPE (gsl_matrix) * a,
               a->data[aij + 1] -= b->data[bij + 1];
             }
         }
+=======
+	{
+	  for (j = 0; j < N; j++)
+	    {
+	      const size_t aij = 2 * (i * tda_a + j);
+	      const size_t bij = 2 * (i * tda_b + j);
+
+	      a->data[aij] -= b->data[bij];
+	      a->data[aij + 1] -= b->data[bij + 1];
+	    }
+	}
+>>>>>>> config
 
       return GSL_SUCCESS;
     }
@@ -87,7 +135,11 @@ FUNCTION (gsl_matrix, sub) (TYPE (gsl_matrix) * a,
 
 int
 FUNCTION (gsl_matrix, mul_elements) (TYPE (gsl_matrix) * a,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                      const TYPE (gsl_matrix) * b)
+=======
+				     const TYPE (gsl_matrix) * b)
+>>>>>>> config
 {
   const size_t M = a->size1;
   const size_t N = a->size2;
@@ -104,6 +156,7 @@ FUNCTION (gsl_matrix, mul_elements) (TYPE (gsl_matrix) * a,
       size_t i, j;
 
       for (i = 0; i < M; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           for (j = 0; j < N; j++)
             {
@@ -120,6 +173,24 @@ FUNCTION (gsl_matrix, mul_elements) (TYPE (gsl_matrix) * a,
               a->data[aij + 1] = ar * bi + ai * br;
             }
         }
+=======
+	{
+	  for (j = 0; j < N; j++)
+	    {
+	      const size_t aij = 2 * (i * tda_a + j);
+	      const size_t bij = 2 * (i * tda_b + j);
+
+	      ATOMIC ar = a->data[aij];
+	      ATOMIC ai = a->data[aij + 1];
+
+	      ATOMIC br = b->data[bij];
+	      ATOMIC bi = b->data[bij + 1];
+
+	      a->data[aij] = ar * br - ai * bi;
+	      a->data[aij + 1] = ar * bi + ai * br;
+	    }
+	}
+>>>>>>> config
 
       return GSL_SUCCESS;
     }
@@ -127,7 +198,11 @@ FUNCTION (gsl_matrix, mul_elements) (TYPE (gsl_matrix) * a,
 
 int
 FUNCTION (gsl_matrix, div_elements) (TYPE (gsl_matrix) * a,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                      const TYPE (gsl_matrix) * b)
+=======
+				     const TYPE (gsl_matrix) * b)
+>>>>>>> config
 {
   const size_t M = a->size1;
   const size_t N = a->size2;
@@ -144,6 +219,7 @@ FUNCTION (gsl_matrix, div_elements) (TYPE (gsl_matrix) * a,
       size_t i, j;
 
       for (i = 0; i < M; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           for (j = 0; j < N; j++)
             {
@@ -165,6 +241,29 @@ FUNCTION (gsl_matrix, div_elements) (TYPE (gsl_matrix) * a,
               a->data[aij + 1] = (ai * sbr - ar * sbi) * s;
             }
         }
+=======
+	{
+	  for (j = 0; j < N; j++)
+	    {
+	      const size_t aij = 2 * (i * tda_a + j);
+	      const size_t bij = 2 * (i * tda_b + j);
+
+	      ATOMIC ar = a->data[aij];
+	      ATOMIC ai = a->data[aij + 1];
+
+	      ATOMIC br = b->data[bij];
+	      ATOMIC bi = b->data[bij + 1];
+
+	      ATOMIC s = 1.0 / hypot(br, bi);
+
+	      ATOMIC sbr = s * br;
+	      ATOMIC sbi = s * bi;
+
+	      a->data[aij] = (ar * sbr + ai * sbi) * s;
+	      a->data[aij + 1] = (ai * sbr - ar * sbi) * s;
+	    }
+	}
+>>>>>>> config
 
       return GSL_SUCCESS;
     }
@@ -184,6 +283,7 @@ int FUNCTION (gsl_matrix, scale) (TYPE (gsl_matrix) * a, const BASE x)
   for (i = 0; i < M; i++)
     {
       for (j = 0; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           const size_t aij = 2 * (i * tda + j);
 
@@ -193,6 +293,17 @@ int FUNCTION (gsl_matrix, scale) (TYPE (gsl_matrix) * a, const BASE x)
           a->data[aij] = ar * xr - ai * xi;
           a->data[aij + 1] = ar * xi + ai * xr;
         }
+=======
+	{
+	  const size_t aij = 2 * (i * tda + j);
+
+	  ATOMIC ar = a->data[aij];
+	  ATOMIC ai = a->data[aij + 1];
+
+	  a->data[aij] = ar * xr - ai * xi;
+	  a->data[aij + 1] = ar * xi + ai * xr;
+	}
+>>>>>>> config
     }
 
   return GSL_SUCCESS;
@@ -209,10 +320,17 @@ int FUNCTION (gsl_matrix, add_constant) (TYPE (gsl_matrix) * a, const BASE x)
   for (i = 0; i < M; i++)
     {
       for (j = 0; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           a->data[2 * (i * tda + j)] += GSL_REAL (x);
           a->data[2 * (i * tda + j) + 1] += GSL_IMAG (x);
         }
+=======
+	{
+	  a->data[2 * (i * tda + j)] += GSL_REAL (x);
+	  a->data[2 * (i * tda + j) + 1] += GSL_IMAG (x);
+	}
+>>>>>>> config
     }
 
   return GSL_SUCCESS;

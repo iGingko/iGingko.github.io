@@ -3,7 +3,11 @@ const size_t kirby2_P = 5;
 
 /* double kirby2_x0[5] = { 2, -0.1, 0.003, -0.001, 0.00001 }; */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 double kirby2_x0[5] = { 1.5, -0.15, 0.0025, -0.0015, 0.00002 }; 
+=======
+double kirby2_x0[5] = { 1.5, -0.15, 0.0025, -0.0015, 0.00002 };
+>>>>>>> config
 
 double kirby2_x[5] = {
   1.6745063063E+00,
@@ -348,7 +352,11 @@ kirby2_f (const gsl_vector * x, void *params, gsl_vector * f)
     {
       double x = kirby2_F0[i];
       double y = ((b[0] + x* (b[1]  + x * b[2]))
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   / (1 + x*(b[3]  + x *b[4])));
+=======
+		  / (1 + x*(b[3]  + x *b[4])));
+>>>>>>> config
       gsl_vector_set (f, i, kirby2_F1[i] - y);
     }
 
@@ -383,7 +391,11 @@ kirby2_df (const gsl_vector * x, void *params, gsl_matrix * df)
 
 int
 kirby2_fdf (const gsl_vector * x, void *params,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
            gsl_vector * f, gsl_matrix * df)
+=======
+	   gsl_vector * f, gsl_matrix * df)
+>>>>>>> config
 {
   kirby2_f (x, params, f);
   kirby2_df (x, params, df);

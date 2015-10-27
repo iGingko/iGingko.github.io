@@ -1,17 +1,31 @@
 /* matrix/test_complex_source.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -42,6 +56,7 @@ FUNCTION (test, func) (void)
   for (i = 0; i < M; i++)
     {
       for (j = 0; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           BASE z = ZERO;
           k++;
@@ -49,6 +64,15 @@ FUNCTION (test, func) (void)
           GSL_IMAG (z) = (ATOMIC) (k + 1000);
           FUNCTION (gsl_matrix, set) (m, i, j, z);
         }
+=======
+	{
+	  BASE z = ZERO;
+	  k++;
+	  GSL_REAL (z) = (ATOMIC) k;
+	  GSL_IMAG (z) = (ATOMIC) (k + 1000);
+	  FUNCTION (gsl_matrix, set) (m, i, j, z);
+	}
+>>>>>>> config
     }
 
   status = 0;
@@ -56,12 +80,21 @@ FUNCTION (test, func) (void)
   for (i = 0; i < M; i++)
     {
       for (j = 0; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           k++;
           if (m->data[2 * (i * N + j)] != k ||
               m->data[2 * (i * N + j) + 1] != k + 1000)
             status = 1;
         }
+=======
+	{
+	  k++;
+	  if (m->data[2 * (i * N + j)] != k ||
+	      m->data[2 * (i * N + j) + 1] != k + 1000)
+	    status = 1;
+	}
+>>>>>>> config
     }
 
   gsl_test (status, NAME (gsl_matrix) "_set writes into array");
@@ -71,12 +104,21 @@ FUNCTION (test, func) (void)
   for (i = 0; i < M; i++)
     {
       for (j = 0; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           BASE z = FUNCTION (gsl_matrix, get) (m, i, j);
           k++;
           if (GSL_REAL (z) != k || GSL_IMAG (z) != k + 1000)
             status = 1;
         }
+=======
+	{
+	  BASE z = FUNCTION (gsl_matrix, get) (m, i, j);
+	  k++;
+	  if (GSL_REAL (z) != k || GSL_IMAG (z) != k + 1000)
+	    status = 1;
+	}
+>>>>>>> config
     }
   gsl_test (status, NAME (gsl_matrix) "_get reads from array");
 
@@ -87,10 +129,17 @@ FUNCTION (test, func) (void)
   {
     int status = (FUNCTION(gsl_matrix,isnull)(m) != 1);
     TEST (status, "_isnull" DESC " on calloc matrix");
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     status = (FUNCTION(gsl_matrix,ispos)(m) != 0);
     TEST (status, "_ispos" DESC " on calloc matrix");
     
+=======
+
+    status = (FUNCTION(gsl_matrix,ispos)(m) != 0);
+    TEST (status, "_ispos" DESC " on calloc matrix");
+
+>>>>>>> config
     status = (FUNCTION(gsl_matrix,isneg)(m) != 0);
     TEST (status, "_isneg" DESC " on calloc matrix");
   }
@@ -98,10 +147,17 @@ FUNCTION (test, func) (void)
   for (i = 0; i < M; i++)
     {
       for (j = 0; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           BASE z = ZERO;
           FUNCTION (gsl_matrix, set) (m, i, j, z);
         }
+=======
+	{
+	  BASE z = ZERO;
+	  FUNCTION (gsl_matrix, set) (m, i, j, z);
+	}
+>>>>>>> config
     }
 
   {
@@ -120,6 +176,7 @@ FUNCTION (test, func) (void)
   for (i = 0; i < M; i++)
     {
       for (j = 0; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           BASE z = ZERO;
           k++;
@@ -127,6 +184,15 @@ FUNCTION (test, func) (void)
           GSL_IMAG (z) = (ATOMIC) ((k + 5) % 10);
           FUNCTION (gsl_matrix, set) (m, i, j, z);
         }
+=======
+	{
+	  BASE z = ZERO;
+	  k++;
+	  GSL_REAL (z) = (ATOMIC) (k % 10);
+	  GSL_IMAG (z) = (ATOMIC) ((k + 5) % 10);
+	  FUNCTION (gsl_matrix, set) (m, i, j, z);
+	}
+>>>>>>> config
     }
 
   {
@@ -144,6 +210,7 @@ FUNCTION (test, func) (void)
   for (i = 0; i < M; i++)
     {
       for (j = 0; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           BASE z = ZERO;
           k++;
@@ -151,6 +218,15 @@ FUNCTION (test, func) (void)
           GSL_IMAG (z) = (ATOMIC) (((k + 5) % 10) - 5);
           FUNCTION (gsl_matrix, set) (m, i, j, z);
         }
+=======
+	{
+	  BASE z = ZERO;
+	  k++;
+	  GSL_REAL (z) = (ATOMIC) ((k % 10) - 5);
+	  GSL_IMAG (z) = (ATOMIC) (((k + 5) % 10) - 5);
+	  FUNCTION (gsl_matrix, set) (m, i, j, z);
+	}
+>>>>>>> config
     }
 
   {
@@ -168,6 +244,7 @@ FUNCTION (test, func) (void)
   for (i = 0; i < M; i++)
     {
       for (j = 0; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           BASE z = ZERO;
           k++;
@@ -175,6 +252,15 @@ FUNCTION (test, func) (void)
           GSL_IMAG (z) = -(ATOMIC) ((k + 5) % 10);
           FUNCTION (gsl_matrix, set) (m, i, j, z);
         }
+=======
+	{
+	  BASE z = ZERO;
+	  k++;
+	  GSL_REAL (z) = -(ATOMIC) (k % 10);
+	  GSL_IMAG (z) = -(ATOMIC) ((k + 5) % 10);
+	  FUNCTION (gsl_matrix, set) (m, i, j, z);
+	}
+>>>>>>> config
     }
 
   {
@@ -192,6 +278,7 @@ FUNCTION (test, func) (void)
   for (i = 0; i < M; i++)
     {
       for (j = 0; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           BASE z = ZERO;
           k++;
@@ -199,6 +286,15 @@ FUNCTION (test, func) (void)
           GSL_IMAG (z) = (ATOMIC) ((k + 5) % 10 + 1);
           FUNCTION (gsl_matrix, set) (m, i, j, z);
         }
+=======
+	{
+	  BASE z = ZERO;
+	  k++;
+	  GSL_REAL (z) = (ATOMIC) (k % 10 + 1);
+	  GSL_IMAG (z) = (ATOMIC) ((k + 5) % 10 + 1);
+	  FUNCTION (gsl_matrix, set) (m, i, j, z);
+	}
+>>>>>>> config
     }
 
   {
@@ -216,6 +312,7 @@ FUNCTION (test, func) (void)
   for (i = 0; i < M; i++)
     {
       for (j = 0; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           BASE z = ZERO;
           k++;
@@ -223,6 +320,15 @@ FUNCTION (test, func) (void)
           GSL_IMAG (z) = -(ATOMIC) ((k + 5) % 10 + 1);
           FUNCTION (gsl_matrix, set) (m, i, j, z);
         }
+=======
+	{
+	  BASE z = ZERO;
+	  k++;
+	  GSL_REAL (z) = -(ATOMIC) (k % 10 + 1);
+	  GSL_IMAG (z) = -(ATOMIC) ((k + 5) % 10 + 1);
+	  FUNCTION (gsl_matrix, set) (m, i, j, z);
+	}
+>>>>>>> config
     }
 
   {
@@ -253,6 +359,7 @@ FUNCTION (test, text) (void)
     k = 0;
     for (i = 0; i < M; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         for (j = 0; j < N; j++)
           {
             BASE z;
@@ -261,6 +368,16 @@ FUNCTION (test, text) (void)
             GSL_IMAG (z) = (ATOMIC) (k + 1000);
             FUNCTION (gsl_matrix, set) (m, i, j, z);
           }
+=======
+	for (j = 0; j < N; j++)
+	  {
+	    BASE z;
+	    k++;
+	    GSL_REAL (z) = (ATOMIC) k;
+	    GSL_IMAG (z) = (ATOMIC) (k + 1000);
+	    FUNCTION (gsl_matrix, set) (m, i, j, z);
+	  }
+>>>>>>> config
       }
 
     FUNCTION (gsl_matrix, fprintf) (f, m, OUT_FORMAT);
@@ -277,6 +394,7 @@ FUNCTION (test, text) (void)
     k = 0;
     for (i = 0; i < M; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         for (j = 0; j < N; j++)
           {
             k++;
@@ -284,6 +402,15 @@ FUNCTION (test, text) (void)
                 || mm->data[2 * (i * N + j) + 1] != k + 1000)
               status = 1;
           }
+=======
+	for (j = 0; j < N; j++)
+	  {
+	    k++;
+	    if (mm->data[2 * (i * N + j)] != k
+		|| mm->data[2 * (i * N + j) + 1] != k + 1000)
+	      status = 1;
+	  }
+>>>>>>> config
       }
 
     gsl_test (status, NAME (gsl_matrix) "_fprintf and fscanf");
@@ -309,6 +436,7 @@ FUNCTION (test, binary) (void)
     k = 0;
     for (i = 0; i < M; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         for (j = 0; j < N; j++)
           {
             BASE z = ZERO;
@@ -317,6 +445,16 @@ FUNCTION (test, binary) (void)
             GSL_IMAG (z) = (ATOMIC) (k + 1000);
             FUNCTION (gsl_matrix, set) (m, i, j, z);
           }
+=======
+	for (j = 0; j < N; j++)
+	  {
+	    BASE z = ZERO;
+	    k++;
+	    GSL_REAL (z) = (ATOMIC) k;
+	    GSL_IMAG (z) = (ATOMIC) (k + 1000);
+	    FUNCTION (gsl_matrix, set) (m, i, j, z);
+	  }
+>>>>>>> config
       }
 
     FUNCTION (gsl_matrix, fwrite) (f, m);
@@ -333,6 +471,7 @@ FUNCTION (test, binary) (void)
     k = 0;
     for (i = 0; i < M; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         for (j = 0; j < N; j++)
           {
             k++;
@@ -340,6 +479,15 @@ FUNCTION (test, binary) (void)
                 || mm->data[2 * (i * N + j) + 1] != k + 1000)
               status = 1;
           }
+=======
+	for (j = 0; j < N; j++)
+	  {
+	    k++;
+	    if (mm->data[2 * (i * N + j)] != k
+		|| mm->data[2 * (i * N + j) + 1] != k + 1000)
+	      status = 1;
+	  }
+>>>>>>> config
       }
 
     gsl_test (status, NAME (gsl_matrix) "_write and read");
@@ -363,22 +511,38 @@ FUNCTION (test, trap) (void)
   status = 0;
   FUNCTION (gsl_matrix, set) (mc, i - 1, j, z);
   gsl_test (!status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             NAME (gsl_matrix) "_set traps 1st index below lower bound");
+=======
+	    NAME (gsl_matrix) "_set traps 1st index below lower bound");
+>>>>>>> config
 
   status = 0;
   FUNCTION (gsl_matrix, set) (mc, i, j - 1, z);
   gsl_test (!status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             NAME (gsl_matrix) "_set traps 2nd index below lower bound");
+=======
+	    NAME (gsl_matrix) "_set traps 2nd index below lower bound");
+>>>>>>> config
 
   status = 0;
   FUNCTION (gsl_matrix, set) (mc, M + 1, 0, z);
   gsl_test (!status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             NAME (gsl_matrix) "_set traps 1st index above upper bound");
+=======
+	    NAME (gsl_matrix) "_set traps 1st index above upper bound");
+>>>>>>> config
 
   status = 0;
   FUNCTION (gsl_matrix, set) (mc, 0, N + 1, z);
   gsl_test (!status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             NAME (gsl_matrix) "_set traps 2nd index above upper bound");
+=======
+	    NAME (gsl_matrix) "_set traps 2nd index above upper bound");
+>>>>>>> config
 
   status = 0;
   FUNCTION (gsl_matrix, set) (mc, M, 0, z);
@@ -391,54 +555,98 @@ FUNCTION (test, trap) (void)
   status = 0;
   z1 = FUNCTION (gsl_matrix, get) (mc, i - 1, 0);
   gsl_test (!status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             NAME (gsl_matrix) "_get traps 1st index below lower bound");
   gsl_test (GSL_REAL (z1) != 0,
             NAME (gsl_matrix) "_get, zero real for 1st index below l.b.");
   gsl_test (GSL_IMAG (z1) != 0,
             NAME (gsl_matrix) "_get, zero imag for 1st index below l.b.");
+=======
+	    NAME (gsl_matrix) "_get traps 1st index below lower bound");
+  gsl_test (GSL_REAL (z1) != 0,
+	    NAME (gsl_matrix) "_get, zero real for 1st index below l.b.");
+  gsl_test (GSL_IMAG (z1) != 0,
+	    NAME (gsl_matrix) "_get, zero imag for 1st index below l.b.");
+>>>>>>> config
 
   status = 0;
   z1 = FUNCTION (gsl_matrix, get) (mc, 0, j - 1);
   gsl_test (!status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             NAME (gsl_matrix) "_get traps 2nd index below lower bound");
   gsl_test (GSL_REAL (z1) != 0,
             NAME (gsl_matrix) "_get, zero real for 2nd index below l.b.");
   gsl_test (GSL_IMAG (z1) != 0,
             NAME (gsl_matrix) "_get, zero imag for 2nd index below l.b.");
+=======
+	    NAME (gsl_matrix) "_get traps 2nd index below lower bound");
+  gsl_test (GSL_REAL (z1) != 0,
+	    NAME (gsl_matrix) "_get, zero real for 2nd index below l.b.");
+  gsl_test (GSL_IMAG (z1) != 0,
+	    NAME (gsl_matrix) "_get, zero imag for 2nd index below l.b.");
+>>>>>>> config
 
   status = 0;
   z1 = FUNCTION (gsl_matrix, get) (mc, M + 1, 0);
   gsl_test (!status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             NAME (gsl_matrix) "_get traps 1st index above upper bound");
   gsl_test (GSL_REAL (z1) != 0,
             NAME (gsl_matrix) "_get, zero real for 1st index above u.b.");
   gsl_test (GSL_IMAG (z1) != 0,
             NAME (gsl_matrix) "_get, zero imag for 1st index above u.b.");
+=======
+	    NAME (gsl_matrix) "_get traps 1st index above upper bound");
+  gsl_test (GSL_REAL (z1) != 0,
+	    NAME (gsl_matrix) "_get, zero real for 1st index above u.b.");
+  gsl_test (GSL_IMAG (z1) != 0,
+	    NAME (gsl_matrix) "_get, zero imag for 1st index above u.b.");
+>>>>>>> config
 
   status = 0;
   z1 = FUNCTION (gsl_matrix, get) (mc, 0, N + 1);
   gsl_test (!status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             NAME (gsl_matrix) "_get traps 2nd index above upper bound");
   gsl_test (GSL_REAL (z1) != 0,
             NAME (gsl_matrix) "_get, zero real for 2nd index above u.b.");
   gsl_test (GSL_IMAG (z1) != 0,
             NAME (gsl_matrix) "_get, zero imag for 2nd index above u.b.");
+=======
+	    NAME (gsl_matrix) "_get traps 2nd index above upper bound");
+  gsl_test (GSL_REAL (z1) != 0,
+	    NAME (gsl_matrix) "_get, zero real for 2nd index above u.b.");
+  gsl_test (GSL_IMAG (z1) != 0,
+	    NAME (gsl_matrix) "_get, zero imag for 2nd index above u.b.");
+>>>>>>> config
 
   status = 0;
   z1 = FUNCTION (gsl_matrix, get) (mc, M, 0);
   gsl_test (!status, NAME (gsl_matrix) "_get traps 1st index at upper bound");
   gsl_test (GSL_REAL (z1) != 0,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             NAME (gsl_matrix) "_get, zero real for 1st index at u.b.");
   gsl_test (GSL_IMAG (z1) != 0,
             NAME (gsl_matrix) "_get, zero imag for 1st index at u.b.");
+=======
+	    NAME (gsl_matrix) "_get, zero real for 1st index at u.b.");
+  gsl_test (GSL_IMAG (z1) != 0,
+	    NAME (gsl_matrix) "_get, zero imag for 1st index at u.b.");
+>>>>>>> config
 
   status = 0;
   z1 = FUNCTION (gsl_matrix, get) (mc, 0, N);
   gsl_test (!status, NAME (gsl_matrix) "_get traps 2nd index at upper bound");
   gsl_test (GSL_REAL (z1) != 0,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             NAME (gsl_matrix) "_get, zero real for 2nd index at u.b.");
   gsl_test (GSL_IMAG (z1) != 0,
             NAME (gsl_matrix) "_get, zero imag for 2nd index at u.b.");
+=======
+	    NAME (gsl_matrix) "_get, zero real for 2nd index at u.b.");
+  gsl_test (GSL_IMAG (z1) != 0,
+	    NAME (gsl_matrix) "_get, zero imag for 2nd index at u.b.");
+>>>>>>> config
 
   FUNCTION (gsl_matrix, free) (mc);
 }
@@ -463,6 +671,7 @@ FUNCTION (test, arith) (void)
   for (i = 0; i < P; i++)
     {
       for (j = 0; j < Q; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           BASE z, z1;
           GSL_REAL (z) = (ATOMIC) k;
@@ -474,6 +683,19 @@ FUNCTION (test, arith) (void)
           FUNCTION (gsl_matrix, set) (b, i, j, z1);
           k++;
         }
+=======
+	{
+	  BASE z, z1;
+	  GSL_REAL (z) = (ATOMIC) k;
+	  GSL_IMAG (z) = (ATOMIC) (k + 10);
+	  GSL_REAL (z1) = (ATOMIC) (k + 5);
+	  GSL_IMAG (z1) = (ATOMIC) (k + 20);
+
+	  FUNCTION (gsl_matrix, set) (a, i, j, z);
+	  FUNCTION (gsl_matrix, set) (b, i, j, z1);
+	  k++;
+	}
+>>>>>>> config
     }
 
   {
@@ -486,6 +708,7 @@ FUNCTION (test, arith) (void)
 
     for (i = 0; i < P; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         for (j = 0; j < Q; j++)
           {
             BASE z = FUNCTION (gsl_matrix, get) (m, i, j);
@@ -494,6 +717,16 @@ FUNCTION (test, arith) (void)
               status = 1;
             k++;
           }
+=======
+	for (j = 0; j < Q; j++)
+	  {
+	    BASE z = FUNCTION (gsl_matrix, get) (m, i, j);
+	    if (GSL_REAL (z) != (ATOMIC) (2 * k + 5) ||
+		GSL_IMAG (z) != (ATOMIC) (2 * k + 30))
+	      status = 1;
+	    k++;
+	  }
+>>>>>>> config
       }
     gsl_test (status, NAME (gsl_matrix) "_add matrix addition");
   }
@@ -508,6 +741,7 @@ FUNCTION (test, arith) (void)
 
     for (i = 0; i < P; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         for (j = 0; j < Q; j++)
           {
             BASE z = FUNCTION (gsl_matrix, get) (m, i, j);
@@ -516,6 +750,16 @@ FUNCTION (test, arith) (void)
               status = 1;
             k++;
           }
+=======
+	for (j = 0; j < Q; j++)
+	  {
+	    BASE z = FUNCTION (gsl_matrix, get) (m, i, j);
+	    if (GSL_REAL (z) != (ATOMIC) (-5)
+		|| GSL_IMAG (z) != (ATOMIC) (-10))
+	      status = 1;
+	    k++;
+	  }
+>>>>>>> config
       }
     gsl_test (status, NAME (gsl_matrix) "_sub matrix subtraction");
   }
@@ -530,6 +774,7 @@ FUNCTION (test, arith) (void)
 
     for (i = 0; i < P; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         for (j = 0; j < Q; j++)
           {
             ATOMIC real = -(ATOMIC) (25 * k + 200);
@@ -550,6 +795,28 @@ FUNCTION (test, arith) (void)
               }
             k++;
           }
+=======
+	for (j = 0; j < Q; j++)
+	  {
+	    ATOMIC real = -(ATOMIC) (25 * k + 200);
+	    ATOMIC imag = (ATOMIC) (2 * k * k + 35 * k + 50);
+	    BASE z = FUNCTION (gsl_matrix, get) (m, i, j);
+	    if (fabs (GSL_REAL (z) - real) > 100 * BASE_EPSILON ||
+		fabs (GSL_IMAG (z) - imag) > 100 * BASE_EPSILON)
+	      {
+		status = 1;
+#ifdef DEBUG
+		printf ("%d\t%d\n", i, j);
+		printf (OUT_FORMAT "\n",
+			GSL_REAL (z) + (ATOMIC) (25 * (ATOMIC) k + 200));
+		printf (OUT_FORMAT "\n",
+			GSL_IMAG (z) - (ATOMIC) (2 * k * k + 35 * k + 50));
+		printf ("\n");
+#endif
+	      }
+	    k++;
+	  }
+>>>>>>> config
       }
     gsl_test (status, NAME (gsl_matrix) "_mul_elements multiplication");
   }
@@ -565,6 +832,7 @@ FUNCTION (test, arith) (void)
 
     for (i = 0; i < P; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         for (j = 0; j < Q; j++)
           {
             ATOMIC denom = (2 * k * k + 50 * k + 425);
@@ -586,6 +854,29 @@ FUNCTION (test, arith) (void)
               }
             k++;
           }
+=======
+	for (j = 0; j < Q; j++)
+	  {
+	    ATOMIC denom = (2 * k * k + 50 * k + 425);
+	    ATOMIC real = (ATOMIC) (2 * k * k + 35 * k + 200) / denom;
+	    ATOMIC imag = ((ATOMIC) (50) - (ATOMIC) (5 * k)) / denom;
+	    BASE z = FUNCTION (gsl_matrix, get) (m, i, j);
+	    if (fabs (GSL_REAL (z) - real) > 100 * BASE_EPSILON ||
+		fabs (GSL_IMAG (z) - imag) > 100 * BASE_EPSILON)
+	      {
+#ifdef DEBUG
+		printf (OUT_FORMAT "\t",
+			GSL_REAL (z) - (ATOMIC) (2 * k * k + 35 * k +
+						 200) / denom);
+		printf (OUT_FORMAT "\n",
+			GSL_IMAG (z) - ((ATOMIC) (50) -
+					(ATOMIC) (5 * k)) / denom);
+#endif
+		status = 1;
+	      }
+	    k++;
+	  }
+>>>>>>> config
       }
     gsl_test (status, NAME (gsl_matrix) "_div_elements division");
   }
@@ -602,6 +893,7 @@ FUNCTION (test, arith) (void)
 
     for (i = 0; i < P; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         for (j = 0; j < Q; j++)
           {
             ATOMIC real = (ATOMIC) (-(ATOMIC)k - 30);
@@ -613,6 +905,19 @@ FUNCTION (test, arith) (void)
               }
             k++;
           }
+=======
+	for (j = 0; j < Q; j++)
+	  {
+	    ATOMIC real = (ATOMIC) (-(ATOMIC)k - 30);
+	    ATOMIC imag = (ATOMIC) (5 * (ATOMIC)k + 20);
+	    BASE z = FUNCTION (gsl_matrix, get) (m, i, j);
+	    if (GSL_REAL (z) != real || GSL_IMAG (z) != imag)
+	      {
+		status = 1;
+	      }
+	    k++;
+	  }
+>>>>>>> config
       }
     gsl_test (status, NAME (gsl_matrix) "_scale");
   }
@@ -629,6 +934,7 @@ FUNCTION (test, arith) (void)
 
     for (i = 0; i < P; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         for (j = 0; j < Q; j++)
           {
             ATOMIC real = (ATOMIC) ((ATOMIC)k + 2);
@@ -640,6 +946,19 @@ FUNCTION (test, arith) (void)
               }
             k++;
           }
+=======
+	for (j = 0; j < Q; j++)
+	  {
+	    ATOMIC real = (ATOMIC) ((ATOMIC)k + 2);
+	    ATOMIC imag = (ATOMIC) ((ATOMIC)k + 10 + 3);
+	    BASE z = FUNCTION (gsl_matrix, get) (m, i, j);
+	    if (GSL_REAL (z) != real || GSL_IMAG (z) != imag)
+	      {
+		status = 1;
+	      }
+	    k++;
+	  }
+>>>>>>> config
       }
     gsl_test (status, NAME (gsl_matrix) "_add_constant");
   }
@@ -656,6 +975,7 @@ FUNCTION (test, arith) (void)
 
     for (i = 0; i < P; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         for (j = 0; j < Q; j++)
           {
             ATOMIC real = (ATOMIC) ((ATOMIC)k + ((i==j) ? 2 : 0));
@@ -667,6 +987,19 @@ FUNCTION (test, arith) (void)
               }
             k++;
           }
+=======
+	for (j = 0; j < Q; j++)
+	  {
+	    ATOMIC real = (ATOMIC) ((ATOMIC)k + ((i==j) ? 2 : 0));
+	    ATOMIC imag = (ATOMIC) ((ATOMIC)k + 10 +((i==j) ? 3 : 0));
+	    BASE z = FUNCTION (gsl_matrix, get) (m, i, j);
+	    if (GSL_REAL (z) != real || GSL_IMAG (z) != imag)
+	      {
+		status = 1;
+	      }
+	    k++;
+	  }
+>>>>>>> config
       }
     gsl_test (status, NAME (gsl_matrix) "_add_diagonal");
   }
@@ -679,6 +1012,7 @@ FUNCTION (test, arith) (void)
 
     for (i = 0; i < P; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         for (j = 0; j < Q; j++)
           {
             BASE x = FUNCTION (gsl_matrix, get) (a, i, j);
@@ -690,6 +1024,19 @@ FUNCTION (test, arith) (void)
               }
             k++;
           }
+=======
+	for (j = 0; j < Q; j++)
+	  {
+	    BASE x = FUNCTION (gsl_matrix, get) (a, i, j);
+	    BASE y = FUNCTION (gsl_matrix, get) (b, i, j);
+	    if (GSL_REAL (x) != (ATOMIC) (k + 5) || GSL_IMAG (x) != (ATOMIC) (k + 20) ||
+		GSL_REAL (y) != (ATOMIC) (k) || GSL_IMAG (y) != (ATOMIC) (k + 10))
+	      {
+		status = 1;
+	      }
+	    k++;
+	  }
+>>>>>>> config
       }
     gsl_test (status, NAME (gsl_matrix) "_swap");
   }

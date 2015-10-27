@@ -1,17 +1,31 @@
 /* randist/discrete.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007, 2009 James Theiler, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007, 2009 James Theiler, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -19,7 +33,11 @@
 
 /*
    Random Discrete Events
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    
+=======
+
+>>>>>>> config
    Given K discrete events with different probabilities P[k]
    produce a value k consistent with its probability.
 
@@ -49,7 +67,11 @@
  * from 0..K-1 with equal likelihood, and then a uniform random number
  * u is compared to F[k].  If it is less than F[k], then k is
  * returned.  Otherwise, A[k] is returned.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    
+=======
+
+>>>>>>> config
  * Walker's original paper describes an O(K^2) algorithm for setting
  * up the F and A arrays.  I found this disturbing since I wanted to
  * use very large values of K.  I'm sure I'm not the first to realize
@@ -100,7 +122,11 @@
  * there are 2*K*sizeof(double) transient bytes of memory that are
  * used than returned, and K*(sizeof(int)+sizeof(double)) bytes used
  * in the lookup table.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    
+=======
+
+>>>>>>> config
  * Walker spoke of using two random numbers (an integer 0..K-1, and a
  * floating point u in [0,1]), but Knuth points out that one can just
  * use the integer and fractional parts of K*u where u is in [0,1].
@@ -116,7 +142,11 @@
  *    gsl_rng *r;
  *    gsl_ran_discrete_t *f;
  *    f = gsl_ran_discrete_preproc(K,P);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    
+=======
+
+>>>>>>> config
  * Then, whenever a random index 0..K-1 is desired, use
 
  *    k = gsl_ran_discrete(r,f);
@@ -134,7 +164,11 @@
  * comparisons, and the Walker method is both faster and more stingy
  * with memory.  So, in the end I decided not to include it with the
  * GSL package.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    
+=======
+
+>>>>>>> config
  * Written 26 Jan 1999, James Theiler, jt@lanl.gov
  * Adapted to GSL, 30 Jan 1999, jt
 
@@ -149,8 +183,13 @@
 #include <gsl/gsl_randist.h>
 #define DEBUG 0
 #define KNUTH_CONVENTION 1      /* Saves a few steps of arithmetic
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                  * in the call to gsl_ran_discrete()
                                  */
+=======
+				 * in the call to gsl_ran_discrete()
+				 */
+>>>>>>> config
 
 /*** Begin Stack (this code is used just in this file) ***/
 
@@ -220,12 +259,21 @@ gsl_ran_discrete_preproc(size_t Kevents, const double *ProbArray)
     gsl_stack_t *Smalls;
     double *E;
     double pTotal = 0.0, mean, d;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     if (Kevents < 1) {
       /* Could probably treat Kevents=1 as a special case */
 
       GSL_ERROR_VAL ("number of events must be a positive integer", 
                         GSL_EINVAL, 0);
+=======
+
+    if (Kevents < 1) {
+      /* Could probably treat Kevents=1 as a special case */
+
+      GSL_ERROR_VAL ("number of events must be a positive integer",
+			GSL_EINVAL, 0);
+>>>>>>> config
     }
 
     /* Make sure elements of ProbArray[] are positive.
@@ -233,11 +281,19 @@ gsl_ran_discrete_preproc(size_t Kevents, const double *ProbArray)
      */
 
     for (k=0; k<Kevents; ++k) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         if (ProbArray[k] < 0) {
           GSL_ERROR_VAL ("probabilities must be non-negative",
                             GSL_EINVAL, 0) ;
         }
         pTotal += ProbArray[k];
+=======
+	if (ProbArray[k] < 0) {
+	  GSL_ERROR_VAL ("probabilities must be non-negative",
+			    GSL_EINVAL, 0) ;
+	}
+	pTotal += ProbArray[k];
+>>>>>>> config
     }
 
     /* Begin setting up the main "object" (just a struct, no steroids) */
@@ -253,7 +309,11 @@ gsl_ran_discrete_preproc(size_t Kevents, const double *ProbArray)
     }
 
     for (k=0; k<Kevents; ++k) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         E[k] = ProbArray[k]/pTotal;
+=======
+	E[k] = ProbArray[k]/pTotal;
+>>>>>>> config
     }
 
     /* Now create the Bigs and the Smalls */
@@ -264,25 +324,41 @@ gsl_ran_discrete_preproc(size_t Kevents, const double *ProbArray)
       size_t * const which = g->A;
 
       for (k=0; k<Kevents; ++k) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         if (E[k] < mean) { 
           ++nSmalls; which[k] = 0;
         } else { 
           ++nBigs; which[k] = 1; 
         }
+=======
+	if (E[k] < mean) {
+	  ++nSmalls; which[k] = 0;
+	} else {
+	  ++nBigs; which[k] = 1;
+	}
+>>>>>>> config
       }
 
       Bigs   = new_stack(nBigs);
       Smalls = new_stack(nSmalls);
       for (k=0; k<Kevents; ++k) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gsl_stack_t * Dest = which[k] ? Bigs : Smalls;
         int status = push_stack(Dest,k);
         if (status)
           GSL_ERROR_VAL ("failed to build stacks", GSL_EFAILED, 0);
+=======
+	gsl_stack_t * Dest = which[k] ? Bigs : Smalls;
+	int status = push_stack(Dest,k);
+	if (status)
+	  GSL_ERROR_VAL ("failed to build stacks", GSL_EFAILED, 0);
+>>>>>>> config
       }
     }
 
     /* Now work through the smalls */
     while (size_stack(Smalls) > 0) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         s = pop_stack(Smalls);
         if (size_stack(Bigs) == 0) {
             (g->A)[s]=s;
@@ -314,14 +390,53 @@ gsl_ran_discrete_preproc(size_t Kevents, const double *ProbArray)
         b = pop_stack(Bigs);
         (g->A)[b]=b;
         (g->F)[b]=1.0;
+=======
+	s = pop_stack(Smalls);
+	if (size_stack(Bigs) == 0) {
+	    (g->A)[s]=s;
+	    (g->F)[s]=1.0;
+	    continue;
+	}
+	b = pop_stack(Bigs);
+	(g->A)[s]=b;
+	(g->F)[s]=Kevents*E[s];
+#if DEBUG
+	fprintf(stderr,"s=%2d, A=%2d, F=%.4f\n",s,(g->A)[s],(g->F)[s]);
+#endif
+	d = mean - E[s];
+	E[s] += d;              /* now E[s] == mean */
+	E[b] -= d;
+	if (E[b] < mean) {
+	    push_stack(Smalls,b); /* no longer big, join ranks of the small */
+	}
+	else if (E[b] > mean) {
+	    push_stack(Bigs,b); /* still big, put it back where you found it */
+	}
+	else {
+	    /* E[b]==mean implies it is finished too */
+	    (g->A)[b]=b;
+	    (g->F)[b]=1.0;
+	}
+    }
+    while (size_stack(Bigs) > 0) {
+	b = pop_stack(Bigs);
+	(g->A)[b]=b;
+	(g->F)[b]=1.0;
+>>>>>>> config
     }
     /* Stacks have been emptied, and A and F have been filled */
 
     if ( size_stack(Smalls) != 0) {
       GSL_ERROR_VAL ("Smalls stack has not been emptied",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                      GSL_ESANITY, 0 );
     }
     
+=======
+		     GSL_ESANITY, 0 );
+    }
+
+>>>>>>> config
 #if 0
     /* if 1, then artificially set all F[k]'s to unity.  This will
      * give wrong answers, but you'll get them faster.  But, not
@@ -329,7 +444,11 @@ gsl_ran_discrete_preproc(size_t Kevents, const double *ProbArray)
      * on what the optimal preprocessing would give.
      */
     for (k=0; k<Kevents; ++k) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         (g->F)[k] = 1.0;
+=======
+	(g->F)[k] = 1.0;
+>>>>>>> config
     }
 #endif
 
@@ -339,10 +458,17 @@ gsl_ran_discrete_preproc(size_t Kevents, const double *ProbArray)
      * it doesn't actually make much difference.
      */
     for (k=0; k<Kevents; ++k) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         (g->F)[k] += k;
         (g->F)[k] /= Kevents;
     }
 #endif    
+=======
+	(g->F)[k] += k;
+	(g->F)[k] /= Kevents;
+    }
+#endif
+>>>>>>> config
 
     free_stack(Bigs);
     free_stack(Smalls);
@@ -369,10 +495,17 @@ gsl_ran_discrete(const gsl_rng *r, const gsl_ran_discrete_t *g)
     if (f == 1.0) return c;
 
     if (u < f) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         return c;
     }
     else {
         return (g->A)[c];
+=======
+	return c;
+    }
+    else {
+	return (g->A)[c];
+>>>>>>> config
     }
 }
 
@@ -392,6 +525,7 @@ gsl_ran_discrete_pdf(size_t k, const gsl_ran_discrete_t *g)
     K= g->K;
     if (k>K) return 0;
     for (i=0; i<K; ++i) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         f = (g->F)[i];
 #if KNUTH_CONVENTION
         f = K*f-i;
@@ -401,6 +535,17 @@ gsl_ran_discrete_pdf(size_t k, const gsl_ran_discrete_t *g)
         } else if (k == (g->A)[i]) {
             p += 1.0 - f;
         }
+=======
+	f = (g->F)[i];
+#if KNUTH_CONVENTION
+	f = K*f-i;
+#endif
+	if (i==k) {
+	    p += f;
+	} else if (k == (g->A)[i]) {
+	    p += 1.0 - f;
+	}
+>>>>>>> config
     }
     return p/K;
 }

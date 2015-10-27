@@ -1,23 +1,41 @@
 /* permutation/permute_source.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* In-place Permutations 
+=======
+/* In-place Permutations
+>>>>>>> config
 
    permute:    OUT[i]       = IN[perm[i]]     i = 0 .. N-1
    invpermute: OUT[perm[i]] = IN[i]           i = 0 .. N-1
@@ -39,6 +57,7 @@ TYPE (gsl_permute) (const size_t * p, ATOMIC * data, const size_t stride, const 
   for (i = 0; i < n; i++)
     {
       k = p[i];
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
       while (k > i) 
         k = p[k];
@@ -76,6 +95,45 @@ TYPE (gsl_permute) (const size_t * p, ATOMIC * data, const size_t stride, const 
         
         for (a = 0; a < MULTIPLICITY; a++)
           data[k*stride*MULTIPLICITY + a] = t[a];
+=======
+
+      while (k > i)
+	k = p[k];
+
+      if (k < i)
+	continue ;
+
+      /* Now have k == i, i.e the least in its cycle */
+
+      pk = p[k];
+
+      if (pk == i)
+	continue ;
+
+      /* shuffle the elements of the cycle */
+
+      {
+	unsigned int a;
+
+	ATOMIC t[MULTIPLICITY];
+
+	for (a = 0; a < MULTIPLICITY; a++)
+	  t[a] = data[i*stride*MULTIPLICITY + a];
+
+	while (pk != i)
+	  {
+	    for (a = 0; a < MULTIPLICITY; a++)
+	      {
+		ATOMIC r1 = data[pk*stride*MULTIPLICITY + a];
+		data[k*stride*MULTIPLICITY + a] = r1;
+	      }
+	    k = pk;
+	    pk = p[k];
+	  };
+
+	for (a = 0; a < MULTIPLICITY; a++)
+	  data[k*stride*MULTIPLICITY + a] = t[a];
+>>>>>>> config
       }
     }
 
@@ -90,6 +148,7 @@ FUNCTION (gsl_permute,inverse) (const size_t * p, ATOMIC * data, const size_t st
   for (i = 0; i < n; i++)
     {
       k = p[i];
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           
       while (k > i) 
         k = p[k];
@@ -97,11 +156,21 @@ FUNCTION (gsl_permute,inverse) (const size_t * p, ATOMIC * data, const size_t st
       if (k < i)
         continue ;
       
+=======
+
+      while (k > i)
+	k = p[k];
+
+      if (k < i)
+	continue ;
+
+>>>>>>> config
       /* Now have k == i, i.e the least in its cycle */
 
       pk = p[k];
 
       if (pk == i)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         continue ;
       
       /* shuffle the elements of the cycle in the inverse direction */
@@ -129,6 +198,35 @@ FUNCTION (gsl_permute,inverse) (const size_t * p, ATOMIC * data, const size_t st
 
         for (a = 0; a < MULTIPLICITY; a++)
           data[pk*stride*MULTIPLICITY+a] = t[a];
+=======
+	continue ;
+
+      /* shuffle the elements of the cycle in the inverse direction */
+
+      {
+	unsigned int a;
+
+	ATOMIC t[MULTIPLICITY];
+
+	for (a = 0; a < MULTIPLICITY; a++)
+	  t[a] = data[k*stride*MULTIPLICITY+a];
+
+	while (pk != i)
+	  {
+	    for (a = 0; a < MULTIPLICITY; a++)
+	      {
+		ATOMIC r1 = data[pk*stride*MULTIPLICITY + a];
+		data[pk*stride*MULTIPLICITY + a] = t[a];
+		t[a] = r1;
+	      }
+
+	    k = pk;
+	    pk = p[k];
+	  };
+
+	for (a = 0; a < MULTIPLICITY; a++)
+	  data[pk*stride*MULTIPLICITY+a] = t[a];
+>>>>>>> config
       }
     }
 

@@ -1,17 +1,31 @@
 /* cdf/gammainv.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2003, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 2003, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307, USA.
@@ -68,7 +82,11 @@ gsl_cdf_gamma_Pinv (const double P, const double a, const double b)
     }
 
   /* Use Lagrange's interpolation for E(x)/phi(x0) to work backwards
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
      to an improved value of x (Abramowitz & Stegun, 3.6.6) 
+=======
+     to an improved value of x (Abramowitz & Stegun, 3.6.6)
+>>>>>>> config
 
      where E(x)=P-integ(phi(u),u,x0,x) and phi(u) is the pdf.
    */
@@ -92,6 +110,7 @@ gsl_cdf_gamma_Pinv (const double P, const double a, const double b)
 
       double step = step0;
       if (fabs (step1) < 0.5 * fabs (step0))
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         step += step1;
 
       if (x + step > 0)
@@ -103,14 +122,33 @@ gsl_cdf_gamma_Pinv (const double P, const double a, const double b)
 
       if (fabs (step0) > 1e-10 * x || fabs(step0 * phi) > 1e-10 * P)
         goto start;
+=======
+	step += step1;
+
+      if (x + step > 0)
+	x += step;
+      else
+	{
+	  x /= 2.0;
+	}
+
+      if (fabs (step0) > 1e-10 * x || fabs(step0 * phi) > 1e-10 * P)
+	goto start;
+>>>>>>> config
     }
 
   end:
     if (fabs(dP) > GSL_SQRT_DBL_EPSILON * P)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         GSL_ERROR_VAL("inverse failed to converge", GSL_EFAILED, GSL_NAN);
       }
     
+=======
+	GSL_ERROR_VAL("inverse failed to converge", GSL_EFAILED, GSL_NAN);
+      }
+
+>>>>>>> config
     return b * x;
   }
 }
@@ -151,7 +189,11 @@ gsl_cdf_gamma_Qinv (const double Q, const double a, const double b)
     }
 
   /* Use Lagrange's interpolation for E(x)/phi(x0) to work backwards
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
      to an improved value of x (Abramowitz & Stegun, 3.6.6) 
+=======
+     to an improved value of x (Abramowitz & Stegun, 3.6.6)
+>>>>>>> config
 
      where E(x)=P-integ(phi(u),u,x0,x) and phi(u) is the pdf.
    */
@@ -175,6 +217,7 @@ gsl_cdf_gamma_Qinv (const double Q, const double a, const double b)
 
       double step = step0;
       if (fabs (step1) < 0.5 * fabs (step0))
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         step += step1;
 
       if (x + step > 0)
@@ -186,6 +229,19 @@ gsl_cdf_gamma_Qinv (const double Q, const double a, const double b)
 
       if (fabs (step0) > 1e-10 * x)
         goto start;
+=======
+	step += step1;
+
+      if (x + step > 0)
+	x += step;
+      else
+	{
+	  x /= 2.0;
+	}
+
+      if (fabs (step0) > 1e-10 * x)
+	goto start;
+>>>>>>> config
     }
 
   }

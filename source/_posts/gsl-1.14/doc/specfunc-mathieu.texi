@@ -121,7 +121,11 @@ or 4.
 
 @comment @end ifinfo
 @comment @noindent
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment where @c{$u_1 = \sqrt{q} \exp(-x)$} 
+=======
+@comment where @c{$u_1 = \sqrt{q} \exp(-x)$}
+>>>>>>> config
 @comment @math{u_1 = \sqrt@{q@} \exp(-x)} and @c{$u_2 = \sqrt@{q@} \exp(x)$}
 @comment @math{u_2 = \sqrt@{q@} \exp(x)} and
 @comment @tex
@@ -156,10 +160,17 @@ Stegun, Chapter 20.  These functions are defined in the header file
 @file{gsl_sf_mathieu.h}.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Mathieu Function Workspace::  
 * Mathieu Function Characteristic Values::  
 * Angular Mathieu Functions::   
 * Radial Mathieu Functions::    
+=======
+* Mathieu Function Workspace::
+* Mathieu Function Characteristic Values::
+* Angular Mathieu Functions::
+* Radial Mathieu Functions::
+>>>>>>> config
 @end menu
 
 @node  Mathieu Function Workspace
@@ -174,7 +185,11 @@ routines require a preallocated workspace.
 This function returns a workspace for the array versions of the
 Mathieu routines.  The arguments @var{n} and @var{qmax} specify the
 maximum order and @math{q}-value of Mathieu functions which can be
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 computed with this workspace.  
+=======
+computed with this workspace.
+>>>>>>> config
 
 @comment This is required in order to properly
 @comment terminate the infinite eigenvalue matrix for high precision solutions.
@@ -232,11 +247,16 @@ These routines compute a series of the angular Mathieu functions
 @deftypefunx int gsl_sf_mathieu_Ms (int @var{j}, int @var{n}, double @var{q}, double @var{x}, gsl_sf_result * @var{result})
 These routines compute the radial @var{j}-th kind Mathieu functions
 @c{$Mc_n^{(j)}(q,x)$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{Mc_n^@{(j)@}(q,x)} and 
+=======
+@math{Mc_n^@{(j)@}(q,x)} and
+>>>>>>> config
 @c{$Ms_n^{(j)}(q,x)$}
 @math{Ms_n^@{(j)@}(q,x)} of order @var{n}.
 
 The allowed values of @var{j} are 1 and 2.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 The functions for @math{j = 3,4} can be computed as 
 @c{$M_n^{(3)} = M_n^{(1)} + iM_n^{(2)}$}
 @math{M_n^@{(3)@} = M_n^@{(1)@} + iM_n^@{(2)@}} and 
@@ -245,6 +265,16 @@ The functions for @math{j = 3,4} can be computed as
 where 
 @c{$M_n^{(j)} = Mc_n^{(j)}$}
 @math{M_n^@{(j)@} = Mc_n^@{(j)@}} or 
+=======
+The functions for @math{j = 3,4} can be computed as
+@c{$M_n^{(3)} = M_n^{(1)} + iM_n^{(2)}$}
+@math{M_n^@{(3)@} = M_n^@{(1)@} + iM_n^@{(2)@}} and
+@c{$M_n^{(4)} = M_n^{(1)} - iM_n^{(2)}$}
+@math{M_n^@{(4)@} = M_n^@{(1)@} - iM_n^@{(2)@}},
+where
+@c{$M_n^{(j)} = Mc_n^{(j)}$}
+@math{M_n^@{(j)@} = Mc_n^@{(j)@}} or
+>>>>>>> config
 @c{$Ms_n^{(j)}$}
 @math{Ms_n^@{(j)@}}.
 @end deftypefun
@@ -255,4 +285,7 @@ These routines compute a series of the radial Mathieu functions of
 kind @var{j}, with order from @var{nmin} to @var{nmax} inclusive, storing the
 results in the array @var{result_array}.
 @end deftypefun
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

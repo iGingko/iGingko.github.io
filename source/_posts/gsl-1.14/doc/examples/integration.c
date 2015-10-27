@@ -11,9 +11,15 @@ double f (double x, void * params) {
 int
 main (void)
 {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   gsl_integration_workspace * w 
     = gsl_integration_workspace_alloc (1000);
   
+=======
+  gsl_integration_workspace * w
+    = gsl_integration_workspace_alloc (1000);
+
+>>>>>>> config
   double result, error;
   double expected = -4.0;
   double alpha = 1.0;
@@ -23,7 +29,11 @@ main (void)
   F.params = &alpha;
 
   gsl_integration_qags (&F, 0, 1, 0, 1e-7, 1000,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         w, &result, &error); 
+=======
+			w, &result, &error);
+>>>>>>> config
 
   printf ("result          = % .18f\n", result);
   printf ("exact result    = % .18f\n", expected);

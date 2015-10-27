@@ -1,17 +1,31 @@
 /* cheb/test.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -45,12 +59,20 @@ double f_sin (double x, void * p) {
   return sin(x);
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int 
+=======
+int
+>>>>>>> config
 main(void)
 {
   double tol = 100.0 * GSL_DBL_EPSILON;
   double ftol = 20.0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   double x; 
+=======
+  double x;
+>>>>>>> config
   size_t i;
 
   gsl_cheb_series * cs = gsl_cheb_alloc(40);
@@ -120,13 +142,22 @@ main(void)
     double r = gsl_cheb_eval(cs, x);
     gsl_test_abs(r, sin(x), tol, "gsl_cheb_eval, sin(%.3g)", x);
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   for(x=-M_PI; x<M_PI; x += M_PI/100.0) {
     double r, e;
     gsl_cheb_eval_err(cs, x, &r, &e);
     gsl_test_abs(r, sin(x), tol, "gsl_cheb_eval_err, sin(%.3g)", x);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     gsl_test_factor(fabs(r-sin(x)) + GSL_DBL_EPSILON, e, ftol, 
                     "gsl_cheb_eval_err, error sin(%.3g)", x);
+=======
+    gsl_test_factor(fabs(r-sin(x)) + GSL_DBL_EPSILON, e, ftol,
+		    "gsl_cheb_eval_err, error sin(%.3g)", x);
+>>>>>>> config
   }
 
   for(x=-M_PI; x<M_PI; x += M_PI/100.0) {
@@ -138,8 +169,13 @@ main(void)
     double r, e;
     gsl_cheb_eval_n_err(cs, 25, x, &r, &e);
     gsl_test_abs(r, sin(x), 100.0 * tol, "gsl_cheb_eval_n_err, deriv sin(%.3g)", x);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     gsl_test_factor(fabs(r-sin(x)) + GSL_DBL_EPSILON, e, ftol, 
                     "gsl_cheb_eval_n_err, error sin(%.3g)", x);
+=======
+    gsl_test_factor(fabs(r-sin(x)) + GSL_DBL_EPSILON, e, ftol,
+		    "gsl_cheb_eval_n_err, error sin(%.3g)", x);
+>>>>>>> config
   }
 
   /* Test derivative */
@@ -150,14 +186,23 @@ main(void)
     double r = gsl_cheb_eval(csd, x);
     gsl_test_abs(r, cos(x), 1600 * tol, "gsl_cheb_eval, deriv sin(%.3g)", x);
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
 #ifdef TEST_DERIVATIVE_ERR
   for(x=-M_PI; x<M_PI; x += M_PI/100.0) {
     double r, e;
     gsl_cheb_eval_err(csd, x, &r, &e);
     gsl_test_abs(r, cos(x), tol, "gsl_cheb_eval_err, deriv sin(%.3g)", x);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     gsl_test_factor(fabs(r-cos(x)) + GSL_DBL_EPSILON, e, ftol, 
                     "gsl_cheb_eval_err, deriv error sin(%.3g)", x);
+=======
+    gsl_test_factor(fabs(r-cos(x)) + GSL_DBL_EPSILON, e, ftol,
+		    "gsl_cheb_eval_err, deriv error sin(%.3g)", x);
+>>>>>>> config
   }
 #endif
 
@@ -171,8 +216,13 @@ main(void)
     double r, e;
     gsl_cheb_eval_n_err(csd, 25, x, &r, &e);
     gsl_test_abs(r, cos(x), 100.0 * tol, "gsl_cheb_eval_n_err, deriv sin(%.3g)", x);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     gsl_test_factor(fabs(r-cos(x)) + GSL_DBL_EPSILON, e, ftol, 
                     "gsl_cheb_eval_n_err, deriv error sin(%.3g)", x);
+=======
+    gsl_test_factor(fabs(r-cos(x)) + GSL_DBL_EPSILON, e, ftol,
+		    "gsl_cheb_eval_n_err, deriv error sin(%.3g)", x);
+>>>>>>> config
   }
 #endif
 
@@ -184,14 +234,23 @@ main(void)
     double r = gsl_cheb_eval(csi, x);
     gsl_test_abs(r, -(1+cos(x)), tol, "gsl_cheb_eval, integ sin(%.3g)", x);
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
 #ifdef TEST_INTEGRAL_ERR
   for(x=-M_PI; x<M_PI; x += M_PI/100.0) {
     double r, e;
     gsl_cheb_eval_err(csi, x, &r, &e);
     gsl_test_abs(r, -(1+cos(x)), tol, "gsl_cheb_eval_err, integ sin(%.3g)", x);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     gsl_test_factor(fabs(r-(-1-cos(x))) + GSL_DBL_EPSILON, e, ftol, 
                     "gsl_cheb_eval_err, integ error sin(%.3g)", x);
+=======
+    gsl_test_factor(fabs(r-(-1-cos(x))) + GSL_DBL_EPSILON, e, ftol,
+		    "gsl_cheb_eval_err, integ error sin(%.3g)", x);
+>>>>>>> config
   }
 #endif
 
@@ -205,8 +264,13 @@ main(void)
     double r, e;
     gsl_cheb_eval_n_err(csi, 25, x, &r, &e);
     gsl_test_abs(r, -(1+cos(x)), 100.0 * tol, "gsl_cheb_eval_n_err, integ sin(%.3g)", x);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     gsl_test_factor(fabs(r-(-1-cos(x))) + GSL_DBL_EPSILON, e, ftol, 
                     "gsl_cheb_eval_n_err, integ error sin(%.3g)", x);
+=======
+    gsl_test_factor(fabs(r-(-1-cos(x))) + GSL_DBL_EPSILON, e, ftol,
+		    "gsl_cheb_eval_n_err, integ error sin(%.3g)", x);
+>>>>>>> config
   }
 #endif
 

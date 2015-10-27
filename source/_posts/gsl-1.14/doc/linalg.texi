@@ -14,6 +14,7 @@ The functions described in this chapter are declared in the header file
 
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * LU Decomposition::            
 * QR Decomposition::            
 * QR Decomposition with Column Pivoting::  
@@ -30,6 +31,24 @@ The functions described in this chapter are declared in the header file
 * Balancing::
 * Linear Algebra Examples::     
 * Linear Algebra References and Further Reading::  
+=======
+* LU Decomposition::
+* QR Decomposition::
+* QR Decomposition with Column Pivoting::
+* Singular Value Decomposition::
+* Cholesky Decomposition::
+* Tridiagonal Decomposition of Real Symmetric Matrices::
+* Tridiagonal Decomposition of Hermitian Matrices::
+* Hessenberg Decomposition of Real Matrices::
+* Hessenberg-Triangular Decomposition of Real Matrices::
+* Bidiagonalization::
+* Householder Transformations::
+* Householder solver for linear systems::
+* Tridiagonal Systems::
+* Balancing::
+* Linear Algebra Examples::
+* Linear Algebra References and Further Reading::
+>>>>>>> config
 @end menu
 
 @node LU Decomposition
@@ -199,9 +218,15 @@ The algorithm used to perform the decomposition is Householder QR (Golub
 
 @deftypefun int gsl_linalg_QR_solve (const gsl_matrix * @var{QR}, const gsl_vector * @var{tau}, const gsl_vector * @var{b}, gsl_vector * @var{x})
 This function solves the square system @math{A x = b} using the @math{QR}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 decomposition of @math{A} held in (@var{QR}, @var{tau}) which must 
 have been computed previously with @code{gsl_linalg_QR_decomp}. 
 The least-squares solution for 
+=======
+decomposition of @math{A} held in (@var{QR}, @var{tau}) which must
+have been computed previously with @code{gsl_linalg_QR_decomp}.
+The least-squares solution for
+>>>>>>> config
 rectangular systems can be found using @code{gsl_linalg_QR_lssolve}.
 @end deftypefun
 
@@ -217,7 +242,11 @@ right-hand side @math{b}, which is replaced by the solution on output.
 This function finds the least squares solution to the overdetermined
 system @math{A x = b} where the matrix @var{A} has more rows than
 columns.  The least squares solution minimizes the Euclidean norm of the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 residual, @math{||Ax - b||}.The routine requires as input 
+=======
+residual, @math{||Ax - b||}.The routine requires as input
+>>>>>>> config
 the @math{QR} decomposition
 of @math{A} into (@var{QR}, @var{tau}) given by
 @code{gsl_linalg_QR_decomp}.  The solution is returned in @var{x}.  The
@@ -265,7 +294,11 @@ the product @math{b' = Q^T b} has already been computed using
 @deftypefun int gsl_linalg_QR_unpack (const gsl_matrix * @var{QR}, const gsl_vector * @var{tau}, gsl_matrix * @var{Q}, gsl_matrix * @var{R})
 This function unpacks the encoded @math{QR} decomposition
 (@var{QR},@var{tau}) into the matrices @var{Q} and @var{R}, where
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @var{Q} is @math{M}-by-@math{M} and @var{R} is @math{M}-by-@math{N}. 
+=======
+@var{Q} is @math{M}-by-@math{M} and @var{R} is @math{M}-by-@math{N}.
+>>>>>>> config
 @end deftypefun
 
 @deftypefun int gsl_linalg_QR_QRsolve (gsl_matrix * @var{Q}, gsl_matrix * @var{R}, const gsl_vector * @var{b}, gsl_vector * @var{x})
@@ -353,7 +386,11 @@ output in the separate matrices @var{q} and @var{r}.
 
 @deftypefun int gsl_linalg_QRPT_solve (const gsl_matrix * @var{QR}, const gsl_vector * @var{tau}, const gsl_permutation * @var{p}, const gsl_vector * @var{b}, gsl_vector * @var{x})
 This function solves the square system @math{A x = b} using the @math{QRP^T}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 decomposition of @math{A} held in (@var{QR}, @var{tau}, @var{p}) which must 
+=======
+decomposition of @math{A} held in (@var{QR}, @var{tau}, @var{p}) which must
+>>>>>>> config
 have been computed previously by @code{gsl_linalg_QRPT_decomp}.
 @end deftypefun
 
@@ -418,9 +455,15 @@ A = U S V^T
 The singular values
 @c{$\sigma_i = S_{ii}$}
 @math{\sigma_i = S_@{ii@}} are all non-negative and are
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 generally chosen to form a non-increasing sequence 
 @c{$\sigma_1 \ge \sigma_2 \ge ... \ge \sigma_N \ge 0$}
 @math{\sigma_1 >= \sigma_2 >= ... >= \sigma_N >= 0}.  
+=======
+generally chosen to form a non-increasing sequence
+@c{$\sigma_1 \ge \sigma_2 \ge ... \ge \sigma_N \ge 0$}
+@math{\sigma_1 >= \sigma_2 >= ... >= \sigma_N >= 0}.
+>>>>>>> config
 
 The singular value decomposition of a matrix has many practical uses.
 The condition number of the matrix is given by the ratio of the largest
@@ -456,7 +499,11 @@ form. To form the product @math{U S V^T} it is necessary to take the
 transpose of @var{V}.  A workspace of length @var{N} is required in
 @var{work}.
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 This routine uses the Golub-Reinsch SVD algorithm.  
+=======
+This routine uses the Golub-Reinsch SVD algorithm.
+>>>>>>> config
 @end deftypefun
 
 @deftypefun int gsl_linalg_SV_decomp_mod (gsl_matrix * @var{A}, gsl_matrix * @var{X}, gsl_matrix * @var{V}, gsl_vector * @var{S}, gsl_vector * @var{work})
@@ -469,7 +516,11 @@ algorithm, which is faster for @c{$M \gg N$}
 @deftypefun int gsl_linalg_SV_decomp_jacobi (gsl_matrix * @var{A}, gsl_matrix * @var{V}, gsl_vector * @var{S})
 @cindex Jacobi orthogonalization
 This function computes the SVD of the @math{M}-by-@math{N} matrix @var{A}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 using one-sided Jacobi orthogonalization for @c{$M \ge N$} 
+=======
+using one-sided Jacobi orthogonalization for @c{$M \ge N$}
+>>>>>>> config
 @math{M >= N}.  The Jacobi method can compute singular values to higher
 relative accuracy than Golub-Reinsch algorithms (see references for
 details).
@@ -477,13 +528,21 @@ details).
 
 @deftypefun int gsl_linalg_SV_solve (const gsl_matrix * @var{U}, const gsl_matrix * @var{V}, const gsl_vector * @var{S}, const gsl_vector * @var{b}, gsl_vector * @var{x})
 This function solves the system @math{A x = b} using the singular value
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 decomposition (@var{U}, @var{S}, @var{V}) of @math{A} which must 
+=======
+decomposition (@var{U}, @var{S}, @var{V}) of @math{A} which must
+>>>>>>> config
 have been computed previously with @code{gsl_linalg_SV_decomp}.
 
 Only non-zero singular values are used in computing the solution. The
 parts of the solution corresponding to singular values of zero are
 ignored.  Other singular values can be edited out by setting them to
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 zero before calling this function. 
+=======
+zero before calling this function.
+>>>>>>> config
 
 In the over-determined case where @var{A} has more rows than columns the
 system is solved in the least squares sense, returning the solution
@@ -532,7 +591,11 @@ matrix @var{A} contain the matrix @math{L}, while the upper triangular part
 of the input matrix is overwritten with @math{L^T} (the diagonal terms being
 identical for both @math{L} and @math{L^T}).  If the matrix is not
 positive-definite then the decomposition will fail, returning the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 error code @code{GSL_EDOM}.  
+=======
+error code @code{GSL_EDOM}.
+>>>>>>> config
 
 When testing whether a matrix is positive-definite, disable the error
 handler first to avoid triggering an error.
@@ -603,7 +666,11 @@ upper triangular part of @var{A} is not referenced.
 This function unpacks the encoded symmetric tridiagonal decomposition
 (@var{A}, @var{tau}) obtained from @code{gsl_linalg_symmtd_decomp} into
 the orthogonal matrix @var{Q}, the vector of diagonal elements @var{diag}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 and the vector of subdiagonal elements @var{subdiag}.  
+=======
+and the vector of subdiagonal elements @var{subdiag}.
+>>>>>>> config
 @end deftypefun
 
 @deftypefun int gsl_linalg_symmtd_unpack_T (const gsl_matrix * @var{A}, gsl_vector * @var{diag}, gsl_vector * @var{subdiag})
@@ -653,7 +720,11 @@ not referenced.
 This function unpacks the encoded tridiagonal decomposition (@var{A},
 @var{tau}) obtained from @code{gsl_linalg_hermtd_decomp} into the
 unitary matrix @var{U}, the real vector of diagonal elements @var{diag} and
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 the real vector of subdiagonal elements @var{subdiag}. 
+=======
+the real vector of subdiagonal elements @var{subdiag}.
+>>>>>>> config
 @end deftypefun
 
 @deftypefun int gsl_linalg_hermtd_unpack_T (const gsl_matrix_complex * @var{A}, gsl_vector * @var{diag}, gsl_vector * @var{subdiag})
@@ -761,7 +832,11 @@ Additional workspace of length @math{N} is needed in @var{work}.
 @end deftypefun
 
 @node Bidiagonalization
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @section Bidiagonalization 
+=======
+@section Bidiagonalization
+>>>>>>> config
 @cindex bidiagonalization of real matrices
 
 A general matrix @math{A} can be factorized by similarity
@@ -926,9 +1001,15 @@ case is shown below,
 \beforedisplay
 $$
 A = \pmatrix{d_0&e_0&  0& 0\cr
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              f_0&d_1&e_1& 0\cr
              0  &f_1&d_2&e_2\cr 
              0  &0  &f_2&d_3\cr}
+=======
+	     f_0&d_1&e_1& 0\cr
+	     0  &f_1&d_2&e_2\cr
+	     0  &0  &f_2&d_3\cr}
+>>>>>>> config
 $$
 \afterdisplay
 @end tex
@@ -954,9 +1035,15 @@ The form of @var{A} for the 4-by-4 case is shown below,
 \beforedisplay
 $$
 A = \pmatrix{d_0&e_0&  0& 0\cr
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              e_0&d_1&e_1& 0\cr
              0  &e_1&d_2&e_2\cr 
              0  &0  &e_2&d_3\cr}
+=======
+	     e_0&d_1&e_1& 0\cr
+	     0  &e_1&d_2&e_2\cr
+	     0  &0  &e_2&d_3\cr}
+>>>>>>> config
 $$
 \afterdisplay
 @end tex
@@ -982,9 +1069,15 @@ elements as the diagonal vector @var{diag}.  The form of @var{A} for the
 \beforedisplay
 $$
 A = \pmatrix{d_0&e_0& 0 &f_3\cr
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              f_0&d_1&e_1& 0 \cr
               0 &f_1&d_2&e_2\cr 
              e_3& 0 &f_2&d_3\cr}
+=======
+	     f_0&d_1&e_1& 0 \cr
+	      0 &f_1&d_2&e_2\cr
+	     e_3& 0 &f_2&d_3\cr}
+>>>>>>> config
 $$
 \afterdisplay
 @end tex
@@ -1011,9 +1104,15 @@ shown below,
 \beforedisplay
 $$
 A = \pmatrix{d_0&e_0& 0 &e_3\cr
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              e_0&d_1&e_1& 0 \cr
               0 &e_1&d_2&e_2\cr 
              e_3& 0 &e_2&d_3\cr}
+=======
+	     e_0&d_1&e_1& 0 \cr
+	      0 &e_1&d_2&e_2\cr
+	     e_3& 0 &e_2&d_3\cr}
+>>>>>>> config
 $$
 \afterdisplay
 @end tex
@@ -1120,9 +1219,15 @@ original matrix @math{A} using @sc{gnu octave},
 
 @example
 octave> A = [ 0.18, 0.60, 0.57, 0.96;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
               0.41, 0.24, 0.99, 0.58; 
               0.14, 0.30, 0.97, 0.66; 
               0.51, 0.13, 0.19, 0.85 ];
+=======
+	      0.41, 0.24, 0.99, 0.58;
+	      0.14, 0.30, 0.97, 0.66;
+	      0.51, 0.13, 0.19, 0.85 ];
+>>>>>>> config
 
 octave> x = [ -4.05205; -12.6056; 1.66091; 8.69377];
 
@@ -1158,7 +1263,11 @@ The @sc{lapack} library is described in the following manual,
 @cite{LAPACK Users' Guide} (Third Edition, 1999), Published by SIAM,
 ISBN 0-89871-447-8.
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @uref{http://www.netlib.org/lapack} 
+=======
+@uref{http://www.netlib.org/lapack}
+>>>>>>> config
 @end itemize
 
 @noindent
@@ -1196,6 +1305,9 @@ QR'', @cite{Lapack Working Note 15} (LAWN-15), October 1989. Available
 from netlib, @uref{http://www.netlib.org/lapack/} in the @code{lawns} or
 @code{lawnspdf} directories.
 @end itemize
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
 
+=======
+>>>>>>> config

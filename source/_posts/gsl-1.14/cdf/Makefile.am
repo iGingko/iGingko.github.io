@@ -1,7 +1,11 @@
 ## Process this file with automake to produce Makefile.in
 noinst_LTLIBRARIES = libgslcdf.la
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 pkginclude_HEADERS= gsl_cdf.h 
+=======
+pkginclude_HEADERS= gsl_cdf.h
+>>>>>>> config
 
 INCLUDES = -I$(top_srcdir)
 

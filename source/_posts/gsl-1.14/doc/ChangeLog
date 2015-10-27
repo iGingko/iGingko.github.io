@@ -25,11 +25,16 @@ Mon Oct 23 21:49:25 2000  Brian Gough  <bjg@network-theory.co.uk>
 Sat Jul 15 23:52:59 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* Makefile.am (EXTRA_DIST): added gsl-design.texi to the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	distributed files
+=======
+	distributed files
+>>>>>>> config
 
 Thu May 18 12:11:24 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* gsl-ref.texi (Preliminaries): changed the phrase "collection of
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	routines for numerical analysis" to "... numerical computing", as
  	on the web page. 
 	
@@ -37,6 +42,15 @@ Wed Apr 26 17:46:48 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* math.texi: added a chapter on the elementary functions and
  	constants in gsl_math.h
+=======
+	routines for numerical analysis" to "... numerical computing", as
+	on the web page.
+
+Wed Apr 26 17:46:48 2000  Brian Gough  <bjg@network-theory.co.uk>
+
+	* math.texi: added a chapter on the elementary functions and
+	constants in gsl_math.h
+>>>>>>> config
 
 Tue Apr  4 21:45:27 2000  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -56,6 +70,7 @@ Tue Apr  4 21:45:27 2000  Brian Gough  <bjg@network-theory.co.uk>
 Tue Feb 16 11:36:03 1999  Brian Gough  <bjg@netsci.freeserve.co.uk>
 
 	* statistics.texi: removed the multiple descriptions of double,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	int versions of the functions. Now we just describe the double
  	versions and note the existence of the corresponding versions for
  	other types.
@@ -65,3 +80,13 @@ Tue Feb 16 11:36:03 1999  Brian Gough  <bjg@netsci.freeserve.co.uk>
  	Changelogs to keep track of pending changes that I need to commit
  	to repository.
 
+=======
+	int versions of the functions. Now we just describe the double
+	versions and note the existence of the corresponding versions for
+	other types.
+
+	* ChangeLog: added a changelog file for the documentation,
+	although it is not required by the GNU Coding standards. I use the
+	Changelogs to keep track of pending changes that I need to commit
+	to repository.
+>>>>>>> config

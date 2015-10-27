@@ -3,12 +3,21 @@ functions.  Easiest to implement for 3j.
 
   Note from Serge Winitzki <serge@cosmos.phy.tufts.edu>:
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   The package "matpack" (www.matpack.de) includes many special functions, 
   also the 3j symbols. They refer to some quite complicated numerical 
   methods using recursion relations to get the right answers for large 
   momenta, and to 1975-1976 papers by Schulten and Gordon for the 
   description of the algorithms. The papers can be downloaded for free at
   http://www.ks.uiuc.edu/Publications/Papers/ 
+=======
+  The package "matpack" (www.matpack.de) includes many special functions,
+  also the 3j symbols. They refer to some quite complicated numerical
+  methods using recursion relations to get the right answers for large
+  momenta, and to 1975-1976 papers by Schulten and Gordon for the
+  description of the algorithms. The papers can be downloaded for free at
+  http://www.ks.uiuc.edu/Publications/Papers/
+>>>>>>> config
 
   http://www.ks.uiuc.edu/Publications/Papers/abstract.cgi?tbcode=SCHU76B
   http://www.ks.uiuc.edu/Publications/Papers/abstract.cgi?tbcode=SCHU75A
@@ -109,13 +118,21 @@ The following should be finished before a 1.0 level release.
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
+=======
+    PASSTESTS:
+>>>>>>> config
 
   - airy_der.c
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
+=======
+    PASSTESTS:
+>>>>>>> config
 
   - airy_zero.c
     INTERFACES:
@@ -127,7 +144,11 @@ The following should be finished before a 1.0 level release.
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
+=======
+    PASSTESTS:
+>>>>>>> config
 
   - bessel.c
     INTERFACES:
@@ -139,13 +160,21 @@ The following should be finished before a 1.0 level release.
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
+=======
+    PASSTESTS:
+>>>>>>> config
 
   - bessel_I1.c
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
+=======
+    PASSTESTS:
+>>>>>>> config
 
   - bessel_In.c
     INTERFACES:
@@ -163,14 +192,24 @@ The following should be finished before a 1.0 level release.
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
     
+=======
+    PASSTESTS:
+
+>>>>>>> config
   - bessel_J1.c
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
     
+=======
+    PASSTESTS:
+
+>>>>>>> config
   - bessel_Jn.c
     INTERFACES:
     ERRORESTIM:
@@ -187,19 +226,31 @@ The following should be finished before a 1.0 level release.
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
+=======
+    PASSTESTS:
+>>>>>>> config
 
   - bessel_K1.c
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
+=======
+    PASSTESTS:
+>>>>>>> config
 
   - bessel_Kn.c
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
+=======
+    PASSTESTS:
+>>>>>>> config
 
   - bessel_Knu.c
     INTERFACES:
@@ -211,14 +262,24 @@ The following should be finished before a 1.0 level release.
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
     
+=======
+    PASSTESTS:
+
+>>>>>>> config
   - bessel_Y1.c
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
     
+=======
+    PASSTESTS:
+
+>>>>>>> config
   - bessel_Yn.c
     INTERFACES:
     ERRORESTIM:
@@ -253,7 +314,11 @@ The following should be finished before a 1.0 level release.
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
+=======
+    PASSTESTS:
+>>>>>>> config
 
   - bessel_olver.c
     INTERFACES:
@@ -289,7 +354,11 @@ The following should be finished before a 1.0 level release.
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
+=======
+    PASSTESTS:
+>>>>>>> config
 
   - chebyshev.c
     INTERFACES:
@@ -301,7 +370,11 @@ The following should be finished before a 1.0 level release.
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
+=======
+    PASSTESTS:
+>>>>>>> config
 
   - coulomb.c
     INTERFACES:
@@ -325,43 +398,71 @@ The following should be finished before a 1.0 level release.
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
+=======
+    PASSTESTS:
+>>>>>>> config
 
   - debye.c
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
+=======
+    PASSTESTS:
+>>>>>>> config
 
   - dilog.c
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
+=======
+    PASSTESTS:
+>>>>>>> config
 
   - elementary.c
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
+=======
+    PASSTESTS:
+>>>>>>> config
 
   - ellint.c
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
+=======
+    PASSTESTS:
+>>>>>>> config
 
   - elljac.c
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
+=======
+    PASSTESTS:
+>>>>>>> config
 
   - erfc.c
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
+=======
+    PASSTESTS:
+>>>>>>> config
 
   - exp.c
     INTERFACES:
@@ -373,13 +474,21 @@ The following should be finished before a 1.0 level release.
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
+=======
+    PASSTESTS:
+>>>>>>> config
 
   - expint3.c
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
+=======
+    PASSTESTS:
+>>>>>>> config
 
   - fermi_dirac.c
     INTERFACES:
@@ -471,7 +580,11 @@ The following should be finished before a 1.0 level release.
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
+=======
+    PASSTESTS:
+>>>>>>> config
 
   - poch.c
     INTERFACES:
@@ -489,7 +602,11 @@ The following should be finished before a 1.0 level release.
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
+=======
+    PASSTESTS:
+>>>>>>> config
 
   - psi.c
     INTERFACES:
@@ -507,25 +624,41 @@ The following should be finished before a 1.0 level release.
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
+=======
+    PASSTESTS:
+>>>>>>> config
 
   - sinint.c
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
+=======
+    PASSTESTS:
+>>>>>>> config
 
   - synchrotron.c
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
+=======
+    PASSTESTS:
+>>>>>>> config
 
   - transport.c
     INTERFACES:
     ERRORESTIM:
     DEPRECATED:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     PASSTESTS: 
+=======
+    PASSTESTS:
+>>>>>>> config
 
   - trig.c
     INTERFACES:
@@ -633,6 +766,7 @@ long double h,a,b,z,t,sum,pwr;
 int i,j;
       if(x>15.) return (0.);
       if(x<-15.) return (1.);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         j=fabs(x)+1.;
         z=j;
         h=fabs(x)-z;
@@ -651,6 +785,26 @@ int i,j;
       if(x<0.) sum=1.-sum;
       return ((double) sum);
                       }
+=======
+	j=fabs(x)+1.;
+	z=j;
+	h=fabs(x)-z;
+	a=v[j];
+	b=z*a-1.;
+	pwr=1.;
+	sum=a+h*b;
+	   for(i=2;i<60;i+=2){
+	   a=(a+z*b)/i;
+	   b=(b+z*a)/(i+1);
+	   pwr=pwr*h*h;
+	   t=sum;
+	   sum=sum+pwr*(a+h*b);
+	   if(sum==t) break; }
+      sum=sum*exp(-.5*x*x-.91893853320467274178L);
+      if(x<0.) sum=1.-sum;
+      return ((double) sum);
+		      }
+>>>>>>> config
 */
  end of listing
 */

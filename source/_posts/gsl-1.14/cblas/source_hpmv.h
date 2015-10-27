@@ -1,17 +1,31 @@
 /* blas/source_hpmv.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -78,6 +92,7 @@
       REAL(Y, iy) += temp1_real * Aii_real;
       IMAG(Y, iy) += temp1_imag * Aii_real;
       for (j = j_min; j < j_max; j++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         BASE Aij_real = CONST_REAL(Ap, TPUP(N, i, j));
         BASE Aij_imag = conj * CONST_IMAG(Ap, TPUP(N, i, j));
         REAL(Y, jy) += temp1_real * Aij_real - temp1_imag * (-Aij_imag);
@@ -88,6 +103,18 @@
         temp2_imag += x_real * Aij_imag + x_imag * Aij_real;
         jx += incX;
         jy += incY;
+=======
+	BASE Aij_real = CONST_REAL(Ap, TPUP(N, i, j));
+	BASE Aij_imag = conj * CONST_IMAG(Ap, TPUP(N, i, j));
+	REAL(Y, jy) += temp1_real * Aij_real - temp1_imag * (-Aij_imag);
+	IMAG(Y, jy) += temp1_real * (-Aij_imag) + temp1_imag * Aij_real;
+	x_real = CONST_REAL(X, jx);
+	x_imag = CONST_IMAG(X, jx);
+	temp2_real += x_real * Aij_real - x_imag * Aij_imag;
+	temp2_imag += x_real * Aij_imag + x_imag * Aij_real;
+	jx += incX;
+	jy += incY;
+>>>>>>> config
       }
       REAL(Y, iy) += alpha_real * temp2_real - alpha_imag * temp2_imag;
       IMAG(Y, iy) += alpha_real * temp2_imag + alpha_imag * temp2_real;
@@ -95,7 +122,11 @@
       iy += incY;
     }
   } else if ((order == CblasRowMajor && Uplo == CblasLower)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              || (order == CblasColMajor && Uplo == CblasUpper)) {
+=======
+	     || (order == CblasColMajor && Uplo == CblasUpper)) {
+>>>>>>> config
 
     INDEX ix = OFFSET(N, incX);
     INDEX iy = OFFSET(N, incY);
@@ -115,6 +146,7 @@
       REAL(Y, iy) += temp1_real * Aii_real;
       IMAG(Y, iy) += temp1_imag * Aii_real;
       for (j = j_min; j < j_max; j++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         BASE Aij_real = CONST_REAL(Ap, TPLO(N, i, j));
         BASE Aij_imag = conj * CONST_IMAG(Ap, TPLO(N, i, j));
         REAL(Y, jy) += temp1_real * Aij_real - temp1_imag * (-Aij_imag);
@@ -125,6 +157,18 @@
         temp2_imag += x_real * Aij_imag + x_imag * Aij_real;
         jx += incX;
         jy += incY;
+=======
+	BASE Aij_real = CONST_REAL(Ap, TPLO(N, i, j));
+	BASE Aij_imag = conj * CONST_IMAG(Ap, TPLO(N, i, j));
+	REAL(Y, jy) += temp1_real * Aij_real - temp1_imag * (-Aij_imag);
+	IMAG(Y, jy) += temp1_real * (-Aij_imag) + temp1_imag * Aij_real;
+	x_real = CONST_REAL(X, jx);
+	x_imag = CONST_IMAG(X, jx);
+	temp2_real += x_real * Aij_real - x_imag * Aij_imag;
+	temp2_imag += x_real * Aij_imag + x_imag * Aij_real;
+	jx += incX;
+	jy += incY;
+>>>>>>> config
       }
       REAL(Y, iy) += alpha_real * temp2_real - alpha_imag * temp2_imag;
       IMAG(Y, iy) += alpha_real * temp2_imag + alpha_imag * temp2_real;

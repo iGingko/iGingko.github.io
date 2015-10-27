@@ -12,7 +12,11 @@ main (void)
 
   T = gsl_rng_default;
   r = gsl_rng_alloc (T);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   printf ("generator type: %s\n", gsl_rng_name (r));
   printf ("seed = %lu\n", gsl_rng_default_seed);
   printf ("first value = %lu\n", gsl_rng_get (r));

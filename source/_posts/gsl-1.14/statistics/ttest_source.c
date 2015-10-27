@@ -1,27 +1,49 @@
 /* statistics/ttest_source.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Jim Davies, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Jim Davies, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 double 
 FUNCTION(gsl_stats,ttest) (const BASE data1[], 
                            const size_t stride1, const size_t n1, 
                            const BASE data2[],
                            const size_t stride2, const size_t n2)
+=======
+double
+FUNCTION(gsl_stats,ttest) (const BASE data1[],
+			   const size_t stride1, const size_t n1,
+			   const BASE data2[],
+			   const size_t stride2, const size_t n2)
+>>>>>>> config
 {
   /* runs a t-test between two datasets representing independent
      samples. Tests to see if the difference between means of the
@@ -39,4 +61,7 @@ FUNCTION(gsl_stats,ttest) (const BASE data1[],
 
   return t;
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

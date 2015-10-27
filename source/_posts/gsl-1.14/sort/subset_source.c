@@ -1,5 +1,10 @@
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* sort/subset_source.c  
  * 
+=======
+/* sort/subset_source.c
+ *
+>>>>>>> config
  * Copyright (C) 1999,2000,2001  Thomas Walter, Brian Gough
  *
  * This is free software; you can redistribute it and/or modify it
@@ -17,8 +22,13 @@
 
 int
 FUNCTION (gsl_sort, smallest) (BASE * dest, const size_t k,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                const BASE * src, const size_t stride,
                                const size_t n)
+=======
+			       const BASE * src, const size_t stride,
+			       const size_t n)
+>>>>>>> config
 {
   size_t i, j;
   BASE xbound;
@@ -48,6 +58,7 @@ FUNCTION (gsl_sort, smallest) (BASE * dest, const size_t k,
       BASE xi = src[i * stride];
 
       if (j < k)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           j++;
         }
@@ -63,6 +74,23 @@ FUNCTION (gsl_sort, smallest) (BASE * dest, const size_t k,
 
           dest[i1] = dest[i1 - 1];
         }
+=======
+	{
+	  j++;
+	}
+      else if (xi >= xbound)
+	{
+	  continue;
+	}
+
+      for (i1 = j - 1; i1 > 0 ; i1--)
+	{
+	  if (xi > dest[i1 - 1])
+	    break;
+
+	  dest[i1] = dest[i1 - 1];
+	}
+>>>>>>> config
 
       dest[i1] = xi;
 
@@ -74,16 +102,26 @@ FUNCTION (gsl_sort, smallest) (BASE * dest, const size_t k,
 
 
 int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 FUNCTION (gsl_sort_vector,smallest) (BASE * dest, const size_t k, 
                                      const TYPE (gsl_vector) * v)
+=======
+FUNCTION (gsl_sort_vector,smallest) (BASE * dest, const size_t k,
+				     const TYPE (gsl_vector) * v)
+>>>>>>> config
 {
   return FUNCTION (gsl_sort, smallest) (dest, k, v->data, v->stride, v->size);
 }
 
 int
 FUNCTION (gsl_sort, largest) (BASE * dest, const size_t k,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                               const BASE * src, const size_t stride,
                               const size_t n)
+=======
+			      const BASE * src, const size_t stride,
+			      const size_t n)
+>>>>>>> config
 {
   size_t i, j;
   BASE xbound;
@@ -113,6 +151,7 @@ FUNCTION (gsl_sort, largest) (BASE * dest, const size_t k,
       BASE xi = src[i * stride];
 
       if (j < k)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           j++;
         }
@@ -128,6 +167,23 @@ FUNCTION (gsl_sort, largest) (BASE * dest, const size_t k,
 
           dest[i1] = dest[i1 - 1];
         }
+=======
+	{
+	  j++;
+	}
+      else if (xi <= xbound)
+	{
+	  continue;
+	}
+
+      for (i1 = j - 1; i1 > 0 ; i1--)
+	{
+	  if (xi < dest[i1 - 1])
+	    break;
+
+	  dest[i1] = dest[i1 - 1];
+	}
+>>>>>>> config
 
       dest[i1] = xi;
 
@@ -139,8 +195,13 @@ FUNCTION (gsl_sort, largest) (BASE * dest, const size_t k,
 
 
 int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 FUNCTION (gsl_sort_vector,largest) (BASE * dest, const size_t k, 
                                     const TYPE (gsl_vector) * v)
+=======
+FUNCTION (gsl_sort_vector,largest) (BASE * dest, const size_t k,
+				    const TYPE (gsl_vector) * v)
+>>>>>>> config
 {
   return FUNCTION (gsl_sort, largest) (dest, k, v->data, v->stride, v->size);
 }

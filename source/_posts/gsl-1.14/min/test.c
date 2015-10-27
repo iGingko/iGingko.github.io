@@ -1,17 +1,31 @@
 /* min/test.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -35,7 +49,11 @@ const double EPSREL = 0.001 ;
 const unsigned int MAX_ITERATIONS = 100;
 
 void my_error_handler (const char *reason, const char *file,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                        int line, int err);
+=======
+		       int line, int err);
+>>>>>>> config
 
 #define WITHIN_TOL(a, b, epsrel, epsabs) \
  (fabs((a) - (b)) < (epsrel) * GSL_MIN(fabs(a), fabs(b)) + (epsabs))
@@ -44,7 +62,11 @@ int
 main (void)
 {
   gsl_function F_cos, F_func1, F_func2, F_func3, F_func4;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   const gsl_min_fminimizer_type * fminimizer[4] ;
   const gsl_min_fminimizer_type ** T;
 
@@ -84,10 +106,17 @@ main (void)
 }
 
 void
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 test_f (const gsl_min_fminimizer_type * T, 
         const char * description, gsl_function *f,
         double lower_bound, double middle, double upper_bound, 
         double correct_minimum)
+=======
+test_f (const gsl_min_fminimizer_type * T,
+	const char * description, gsl_function *f,
+	double lower_bound, double middle, double upper_bound,
+	double correct_minimum)
+>>>>>>> config
 {
   int status;
   size_t iterations = 0;
@@ -100,8 +129,13 @@ test_f (const gsl_min_fminimizer_type * T,
 
   s = gsl_min_fminimizer_alloc (T) ;
   gsl_min_fminimizer_set (s, f, middle, x_lower, x_upper) ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   do 
+=======
+
+  do
+>>>>>>> config
     {
       iterations++ ;
 
@@ -112,6 +146,7 @@ test_f (const gsl_min_fminimizer_type * T,
       b = gsl_min_fminimizer_x_upper(s);
 
 #ifdef DEBUG
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       printf("%.12f %.18f %.12f %.18f %.12f %.18f status=%d\n", 
              a, GSL_FN_EVAL(f, a), m, GSL_FN_EVAL(f, m), b, GSL_FN_EVAL(f, b), status);
 #endif
@@ -121,6 +156,17 @@ test_f (const gsl_min_fminimizer_type * T,
 
       if (m < a || m > b)
         gsl_test (GSL_FAILURE, "m lies outside interval %g (%g,%g)", m, a, b);
+=======
+      printf("%.12f %.18f %.12f %.18f %.12f %.18f status=%d\n",
+	     a, GSL_FN_EVAL(f, a), m, GSL_FN_EVAL(f, m), b, GSL_FN_EVAL(f, b), status);
+#endif
+
+      if (a > b)
+	gsl_test (GSL_FAILURE, "interval is invalid (%g,%g)", a, b);
+
+      if (m < a || m > b)
+	gsl_test (GSL_FAILURE, "m lies outside interval %g (%g,%g)", m, a, b);
+>>>>>>> config
 
       if (status) break ;
 
@@ -128,16 +174,27 @@ test_f (const gsl_min_fminimizer_type * T,
     }
   while (status == GSL_CONTINUE && iterations < MAX_ITERATIONS);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   gsl_test (status, "%s, %s (%g obs vs %g expected) ", 
             gsl_min_fminimizer_name(s), description, 
             gsl_min_fminimizer_x_minimum(s), correct_minimum);
+=======
+  gsl_test (status, "%s, %s (%g obs vs %g expected) ",
+	    gsl_min_fminimizer_name(s), description,
+	    gsl_min_fminimizer_x_minimum(s), correct_minimum);
+>>>>>>> config
 
   /* check the validity of the returned result */
 
   if (!WITHIN_TOL (m, correct_minimum, EPSREL, EPSABS))
     {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       gsl_test (GSL_FAILURE, "incorrect precision (%g obs vs %g expected)", 
                 m, correct_minimum);
+=======
+      gsl_test (GSL_FAILURE, "incorrect precision (%g obs vs %g expected)",
+		m, correct_minimum);
+>>>>>>> config
     }
 
   gsl_min_fminimizer_free (s);
@@ -145,10 +202,17 @@ test_f (const gsl_min_fminimizer_type * T,
 }
 
 void
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 test_f_e (const gsl_min_fminimizer_type * T, 
           const char * description, gsl_function *f,
           double lower_bound, double middle, double upper_bound, 
           double correct_minimum)
+=======
+test_f_e (const gsl_min_fminimizer_type * T,
+	  const char * description, gsl_function *f,
+	  double lower_bound, double middle, double upper_bound,
+	  double correct_minimum)
+>>>>>>> config
 {
   int status;
   size_t iterations = 0;
@@ -160,16 +224,26 @@ test_f_e (const gsl_min_fminimizer_type * T,
   x_upper = upper_bound;
 
   s = gsl_min_fminimizer_alloc (T) ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   status = gsl_min_fminimizer_set (s, f, middle, x_lower, x_upper) ; 
 
   if (status != GSL_SUCCESS) 
+=======
+  status = gsl_min_fminimizer_set (s, f, middle, x_lower, x_upper) ;
+
+  if (status != GSL_SUCCESS)
+>>>>>>> config
     {
       gsl_min_fminimizer_free (s) ;
       gsl_test (status == GSL_SUCCESS, "%s, %s", T->name, description);
       return ;
     }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   do 
+=======
+  do
+>>>>>>> config
     {
       iterations++ ;
       gsl_min_fminimizer_iterate (s);
@@ -180,8 +254,13 @@ test_f_e (const gsl_min_fminimizer_type * T,
     }
   while (status == GSL_CONTINUE && iterations < MAX_ITERATIONS);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   gsl_test (!status, "%s, %s", gsl_min_fminimizer_name(s), description, 
             gsl_min_fminimizer_x_minimum(s) - correct_minimum);
+=======
+  gsl_test (!status, "%s, %s", gsl_min_fminimizer_name(s), description,
+	    gsl_min_fminimizer_x_minimum(s) - correct_minimum);
+>>>>>>> config
 
   gsl_min_fminimizer_free (s);
 }
@@ -194,8 +273,13 @@ my_error_handler (const char *reason, const char *file, int line, int err)
 }
 
 int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 test_bracket (const char * description,gsl_function *f,double lower_bound, 
               double upper_bound, unsigned int max)
+=======
+test_bracket (const char * description,gsl_function *f,double lower_bound,
+	      double upper_bound, unsigned int max)
+>>>>>>> config
 {
   int status;
   double x_lower, x_upper;
@@ -208,9 +292,15 @@ test_bracket (const char * description,gsl_function *f,double lower_bound,
   SAFE_FUNC_CALL (f,x_upper,&f_upper);
   status=gsl_min_find_bracket(f,&x_minimum,&f_minimum,&x_lower,&f_lower,&x_upper,&f_upper,max);
   gsl_test (status,"%s, interval: [%g,%g], values: (%g,%g), minimum at: %g, value: %g",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             description,x_lower,x_upper,f_lower,f_upper,x_minimum,f_minimum);
   return status;
 }
 
 
 
+=======
+	    description,x_lower,x_upper,f_lower,f_upper,x_minimum,f_minimum);
+  return status;
+}
+>>>>>>> config

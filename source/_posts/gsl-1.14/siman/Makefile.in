@@ -264,7 +264,11 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__confi
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
 	      ( cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh ) \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	        && { if test -f $@; then exit 0; else break; fi; }; \
+=======
+		&& { if test -f $@; then exit 0; else break; fi; }; \
+>>>>>>> config
 	      exit 1;; \
 	  esac; \
 	done; \
@@ -298,7 +302,11 @@ clean-noinstLTLIBRARIES:
 	  echo "rm -f \"$${dir}/so_locations\""; \
 	  rm -f "$${dir}/so_locations"; \
 	done
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 libgslsiman.la: $(libgslsiman_la_OBJECTS) $(libgslsiman_la_DEPENDENCIES) 
+=======
+libgslsiman.la: $(libgslsiman_la_OBJECTS) $(libgslsiman_la_DEPENDENCIES)
+>>>>>>> config
 	$(LINK)  $(libgslsiman_la_OBJECTS) $(libgslsiman_la_LIBADD) $(LIBS)
 
 clean-checkPROGRAMS:
@@ -318,10 +326,17 @@ clean-noinstPROGRAMS:
 	list=`for p in $$list; do echo "$$p"; done | sed 's/$(EXEEXT)$$//'`; \
 	echo " rm -f" $$list; \
 	rm -f $$list
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 siman_tsp$(EXEEXT): $(siman_tsp_OBJECTS) $(siman_tsp_DEPENDENCIES) 
 	@rm -f siman_tsp$(EXEEXT)
 	$(LINK) $(siman_tsp_OBJECTS) $(siman_tsp_LDADD) $(LIBS)
 test$(EXEEXT): $(test_OBJECTS) $(test_DEPENDENCIES) 
+=======
+siman_tsp$(EXEEXT): $(siman_tsp_OBJECTS) $(siman_tsp_DEPENDENCIES)
+	@rm -f siman_tsp$(EXEEXT)
+	$(LINK) $(siman_tsp_OBJECTS) $(siman_tsp_LDADD) $(LIBS)
+test$(EXEEXT): $(test_OBJECTS) $(test_DEPENDENCIES)
+>>>>>>> config
 	@rm -f test$(EXEEXT)
 	$(LINK) $(test_OBJECTS) $(test_LDADD) $(LIBS)
 

@@ -1,17 +1,31 @@
 /* linalg/luc.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2001, 2007, 2009 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 2001, 2007, 2009 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -44,13 +58,22 @@ static int singular (const gsl_matrix_complex * LU);
  * matrix. The diagonal elements of L are unity and are not stored.
  *
  * U is stored in the diagonal and upper triangular part of the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * input matrix.  
  * 
+=======
+ * input matrix.
+ *
+>>>>>>> config
  * P is stored in the permutation p. Column j of P is column k of the
  * identity matrix, where k = permutation->data[j]
  *
  * signum gives the sign of the permutation, (-1)^n, where n is the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * number of interchanges in the permutation. 
+=======
+ * number of interchanges in the permutation.
+>>>>>>> config
  *
  * See Golub & Van Loan, Matrix Computations, Algorithm 3.4.1 (Gauss
  * Elimination with Partial Pivoting).
@@ -76,6 +99,7 @@ gsl_linalg_complex_LU_decomp (gsl_matrix_complex * A, gsl_permutation * p, int *
       gsl_permutation_init (p);
 
       for (j = 0; j < N - 1; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           /* Find maximum in the j-th column */
 
@@ -128,6 +152,60 @@ gsl_linalg_complex_LU_decomp (gsl_matrix_complex * A, gsl_permutation * p, int *
             }
         }
       
+=======
+	{
+	  /* Find maximum in the j-th column */
+
+	  gsl_complex ajj = gsl_matrix_complex_get (A, j, j);
+	  double max = gsl_complex_abs (ajj);
+	  size_t i_pivot = j;
+
+	  for (i = j + 1; i < N; i++)
+	    {
+	      gsl_complex aij = gsl_matrix_complex_get (A, i, j);
+	      double ai = gsl_complex_abs (aij);
+
+	      if (ai > max)
+		{
+		  max = ai;
+		  i_pivot = i;
+		}
+	    }
+
+	  if (i_pivot != j)
+	    {
+	      gsl_matrix_complex_swap_rows (A, j, i_pivot);
+	      gsl_permutation_swap (p, j, i_pivot);
+	      *signum = -(*signum);
+	    }
+
+	  ajj = gsl_matrix_complex_get (A, j, j);
+
+	  if (!(GSL_REAL(ajj) == 0.0 && GSL_IMAG(ajj) == 0.0))
+	    {
+	      for (i = j + 1; i < N; i++)
+		{
+		  gsl_complex aij_orig = gsl_matrix_complex_get (A, i, j);
+		  gsl_complex aij = gsl_complex_div (aij_orig, ajj);
+		  gsl_matrix_complex_set (A, i, j, aij);
+
+		  for (k = j + 1; k < N; k++)
+		    {
+		      gsl_complex aik = gsl_matrix_complex_get (A, i, k);
+		      gsl_complex ajk = gsl_matrix_complex_get (A, j, k);
+
+		      /* aik = aik - aij * ajk */
+
+		      gsl_complex aijajk = gsl_complex_mul (aij, ajk);
+		      gsl_complex aik_new = gsl_complex_sub (aik, aijajk);
+
+		      gsl_matrix_complex_set (A, i, k, aik_new);
+		    }
+		}
+	    }
+	}
+
+>>>>>>> config
       return GSL_SUCCESS;
     }
 }
@@ -151,7 +229,11 @@ gsl_linalg_complex_LU_solve (const gsl_matrix_complex * LU, const gsl_permutatio
     {
       GSL_ERROR ("matrix size must match solution size", GSL_EBADLEN);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else if (singular (LU)) 
+=======
+  else if (singular (LU))
+>>>>>>> config
     {
       GSL_ERROR ("matrix is singular", GSL_EDOM);
     }
@@ -187,7 +269,11 @@ gsl_linalg_complex_LU_svx (const gsl_matrix_complex * LU, const gsl_permutation 
     {
       GSL_ERROR ("matrix size must match solution/rhs size", GSL_EBADLEN);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else if (singular (LU)) 
+=======
+  else if (singular (LU))
+>>>>>>> config
     {
       GSL_ERROR ("matrix is singular", GSL_EDOM);
     }
@@ -237,7 +323,11 @@ gsl_linalg_complex_LU_refine (const gsl_matrix_complex * A, const gsl_matrix_com
     {
       GSL_ERROR ("matrix size must match solution size", GSL_EBADLEN);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else if (singular (LU)) 
+=======
+  else if (singular (LU))
+>>>>>>> config
     {
       GSL_ERROR ("matrix is singular", GSL_EDOM);
     }
@@ -250,9 +340,15 @@ gsl_linalg_complex_LU_refine (const gsl_matrix_complex * A, const gsl_matrix_com
       gsl_vector_complex_memcpy (residual, b);
 
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gsl_complex one = GSL_COMPLEX_ONE;
         gsl_complex negone = GSL_COMPLEX_NEGONE;
         gsl_blas_zgemv (CblasNoTrans, one, A, x, negone, residual);
+=======
+	gsl_complex one = GSL_COMPLEX_ONE;
+	gsl_complex negone = GSL_COMPLEX_NEGONE;
+	gsl_blas_zgemv (CblasNoTrans, one, A, x, negone, residual);
+>>>>>>> config
       }
 
       /* Find correction, delta = - (A^-1) * residual, and apply it */
@@ -260,8 +356,13 @@ gsl_linalg_complex_LU_refine (const gsl_matrix_complex * A, const gsl_matrix_com
       status = gsl_linalg_complex_LU_svx (LU, p, residual);
 
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gsl_complex negone= GSL_COMPLEX_NEGONE;
         gsl_blas_zaxpy (negone, residual, x);
+=======
+	gsl_complex negone= GSL_COMPLEX_NEGONE;
+	gsl_blas_zaxpy (negone, residual, x);
+>>>>>>> config
       }
 
       return status;
@@ -283,7 +384,11 @@ gsl_linalg_complex_LU_invert (const gsl_matrix_complex * LU, const gsl_permutati
       int status_i = gsl_linalg_complex_LU_svx (LU, p, &(c.vector));
 
       if (status_i)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         status = status_i;
+=======
+	status = status_i;
+>>>>>>> config
     }
 
   return status;
@@ -333,6 +438,7 @@ gsl_linalg_complex_LU_sgndet (gsl_matrix_complex * LU, int signum)
   for (i = 0; i < n; i++)
     {
       gsl_complex z = gsl_matrix_complex_get (LU, i, i);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
       double r = gsl_complex_abs(z);
 
@@ -346,6 +452,21 @@ gsl_linalg_complex_LU_sgndet (gsl_matrix_complex * LU, int signum)
           z = gsl_complex_div_real(z, r);
           phase = gsl_complex_mul(phase, z);
         }
+=======
+
+      double r = gsl_complex_abs(z);
+
+      if (r == 0)
+	{
+	  phase = gsl_complex_rect(0.0, 0.0);
+	  break;
+	}
+      else
+	{
+	  z = gsl_complex_div_real(z, r);
+	  phase = gsl_complex_mul(phase, z);
+	}
+>>>>>>> config
     }
 
   return phase;
@@ -361,6 +482,10 @@ singular (const gsl_matrix_complex * LU)
       gsl_complex u = gsl_matrix_complex_get (LU, i, i);
       if (GSL_REAL(u) == 0 && GSL_IMAG(u) == 0) return 1;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  
+=======
+
+>>>>>>> config
  return 0;
 }

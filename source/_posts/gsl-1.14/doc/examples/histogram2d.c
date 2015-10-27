@@ -10,33 +10,55 @@ main (void)
 
   gsl_histogram2d * h = gsl_histogram2d_alloc (10, 10);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   gsl_histogram2d_set_ranges_uniform (h, 
                                       0.0, 1.0,
                                       0.0, 1.0);
+=======
+  gsl_histogram2d_set_ranges_uniform (h,
+				      0.0, 1.0,
+				      0.0, 1.0);
+>>>>>>> config
 
   gsl_histogram2d_accumulate (h, 0.3, 0.3, 1);
   gsl_histogram2d_accumulate (h, 0.8, 0.1, 5);
   gsl_histogram2d_accumulate (h, 0.7, 0.9, 0.5);
 
   gsl_rng_env_setup ();
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   T = gsl_rng_default;
   r = gsl_rng_alloc (T);
 
   {
     int i;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     gsl_histogram2d_pdf * p 
       = gsl_histogram2d_pdf_alloc (h->nx, h->ny);
     
+=======
+    gsl_histogram2d_pdf * p
+      = gsl_histogram2d_pdf_alloc (h->nx, h->ny);
+
+>>>>>>> config
     gsl_histogram2d_pdf_init (p, h);
 
     for (i = 0; i < 1000; i++) {
       double x, y;
       double u = gsl_rng_uniform (r);
       double v = gsl_rng_uniform (r);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
        
       gsl_histogram2d_pdf_sample (p, u, v, &x, &y);
       
+=======
+
+      gsl_histogram2d_pdf_sample (p, u, v, &x, &y);
+
+>>>>>>> config
       printf ("%g %g\n", x, y);
     }
 

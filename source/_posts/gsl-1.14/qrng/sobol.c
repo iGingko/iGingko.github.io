@@ -21,7 +21,11 @@ static int sobol_init(void * state, unsigned int dimension);
 static int sobol_get(void * state, unsigned int dimension, double * v);
 
 /* global Sobol generator type object */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static const gsl_qrng_type sobol_type = 
+=======
+static const gsl_qrng_type sobol_type =
+>>>>>>> config
 {
   "sobol",
   SOBOL_MAX_DIMENSION,
@@ -34,7 +38,11 @@ const gsl_qrng_type * gsl_qrng_sobol = &sobol_type;
 
 /* primitive polynomials in binary encoding
  */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static const int primitive_polynomials[SOBOL_MAX_DIMENSION] = 
+=======
+static const int primitive_polynomials[SOBOL_MAX_DIMENSION] =
+>>>>>>> config
 {
   1,     3,   7,  11,  13,  19,  25,  37,  59,  47,
   61,   55,  41,  67,  97,  91, 109, 103, 115, 131,
@@ -43,11 +51,19 @@ static const int primitive_polynomials[SOBOL_MAX_DIMENSION] =
 };
 
 /* degrees of the primitive polynomials */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static const int degree_table[SOBOL_MAX_DIMENSION] = 
 {
   0, 1, 2, 3, 3, 4, 4, 5, 5, 5,
   5, 5, 5, 6, 6, 6, 6, 6, 6, 7,
   7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 
+=======
+static const int degree_table[SOBOL_MAX_DIMENSION] =
+{
+  0, 1, 2, 3, 3, 4, 4, 5, 5, 5,
+  5, 5, 5, 6, 6, 6, 6, 6, 6, 7,
+  7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
+>>>>>>> config
   7, 7, 7, 7, 7, 7, 7, 8, 8, 8
 };
 
@@ -68,37 +84,61 @@ static const int v_init[8][SOBOL_MAX_DIMENSION] =
     3, 1, 3, 1, 3, 1, 1, 3, 1, 3,
     1, 3, 1, 3, 3, 1, 3, 1, 3, 1,
     3, 1, 1, 3, 1, 3, 1, 3, 1, 3
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   }, 
+=======
+  },
+>>>>>>> config
   {
     0, 0, 0, 7, 5, 1, 3, 3, 7, 5,
     5, 7, 7, 1, 3, 3, 7, 5, 1, 1,
     5, 3, 3, 1, 7, 5, 1, 3, 3, 7,
     5, 1, 1, 5, 7, 7, 5, 1, 3, 3
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   }, 
+=======
+  },
+>>>>>>> config
   {
     0,  0,  0,  0,  0,  1,  7,  9, 13, 11,
     1,  3,  7,  9,  5, 13, 13, 11,  3, 15,
     5,  3, 15,  7,  9, 13,  9,  1, 11,  7,
     5, 15,  1, 15, 11,  5,  3,  1,  7,  9
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   }, 
+=======
+  },
+>>>>>>> config
   {
      0,  0,  0,  0,  0,  0,  0,  9,  3, 27,
     15, 29, 21, 23, 19, 11, 25,  7, 13, 17,
      1, 25, 29,  3, 31, 11,  5, 23, 27, 19,
     21,  5,  1, 17, 13,  7, 15,  9, 31,  9
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   }, 
+=======
+  },
+>>>>>>> config
   {
      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
      0,  0,  0, 37, 33,  7,  5, 11, 39, 63,
     27, 17, 15, 23, 29,  3, 21, 13, 31, 25,
      9, 49, 33, 19, 29, 11, 19, 27, 15, 25
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   }, 
+=======
+  },
+>>>>>>> config
   {
      0,   0,  0,  0,  0,  0,    0,  0,  0,   0,
      0,   0,  0,  0,  0,  0,    0,  0,  0,  13,
     33, 115, 41, 79, 17,  29, 119, 75, 73, 105,
      7,  59, 65, 21,  3, 113,  61, 89, 45, 107
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   }, 
+=======
+  },
+>>>>>>> config
   {
     0, 0, 0, 0, 0, 0, 0, 0,  0,  0,
     0, 0, 0, 0, 0, 0, 0, 0,  0,  0,
@@ -172,8 +212,13 @@ static int sobol_init(void * state, unsigned int dimension)
       int newv = s_state->v_direction[j-degree_i][i_dim];
       ell = 1;
       for(k=0; k<degree_i; k++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ell *= 2;
         if(includ[k]) newv ^= (ell * s_state->v_direction[j-k-1][i_dim]);
+=======
+	ell *= 2;
+	if(includ[k]) newv ^= (ell * s_state->v_direction[j-k-1][i_dim]);
+>>>>>>> config
       }
       s_state->v_direction[j][i_dim] = newv;
     }

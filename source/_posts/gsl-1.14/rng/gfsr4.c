@@ -14,10 +14,17 @@
    From Robert M. Ziff, "Four-tap shift-register-sequence
    random-number generators," Computers in Physics 12(4), Jul/Aug
    1998, pp 385-392.  A generalized feedback shift-register (GFSR)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    is basically an xor-sum of particular past lagged values.  A 
    four-tap register looks like:
       ra[nd] = ra[nd-A] ^ ra[nd-B] ^ ra[nd-C] ^ ra[nd-D]
    
+=======
+   is basically an xor-sum of particular past lagged values.  A
+   four-tap register looks like:
+      ra[nd] = ra[nd-A] ^ ra[nd-B] ^ ra[nd-C] ^ ra[nd-D]
+
+>>>>>>> config
    Ziff notes that "it is now widely known" that two-tap registers
    have serious flaws, the most obvious one being the three-point
    correlation that comes from the defn of the generator.  Nice
@@ -35,7 +42,11 @@
    suggested a short/fast hack:
 
    #define RandomInteger (++nd, ra[nd&M]=ra[(nd-A)&M]\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                           ^ra[(nd-B)&M]^ra[(nd-C)&M]^ra[(nd-D)&M])
+=======
+			  ^ra[(nd-B)&M]^ra[(nd-C)&M]^ra[(nd-D)&M])
+>>>>>>> config
 
    so that (as long as you've defined nd,ra[M+1]), then you ca do things
    like: 'if (RandomInteger < p) {...}'.
@@ -82,7 +93,11 @@ gfsr4_get (void *vstate)
       state->ra[((state->nd)+(M+1-B))&M]^
       state->ra[((state->nd)+(M+1-C))&M]^
       state->ra[((state->nd)+(M+1-D))&M];
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
 }
 
 static double
@@ -117,12 +132,21 @@ gfsr4_set (void *vstate, unsigned long int s)
       unsigned long t = 0 ;
       unsigned long bit = msb ;
       for (j = 0; j < 32; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           s = LCG(s) ;
           if (s & msb) 
             t |= bit ;
           bit >>= 1 ;
         }
+=======
+	{
+	  s = LCG(s) ;
+	  if (s & msb)
+	    t |= bit ;
+	  bit >>= 1 ;
+	}
+>>>>>>> config
       state->ra[i] = t ;
     }
 
@@ -158,8 +182,11 @@ static const gsl_rng_type gfsr4_type =
  &gfsr4_get_double};
 
 const gsl_rng_type *gsl_rng_gfsr4 = &gfsr4_type;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
 
 
 
+=======
+>>>>>>> config

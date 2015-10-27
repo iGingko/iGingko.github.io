@@ -1,17 +1,31 @@
 /* specfunc/bessel_Yn.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -57,7 +71,11 @@ static int bessel_Yn_small_x(const int n, const double x, gsl_sf_result * result
     sum1 += k_term;
   }
   term1 = -exp(ln_pre1) * sum1 / M_PI;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   pre2 = -exp(n*ln_x_2) / M_PI;
   if(fabs(pre2) > 0.0) {
     const int KMAX = 20;
@@ -150,10 +168,17 @@ gsl_sf_bessel_Yn_e(int n, const double x, gsl_sf_result * result)
       double byp;
       int j;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       for(j=1; j<n; j++) { 
         byp = j*two_over_x*by - bym;
         bym = by;
         by  = byp;
+=======
+      for(j=1; j<n; j++) {
+	byp = j*two_over_x*by - bym;
+	bym = by;
+	by  = byp;
+>>>>>>> config
       }
       result->val  = sign * by;
       result->err  = fabs(result->val) * (fabs(r_by.err/r_by.val) + fabs(r_bym.err/r_bym.val));
@@ -189,15 +214,26 @@ gsl_sf_bessel_Yn_array(const int nmin, const int nmax, const double x, double * 
 
     if(stat == GSL_SUCCESS) {
       for(n=nmin+1; n<=nmax+1; n++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         result_array[n-nmin-1] = Ynm1;
         Ynp1 = -Ynm1 + 2.0*n/x * Yn;
         Ynm1 = Yn;
         Yn   = Ynp1;
+=======
+	result_array[n-nmin-1] = Ynm1;
+	Ynp1 = -Ynm1 + 2.0*n/x * Yn;
+	Ynm1 = Yn;
+	Yn   = Ynp1;
+>>>>>>> config
       }
     }
     else {
       for(n=nmin; n<=nmax; n++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         result_array[n-nmin] = 0.0;
+=======
+	result_array[n-nmin] = 0.0;
+>>>>>>> config
       }
     }
 
@@ -214,4 +250,7 @@ double gsl_sf_bessel_Yn(const int n, const double x)
 {
   EVAL_RESULT(gsl_sf_bessel_Yn_e(n, x, &result));
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

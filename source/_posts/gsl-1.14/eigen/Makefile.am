@@ -1,4 +1,8 @@
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 noinst_LTLIBRARIES = libgsleigen.la 
+=======
+noinst_LTLIBRARIES = libgsleigen.la
+>>>>>>> config
 
 check_PROGRAMS = test
 
@@ -14,5 +18,8 @@ TESTS = $(check_PROGRAMS)
 test_LDADD = libgsleigen.la  ../test/libgsltest.la ../linalg/libgsllinalg.la ../permutation/libgslpermutation.la ../blas/libgslblas.la ../cblas/libgslcblas.la ../matrix/libgslmatrix.la ../vector/libgslvector.la ../block/libgslblock.la  ../complex/libgslcomplex.la ../ieee-utils/libgslieeeutils.la ../sys/libgslsys.la ../err/libgslerr.la ../utils/libutils.la ../rng/libgslrng.la ../sort/libgslsort.la
 
 test_SOURCES = test.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
+=======
+>>>>>>> config

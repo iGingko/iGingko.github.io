@@ -8,11 +8,19 @@ one and two dimensions.  The wavelet functions are declared in the header
 files @file{gsl_wavelet.h} and @file{gsl_wavelet2d.h}.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * DWT Definitions::             
 * DWT Initialization::          
 * DWT Transform Functions::     
 * DWT Examples::                
 * DWT References::              
+=======
+* DWT Definitions::
+* DWT Initialization::
+* DWT Transform Functions::
+* DWT Examples::
+* DWT References::
+>>>>>>> config
 @end menu
 
 @node DWT Definitions
@@ -102,11 +110,19 @@ on scales of @math{2^j} through a level parameter @math{j}.
 @c  @math{n=0 ... L-1},
 @c  where @math{L} is the total number of coefficients.  The two sets of
 @c  coefficients @math{h_j} and @math{g_i} define the scaling function and
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @c the wavelet.  
 The resulting family of functions @c{$\{\psi_{j,n}\}$}
 @math{@{\psi_@{j,n@}@}}
 constitutes an orthonormal
 basis for square-integrable signals.  
+=======
+@c the wavelet.
+The resulting family of functions @c{$\{\psi_{j,n}\}$}
+@math{@{\psi_@{j,n@}@}}
+constitutes an orthonormal
+basis for square-integrable signals.
+>>>>>>> config
 
 The discrete wavelet transform is an @math{O(N)} algorithm, and is also
 referred to as the @dfn{fast wavelet transform}.
@@ -134,7 +150,11 @@ The following wavelet types are implemented:
 @cindex Daubechies wavelets
 @cindex maximal phase, Daubechies wavelets
 This is the Daubechies wavelet family of maximum phase with @math{k/2}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 vanishing moments.  The implemented wavelets are 
+=======
+vanishing moments.  The implemented wavelets are
+>>>>>>> config
 @c{$k=4, 6, \dots, 20$}
 @math{k=4, 6, @dots{}, 20}, with @var{k} even.
 @end deffn
@@ -150,7 +170,11 @@ Haar wavelet is @math{k=2}.
 @deffnx {Wavelet} gsl_wavelet_bspline_centered
 @cindex biorthogonal wavelets
 @cindex B-spline wavelets
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 This is the biorthogonal B-spline wavelet family of order @math{(i,j)}.  
+=======
+This is the biorthogonal B-spline wavelet family of order @math{(i,j)}.
+>>>>>>> config
 The implemented values of @math{k = 100*i + j} are 103, 105, 202, 204,
 206, 208, 301, 303, 305 307, 309.
 @end deffn
@@ -202,8 +226,13 @@ spurious coefficients will appear at the beginning and end of each level
 of the transform.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * DWT in one dimension::        
 * DWT in two dimension::        
+=======
+* DWT in one dimension::
+* DWT in two dimension::
+>>>>>>> config
 @end menu
 
 @node DWT in one dimension
@@ -221,32 +250,54 @@ of two.  For the @code{transform} version of the function the argument
 @var{dir} can be either @code{forward} (@math{+1}) or @code{backward}
 (@math{-1}).  A workspace @var{work} of length @var{n} must be provided.
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 For the forward transform, the elements of the original array are 
 replaced by the discrete wavelet
 transform @c{$f_i \rightarrow w_{j,k}$}
 @math{f_i -> w_@{j,k@}} 
 in a packed triangular storage layout, 
 where @var{j} is the index of the level 
+=======
+For the forward transform, the elements of the original array are
+replaced by the discrete wavelet
+transform @c{$f_i \rightarrow w_{j,k}$}
+@math{f_i -> w_@{j,k@}}
+in a packed triangular storage layout,
+where @var{j} is the index of the level
+>>>>>>> config
 @c{$j = 0 \dots J-1$}
 @math{j = 0 ... J-1}
 and
 @var{k} is the index of the coefficient within each level,
 @c{$k = 0 \dots 2^j - 1$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{k = 0 ... (2^j)-1}.  
+=======
+@math{k = 0 ... (2^j)-1}.
+>>>>>>> config
 The total number of levels is @math{J = \log_2(n)}.  The output data
 has the following form,
 @tex
 \beforedisplay
 $$
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 (s_{-1,0}, d_{0,0}, d_{1,0}, d_{1,1}, d_{2,0},\cdots, d_{j,k},\cdots, d_{J-1,2^{J-1} - 1}) 
+=======
+(s_{-1,0}, d_{0,0}, d_{1,0}, d_{1,1}, d_{2,0},\cdots, d_{j,k},\cdots, d_{J-1,2^{J-1} - 1})
+>>>>>>> config
 $$
 \afterdisplay
 @end tex
 @ifinfo
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 (s_@{-1,0@}, d_@{0,0@}, d_@{1,0@}, d_@{1,1@}, d_@{2,0@}, ..., 
   d_@{j,k@}, ..., d_@{J-1,2^@{J-1@}-1@}) 
+=======
+(s_@{-1,0@}, d_@{0,0@}, d_@{1,0@}, d_@{1,1@}, d_@{2,0@}, ...,
+  d_@{j,k@}, ..., d_@{J-1,2^@{J-1@}-1@})
+>>>>>>> config
 @end example
 
 @end ifinfo
@@ -254,7 +305,11 @@ $$
 where the first element is the smoothing coefficient @c{$s_{-1,0}$}
 @math{s_@{-1,0@}}, followed by the detail coefficients @c{$d_{j,k}$}
 @math{d_@{j,k@}} for each level
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{j}.  The backward transform inverts these coefficients to obtain 
+=======
+@math{j}.  The backward transform inverts these coefficients to obtain
+>>>>>>> config
 the original data.
 
 These functions return a status of @code{GSL_SUCCESS} upon successful
@@ -357,8 +412,13 @@ recording from the MIT-BIH Arrhythmia Database, part of the PhysioNet
 archive of public-domain of medical datasets.
 
 @sp 1
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @center @image{dwt-orig,3.4in} 
 @center @image{dwt-samp,3.4in} 
+=======
+@center @image{dwt-orig,3.4in}
+@center @image{dwt-samp,3.4in}
+>>>>>>> config
 @quotation
 Original (upper) and wavelet-compressed (lower) ECG signals, using the
 20 largest components of the Daubechies(4) discrete wavelet transform.
@@ -375,7 +435,11 @@ original lectures by Daubechies,
 @item
 Ingrid Daubechies.
 Ten Lectures on Wavelets.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @cite{CBMS-NSF Regional Conference Series in Applied Mathematics} (1992), 
+=======
+@cite{CBMS-NSF Regional Conference Series in Applied Mathematics} (1992),
+>>>>>>> config
 SIAM, ISBN 0898712742.
 @end itemize
 
@@ -415,7 +479,11 @@ Multiresolution Approximations and Wavelet Orthonormal Bases of L@math{^2}(R).
 S. G. Mallat.
 A Theory for Multiresolution Signal Decomposition---The Wavelet Representation.
 @cite{IEEE Transactions on Pattern Analysis and Machine Intelligence}, 11, 1989,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 674--693. 
+=======
+674--693.
+>>>>>>> config
 @end itemize
 
 @noindent
@@ -444,9 +512,16 @@ paper,
 
 @itemize @w{}
 @item
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 Goldberger et al.  
 PhysioBank, PhysioToolkit, and PhysioNet: Components
 of a New Research Resource for Complex Physiologic
 Signals. 
+=======
+Goldberger et al.
+PhysioBank, PhysioToolkit, and PhysioNet: Components
+of a New Research Resource for Complex Physiologic
+Signals.
+>>>>>>> config
 @cite{Circulation} 101(23):e215-e220 2000.
 @end itemize

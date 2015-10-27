@@ -85,6 +85,7 @@ strtol (nptr, endptr, base)
   if (base == 0)
     if (*s == '0')
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         if (toupper (s[1]) == 'X')
           {
             s += 2;
@@ -92,6 +93,15 @@ strtol (nptr, endptr, base)
           }
         else
           base = 8;
+=======
+	if (toupper (s[1]) == 'X')
+	  {
+	    s += 2;
+	    base = 16;
+	  }
+	else
+	  base = 8;
+>>>>>>> config
       }
     else
       base = 10;
@@ -107,6 +117,7 @@ strtol (nptr, endptr, base)
   for (c = *s; c != '\0'; c = *++s)
     {
       if (isdigit (c))
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         c -= '0';
       else if (isalpha (c))
         c = toupper (c) - 'A' + 10;
@@ -122,6 +133,23 @@ strtol (nptr, endptr, base)
           i *= (unsigned long int) base;
           i += c;
         }
+=======
+	c -= '0';
+      else if (isalpha (c))
+	c = toupper (c) - 'A' + 10;
+      else
+	break;
+      if (c >= base)
+	break;
+      /* Check for overflow.  */
+      if (i > cutoff || (i == cutoff && c > cutlim))
+	overflow = 1;
+      else
+	{
+	  i *= (unsigned long int) base;
+	  i += c;
+	}
+>>>>>>> config
     }
 
   /* Check if anything actually happened.  */
@@ -137,7 +165,11 @@ strtol (nptr, endptr, base)
   /* Check for a value that is within the range of
      `unsigned long int', but outside the range of `long int'.  */
   if (i > (negative ?
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
            -(unsigned long int) LONG_MIN : (unsigned long int) LONG_MAX))
+=======
+	   -(unsigned long int) LONG_MIN : (unsigned long int) LONG_MAX))
+>>>>>>> config
     overflow = 1;
 #endif
 

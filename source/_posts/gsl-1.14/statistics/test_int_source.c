@@ -1,17 +1,31 @@
 /* statistics/test_int_source.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Jim Davies, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Jim Davies, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -27,7 +41,11 @@ FUNCTION (test, func) (const size_t stridea, const size_t strideb)
   const size_t ina = 20, inb = 20;
 
   const BASE raw1[] = {1, 2, 3, 4, 5, 6} ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   const BASE irawa[] =
   {17, 18, 16, 18, 12,
    20, 18, 20, 20, 22,
@@ -143,20 +161,29 @@ FUNCTION (test, func) (const size_t stridea, const size_t strideb)
     int max = FUNCTION(gsl_stats,max) (igroupa, stridea, ina);
     int expected = 22;
     gsl_test (max != expected,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
               NAME(gsl_stats) "_max (%d observed vs %d expected)", max, expected);
+=======
+	      NAME(gsl_stats) "_max (%d observed vs %d expected)", max, expected);
+>>>>>>> config
   }
 
   {
     int min = FUNCTION(gsl_stats,min) (igroupa, stridea, ina);
     int expected = 8;
     gsl_test (min != expected,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
               NAME(gsl_stats) "_min (%d observed vs %d expected)", min, expected);
+=======
+	      NAME(gsl_stats) "_min (%d observed vs %d expected)", min, expected);
+>>>>>>> config
   }
 
   {
     BASE min, max;
     BASE expected_max = 22;
     BASE expected_min = 8;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     FUNCTION(gsl_stats,minmax) (&min, &max, igroupa, stridea, ina);
  
@@ -166,22 +193,43 @@ FUNCTION (test, func) (const size_t stridea, const size_t strideb)
     gsl_test  (min != expected_min,
                NAME(gsl_stats) "_minmax min (" OUT_FORMAT " observed vs " OUT_FORMAT " expected)", 
                min, expected_min);
+=======
+
+    FUNCTION(gsl_stats,minmax) (&min, &max, igroupa, stridea, ina);
+
+    gsl_test  (max != expected_max,
+	       NAME(gsl_stats) "_minmax max (" OUT_FORMAT " observed vs " OUT_FORMAT " expected)",
+	       max, expected_max);
+    gsl_test  (min != expected_min,
+	       NAME(gsl_stats) "_minmax min (" OUT_FORMAT " observed vs " OUT_FORMAT " expected)",
+	       min, expected_min);
+>>>>>>> config
   }
 
   {
     int max_index = FUNCTION(gsl_stats,max_index) (igroupa, stridea, ina);
     int expected = 9 ;
     gsl_test (max_index != expected,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
               NAME(gsl_stats) "_max_index (%d observed vs %d expected)",
               max_index, expected);
+=======
+	      NAME(gsl_stats) "_max_index (%d observed vs %d expected)",
+	      max_index, expected);
+>>>>>>> config
   }
 
   {
     int min_index = FUNCTION(gsl_stats,min_index) (igroupa, stridea, ina);
     int expected = 12 ;
     gsl_test (min_index != expected,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
               NAME(gsl_stats) "_min_index (%d observed vs %d expected)",
               min_index, expected);
+=======
+	      NAME(gsl_stats) "_min_index (%d observed vs %d expected)",
+	      min_index, expected);
+>>>>>>> config
   }
 
   {
@@ -192,11 +240,19 @@ FUNCTION (test, func) (const size_t stridea, const size_t strideb)
     FUNCTION(gsl_stats,minmax_index) (&min_index, &max_index, igroupa, stridea, ina);
 
     gsl_test  (max_index != expected_max_index,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                NAME(gsl_stats) "_minmax_index max (%u observed vs %u expected)", 
                max_index, expected_max_index);
     gsl_test  (min_index != expected_min_index,
                NAME(gsl_stats) "_minmax_index min (%u observed vs %u expected)", 
                min_index, expected_min_index);
+=======
+	       NAME(gsl_stats) "_minmax_index max (%u observed vs %u expected)",
+	       max_index, expected_max_index);
+    gsl_test  (min_index != expected_min_index,
+	       NAME(gsl_stats) "_minmax_index min (%u observed vs %u expected)",
+	       min_index, expected_min_index);
+>>>>>>> config
   }
 
 
@@ -212,14 +268,22 @@ FUNCTION (test, func) (const size_t stridea, const size_t strideb)
     double median = FUNCTION(gsl_stats,median_from_sorted_data)(sorted, stridea, ina) ;
     double expected = 18;
     gsl_test_rel (median,expected, rel,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   NAME(gsl_stats) "_median_from_sorted_data (even)");
+=======
+		  NAME(gsl_stats) "_median_from_sorted_data (even)");
+>>>>>>> config
   }
 
   {
     double median = FUNCTION(gsl_stats,median_from_sorted_data)(sorted, stridea, ina - 1) ;
     double expected = 18;
     gsl_test_rel (median,expected, rel,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   NAME(gsl_stats) "_median_from_sorted_data (odd)");
+=======
+		  NAME(gsl_stats) "_median_from_sorted_data (odd)");
+>>>>>>> config
   }
 
 
@@ -227,28 +291,44 @@ FUNCTION (test, func) (const size_t stridea, const size_t strideb)
     double zeroth = FUNCTION(gsl_stats,quantile_from_sorted_data)(sorted, stridea, ina, 0.0) ;
     double expected = 8;
     gsl_test_rel (zeroth,expected, rel,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   NAME(gsl_stats) "_quantile_from_sorted_data (0)");
+=======
+		  NAME(gsl_stats) "_quantile_from_sorted_data (0)");
+>>>>>>> config
   }
 
   {
     double top = FUNCTION(gsl_stats,quantile_from_sorted_data)(sorted, stridea, ina, 1.0) ;
     double expected = 22;
     gsl_test_rel (top,expected, rel,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   NAME(gsl_stats) "_quantile_from_sorted_data (100)");
+=======
+		  NAME(gsl_stats) "_quantile_from_sorted_data (100)");
+>>>>>>> config
   }
 
   {
     double median = FUNCTION(gsl_stats,quantile_from_sorted_data)(sorted, stridea, ina, 0.5) ;
     double expected = 18;
     gsl_test_rel (median,expected, rel,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   NAME(gsl_stats) "_quantile_from_sorted_data (50, even)");
+=======
+		  NAME(gsl_stats) "_quantile_from_sorted_data (50, even)");
+>>>>>>> config
   }
 
   {
     double median = FUNCTION(gsl_stats,quantile_from_sorted_data)(sorted, stridea, ina - 1, 0.5);
     double expected = 18;
     gsl_test_rel (median,expected, rel,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   NAME(gsl_stats) "_quantile_from_sorted_data (50, odd)");
+=======
+		  NAME(gsl_stats) "_quantile_from_sorted_data (50, odd)");
+>>>>>>> config
   }
 
   free (sorted);

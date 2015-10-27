@@ -34,6 +34,7 @@ downheap (size_t * p, const void *data, const size_t size, const size_t N, size_
       size_t j = 2 * k;
 
       if (j < N && CMP (data, size, p[j], p[j + 1]) < 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           j++;
         }
@@ -42,6 +43,16 @@ downheap (size_t * p, const void *data, const size_t size, const size_t N, size_
         {
           break;
         }
+=======
+	{
+	  j++;
+	}
+
+      if (CMP (data, size, pki, p[j]) >= 0)
+	{
+	  break;
+	}
+>>>>>>> config
 
       p[k] = p[j];
 

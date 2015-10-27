@@ -23,10 +23,17 @@
 Tue Aug 27 19:36:43 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* test2d.c (main): changed test output format from %g to %e for
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	portability
 
 	* test.c (main): changed test output format from %g to %e for
  	portability
+=======
+	portability
+
+	* test.c (main): changed test output format from %g to %e for
+	portability
+>>>>>>> config
 
 Wed Mar  6 22:03:35 2002  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -41,19 +48,31 @@ Sat Jan 26 17:09:10 2002  Brian Gough  <bjg@network-theory.co.uk>
 Fri Jan 18 21:45:35 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* stat2d.c: functions to compute statistics of 2d histograms
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	(Achim Gaedke)
+=======
+	(Achim Gaedke)
+>>>>>>> config
 
 Mon Jan 14 19:34:31 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* stat.c (gsl_histogram_sum): new function to sum bins (Achim
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	Gaedke)
 
 	* maxval2d.c (gsl_histogram2d_sum): new function to sum bins
  	(Achim Gaedke)
+=======
+	Gaedke)
+
+	* maxval2d.c (gsl_histogram2d_sum): new function to sum bins
+	(Achim Gaedke)
+>>>>>>> config
 
 Thu Oct 18 14:48:07 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* pdf2d.c (gsl_histogram2d_pdf_alloc): changed the definition of
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	the pdf alloc function to be consistent with the rest of the
  	library
 
@@ -65,11 +84,28 @@ Thu Oct 18 14:48:07 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* init.c (gsl_histogram_alloc): added an alloc function for
  	consistency
+=======
+	the pdf alloc function to be consistent with the rest of the
+	library
+
+	* pdf.c (gsl_histogram_pdf_alloc): changed the definition of the
+	pdf alloc function to be consistent with the rest of the library
+
+	* init2d.c (gsl_histogram2d_alloc): added an alloc function for
+	consistency
+
+	* init.c (gsl_histogram_alloc): added an alloc function for
+	consistency
+>>>>>>> config
 
 Wed Sep 12 13:38:40 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* stat.c (gsl_histogram_mean): fixed calculation of mean/sigma and
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	made it part of the library
+=======
+	made it part of the library
+>>>>>>> config
 
 Sun Aug 19 13:31:35 2001  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -82,10 +118,17 @@ Sat Aug 18 22:21:26 2001  Brian Gough  <bjg@network-theory.co.uk>
 Mon Jun 25 17:41:42 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* init2d.c (gsl_histogram2d_set_ranges_uniform): added range
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	initialization functions suggested by Achim Gaedke
 
 	* init.c (gsl_histogram_set_ranges_uniform): added range
  	initialization functions suggested by Achim Gaedke
+=======
+	initialization functions suggested by Achim Gaedke
+
+	* init.c (gsl_histogram_set_ranges_uniform): added range
+	initialization functions suggested by Achim Gaedke
+>>>>>>> config
 
 Tue Apr 17 22:13:05 2001  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -94,31 +137,56 @@ Tue Apr 17 22:13:05 2001  Brian Gough  <bjg@network-theory.co.uk>
 Mon Apr 16 20:13:45 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* get2d.c (gsl_histogram2d_get): removed unnecessary reference to
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	find2d
+=======
+	find2d
+>>>>>>> config
 
 Mon Jan 22 13:55:13 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* find.c (find): optimize for the linear case, include own binary
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	search for speed
 
 	* add.c (gsl_histogram_accumulate): fix check of array bound for
  	index
+=======
+	search for speed
+
+	* add.c (gsl_histogram_accumulate): fix check of array bound for
+	index
+>>>>>>> config
 
 Sun May 28 12:23:46 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* test2d.c (main): use binary mode "b" when reading and writing
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	binary files
 
 	* test.c (main): use binary mode "b" when reading and writing
  	binary files
+=======
+	binary files
+
+	* test.c (main): use binary mode "b" when reading and writing
+	binary files
+>>>>>>> config
 
 Wed Apr 26 15:09:22 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* oper2d.c (gsl_histogram2d_shift): added function for shifting
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	histogram by a constant offset
 
 	* oper.c (gsl_histogram_shift): added function for shifting
  	histogram by a constant offset
+=======
+	histogram by a constant offset
+
+	* oper.c (gsl_histogram_shift): added function for shifting
+	histogram by a constant offset
+>>>>>>> config
 
 Wed Apr 19 17:27:44 2000  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -132,10 +200,17 @@ Wed Apr 19 17:27:44 2000  Brian Gough  <bjg@network-theory.co.uk>
 Fri Nov 19 15:31:51 1999  Brian Gough  <bjg@network-theory.co.uk>
 
 	* gsl-histogram.c (main): free memory before exit, eliminates
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	warning from checkergcc
 
 	* test_gsl_histogram.sh: added a test for the gsl-histogram
  	program
+=======
+	warning from checkergcc
+
+	* test_gsl_histogram.sh: added a test for the gsl-histogram
+	program
+>>>>>>> config
 
 Fri Oct  1 15:47:01 1999  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -144,7 +219,11 @@ Fri Oct  1 15:47:01 1999  Brian Gough  <bjg@network-theory.co.uk>
 Wed Aug 18 11:41:40 1999  Brian Gough  <bjg@network-theory.co.uk>
 
 	* eliminated obvious memory leaks from the tests, so that we can
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	check that the _free functions work correctly
+=======
+	check that the _free functions work correctly
+>>>>>>> config
 
 	* gsl-histogram.c (main): removed unused variable
 
@@ -165,6 +244,10 @@ Fri Aug  6 11:19:37 1999  Brian Gough  <bjg@network-theory.co.uk>
 Wed Sep 16 15:08:59 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* gsl-histogram.c (main): made the number of bins
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	optional. If you don't specify it then it uses bins of width 1.
 
 
+=======
+	optional. If you don't specify it then it uses bins of width 1.
+>>>>>>> config

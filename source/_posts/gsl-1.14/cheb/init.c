@@ -1,18 +1,33 @@
 /* cheb/init.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * Copyright (C) 2009 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ * Copyright (C) 2009 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -26,6 +41,7 @@
 
 /*-*-*-*-*-*-*-*-*-*-*-* Allocators *-*-*-*-*-*-*-*-*-*-*-*/
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_cheb_series * 
 gsl_cheb_alloc(const size_t order)
 {
@@ -35,6 +51,17 @@ gsl_cheb_alloc(const size_t order)
     GSL_ERROR_VAL("failed to allocate gsl_cheb_series struct", GSL_ENOMEM, 0);
   }
   
+=======
+gsl_cheb_series *
+gsl_cheb_alloc(const size_t order)
+{
+  gsl_cheb_series * cs = (gsl_cheb_series *) malloc(sizeof(gsl_cheb_series));
+
+  if(cs == 0) {
+    GSL_ERROR_VAL("failed to allocate gsl_cheb_series struct", GSL_ENOMEM, 0);
+  }
+
+>>>>>>> config
   cs->order    = order;
   cs->order_sp = order;
 
@@ -65,7 +92,11 @@ void gsl_cheb_free(gsl_cheb_series * cs)
 /*-*-*-*-*-*-*-*-*-*-*-* Initializer *-*-*-*-*-*-*-*-*-*-*-*/
 
 int gsl_cheb_init(gsl_cheb_series * cs, const gsl_function *func,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   const double a, const double b)
+=======
+		  const double a, const double b)
+>>>>>>> config
 {
   size_t k, j;
 
@@ -76,7 +107,11 @@ int gsl_cheb_init(gsl_cheb_series * cs, const gsl_function *func,
   cs->b = b;
   /* cs->err = 0.0; */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   { 
+=======
+  {
+>>>>>>> config
     double bma = 0.5 * (cs->b - cs->a);
     double bpa = 0.5 * (cs->b + cs->a);
     double fac = 2.0/(cs->order +1.0);
@@ -85,6 +120,7 @@ int gsl_cheb_init(gsl_cheb_series * cs, const gsl_function *func,
       double y = cos(M_PI * (k+0.5)/(cs->order+1));
       cs->f[k] = GSL_FN_EVAL(func, (y*bma + bpa));
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     for(j = 0; j<=cs->order; j++) {
       double sum = 0.0;
@@ -93,6 +129,16 @@ int gsl_cheb_init(gsl_cheb_series * cs, const gsl_function *func,
       cs->c[j] = fac * sum;
     }
     
+=======
+
+    for(j = 0; j<=cs->order; j++) {
+      double sum = 0.0;
+      for(k = 0; k<=cs->order; k++)
+	sum += cs->f[k]*cos(M_PI * j*(k+0.5)/(cs->order+1));
+      cs->c[j] = fac * sum;
+    }
+
+>>>>>>> config
   }
   return GSL_SUCCESS;
 }
@@ -114,4 +160,7 @@ gsl_cheb_coeffs (const gsl_cheb_series * cs)
 {
   return cs->c;
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

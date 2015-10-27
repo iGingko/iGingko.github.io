@@ -1,23 +1,41 @@
 /* multimin/gsl_multimin.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Fabrice Rossi
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Fabrice Rossi
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* Modified by Tuomo Keskitalo to include fminimizer and 
+=======
+/* Modified by Tuomo Keskitalo to include fminimizer and
+>>>>>>> config
    Nelder Mead related lines */
 
 #ifndef __GSL_MULTIMIN_H__
@@ -44,7 +62,11 @@ __BEGIN_DECLS
 
 /* Definition of an arbitrary real-valued function with gsl_vector input and */
 /* parameters */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 struct gsl_multimin_function_struct 
+=======
+struct gsl_multimin_function_struct
+>>>>>>> config
 {
   double (* f) (const gsl_vector * x, void * params);
   size_t n;
@@ -57,7 +79,11 @@ typedef struct gsl_multimin_function_struct gsl_multimin_function;
 
 /* Definition of an arbitrary differentiable real-valued function */
 /* with gsl_vector input and parameters */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 struct gsl_multimin_function_fdf_struct 
+=======
+struct gsl_multimin_function_fdf_struct
+>>>>>>> config
 {
   double (* f) (const gsl_vector  * x, void * params);
   void (* df) (const gsl_vector * x, void * params,gsl_vector * df);
@@ -73,16 +99,25 @@ typedef struct gsl_multimin_function_fdf_struct gsl_multimin_function_fdf;
 #define GSL_MULTIMIN_FN_EVAL_F_DF(F,x,y,g) (*((F)->fdf))(x,(F)->params,(y),(g))
 
 int gsl_multimin_diff (const gsl_multimin_function * f,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                        const gsl_vector * x, gsl_vector * g);
 
 /* minimization of non-differentiable functions */
 
 typedef struct 
+=======
+		       const gsl_vector * x, gsl_vector * g);
+
+/* minimization of non-differentiable functions */
+
+typedef struct
+>>>>>>> config
 {
   const char *name;
   size_t size;
   int (*alloc) (void *state, size_t n);
   int (*set) (void *state, gsl_multimin_function * f,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
               const gsl_vector * x, 
               double * size,
               const gsl_vector * step_size);
@@ -90,11 +125,24 @@ typedef struct
                   gsl_vector * x, 
                   double * size,
                   double * fval);
+=======
+	      const gsl_vector * x,
+	      double * size,
+	      const gsl_vector * step_size);
+  int (*iterate) (void *state, gsl_multimin_function * f,
+		  gsl_vector * x,
+		  double * size,
+		  double * fval);
+>>>>>>> config
   void (*free) (void *state);
 }
 gsl_multimin_fminimizer_type;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 typedef struct 
+=======
+typedef struct
+>>>>>>> config
 {
   /* multi dimensional part */
   const gsl_multimin_fminimizer_type *type;
@@ -102,7 +150,11 @@ typedef struct
 
   double fval;
   gsl_vector * x;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   double size;
 
   void *state;
@@ -111,6 +163,7 @@ gsl_multimin_fminimizer;
 
 gsl_multimin_fminimizer *
 gsl_multimin_fminimizer_alloc(const gsl_multimin_fminimizer_type *T,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                               size_t n);
 
 int 
@@ -118,20 +171,40 @@ gsl_multimin_fminimizer_set (gsl_multimin_fminimizer * s,
                              gsl_multimin_function * f,
                              const gsl_vector * x,
                              const gsl_vector * step_size);
+=======
+			      size_t n);
+
+int
+gsl_multimin_fminimizer_set (gsl_multimin_fminimizer * s,
+			     gsl_multimin_function * f,
+			     const gsl_vector * x,
+			     const gsl_vector * step_size);
+>>>>>>> config
 
 void
 gsl_multimin_fminimizer_free(gsl_multimin_fminimizer *s);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 const char * 
+=======
+const char *
+>>>>>>> config
 gsl_multimin_fminimizer_name (const gsl_multimin_fminimizer * s);
 
 int
 gsl_multimin_fminimizer_iterate(gsl_multimin_fminimizer *s);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_vector * 
 gsl_multimin_fminimizer_x (const gsl_multimin_fminimizer * s);
 
 double 
+=======
+gsl_vector *
+gsl_multimin_fminimizer_x (const gsl_multimin_fminimizer * s);
+
+double
+>>>>>>> config
 gsl_multimin_fminimizer_minimum (const gsl_multimin_fminimizer * s);
 
 double
@@ -147,23 +220,39 @@ gsl_multimin_test_size(const double size, double epsabs);
 
 /* minimisation of differentiable functions */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 typedef struct 
+=======
+typedef struct
+>>>>>>> config
 {
   const char *name;
   size_t size;
   int (*alloc) (void *state, size_t n);
   int (*set) (void *state, gsl_multimin_function_fdf * fdf,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
               const gsl_vector * x, double * f, 
               gsl_vector * gradient, double step_size, double tol);
   int (*iterate) (void *state,gsl_multimin_function_fdf * fdf, 
                   gsl_vector * x, double * f, 
                   gsl_vector * gradient, gsl_vector * dx);
+=======
+	      const gsl_vector * x, double * f,
+	      gsl_vector * gradient, double step_size, double tol);
+  int (*iterate) (void *state,gsl_multimin_function_fdf * fdf,
+		  gsl_vector * x, double * f,
+		  gsl_vector * gradient, gsl_vector * dx);
+>>>>>>> config
   int (*restart) (void *state);
   void (*free) (void *state);
 }
 gsl_multimin_fdfminimizer_type;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 typedef struct 
+=======
+typedef struct
+>>>>>>> config
 {
   /* multi dimensional part */
   const gsl_multimin_fdfminimizer_type *type;
@@ -180,6 +269,7 @@ gsl_multimin_fdfminimizer;
 
 gsl_multimin_fdfminimizer *
 gsl_multimin_fdfminimizer_alloc(const gsl_multimin_fdfminimizer_type *T,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                 size_t n);
 
 int 
@@ -187,11 +277,24 @@ gsl_multimin_fdfminimizer_set (gsl_multimin_fdfminimizer * s,
                                gsl_multimin_function_fdf *fdf,
                                const gsl_vector * x,
                                double step_size, double tol);
+=======
+				size_t n);
+
+int
+gsl_multimin_fdfminimizer_set (gsl_multimin_fdfminimizer * s,
+			       gsl_multimin_function_fdf *fdf,
+			       const gsl_vector * x,
+			       double step_size, double tol);
+>>>>>>> config
 
 void
 gsl_multimin_fdfminimizer_free(gsl_multimin_fdfminimizer *s);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 const char * 
+=======
+const char *
+>>>>>>> config
 gsl_multimin_fdfminimizer_name (const gsl_multimin_fdfminimizer * s);
 
 int
@@ -200,6 +303,7 @@ gsl_multimin_fdfminimizer_iterate(gsl_multimin_fdfminimizer *s);
 int
 gsl_multimin_fdfminimizer_restart(gsl_multimin_fdfminimizer *s);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_vector * 
 gsl_multimin_fdfminimizer_x (const gsl_multimin_fdfminimizer * s);
 
@@ -210,6 +314,18 @@ gsl_vector *
 gsl_multimin_fdfminimizer_gradient (const gsl_multimin_fdfminimizer * s);
 
 double 
+=======
+gsl_vector *
+gsl_multimin_fdfminimizer_x (const gsl_multimin_fdfminimizer * s);
+
+gsl_vector *
+gsl_multimin_fdfminimizer_dx (const gsl_multimin_fdfminimizer * s);
+
+gsl_vector *
+gsl_multimin_fdfminimizer_gradient (const gsl_multimin_fdfminimizer * s);
+
+double
+>>>>>>> config
 gsl_multimin_fdfminimizer_minimum (const gsl_multimin_fdfminimizer * s);
 
 GSL_VAR const gsl_multimin_fdfminimizer_type *gsl_multimin_fdfminimizer_steepest_descent;

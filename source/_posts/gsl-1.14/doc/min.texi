@@ -19,6 +19,7 @@ minimization functions and related declarations.  To use the minimization
 algorithms to find the maximum of a function simply invert its sign.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Minimization Overview::       
 * Minimization Caveats::        
 * Initializing the Minimizer::  
@@ -28,6 +29,17 @@ algorithms to find the maximum of a function simply invert its sign.
 * Minimization Algorithms::     
 * Minimization Examples::       
 * Minimization References and Further Reading::  
+=======
+* Minimization Overview::
+* Minimization Caveats::
+* Initializing the Minimizer::
+* Providing the function to minimize::
+* Minimization Iteration::
+* Minimization Stopping Parameters::
+* Minimization Algorithms::
+* Minimization Examples::
+* Minimization References and Further Reading::
+>>>>>>> config
 @end menu
 
 @node Minimization Overview
@@ -138,9 +150,15 @@ minimizer of type @var{T}.  For example, the following code
 creates an instance of a golden section minimizer,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 const gsl_min_fminimizer_type * T 
   = gsl_min_fminimizer_goldensection;
 gsl_min_fminimizer * s 
+=======
+const gsl_min_fminimizer_type * T
+  = gsl_min_fminimizer_goldensection;
+gsl_min_fminimizer * s
+>>>>>>> config
   = gsl_min_fminimizer_alloc (T);
 @end example
 
@@ -176,7 +194,11 @@ This function returns a pointer to the name of the minimizer.  For example,
 
 @example
 printf ("s is a '%s' minimizer\n",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gsl_min_fminimizer_name (s));
+=======
+	gsl_min_fminimizer_name (s));
+>>>>>>> config
 @end example
 
 @noindent
@@ -277,7 +299,11 @@ $$
 @ifinfo
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 |a - b| < epsabs + epsrel min(|a|,|b|) 
+=======
+|a - b| < epsabs + epsrel min(|a|,|b|)
+>>>>>>> config
 @end example
 
 @end ifinfo
@@ -389,7 +415,11 @@ minimum of @math{2}.
 Here are the results of the minimization procedure.
 
 @smallexample
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 $ ./a.out 
+=======
+$ ./a.out
+>>>>>>> config
 @verbatiminclude examples/min.out
 @end smallexample
 
@@ -405,4 +435,7 @@ Richard Brent, @cite{Algorithms for minimization without derivatives},
 Prentice-Hall (1973), republished by Dover in paperback (2002), ISBN
 0-486-41998-3.
 @end itemize
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

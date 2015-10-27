@@ -1,17 +1,31 @@
 /* matrix/test_source.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -41,10 +55,17 @@ FUNCTION (test, func) (void)
   for (i = 0; i < M; i++)
     {
       for (j = 0; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           k++;
           FUNCTION (gsl_matrix, set) (m, i, j, (BASE) k);
         }
+=======
+	{
+	  k++;
+	  FUNCTION (gsl_matrix, set) (m, i, j, (BASE) k);
+	}
+>>>>>>> config
     }
 
   {
@@ -52,12 +73,21 @@ FUNCTION (test, func) (void)
     k = 0;
     for (i = 0; i < M; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         for (j = 0; j < N; j++)
           {
             k++;
             if (m->data[i * N + j] != (BASE) k)
               status = 1;
           };
+=======
+	for (j = 0; j < N; j++)
+	  {
+	    k++;
+	    if (m->data[i * N + j] != (BASE) k)
+	      status = 1;
+	  };
+>>>>>>> config
       };
 
     gsl_test (status, NAME (gsl_matrix) "_set writes into array");
@@ -68,12 +98,21 @@ FUNCTION (test, func) (void)
     k = 0;
     for (i = 0; i < M; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         for (j = 0; j < N; j++)
           {
             k++;
             if (FUNCTION (gsl_matrix, get) (m, i, j) != (BASE) k)
               status = 1;
           };
+=======
+	for (j = 0; j < N; j++)
+	  {
+	    k++;
+	    if (FUNCTION (gsl_matrix, get) (m, i, j) != (BASE) k)
+	      status = 1;
+	  };
+>>>>>>> config
       };
     gsl_test (status, NAME (gsl_matrix) "_get reads from array");
   }
@@ -87,10 +126,17 @@ FUNCTION (test, func) (void)
   {
     int status = (FUNCTION(gsl_matrix,isnull)(m) != 1);
     TEST (status, "_isnull" DESC " on calloc matrix");
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     status = (FUNCTION(gsl_matrix,ispos)(m) != 0);
     TEST (status, "_ispos" DESC " on calloc matrix");
     
+=======
+
+    status = (FUNCTION(gsl_matrix,ispos)(m) != 0);
+    TEST (status, "_ispos" DESC " on calloc matrix");
+
+>>>>>>> config
     status = (FUNCTION(gsl_matrix,isneg)(m) != 0);
     TEST (status, "_isneg" DESC " on calloc matrix");
 
@@ -103,10 +149,17 @@ FUNCTION (test, func) (void)
   for (i = 0; i < M; i++)
     {
       for (j = 0; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           k++;
           FUNCTION (gsl_matrix, set) (m, i, j, (BASE) k);
         }
+=======
+	{
+	  k++;
+	  FUNCTION (gsl_matrix, set) (m, i, j, (BASE) k);
+	}
+>>>>>>> config
     }
 
 
@@ -115,6 +168,7 @@ FUNCTION (test, func) (void)
     k = 0;
     for (i = 0; i < M; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         FUNCTION (gsl_matrix, get_row) (v, m, i);
 
         for (j = 0; j < N; j++)
@@ -123,6 +177,16 @@ FUNCTION (test, func) (void)
             if (v->data[j] != (BASE) k)
               status = 1;
           }
+=======
+	FUNCTION (gsl_matrix, get_row) (v, m, i);
+
+	for (j = 0; j < N; j++)
+	  {
+	    k++;
+	    if (v->data[j] != (BASE) k)
+	      status = 1;
+	  }
+>>>>>>> config
       }
 
     gsl_test (status, NAME (gsl_matrix) "_get_row extracts row");
@@ -135,6 +199,7 @@ FUNCTION (test, func) (void)
 
     for (i = 0; i < M; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         for (j = 0; j < N; j++)
           {
             BASE k = FUNCTION(gsl_matrix, get) (m, i, j);
@@ -149,6 +214,22 @@ FUNCTION (test, func) (void)
               exp_jmin = j;
             }
           }
+=======
+	for (j = 0; j < N; j++)
+	  {
+	    BASE k = FUNCTION(gsl_matrix, get) (m, i, j);
+	    if (k > exp_max) {
+	      exp_max =  FUNCTION(gsl_matrix, get) (m, i, j);
+	      exp_imax = i;
+	      exp_jmax = j;
+	    }
+	    if (k < exp_min) {
+	      exp_min =  FUNCTION(gsl_matrix, get) (m, i, j);
+	      exp_imin = i;
+	      exp_jmin = j;
+	    }
+	  }
+>>>>>>> config
       }
 
     {
@@ -159,7 +240,11 @@ FUNCTION (test, func) (void)
 
     {
       BASE min = FUNCTION(gsl_matrix, min) (m) ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
       gsl_test (min != exp_min, NAME(gsl_matrix) "_min returns correct minimum value");
     }
 
@@ -214,7 +299,11 @@ FUNCTION (test, func) (void)
 
     {
       BASE min = FUNCTION(gsl_matrix, min) (m) ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
       gsl_test_abs (min, exp_min, 0, NAME(gsl_matrix) "_min returns correct minimum value for NaN");
     }
 
@@ -254,7 +343,11 @@ FUNCTION (test, func) (void)
       gsl_test (imin != exp_imin, NAME(gsl_matrix) "_minmax_index returns correct minimum i for NaN");
       gsl_test (jmin != exp_jmin, NAME(gsl_matrix) "_minmax_index returns correct minimum j for NaN");
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 #endif 
+=======
+#endif
+>>>>>>> config
 
 
   }
@@ -263,9 +356,15 @@ FUNCTION (test, func) (void)
   for (i = 0; i < M; i++)
     {
       for (j = 0; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           FUNCTION (gsl_matrix, set) (m, i, j, (ATOMIC) 0);
         }
+=======
+	{
+	  FUNCTION (gsl_matrix, set) (m, i, j, (ATOMIC) 0);
+	}
+>>>>>>> config
     }
 
   {
@@ -287,10 +386,17 @@ FUNCTION (test, func) (void)
   for (i = 0; i < M; i++)
     {
       for (j = 0; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           k++;
           FUNCTION (gsl_matrix, set) (m, i, j, (ATOMIC) (k % 10));
         }
+=======
+	{
+	  k++;
+	  FUNCTION (gsl_matrix, set) (m, i, j, (ATOMIC) (k % 10));
+	}
+>>>>>>> config
     }
 
   {
@@ -312,10 +418,17 @@ FUNCTION (test, func) (void)
   for (i = 0; i < M; i++)
     {
       for (j = 0; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           ATOMIC mij = ((++k) % 10)  - (ATOMIC) 5;
           FUNCTION (gsl_matrix, set) (m, i, j, mij);
         }
+=======
+	{
+	  ATOMIC mij = ((++k) % 10)  - (ATOMIC) 5;
+	  FUNCTION (gsl_matrix, set) (m, i, j, mij);
+	}
+>>>>>>> config
     }
 
   {
@@ -336,10 +449,17 @@ FUNCTION (test, func) (void)
   for (i = 0; i < M; i++)
     {
       for (j = 0; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           k++;
           FUNCTION (gsl_matrix, set) (m, i, j, -(ATOMIC) (k % 10));
         }
+=======
+	{
+	  k++;
+	  FUNCTION (gsl_matrix, set) (m, i, j, -(ATOMIC) (k % 10));
+	}
+>>>>>>> config
     }
 
   {
@@ -361,10 +481,17 @@ FUNCTION (test, func) (void)
   for (i = 0; i < M; i++)
     {
       for (j = 0; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           k++;
           FUNCTION (gsl_matrix, set) (m, i, j, (ATOMIC) (k % 10 + 1));
         }
+=======
+	{
+	  k++;
+	  FUNCTION (gsl_matrix, set) (m, i, j, (ATOMIC) (k % 10 + 1));
+	}
+>>>>>>> config
     }
 
   {
@@ -386,10 +513,17 @@ FUNCTION (test, func) (void)
   for (i = 0; i < M; i++)
     {
       for (j = 0; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           k++;
           FUNCTION (gsl_matrix, set) (m, i, j, -(ATOMIC) (k % 10 + 1));
         }
+=======
+	{
+	  k++;
+	  FUNCTION (gsl_matrix, set) (m, i, j, -(ATOMIC) (k % 10 + 1));
+	}
+>>>>>>> config
     }
 
   {
@@ -410,6 +544,7 @@ FUNCTION (test, func) (void)
   {
     TYPE (gsl_matrix) * a = FUNCTION (gsl_matrix, calloc) (M, N);
     TYPE (gsl_matrix) * b = FUNCTION (gsl_matrix, calloc) (M, N);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     for (i = 0; i < M; i++)
       {
@@ -438,12 +573,43 @@ FUNCTION (test, func) (void)
                 status = 1;
             }
         }
+=======
+
+    for (i = 0; i < M; i++)
+      {
+	for (j = 0; j < N; j++)
+	  {
+	    FUNCTION (gsl_matrix, set) (a, i, j, (BASE)(3 + i +  5 * j));
+	    FUNCTION (gsl_matrix, set) (b, i, j, (BASE)(3 + 2 * i + 4 * j));
+	  }
+      }
+
+    FUNCTION(gsl_matrix, memcpy) (m, a);
+    FUNCTION(gsl_matrix, add) (m, b);
+
+    {
+      int status = 0;
+
+      for (i = 0; i < M; i++)
+	{
+	  for (j = 0; j < N; j++)
+	    {
+	      BASE r = FUNCTION(gsl_matrix,get) (m,i,j);
+	      BASE x = FUNCTION(gsl_matrix,get) (a,i,j);
+	      BASE y = FUNCTION(gsl_matrix,get) (b,i,j);
+	      BASE z = x + y;
+	      if (r != z)
+		status = 1;
+	    }
+	}
+>>>>>>> config
       gsl_test (status, NAME (gsl_matrix) "_add matrix addition");
     }
 
 
     FUNCTION(gsl_matrix, memcpy) (m, a);
     FUNCTION(gsl_matrix, sub) (m, b);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     {
       int status = 0;
@@ -460,11 +626,30 @@ FUNCTION (test, func) (void)
                 status = 1;
             }
         }
+=======
+
+    {
+      int status = 0;
+
+      for (i = 0; i < M; i++)
+	{
+	  for (j = 0; j < N; j++)
+	    {
+	      BASE r = FUNCTION(gsl_matrix,get) (m,i,j);
+	      BASE x = FUNCTION(gsl_matrix,get) (a,i,j);
+	      BASE y = FUNCTION(gsl_matrix,get) (b,i,j);
+	      BASE z = x - y;
+	      if (r != z)
+		status = 1;
+	    }
+	}
+>>>>>>> config
       gsl_test (status, NAME (gsl_matrix) "_sub matrix subtraction");
     }
 
     FUNCTION(gsl_matrix, memcpy) (m, a);
     FUNCTION(gsl_matrix, mul_elements) (m, b);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     {
       int status = 0;
@@ -481,11 +666,30 @@ FUNCTION (test, func) (void)
                 status = 1;
             }
         }
+=======
+
+    {
+      int status = 0;
+
+      for (i = 0; i < M; i++)
+	{
+	  for (j = 0; j < N; j++)
+	    {
+	      BASE r = FUNCTION(gsl_matrix,get) (m,i,j);
+	      BASE x = FUNCTION(gsl_matrix,get) (a,i,j);
+	      BASE y = FUNCTION(gsl_matrix,get) (b,i,j);
+	      BASE z = x * y;
+	      if (r != z)
+		status = 1;
+	    }
+	}
+>>>>>>> config
       gsl_test (status, NAME (gsl_matrix) "_mul_elements multiplication");
     }
 
     FUNCTION(gsl_matrix, memcpy) (m, a);
     FUNCTION(gsl_matrix, div_elements) (m, b);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     {
       int status = 0;
@@ -502,6 +706,24 @@ FUNCTION (test, func) (void)
                 status = 1;
             }
         }
+=======
+
+    {
+      int status = 0;
+
+      for (i = 0; i < M; i++)
+	{
+	  for (j = 0; j < N; j++)
+	    {
+	      BASE r = FUNCTION(gsl_matrix,get) (m,i,j);
+	      BASE x = FUNCTION(gsl_matrix,get) (a,i,j);
+	      BASE y = FUNCTION(gsl_matrix,get) (b,i,j);
+	      BASE z = x / y;
+	      if (fabs(r - z) > 2 * GSL_FLT_EPSILON * fabs(z))
+		status = 1;
+	    }
+	}
+>>>>>>> config
       gsl_test (status, NAME (gsl_matrix) "_div_elements division");
     }
 
@@ -513,6 +735,7 @@ FUNCTION (test, func) (void)
       int status = 0;
 
       for (i = 0; i < M; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           for (j = 0; j < N; j++)
             {
@@ -522,6 +745,17 @@ FUNCTION (test, func) (void)
                 status = 1;
             }
         }
+=======
+	{
+	  for (j = 0; j < N; j++)
+	    {
+	      BASE r = FUNCTION(gsl_matrix,get) (m,i,j);
+	      BASE x = FUNCTION(gsl_matrix,get) (a,i,j);
+	      if (r !=  (ATOMIC)(2*x))
+		status = 1;
+	    }
+	}
+>>>>>>> config
       gsl_test (status, NAME (gsl_matrix) "_scale");
     }
 
@@ -532,6 +766,7 @@ FUNCTION (test, func) (void)
       int status = 0;
 
       for (i = 0; i < M; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           for (j = 0; j < N; j++)
             {
@@ -542,6 +777,18 @@ FUNCTION (test, func) (void)
                 status = 1;
             }
         }
+=======
+	{
+	  for (j = 0; j < N; j++)
+	    {
+	      BASE r = FUNCTION(gsl_matrix,get) (m,i,j);
+	      BASE x = FUNCTION(gsl_matrix,get) (a,i,j);
+	      BASE y = x + 3.0;
+	      if (fabs(r - y) > 2 * GSL_FLT_EPSILON * fabs(y))
+		status = 1;
+	    }
+	}
+>>>>>>> config
       gsl_test (status, NAME (gsl_matrix) "_add_constant");
     }
 
@@ -552,6 +799,7 @@ FUNCTION (test, func) (void)
       int status = 0;
 
       for (i = 0; i < M; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           for (j = 0; j < N; j++)
             {
@@ -562,6 +810,18 @@ FUNCTION (test, func) (void)
                 status = 1;
             }
         }
+=======
+	{
+	  for (j = 0; j < N; j++)
+	    {
+	      BASE r = FUNCTION(gsl_matrix,get) (m,i,j);
+	      BASE x = FUNCTION(gsl_matrix,get) (a,i,j);
+	      BASE y = (i == j) ? (x + 5.0) : x;
+	      if (fabs(r - y) > 2 * GSL_FLT_EPSILON * fabs(y))
+		status = 1;
+	    }
+	}
+>>>>>>> config
       gsl_test (status, NAME (gsl_matrix) "_add_diagonal");
     }
 
@@ -572,6 +832,7 @@ FUNCTION (test, func) (void)
       int status = 0;
 
       for (i = 0; i < M; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           for (j = 0; j < N; j++)
             {
@@ -584,6 +845,20 @@ FUNCTION (test, func) (void)
       gsl_test (status, NAME (gsl_matrix) "_swap");
     }
       
+=======
+	{
+	  for (j = 0; j < N; j++)
+	    {
+	      BASE x = FUNCTION(gsl_matrix,get) (a,i,j);
+	      BASE y = FUNCTION(gsl_matrix,get) (b,i,j);
+	      if (y != (BASE)(3 + i +  5 * j) || x != (BASE)(3 + 2 * i + 4 * j))
+		status = 1;
+	    }
+	}
+      gsl_test (status, NAME (gsl_matrix) "_swap");
+    }
+
+>>>>>>> config
 
     FUNCTION(gsl_matrix, free) (a);
     FUNCTION(gsl_matrix, free) (b);
@@ -607,11 +882,19 @@ FUNCTION (test, text) (void)
 
     for (i = 0; i < M; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         for (j = 0; j < N; j++)
           {
             k++;
             FUNCTION (gsl_matrix, set) (m, i, j, (BASE) k);
           }
+=======
+	for (j = 0; j < N; j++)
+	  {
+	    k++;
+	    FUNCTION (gsl_matrix, set) (m, i, j, (BASE) k);
+	  }
+>>>>>>> config
       }
 
     FUNCTION (gsl_matrix, fprintf) (f, m, OUT_FORMAT);
@@ -627,12 +910,21 @@ FUNCTION (test, text) (void)
     k = 0;
     for (i = 0; i < M; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         for (j = 0; j < N; j++)
           {
             k++;
             if (mm->data[i * N + j] != (BASE) k)
               status = 1;
           }
+=======
+	for (j = 0; j < N; j++)
+	  {
+	    k++;
+	    if (mm->data[i * N + j] != (BASE) k)
+	      status = 1;
+	  }
+>>>>>>> config
       }
 
     gsl_test (status, NAME (gsl_matrix) "_fprintf and fscanf");
@@ -658,11 +950,19 @@ FUNCTION (test, binary) (void)
     k = 0;
     for (i = 0; i < M; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         for (j = 0; j < N; j++)
           {
             k++;
             FUNCTION (gsl_matrix, set) (m, i, j, (BASE) k);
           }
+=======
+	for (j = 0; j < N; j++)
+	  {
+	    k++;
+	    FUNCTION (gsl_matrix, set) (m, i, j, (BASE) k);
+	  }
+>>>>>>> config
       }
 
     FUNCTION (gsl_matrix, fwrite) (f, m);
@@ -678,12 +978,21 @@ FUNCTION (test, binary) (void)
     k = 0;
     for (i = 0; i < M; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         for (j = 0; j < N; j++)
           {
             k++;
             if (mm->data[i * N + j] != (BASE) k)
               status = 1;
           }
+=======
+	for (j = 0; j < N; j++)
+	  {
+	    k++;
+	    if (mm->data[i * N + j] != (BASE) k)
+	      status = 1;
+	  }
+>>>>>>> config
       }
 
     gsl_test (status, NAME (gsl_matrix) "_write and read");
@@ -706,64 +1015,108 @@ FUNCTION (test, trap) (void)
   status = 0;
   FUNCTION (gsl_matrix, set) (m, M + 1, 0, (BASE) 1.2);
   gsl_test (!status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             NAME (gsl_matrix) "_set traps 1st index above upper bound");
+=======
+	    NAME (gsl_matrix) "_set traps 1st index above upper bound");
+>>>>>>> config
 
   status = 0;
   FUNCTION (gsl_matrix, set) (m, 0, N + 1, (BASE) 1.2);
   gsl_test (!status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             NAME (gsl_matrix) "_set traps 2nd index above upper bound");
+=======
+	    NAME (gsl_matrix) "_set traps 2nd index above upper bound");
+>>>>>>> config
 
   status = 0;
   FUNCTION (gsl_matrix, set) (m, M, 0, (BASE) 1.2);
   gsl_test (!status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             NAME (gsl_matrix) "_set traps 1st index at upper bound");
+=======
+	    NAME (gsl_matrix) "_set traps 1st index at upper bound");
+>>>>>>> config
 
   status = 0;
   FUNCTION (gsl_matrix, set) (m, 0, N, (BASE) 1.2);
   gsl_test (!status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             NAME (gsl_matrix) "_set traps 2nd index at upper bound");
+=======
+	    NAME (gsl_matrix) "_set traps 2nd index at upper bound");
+>>>>>>> config
 
   status = 0;
   x = FUNCTION (gsl_matrix, get) (m, i - 1, 0);
   gsl_test (!status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             NAME (gsl_matrix) "_get traps 1st index below lower bound");
+=======
+	    NAME (gsl_matrix) "_get traps 1st index below lower bound");
+>>>>>>> config
   gsl_test (x != 0,
      NAME (gsl_matrix) "_get returns zero for 1st index below lower bound");
 
   status = 0;
   x = FUNCTION (gsl_matrix, get) (m, 0, j - 1);
   gsl_test (!status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             NAME (gsl_matrix) "_get traps 2nd index below lower bound");
+=======
+	    NAME (gsl_matrix) "_get traps 2nd index below lower bound");
+>>>>>>> config
   gsl_test (x != 0,
      NAME (gsl_matrix) "_get returns zero for 2nd index below lower bound");
 
   status = 0;
   x = FUNCTION (gsl_matrix, get) (m, M + 1, 0);
   gsl_test (!status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             NAME (gsl_matrix) "_get traps 1st index above upper bound");
+=======
+	    NAME (gsl_matrix) "_get traps 1st index above upper bound");
+>>>>>>> config
   gsl_test (x != 0,
      NAME (gsl_matrix) "_get returns zero for 1st index above upper bound");
 
   status = 0;
   x = FUNCTION (gsl_matrix, get) (m, 0, N + 1);
   gsl_test (!status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             NAME (gsl_matrix) "_get traps 2nd index above upper bound");
+=======
+	    NAME (gsl_matrix) "_get traps 2nd index above upper bound");
+>>>>>>> config
   gsl_test (x != 0,
      NAME (gsl_matrix) "_get returns zero for 2nd index above upper bound");
 
   status = 0;
   x = FUNCTION (gsl_matrix, get) (m, M, 0);
   gsl_test (!status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             NAME (gsl_matrix) "_get traps 1st index at upper bound");
   gsl_test (x != 0,
         NAME (gsl_matrix) "_get returns zero for 1st index at upper bound");
+=======
+	    NAME (gsl_matrix) "_get traps 1st index at upper bound");
+  gsl_test (x != 0,
+	NAME (gsl_matrix) "_get returns zero for 1st index at upper bound");
+>>>>>>> config
 
   status = 0;
   x = FUNCTION (gsl_matrix, get) (m, 0, N);
   gsl_test (!status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             NAME (gsl_matrix) "_get traps 2nd index at upper bound");
   gsl_test (x != 0,
         NAME (gsl_matrix) "_get returns zero for 2nd index at upper bound");
+=======
+	    NAME (gsl_matrix) "_get traps 2nd index at upper bound");
+  gsl_test (x != 0,
+	NAME (gsl_matrix) "_get returns zero for 2nd index at upper bound");
+>>>>>>> config
 
   FUNCTION (gsl_matrix, free) (m);
 }

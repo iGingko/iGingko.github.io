@@ -490,7 +490,11 @@ replace the ``with@dots{}Texts.'' line with this:
 @smallexample
 @group
   with the Invariant Sections being @var{list their
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   titles}, with the Front-Cover Texts being @var{list}, and 
+=======
+  titles}, with the Front-Cover Texts being @var{list}, and
+>>>>>>> config
   with the Back-Cover Texts being @var{list}.
 @end group
 @end smallexample
@@ -510,4 +514,7 @@ to permit their use in free software.
 @c Local Variables:
 @c ispell-local-pdict: "ispell-dict"
 @c End:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

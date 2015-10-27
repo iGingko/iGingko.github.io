@@ -1,17 +1,31 @@
 /* wavelet/wavelet.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2004, 2009 Ivo Alxneit
  * 
+=======
+ *
+ * Copyright (C) 2004, 2009 Ivo Alxneit
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -32,13 +46,21 @@ gsl_wavelet_alloc (const gsl_wavelet_type * T, size_t k)
   if (w == NULL)
     {
       GSL_ERROR_VAL ("failed to allocate space for wavelet struct",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                      GSL_ENOMEM, 0);
+=======
+		     GSL_ENOMEM, 0);
+>>>>>>> config
     };
 
   w->type = T;
 
   status = (T->init) (&(w->h1), &(w->g1), &(w->h2), &(w->g2),
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       &(w->nc), &(w->offset), k);
+=======
+		      &(w->nc), &(w->offset), k);
+>>>>>>> config
 
   if (status)
     {
@@ -80,15 +102,25 @@ gsl_wavelet_print (const gsl_wavelet * w)
   for (i = 1; i < (n < 10 ? n : 10); i++)
     {
       printf
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         (" h1(%d):%12.8f   g1(%d):%12.8f       h2(%d):%12.8f   g2(%d):%12.8f\n",
          i, w->h1[i], i, w->g1[i], i, w->h2[i], i, w->g2[i]);
+=======
+	(" h1(%d):%12.8f   g1(%d):%12.8f       h2(%d):%12.8f   g2(%d):%12.8f\n",
+	 i, w->h1[i], i, w->g1[i], i, w->h2[i], i, w->g2[i]);
+>>>>>>> config
     }
 
   for (; i < n; i++)
     {
       printf
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ("h1(%d):%12.8f  g1(%d):%12.8f      h2(%d):%12.8f  g2(%d):%12.8f\n",
          i, w->h1[i], i, w->g1[i], i, w->h2[i], i, w->g2[i]);
+=======
+	("h1(%d):%12.8f  g1(%d):%12.8f      h2(%d):%12.8f  g2(%d):%12.8f\n",
+	 i, w->h1[i], i, w->g1[i], i, w->h2[i], i, w->g2[i]);
+>>>>>>> config
     }
 }
 #endif

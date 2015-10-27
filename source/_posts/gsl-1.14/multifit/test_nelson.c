@@ -3,7 +3,11 @@ const size_t nelson_P = 3;
 
 /* double nelson_x0[3] = { 2, 0.0001, -0.01}; */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 double nelson_x0[3] = { 2.5 , 0.000000005, -0.01}; 
+=======
+double nelson_x0[3] = { 2.5 , 0.000000005, -0.01};
+>>>>>>> config
 
 double nelson_x[3] = {
   2.5906836021E+00,
@@ -203,15 +207,22 @@ nelson_df (const gsl_vector * x, void *params, gsl_matrix * df)
 
 int
 nelson_fdf (const gsl_vector * x, void *params,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
            gsl_vector * f, gsl_matrix * df)
+=======
+	   gsl_vector * f, gsl_matrix * df)
+>>>>>>> config
 {
   nelson_f (x, params, f);
   nelson_df (x, params, df);
 
   return GSL_SUCCESS;
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
 
 
 
+=======
+>>>>>>> config

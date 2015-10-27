@@ -1,17 +1,31 @@
 /* integration/qmomof.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -29,9 +43,15 @@ static int
 dgtsl (size_t n, double *c, double *d, double *e, double *b);
 
 gsl_integration_qawo_table *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_integration_qawo_table_alloc (double omega, double L, 
                                   enum gsl_integration_qawo_enum sine,
                                   size_t n)
+=======
+gsl_integration_qawo_table_alloc (double omega, double L,
+				  enum gsl_integration_qawo_enum sine,
+				  size_t n)
+>>>>>>> config
 {
   gsl_integration_qawo_table *t;
   double * chebmo;
@@ -39,7 +59,11 @@ gsl_integration_qawo_table_alloc (double omega, double L,
   if (n == 0)
     {
       GSL_ERROR_VAL ("table length n must be positive integer",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_EDOM, 0);
+=======
+			GSL_EDOM, 0);
+>>>>>>> config
     }
 
   t = (gsl_integration_qawo_table *)
@@ -48,7 +72,11 @@ gsl_integration_qawo_table_alloc (double omega, double L,
   if (t == 0)
     {
       GSL_ERROR_VAL ("failed to allocate space for qawo_table struct",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_ENOMEM, 0);
+=======
+			GSL_ENOMEM, 0);
+>>>>>>> config
     }
 
   chebmo = (double *)  malloc (25 * n * sizeof (double));
@@ -57,7 +85,11 @@ gsl_integration_qawo_table_alloc (double omega, double L,
     {
       free (t);
       GSL_ERROR_VAL ("failed to allocate space for chebmo block",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_ENOMEM, 0);
+=======
+			GSL_ENOMEM, 0);
+>>>>>>> config
     }
 
   t->n = n;
@@ -69,14 +101,23 @@ gsl_integration_qawo_table_alloc (double omega, double L,
 
   /* precompute the moments */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   { 
+=======
+  {
+>>>>>>> config
     size_t i;
     double scale = 1.0;
 
     for (i = 0 ; i < t->n; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         compute_moments (t->par * scale, t->chebmo + 25*i);
         scale *= 0.5;
+=======
+	compute_moments (t->par * scale, t->chebmo + 25*i);
+	scale *= 0.5;
+>>>>>>> config
       }
   }
 
@@ -85,8 +126,13 @@ gsl_integration_qawo_table_alloc (double omega, double L,
 
 int
 gsl_integration_qawo_table_set (gsl_integration_qawo_table * t,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                     double omega, double L,
                                     enum gsl_integration_qawo_enum sine)
+=======
+				    double omega, double L,
+				    enum gsl_integration_qawo_enum sine)
+>>>>>>> config
 {
   t->omega = omega;
   t->sine = sine;
@@ -95,14 +141,23 @@ gsl_integration_qawo_table_set (gsl_integration_qawo_table * t,
 
   /* recompute the moments */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   { 
+=======
+  {
+>>>>>>> config
     size_t i;
     double scale = 1.0;
 
     for (i = 0 ; i < t->n; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         compute_moments (t->par * scale, t->chebmo + 25*i);
         scale *= 0.5;
+=======
+	compute_moments (t->par * scale, t->chebmo + 25*i);
+	scale *= 0.5;
+>>>>>>> config
       }
   }
 
@@ -112,7 +167,11 @@ gsl_integration_qawo_table_set (gsl_integration_qawo_table * t,
 
 int
 gsl_integration_qawo_table_set_length (gsl_integration_qawo_table * t,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                            double L)
+=======
+					   double L)
+>>>>>>> config
 {
   /* return immediately if the length is the same as the old length */
 
@@ -126,14 +185,23 @@ gsl_integration_qawo_table_set_length (gsl_integration_qawo_table * t,
 
   /* recompute the moments */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   { 
+=======
+  {
+>>>>>>> config
     size_t i;
     double scale = 1.0;
 
     for (i = 0 ; i < t->n; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         compute_moments (t->par * scale, t->chebmo + 25*i);
         scale *= 0.5;
+=======
+	compute_moments (t->par * scale, t->chebmo + 25*i);
+	scale *= 0.5;
+>>>>>>> config
       }
   }
 
@@ -155,7 +223,11 @@ compute_moments (double par, double *chebmo)
   double v[28], d[25], d1[25], d2[25];
 
   const size_t noeq = 25;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   const double par2 = par * par;
   const double par4 = par2 * par2;
   const double par22 = par2 + 2.0;
@@ -173,18 +245,28 @@ compute_moments (double par, double *chebmo)
   v[0] = 2 * sinpar / par;
   v[1] = (8 * cospar + (2 * par2 - 8) * sinpar / par) / par2;
   v[2] = (32 * (par2 - 12) * cospar
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           + (2 * ((par2 - 80) * par2 + 192) * sinpar) / par) / par4;
+=======
+	  + (2 * ((par2 - 80) * par2 + 192) * sinpar) / par) / par4;
+>>>>>>> config
 
   if (fabs (par) <= 24)
     {
       /* compute the moments as the solution of a boundary value
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          problem using the asyptotic expansion as an endpoint */
       
+=======
+	 problem using the asyptotic expansion as an endpoint */
+
+>>>>>>> config
       double an2, ass, asap;
       double an = 6;
       size_t k;
 
       for (k = 0; k < noeq - 1; k++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           an2 = an * an;
           d[k] = -2 * (an2 - 4) * (par22 - 2 * an2);
@@ -193,6 +275,16 @@ compute_moments (double par, double *chebmo)
           v[k + 3] = as - (an2 - 4) * ac;
           an = an + 2.0;
         }
+=======
+	{
+	  an2 = an * an;
+	  d[k] = -2 * (an2 - 4) * (par22 - 2 * an2);
+	  d2[k] = (an - 1) * (an - 2) * par2;
+	  d1[k + 1] = (an + 3) * (an + 4) * par2;
+	  v[k + 3] = as - (an2 - 4) * ac;
+	  an = an + 2.0;
+	}
+>>>>>>> config
 
       an2 = an * an;
 
@@ -202,9 +294,15 @@ compute_moments (double par, double *chebmo)
 
       ass = par * sinpar;
       asap = (((((210 * par2 - 1) * cospar - (105 * par2 - 63) * ass) / an2
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                 - (1 - 15 * par2) * cospar + 15 * ass) / an2 
                - cospar + 3 * ass) / an2 
               - cospar) / an2;
+=======
+		- (1 - 15 * par2) * cospar + 15 * ass) / an2
+	       - cospar + 3 * ass) / an2
+	      - cospar) / an2;
+>>>>>>> config
       v[noeq + 2] = v[noeq + 2] - 2 * asap * par2 * (an - 1) * (an - 2);
 
       dgtsl (noeq, d1, d, d2, v + 3);
@@ -217,6 +315,7 @@ compute_moments (double par, double *chebmo)
       double an = 4;
 
       for (k = 3; k < 13; k++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double an2 = an * an;
           v[k] = ((an2 - 4) * (2 * (par22 - 2 * an2) * v[k - 1] - ac)
@@ -224,6 +323,15 @@ compute_moments (double par, double *chebmo)
             / (par2 * (an - 1) * (an - 2));
           an = an + 2.0;
         }
+=======
+	{
+	  double an2 = an * an;
+	  v[k] = ((an2 - 4) * (2 * (par22 - 2 * an2) * v[k - 1] - ac)
+		  + as - par2 * (an + 1) * (an + 2) * v[k - 2])
+	    / (par2 * (an - 1) * (an - 2));
+	  an = an + 2.0;
+	}
+>>>>>>> config
     }
 
 
@@ -243,13 +351,18 @@ compute_moments (double par, double *chebmo)
   if (fabs (par) <= 24)
     {
       /* compute the moments as the solution of a boundary value
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          problem using the asyptotic expansion as an endpoint */
+=======
+	 problem using the asyptotic expansion as an endpoint */
+>>>>>>> config
 
       size_t k;
       double an2, ass, asap;
       double an = 5;
 
       for (k = 0; k < noeq - 1; k++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           an2 = an * an;
           d[k] = -2 * (an2 - 4) * (par22 - 2 * an2);
@@ -259,6 +372,17 @@ compute_moments (double par, double *chebmo)
           an = an + 2.0;
         }
       
+=======
+	{
+	  an2 = an * an;
+	  d[k] = -2 * (an2 - 4) * (par22 - 2 * an2);
+	  d2[k] = (an - 1) * (an - 2) * par2;
+	  d1[k + 1] = (an + 3) * (an + 4) * par2;
+	  v[k + 2] = ac + (an2 - 4) * as;
+	  an = an + 2.0;
+	}
+
+>>>>>>> config
       an2 = an * an;
 
       d[noeq - 1] = -2 * (an2 - 4) * (par22 - 2 * an2);
@@ -267,8 +391,13 @@ compute_moments (double par, double *chebmo)
 
       ass = par * cospar;
       asap = (((((105 * par2 - 63) * ass - (210 * par2 - 1) * sinpar) / an2
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                 + (15 * par2 - 1) * sinpar
                 - 15 * ass) / an2 - sinpar - 3 * ass) / an2 - sinpar) / an2;
+=======
+		+ (15 * par2 - 1) * sinpar
+		- 15 * ass) / an2 - sinpar - 3 * ass) / an2 - sinpar) / an2;
+>>>>>>> config
       v[noeq + 1] = v[noeq + 1] - 2 * asap * par2 * (an - 1) * (an - 2);
 
       dgtsl (noeq, d1, d, d2, v + 2);
@@ -280,6 +409,7 @@ compute_moments (double par, double *chebmo)
       size_t k;
       double an = 3;
       for (k = 2; k < 12; k++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double an2 = an * an;
           v[k] = ((an2 - 4) * (2 * (par22 - 2 * an2) * v[k - 1] + as)
@@ -287,6 +417,15 @@ compute_moments (double par, double *chebmo)
             / (par2 * (an - 1) * (an - 2));
           an = an + 2.0;
         }
+=======
+	{
+	  double an2 = an * an;
+	  v[k] = ((an2 - 4) * (2 * (par22 - 2 * an2) * v[k - 1] + as)
+		  + ac - par2 * (an + 1) * (an + 2) * v[k - 2])
+	    / (par2 * (an - 1) * (an - 2));
+	  an = an + 2.0;
+	}
+>>>>>>> config
     }
 
   for (i = 0; i < 12; i++)
@@ -299,8 +438,13 @@ compute_moments (double par, double *chebmo)
 static int
 dgtsl (size_t n, double *c, double *d, double *e, double *b)
 {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   /* solves a tridiagonal matrix A x = b 
      
+=======
+  /* solves a tridiagonal matrix A x = b
+
+>>>>>>> config
      c[1 .. n - 1]   subdiagonal of the matrix A
      d[0 .. n - 1]   diagonal of the matrix A
      e[0 .. n - 2]   superdiagonal of the matrix A
@@ -331,6 +475,7 @@ dgtsl (size_t n, double *c, double *d, double *e, double *b)
       size_t k1 = k + 1;
 
       if (fabs (c[k1]) >= fabs (c[k]))
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           {
             double t = c[k1];
@@ -366,6 +511,43 @@ dgtsl (size_t n, double *c, double *d, double *e, double *b)
         d[k1] = e[k1] + t * e[k];
         e[k1] = 0;
         b[k1] = b[k1] + t * b[k];
+=======
+	{
+	  {
+	    double t = c[k1];
+	    c[k1] = c[k];
+	    c[k] = t;
+	  };
+	  {
+	    double t = d[k1];
+	    d[k1] = d[k];
+	    d[k] = t;
+	  };
+	  {
+	    double t = e[k1];
+	    e[k1] = e[k];
+	    e[k] = t;
+	  };
+	  {
+	    double t = b[k1];
+	    b[k1] = b[k];
+	    b[k] = t;
+	  };
+	}
+
+      if (c[k] == 0)
+	{
+	  return GSL_FAILURE ;
+	}
+
+      {
+	double t = -c[k1] / c[k];
+
+	c[k1] = d[k1] + t * d[k];
+	d[k1] = e[k1] + t * e[k];
+	e[k1] = 0;
+	b[k1] = b[k1] + t * b[k];
+>>>>>>> config
       }
 
     }

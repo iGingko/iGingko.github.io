@@ -1,17 +1,31 @@
 /* specfunc/bessel_sequence.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -90,8 +104,13 @@ gsl_sf_bessel_sequence_Jnu_e(double nu, gsl_mode_t mode, size_t size, double * v
      */
     if(x == 0.0) {
       if(v[1] <= x) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         /* Strict ordering failure. */
         GSL_ERROR ("error", GSL_EFAILED);
+=======
+	/* Strict ordering failure. */
+	GSL_ERROR ("error", GSL_EFAILED);
+>>>>>>> config
       }
       x = v[1];
       gsl_sf_bessel_Jnu_e(nu, x, &J0);
@@ -105,8 +124,13 @@ gsl_sf_bessel_sequence_Jnu_e(double nu, gsl_mode_t mode, size_t size, double * v
      */
     while(v[i] < x_small && i < size) {
       if(v[i] <= x) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         /* Strict ordering failure. */
         GSL_ERROR ("error", GSL_EFAILED);
+=======
+	/* Strict ordering failure. */
+	GSL_ERROR ("error", GSL_EFAILED);
+>>>>>>> config
       }
       x = v[i];
       gsl_sf_bessel_Jnu_e(nu, x, &J0);
@@ -133,14 +157,23 @@ gsl_sf_bessel_sequence_Jnu_e(double nu, gsl_mode_t mode, size_t size, double * v
       int j;
 
       if(v[i] <= x) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         /* Strict ordering failure. */
         GSL_ERROR ("error", GSL_EFAILED);
+=======
+	/* Strict ordering failure. */
+	GSL_ERROR ("error", GSL_EFAILED);
+>>>>>>> config
       }
 
       /* Integrate over interval up to next sample point.
        */
       for(j=0, xj=x; j<Nd; j++, xj += dx) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         rk_step(nu, xj, dx, &Jp, &J);
+=======
+	rk_step(nu, xj, dx, &Jp, &J);
+>>>>>>> config
       }
 
       /* Go to next interval. */

@@ -15,6 +15,7 @@ The header file @file{gsl_multifit_nlin.h} contains prototypes for the
 multidimensional nonlinear fitting functions and related declarations.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Overview of Nonlinear Least-Squares Fitting::  
 * Initializing the Nonlinear Least-Squares Solver::  
 * Providing the Function to be Minimized::  
@@ -25,6 +26,18 @@ multidimensional nonlinear fitting functions and related declarations.
 * Computing the covariance matrix of best fit parameters::  
 * Example programs for Nonlinear Least-Squares Fitting::  
 * References and Further Reading for Nonlinear Least-Squares Fitting::  
+=======
+* Overview of Nonlinear Least-Squares Fitting::
+* Initializing the Nonlinear Least-Squares Solver::
+* Providing the Function to be Minimized::
+* Iteration of the Minimization Algorithm::
+* Search Stopping Parameters for Minimization Algorithms::
+* Minimization Algorithms using Derivatives::
+* Minimization Algorithms without Derivatives::
+* Computing the covariance matrix of best fit parameters::
+* Example programs for Nonlinear Least-Squares Fitting::
+* References and Further Reading for Nonlinear Least-Squares Fitting::
+>>>>>>> config
 @end menu
 
 @node Overview of Nonlinear Least-Squares Fitting
@@ -38,7 +51,11 @@ the minimization of the squared residuals of @math{n} functions,
 \beforedisplay
 $$
 \Phi(x)  = {1 \over 2} || F(x) ||^2
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          = {1 \over 2} \sum_{i=1}^{n} f_i (x_1, \dots, x_p)^2
+=======
+	 = {1 \over 2} \sum_{i=1}^{n} f_i (x_1, \dots, x_p)^2
+>>>>>>> config
 $$
 \afterdisplay
 @end tex
@@ -46,7 +63,11 @@ $$
 
 @example
 \Phi(x) = (1/2) || F(x) ||^2
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         = (1/2) \sum_@{i=1@}^@{n@} f_i(x_1, ..., x_p)^2 
+=======
+	= (1/2) \sum_@{i=1@}^@{n@} f_i(x_1, ..., x_p)^2
+>>>>>>> config
 @end example
 
 @end ifinfo
@@ -70,10 +91,17 @@ $$
 where @math{x} is the initial point, @math{p} is the proposed step
 and @math{J} is the
 Jacobian matrix @c{$J_{ij} = \partial f_i / \partial x_j$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{J_@{ij@} = d f_i / d x_j}.  
 Additional strategies are used to enlarge the region of convergence.
 These include requiring a decrease in the norm @math{||F||} on each
 step or using a trust region to avoid steps which fall outside the linear 
+=======
+@math{J_@{ij@} = d f_i / d x_j}.
+Additional strategies are used to enlarge the region of convergence.
+These include requiring a decrease in the norm @math{||F||} on each
+step or using a trust region to avoid steps which fall outside the linear
+>>>>>>> config
 regime.
 
 To perform a weighted least-squares fit of a nonlinear model
@@ -100,9 +128,15 @@ geometrically (i.e. finding the minimum of a surface).  The
 independent variable of any data to be fitted is denoted by @math{t}.
 
 @cindex Jacobian matrix, fitting
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 With the definition above the Jacobian is 
 @c{$J_{ij} = (1 / \sigma_i) \partial Y_i / \partial x_j$}
 @math{J_@{ij@} =(1 / \sigma_i)  d Y_i / d x_j}, where @math{Y_i = Y(x,t_i)}.  
+=======
+With the definition above the Jacobian is
+@c{$J_{ij} = (1 / \sigma_i) \partial Y_i / \partial x_j$}
+@math{J_@{ij@} =(1 / \sigma_i)  d Y_i / d x_j}, where @math{Y_i = Y(x,t_i)}.
+>>>>>>> config
 
 
 @node Initializing the Nonlinear Least-Squares Solver
@@ -114,7 +148,11 @@ With the definition above the Jacobian is
 This function returns a pointer to a newly allocated instance of a
 solver of type @var{T} for @var{n} observations and @var{p} parameters.
 The number of observations @var{n} must be greater than or equal to
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 parameters @var{p}. 
+=======
+parameters @var{p}.
+>>>>>>> config
 
 If there is insufficient memory to create the solver then the function
 returns a null pointer and the error handler is invoked with an error
@@ -130,9 +168,15 @@ parameters.  For example, the following code creates an instance of a
 Levenberg-Marquardt solver for 100 data points and 3 parameters,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 const gsl_multifit_fdfsolver_type * T 
     = gsl_multifit_fdfsolver_lmder;
 gsl_multifit_fdfsolver * s 
+=======
+const gsl_multifit_fdfsolver_type * T
+    = gsl_multifit_fdfsolver_lmder;
+gsl_multifit_fdfsolver * s
+>>>>>>> config
     = gsl_multifit_fdfsolver_alloc (T, 100, 3);
 @end example
 
@@ -166,8 +210,13 @@ These functions free all the memory associated with the solver @var{s}.
 These functions return a pointer to the name of the solver.  For example,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 printf ("s is a '%s' solver\n", 
         gsl_multifit_fdfsolver_name (s));
+=======
+printf ("s is a '%s' solver\n",
+	gsl_multifit_fdfsolver_name (s));
+>>>>>>> config
 @end example
 
 @noindent
@@ -182,8 +231,13 @@ minimization algorithms to operate on.  In order to allow for
 arbitrary parameters the functions are defined by the following data
 types:
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @deftp {Data Type} gsl_multifit_function 
 This data type defines a general system of functions with arbitrary parameters.  
+=======
+@deftp {Data Type} gsl_multifit_function
+This data type defines a general system of functions with arbitrary parameters.
+>>>>>>> config
 
 @table @code
 @item int (* f) (const gsl_vector * @var{x}, void * @var{params}, gsl_vector * @var{f})
@@ -219,7 +273,11 @@ returning an appropriate error code if the function cannot be computed.
 @item int (* df) (const gsl_vector * @var{x}, void * @var{params}, gsl_matrix * @var{J})
 this function should store the @var{n}-by-@var{p} matrix result
 @c{$J_{ij} = \partial f_i(x,\hbox{\it params}) / \partial x_j$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{J_ij = d f_i(x,params) / d x_j} in @var{J} for argument @var{x} 
+=======
+@math{J_ij = d f_i(x,params) / d x_j} in @var{J} for argument @var{x}
+>>>>>>> config
 and arbitrary parameters @var{params}, returning an appropriate error code if the
 function cannot be computed.
 
@@ -262,7 +320,11 @@ the code.
 These functions perform a single iteration of the solver @var{s}.  If
 the iteration encounters an unexpected problem then an error code will
 be returned.  The solver maintains a current estimate of the best-fit
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 parameters at all times. 
+=======
+parameters at all times.
+>>>>>>> config
 @end deftypefun
 
 The solver struct @var{s} contains the following entries, which can
@@ -440,7 +502,11 @@ this case in versions prior to 1.14.}
 
 @noindent
 These error codes indicate that further iterations will be unlikely to
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 change the solution from its current value.  
+=======
+change the solution from its current value.
+>>>>>>> config
 @end deffn
 
 @deffn {Derivative Solver} gsl_multifit_fdfsolver_lmder
@@ -484,7 +550,11 @@ covar = (J^T J)^@{-1@}
 @end ifinfo
 @noindent
 and is computed by QR decomposition of J with column-pivoting.  Any
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 columns of @math{R} which satisfy 
+=======
+columns of @math{R} which satisfy
+>>>>>>> config
 @tex
 \beforedisplay
 $$
@@ -507,10 +577,17 @@ set to zero).
 If the minimisation uses the weighted least-squares function
 @math{f_i = (Y(x, t_i) - y_i) / \sigma_i} then the covariance
 matrix above gives the statistical error on the best-fit parameters
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 resulting from the gaussian errors @math{\sigma_i} on 
 the underlying data @math{y_i}.  This can be verified from the relation 
 @math{\delta f = J \delta c} and the fact that the fluctuations in @math{f}
 from the data @math{y_i} are normalised by @math{\sigma_i} and 
+=======
+resulting from the gaussian errors @math{\sigma_i} on
+the underlying data @math{y_i}.  This can be verified from the relation
+@math{\delta f = J \delta c} and the fact that the fluctuations in @math{f}
+from the data @math{y_i} are normalised by @math{\sigma_i} and
+>>>>>>> config
 so satisfy @c{$\langle \delta f \delta f^T \rangle = I$}
 @math{<\delta f \delta f^T> = I}.
 
@@ -615,7 +692,11 @@ The approximate values of the parameters are found correctly, and the
 chi-squared value indicates a good fit (the chi-squared per degree of
 freedom is approximately 1).  In this case the errors on the parameters
 can be estimated from the square roots of the diagonal elements of the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 covariance matrix.  
+=======
+covariance matrix.
+>>>>>>> config
 
 If the chi-squared value shows a poor fit (i.e. @c{$\chi^2/(n-p) \gg 1$}
 @math{chi^2/dof >> 1}) then the error estimates obtained from the
@@ -647,9 +728,16 @@ The following paper is also relevant to the algorithms described in this
 section,
 
 @itemize @w{}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @item 
+=======
+@item
+>>>>>>> config
 J.J. Mor@'e, B.S. Garbow, K.E. Hillstrom, ``Testing Unconstrained
 Optimization Software'', ACM Transactions on Mathematical Software, Vol
 7, No 1 (1981), p 17--41.
 @end itemize
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

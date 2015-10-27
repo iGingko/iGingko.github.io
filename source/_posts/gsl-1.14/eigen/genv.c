@@ -1,17 +1,31 @@
 /* eigen/genv.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2007 Patrick Alken
  * 
+=======
+ *
+ * Copyright (C) 2007 Patrick Alken
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -40,12 +54,21 @@
  */
 
 static int genv_get_right_eigenvectors(const gsl_matrix *S,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                        const gsl_matrix *T,
                                        gsl_matrix *Z,
                                        gsl_matrix_complex *evec,
                                        gsl_eigen_genv_workspace *w);
 static void genv_normalize_eigenvectors(gsl_vector_complex *alpha,
                                         gsl_matrix_complex *evec);
+=======
+				       const gsl_matrix *T,
+				       gsl_matrix *Z,
+				       gsl_matrix_complex *evec,
+				       gsl_eigen_genv_workspace *w);
+static void genv_normalize_eigenvectors(gsl_vector_complex *alpha,
+					gsl_matrix_complex *evec);
+>>>>>>> config
 
 /*
 gsl_eigen_genv_alloc()
@@ -65,7 +88,11 @@ gsl_eigen_genv_alloc(const size_t n)
   if (n == 0)
     {
       GSL_ERROR_NULL ("matrix dimension must be positive integer",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       GSL_EINVAL);
+=======
+		      GSL_EINVAL);
+>>>>>>> config
     }
 
   w = (gsl_eigen_genv_workspace *) calloc (1, sizeof (gsl_eigen_genv_workspace));
@@ -151,19 +178,32 @@ A x = \lambda B x
 for the eigenvalues \lambda and right eigenvectors x.
 
 Inputs: A     - general real matrix
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         B     - general real matrix
         alpha - (output) where to store eigenvalue numerators
         beta  - (output) where to store eigenvalue denominators
         evec  - (output) where to store eigenvectors
         w     - workspace
+=======
+	B     - general real matrix
+	alpha - (output) where to store eigenvalue numerators
+	beta  - (output) where to store eigenvalue denominators
+	evec  - (output) where to store eigenvectors
+	w     - workspace
+>>>>>>> config
 
 Return: success or error
 */
 
 int
 gsl_eigen_genv (gsl_matrix * A, gsl_matrix * B, gsl_vector_complex * alpha,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                 gsl_vector * beta, gsl_matrix_complex *evec,
                 gsl_eigen_genv_workspace * w)
+=======
+		gsl_vector * beta, gsl_matrix_complex *evec,
+		gsl_eigen_genv_workspace * w)
+>>>>>>> config
 {
   const size_t N = A->size1;
 
@@ -210,6 +250,7 @@ gsl_eigen_genv (gsl_matrix * A, gsl_matrix * B, gsl_vector_complex * alpha,
       s = gsl_eigen_gen_QZ(A, B, alpha, beta, w->Q, &Z, w->gen_workspace_p);
 
       if (w->Z)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           /* save right Schur vectors */
           gsl_matrix_memcpy(w->Z, &Z);
@@ -224,6 +265,22 @@ gsl_eigen_genv (gsl_matrix * A, gsl_matrix * B, gsl_vector_complex * alpha,
           if (s == GSL_SUCCESS)
             genv_normalize_eigenvectors(alpha, evec);
         }
+=======
+	{
+	  /* save right Schur vectors */
+	  gsl_matrix_memcpy(w->Z, &Z);
+	}
+
+      /* only compute eigenvectors if we found all eigenvalues */
+      if (s == GSL_SUCCESS)
+	{
+	  /* compute eigenvectors */
+	  s = genv_get_right_eigenvectors(A, B, &Z, evec, w);
+
+	  if (s == GSL_SUCCESS)
+	    genv_normalize_eigenvectors(alpha, evec);
+	}
+>>>>>>> config
 
       return s;
     }
@@ -245,6 +302,7 @@ B = Q T Z^t
 where (S, T) is the generalized Schur form of (A, B)
 
 Inputs: A     - general real matrix
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         B     - general real matrix
         alpha - (output) where to store eigenvalue numerators
         beta  - (output) where to store eigenvalue denominators
@@ -252,16 +310,32 @@ Inputs: A     - general real matrix
         Q     - (output) if non-null, where to store left Schur vectors
         Z     - (output) if non-null, where to store right Schur vectors
         w     - workspace
+=======
+	B     - general real matrix
+	alpha - (output) where to store eigenvalue numerators
+	beta  - (output) where to store eigenvalue denominators
+	evec  - (output) where to store eigenvectors
+	Q     - (output) if non-null, where to store left Schur vectors
+	Z     - (output) if non-null, where to store right Schur vectors
+	w     - workspace
+>>>>>>> config
 
 Return: success or error
 */
 
 int
 gsl_eigen_genv_QZ (gsl_matrix * A, gsl_matrix * B,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                    gsl_vector_complex * alpha, gsl_vector * beta,
                    gsl_matrix_complex * evec,
                    gsl_matrix * Q, gsl_matrix * Z,
                    gsl_eigen_genv_workspace * w)
+=======
+		   gsl_vector_complex * alpha, gsl_vector * beta,
+		   gsl_matrix_complex * evec,
+		   gsl_matrix * Q, gsl_matrix * Z,
+		   gsl_eigen_genv_workspace * w)
+>>>>>>> config
 {
   if (Q && (A->size1 != Q->size1 || A->size1 != Q->size2))
     {
@@ -298,23 +372,40 @@ backtransform them using the right Schur vectors to get right
 eigenvectors of the original system.
 
 Inputs: S     - upper quasi-triangular Schur form of A
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         T     - upper triangular Schur form of B
         Z     - right Schur vectors
         evec  - (output) where to store eigenvectors
         w     - workspace
+=======
+	T     - upper triangular Schur form of B
+	Z     - right Schur vectors
+	evec  - (output) where to store eigenvectors
+	w     - workspace
+>>>>>>> config
 
 Return: success or error
 
 Notes: 1) based on LAPACK routine DTGEVC
        2) eigenvectors are stored in the order that their
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           eigenvalues appear in the Schur form
+=======
+	  eigenvalues appear in the Schur form
+>>>>>>> config
 */
 
 static int
 genv_get_right_eigenvectors(const gsl_matrix *S, const gsl_matrix *T,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                             gsl_matrix *Z,
                             gsl_matrix_complex *evec,
                             gsl_eigen_genv_workspace *w)
+=======
+			    gsl_matrix *Z,
+			    gsl_matrix_complex *evec,
+			    gsl_eigen_genv_workspace *w)
+>>>>>>> config
 {
   const size_t N = w->size;
   const double small = GSL_DBL_MIN * N / GSL_DBL_EPSILON;
@@ -363,6 +454,7 @@ genv_get_right_eigenvectors(const gsl_matrix *S, const gsl_matrix *T,
     {
       temp = temp2 = 0.0;
       if (gsl_matrix_get(S, j, j - 1) == 0.0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         end = j;
       else
         end = j - 1;
@@ -372,15 +464,33 @@ genv_get_right_eigenvectors(const gsl_matrix *S, const gsl_matrix *T,
           temp += fabs(gsl_matrix_get(S, i, j));
           temp2 += fabs(gsl_matrix_get(T, i, j));
         }
+=======
+	end = j;
+      else
+	end = j - 1;
+
+      for (i = 0; i < end; ++i)
+	{
+	  temp += fabs(gsl_matrix_get(S, i, j));
+	  temp2 += fabs(gsl_matrix_get(T, i, j));
+	}
+>>>>>>> config
 
       gsl_vector_set(w->work1, j, temp);
       gsl_vector_set(w->work2, j, temp2);
 
       for (i = end; i < GSL_MIN(j + 2, N); ++i)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           temp += fabs(gsl_matrix_get(S, i, j));
           temp2 += fabs(gsl_matrix_get(T, i, j));
         }
+=======
+	{
+	  temp += fabs(gsl_matrix_get(S, i, j));
+	  temp2 += fabs(gsl_matrix_get(T, i, j));
+	}
+>>>>>>> config
 
       anorm = GSL_MAX(anorm, temp);
       bnorm = GSL_MAX(bnorm, temp2);
@@ -395,6 +505,7 @@ genv_get_right_eigenvectors(const gsl_matrix *S, const gsl_matrix *T,
       size_t je = N - 1 - k;
 
       if (complex_pair)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           complex_pair = 0;
           continue;
@@ -600,11 +711,219 @@ genv_get_right_eigenvectors(const gsl_matrix *S, const gsl_matrix *T,
       dmin = GSL_MAX(GSL_DBL_MIN,
                GSL_MAX(GSL_DBL_EPSILON*acoefa*anorm,
                        GSL_DBL_EPSILON*bcoefa*bnorm));
+=======
+	{
+	  complex_pair = 0;
+	  continue;
+	}
+
+      nw = 1;
+      if (je > 0)
+	{
+	  if (gsl_matrix_get(S, je, je - 1) != 0.0)
+	    {
+	      complex_pair = 1;
+	      nw = 2;
+	    }
+	}
+
+      if (!complex_pair)
+	{
+	  if (fabs(gsl_matrix_get(S, je, je)) <= GSL_DBL_MIN &&
+	      fabs(gsl_matrix_get(T, je, je)) <= GSL_DBL_MIN)
+	    {
+	      /* singular matrix pencil - unit eigenvector */
+	      for (i = 0; i < N; ++i)
+		gsl_matrix_complex_set(evec, i, je, z_zero);
+
+	      gsl_matrix_complex_set(evec, je, je, z_one);
+
+	      continue;
+	    }
+
+	  /* clear vector */
+	  for (i = 0; i < N; ++i)
+	    gsl_vector_set(w->work3, i, 0.0);
+	}
+      else
+	{
+	  /* clear vectors */
+	  for (i = 0; i < N; ++i)
+	    {
+	      gsl_vector_set(w->work3, i, 0.0);
+	      gsl_vector_set(w->work4, i, 0.0);
+	    }
+	}
+
+      if (!complex_pair)
+	{
+	  /* real eigenvalue */
+
+	  temp = 1.0 / GSL_MAX(GSL_DBL_MIN,
+			       GSL_MAX(fabs(gsl_matrix_get(S, je, je)) * ascale,
+				       fabs(gsl_matrix_get(T, je, je)) * bscale));
+	  salfar = (temp * gsl_matrix_get(S, je, je)) * ascale;
+	  sbeta = (temp * gsl_matrix_get(T, je, je)) * bscale;
+	  acoef = sbeta * ascale;
+	  bcoefr = salfar * bscale;
+	  bcoefi = 0.0;
+
+	  /* scale to avoid underflow */
+	  scale = 1.0;
+	  lsa = fabs(sbeta) >= GSL_DBL_MIN && fabs(acoef) < small;
+	  lsb = fabs(salfar) >= GSL_DBL_MIN && fabs(bcoefr) < small;
+	  if (lsa)
+	    scale = (small / fabs(sbeta)) * GSL_MIN(anorm, big);
+	  if (lsb)
+	    scale = GSL_MAX(scale, (small / fabs(salfar)) * GSL_MIN(bnorm, big));
+
+	  if (lsa || lsb)
+	    {
+	      scale = GSL_MIN(scale,
+			1.0 / (GSL_DBL_MIN *
+			       GSL_MAX(1.0,
+				 GSL_MAX(fabs(acoef), fabs(bcoefr)))));
+	      if (lsa)
+		acoef = ascale * (scale * sbeta);
+	      else
+		acoef *= scale;
+
+	      if (lsb)
+		bcoefr = bscale * (scale * salfar);
+	      else
+		bcoefr *= scale;
+	    }
+
+	  acoefa = fabs(acoef);
+	  bcoefa = fabs(bcoefr);
+
+	  /* first component is 1 */
+	  gsl_vector_set(w->work3, je, 1.0);
+	  xmax = 1.0;
+
+	  /* compute contribution from column je of A and B to sum */
+
+	  for (i = 0; i < je; ++i)
+	    {
+	      gsl_vector_set(w->work3, i,
+		bcoefr*gsl_matrix_get(T, i, je) -
+		acoef * gsl_matrix_get(S, i, je));
+	    }
+	}
+      else
+	{
+	  gsl_matrix_const_view vs =
+	    gsl_matrix_const_submatrix(S, je - 1, je - 1, 2, 2);
+	  gsl_matrix_const_view vt =
+	    gsl_matrix_const_submatrix(T, je - 1, je - 1, 2, 2);
+
+	  /* complex eigenvalue */
+
+	  gsl_schur_gen_eigvals(&vs.matrix,
+				&vt.matrix,
+				&bcoefr,
+				&temp2,
+				&bcoefi,
+				&acoef,
+				&temp);
+	  if (bcoefi == 0.0)
+	    {
+	      GSL_ERROR("gsl_schur_gen_eigvals failed on complex block", GSL_FAILURE);
+	    }
+
+	  /* scale to avoid over/underflow */
+	  acoefa = fabs(acoef);
+	  bcoefa = fabs(bcoefr) + fabs(bcoefi);
+	  scale = 1.0;
+
+	  if (acoefa*GSL_DBL_EPSILON < GSL_DBL_MIN && acoefa >= GSL_DBL_MIN)
+	    scale = (GSL_DBL_MIN / GSL_DBL_EPSILON) / acoefa;
+	  if (bcoefa*GSL_DBL_EPSILON < GSL_DBL_MIN && bcoefa >= GSL_DBL_MIN)
+	    scale = GSL_MAX(scale, (GSL_DBL_MIN/GSL_DBL_EPSILON) / bcoefa);
+	  if (GSL_DBL_MIN*acoefa > ascale)
+	    scale = ascale / (GSL_DBL_MIN * acoefa);
+	  if (GSL_DBL_MIN*bcoefa > bscale)
+	    scale = GSL_MIN(scale, bscale / (GSL_DBL_MIN*bcoefa));
+	  if (scale != 1.0)
+	    {
+	      acoef *= scale;
+	      acoefa = fabs(acoef);
+	      bcoefr *= scale;
+	      bcoefi *= scale;
+	      bcoefa = fabs(bcoefr) + fabs(bcoefi);
+	    }
+
+	  /* compute first two components of eigenvector */
+
+	  temp = acoef * gsl_matrix_get(S, je, je - 1);
+	  temp2r = acoef * gsl_matrix_get(S, je, je) -
+		   bcoefr * gsl_matrix_get(T, je, je);
+	  temp2i = -bcoefi * gsl_matrix_get(T, je, je);
+
+	  if (fabs(temp) >= fabs(temp2r) + fabs(temp2i))
+	    {
+	      gsl_vector_set(w->work3, je, 1.0);
+	      gsl_vector_set(w->work4, je, 0.0);
+	      gsl_vector_set(w->work3, je - 1, -temp2r / temp);
+	      gsl_vector_set(w->work4, je - 1, -temp2i / temp);
+	    }
+	  else
+	    {
+	      gsl_vector_set(w->work3, je - 1, 1.0);
+	      gsl_vector_set(w->work4, je - 1, 0.0);
+	      temp = acoef * gsl_matrix_get(S, je - 1, je);
+	      gsl_vector_set(w->work3, je,
+		(bcoefr*gsl_matrix_get(T, je - 1, je - 1) -
+		 acoef*gsl_matrix_get(S, je - 1, je - 1)) / temp);
+	      gsl_vector_set(w->work4, je,
+		bcoefi*gsl_matrix_get(T, je - 1, je - 1) / temp);
+	    }
+
+	  xmax = GSL_MAX(fabs(gsl_vector_get(w->work3, je)) +
+			 fabs(gsl_vector_get(w->work4, je)),
+			 fabs(gsl_vector_get(w->work3, je - 1)) +
+			 fabs(gsl_vector_get(w->work4, je - 1)));
+
+	  /* compute contribution from column je and je - 1 */
+
+	  creala = acoef * gsl_vector_get(w->work3, je - 1);
+	  cimaga = acoef * gsl_vector_get(w->work4, je - 1);
+	  crealb = bcoefr * gsl_vector_get(w->work3, je - 1) -
+		   bcoefi * gsl_vector_get(w->work4, je - 1);
+	  cimagb = bcoefi * gsl_vector_get(w->work3, je - 1) +
+		   bcoefr * gsl_vector_get(w->work4, je - 1);
+	  cre2a = acoef * gsl_vector_get(w->work3, je);
+	  cim2a = acoef * gsl_vector_get(w->work4, je);
+	  cre2b = bcoefr * gsl_vector_get(w->work3, je) -
+		  bcoefi * gsl_vector_get(w->work4, je);
+	  cim2b = bcoefi * gsl_vector_get(w->work3, je) +
+		  bcoefr * gsl_vector_get(w->work4, je);
+
+	  for (i = 0; i < je - 1; ++i)
+	    {
+	      gsl_vector_set(w->work3, i,
+		-creala * gsl_matrix_get(S, i, je - 1) +
+		crealb * gsl_matrix_get(T, i, je - 1) -
+		cre2a * gsl_matrix_get(S, i, je) +
+		cre2b * gsl_matrix_get(T, i, je));
+	      gsl_vector_set(w->work4, i,
+		-cimaga * gsl_matrix_get(S, i, je - 1) +
+		cimagb * gsl_matrix_get(T, i, je - 1) -
+		cim2a * gsl_matrix_get(S, i, je) +
+		cim2b * gsl_matrix_get(T, i, je));
+	    }
+	}
+
+      dmin = GSL_MAX(GSL_DBL_MIN,
+	       GSL_MAX(GSL_DBL_EPSILON*acoefa*anorm,
+		       GSL_DBL_EPSILON*bcoefa*bnorm));
+>>>>>>> config
 
       /* triangular solve of (a A - b B) x = 0 */
 
       il2by2 = 0;
       for (is = (int) je - (int) nw; is >= 0; --is)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           j = (size_t) is;
 
@@ -802,10 +1121,210 @@ genv_get_right_eigenvectors(const gsl_matrix *S, const gsl_matrix *T,
                 }
             }
         }
+=======
+	{
+	  j = (size_t) is;
+
+	  if (!il2by2 && j > 0)
+	    {
+	      if (gsl_matrix_get(S, j, j - 1) != 0.0)
+		{
+		  il2by2 = 1;
+		  continue;
+		}
+	    }
+
+	  bdiag[0] = gsl_matrix_get(T, j, j);
+	  if (il2by2)
+	    {
+	      na = 2;
+	      bdiag[1] = gsl_matrix_get(T, j + 1, j + 1);
+	    }
+	  else
+	    na = 1;
+
+
+	  if (nw == 1)
+	    {
+	      gsl_matrix_const_view sv =
+		gsl_matrix_const_submatrix(S, j, j, na, na);
+	      gsl_vector_view xv, bv;
+
+	      bv = gsl_vector_subvector(w->work3, j, na);
+
+	      /*
+	       * the loop below expects the solution in the first column
+	       * of sum, so set stride to 2
+	       */
+	      xv = gsl_vector_view_array_with_stride(sum, 2, na);
+
+	      gsl_schur_solve_equation(acoef,
+				       &sv.matrix,
+				       bcoefr,
+				       bdiag[0],
+				       bdiag[1],
+				       &bv.vector,
+				       &xv.vector,
+				       &scale,
+				       &temp,
+				       dmin);
+	    }
+	  else
+	    {
+	      double bdat[4];
+	      gsl_matrix_const_view sv =
+		gsl_matrix_const_submatrix(S, j, j, na, na);
+	      gsl_vector_complex_view xv =
+		gsl_vector_complex_view_array(sum, na);
+	      gsl_vector_complex_view bv =
+		gsl_vector_complex_view_array(bdat, na);
+	      gsl_complex z;
+
+	      bdat[0] = gsl_vector_get(w->work3, j);
+	      bdat[1] = gsl_vector_get(w->work4, j);
+	      if (na == 2)
+		{
+		  bdat[2] = gsl_vector_get(w->work3, j + 1);
+		  bdat[3] = gsl_vector_get(w->work4, j + 1);
+		}
+
+	      GSL_SET_COMPLEX(&z, bcoefr, bcoefi);
+
+	      gsl_schur_solve_equation_z(acoef,
+					 &sv.matrix,
+					 &z,
+					 bdiag[0],
+					 bdiag[1],
+					 &bv.vector,
+					 &xv.vector,
+					 &scale,
+					 &temp,
+					 dmin);
+	    }
+
+	  if (scale < 1.0)
+	    {
+	      for (jr = 0; jr <= je; ++jr)
+		{
+		  gsl_vector_set(w->work3, jr,
+		    scale * gsl_vector_get(w->work3, jr));
+		  if (nw == 2)
+		    {
+		      gsl_vector_set(w->work4, jr,
+			scale * gsl_vector_get(w->work4, jr));
+		    }
+		}
+	    }
+
+	  xmax = GSL_MAX(scale * xmax, temp);
+
+	  for (jr = 0; jr < na; ++jr)
+	    {
+	      gsl_vector_set(w->work3, j + jr, sum[jr*na]);
+	      if (nw == 2)
+		gsl_vector_set(w->work4, j + jr, sum[jr*na + 1]);
+	    }
+
+	  if (j > 0)
+	    {
+	      xscale = 1.0 / GSL_MAX(1.0, xmax);
+	      temp = acoefa * gsl_vector_get(w->work1, j) +
+		     bcoefa * gsl_vector_get(w->work2, j);
+	      if (il2by2)
+		{
+		  temp = GSL_MAX(temp,
+			   acoefa * gsl_vector_get(w->work1, j + 1) +
+			   bcoefa * gsl_vector_get(w->work2, j + 1));
+		}
+
+	      temp = GSL_MAX(temp, GSL_MAX(acoefa, bcoefa));
+	      if (temp > bignum * xscale)
+		{
+		  for (jr = 0; jr <= je; ++jr)
+		    {
+		      gsl_vector_set(w->work3, jr,
+			xscale * gsl_vector_get(w->work3, jr));
+		      if (nw == 2)
+			{
+			  gsl_vector_set(w->work4, jr,
+			    xscale * gsl_vector_get(w->work4, jr));
+			}
+		    }
+		  xmax *= xscale;
+		}
+
+	      for (ja = 0; ja < na; ++ja)
+		{
+		  if (complex_pair)
+		    {
+		      creala = acoef * gsl_vector_get(w->work3, j + ja);
+		      cimaga = acoef * gsl_vector_get(w->work4, j + ja);
+		      crealb = bcoefr * gsl_vector_get(w->work3, j + ja) -
+			       bcoefi * gsl_vector_get(w->work4, j + ja);
+		      cimagb = bcoefi * gsl_vector_get(w->work3, j + ja) +
+			       bcoefr * gsl_vector_get(w->work4, j + ja);
+		      for (jr = 0; jr <= j - 1; ++jr)
+			{
+			  gsl_vector_set(w->work3, jr,
+			    gsl_vector_get(w->work3, jr) -
+			    creala * gsl_matrix_get(S, jr, j + ja) +
+			    crealb * gsl_matrix_get(T, jr, j + ja));
+			  gsl_vector_set(w->work4, jr,
+			    gsl_vector_get(w->work4, jr) -
+			    cimaga * gsl_matrix_get(S, jr, j + ja) +
+			    cimagb * gsl_matrix_get(T, jr, j + ja));
+			}
+		    }
+		  else
+		    {
+		      creala = acoef * gsl_vector_get(w->work3, j + ja);
+		      crealb = bcoefr * gsl_vector_get(w->work3, j + ja);
+		      for (jr = 0; jr <= j - 1; ++jr)
+			{
+			  gsl_vector_set(w->work3, jr,
+			    gsl_vector_get(w->work3, jr) -
+			    creala * gsl_matrix_get(S, jr, j + ja) +
+			    crealb * gsl_matrix_get(T, jr, j + ja));
+			}
+		    } /* if (!complex_pair) */
+		} /* for (ja = 0; ja < na; ++ja) */
+	    } /* if (j > 0) */
+
+	  il2by2 = 0;
+	} /* for (i = 0; i < je - nw; ++i) */
+
+      for (jr = 0; jr < N; ++jr)
+	{
+	  gsl_vector_set(w->work5, jr,
+	    gsl_vector_get(w->work3, 0) * gsl_matrix_get(Z, jr, 0));
+	  if (nw == 2)
+	    {
+	      gsl_vector_set(w->work6, jr,
+		gsl_vector_get(w->work4, 0) * gsl_matrix_get(Z, jr, 0));
+	    }
+	}
+
+      for (jc = 1; jc <= je; ++jc)
+	{
+	  for (jr = 0; jr < N; ++jr)
+	    {
+	      gsl_vector_set(w->work5, jr,
+		gsl_vector_get(w->work5, jr) +
+		gsl_vector_get(w->work3, jc) * gsl_matrix_get(Z, jr, jc));
+	      if (nw == 2)
+		{
+		  gsl_vector_set(w->work6, jr,
+		    gsl_vector_get(w->work6, jr) +
+		    gsl_vector_get(w->work4, jc) * gsl_matrix_get(Z, jr, jc));
+		}
+	    }
+	}
+>>>>>>> config
 
       /* store the eigenvector */
 
       if (complex_pair)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           ecol = gsl_matrix_complex_column(evec, je - 1);
           re = gsl_vector_complex_real(&ecol.vector);
@@ -836,10 +1355,43 @@ genv_get_right_eigenvectors(const gsl_matrix *S, const gsl_matrix *T,
               gsl_vector_set(&im.vector, jr, 0.0);
             }
         }
+=======
+	{
+	  ecol = gsl_matrix_complex_column(evec, je - 1);
+	  re = gsl_vector_complex_real(&ecol.vector);
+	  im = gsl_vector_complex_imag(&ecol.vector);
+
+	  ecol = gsl_matrix_complex_column(evec, je);
+	  re2 = gsl_vector_complex_real(&ecol.vector);
+	  im2 = gsl_vector_complex_imag(&ecol.vector);
+	}
+      else
+	{
+	  ecol = gsl_matrix_complex_column(evec, je);
+	  re = gsl_vector_complex_real(&ecol.vector);
+	  im = gsl_vector_complex_imag(&ecol.vector);
+	}
+
+      for (jr = 0; jr < N; ++jr)
+	{
+	  gsl_vector_set(&re.vector, jr, gsl_vector_get(w->work5, jr));
+	  if (complex_pair)
+	    {
+	      gsl_vector_set(&im.vector, jr, gsl_vector_get(w->work6, jr));
+	      gsl_vector_set(&re2.vector, jr, gsl_vector_get(w->work5, jr));
+	      gsl_vector_set(&im2.vector, jr, -gsl_vector_get(w->work6, jr));
+	    }
+	  else
+	    {
+	      gsl_vector_set(&im.vector, jr, 0.0);
+	    }
+	}
+>>>>>>> config
 
       /* scale eigenvector */
       xmax = 0.0;
       if (complex_pair)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           for (j = 0; j < N; ++j)
             {
@@ -874,6 +1426,42 @@ genv_get_right_eigenvectors(const gsl_matrix *S, const gsl_matrix *T,
                 }
             }
         }
+=======
+	{
+	  for (j = 0; j < N; ++j)
+	    {
+	      xmax = GSL_MAX(xmax,
+			     fabs(gsl_vector_get(&re.vector, j)) +
+			     fabs(gsl_vector_get(&im.vector, j)));
+	    }
+	}
+      else
+	{
+	  for (j = 0; j < N; ++j)
+	    {
+	      xmax = GSL_MAX(xmax, fabs(gsl_vector_get(&re.vector, j)));
+	    }
+	}
+
+      if (xmax > GSL_DBL_MIN)
+	{
+	  xscale = 1.0 / xmax;
+	  for (j = 0; j < N; ++j)
+	    {
+	      gsl_vector_set(&re.vector, j,
+			     gsl_vector_get(&re.vector, j) * xscale);
+	      if (complex_pair)
+		{
+		  gsl_vector_set(&im.vector, j,
+				 gsl_vector_get(&im.vector, j) * xscale);
+		  gsl_vector_set(&re2.vector, j,
+				 gsl_vector_get(&re2.vector, j) * xscale);
+		  gsl_vector_set(&im2.vector, j,
+				 gsl_vector_get(&im2.vector, j) * xscale);
+		}
+	    }
+	}
+>>>>>>> config
     } /* for (k = 0; k < N; ++k) */
 
   return GSL_SUCCESS;
@@ -884,12 +1472,20 @@ genv_normalize_eigenvectors()
   Normalize eigenvectors so that their Euclidean norm is 1
 
 Inputs: alpha - eigenvalue numerators
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         evec  - eigenvectors
+=======
+	evec  - eigenvectors
+>>>>>>> config
 */
 
 static void
 genv_normalize_eigenvectors(gsl_vector_complex *alpha,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                             gsl_matrix_complex *evec)
+=======
+			    gsl_matrix_complex *evec)
+>>>>>>> config
 {
   const size_t N = evec->size1;
   size_t i;     /* looping */
@@ -906,6 +1502,7 @@ genv_normalize_eigenvectors(gsl_vector_complex *alpha,
       re = gsl_vector_complex_real(&vi.vector);
 
       if (GSL_IMAG(ai) == 0.0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           scale = 1.0 / gsl_blas_dnrm2(&re.vector);
           gsl_blas_dscal(scale, &re.vector);
@@ -921,5 +1518,22 @@ genv_normalize_eigenvectors(gsl_vector_complex *alpha,
           vi = gsl_matrix_complex_column(evec, i + 1);
           gsl_blas_zdscal(scale, &vi.vector);
         }
+=======
+	{
+	  scale = 1.0 / gsl_blas_dnrm2(&re.vector);
+	  gsl_blas_dscal(scale, &re.vector);
+	}
+      else if (GSL_IMAG(ai) > 0.0)
+	{
+	  im = gsl_vector_complex_imag(&vi.vector);
+
+	  scale = 1.0 / gsl_hypot(gsl_blas_dnrm2(&re.vector),
+				  gsl_blas_dnrm2(&im.vector));
+	  gsl_blas_zdscal(scale, &vi.vector);
+
+	  vi = gsl_matrix_complex_column(evec, i + 1);
+	  gsl_blas_zdscal(scale, &vi.vector);
+	}
+>>>>>>> config
     }
 } /* genv_normalize_eigenvectors() */

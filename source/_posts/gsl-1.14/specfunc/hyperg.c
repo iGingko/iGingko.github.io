@@ -1,17 +1,31 @@
 /* specfunc/hyperg.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -36,8 +50,13 @@
 
 int
 gsl_sf_hyperg_1F1_series_e(const double a, const double b, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                               gsl_sf_result * result
                               )
+=======
+			      gsl_sf_result * result
+			      )
+>>>>>>> config
 {
   double an  = a;
   double bn  = b;
@@ -66,7 +85,11 @@ gsl_sf_hyperg_1F1_series_e(const double a, const double b, const double x,
       result->val  = sum_val;
       result->err  = sum_err;
       GSL_ERROR ("hypergeometric series failed to converge", GSL_EFAILED);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     }      
+=======
+    }
+>>>>>>> config
 
     u = x * (an/(bn*n));
     abs_u = fabs(u);
@@ -127,6 +150,7 @@ gsl_sf_hyperg_1F1_large_b_e(const double a, const double b, const double x, gsl_
 
 int
 gsl_sf_hyperg_U_large_b_e(const double a, const double b, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                              gsl_sf_result * result,
                              double * ln_multiplier
                              )
@@ -134,6 +158,15 @@ gsl_sf_hyperg_U_large_b_e(const double a, const double b, const double x,
   double N   = floor(b);  /* b = N + eps */
   double eps = b - N;
   
+=======
+			     gsl_sf_result * result,
+			     double * ln_multiplier
+			     )
+{
+  double N   = floor(b);  /* b = N + eps */
+  double eps = b - N;
+
+>>>>>>> config
   if(fabs(eps) < GSL_SQRT_DBL_EPSILON) {
     double lnpre_val;
     double lnpre_err;
@@ -238,6 +271,7 @@ gsl_sf_hyperg_U_large_b_e(const double a, const double b, const double x,
  */
 int
 gsl_sf_hyperg_2F0_series_e(const double a, const double b, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                               int n_trunc,
                               gsl_sf_result * result
                               )
@@ -245,13 +279,26 @@ gsl_sf_hyperg_2F0_series_e(const double a, const double b, const double x,
   const int maxiter = 2000;
   double an = a;
   double bn = b;  
+=======
+			      int n_trunc,
+			      gsl_sf_result * result
+			      )
+{
+  const int maxiter = 2000;
+  double an = a;
+  double bn = b;
+>>>>>>> config
   double n   = 1.0;
   double sum = 1.0;
   double del = 1.0;
   double abs_del = 1.0;
   double max_abs_del = 1.0;
   double last_abs_del = 1.0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   while(abs_del/fabs(sum) > GSL_DBL_EPSILON && n < maxiter) {
 
     double u = an * (bn/n * x);
@@ -276,9 +323,15 @@ gsl_sf_hyperg_2F0_series_e(const double a, const double b, const double x,
     an += 1.0;
     bn += 1.0;
     n  += 1.0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     if(an == 0.0 || bn == 0.0) break;        /* series terminated */
     
+=======
+
+    if(an == 0.0 || bn == 0.0) break;        /* series terminated */
+
+>>>>>>> config
     if(n_trunc >= 0 && n >= n_trunc) break;  /* reached requested timeout */
   }
 

@@ -17,6 +17,7 @@ such as @file{gsl_sf_airy.h}, @file{gsl_sf_bessel.h}, etc.  The complete
 set of header files can be included using the file @file{gsl_sf.h}.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Special Function Usage::      
 * The gsl_sf_result struct::    
 * Special Function Modes::      
@@ -51,6 +52,42 @@ set of header files can be included using the file @file{gsl_sf.h}.
 * Zeta Functions::              
 * Special Functions Examples::  
 * Special Functions References and Further Reading::  
+=======
+* Special Function Usage::
+* The gsl_sf_result struct::
+* Special Function Modes::
+* Airy Functions and Derivatives::
+* Bessel Functions::
+* Clausen Functions::
+* Coulomb Functions::
+* Coupling Coefficients::
+* Dawson Function::
+* Debye Functions::
+* Dilogarithm::
+* Elementary Operations::
+* Elliptic Integrals::
+* Elliptic Functions (Jacobi)::
+* Error Functions::
+* Exponential Functions::
+* Exponential Integrals::
+* Fermi-Dirac Function::
+* Gamma and Beta Functions::
+* Gegenbauer Functions::
+* Hypergeometric Functions::
+* Laguerre Functions::
+* Lambert W Functions::
+* Legendre Functions and Spherical Harmonics::
+* Logarithm and Related Functions::
+* Mathieu Functions::
+* Power Function::
+* Psi (Digamma) Function::
+* Synchrotron Functions::
+* Transport Functions::
+* Trigonometric Functions::
+* Zeta Functions::
+* Special Functions Examples::
+* Special Functions References and Further Reading::
+>>>>>>> config
 @end menu
 
 @node Special Function Usage
@@ -287,7 +324,11 @@ the special functions, in this case to compute the Bessel function
 Here are the results of running the program,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 $ ./a.out 
+=======
+$ ./a.out
+>>>>>>> config
 @verbatiminclude examples/specfun_e.out
 @end example
 
@@ -304,7 +345,11 @@ status are not accessible.
 The results of the function are the same,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 $ ./a.out 
+=======
+$ ./a.out
+>>>>>>> config
 @verbatiminclude examples/specfun.out
 @end example
 
@@ -321,7 +366,11 @@ Abramowitz & Stegun (eds.), @cite{Handbook of Mathematical Functions}
 @end itemize
 
 @noindent
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 The following papers contain information on the algorithms used 
+=======
+The following papers contain information on the algorithms used
+>>>>>>> config
 to compute the special functions,
 @cindex MISCFUN
 @itemize @w{}

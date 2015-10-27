@@ -100,7 +100,11 @@
 
 	* svdstep.c apply_givens.c householder.c: perform linear
 	operations with level-1 blas when compiled with USE_BLAS.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	
+=======
+
+>>>>>>> config
 2006-02-10  Brian Gough  <bjg@network-theory.co.uk>
 
 	* cholesky.c (quiet_sqrt): added a quiet_sqrt to allow checking
@@ -207,13 +211,22 @@ Fri Oct 18 17:46:30 2002  Brian Gough  <bjg@network-theory.co.uk>
 Mon Aug 12 20:12:55 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* bidiag.c (gsl_linalg_bidiag_unpack_B): fixed to copy
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	superdiagonal and not subdiagonal, as was incorrectly done
  	previously.
+=======
+	superdiagonal and not subdiagonal, as was incorrectly done
+	previously.
+>>>>>>> config
 
 Sun Jun 16 11:57:00 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* svd.c (gsl_linalg_SV_decomp): keep track of maximum value
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	correctly when sorting singular values
+=======
+	correctly when sorting singular values
+>>>>>>> config
 
 	* test.c (test_SV_decomp): add 3x3 of SVD
 
@@ -224,20 +237,33 @@ Wed Apr 17 20:04:11 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* tridiag.c (gsl_linalg_solve_tridiag):
 	(gsl_linalg_solve_cyc_tridiag): added tridiagonal solvers for
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	non-symmetric case (David Necas <yeti@physics.muni.cz>)
+=======
+	non-symmetric case (David Necas <yeti@physics.muni.cz>)
+>>>>>>> config
 
 Mon Apr 15 19:55:40 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* tridiag.c (solve_cyc_tridiag): corrected typographical error in
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	Engeln-Mullges Algorithm 4.35, step 1.7 (f_(n-1) should be
  	alpha_(n-1))
+=======
+	Engeln-Mullges Algorithm 4.35, step 1.7 (f_(n-1) should be
+	alpha_(n-1))
+>>>>>>> config
 
 Thu Sep 13 12:26:17 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* test.c (test_SV_decomp): added brute force testing of 2x2 svd
 
 	* svdstep.c (svd2): fixed bug where singular values in 2x2 svd
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	were not ordered correctly.
+=======
+	were not ordered correctly.
+>>>>>>> config
 
 Mon Sep 10 22:35:24 2001  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -250,25 +276,44 @@ Tue Sep  4 17:22:58 2001  Brian Gough  <bjg@network-theory.co.uk>
 Wed Aug 29 16:34:50 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* svd.c (gsl_linalg_SV_decomp_jacobi): make sure all singular
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	vectors are zero, not just first.
 
 	* svdstep.c (svd2): added explicit calculation of 2x2 svd, fixes
  	bug that prevents convergence.
+=======
+	vectors are zero, not just first.
+
+	* svdstep.c (svd2): added explicit calculation of 2x2 svd, fixes
+	bug that prevents convergence.
+>>>>>>> config
 
 Thu Aug  2 18:19:08 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* svdstep.c (trailing_eigenvalue): chose better value of mu when
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	dt=0.
+=======
+	dt=0.
+>>>>>>> config
 
 Sun Jul  8 18:03:05 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* qrpt.c (gsl_linalg_QRPT_decomp): fix bug where null column
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	caused division by zero in norm-update calculation
+=======
+	caused division by zero in norm-update calculation
+>>>>>>> config
 
 Sun Jul  1 22:43:22 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* modified to use new-style vector views, affects most
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	functions
+=======
+	functions
+>>>>>>> config
 
 Wed Jun 20 13:38:24 2001  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -277,28 +322,46 @@ Wed Jun 20 13:38:24 2001  Brian Gough  <bjg@network-theory.co.uk>
 Tue Jun 19 23:19:49 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* svd.c (gsl_linalg_SV_decomp): Golub-Reinsch svd, has more
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	deterministic convergence
 	(gsl_linalg_SV_decomp_mod):  Golub-Reinsch with
  	Preconditioning, much more efficient for M>>N
 
 	* balance.c (gsl_linalg_balance_columns): balances (or
  	"equilibrates") the columns of a matrix
+=======
+	deterministic convergence
+	(gsl_linalg_SV_decomp_mod):  Golub-Reinsch with
+	Preconditioning, much more efficient for M>>N
+
+	* balance.c (gsl_linalg_balance_columns): balances (or
+	"equilibrates") the columns of a matrix
+>>>>>>> config
 
 Sun Jun 17 21:49:03 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* givens.c: split out apply_givens functions into separate file
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	apply_givens.c
+=======
+	apply_givens.c
+>>>>>>> config
 
 Wed Jun 13 23:41:34 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* qr.c (gsl_linalg_QR_decomp): simplified reverse loop
 
 	* bidiag.c: bidiagonalisation of a matrix (needed for
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	Golub-Reinsch SVD)
+=======
+	Golub-Reinsch SVD)
+>>>>>>> config
 
 Wed Jun  6 12:36:58 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* householdercomplex.c: split out complex functions into a
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	separate file to reduce linking dependencies
 
 	* qrpt.c (gsl_linalg_QRPT_decomp): provide workspace as an
@@ -308,6 +371,17 @@ Wed Jun  6 12:36:58 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* qr.c (gsl_linalg_QR_decomp): provide workspace as an argument,
  	to avoid allocating it on each call
+=======
+	separate file to reduce linking dependencies
+
+	* qrpt.c (gsl_linalg_QRPT_decomp): provide workspace as an
+	argument, to avoid allocating it on each call
+	(gsl_linalg_QRPT_decomp2): provide workspace as an argument, to
+	avoid allocating it on each call
+
+	* qr.c (gsl_linalg_QR_decomp): provide workspace as an argument,
+	to avoid allocating it on each call
+>>>>>>> config
 
 Thu May 17 17:01:45 2001  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -316,12 +390,20 @@ Thu May 17 17:01:45 2001  Brian Gough  <bjg@network-theory.co.uk>
 Sat Apr 28 00:39:53 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* qr.c (gsl_linalg_QR_update): fixed QR update to work correctly
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	with rectangular matrices where M > N
+=======
+	with rectangular matrices where M > N
+>>>>>>> config
 
 Mon Apr 23 10:29:01 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* tridiag.c: removed EFAULT test since this should only apply to
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	non-null invalid pointers
+=======
+	non-null invalid pointers
+>>>>>>> config
 
 Fri Apr 13 20:43:38 2001  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -330,42 +412,75 @@ Fri Apr 13 20:43:38 2001  Brian Gough  <bjg@network-theory.co.uk>
 Sun Oct 22 13:56:30 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* householder.c (gsl_linalg_householder_transform): changed calls
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	to gsl_hypot() to hypot() so that the system function is used in
  	preference (the configure script will define hypot to gsl_hypot if
  	hypot is unavailable)
 
 	* svd.c (gsl_linalg_SV_decomp): changed calls to gsl_hypot() to
  	hypot()
+=======
+	to gsl_hypot() to hypot() so that the system function is used in
+	preference (the configure script will define hypot to gsl_hypot if
+	hypot is unavailable)
+
+	* svd.c (gsl_linalg_SV_decomp): changed calls to gsl_hypot() to
+	hypot()
+>>>>>>> config
 
 Sat Oct 21 15:54:56 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* tridiag.c (solve_tridiag): prevent out-of-bounds array access
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	for small N (attempt to access element[N-2] when N is 1).
+=======
+	for small N (attempt to access element[N-2] when N is 1).
+>>>>>>> config
 
 Tue Sep 19 21:42:13 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* qrpt.c (gsl_linalg_QRPT_decomp2): added convenience function to
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	compute q,r unpacked decomposition directly
+=======
+	compute q,r unpacked decomposition directly
+>>>>>>> config
 
 Wed Aug 16 19:50:35 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* svd.c (gsl_linalg_SV_decomp): take more care with singular
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	values, set the associated vectors to zero
+=======
+	values, set the associated vectors to zero
+>>>>>>> config
 
 Sun Aug 13 16:39:40 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* qrpt.c (gsl_linalg_QRPT_decomp): fixed obvious bug in selection
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	of column with max norm
+=======
+	of column with max norm
+>>>>>>> config
 
 Wed May 31 19:42:59 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* test.c (test_QR_update): increased tolerances on results to
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	allow tests to pass with other compilers
+=======
+	allow tests to pass with other compilers
+>>>>>>> config
 
 Wed May  3 21:19:45 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* cholesky.c: added cholesky decomposition/solve from Thomas
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	Walter. Modified for GSL.
+=======
+	Walter. Modified for GSL.
+>>>>>>> config
 
 Fri Apr 28 17:13:00 2000  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -379,7 +494,11 @@ Thu Apr 27 20:31:46 2000  Brian Gough  <bjg@network-theory.co.uk>
 	(test_QR_decomp): added the "moler" matrix as a test for SVD
 
 	* svd.c (gsl_linalg_SV_decomp): improved the convergence criterion
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	for rank deficient case.
+=======
+	for rank deficient case.
+>>>>>>> config
 
 Wed Apr 26 19:37:46 2000  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -388,21 +507,37 @@ Wed Apr 26 19:37:46 2000  Brian Gough  <bjg@network-theory.co.uk>
 Mon Apr 24 17:04:52 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* test_la.c (main): added tests for MxN matrices
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	
 	* test_la.c (main): added tests for SV decomposition and solve.
 
 	* svd.c (gsl_linalg_SV_decomp): made use of vector row/column
  	functions, tidied up the algorithm a bit. Use a standard tolerance
  	of 10*GSL_DBL_EPSILON.
+=======
+
+	* test_la.c (main): added tests for SV decomposition and solve.
+
+	* svd.c (gsl_linalg_SV_decomp): made use of vector row/column
+	functions, tidied up the algorithm a bit. Use a standard tolerance
+	of 10*GSL_DBL_EPSILON.
+>>>>>>> config
 	(gsl_linalg_SV_solve): added a least squares solver
 
 Sun Apr 23 21:18:04 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* gsl_linalg.h, svd.c (gsl_linalg_SV_decomp): changed function
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	name to new naming convention
 
 	* qr.c (gsl_linalg_QR_unpack): fixed index ranges for rectangular
  	case when unpacking R
+=======
+	name to new naming convention
+
+	* qr.c (gsl_linalg_QR_unpack): fixed index ranges for rectangular
+	case when unpacking R
+>>>>>>> config
 
 Sat Apr 22 15:05:21 2000  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -411,11 +546,16 @@ Sat Apr 22 15:05:21 2000  Brian Gough  <bjg@network-theory.co.uk>
 Sat Mar 11 17:36:33 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* multiply.c: removed _impl from these functions since all the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	errors they can return are fatal.
+=======
+	errors they can return are fatal.
+>>>>>>> config
 
 Wed Feb 16 12:03:00 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* multiply.c (gsl_la_matmult_mod_impl): fixed error in transposed
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	matrix memory access, expressions should always be of the form
 	M->data[i*M->size2 + j] even when i,j are transposed.
 
@@ -423,21 +563,44 @@ Wed Feb 16 12:03:00 2000  Brian Gough  <bjg@network-theory.co.uk>
  	gsl_matrix_get, which is what I have done now. Shouldn't be any
  	cost in the production version of the library where we have
  	inlines and range checking off.
+=======
+	matrix memory access, expressions should always be of the form
+	M->data[i*M->size2 + j] even when i,j are transposed.
+
+	Safer to replace matrix access by gsl_matrix_set and
+	gsl_matrix_get, which is what I have done now. Shouldn't be any
+	cost in the production version of the library where we have
+	inlines and range checking off.
+>>>>>>> config
 
 Tue Feb 15 17:46:19 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* tridiag.h (solve_cyc_tridiag): fixed typo in header, was
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	solve_cyctridiag, missing _.
 
 	* converted all functions to use gsl_permutation instead of
  	gsl_vector_int
+=======
+	solve_cyctridiag, missing _.
+
+	* converted all functions to use gsl_permutation instead of
+	gsl_vector_int
+>>>>>>> config
 
 Fri Oct  1 15:51:02 1999  Brian Gough  <bjg@network-theory.co.uk>
 
 	* temporary changes resulting from changes to block/vector/matrix
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	organization
+=======
+	organization
+>>>>>>> config
 
 Fri Aug  6 14:42:23 1999  Brian Gough  <bjg@network-theory.co.uk>
 
 	* linalg_simple.c: include <string.h> to declare memcpy
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

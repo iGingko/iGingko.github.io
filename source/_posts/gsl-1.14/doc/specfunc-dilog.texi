@@ -4,8 +4,13 @@ The functions described in this section are declared in the header file
 @file{gsl_sf_dilog.h}.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Real Argument::               
 * Complex Argument::            
+=======
+* Real Argument::
+* Complex Argument::
+>>>>>>> config
 @end menu
 
 @node Real Argument
@@ -16,8 +21,13 @@ The functions described in this section are declared in the header file
 These routines compute the dilogarithm for a real argument. In Lewin's
 notation this is @math{Li_2(x)}, the real part of the dilogarithm of a
 real @math{x}.  It is defined by the integral representation
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{Li_2(x) = - \Re \int_0^x ds \log(1-s) / s}.  
 Note that @math{\Im(Li_2(x)) = 0} for @c{$x \le 1$} 
+=======
+@math{Li_2(x) = - \Re \int_0^x ds \log(1-s) / s}.
+Note that @math{\Im(Li_2(x)) = 0} for @c{$x \le 1$}
+>>>>>>> config
 @math{x <= 1}, and @math{-\pi\log(x)} for @math{x > 1}.
 
 Note that Abramowitz & Stegun refer to the Spence integral

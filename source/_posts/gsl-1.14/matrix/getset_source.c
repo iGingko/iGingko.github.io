@@ -4,8 +4,13 @@
 
 int
 FUNCTION (gsl_matrix, get_row) (TYPE (gsl_vector) * v,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                  const TYPE (gsl_matrix) * m,
                                  const size_t i)
+=======
+				 const TYPE (gsl_matrix) * m,
+				 const size_t i)
+>>>>>>> config
 {
   const size_t M = m->size1;
   const size_t N = m->size2;
@@ -19,7 +24,11 @@ FUNCTION (gsl_matrix, get_row) (TYPE (gsl_vector) * v,
   if (v->size != N)
     {
       GSL_ERROR ("matrix row size and vector length are not equal",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_EBADLEN);
+=======
+		 GSL_EBADLEN);
+>>>>>>> config
     }
 
   {
@@ -30,6 +39,7 @@ FUNCTION (gsl_matrix, get_row) (TYPE (gsl_vector) * v,
 
     for (j = 0; j < N; j++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         unsigned int k;
 
         for (k = 0; k < MULTIPLICITY; k++)
@@ -37,6 +47,15 @@ FUNCTION (gsl_matrix, get_row) (TYPE (gsl_vector) * v,
             v_data[MULTIPLICITY * stride * j + k] 
               = row_data[MULTIPLICITY * j + k];
           }
+=======
+	unsigned int k;
+
+	for (k = 0; k < MULTIPLICITY; k++)
+	  {
+	    v_data[MULTIPLICITY * stride * j + k]
+	      = row_data[MULTIPLICITY * j + k];
+	  }
+>>>>>>> config
       }
   }
 
@@ -45,8 +64,13 @@ FUNCTION (gsl_matrix, get_row) (TYPE (gsl_vector) * v,
 
 int
 FUNCTION (gsl_matrix, get_col) (TYPE (gsl_vector) * v,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                  const TYPE (gsl_matrix) * m,
                                  const size_t j)
+=======
+				 const TYPE (gsl_matrix) * m,
+				 const size_t j)
+>>>>>>> config
 {
   const size_t M = m->size1;
   const size_t N = m->size2;
@@ -60,7 +84,11 @@ FUNCTION (gsl_matrix, get_col) (TYPE (gsl_vector) * v,
   if (v->size != M)
     {
       GSL_ERROR ("matrix column size and vector length are not equal",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_EBADLEN);
+=======
+		 GSL_EBADLEN);
+>>>>>>> config
     }
 
 
@@ -72,6 +100,7 @@ FUNCTION (gsl_matrix, get_col) (TYPE (gsl_vector) * v,
 
     for (i = 0; i < M; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         unsigned int k;
 
         for (k = 0; k < MULTIPLICITY; k++)
@@ -79,6 +108,15 @@ FUNCTION (gsl_matrix, get_col) (TYPE (gsl_vector) * v,
             v_data[stride * MULTIPLICITY * i + k] =
               column_data[MULTIPLICITY * i * tda + k];
           }
+=======
+	unsigned int k;
+
+	for (k = 0; k < MULTIPLICITY; k++)
+	  {
+	    v_data[stride * MULTIPLICITY * i + k] =
+	      column_data[MULTIPLICITY * i * tda + k];
+	  }
+>>>>>>> config
       }
   }
 
@@ -87,8 +125,13 @@ FUNCTION (gsl_matrix, get_col) (TYPE (gsl_vector) * v,
 
 int
 FUNCTION (gsl_matrix, set_row) (TYPE (gsl_matrix) * m,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                 const size_t i,
                                 const TYPE (gsl_vector) * v)
+=======
+				const size_t i,
+				const TYPE (gsl_vector) * v)
+>>>>>>> config
 {
   const size_t M = m->size1;
   const size_t N = m->size2;
@@ -102,7 +145,11 @@ FUNCTION (gsl_matrix, set_row) (TYPE (gsl_matrix) * m,
   if (v->size != N)
     {
       GSL_ERROR ("matrix row size and vector length are not equal",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_EBADLEN);
+=======
+		 GSL_EBADLEN);
+>>>>>>> config
     }
 
   {
@@ -113,6 +160,7 @@ FUNCTION (gsl_matrix, set_row) (TYPE (gsl_matrix) * m,
 
     for (j = 0; j < N; j++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         unsigned int k;
 
         for (k = 0; k < MULTIPLICITY; k++)
@@ -120,6 +168,15 @@ FUNCTION (gsl_matrix, set_row) (TYPE (gsl_matrix) * m,
             row_data[MULTIPLICITY*j + k] 
               = v_data[MULTIPLICITY * stride * j + k];
           }
+=======
+	unsigned int k;
+
+	for (k = 0; k < MULTIPLICITY; k++)
+	  {
+	    row_data[MULTIPLICITY*j + k]
+	      = v_data[MULTIPLICITY * stride * j + k];
+	  }
+>>>>>>> config
       }
   }
 
@@ -128,8 +185,13 @@ FUNCTION (gsl_matrix, set_row) (TYPE (gsl_matrix) * m,
 
 int
 FUNCTION (gsl_matrix, set_col) (TYPE (gsl_matrix) * m,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                 const size_t j,
                                 const TYPE (gsl_vector) * v)
+=======
+				const size_t j,
+				const TYPE (gsl_vector) * v)
+>>>>>>> config
 {
   const size_t M = m->size1;
   const size_t N = m->size2;
@@ -143,7 +205,11 @@ FUNCTION (gsl_matrix, set_col) (TYPE (gsl_matrix) * m,
   if (v->size != M)
     {
       GSL_ERROR ("matrix column size and vector length are not equal",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_EBADLEN);
+=======
+		 GSL_EBADLEN);
+>>>>>>> config
     }
 
   {
@@ -154,6 +220,7 @@ FUNCTION (gsl_matrix, set_col) (TYPE (gsl_matrix) * m,
 
     for (i = 0; i < M; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         unsigned int k;
 
         for (k = 0; k < MULTIPLICITY; k++)
@@ -161,6 +228,15 @@ FUNCTION (gsl_matrix, set_col) (TYPE (gsl_matrix) * m,
             column_data[MULTIPLICITY * i * tda + k] 
               = v_data[MULTIPLICITY * stride * i + k];
           }
+=======
+	unsigned int k;
+
+	for (k = 0; k < MULTIPLICITY; k++)
+	  {
+	    column_data[MULTIPLICITY * i * tda + k]
+	      = v_data[MULTIPLICITY * stride * i + k];
+	  }
+>>>>>>> config
       }
   }
 
@@ -170,7 +246,11 @@ FUNCTION (gsl_matrix, set_col) (TYPE (gsl_matrix) * m,
 
 TYPE (gsl_vector) *
 FUNCTION (gsl_vector, alloc_row_from_matrix) (TYPE(gsl_matrix) * m,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                               const size_t i)
+=======
+					      const size_t i)
+>>>>>>> config
 {
   TYPE (gsl_vector) * v;
 
@@ -186,7 +266,11 @@ FUNCTION (gsl_vector, alloc_row_from_matrix) (TYPE(gsl_matrix) * m,
   if (v == 0)
     {
       GSL_ERROR_VAL ("failed to allocate space for vector struct",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_ENOMEM, 0);
+=======
+			GSL_ENOMEM, 0);
+>>>>>>> config
     }
 
   v->data = m->data + MULTIPLICITY * i * m->tda ;
@@ -199,7 +283,11 @@ FUNCTION (gsl_vector, alloc_row_from_matrix) (TYPE(gsl_matrix) * m,
 
 TYPE (gsl_vector) *
 FUNCTION (gsl_vector, alloc_col_from_matrix) (TYPE(gsl_matrix) * m,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                               const size_t j)
+=======
+					      const size_t j)
+>>>>>>> config
 {
   TYPE (gsl_vector) * v;
 
@@ -215,7 +303,11 @@ FUNCTION (gsl_vector, alloc_col_from_matrix) (TYPE(gsl_matrix) * m,
   if (v == 0)
     {
       GSL_ERROR_VAL ("failed to allocate space for vector struct",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_ENOMEM, 0);
+=======
+			GSL_ENOMEM, 0);
+>>>>>>> config
     }
 
   v->data = m->data + MULTIPLICITY * j ;
@@ -225,4 +317,7 @@ FUNCTION (gsl_vector, alloc_col_from_matrix) (TYPE(gsl_matrix) * m,
 
   return v;
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

@@ -20,6 +20,7 @@ double longley_x [] = {
   1, 116.9,   554894,   4007,     2827,    130081,  1962 } ;
 
 double longley_y[] = {60323, 61122, 60171, 61187, 63221, 63639, 64989, 63761,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                        66019, 67857, 68169, 66513, 68655, 69564, 69331, 70551};
 
 
@@ -29,6 +30,17 @@ test_longley ()
   size_t i, j;
   {
     gsl_multifit_linear_workspace * work = 
+=======
+		       66019, 67857, 68169, 66513, 68655, 69564, 69331, 70551};
+
+
+void
+test_longley ()
+{
+  size_t i, j;
+  {
+    gsl_multifit_linear_workspace * work =
+>>>>>>> config
       gsl_multifit_linear_alloc (longley_n, longley_p);
 
     gsl_matrix_view X = gsl_matrix_view_array (longley_x, longley_n, longley_p);
@@ -41,6 +53,7 @@ test_longley ()
     double chisq;
 
     double expected_c[7] = {  -3482258.63459582,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                               15.0618722713733,
                               -0.358191792925910E-01,
                               -2.02022980381683,
@@ -55,6 +68,22 @@ test_longley ()
                                 0.214274163161675,     
                                 0.226073200069370,     
                                 455.478499142212 } ;  
+=======
+			      15.0618722713733,
+			      -0.358191792925910E-01,
+			      -2.02022980381683,
+			      -1.03322686717359,
+			      -0.511041056535807E-01,
+			      1829.15146461355 };
+
+    double expected_sd[7]  = {  890420.383607373,
+				84.9149257747669,
+				0.334910077722432E-01,
+				0.488399681651699,
+				0.214274163161675,
+				0.226073200069370,
+				455.478499142212 } ;
+>>>>>>> config
 
     double expected_chisq = 836424.055505915;
 
@@ -92,7 +121,11 @@ test_longley ()
 
 
   {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     gsl_multifit_linear_workspace * work = 
+=======
+    gsl_multifit_linear_workspace * work =
+>>>>>>> config
       gsl_multifit_linear_alloc (longley_n, longley_p);
 
     gsl_matrix_view X = gsl_matrix_view_array (longley_x, longley_n, longley_p);
@@ -105,12 +138,21 @@ test_longley ()
     double chisq;
 
     double expected_c[7] = {  -3482258.63459582,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                               15.0618722713733,
                               -0.358191792925910E-01,
                               -2.02022980381683,
                               -1.03322686717359,
                               -0.511041056535807E-01,
                               1829.15146461355 };
+=======
+			      15.0618722713733,
+			      -0.358191792925910E-01,
+			      -2.02022980381683,
+			      -1.03322686717359,
+			      -0.511041056535807E-01,
+			      1829.15146461355 };
+>>>>>>> config
 
     double expected_cov[7][7] = { { 8531122.56783558,
 -166.727799925578, 0.261873708176346, 3.91188317230983,
@@ -154,6 +196,7 @@ test_longley ()
     gsl_test_rel (gsl_vector_get(c,5), expected_c[5], 1e-10, "longley gsl_fit_wmultilinear c5") ;
     gsl_test_rel (gsl_vector_get(c,6), expected_c[6], 1e-10, "longley gsl_fit_wmultilinear c6") ;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     for (i = 0; i < longley_p; i++) 
       {
         for (j = 0; j < longley_p; j++)
@@ -161,6 +204,15 @@ test_longley ()
             gsl_test_rel (gsl_matrix_get(cov,i,j), expected_cov[i][j], 1e-7, 
                           "longley gsl_fit_wmultilinear cov(%d,%d)", i, j) ;
           }
+=======
+    for (i = 0; i < longley_p; i++)
+      {
+	for (j = 0; j < longley_p; j++)
+	  {
+	    gsl_test_rel (gsl_matrix_get(cov,i,j), expected_cov[i][j], 1e-7,
+			  "longley gsl_fit_wmultilinear cov(%d,%d)", i, j) ;
+	  }
+>>>>>>> config
       }
 
     gsl_test_rel (chisq, expected_chisq, 1e-10, "longley gsl_fit_wmultilinear chisq") ;

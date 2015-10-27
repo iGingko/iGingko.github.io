@@ -1,17 +1,31 @@
 /* roots/fsolver.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Reid Priedhorsky, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Reid Priedhorsky, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -31,7 +45,11 @@ gsl_root_fsolver_alloc (const gsl_root_fsolver_type * T)
   if (s == 0)
     {
       GSL_ERROR_VAL ("failed to allocate space for root solver struct",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_ENOMEM, 0);
+=======
+			GSL_ENOMEM, 0);
+>>>>>>> config
     };
 
   s->state = malloc (T->size);
@@ -41,7 +59,11 @@ gsl_root_fsolver_alloc (const gsl_root_fsolver_type * T)
       free (s);         /* exception in constructor, avoid memory leak */
 
       GSL_ERROR_VAL ("failed to allocate space for root solver state",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_ENOMEM, 0);
+=======
+			GSL_ENOMEM, 0);
+>>>>>>> config
     };
 
   s->type = T ;
@@ -69,9 +91,15 @@ gsl_root_fsolver_set (gsl_root_fsolver * s, gsl_function * f, double x_lower, do
 int
 gsl_root_fsolver_iterate (gsl_root_fsolver * s)
 {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   return (s->type->iterate) (s->state, 
                              s->function, &(s->root), 
                              &(s->x_lower), &(s->x_upper));
+=======
+  return (s->type->iterate) (s->state,
+			     s->function, &(s->root),
+			     &(s->x_lower), &(s->x_upper));
+>>>>>>> config
 }
 
 void
@@ -105,4 +133,7 @@ gsl_root_fsolver_x_upper (const gsl_root_fsolver * s)
 {
   return s->x_upper;
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

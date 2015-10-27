@@ -23,7 +23,11 @@
 
 	* min.h: improved error message, function can be discontinuous
 	despite what error message said.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	
+=======
+
+>>>>>>> config
 2005-04-28  Brian Gough  <bjg@network-theory.co.uk>
 
 	* brent.c (brent_iterate): fixed error in ordering of tests for
@@ -37,6 +41,7 @@
 Sun Apr  7 15:22:11 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* fsolver.c (gsl_min_fminimizer_x_minimum): new function,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	obsoletes gsl_min_fminimizer_minimum.
 	(gsl_min_fminimizer_f_minimum): new function for accessing
  	function values
@@ -44,6 +49,15 @@ Sun Apr  7 15:22:11 2002  Brian Gough  <bjg@network-theory.co.uk>
  	values
 	(gsl_min_fminimizer_f_upper): new function for accessing function
  	values
+=======
+	obsoletes gsl_min_fminimizer_minimum.
+	(gsl_min_fminimizer_f_minimum): new function for accessing
+	function values
+	(gsl_min_fminimizer_f_lower): new function for accessing function
+	values
+	(gsl_min_fminimizer_f_upper): new function for accessing function
+	values
+>>>>>>> config
 
 	* renamed minimum to x_minimum throughout
 
@@ -54,12 +68,20 @@ Wed Oct  3 11:35:45 2001  Brian Gough  <bjg@network-theory.co.uk>
 Sun Jul 15 17:53:26 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* eliminated interval type, changed order of arguments to set
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	functions
+=======
+	functions
+>>>>>>> config
 
 Tue Apr 17 22:13:58 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* fsolver.c (gsl_min_fminimizer_alloc): removed unnecessary status
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	variable
+=======
+	variable
+>>>>>>> config
 
 Mon Apr  2 14:54:33 2001  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -67,26 +89,46 @@ Mon Apr  2 14:54:33 2001  Brian Gough  <bjg@network-theory.co.uk>
 	(brent_iterate): fixed incorrect value for golden ratio
 
 	* golden.c (goldensection_iterate): fixed incorrect value for
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	golden ratio
 
 	* bracketing.c (gsl_min_find_bracket): fixed incorrect value for
  	golden ratio
+=======
+	golden ratio
+
+	* bracketing.c (gsl_min_find_bracket): fixed incorrect value for
+	golden ratio
+>>>>>>> config
 
 Sun Feb 18 11:43:04 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* fsolver.c: changed so that the solver _alloc function no longer
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	calls _set, the user must do that separately.
+=======
+	calls _set, the user must do that separately.
+>>>>>>> config
 
 Fri May  5 16:09:11 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* test.c (test_bracket): fixed warning about "control reaches end
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	of non-void function" by changing return type to void
+=======
+	of non-void function" by changing return type to void
+>>>>>>> config
 
 Tue Feb 15 16:32:55 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* bracketing.c (gsl_min_find_bracket): changed counter nb_eval
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	from type int to type size_t in order to avoid comparison between
  	signed and unsigned, (nb_eval < eval_max).
+=======
+	from type int to type size_t in order to avoid comparison between
+	signed and unsigned, (nb_eval < eval_max).
+>>>>>>> config
 
 Mon Feb 14 13:07:43 2000  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -95,4 +137,7 @@ Mon Feb 14 13:07:43 2000  Brian Gough  <bjg@network-theory.co.uk>
 Wed Oct 13 16:08:03 1999  Brian Gough  <bjg@network-theory.co.uk>
 
 	* rewritten to allow initial values to be specified
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

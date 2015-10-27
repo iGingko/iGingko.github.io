@@ -1,17 +1,31 @@
 /* min/brent.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -113,6 +127,7 @@ brent_iterate (void *vstate, gsl_function * f, double *x_minimum, double * f_min
       q = 2 * (q - r);
 
       if (q > 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           p = -p;
         }
@@ -120,6 +135,15 @@ brent_iterate (void *vstate, gsl_function * f, double *x_minimum, double * f_min
         {
           q = -q;
         }
+=======
+	{
+	  p = -p;
+	}
+      else
+	{
+	  q = -q;
+	}
+>>>>>>> config
 
       r = e;
       e = d;
@@ -133,9 +157,15 @@ brent_iterate (void *vstate, gsl_function * f, double *x_minimum, double * f_min
       u = z + d;
 
       if ((u - x_left) < t2 || (x_right - u) < t2)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           d = (z < midpoint) ? tolerance : -tolerance ;
         }
+=======
+	{
+	  d = (z < midpoint) ? tolerance : -tolerance ;
+	}
+>>>>>>> config
     }
   else
     {
@@ -161,6 +191,7 @@ brent_iterate (void *vstate, gsl_function * f, double *x_minimum, double * f_min
   if (f_u <= f_z)
     {
       if (u < z)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           *x_upper = z;
           *f_upper = f_z;
@@ -170,6 +201,17 @@ brent_iterate (void *vstate, gsl_function * f, double *x_minimum, double * f_min
           *x_lower = z;
           *f_lower = f_z;
         }
+=======
+	{
+	  *x_upper = z;
+	  *f_upper = f_z;
+	}
+      else
+	{
+	  *x_lower = z;
+	  *f_lower = f_z;
+	}
+>>>>>>> config
 
       state->v = w;
       state->f_v = f_w;
@@ -182,6 +224,7 @@ brent_iterate (void *vstate, gsl_function * f, double *x_minimum, double * f_min
   else
     {
       if (u < z)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           *x_lower = u;
           *f_lower = f_u;
@@ -206,6 +249,32 @@ brent_iterate (void *vstate, gsl_function * f, double *x_minimum, double * f_min
           state->f_v = f_u;
           return GSL_SUCCESS;
         }
+=======
+	{
+	  *x_lower = u;
+	  *f_lower = f_u;
+	}
+      else
+	{
+	  *x_upper = u;
+	  *f_upper = f_u;
+	}
+
+      if (f_u <= f_w || w == z)
+	{
+	  state->v = w;
+	  state->f_v = f_w;
+	  state->w = u;
+	  state->f_w = f_u;
+	  return GSL_SUCCESS;
+	}
+      else if (f_u <= f_v || v == z || v == w)
+	{
+	  state->v = u;
+	  state->f_v = f_u;
+	  return GSL_SUCCESS;
+	}
+>>>>>>> config
     }
 
   return GSL_SUCCESS;

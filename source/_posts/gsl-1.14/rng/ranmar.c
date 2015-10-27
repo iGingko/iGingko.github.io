@@ -1,17 +1,31 @@
 /* rng/ranmar.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -73,7 +87,11 @@ ranmar_get (void *vstate)
 
   if (delta < 0)
     delta += two24 ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   state->u[i] = delta;
 
   if (i == 0)
@@ -99,6 +117,7 @@ ranmar_get (void *vstate)
   state->j = j;
 
   carry += - 7654321 ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   if (carry < 0)
     carry += two24 - 3;
@@ -107,6 +126,16 @@ ranmar_get (void *vstate)
 
   delta += - carry ;
   
+=======
+
+  if (carry < 0)
+    carry += two24 - 3;
+
+  state->carry = carry ;
+
+  delta += - carry ;
+
+>>>>>>> config
   if (delta < 0)
     delta += two24 ;
 
@@ -123,23 +152,35 @@ static void
 ranmar_set (void *vstate, unsigned long int s)
 {
   ranmar_state_t *state = (ranmar_state_t *) vstate;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   unsigned long int ij = s / 30082 ;
   unsigned long int kl = s % 30082 ;
   
+=======
+
+  unsigned long int ij = s / 30082 ;
+  unsigned long int kl = s % 30082 ;
+
+>>>>>>> config
   int i = (ij / 177) % 177 + 2 ;
   int j = (ij % 177) + 2 ;
   int k = (kl / 169) % 178 + 1 ;
   int l = (kl % 169) ;
 
   int a, b;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   for (a = 0; a < 97; a++)
     {
       unsigned long int sum = 0 ;
       unsigned long int t = two24 ;
 
       for (b = 0; b < 24; b++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           unsigned long int m = (((i * j) % 179) * k) % 179 ;
           i = j ;
@@ -151,6 +192,19 @@ ranmar_set (void *vstate, unsigned long int s)
           if ((l * m) % 64 >= 32)
             sum += t ;
         }
+=======
+	{
+	  unsigned long int m = (((i * j) % 179) * k) % 179 ;
+	  i = j ;
+	  j = k ;
+	  k = m ;
+	  l = (53 * l + 1) % 169 ;
+	  t >>= 1 ;
+
+	  if ((l * m) % 64 >= 32)
+	    sum += t ;
+	}
+>>>>>>> config
 
       state->u[a] = sum ;
     }

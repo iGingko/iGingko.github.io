@@ -1,17 +1,31 @@
 /* integration/qag.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -39,11 +53,19 @@ qag (const gsl_function *f,
 
 int
 gsl_integration_qag (const gsl_function *f,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                      double a, double b,
                      double epsabs, double epsrel, size_t limit,
                      int key,
                      gsl_integration_workspace * workspace,
                      double * result, double * abserr)
+=======
+		     double a, double b,
+		     double epsabs, double epsrel, size_t limit,
+		     int key,
+		     gsl_integration_workspace * workspace,
+		     double * result, double * abserr)
+>>>>>>> config
 {
   int status ;
   gsl_integration_rule * integration_rule = gsl_integration_qk15 ;
@@ -51,13 +73,22 @@ gsl_integration_qag (const gsl_function *f,
   if (key < GSL_INTEG_GAUSS15)
     {
       key = GSL_INTEG_GAUSS15 ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     } 
   else if (key > GSL_INTEG_GAUSS61) 
+=======
+    }
+  else if (key > GSL_INTEG_GAUSS61)
+>>>>>>> config
     {
       key = GSL_INTEG_GAUSS61 ;
     }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   switch (key) 
+=======
+  switch (key)
+>>>>>>> config
     {
     case GSL_INTEG_GAUSS15:
       integration_rule = gsl_integration_qk15 ;
@@ -66,6 +97,7 @@ gsl_integration_qag (const gsl_function *f,
       integration_rule = gsl_integration_qk21 ;
       break ;
     case GSL_INTEG_GAUSS31:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       integration_rule = gsl_integration_qk31 ; 
       break ;
     case GSL_INTEG_GAUSS41:
@@ -87,6 +119,29 @@ gsl_integration_qag (const gsl_function *f,
                 result, abserr, 
                 integration_rule) ;
   
+=======
+      integration_rule = gsl_integration_qk31 ;
+      break ;
+    case GSL_INTEG_GAUSS41:
+      integration_rule = gsl_integration_qk41 ;
+      break ;
+    case GSL_INTEG_GAUSS51:
+      integration_rule = gsl_integration_qk51 ;
+      break ;
+    case GSL_INTEG_GAUSS61:
+      integration_rule = gsl_integration_qk61 ;
+      break ;
+    default:
+      GSL_ERROR("value of key does specify a known integration rule",
+		GSL_EINVAL) ;
+    }
+
+  status = qag (f, a, b, epsabs, epsrel, limit,
+		workspace,
+		result, abserr,
+		integration_rule) ;
+
+>>>>>>> config
   return status ;
 }
 
@@ -105,7 +160,11 @@ qag (const gsl_function * f,
   size_t iteration = 0;
   int roundoff_type1 = 0, roundoff_type2 = 0, error_type = 0;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   double round_off;     
+=======
+  double round_off;
+>>>>>>> config
 
   /* Initialize results */
 
@@ -122,7 +181,11 @@ qag (const gsl_function * f,
   if (epsabs <= 0 && (epsrel < 50 * GSL_DBL_EPSILON || epsrel < 0.5e-28))
     {
       GSL_ERROR ("tolerance cannot be acheived with given epsabs and epsrel",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_EBADTOL);
+=======
+		 GSL_EBADTOL);
+>>>>>>> config
     }
 
   /* perform the first integration */
@@ -145,7 +208,11 @@ qag (const gsl_function * f,
       *abserr = abserr0;
 
       GSL_ERROR ("cannot reach tolerance because of roundoff error "
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  "on first attempt", GSL_EROUND);
+=======
+		 "on first attempt", GSL_EROUND);
+>>>>>>> config
     }
   else if ((abserr0 <= tolerance && abserr0 != resasc0) || abserr0 == 0.0)
     {
@@ -180,7 +247,11 @@ qag (const gsl_function * f,
 
       retrieve (workspace, &a_i, &b_i, &r_i, &e_i);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       a1 = a_i; 
+=======
+      a1 = a_i;
+>>>>>>> config
       b1 = 0.5 * (a_i + b_i);
       a2 = b1;
       b2 = b_i;
@@ -195,6 +266,7 @@ qag (const gsl_function * f,
       area += area12 - r_i;
 
       if (resasc1 != error1 && resasc2 != error2)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double delta = r_i - area12;
 
@@ -207,10 +279,25 @@ qag (const gsl_function * f,
               roundoff_type2++;
             }
         }
+=======
+	{
+	  double delta = r_i - area12;
+
+	  if (fabs (delta) <= 1.0e-5 * fabs (area12) && error12 >= 0.99 * e_i)
+	    {
+	      roundoff_type1++;
+	    }
+	  if (iteration >= 10 && error12 > e_i)
+	    {
+	      roundoff_type2++;
+	    }
+	}
+>>>>>>> config
 
       tolerance = GSL_MAX_DBL (epsabs, epsrel * fabs (area));
 
       if (errsum > tolerance)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           if (roundoff_type1 >= 6 || roundoff_type2 >= 20)
             {
@@ -225,6 +312,22 @@ qag (const gsl_function * f,
               error_type = 3;
             }
         }
+=======
+	{
+	  if (roundoff_type1 >= 6 || roundoff_type2 >= 20)
+	    {
+	      error_type = 2;   /* round off error */
+	    }
+
+	  /* set error flag in the case of bad integrand behaviour at
+	     a point of the integration range */
+
+	  if (subinterval_too_small (a1, a2, b2))
+	    {
+	      error_type = 3;
+	    }
+	}
+>>>>>>> config
 
       update (workspace, a1, b1, area1, error1, a2, b2, area2, error2);
 
@@ -245,12 +348,20 @@ qag (const gsl_function * f,
   else if (error_type == 2)
     {
       GSL_ERROR ("roundoff error prevents tolerance from being achieved",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_EROUND);
+=======
+		 GSL_EROUND);
+>>>>>>> config
     }
   else if (error_type == 3)
     {
       GSL_ERROR ("bad integrand behavior found in the integration interval",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_ESING);
+=======
+		 GSL_ESING);
+>>>>>>> config
     }
   else if (iteration == limit)
     {
@@ -261,5 +372,8 @@ qag (const gsl_function * f,
       GSL_ERROR ("could not integrate function", GSL_EFAILED);
     }
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
+=======
+>>>>>>> config

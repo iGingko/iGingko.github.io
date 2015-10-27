@@ -1,4 +1,8 @@
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 noinst_LTLIBRARIES = libgslcombination.la 
+=======
+noinst_LTLIBRARIES = libgslcombination.la
+>>>>>>> config
 
 pkginclude_HEADERS = gsl_combination.h
 
@@ -6,7 +10,11 @@ INCLUDES = -I$(top_srcdir)
 
 libgslcombination_la_SOURCES = init.c file.c combination.c inline.c
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 noinst_HEADERS = 
+=======
+noinst_HEADERS =
+>>>>>>> config
 
 TESTS = $(check_PROGRAMS)
 
@@ -21,5 +29,8 @@ test_LDADD = libgslcombination.la ../vector/libgslvector.la  ../block/libgslbloc
 #demo_LDADD = libgslcombination.la ../vector/libgslvector.la ../err/libgslerr.la ../test/libgsltest.la ../sys/libgslsys.la ../utils/libutils.la
 
 #CLEANFILES = test.txt test.dat
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
+=======
+>>>>>>> config

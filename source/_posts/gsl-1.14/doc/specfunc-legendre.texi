@@ -5,6 +5,7 @@
 @cindex hyperbolic space
 
 The Legendre Functions and Legendre Polynomials are described in
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 Abramowitz & Stegun, Chapter 8.  These functions are declared in 
 the header file @file{gsl_sf_legendre.h}.
 
@@ -13,6 +14,16 @@ the header file @file{gsl_sf_legendre.h}.
 * Associated Legendre Polynomials and Spherical Harmonics::  
 * Conical Functions::           
 * Radial Functions for Hyperbolic Space::  
+=======
+Abramowitz & Stegun, Chapter 8.  These functions are declared in
+the header file @file{gsl_sf_legendre.h}.
+
+@menu
+* Legendre Polynomials::
+* Associated Legendre Polynomials and Spherical Harmonics::
+* Conical Functions::
+* Radial Functions for Hyperbolic Space::
+>>>>>>> config
 @end menu
 
 @node Legendre Polynomials
@@ -25,7 +36,11 @@ the header file @file{gsl_sf_legendre.h}.
 @deftypefunx int gsl_sf_legendre_P2_e (double @var{x}, gsl_sf_result * @var{result})
 @deftypefunx int gsl_sf_legendre_P3_e (double @var{x}, gsl_sf_result * @var{result})
 These functions evaluate the Legendre polynomials
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @c{$P_l(x)$} 
+=======
+@c{$P_l(x)$}
+>>>>>>> config
 @math{P_l(x)} using explicit
 representations for @math{l=1, 2, 3}.
 @comment Exceptional Return Values: none
@@ -33,10 +48,17 @@ representations for @math{l=1, 2, 3}.
 
 @deftypefun double gsl_sf_legendre_Pl (int @var{l}, double @var{x})
 @deftypefunx int gsl_sf_legendre_Pl_e (int @var{l}, double @var{x}, gsl_sf_result * @var{result})
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 These functions evaluate the Legendre polynomial @c{$P_l(x)$} 
 @math{P_l(x)} for a specific value of @var{l},
 @var{x} subject to @c{$l \ge 0$}
 @math{l >= 0}, 
+=======
+These functions evaluate the Legendre polynomial @c{$P_l(x)$}
+@math{P_l(x)} for a specific value of @var{l},
+@var{x} subject to @c{$l \ge 0$}
+@math{l >= 0},
+>>>>>>> config
 @c{$|x| \le 1$}
 @math{|x| <= 1}
 @comment Exceptional Return Values: GSL_EDOM
@@ -46,8 +68,13 @@ These functions evaluate the Legendre polynomial @c{$P_l(x)$}
 @deftypefunx int gsl_sf_legendre_Pl_deriv_array (int @var{lmax}, double @var{x}, double @var{result_array}[], double @var{result_deriv_array}[])
 
 These functions compute arrays of Legendre polynomials
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{P_l(x)} and derivatives @math{dP_l(x)/dx}, 
 for @math{l = 0, \dots, lmax}, 
+=======
+@math{P_l(x)} and derivatives @math{dP_l(x)/dx},
+for @math{l = 0, \dots, lmax},
+>>>>>>> config
 @c{$|x| \le 1$}
 @math{|x| <= 1}
 @comment Exceptional Return Values: GSL_EDOM
@@ -102,7 +129,11 @@ These routines compute the associated Legendre polynomial
 @math{P_l^m(x)} for @c{$m \ge 0$}
 @math{m >= 0}, @c{$l \ge m$}
 @math{l >= m}, @c{$|x| \le 1$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{|x| <= 1}. 
+=======
+@math{|x| <= 1}.
+>>>>>>> config
 @comment Exceptional Return Values: GSL_EDOM, GSL_EOVRFLW
 @end deftypefun
 
@@ -154,8 +185,13 @@ versions of @math{P_l^m(x)}, @math{@var{lmax} - @var{m} + 1}.  @inlinefn{}
 @subsection Conical Functions
 
 The Conical Functions @c{$P^\mu_{-(1/2)+i\lambda}(x)$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{P^\mu_@{-(1/2)+i\lambda@}(x)} and @c{$Q^\mu_{-(1/2)+i\lambda}$} 
 @math{Q^\mu_@{-(1/2)+i\lambda@}} 
+=======
+@math{P^\mu_@{-(1/2)+i\lambda@}(x)} and @c{$Q^\mu_{-(1/2)+i\lambda}$}
+@math{Q^\mu_@{-(1/2)+i\lambda@}}
+>>>>>>> config
 are described in Abramowitz & Stegun, Section 8.12.
 
 @deftypefun double gsl_sf_conicalP_half (double @var{lambda}, double @var{x})
@@ -186,7 +222,11 @@ for @math{x > -1}.
 
 @deftypefun double gsl_sf_conicalP_1 (double @var{lambda}, double @var{x})
 @deftypefunx int gsl_sf_conicalP_1_e (double @var{lambda}, double @var{x}, gsl_sf_result * @var{result})
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 These routines compute the conical function 
+=======
+These routines compute the conical function
+>>>>>>> config
 @c{$P^1_{-1/2 + i \lambda}(x)$}
 @math{P^1_@{-1/2 + i \lambda@}(x)} for @math{x > -1}.
 @comment Exceptional Return Values: GSL_EDOM
@@ -222,7 +262,11 @@ functions which give the regular eigenfunctions of the Laplacian on a
 3-dimensional hyperbolic space @math{H3d}.  Of particular interest is
 the flat limit, @math{\lambda \to \infty}, @math{\eta \to 0},
 @math{\lambda\eta} fixed.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
 @deftypefun double gsl_sf_legendre_H3d_0 (double @var{lambda}, double @var{eta})
 @deftypefunx int gsl_sf_legendre_H3d_0_e (double @var{lambda}, double @var{eta}, gsl_sf_result * @var{result})
 These routines compute the zeroth radial eigenfunction of the Laplacian on the
@@ -245,7 +289,11 @@ the 3-dimensional hyperbolic space,
 @math{L^@{H3d@}_1(\lambda,\eta) := 1/\sqrt@{\lambda^2 + 1@} \sin(\lambda \eta)/(\lambda \sinh(\eta)) (\coth(\eta) - \lambda \cot(\lambda\eta))}
 for @c{$\eta \ge 0$}
 @math{\eta >= 0}.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 In the flat limit this takes the form 
+=======
+In the flat limit this takes the form
+>>>>>>> config
 @c{$L^{H3d}_1(\lambda,\eta) = j_1(\lambda\eta)$}
 @math{L^@{H3d@}_1(\lambda,\eta) = j_1(\lambda\eta)}.
 @comment Exceptional Return Values: GSL_EDOM
@@ -264,10 +312,18 @@ Laplacian on the 3-dimensional hyperbolic space @c{$\eta \ge 0$}
 
 @deftypefun int gsl_sf_legendre_H3d_array (int @var{lmax}, double @var{lambda}, double @var{eta}, double @var{result_array}[])
 This function computes an array of radial eigenfunctions
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @c{$L^{H3d}_l( \lambda, \eta)$} 
 @math{L^@{H3d@}_l(\lambda, \eta)} 
+=======
+@c{$L^{H3d}_l( \lambda, \eta)$}
+@math{L^@{H3d@}_l(\lambda, \eta)}
+>>>>>>> config
 for @c{$0 \le l \le lmax$}
 @math{0 <= l <= lmax}.
 @comment Exceptional Return Values:
 @end deftypefun
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

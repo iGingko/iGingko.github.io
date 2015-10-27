@@ -3,7 +3,11 @@
 #include <gsl/gsl_errno.h>
 #include <gsl/gsl_sum.h>
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_sum_levin_u_workspace * 
+=======
+gsl_sum_levin_u_workspace *
+>>>>>>> config
 gsl_sum_levin_u_alloc (size_t n)
 {
   gsl_sum_levin_u_workspace * w;

@@ -1,17 +1,31 @@
 /* complex/test.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -101,7 +115,11 @@ struct freal listreal[] =
 
 #ifndef TEST_FACTOR
 #ifdef RELEASED
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 #define TEST_FACTOR 100.0  
+=======
+#define TEST_FACTOR 100.0
+>>>>>>> config
 #else
 #define TEST_FACTOR 1.0
 #endif
@@ -117,7 +135,11 @@ main (void)
   gsl_ieee_env_setup();
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   for (i = 0 ; i < 10; i++) 
+=======
+  for (i = 0 ; i < 10; i++)
+>>>>>>> config
     {
       double r = (i - 5.0) * 0.3 ;
       double t = 2.0 * M_PI * i / 5 ;
@@ -126,7 +148,11 @@ main (void)
       gsl_test_rel (GSL_REAL(z), x, tol, "gsl_complex_polar real part at (r=%g,t=%g)", r, t);
       gsl_test_rel (GSL_IMAG(z), y, tol, "gsl_complex_polar imag part at (r=%g,t=%g)", r, t);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     i = 0;
 
   while (list[i].f)

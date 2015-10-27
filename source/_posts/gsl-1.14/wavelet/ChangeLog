@@ -19,8 +19,13 @@
 2006-03-16  Brian Gough  <bjg@network-theory.co.uk>
 
 	* changed to gsl_wavelet_forward and gsl_wavelet_backward enums
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	throughout internally instead of forward and backward. 
 	
+=======
+	throughout internally instead of forward and backward.
+
+>>>>>>> config
 2004-12-29  Brian Gough  <bjg@network-theory.co.uk>
 
 	* gsl_wavelet.h: added missing includes, use GSL_VAR instead of
@@ -29,4 +34,7 @@
 2004-07-23  Brian Gough  <bjg@network-theory.co.uk>
 
 	* added wavelet directory from Ivo Alxneit.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

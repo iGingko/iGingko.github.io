@@ -20,6 +20,7 @@ The functions described in this chapter are declared in the header file
 @file{gsl_integration.h}.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Numerical Integration Introduction::  
 * QNG non-adaptive Gauss-Kronrod integration::  
 * QAG adaptive integration::    
@@ -34,6 +35,22 @@ The functions described in this chapter are declared in the header file
 * Numerical integration error codes::  
 * Numerical integration examples::  
 * Numerical integration References and Further Reading::  
+=======
+* Numerical Integration Introduction::
+* QNG non-adaptive Gauss-Kronrod integration::
+* QAG adaptive integration::
+* QAGS adaptive integration with singularities::
+* QAGP adaptive integration with known singular points::
+* QAGI adaptive integration on infinite intervals::
+* QAWC adaptive integration for Cauchy principal values::
+* QAWS adaptive integration for singular functions::
+* QAWO adaptive integration for oscillatory functions::
+* QAWF adaptive integration for Fourier integrals::
+* Fixed order Gauss-Legendre integration::
+* Numerical integration error codes::
+* Numerical integration examples::
+* Numerical integration References and Further Reading::
+>>>>>>> config
 @end menu
 
 @node Numerical Integration Introduction
@@ -57,7 +74,11 @@ I = \int_a^b f(x) w(x) dx
 @end ifinfo
 @noindent
 where @math{w(x)} is a weight function (for general integrands @math{w(x)=1}).
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 The user provides absolute and relative error bounds 
+=======
+The user provides absolute and relative error bounds
+>>>>>>> config
 @c{$(\hbox{\it epsabs}, \hbox{\it epsrel}\,)$}
 @math{(epsabs, epsrel)} which specify the following accuracy requirement,
 @tex
@@ -75,7 +96,11 @@ $$
 
 @end ifinfo
 @noindent
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 where 
+=======
+where
+>>>>>>> config
 @c{$\hbox{\it RESULT}$}
 @math{RESULT} is the numerical approximation obtained by the
 algorithm.  The algorithms attempt to estimate the absolute error
@@ -97,6 +122,7 @@ $$
 
 @end ifinfo
 @noindent
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 In short, the routines return the first approximation 
 which has an absolute error smaller than @c{$\hbox{\it epsabs}$}
 @math{epsabs} or a relative error smaller than @c{$\hbox{\it epsrel}$}
@@ -107,6 +133,18 @@ not simultaneous.  To compute to a specified absolute error, set @c{$\hbox{\it e
 @math{epsrel} to zero.  To compute to a specified relative error,
 set @c{$\hbox{\it epsabs}$}
 @math{epsabs} to zero.  
+=======
+In short, the routines return the first approximation
+which has an absolute error smaller than @c{$\hbox{\it epsabs}$}
+@math{epsabs} or a relative error smaller than @c{$\hbox{\it epsrel}$}
+@math{epsrel}.
+
+Note that this is an @i{either-or} constraint,
+not simultaneous.  To compute to a specified absolute error, set @c{$\hbox{\it epsrel}$}
+@math{epsrel} to zero.  To compute to a specified relative error,
+set @c{$\hbox{\it epsabs}$}
+@math{epsabs} to zero.
+>>>>>>> config
 The routines will fail to converge if the error bounds are too
 stringent, but always return the best approximation obtained up to
 that stage.
@@ -114,7 +152,11 @@ that stage.
 The algorithms in @sc{quadpack} use a naming convention based on the
 following letters,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @display 
+=======
+@display
+>>>>>>> config
 @code{Q} - quadrature routine
 
 @code{N} - non-adaptive integrator
@@ -139,22 +181,36 @@ difference between the results of the higher order rule and the lower
 order rule gives an estimate of the error in the approximation.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Integrands without weight functions::  
 * Integrands with weight functions::  
 * Integrands with singular weight functions::  
+=======
+* Integrands without weight functions::
+* Integrands with weight functions::
+* Integrands with singular weight functions::
+>>>>>>> config
 @end menu
 
 @node Integrands without weight functions
 @subsection Integrands without weight functions
 @cindex Gauss-Kronrod quadrature
 The algorithms for general functions (without a weight function) are
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 based on Gauss-Kronrod rules. 
+=======
+based on Gauss-Kronrod rules.
+>>>>>>> config
 
 A Gauss-Kronrod rule begins with a classical Gaussian quadrature rule of
 order @math{m}.  This is extended with additional points between each of
 the abscissae to give a higher order Kronrod rule of order @math{2m+1}.
 The Kronrod rule is efficient because it reuses existing function
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 evaluations from the Gaussian rule.  
+=======
+evaluations from the Gaussian rule.
+>>>>>>> config
 
 The higher order Kronrod rule is used as the best approximation to the
 integral, and the difference between the two rules is used as an
@@ -165,7 +221,11 @@ estimate of the error in the approximation.
 @cindex Clenshaw-Curtis quadrature
 @cindex Modified Clenshaw-Curtis quadrature
 For integrands with weight functions the algorithms use Clenshaw-Curtis
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 quadrature rules.  
+=======
+quadrature rules.
+>>>>>>> config
 
 A Clenshaw-Curtis rule begins with an @math{n}-th order Chebyshev
 polynomial approximation to the integrand.  This polynomial can be
@@ -180,7 +240,11 @@ error.
 The presence of singularities (or other behavior) in the integrand can
 cause slow convergence in the Chebyshev approximation.  The modified
 Clenshaw-Curtis rules used in @sc{quadpack} separate out several common
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 weight functions which cause slow convergence.  
+=======
+weight functions which cause slow convergence.
+>>>>>>> config
 
 These weight functions are integrated analytically against the Chebyshev
 polynomials to precompute @dfn{modified Chebyshev moments}.  Combining
@@ -225,7 +289,11 @@ subintervals are managed by a @code{gsl_integration_workspace} struct,
 which handles the memory for the subinterval ranges, results and error
 estimates.
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @deftypefun {gsl_integration_workspace *} gsl_integration_workspace_alloc (size_t @var{n}) 
+=======
+@deftypefun {gsl_integration_workspace *} gsl_integration_workspace_alloc (size_t @var{n})
+>>>>>>> config
 @tpindex gsl_integration_workspace
 This function allocates a workspace sufficient to hold @var{n} double
 precision intervals, their integration results and error estimates.
@@ -309,7 +377,11 @@ account of the user-supplied locations of singular points.  The array
 @var{pts} of length @var{npts} should contain the endpoints of the
 integration ranges defined by the integration region and locations of
 the singularities.  For example, to integrate over the region
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{(a,b)} with break-points at @math{x_1, x_2, x_3} (where 
+=======
+@math{(a,b)} with break-points at @math{x_1, x_2, x_3} (where
+>>>>>>> config
 @math{a < x_1 < x_2 < x_3 < b}) the following @var{pts} array should be used
 
 @example
@@ -341,7 +413,11 @@ semi-open interval @math{(0,1]} using the transformation @math{x = (1-t)/t},
 @tex
 \beforedisplay
 $$
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 \int_{-\infty}^{+\infty} dx \, f(x) 
+=======
+\int_{-\infty}^{+\infty} dx \, f(x)
+>>>>>>> config
   = \int_0^1 dt \, (f((1-t)/t) + f(-(1-t)/t))/t^2.
 $$
 \afterdisplay
@@ -349,7 +425,11 @@ $$
 @ifinfo
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 \int_@{-\infty@}^@{+\infty@} dx f(x) = 
+=======
+\int_@{-\infty@}^@{+\infty@} dx f(x) =
+>>>>>>> config
      \int_0^1 dt (f((1-t)/t) + f((-1+t)/t))/t^2.
 @end example
 
@@ -369,7 +449,11 @@ semi-open interval @math{(0,1]} using the transformation @math{x = a + (1-t)/t},
 @tex
 \beforedisplay
 $$
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 \int_{a}^{+\infty} dx \, f(x) 
+=======
+\int_{a}^{+\infty} dx \, f(x)
+>>>>>>> config
   = \int_0^1 dt \, f(a + (1-t)/t)/t^2
 $$
 \afterdisplay
@@ -377,7 +461,11 @@ $$
 @ifinfo
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 \int_@{a@}^@{+\infty@} dx f(x) = 
+=======
+\int_@{a@}^@{+\infty@} dx f(x) =
+>>>>>>> config
      \int_0^1 dt f(a + (1-t)/t)/t^2
 @end example
 
@@ -393,7 +481,11 @@ semi-open interval @math{(0,1]} using the transformation @math{x = b - (1-t)/t},
 @tex
 \beforedisplay
 $$
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 \int_{-\infty}^{b} dx \, f(x) 
+=======
+\int_{-\infty}^{b} dx \, f(x)
+>>>>>>> config
   = \int_0^1 dt \, f(b - (1-t)/t)/t^2
 $$
 \afterdisplay
@@ -401,7 +493,11 @@ $$
 @ifinfo
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 \int_@{-\infty@}^@{b@} dx f(x) = 
+=======
+\int_@{-\infty@}^@{b@} dx f(x) =
+>>>>>>> config
      \int_0^1 dt f(b - (1-t)/t)/t^2
 @end example
 
@@ -422,7 +518,11 @@ This function computes the Cauchy principal value of the integral of
 \beforedisplay
 $$
 I = \int_a^b dx\, {f(x) \over x - c}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   = \lim_{\epsilon \to 0} 
+=======
+  = \lim_{\epsilon \to 0}
+>>>>>>> config
 \left\{
 \int_a^{c-\epsilon} dx\, {f(x) \over x - c}
 +
@@ -485,6 +585,7 @@ depending on the values of @math{\mu} and @math{\nu},
 \beforedisplay
 $$
 \matrix{
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 W(x) = (x - a)^\alpha (b - x)^\beta  
                                                 \hfill~ (\mu = 0, \nu = 0) \cr
 W(x) = (x - a)^\alpha (b - x)^\beta \log(x - a) 
@@ -493,6 +594,16 @@ W(x) = (x - a)^\alpha (b - x)^\beta \log(b - x)
                                                 \hfill~ (\mu = 0, \nu = 1) \cr
 W(x) = (x - a)^\alpha (b - x)^\beta \log(x - a) \log(b - x) 
                                                 \hfill~ (\mu = 1, \nu = 1)
+=======
+W(x) = (x - a)^\alpha (b - x)^\beta
+						\hfill~ (\mu = 0, \nu = 0) \cr
+W(x) = (x - a)^\alpha (b - x)^\beta \log(x - a)
+						\hfill~ (\mu = 1, \nu = 0) \cr
+W(x) = (x - a)^\alpha (b - x)^\beta \log(b - x)
+						\hfill~ (\mu = 0, \nu = 1) \cr
+W(x) = (x - a)^\alpha (b - x)^\beta \log(x - a) \log(b - x)
+						\hfill~ (\mu = 1, \nu = 1)
+>>>>>>> config
 }
 $$
 \afterdisplay
@@ -531,14 +642,23 @@ This function frees all the memory associated with the
 
 This function computes the integral of the function @math{f(x)} over the
 interval @math{(a,b)} with the singular weight function
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{(x-a)^\alpha (b-x)^\beta \log^\mu (x-a) \log^\nu (b-x)}.  The parameters 
+=======
+@math{(x-a)^\alpha (b-x)^\beta \log^\mu (x-a) \log^\nu (b-x)}.  The parameters
+>>>>>>> config
 of the weight function @math{(\alpha, \beta, \mu, \nu)} are taken from the
 table @var{t}.  The integral is,
 @tex
 \beforedisplay
 $$
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 I = \int_a^b dx\, f(x) (x - a)^\alpha (b - x)^\beta 
         \log^\mu (x - a) \log^\nu (b - x).
+=======
+I = \int_a^b dx\, f(x) (x - a)^\alpha (b - x)^\beta
+	\log^\mu (x - a) \log^\nu (b - x).
+>>>>>>> config
 $$
 \afterdisplay
 @end tex
@@ -629,8 +749,13 @@ This function frees all the memory associated with the workspace @var{t}.
 @deftypefun int gsl_integration_qawo (gsl_function * @var{f}, const double @var{a}, const double @var{epsabs}, const double @var{epsrel}, const size_t @var{limit}, gsl_integration_workspace * @var{workspace}, gsl_integration_qawo_table * @var{wf}, double * @var{result}, double * @var{abserr})
 
 This function uses an adaptive algorithm to compute the integral of
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{f} over @math{(a,b)} with the weight function 
 @math{\sin(\omega x)} or @math{\cos(\omega x)} defined 
+=======
+@math{f} over @math{(a,b)} with the weight function
+@math{\sin(\omega x)} or @math{\cos(\omega x)} defined
+>>>>>>> config
 by the table @var{wf},
 @tex
 \beforedisplay
@@ -679,7 +804,11 @@ This function attempts to compute a Fourier integral of the function
 $$
 \eqalign{
 I & = \int_a^{+\infty} dx\, f(x) \left\{ \matrix{ \sin(\omega x) \cr
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                                  \cos(\omega x) } \right\}
+=======
+						 \cos(\omega x) } \right\}
+>>>>>>> config
 }
 $$
 \afterdisplay
@@ -720,7 +849,11 @@ C_k = [a + (k-1) c, a + k c]
 
 @end ifinfo
 @noindent
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 where 
+=======
+where
+>>>>>>> config
 @c{$c = (2 \,\hbox{floor}(|\omega|) + 1) \pi/|\omega|$}
 @math{c = (2 floor(|\omega|) + 1) \pi/|\omega|}.  The width @math{c} is
 chosen to cover an odd number of periods so that the contributions from
@@ -746,9 +879,15 @@ TOL_k = u_k abserr
 
 @end ifinfo
 @noindent
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 where 
 @c{$u_k = (1 - p)p^{k-1}$}
 @math{u_k = (1 - p)p^@{k-1@}} and @math{p = 9/10}.  
+=======
+where
+@c{$u_k = (1 - p)p^{k-1}$}
+@math{u_k = (1 - p)p^@{k-1@}} and @math{p = 9/10}.
+>>>>>>> config
 The sum of the geometric series of contributions from each interval
 gives an overall tolerance of @var{abserr}.
 
@@ -821,7 +960,11 @@ the maximum number of subdivisions was exceeded.
 @item GSL_EROUND
 cannot reach tolerance because of roundoff error,
 or roundoff error was detected in the extrapolation table.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @item GSL_ESING  
+=======
+@item GSL_ESING
+>>>>>>> config
 a non-integrable singularity or other bad integrand behavior was found
 in the integration interval.
 @item GSL_EDIVERGE
@@ -859,10 +1002,17 @@ The program below computes this integral to a relative accuracy bound of
 
 @noindent
 The results below show that the desired accuracy is achieved after 8
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 subdivisions. 
 
 @example
 $ ./a.out 
+=======
+subdivisions.
+
+@example
+$ ./a.out
+>>>>>>> config
 @verbatiminclude examples/integration.out
 @end example
 
@@ -890,9 +1040,12 @@ Springer Verlag, 1983.
 @end itemize
 
 @noindent
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
 
 
 
 
+=======
+>>>>>>> config

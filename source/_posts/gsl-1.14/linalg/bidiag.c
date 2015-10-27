@@ -1,17 +1,31 @@
 /* linalg/bidiag.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2001, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 2001, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -21,7 +35,11 @@
  *
  * A = U B V^T
  *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * where U and V are orthogonal and B is upper bidiagonal. 
+=======
+ * where U and V are orthogonal and B is upper bidiagonal.
+>>>>>>> config
  *
  * On exit, B is stored in the diagonal and first superdiagonal of A.
  *
@@ -36,7 +54,11 @@
  *
  *       U = U_1 U_2 .. U_N
  *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * where 
+=======
+ * where
+>>>>>>> config
  *
  *       U_i = (I - tau_i * u_i * u_i')
  *
@@ -48,7 +70,11 @@
  *
  *       V = V_1 V_2 .. V_(N-2)
  *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * where 
+=======
+ * where
+>>>>>>> config
  *
  *       V_i = (I - tau_i * v_i * v_i')
  *
@@ -56,10 +82,17 @@
  *
  *       v_i = [0, .. , 0, 1, A(i,i+2), A(i,i+3), .. , A(i,N)]
  *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * See Golub & Van Loan, "Matrix Computations" (3rd ed), Algorithm 5.4.2 
  *
  * Note: this description uses 1-based indices. The code below uses
  * 0-based indices 
+=======
+ * See Golub & Van Loan, "Matrix Computations" (3rd ed), Algorithm 5.4.2
+ *
+ * Note: this description uses 1-based indices. The code below uses
+ * 0-based indices
+>>>>>>> config
  */
 
 #include <config.h>
@@ -71,8 +104,13 @@
 
 #include <gsl/gsl_linalg.h>
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int 
 gsl_linalg_bidiag_decomp (gsl_matrix * A, gsl_vector * tau_U, gsl_vector * tau_V)  
+=======
+int
+gsl_linalg_bidiag_decomp (gsl_matrix * A, gsl_vector * tau_U, gsl_vector * tau_V)
+>>>>>>> config
 {
   if (A->size1 < A->size2)
     {
@@ -91,6 +129,7 @@ gsl_linalg_bidiag_decomp (gsl_matrix * A, gsl_vector * tau_U, gsl_vector * tau_V
       const size_t M = A->size1;
       const size_t N = A->size2;
       size_t i;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
       for (i = 0 ; i < N; i++)
         {
@@ -136,6 +175,53 @@ gsl_linalg_bidiag_decomp (gsl_matrix * A, gsl_vector * tau_U, gsl_vector * tau_V
         }
     }
         
+=======
+
+      for (i = 0 ; i < N; i++)
+	{
+	  /* Apply Householder transformation to current column */
+
+	  {
+	    gsl_vector_view c = gsl_matrix_column (A, i);
+	    gsl_vector_view v = gsl_vector_subvector (&c.vector, i, M - i);
+	    double tau_i = gsl_linalg_householder_transform (&v.vector);
+
+	    /* Apply the transformation to the remaining columns */
+
+	    if (i + 1 < N)
+	      {
+		gsl_matrix_view m =
+		  gsl_matrix_submatrix (A, i, i + 1, M - i, N - (i + 1));
+		gsl_linalg_householder_hm (tau_i, &v.vector, &m.matrix);
+	      }
+
+	    gsl_vector_set (tau_U, i, tau_i);
+
+	  }
+
+	  /* Apply Householder transformation to current row */
+
+	  if (i + 1 < N)
+	    {
+	      gsl_vector_view r = gsl_matrix_row (A, i);
+	      gsl_vector_view v = gsl_vector_subvector (&r.vector, i + 1, N - (i + 1));
+	      double tau_i = gsl_linalg_householder_transform (&v.vector);
+
+	      /* Apply the transformation to the remaining rows */
+
+	      if (i + 1 < M)
+		{
+		  gsl_matrix_view m =
+		    gsl_matrix_submatrix (A, i+1, i+1, M - (i+1), N - (i+1));
+		  gsl_linalg_householder_mh (tau_i, &v.vector, &m.matrix);
+		}
+
+	      gsl_vector_set (tau_V, i, tau_i);
+	    }
+	}
+    }
+
+>>>>>>> config
   return GSL_SUCCESS;
 }
 
@@ -143,6 +229,7 @@ gsl_linalg_bidiag_decomp (gsl_matrix * A, gsl_vector * tau_U, gsl_vector * tau_V
    from the packed bidiagonal matrix A */
 
 int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_linalg_bidiag_unpack (const gsl_matrix * A, 
                           const gsl_vector * tau_U, 
                           gsl_matrix * U, 
@@ -150,6 +237,15 @@ gsl_linalg_bidiag_unpack (const gsl_matrix * A,
                           gsl_matrix * V,
                           gsl_vector * diag, 
                           gsl_vector * superdiag)
+=======
+gsl_linalg_bidiag_unpack (const gsl_matrix * A,
+			  const gsl_vector * tau_U,
+			  gsl_matrix * U,
+			  const gsl_vector * tau_V,
+			  gsl_matrix * V,
+			  gsl_vector * diag,
+			  gsl_vector * superdiag)
+>>>>>>> config
 {
   const size_t M = A->size1;
   const size_t N = A->size2;
@@ -191,24 +287,39 @@ gsl_linalg_bidiag_unpack (const gsl_matrix * A,
       /* Copy diagonal into diag */
 
       for (i = 0; i < N; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double Aii = gsl_matrix_get (A, i, i);
           gsl_vector_set (diag, i, Aii);
         }
+=======
+	{
+	  double Aii = gsl_matrix_get (A, i, i);
+	  gsl_vector_set (diag, i, Aii);
+	}
+>>>>>>> config
 
       /* Copy superdiagonal into superdiag */
 
       for (i = 0; i < N - 1; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double Aij = gsl_matrix_get (A, i, i+1);
           gsl_vector_set (superdiag, i, Aij);
         }
+=======
+	{
+	  double Aij = gsl_matrix_get (A, i, i+1);
+	  gsl_vector_set (superdiag, i, Aij);
+	}
+>>>>>>> config
 
       /* Initialize V to the identity */
 
       gsl_matrix_set_identity (V);
 
       for (i = N - 1; i-- > 0;)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           /* Householder row transformation to accumulate V */
           gsl_vector_const_view r = gsl_matrix_const_row (A, i);
@@ -222,12 +333,28 @@ gsl_linalg_bidiag_unpack (const gsl_matrix * A,
           
           gsl_linalg_householder_hm (ti, &h.vector, &m.matrix);
         }
+=======
+	{
+	  /* Householder row transformation to accumulate V */
+	  gsl_vector_const_view r = gsl_matrix_const_row (A, i);
+	  gsl_vector_const_view h =
+	    gsl_vector_const_subvector (&r.vector, i + 1, N - (i+1));
+
+	  double ti = gsl_vector_get (tau_V, i);
+
+	  gsl_matrix_view m =
+	    gsl_matrix_submatrix (V, i + 1, i + 1, N-(i+1), N-(i+1));
+
+	  gsl_linalg_householder_hm (ti, &h.vector, &m.matrix);
+	}
+>>>>>>> config
 
       /* Initialize U to the identity */
 
       gsl_matrix_set_identity (U);
 
       for (j = N; j-- > 0;)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           /* Householder column transformation to accumulate U */
           gsl_vector_const_view c = gsl_matrix_const_column (A, j);
@@ -239,16 +366,36 @@ gsl_linalg_bidiag_unpack (const gsl_matrix * A,
           
           gsl_linalg_householder_hm (tj, &h.vector, &m.matrix);
         }
+=======
+	{
+	  /* Householder column transformation to accumulate U */
+	  gsl_vector_const_view c = gsl_matrix_const_column (A, j);
+	  gsl_vector_const_view h = gsl_vector_const_subvector (&c.vector, j, M - j);
+	  double tj = gsl_vector_get (tau_U, j);
+
+	  gsl_matrix_view m =
+	    gsl_matrix_submatrix (U, j, j, M-j, N-j);
+
+	  gsl_linalg_householder_hm (tj, &h.vector, &m.matrix);
+	}
+>>>>>>> config
 
       return GSL_SUCCESS;
     }
 }
 
 int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_linalg_bidiag_unpack2 (gsl_matrix * A, 
                            gsl_vector * tau_U, 
                            gsl_vector * tau_V,
                            gsl_matrix * V)
+=======
+gsl_linalg_bidiag_unpack2 (gsl_matrix * A,
+			   gsl_vector * tau_U,
+			   gsl_vector * tau_V,
+			   gsl_matrix * V)
+>>>>>>> config
 {
   const size_t M = A->size1;
   const size_t N = A->size2;
@@ -280,6 +427,7 @@ gsl_linalg_bidiag_unpack2 (gsl_matrix * A,
       gsl_matrix_set_identity (V);
 
       for (i = N - 1; i-- > 0;)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           /* Householder row transformation to accumulate V */
           gsl_vector_const_view r = gsl_matrix_const_row (A, i);
@@ -293,10 +441,26 @@ gsl_linalg_bidiag_unpack2 (gsl_matrix * A,
           
           gsl_linalg_householder_hm (ti, &h.vector, &m.matrix);
         }
+=======
+	{
+	  /* Householder row transformation to accumulate V */
+	  gsl_vector_const_view r = gsl_matrix_const_row (A, i);
+	  gsl_vector_const_view h =
+	    gsl_vector_const_subvector (&r.vector, i + 1, N - (i+1));
+
+	  double ti = gsl_vector_get (tau_V, i);
+
+	  gsl_matrix_view m =
+	    gsl_matrix_submatrix (V, i + 1, i + 1, N-(i+1), N-(i+1));
+
+	  gsl_linalg_householder_hm (ti, &h.vector, &m.matrix);
+	}
+>>>>>>> config
 
       /* Copy superdiagonal into tau_v */
 
       for (i = 0; i < N - 1; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double Aij = gsl_matrix_get (A, i, i+1);
           gsl_vector_set (tau_V, i, Aij);
@@ -315,6 +479,26 @@ gsl_linalg_bidiag_unpack2 (gsl_matrix * A,
           gsl_vector_set (tau_U, j, Ajj);
           gsl_linalg_householder_hm1 (tj, &m.matrix);
         }
+=======
+	{
+	  double Aij = gsl_matrix_get (A, i, i+1);
+	  gsl_vector_set (tau_V, i, Aij);
+	}
+
+      /* Allow U to be unpacked into the same memory as A, copy
+	 diagonal into tau_U */
+
+      for (j = N; j-- > 0;)
+	{
+	  /* Householder column transformation to accumulate U */
+	  double tj = gsl_vector_get (tau_U, j);
+	  double Ajj = gsl_matrix_get (A, j, j);
+	  gsl_matrix_view m = gsl_matrix_submatrix (A, j, j, M-j, N-j);
+
+	  gsl_vector_set (tau_U, j, Ajj);
+	  gsl_linalg_householder_hm1 (tj, &m.matrix);
+	}
+>>>>>>> config
 
       return GSL_SUCCESS;
     }
@@ -322,9 +506,15 @@ gsl_linalg_bidiag_unpack2 (gsl_matrix * A,
 
 
 int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_linalg_bidiag_unpack_B (const gsl_matrix * A, 
                             gsl_vector * diag, 
                             gsl_vector * superdiag)
+=======
+gsl_linalg_bidiag_unpack_B (const gsl_matrix * A,
+			    gsl_vector * diag,
+			    gsl_vector * superdiag)
+>>>>>>> config
 {
   const size_t M = A->size1;
   const size_t N = A->size2;
@@ -346,18 +536,32 @@ gsl_linalg_bidiag_unpack_B (const gsl_matrix * A,
       /* Copy diagonal into diag */
 
       for (i = 0; i < K; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double Aii = gsl_matrix_get (A, i, i);
           gsl_vector_set (diag, i, Aii);
         }
+=======
+	{
+	  double Aii = gsl_matrix_get (A, i, i);
+	  gsl_vector_set (diag, i, Aii);
+	}
+>>>>>>> config
 
       /* Copy superdiagonal into superdiag */
 
       for (i = 0; i < K - 1; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double Aij = gsl_matrix_get (A, i, i+1);
           gsl_vector_set (superdiag, i, Aij);
         }
+=======
+	{
+	  double Aij = gsl_matrix_get (A, i, i+1);
+	  gsl_vector_set (superdiag, i, Aij);
+	}
+>>>>>>> config
 
       return GSL_SUCCESS;
     }

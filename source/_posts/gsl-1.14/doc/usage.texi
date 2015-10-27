@@ -3,6 +3,7 @@
 @cindex C extensions, compatible use of
 @cindex compatibility
 This chapter describes how to compile programs that use GSL, and
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 introduces its conventions.  
 
 @menu
@@ -20,6 +21,25 @@ introduces its conventions.
 * Thread-safety::               
 * Deprecated Functions::        
 * Code Reuse::                  
+=======
+introduces its conventions.
+
+@menu
+* An Example Program::
+* Compiling and Linking::
+* Shared Libraries::
+* ANSI C Compliance::
+* Inline functions::
+* Long double::
+* Portability functions::
+* Alternative optimized functions::
+* Support for different numeric types::
+* Compatibility with C++::
+* Aliasing of arrays::
+* Thread-safety::
+* Deprecated Functions::
+* Code Reuse::
+>>>>>>> config
 @end menu
 
 @node   An Example Program
@@ -73,12 +93,21 @@ $ gcc -Wall -I/usr/local/include -c example.c
 @noindent
 This results in an object file @file{example.o}.   The default
 include path for @code{gcc} searches @file{/usr/local/include} automatically so
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 the @code{-I} option can actually be omitted when GSL is installed 
 in its default location.
 
 @menu
 * Linking programs with the library::  
 * Linking with an alternative BLAS library::  
+=======
+the @code{-I} option can actually be omitted when GSL is installed
+in its default location.
+
+@menu
+* Linking programs with the library::
+* Linking with an alternative BLAS library::
+>>>>>>> config
 @end menu
 
 @node Linking programs with the library
@@ -134,7 +163,11 @@ $ gcc example.o -lgsl -lcblas -latlas -lm
 
 @noindent
 If the @sc{atlas} library is installed in a non-standard directory use
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 the @code{-L} option to add it to the search path, as described above.  
+=======
+the @code{-L} option to add it to the search path, as described above.
+>>>>>>> config
 
 For more information about @sc{blas} functions see @ref{BLAS Support}.
 
@@ -160,9 +193,15 @@ file at runtime.  If the library cannot be found, the following error
 will occur:
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 $ ./a.out 
 ./a.out: error while loading shared libraries: 
 libgsl.so.0: cannot open shared object file: No such 
+=======
+$ ./a.out
+./a.out: error while loading shared libraries:
+libgsl.so.0: cannot open shared object file: No such
+>>>>>>> config
 file or directory
 @end example
 
@@ -313,7 +352,11 @@ To help in writing portable applications GSL provides some
 implementations of functions that are found in other libraries, such as
 the BSD math library.  You can write your application to use the native
 versions of these functions, and substitute the GSL versions via a
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 preprocessor macro if they are unavailable on another platform. 
+=======
+preprocessor macro if they are unavailable on another platform.
+>>>>>>> config
 
 For example, after determining whether the BSD function @code{hypot} is
 available you can include the following macro definitions in a file
@@ -386,6 +429,7 @@ the numeric types of an imaginary module @code{gsl_foo} with function
 @code{fn},
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_foo_fn               double        
 gsl_foo_long_double_fn   long double   
 gsl_foo_float_fn         float         
@@ -397,6 +441,19 @@ gsl_foo_short_fn         short
 gsl_foo_ushort_fn        unsigned short
 gsl_foo_char_fn          char          
 gsl_foo_uchar_fn         unsigned char 
+=======
+gsl_foo_fn               double
+gsl_foo_long_double_fn   long double
+gsl_foo_float_fn         float
+gsl_foo_long_fn          long
+gsl_foo_ulong_fn         unsigned long
+gsl_foo_int_fn           int
+gsl_foo_uint_fn          unsigned int
+gsl_foo_short_fn         short
+gsl_foo_ushort_fn        unsigned short
+gsl_foo_char_fn          char
+gsl_foo_uchar_fn         unsigned char
+>>>>>>> config
 @end example
 
 @noindent
@@ -413,6 +470,7 @@ type-dependent struct or typedef @code{gsl_foo} it is modified for other
 types in the following way,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_foo                  double        
 gsl_foo_long_double      long double   
 gsl_foo_float            float         
@@ -424,6 +482,19 @@ gsl_foo_short            short
 gsl_foo_ushort           unsigned short
 gsl_foo_char             char          
 gsl_foo_uchar            unsigned char 
+=======
+gsl_foo                  double
+gsl_foo_long_double      long double
+gsl_foo_float            float
+gsl_foo_long             long
+gsl_foo_ulong            unsigned long
+gsl_foo_int              int
+gsl_foo_uint             unsigned int
+gsl_foo_short            short
+gsl_foo_ushort           unsigned short
+gsl_foo_char             char
+gsl_foo_uchar            unsigned char
+>>>>>>> config
 @end example
 
 @noindent
@@ -435,6 +506,7 @@ header file, or any other specific type, use its individual filename.
 
 @example
 #include <gsl/gsl_foo.h>               All types
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 #include <gsl/gsl_foo_double.h>        double        
 #include <gsl/gsl_foo_long_double.h>   long double   
 #include <gsl/gsl_foo_float.h>         float         
@@ -446,6 +518,19 @@ header file, or any other specific type, use its individual filename.
 #include <gsl/gsl_foo_ushort.h>        unsigned short
 #include <gsl/gsl_foo_char.h>          char          
 #include <gsl/gsl_foo_uchar.h>         unsigned char 
+=======
+#include <gsl/gsl_foo_double.h>        double
+#include <gsl/gsl_foo_long_double.h>   long double
+#include <gsl/gsl_foo_float.h>         float
+#include <gsl/gsl_foo_long.h>          long
+#include <gsl/gsl_foo_ulong.h>         unsigned long
+#include <gsl/gsl_foo_int.h>           int
+#include <gsl/gsl_foo_uint.h>          unsigned int
+#include <gsl/gsl_foo_short.h>         short
+#include <gsl/gsl_foo_ushort.h>        unsigned short
+#include <gsl/gsl_foo_char.h>          char
+#include <gsl/gsl_foo_uchar.h>         unsigned char
+>>>>>>> config
 @end example
 
 @node Compatibility with C++

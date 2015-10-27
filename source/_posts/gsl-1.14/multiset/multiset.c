@@ -59,6 +59,7 @@ gsl_multiset_valid (gsl_multiset * c)
       const size_t ci = c->data[i];
 
       if (ci >= n)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           GSL_ERROR("multiset index outside range", GSL_FAILURE) ;
         }
@@ -71,6 +72,20 @@ gsl_multiset_valid (gsl_multiset * c)
                         GSL_FAILURE) ;
             }
         }
+=======
+	{
+	  GSL_ERROR("multiset index outside range", GSL_FAILURE) ;
+	}
+
+      for (j = 0; j < i; j++)
+	{
+	  if (c->data[j] > ci)
+	    {
+	      GSL_ERROR("multiset indices not in increasing order",
+			GSL_FAILURE) ;
+	    }
+	}
+>>>>>>> config
     }
 
   return GSL_SUCCESS;
@@ -148,7 +163,11 @@ gsl_multiset_prev (gsl_multiset * c)
   if (data[i] < n-1)
     {
       while (i < k-1) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         data[++i] = n - 1;
+=======
+	data[++i] = n - 1;
+>>>>>>> config
       }
     }
 
@@ -173,7 +192,11 @@ gsl_multiset_memcpy (gsl_multiset * dest, const gsl_multiset * src)
 
      for (j = 0; j < src_k; j++)
        {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          dest->data[j] = src->data[j];
+=======
+	 dest->data[j] = src->data[j];
+>>>>>>> config
        }
    }
 

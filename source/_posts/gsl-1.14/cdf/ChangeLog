@@ -94,7 +94,11 @@
 2005-06-20  Brian Gough  <bjg@network-theory.co.uk>
 
 	* test.c: removed tests using subnormal values, since they tend to
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	fail when extended precision registers are not available.	
+=======
+	fail when extended precision registers are not available.
+>>>>>>> config
 
 2004-10-26  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -132,4 +136,7 @@
 	Q=1
 
 	* added Cumulative Distribution functions from savannah.gnu.org
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

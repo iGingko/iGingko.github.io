@@ -62,12 +62,21 @@ compute_diag (const gsl_matrix * J, gsl_vector * diag)
       double sum = 0;
 
       for (i = 0; i < n; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double Jij = gsl_matrix_get (J, i, j);
           sum += Jij * Jij;
         }
       if (sum == 0)
         sum = 1.0;
+=======
+	{
+	  double Jij = gsl_matrix_get (J, i, j);
+	  sum += Jij * Jij;
+	}
+      if (sum == 0)
+	sum = 1.0;
+>>>>>>> config
 
       gsl_vector_set (diag, j, sqrt (sum));
     }
@@ -82,24 +91,41 @@ update_diag (const gsl_matrix * J, gsl_vector * diag)
     {
       double cnorm, diagj, sum = 0;
       for (i = 0; i < n; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double Jij = gsl_matrix_get (J, i, j);
           sum += Jij * Jij;
         }
       if (sum == 0)
         sum = 1.0;
+=======
+	{
+	  double Jij = gsl_matrix_get (J, i, j);
+	  sum += Jij * Jij;
+	}
+      if (sum == 0)
+	sum = 1.0;
+>>>>>>> config
 
       cnorm = sqrt (sum);
       diagj = gsl_vector_get (diag, j);
 
       if (cnorm > diagj)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gsl_vector_set (diag, j, cnorm);
+=======
+	gsl_vector_set (diag, j, cnorm);
+>>>>>>> config
     }
 }
 
 static void
 compute_rptdx (const gsl_matrix * r, const gsl_permutation * p,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                const gsl_vector * dx, gsl_vector * rptdx)
+=======
+	       const gsl_vector * dx, gsl_vector * rptdx)
+>>>>>>> config
 {
   size_t i, j, N = dx->size;
 
@@ -108,11 +134,19 @@ compute_rptdx (const gsl_matrix * r, const gsl_permutation * p,
       double sum = 0;
 
       for (j = i; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           size_t pj = gsl_permutation_get (p, j);
 
           sum += gsl_matrix_get (r, i, j) * gsl_vector_get (dx, pj);
         }
+=======
+	{
+	  size_t pj = gsl_permutation_get (p, j);
+
+	  sum += gsl_matrix_get (r, i, j) * gsl_vector_get (dx, pj);
+	}
+>>>>>>> config
 
       gsl_vector_set (rptdx, i, sum);
     }
@@ -131,4 +165,7 @@ compute_trial_step (gsl_vector * x, gsl_vector * dx, gsl_vector * x_trial)
       gsl_vector_set (x_trial, i, xi + pi);
     }
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

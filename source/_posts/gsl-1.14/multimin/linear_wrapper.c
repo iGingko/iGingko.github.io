@@ -73,7 +73,11 @@ wrap_df (double alpha, void *params)
 
   moveto (alpha, w);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (alpha != w->g_cache_key) 
+=======
+  if (alpha != w->g_cache_key)
+>>>>>>> config
     {
       GSL_MULTIMIN_FN_EVAL_DF (w->fdf, w->x_alpha, w->g_alpha);
       w->g_cache_key = alpha;
@@ -120,9 +124,15 @@ wrap_fdf (double alpha, void *params, double *f, double *df)
 
 static void
 prepare_wrapper (wrapper_t * w, gsl_multimin_function_fdf * fdf,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  const gsl_vector * x, double f, const gsl_vector *g, 
                  const gsl_vector * p,
                  gsl_vector * x_alpha, gsl_vector *g_alpha)
+=======
+		 const gsl_vector * x, double f, const gsl_vector *g,
+		 const gsl_vector * p,
+		 gsl_vector * x_alpha, gsl_vector *g_alpha)
+>>>>>>> config
 {
   w->fdf_linear.f = &wrap_f;
   w->fdf_linear.df = &wrap_df;
@@ -138,12 +148,21 @@ prepare_wrapper (wrapper_t * w, gsl_multimin_function_fdf * fdf,
   w->x_alpha = x_alpha;
   w->g_alpha = g_alpha;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   gsl_vector_memcpy(w->x_alpha, w->x); 
   w->x_cache_key = 0.0;
   
   w->f_alpha = f;
   w->f_cache_key = 0.0;
   
+=======
+  gsl_vector_memcpy(w->x_alpha, w->x);
+  w->x_cache_key = 0.0;
+
+  w->f_alpha = f;
+  w->f_cache_key = 0.0;
+
+>>>>>>> config
   gsl_vector_memcpy(w->g_alpha, w->g);
   w->g_cache_key = 0.0;
 
@@ -160,7 +179,11 @@ update_position (wrapper_t * w, double alpha, gsl_vector *x, double *f, gsl_vect
   *f = w->f_alpha;
   gsl_vector_memcpy(x, w->x_alpha);
   gsl_vector_memcpy(g, w->g_alpha);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 }  
+=======
+}
+>>>>>>> config
 
 static void
 change_direction (wrapper_t * w)

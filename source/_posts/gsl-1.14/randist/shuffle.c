@@ -1,17 +1,31 @@
 /* randist/shuffle.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -25,7 +39,11 @@
 
 /* Inline swap and copy functions for moving objects around */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static inline 
+=======
+static inline
+>>>>>>> config
 void swap (void * base, size_t size, size_t i, size_t j)
 {
   register char * a = size * i + (char *) base ;
@@ -34,6 +52,7 @@ void swap (void * base, size_t size, size_t i, size_t j)
 
   if (i == j)
     return ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   do                                            
     {                                           
@@ -45,17 +64,39 @@ void swap (void * base, size_t size, size_t i, size_t j)
 }
 
 static inline void 
+=======
+
+  do
+    {
+      char tmp = *a;
+      *a++ = *b;
+      *b++ = tmp;
+    }
+  while (--s > 0);
+}
+
+static inline void
+>>>>>>> config
 copy (void * dest, size_t i, void * src, size_t j, size_t size)
 {
   register char * a = size * i + (char *) dest ;
   register char * b = size * j + (char *) src ;
   register size_t s = size ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   do                                            
     {                                           
       *a++ = *b++;                              
     } 
   while (--s > 0);                              
+=======
+
+  do
+    {
+      *a++ = *b++;
+    }
+  while (--s > 0);
+>>>>>>> config
 }
 
 /* Randomly permute (shuffle) N indices
@@ -79,8 +120,13 @@ gsl_ran_shuffle (const gsl_rng * r, void * base, size_t n, size_t size)
 }
 
 int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_ran_choose (const gsl_rng * r, void * dest, size_t k, void * src, 
                  size_t n, size_t size)
+=======
+gsl_ran_choose (const gsl_rng * r, void * dest, size_t k, void * src,
+		 size_t n, size_t size)
+>>>>>>> config
 {
   size_t i, j = 0;
 
@@ -92,24 +138,40 @@ gsl_ran_choose (const gsl_rng * r, void * dest, size_t k, void * src,
   if (k > n)
     {
       GSL_ERROR ("k is greater than n, cannot sample more than n items",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_EINVAL) ;
+=======
+		 GSL_EINVAL) ;
+>>>>>>> config
     }
 
   for (i = 0; i < n && j < k; i++)
     {
       if ((n - i) * gsl_rng_uniform (r) < k - j)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           copy (dest, j, src, i, size) ;
           j++ ;
         }
+=======
+	{
+	  copy (dest, j, src, i, size) ;
+	  j++ ;
+	}
+>>>>>>> config
     }
 
   return GSL_SUCCESS;
 }
 
 void
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_ran_sample (const gsl_rng * r, void * dest, size_t k, void * src, 
                 size_t n, size_t size)
+=======
+gsl_ran_sample (const gsl_rng * r, void * dest, size_t k, void * src,
+		size_t n, size_t size)
+>>>>>>> config
 {
   size_t i, j = 0;
 

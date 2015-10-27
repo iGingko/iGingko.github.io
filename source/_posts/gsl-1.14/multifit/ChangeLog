@@ -59,7 +59,11 @@
 
 2004-12-23  Brian Gough  <bjg@network-theory.co.uk>
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	* gsl_multifit_nlin.h: removed unused declaration of 
+=======
+	* gsl_multifit_nlin.h: removed unused declaration of
+>>>>>>> config
 	gsl_multifit_fdjacobian
 
 2004-06-14  Brian Gough  <bjg@network-theory.co.uk>
@@ -86,31 +90,54 @@
 Tue Nov 12 22:18:14 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* lmder.c (lmder_alloc): use GSL_ERROR instead of GSL_ERROR_VAL
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	for internal alloc functions which return int
+=======
+	for internal alloc functions which return int
+>>>>>>> config
 
 Thu Feb 28 20:15:33 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* lmiterate.c (iterate): return immediately if evaluation raised
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	error (Hans E. Plesser)
 
 	* lmpar.c (lmpar): avoid division by zero for w=0 in rank
  	deficient case
+=======
+	error (Hans E. Plesser)
+
+	* lmpar.c (lmpar): avoid division by zero for w=0 in rank
+	deficient case
+>>>>>>> config
 
 Mon Oct  8 19:25:55 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* test.c (main): added extra nist tests
 
 	* lmutil.c (compute_rptdx): fixed bug, permutation in rptdx vector
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	 was incorrectly applied
 
 	* lmpar.c (compute_newton_direction): fixed bug, permutation of
  	newton direction vector was incorrect (should have been inverse
  	permutation)
+=======
+	 was incorrectly applied
+
+	* lmpar.c (compute_newton_direction): fixed bug, permutation of
+	newton direction vector was incorrect (should have been inverse
+	permutation)
+>>>>>>> config
 
 Mon Jul 30 17:43:21 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* test_filip.c (test_filip): reduce tolerance on covariance test
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	slightly for MSVC with /O2
+=======
+	slightly for MSVC with /O2
+>>>>>>> config
 
 Sun Jul  1 22:42:34 2001  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -127,7 +154,11 @@ Sun Jul  1 22:42:34 2001  Brian Gough  <bjg@network-theory.co.uk>
 Tue Jun 26 21:41:30 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* test_filip.c (test_filip): reduce tolerance on covariance test
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	slightly
+=======
+	slightly
+>>>>>>> config
 
 Wed Jun 20 13:11:26 2001  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -136,21 +167,37 @@ Wed Jun 20 13:11:26 2001  Brian Gough  <bjg@network-theory.co.uk>
 Tue Jun 19 23:18:01 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* multilinear.c: perform column scaling before doing fit to
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	improve accuracy
 	(gsl_multifit_linear): use modified Golub-Reinsch SVD for greater
  	speed
 	(gsl_multifit_wlinear): use modified Golub-Reinsch SVD for greater
  	speed
+=======
+	improve accuracy
+	(gsl_multifit_linear): use modified Golub-Reinsch SVD for greater
+	speed
+	(gsl_multifit_wlinear): use modified Golub-Reinsch SVD for greater
+	speed
+>>>>>>> config
 
 Wed Jun  6 13:32:22 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* lmder.c covar.c lmiterate.c lmset.c: updated to use new QR
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	calling convention (now passes workspace)
+=======
+	calling convention (now passes workspace)
+>>>>>>> config
 
 Sat Apr 28 11:46:59 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* qrsolv.c (qrsolv): removed local declaration of j to avoid
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	shadowing global j
+=======
+	shadowing global j
+>>>>>>> config
 
 Mon Apr 23 13:40:04 2001  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -159,21 +206,38 @@ Mon Apr 23 13:40:04 2001  Brian Gough  <bjg@network-theory.co.uk>
 Wed Apr 18 13:39:33 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* lmpar.c (compute_newton_direction): moved final rescaling inside
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	loop, as in the original lmpar.f
+=======
+	loop, as in the original lmpar.f
+>>>>>>> config
 
 Thu Mar  8 15:29:32 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* lmpar.c (compute_newton_direction): corrected bug that produced
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	negative index
+=======
+	negative index
+>>>>>>> config
 
 Sun Feb 18 16:39:46 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* fdfsolver.c (gsl_multifit_fdfsolver_alloc): changed so that the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	solver _alloc function no longer calls _set, the user must do that
  	separately.
+=======
+	solver _alloc function no longer calls _set, the user must do that
+	separately.
+>>>>>>> config
 
 Fri Sep 29 19:19:24 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* Makefile.am multifit/demo.c: removed demo from Makefile since it
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	is was just a temporary test.
 
+=======
+	is was just a temporary test.
+>>>>>>> config

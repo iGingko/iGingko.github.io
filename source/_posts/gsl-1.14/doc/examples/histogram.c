@@ -11,9 +11,15 @@ main (int argc, char **argv)
   if (argc != 4)
     {
       printf ("Usage: gsl-histogram xmin xmax n\n"
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
               "Computes a histogram of the data "
               "on stdin using n bins from xmin "
               "to xmax\n");
+=======
+	      "Computes a histogram of the data "
+	      "on stdin using n bins from xmin "
+	      "to xmax\n");
+>>>>>>> config
       exit (0);
     }
 
@@ -28,7 +34,11 @@ main (int argc, char **argv)
 
     while (fscanf (stdin, "%lg", &x) == 1)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gsl_histogram_increment (h, x);
+=======
+	gsl_histogram_increment (h, x);
+>>>>>>> config
       }
     gsl_histogram_fprintf (stdout, h, "%g", "%g");
     gsl_histogram_free (h);

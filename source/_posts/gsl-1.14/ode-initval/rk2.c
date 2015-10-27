@@ -1,17 +1,31 @@
 /* ode-initval/rk2.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -70,7 +84,11 @@ rk2_alloc (size_t dim)
     }
 
   state->k3 = (double *) malloc (dim * sizeof (double));
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   if (state->k3 == 0)
     {
       free (state->k2);
@@ -96,6 +114,7 @@ rk2_alloc (size_t dim)
 
 static int
 rk2_apply (void *vstate,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
            size_t dim,
            double t,
            double h,
@@ -104,6 +123,16 @@ rk2_apply (void *vstate,
            const double dydt_in[],
            double dydt_out[], 
            const gsl_odeiv_system * sys)
+=======
+	   size_t dim,
+	   double t,
+	   double h,
+	   double y[],
+	   double yerr[],
+	   const double dydt_in[],
+	   double dydt_out[],
+	   const gsl_odeiv_system * sys)
+>>>>>>> config
 {
   rk2_state_t *state = (rk2_state_t *) vstate;
 
@@ -151,7 +180,11 @@ rk2_apply (void *vstate,
   /* k3 step */
   /* for 3rd order estimates, is used for error estimation
      k3 = f(t + h, y - k1 + 2*k2) */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  
+=======
+
+>>>>>>> config
   for (i = 0; i < dim; i++)
     {
       ytmp[i] = y[i] + h * (-k1[i] + 2.0 * k2[i]);
@@ -167,7 +200,11 @@ rk2_apply (void *vstate,
   }
 
   /* final sum */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   for (i = 0; i < dim; i++)
     {
       /* Save original values if derivative evaluation below fails */
@@ -178,18 +215,30 @@ rk2_apply (void *vstate,
 	y[i] += h * ksum3;
       }
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   /* Derivatives at output */
 
   if (dydt_out != NULL)
     {
       int s = GSL_ODEIV_FN_EVAL (sys, t + h, y, dydt_out);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
       if (s != GSL_SUCCESS)
 	{
 	  /* Restore original values */
 	  DBL_MEMCPY (y, ytmp, dim);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	  
+=======
+
+>>>>>>> config
 	  return s;
 	}
     }
@@ -201,7 +250,11 @@ rk2_apply (void *vstate,
       const double ksum3 = (k1[i] + 4.0 * k2[i] + k3[i]) / 6.0;
       yerr[i] = h * (k2[i] - ksum3);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   return GSL_SUCCESS;
 }
 

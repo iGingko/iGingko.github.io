@@ -1,17 +1,31 @@
 /* integration/qaws.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -32,12 +46,21 @@
 
 int
 gsl_integration_qaws (gsl_function * f,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       const double a, const double b,
                       gsl_integration_qaws_table * t,
                       const double epsabs, const double epsrel,
                       const size_t limit,
                       gsl_integration_workspace * workspace,
                       double *result, double *abserr)
+=======
+		      const double a, const double b,
+		      gsl_integration_qaws_table * t,
+		      const double epsabs, const double epsrel,
+		      const size_t limit,
+		      gsl_integration_workspace * workspace,
+		      double *result, double *abserr)
+>>>>>>> config
 {
   double area, errsum;
   double result0, abserr0;
@@ -57,7 +80,11 @@ gsl_integration_qaws (gsl_function * f,
       GSL_ERROR ("iteration limit exceeds available workspace", GSL_EINVAL) ;
     }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (b <= a) 
+=======
+  if (b <= a)
+>>>>>>> config
     {
       GSL_ERROR ("limits must form an ascending sequence, a < b", GSL_EINVAL) ;
     }
@@ -65,7 +92,11 @@ gsl_integration_qaws (gsl_function * f,
   if (epsabs <= 0 && (epsrel < 50 * GSL_DBL_EPSILON || epsrel < 0.5e-28))
     {
       GSL_ERROR ("tolerance cannot be acheived with given epsabs and epsrel",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_EBADTOL);
+=======
+		 GSL_EBADTOL);
+>>>>>>> config
     }
 
   /* perform the first integration */
@@ -81,6 +112,7 @@ gsl_integration_qaws (gsl_function * f,
 
     qc25s (f, a, b, a1, b1, t, &area1, &error1, &err_reliable1);
     qc25s (f, a, b, a2, b2, t, &area2, &error2, &err_reliable2);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     if (error1 > error2)
       {
@@ -93,6 +125,20 @@ gsl_integration_qaws (gsl_function * f,
         append_interval (workspace, a1, b1, area1, error1);
       }
     
+=======
+
+    if (error1 > error2)
+      {
+	append_interval (workspace, a1, b1, area1, error1);
+	append_interval (workspace, a2, b2, area2, error2);
+      }
+    else
+      {
+	append_interval (workspace, a2, b2, area2, error2);
+	append_interval (workspace, a1, b1, area1, error1);
+      }
+
+>>>>>>> config
     result0 = area1 + area2;
     abserr0 = error1 + error2;
   }
@@ -136,7 +182,11 @@ gsl_integration_qaws (gsl_function * f,
 
       retrieve (workspace, &a_i, &b_i, &r_i, &e_i);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       a1 = a_i; 
+=======
+      a1 = a_i;
+>>>>>>> config
       b1 = 0.5 * (a_i + b_i);
       a2 = b1;
       b2 = b_i;
@@ -151,6 +201,7 @@ gsl_integration_qaws (gsl_function * f,
       area += area12 - r_i;
 
       if (err_reliable1 && err_reliable2)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double delta = r_i - area12;
 
@@ -163,10 +214,25 @@ gsl_integration_qaws (gsl_function * f,
               roundoff_type2++;
             }
         }
+=======
+	{
+	  double delta = r_i - area12;
+
+	  if (fabs (delta) <= 1.0e-5 * fabs (area12) && error12 >= 0.99 * e_i)
+	    {
+	      roundoff_type1++;
+	    }
+	  if (iteration >= 10 && error12 > e_i)
+	    {
+	      roundoff_type2++;
+	    }
+	}
+>>>>>>> config
 
       tolerance = GSL_MAX_DBL (epsabs, epsrel * fabs (area));
 
       if (errsum > tolerance)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           if (roundoff_type1 >= 6 || roundoff_type2 >= 20)
             {
@@ -181,6 +247,22 @@ gsl_integration_qaws (gsl_function * f,
               error_type = 3;
             }
         }
+=======
+	{
+	  if (roundoff_type1 >= 6 || roundoff_type2 >= 20)
+	    {
+	      error_type = 2;   /* round off error */
+	    }
+
+	  /* set error flag in the case of bad integrand behaviour at
+	     a point of the integration range */
+
+	  if (subinterval_too_small (a1, a2, b2))
+	    {
+	      error_type = 3;
+	    }
+	}
+>>>>>>> config
 
       update (workspace, a1, b1, area1, error1, a2, b2, area2, error2);
 
@@ -201,12 +283,20 @@ gsl_integration_qaws (gsl_function * f,
   else if (error_type == 2)
     {
       GSL_ERROR ("roundoff error prevents tolerance from being achieved",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_EROUND);
+=======
+		 GSL_EROUND);
+>>>>>>> config
     }
   else if (error_type == 3)
     {
       GSL_ERROR ("bad integrand behavior found in the integration interval",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_ESING);
+=======
+		 GSL_ESING);
+>>>>>>> config
     }
   else if (iteration == limit)
     {

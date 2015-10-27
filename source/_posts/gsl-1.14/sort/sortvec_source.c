@@ -29,6 +29,7 @@ FUNCTION (my, downheap) (BASE * data, const size_t stride, const size_t N, size_
       size_t j = 2 * k;
 
       if (j < N && data[j * stride] < data[(j + 1) * stride])
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           j++;
         }
@@ -37,6 +38,16 @@ FUNCTION (my, downheap) (BASE * data, const size_t stride, const size_t N, size_
         {
           break;
         }
+=======
+	{
+	  j++;
+	}
+
+      if (!(v < data[j * stride]))  /* avoid infinite loop if nan */
+	{
+	  break;
+	}
+>>>>>>> config
 
       data[k * stride] = data[j * stride];
 
@@ -90,4 +101,7 @@ TYPE (gsl_sort_vector) (TYPE (gsl_vector) * v)
 {
   TYPE (gsl_sort) (v->data, v->stride, v->size) ;
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

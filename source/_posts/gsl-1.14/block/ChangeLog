@@ -19,24 +19,44 @@
 Sat Jul 15 21:45:10 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* init_source.c (FUNCTION): changed GSL_EDOM to GSL_EINVAL for
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	invalid size arguments
+=======
+	invalid size arguments
+>>>>>>> config
 
 Sun May 28 12:22:26 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* test_complex_source.c (FUNCTION): use binary mode "b" when
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	reading and writing binary files
 
 	* test_source.c (FUNCTION): use binary mode "b" when reading and
  	writing binary files
+=======
+	reading and writing binary files
+
+	* test_source.c (FUNCTION): use binary mode "b" when reading and
+	writing binary files
+>>>>>>> config
 
 Thu Mar  2 20:51:23 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* fprintf_source.c: all input is now done through an ATOMIC_IO
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	type, since char has to be written/read using a different type
  	(int).
+=======
+	type, since char has to be written/read using a different type
+	(int).
+>>>>>>> config
 
 Fri Oct  1 15:48:31 1999  Brian Gough  <bjg@network-theory.co.uk>
 
 	* this directory handles the memory management for vectors and
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	matrices
 
+=======
+	matrices
+>>>>>>> config

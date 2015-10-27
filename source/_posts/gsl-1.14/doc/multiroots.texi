@@ -18,6 +18,7 @@ The header file @file{gsl_multiroots.h} contains prototypes for the
 multidimensional root finding functions and related declarations.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Overview of Multidimensional Root Finding::  
 * Initializing the Multidimensional Solver::  
 * Providing the multidimensional system of equations to solve::  
@@ -27,6 +28,17 @@ multidimensional root finding functions and related declarations.
 * Algorithms without Derivatives::  
 * Example programs for Multidimensional Root finding::  
 * References and Further Reading for Multidimensional Root Finding::  
+=======
+* Overview of Multidimensional Root Finding::
+* Initializing the Multidimensional Solver::
+* Providing the multidimensional system of equations to solve::
+* Iteration of the multidimensional solver::
+* Search Stopping Parameters for the multidimensional solver::
+* Algorithms using Derivatives::
+* Algorithms without Derivatives::
+* Example programs for Multidimensional Root finding::
+* References and Further Reading for Multidimensional Root Finding::
+>>>>>>> config
 @end menu
 
 @node Overview of Multidimensional Root Finding
@@ -71,7 +83,11 @@ x -> x' = x - J^@{-1@} f(x)
 @end ifinfo
 @noindent
 where @math{x}, @math{f} are vector quantities and @math{J} is the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 Jacobian matrix @c{$J_{ij} = \partial f_i / \partial x_j$} 
+=======
+Jacobian matrix @c{$J_{ij} = \partial f_i / \partial x_j$}
+>>>>>>> config
 @math{J_@{ij@} = d f_i / d x_j}.
 Additional strategies can be used to enlarge the region of
 convergence.  These include requiring a decrease in the norm @math{|f|} on
@@ -109,7 +125,11 @@ both the function and its derivatives to be supplied by the user.
 The state for solvers which do not use an analytic Jacobian matrix is
 held in a @code{gsl_multiroot_fsolver} struct.  The updating procedure
 uses only function evaluations (not derivatives).  The algorithms
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 estimate the matrix @math{J} or @c{$J^{-1}$} 
+=======
+estimate the matrix @math{J} or @c{$J^{-1}$}
+>>>>>>> config
 @math{J^@{-1@}} by approximate methods.
 
 @node Initializing the Multidimensional Solver
@@ -125,6 +145,7 @@ different problems.
 @tpindex gsl_multiroot_fsolver_type
 This function returns a pointer to a newly allocated instance of a
 solver of type @var{T} for a system of @var{n} dimensions.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 For example, the following code creates an instance of a hybrid solver, 
 to solve a 3-dimensional system of equations.
 
@@ -132,6 +153,15 @@ to solve a 3-dimensional system of equations.
 const gsl_multiroot_fsolver_type * T 
     = gsl_multiroot_fsolver_hybrid;
 gsl_multiroot_fsolver * s 
+=======
+For example, the following code creates an instance of a hybrid solver,
+to solve a 3-dimensional system of equations.
+
+@example
+const gsl_multiroot_fsolver_type * T
+    = gsl_multiroot_fsolver_hybrid;
+gsl_multiroot_fsolver * s
+>>>>>>> config
     = gsl_multiroot_fsolver_alloc (T, 3);
 @end example
 
@@ -150,9 +180,15 @@ For example, the following code creates an instance of a Newton-Raphson solver,
 for a 2-dimensional system of equations.
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 const gsl_multiroot_fdfsolver_type * T 
     = gsl_multiroot_fdfsolver_newton;
 gsl_multiroot_fdfsolver * s = 
+=======
+const gsl_multiroot_fdfsolver_type * T
+    = gsl_multiroot_fdfsolver_newton;
+gsl_multiroot_fdfsolver * s =
+>>>>>>> config
     gsl_multiroot_fdfsolver_alloc (T, 2);
 @end example
 
@@ -180,8 +216,13 @@ These functions free all the memory associated with the solver @var{s}.
 These functions return a pointer to the name of the solver.  For example,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 printf ("s is a '%s' solver\n", 
         gsl_multiroot_fdfsolver_name (s));
+=======
+printf ("s is a '%s' solver\n",
+	gsl_multiroot_fdfsolver_name (s));
+>>>>>>> config
 @end example
 
 @noindent
@@ -196,7 +237,11 @@ You must provide @math{n} functions of @math{n} variables for the root
 finders to operate on.  In order to allow for general parameters the
 functions are defined by the following data types:
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @deftp {Data Type} gsl_multiroot_function 
+=======
+@deftp {Data Type} gsl_multiroot_function
+>>>>>>> config
 This data type defines a general system of functions with parameters.
 
 @table @code
@@ -243,15 +288,24 @@ struct powell_params @{ double A; @};
 
 int
 powell (gsl_vector * x, void * p, gsl_vector * f) @{
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    struct powell_params * params 
+=======
+   struct powell_params * params
+>>>>>>> config
      = *(struct powell_params *)p;
    const double A = (params->A);
    const double x0 = gsl_vector_get(x,0);
    const double x1 = gsl_vector_get(x,1);
 
    gsl_vector_set (f, 0, A * x0 * x1 - 1);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    gsl_vector_set (f, 1, (exp(-x0) + exp(-x1) 
                           - (1.0 + 1.0/A)));
+=======
+   gsl_vector_set (f, 1, (exp(-x0) + exp(-x1)
+			  - (1.0 + 1.0/A)));
+>>>>>>> config
    return GSL_SUCCESS
 @}
 
@@ -277,7 +331,11 @@ returning an appropriate error code if the function cannot be computed.
 @item int (* df) (const gsl_vector * @var{x}, void * @var{params}, gsl_matrix * @var{J})
 this function should store the @var{n}-by-@var{n} matrix result
 @c{$J_{ij} = \partial f_i(x,\hbox{\it params}) / \partial x_j$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{J_ij = d f_i(x,params) / d x_j} in @var{J} for argument @var{x} 
+=======
+@math{J_ij = d f_i(x,params) / d x_j} in @var{J} for argument @var{x}
+>>>>>>> config
 and parameters @var{params}, returning an appropriate error code if the
 function cannot be computed.
 
@@ -303,9 +361,15 @@ include analytic derivatives using the following code,
 
 @example
 int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 powell_df (gsl_vector * x, void * p, gsl_matrix * J) 
 @{
    struct powell_params * params 
+=======
+powell_df (gsl_vector * x, void * p, gsl_matrix * J)
+@{
+   struct powell_params * params
+>>>>>>> config
      = *(struct powell_params *)p;
    const double A = (params->A);
    const double x0 = gsl_vector_get(x,0);
@@ -318,9 +382,15 @@ powell_df (gsl_vector * x, void * p, gsl_matrix * J)
 @}
 
 int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 powell_fdf (gsl_vector * x, void * p, 
             gsl_matrix * f, gsl_matrix * J) @{
    struct powell_params * params 
+=======
+powell_fdf (gsl_vector * x, void * p,
+	    gsl_matrix * f, gsl_matrix * J) @{
+   struct powell_params * params
+>>>>>>> config
      = *(struct powell_params *)p;
    const double A = (params->A);
    const double x0 = gsl_vector_get(x,0);
@@ -494,7 +564,11 @@ This is a modified version of Powell's Hybrid method as implemented in
 the @sc{hybrj} algorithm in @sc{minpack}.  Minpack was written by Jorge
 J. Mor@'e, Burton S. Garbow and Kenneth E. Hillstrom.  The Hybrid
 algorithm retains the fast convergence of Newton's method but will also
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 reduce the residual when Newton's method is unreliable. 
+=======
+reduce the residual when Newton's method is unreliable.
+>>>>>>> config
 
 The algorithm uses a generalized trust region to keep each step under
 control.  In order to be accepted a proposed new position @math{x'} must
@@ -633,7 +707,11 @@ t = (\sqrt(1 + 6 r) - 1) / (3 r)
 @noindent
 is proposed, with @math{r} being the ratio of norms
 @math{|f(x')|^2/|f(x)|^2}.  This procedure is repeated until a suitable step
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 size is found. 
+=======
+size is found.
+>>>>>>> config
 @end deffn
 
 @comment ============================================================
@@ -706,7 +784,11 @@ J_@{ij@} = (f_i(x + \delta_j) - f_i(x)) /  \delta_j
 @end ifinfo
 @noindent
 where @math{\delta_j} is a step of size @math{\sqrt\epsilon |x_j|} with
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{\epsilon} being the machine precision 
+=======
+@math{\epsilon} being the machine precision
+>>>>>>> config
 (@c{$\epsilon \approx 2.22 \times 10^{-16}$}
 @math{\epsilon \approx 2.22 \times 10^-16}).
 The order of convergence of Newton's algorithm is quadratic, but the
@@ -743,7 +825,11 @@ J^@{-1@} \to J^@{-1@} - (J^@{-1@} df - dx) dx^T J^@{-1@} / dx^T J^@{-1@} df
 where the vectors @math{dx} and @math{df} are the changes in @math{x}
 and @math{f}.  On the first iteration the inverse Jacobian is estimated
 using finite differences, as in the discrete Newton algorithm.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  
+=======
+
+>>>>>>> config
 This approximation gives a fast update but is unreliable if the changes
 are not small, and the estimate of the inverse Jacobian becomes worse as
 time passes.  The algorithm has a tendency to become unstable unless it
@@ -799,8 +885,13 @@ struct rparams
   @};
 
 int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 rosenbrock_f (const gsl_vector * x, void *params, 
               gsl_vector * f)
+=======
+rosenbrock_f (const gsl_vector * x, void *params,
+	      gsl_vector * f)
+>>>>>>> config
 @{
   double a = ((struct rparams *) params)->a;
   double b = ((struct rparams *) params)->b;
@@ -858,10 +949,17 @@ main (void)
       print_state (iter, s);
 
       if (status)   /* check if solver is stuck */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         break;
 
       status = 
         gsl_multiroot_test_residual (s->f, 1e-7);
+=======
+	break;
+
+      status =
+	gsl_multiroot_test_residual (s->f, 1e-7);
+>>>>>>> config
     @}
   while (status == GSL_CONTINUE && iter < 1000);
 
@@ -890,12 +988,21 @@ int
 print_state (size_t iter, gsl_multiroot_fsolver * s)
 @{
   printf ("iter = %3u x = % .3f % .3f "
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           "f(x) = % .3e % .3e\n",
           iter,
           gsl_vector_get (s->x, 0), 
           gsl_vector_get (s->x, 1),
           gsl_vector_get (s->f, 0), 
           gsl_vector_get (s->f, 1));
+=======
+	  "f(x) = % .3e % .3e\n",
+	  iter,
+	  gsl_vector_get (s->x, 0),
+	  gsl_vector_get (s->x, 1),
+	  gsl_vector_get (s->f, 0),
+	  gsl_vector_get (s->f, 1));
+>>>>>>> config
 @}
 @end example
 
@@ -939,8 +1046,13 @@ below.
 
 @example
 int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 rosenbrock_df (const gsl_vector * x, void *params, 
                gsl_matrix * J)
+=======
+rosenbrock_df (const gsl_vector * x, void *params,
+	       gsl_matrix * J)
+>>>>>>> config
 @{
   const double a = ((struct rparams *) params)->a;
   const double b = ((struct rparams *) params)->b;
@@ -962,7 +1074,11 @@ rosenbrock_df (const gsl_vector * x, void *params,
 
 int
 rosenbrock_fdf (const gsl_vector * x, void *params,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                 gsl_vector * f, gsl_matrix * J)
+=======
+		gsl_vector * f, gsl_matrix * J)
+>>>>>>> config
 @{
   rosenbrock_f (x, params, f);
   rosenbrock_df (x, params, J);
@@ -987,10 +1103,17 @@ main (void)
 
   const size_t n = 2;
   struct rparams p = @{1.0, 10.0@};
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   gsl_multiroot_function_fdf f = @{&rosenbrock_f, 
                                   &rosenbrock_df, 
                                   &rosenbrock_fdf, 
                                   n, &p@};
+=======
+  gsl_multiroot_function_fdf f = @{&rosenbrock_f,
+				  &rosenbrock_df,
+				  &rosenbrock_fdf,
+				  n, &p@};
+>>>>>>> config
 
   double x_init[2] = @{-10.0, -5.0@};
   gsl_vector *x = gsl_vector_alloc (n);
@@ -1013,7 +1136,11 @@ main (void)
       print_state (iter, s);
 
       if (status)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         break;
+=======
+	break;
+>>>>>>> config
 
       status = gsl_multiroot_test_residual (s->f, 1e-7);
     @}
@@ -1079,9 +1206,16 @@ C.G. Broyden, ``A Class of Methods for Solving Nonlinear
 Simultaneous Equations'', @cite{Mathematics of Computation}, Vol 19 (1965),
 p 577--593
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @item 
+=======
+@item
+>>>>>>> config
 J.J. Mor@'e, B.S. Garbow, K.E. Hillstrom, ``Testing Unconstrained
 Optimization Software'', ACM Transactions on Mathematical Software, Vol
 7, No 1 (1981), p 17--41
 @end itemize
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

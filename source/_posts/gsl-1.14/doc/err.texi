@@ -10,11 +10,19 @@ The functions described in this section are declared in the header file
 @file{gsl_errno.h}.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Error Reporting::             
 * Error Codes::                 
 * Error Handlers::              
 * Using GSL error reporting in your own functions::  
 * Error Reporting Examples::    
+=======
+* Error Reporting::
+* Error Codes::
+* Error Handlers::
+* Using GSL error reporting in your own functions::
+* Error Reporting Examples::
+>>>>>>> config
 @end menu
 
 @node Error Reporting
@@ -28,7 +36,11 @@ indicate an error and @code{0} to indicate success.
 int status = gsl_function (...)
 
 if (status) @{ /* an error occurred */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   .....       
+=======
+  .....
+>>>>>>> config
   /* status value specifies the type of error */
 @}
 @end example
@@ -96,7 +108,11 @@ allocate memory with @code{malloc}.
 @deftypevr {Macro} int GSL_EINVAL
 Invalid argument.  This is used to indicate various kinds of problems
 with passing the wrong argument to a library function (like EINVAL in the C
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 library). 
+=======
+library).
+>>>>>>> config
 @end deftypevr
 
 The error codes can be converted into an error message using the
@@ -148,6 +164,7 @@ preprocessor.  An error handler function returns type @code{void}.
 Error handler functions should be defined like this,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 void handler (const char * reason, 
               const char * file, 
               int line, 
@@ -155,6 +172,15 @@ void handler (const char * reason,
 @end example
 @end deftp
 @comment 
+=======
+void handler (const char * reason,
+	      const char * file,
+	      int line,
+	      int gsl_errno)
+@end example
+@end deftp
+@comment
+>>>>>>> config
 
 @noindent
 To request the use of your own error handler you need to call the
@@ -174,6 +200,7 @@ restore a new error handler,
 
 @example
 /* save original handler, install new handler */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 old_handler = gsl_set_error_handler (&my_handler); 
 
 /* code uses new handler */
@@ -181,6 +208,15 @@ old_handler = gsl_set_error_handler (&my_handler);
 
 /* restore original handler */
 gsl_set_error_handler (old_handler); 
+=======
+old_handler = gsl_set_error_handler (&my_handler);
+
+/* code uses new handler */
+.....
+
+/* restore original handler */
+gsl_set_error_handler (old_handler);
+>>>>>>> config
 @end example
 
 @noindent
@@ -188,7 +224,11 @@ To use the default behavior (@code{abort} on error) set the error
 handler to @code{NULL},
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 old_handler = gsl_set_error_handler (NULL); 
+=======
+old_handler = gsl_set_error_handler (NULL);
+>>>>>>> config
 @end example
 @end deftypefun
 
@@ -238,7 +278,11 @@ routine did not achieve a requested tolerance.  To report the error the
 routine needs to return the error code @code{GSL_ETOL}.
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 if (residual > tolerance) 
+=======
+if (residual > tolerance)
+>>>>>>> config
   @{
     GSL_ERROR("residual exceeds tolerance", GSL_ETOL);
   @}
@@ -255,10 +299,17 @@ The following example shows how to return a @code{NaN} at a mathematical
 singularity using the @code{GSL_ERROR_VAL} macro,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 if (x == 0) 
   @{
     GSL_ERROR_VAL("argument lies on singularity", 
                   GSL_ERANGE, GSL_NAN);
+=======
+if (x == 0)
+  @{
+    GSL_ERROR_VAL("argument lies on singularity",
+		  GSL_ERANGE, GSL_NAN);
+>>>>>>> config
   @}
 @end example
 
@@ -286,14 +337,23 @@ function where an error might be reported,
     if (status == GSL_EINVAL) @{
        fprintf (stderr, "invalid argument, n=%d\n", n);
     @} else @{
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
        fprintf (stderr, "failed, gsl_errno=%d\n", 
                         status);
+=======
+       fprintf (stderr, "failed, gsl_errno=%d\n",
+			status);
+>>>>>>> config
     @}
     exit (-1);
   @}
 ...
 @end example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment 
+=======
+@comment
+>>>>>>> config
 
 @noindent
 The function @code{gsl_fft_complex_radix2} only accepts integer lengths
@@ -303,4 +363,7 @@ indicating that the length argument is invalid.  The function call to
 @code{gsl_set_error_handler_off} stops the default error handler from
 aborting the program.  The @code{else} clause catches any other possible
 errors.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

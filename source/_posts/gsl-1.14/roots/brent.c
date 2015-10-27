@@ -1,17 +1,31 @@
 /* roots/brent.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Reid Priedhorsky, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Reid Priedhorsky, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -56,7 +70,11 @@ brent_init (void * vstate, gsl_function * f, double * root, double x_lower, doub
 
   SAFE_FUNC_CALL (f, x_lower, &f_lower);
   SAFE_FUNC_CALL (f, x_upper, &f_upper);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   state->a = x_lower;
   state->fa = f_lower;
 
@@ -90,7 +108,11 @@ brent_iterate (void * vstate, gsl_function * f, double * root, double * x_lower,
   double a = state->a, b = state->b, c = state->c;
   double fa = state->fa, fb = state->fb, fc = state->fc;
   double d = state->d, e = state->e;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   if ((fb < 0 && fc < 0) || (fb > 0 && fc > 0))
     {
       ac_equal = 1;
@@ -99,7 +121,11 @@ brent_iterate (void * vstate, gsl_function * f, double * root, double * x_lower,
       d = b - a;
       e = b - a;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   if (fabs (fc) < fabs (fb))
     {
       ac_equal = 1;
@@ -110,23 +136,38 @@ brent_iterate (void * vstate, gsl_function * f, double * root, double * x_lower,
       fb = fc;
       fc = fa;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   tol = 0.5 * GSL_DBL_EPSILON * fabs (b);
   m = 0.5 * (c - b);
   
+=======
+
+  tol = 0.5 * GSL_DBL_EPSILON * fabs (b);
+  m = 0.5 * (c - b);
+
+>>>>>>> config
   if (fb == 0)
     {
       *root = b;
       *x_lower = b;
       *x_upper = b;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
       return GSL_SUCCESS;
     }
   
+=======
+
+      return GSL_SUCCESS;
+    }
+
+>>>>>>> config
   if (fabs (m) <= tol)
     {
       *root = b;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       if (b < c) 
         {
           *x_lower = b;
@@ -141,6 +182,22 @@ brent_iterate (void * vstate, gsl_function * f, double * root, double * x_lower,
       return GSL_SUCCESS;
     }
   
+=======
+      if (b < c)
+	{
+	  *x_lower = b;
+	  *x_upper = c;
+	}
+      else
+	{
+	  *x_lower = c;
+	  *x_upper = b;
+	}
+
+      return GSL_SUCCESS;
+    }
+
+>>>>>>> config
   if (fabs (e) < tol || fabs (fa) <= fabs (fb))
     {
       d = m;            /* use bisection */
@@ -150,6 +207,7 @@ brent_iterate (void * vstate, gsl_function * f, double * root, double * x_lower,
     {
       double p, q, r;   /* use inverse cubic interpolation */
       double s = fb / fa;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
       if (ac_equal)
         {
@@ -190,6 +248,48 @@ brent_iterate (void * vstate, gsl_function * f, double * root, double * x_lower,
   a = b;
   fa = fb;
   
+=======
+
+      if (ac_equal)
+	{
+	  p = 2 * m * s;
+	  q = 1 - s;
+	}
+      else
+	{
+	  q = fa / fc;
+	  r = fb / fc;
+	  p = s * (2 * m * q * (q - r) - (b - a) * (r - 1));
+	  q = (q - 1) * (r - 1) * (s - 1);
+	}
+
+      if (p > 0)
+	{
+	  q = -q;
+	}
+      else
+	{
+	  p = -p;
+	}
+
+      if (2 * p < GSL_MIN (3 * m * q - fabs (tol * q), fabs (e * q)))
+	{
+	  e = d;
+	  d = p / q;
+	}
+      else
+	{
+	  /* interpolation failed, fall back to bisection */
+
+	  d = m;
+	  e = m;
+	}
+    }
+
+  a = b;
+  fa = fb;
+
+>>>>>>> config
   if (fabs (d) > tol)
     {
       b += d;
@@ -198,7 +298,11 @@ brent_iterate (void * vstate, gsl_function * f, double * root, double * x_lower,
     {
       b += (m > 0 ? +tol : -tol);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   SAFE_FUNC_CALL (f, b, &fb);
 
   state->a = a ;
@@ -209,6 +313,7 @@ brent_iterate (void * vstate, gsl_function * f, double * root, double * x_lower,
   state->fa = fa ;
   state->fb = fb ;
   state->fc = fc ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   /* Update the best estimate of the root and bounds on each
      iteration */
@@ -216,6 +321,15 @@ brent_iterate (void * vstate, gsl_function * f, double * root, double * x_lower,
   *root = b;
   
   if ((fb < 0 && fc < 0) || (fb > 0 && fc > 0)) 
+=======
+
+  /* Update the best estimate of the root and bounds on each
+     iteration */
+
+  *root = b;
+
+  if ((fb < 0 && fc < 0) || (fb > 0 && fc > 0))
+>>>>>>> config
     {
       c = a;
     }
@@ -234,7 +348,11 @@ brent_iterate (void * vstate, gsl_function * f, double * root, double * x_lower,
   return GSL_SUCCESS ;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
 static const gsl_root_fsolver_type brent_type =
 {"brent",                               /* name */
  sizeof (brent_state_t),

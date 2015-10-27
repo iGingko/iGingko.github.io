@@ -1,17 +1,31 @@
 /* integration/qawf.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -30,6 +44,7 @@
 
 int
 gsl_integration_qawf (gsl_function * f,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       const double a,
                       const double epsabs,
                       const size_t limit,
@@ -37,6 +52,15 @@ gsl_integration_qawf (gsl_function * f,
                       gsl_integration_workspace * cycle_workspace,
                       gsl_integration_qawo_table * wf,
                       double *result, double *abserr)
+=======
+		      const double a,
+		      const double epsabs,
+		      const size_t limit,
+		      gsl_integration_workspace * workspace,
+		      gsl_integration_workspace * cycle_workspace,
+		      gsl_integration_qawo_table * wf,
+		      double *result, double *abserr)
+>>>>>>> config
 {
   double area, errsum;
   double res_ext, err_ext;
@@ -77,6 +101,7 @@ gsl_integration_qawf (gsl_function * f,
   if (omega == 0.0)
     {
       if (wf->sine == GSL_INTEG_SINE)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           /* The function sin(w x) f(x) is always zero for w = 0 */
 
@@ -95,6 +120,26 @@ gsl_integration_qawf (gsl_function * f,
                                               result, abserr);
           return status;
         }
+=======
+	{
+	  /* The function sin(w x) f(x) is always zero for w = 0 */
+
+	  *result = 0;
+	  *abserr = 0;
+
+	  return GSL_SUCCESS;
+	}
+      else
+	{
+	  /* The function cos(w x) f(x) is always f(x) for w = 0 */
+
+	  int status = gsl_integration_qagiu (f, a, epsabs, 0.0,
+					      cycle_workspace->limit,
+					      cycle_workspace,
+					      result, abserr);
+	  return status;
+	}
+>>>>>>> config
     }
 
   if (epsabs > GSL_DBL_MIN / (1 - p))
@@ -131,8 +176,13 @@ gsl_integration_qawf (gsl_function * f,
       double epsabs1 = eps * factor;
 
       int status = gsl_integration_qawo (f, a1, epsabs1, 0.0, limit,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                          cycle_workspace, wf,
                                          &area1, &error1);
+=======
+					 cycle_workspace, wf,
+					 &area1, &error1);
+>>>>>>> config
 
       append_interval (workspace, a1, b1, area1, error1);
 
@@ -148,6 +198,7 @@ gsl_integration_qawf (gsl_function * f,
       total_error = errsum + truncation_error;
 
       if (total_error < epsabs && iteration > 4)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           goto compute_result;
         }
@@ -166,19 +217,46 @@ gsl_integration_qawf (gsl_function * f,
         {
           goto compute_result;
         }
+=======
+	{
+	  goto compute_result;
+	}
+
+      if (error1 > correc)
+	{
+	  correc = error1;
+	}
+
+      if (status)
+	{
+	  eps = GSL_MAX_DBL (initial_eps, correc * (1.0 - p));
+	}
+
+      if (status && total_error < 10 * correc && iteration > 3)
+	{
+	  goto compute_result;
+	}
+>>>>>>> config
 
       append_table (&table, area);
 
       if (table.n < 2)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           continue;
         }
+=======
+	{
+	  continue;
+	}
+>>>>>>> config
 
       qelg (&table, &reseps, &erreps);
 
       ktmin++;
 
       if (ktmin >= 15 && err_ext < 0.001 * total_error)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           error_type = 4;
         }
@@ -194,6 +272,23 @@ gsl_integration_qawf (gsl_function * f,
           if (err_ext <= epsabs && 10 * correc >= epsabs)
             break;
         }
+=======
+	{
+	  error_type = 4;
+	}
+
+      if (erreps < err_ext)
+	{
+	  ktmin = 0;
+	  err_ext = erreps;
+	  res_ext = reseps;
+
+	  if (err_ext + 10 * correc <= epsabs)
+	    break;
+	  if (err_ext <= epsabs && 10 * correc >= epsabs)
+	    break;
+	}
+>>>>>>> config
 
     }
 
@@ -216,7 +311,11 @@ gsl_integration_qawf (gsl_function * f,
   if (res_ext != 0.0 && area != 0.0)
     {
       if (err_ext / fabs (res_ext) > errsum / fabs (area))
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         goto compute_result;
+=======
+	goto compute_result;
+>>>>>>> config
     }
   else if (err_ext > errsum)
     {
@@ -255,22 +354,38 @@ return_error:
   else if (error_type == 2)
     {
       GSL_ERROR ("cannot reach tolerance because of roundoff error",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_EROUND);
+=======
+		 GSL_EROUND);
+>>>>>>> config
     }
   else if (error_type == 3)
     {
       GSL_ERROR ("bad integrand behavior found in the integration interval",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_ESING);
+=======
+		 GSL_ESING);
+>>>>>>> config
     }
   else if (error_type == 4)
     {
       GSL_ERROR ("roundoff error detected in the extrapolation table",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_EROUND);
+=======
+		 GSL_EROUND);
+>>>>>>> config
     }
   else if (error_type == 5)
     {
       GSL_ERROR ("integral is divergent, or slowly convergent",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_EDIVERGE);
+=======
+		 GSL_EDIVERGE);
+>>>>>>> config
     }
   else
     {
@@ -278,4 +393,7 @@ return_error:
     }
 
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

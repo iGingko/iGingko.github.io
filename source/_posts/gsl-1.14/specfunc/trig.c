@@ -1,17 +1,31 @@
 /* specfunc/trig.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -186,6 +200,7 @@ gsl_sf_sin_e(double x, gsl_sf_result * result)
       double z;
 
       if(GSL_IS_ODD(octant)) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         octant += 1;
         octant &= 07;
         y += 1.0;
@@ -209,11 +224,37 @@ gsl_sf_sin_e(double x, gsl_sf_result * result)
         const double t = 8.0*fabs(z)/M_PI - 1.0;
         stat_cs = cheb_eval_e(&cos_cs, t, &cos_cs_result);
         result->val = 1.0 - 0.5*z*z * (1.0 - z*z * cos_cs_result.val);
+=======
+	octant += 1;
+	octant &= 07;
+	y += 1.0;
+      }
+
+      if(octant > 3) {
+	octant -= 4;
+	sgn_result = -sgn_result;
+      }
+
+      z = ((abs_x - y * P1) - y * P2) - y * P3;
+
+      if(octant == 0) {
+	gsl_sf_result sin_cs_result;
+	const double t = 8.0*fabs(z)/M_PI - 1.0;
+	stat_cs = cheb_eval_e(&sin_cs, t, &sin_cs_result);
+	result->val = z * (1.0 + z*z * sin_cs_result.val);
+      }
+      else { /* octant == 2 */
+	gsl_sf_result cos_cs_result;
+	const double t = 8.0*fabs(z)/M_PI - 1.0;
+	stat_cs = cheb_eval_e(&cos_cs, t, &cos_cs_result);
+	result->val = 1.0 - 0.5*z*z * (1.0 - z*z * cos_cs_result.val);
+>>>>>>> config
       }
 
       result->val *= sgn_result;
 
       if(abs_x > 1.0/GSL_DBL_EPSILON) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         result->err = fabs(result->val);
       }
       else if(abs_x > 100.0/GSL_SQRT_DBL_EPSILON) {
@@ -224,6 +265,18 @@ gsl_sf_sin_e(double x, gsl_sf_result * result)
       }
       else {
         result->err = 2.0 * GSL_DBL_EPSILON * fabs(result->val);
+=======
+	result->err = fabs(result->val);
+      }
+      else if(abs_x > 100.0/GSL_SQRT_DBL_EPSILON) {
+	result->err = 2.0 * abs_x * GSL_DBL_EPSILON * fabs(result->val);
+      }
+      else if(abs_x > 0.1/GSL_SQRT_DBL_EPSILON) {
+	result->err = 2.0 * GSL_SQRT_DBL_EPSILON * fabs(result->val);
+      }
+      else {
+	result->err = 2.0 * GSL_DBL_EPSILON * fabs(result->val);
+>>>>>>> config
       }
 
       return stat_cs;
@@ -258,6 +311,7 @@ gsl_sf_cos_e(double x, gsl_sf_result * result)
       double z;
 
       if(GSL_IS_ODD(octant)) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         octant += 1;
         octant &= 07;
         y += 1.0;
@@ -270,11 +324,26 @@ gsl_sf_cos_e(double x, gsl_sf_result * result)
 
       if(octant > 1) {
         sgn_result = -sgn_result;
+=======
+	octant += 1;
+	octant &= 07;
+	y += 1.0;
+      }
+
+      if(octant > 3) {
+	octant -= 4;
+	sgn_result = -sgn_result;
+      }
+
+      if(octant > 1) {
+	sgn_result = -sgn_result;
+>>>>>>> config
       }
 
       z = ((abs_x - y * P1) - y * P2) - y * P3;
 
       if(octant == 0) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gsl_sf_result cos_cs_result;
         const double t = 8.0*fabs(z)/M_PI - 1.0;
         stat_cs = cheb_eval_e(&cos_cs, t, &cos_cs_result);
@@ -285,11 +354,24 @@ gsl_sf_cos_e(double x, gsl_sf_result * result)
         const double t = 8.0*fabs(z)/M_PI - 1.0;
         stat_cs = cheb_eval_e(&sin_cs, t, &sin_cs_result);
         result->val = z * (1.0 + z*z * sin_cs_result.val);
+=======
+	gsl_sf_result cos_cs_result;
+	const double t = 8.0*fabs(z)/M_PI - 1.0;
+	stat_cs = cheb_eval_e(&cos_cs, t, &cos_cs_result);
+	result->val = 1.0 - 0.5*z*z * (1.0 - z*z * cos_cs_result.val);
+      }
+      else { /* octant == 2 */
+	gsl_sf_result sin_cs_result;
+	const double t = 8.0*fabs(z)/M_PI - 1.0;
+	stat_cs = cheb_eval_e(&sin_cs, t, &sin_cs_result);
+	result->val = z * (1.0 + z*z * sin_cs_result.val);
+>>>>>>> config
       }
 
       result->val *= sgn_result;
 
       if(abs_x > 1.0/GSL_DBL_EPSILON) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         result->err = fabs(result->val);
       }
       else if(abs_x > 100.0/GSL_SQRT_DBL_EPSILON) {
@@ -300,6 +382,18 @@ gsl_sf_cos_e(double x, gsl_sf_result * result)
       }
       else {
         result->err = 2.0 * GSL_DBL_EPSILON * fabs(result->val);
+=======
+	result->err = fabs(result->val);
+      }
+      else if(abs_x > 100.0/GSL_SQRT_DBL_EPSILON) {
+	result->err = 2.0 * abs_x * GSL_DBL_EPSILON * fabs(result->val);
+      }
+      else if(abs_x > 0.1/GSL_SQRT_DBL_EPSILON) {
+	result->err = 2.0 * GSL_SQRT_DBL_EPSILON * fabs(result->val);
+      }
+      else {
+	result->err = 2.0 * GSL_DBL_EPSILON * fabs(result->val);
+>>>>>>> config
       }
 
       return stat_cs;
@@ -340,7 +434,11 @@ gsl_sf_hypot_e(const double x, const double y, gsl_sf_result * result)
 
 int
 gsl_sf_complex_sin_e(const double zr, const double zi,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         gsl_sf_result * szr, gsl_sf_result * szi)
+=======
+			gsl_sf_result * szr, gsl_sf_result * szi)
+>>>>>>> config
 {
   /* CHECK_POINTER(szr) */
   /* CHECK_POINTER(szi) */
@@ -373,7 +471,11 @@ gsl_sf_complex_sin_e(const double zr, const double zi,
 
 int
 gsl_sf_complex_cos_e(const double zr, const double zi,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         gsl_sf_result * czr, gsl_sf_result * czi)
+=======
+			gsl_sf_result * czr, gsl_sf_result * czi)
+>>>>>>> config
 {
   /* CHECK_POINTER(czr) */
   /* CHECK_POINTER(czi) */
@@ -406,7 +508,11 @@ gsl_sf_complex_cos_e(const double zr, const double zi,
 
 int
 gsl_sf_complex_logsin_e(const double zr, const double zi,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                            gsl_sf_result * lszr, gsl_sf_result * lszi)
+=======
+			   gsl_sf_result * lszr, gsl_sf_result * lszi)
+>>>>>>> config
 {
   /* CHECK_POINTER(lszr) */
   /* CHECK_POINTER(lszi) */
@@ -498,7 +604,11 @@ inline int gsl_sf_sincos_e(const double theta, double * s, double * c)
 
 int
 gsl_sf_polar_to_rect(const double r, const double theta,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                           gsl_sf_result * x, gsl_sf_result * y)
+=======
+			  gsl_sf_result * x, gsl_sf_result * y)
+>>>>>>> config
 {
   double t   = theta;
   int status = gsl_sf_angle_restrict_symm_e(&t);
@@ -516,7 +626,11 @@ gsl_sf_polar_to_rect(const double r, const double theta,
 
 int
 gsl_sf_rect_to_polar(const double x, const double y,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                           gsl_sf_result * r, gsl_sf_result * theta)
+=======
+			  gsl_sf_result * r, gsl_sf_result * theta)
+>>>>>>> config
 {
   int stat_h = gsl_sf_hypot_e(x, y, r);
   if(r->val > 0.0) {

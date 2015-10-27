@@ -1,17 +1,31 @@
 /* wavelet/bspline.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2004 Ivo Alxneit
  * 
+=======
+ *
+ * Copyright (C) 2004 Ivo Alxneit
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -371,8 +385,13 @@ static const double g1_3[20] = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
 
 static int
 bspline_init (const double **h1, const double **g1,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
               const double **h2, const double **g2, size_t * nc,
               size_t * offset, size_t member)
+=======
+	      const double **h2, const double **g2, size_t * nc,
+	      size_t * offset, size_t member)
+>>>>>>> config
 {
   switch (member)
     {
@@ -475,8 +494,13 @@ bspline_init (const double **h1, const double **g1,
 
 static int
 bspline_centered_init (const double **h1, const double **g1,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                        const double **h2, const double **g2, size_t * nc,
                        size_t * offset, size_t member)
+=======
+		       const double **h2, const double **g2, size_t * nc,
+		       size_t * offset, size_t member)
+>>>>>>> config
 {
   switch (member)
     {
@@ -582,7 +606,11 @@ static const gsl_wavelet_type bspline_type = {
   &bspline_init
 };
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static const gsl_wavelet_type bspline_centered_type = { 
+=======
+static const gsl_wavelet_type bspline_centered_type = {
+>>>>>>> config
   "bspline-centered",
   &bspline_centered_init
 };

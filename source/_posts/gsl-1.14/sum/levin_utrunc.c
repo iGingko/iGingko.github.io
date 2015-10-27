@@ -1,17 +1,31 @@
 /* sum/levin_utrunc.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -27,6 +41,7 @@
 
 int
 gsl_sum_levin_utrunc_accel (const double *array,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                             const size_t array_size,
                             gsl_sum_levin_utrunc_workspace * w,
                             double *sum_accel, double *abserr_trunc)
@@ -34,16 +49,33 @@ gsl_sum_levin_utrunc_accel (const double *array,
   return gsl_sum_levin_utrunc_minmax (array, array_size,
                                       0, array_size - 1,
                                       w, sum_accel, abserr_trunc);
+=======
+			    const size_t array_size,
+			    gsl_sum_levin_utrunc_workspace * w,
+			    double *sum_accel, double *abserr_trunc)
+{
+  return gsl_sum_levin_utrunc_minmax (array, array_size,
+				      0, array_size - 1,
+				      w, sum_accel, abserr_trunc);
+>>>>>>> config
 }
 
 
 int
 gsl_sum_levin_utrunc_minmax (const double *array,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                              const size_t array_size,
                              const size_t min_terms,
                              const size_t max_terms,
                              gsl_sum_levin_utrunc_workspace * w,
                              double *sum_accel, double *abserr_trunc)
+=======
+			     const size_t array_size,
+			     const size_t min_terms,
+			     const size_t max_terms,
+			     gsl_sum_levin_utrunc_workspace * w,
+			     double *sum_accel, double *abserr_trunc)
+>>>>>>> config
 {
   if (array_size == 0)
     {
@@ -76,6 +108,7 @@ gsl_sum_levin_utrunc_minmax (const double *array,
       double result_least_trunc;
 
       /* Calculate specified minimum number of terms. No convergence
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          tests are made, and no truncation information is stored. */
 
       for (n = 0; n < min_terms; n++)
@@ -85,12 +118,24 @@ gsl_sum_levin_utrunc_minmax (const double *array,
           result_nm1 = result_n;
           gsl_sum_levin_utrunc_step (t, n, w, &result_n);
         }
+=======
+	 tests are made, and no truncation information is stored. */
+
+      for (n = 0; n < min_terms; n++)
+	{
+	  const double t = array[n];
+
+	  result_nm1 = result_n;
+	  gsl_sum_levin_utrunc_step (t, n, w, &result_n);
+	}
+>>>>>>> config
 
       /* Assume the result after the minimum calculation is the best. */
 
       result_least_trunc = result_n;
 
       /* Calculate up to maximum number of terms. Check truncation
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          condition. */
 
       for (; n <= nmax; n++)
@@ -153,20 +198,95 @@ gsl_sum_levin_utrunc_minmax (const double *array,
           w->terms_used = n;
           return GSL_SUCCESS;
         }
+=======
+	 condition. */
+
+      for (; n <= nmax; n++)
+	{
+	  const double t = array[n];
+
+	  result_nm1 = result_n;
+	  gsl_sum_levin_utrunc_step (t, n, w, &result_n);
+
+	  /* Compute the truncation error directly */
+
+	  actual_trunc_nm1 = actual_trunc_n;
+	  actual_trunc_n = fabs (result_n - result_nm1);
+
+	  /* Average results to make a more reliable estimate of the
+	     real truncation error */
+
+	  trunc_nm1 = trunc_n;
+	  trunc_n = 0.5 * (actual_trunc_n + actual_trunc_nm1);
+
+	  /* Determine if we are in the convergence region. */
+
+	  better = (trunc_n < trunc_nm1 || trunc_n < SMALL * fabs (result_n));
+	  converging = converging || (better && before);
+	  before = better;
+
+	  if (converging)
+	    {
+	      if (trunc_n < least_trunc)
+		{
+		  /* Found a low truncation point in the convergence
+		     region. Save it. */
+
+		  least_trunc = trunc_n;
+		  result_least_trunc = result_n;
+		}
+
+	      if (fabs (trunc_n / result_n) < 10.0 * GSL_MACH_EPS)
+		break;
+	    }
+	}
+
+      if (converging)
+	{
+	  /* Stopped in the convergence region. Return result and
+	     error estimate. */
+
+	  *sum_accel = result_least_trunc;
+	  *abserr_trunc = least_trunc;
+	  w->terms_used = n;
+	  return GSL_SUCCESS;
+	}
+      else
+	{
+	  /* Never reached the convergence region. Use the last
+	     calculated values. */
+
+	  *sum_accel = result_n;
+	  *abserr_trunc = trunc_n;
+	  w->terms_used = n;
+	  return GSL_SUCCESS;
+	}
+>>>>>>> config
     }
 }
 
 int
 gsl_sum_levin_utrunc_step (const double term,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                            const size_t n,
                            gsl_sum_levin_utrunc_workspace * w, double *sum_accel)
+=======
+			   const size_t n,
+			   gsl_sum_levin_utrunc_workspace * w, double *sum_accel)
+>>>>>>> config
 {
   if (term == 0.0)
     {
       /* This is actually harmless when treated in this way. A term
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          which is exactly zero is simply ignored; the state is not
          changed. We return GSL_EZERODIV as an indicator that this
          occured. */
+=======
+	 which is exactly zero is simply ignored; the state is not
+	 changed. We return GSL_EZERODIV as an indicator that this
+	 occured. */
+>>>>>>> config
 
       return GSL_EZERODIV;
     }
@@ -189,12 +309,21 @@ gsl_sum_levin_utrunc_step (const double term,
       w->q_num[n] = w->sum_plain * w->q_den[n];
 
       for (j = n - 1; j >= 0; j--)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double c = factor * (j + 1) / (n + 1);
           factor *= ratio;
           w->q_den[j] = w->q_den[j + 1] - c * w->q_den[j];
           w->q_num[j] = w->q_num[j + 1] - c * w->q_num[j];
         }
+=======
+	{
+	  double c = factor * (j + 1) / (n + 1);
+	  factor *= ratio;
+	  w->q_den[j] = w->q_den[j + 1] - c * w->q_den[j];
+	  w->q_num[j] = w->q_num[j + 1] - c * w->q_num[j];
+	}
+>>>>>>> config
 
       *sum_accel = w->q_num[0] / w->q_den[0];
       return GSL_SUCCESS;

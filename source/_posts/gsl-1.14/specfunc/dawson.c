@@ -1,17 +1,31 @@
 /* specfunc/dawson.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -34,6 +48,7 @@
 /* Chebyshev expansions
 
  Series for DAW        on the interval  0.          to  1.00000E+00
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                         with weighted error   8.95E-32
                                          log weighted error  31.05
                                significant figures required  30.41
@@ -50,6 +65,24 @@
                                          log weighted error  31.71
                                significant figures required  29.79
                                     decimal places required  32.64
+=======
+					with weighted error   8.95E-32
+					 log weighted error  31.05
+			       significant figures required  30.41
+				    decimal places required  31.71
+
+ Series for DAW2       on the interval  0.          to  1.60000E+01
+					with weighted error   1.61E-32
+					 log weighted error  31.79
+			       significant figures required  31.40
+				    decimal places required  32.62
+
+ Series for DAWA       on the interval  0.          to  6.25000E-02
+					with weighted error   1.97E-32
+					 log weighted error  31.71
+			       significant figures required  29.79
+				    decimal places required  32.64
+>>>>>>> config
 */
 static double daw_data[21] = {
    -0.6351734375145949201065127736293e-02,

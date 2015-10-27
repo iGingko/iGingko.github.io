@@ -1,17 +1,31 @@
 /* rng/knuthran.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2001, 2007 Brian Gough, Carlo Perassi
  * 
+=======
+ *
+ * Copyright (C) 2001, 2007 Brian Gough, Carlo Perassi
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -46,7 +60,11 @@
 #define mod_diff(x, y) (((x) - (y)) & (MM - 1)) /* (x - y) mod MM */
 
 static inline void ran_array (unsigned long int aa[], unsigned int n,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                               unsigned long int ran_x[]);
+=======
+			      unsigned long int ran_x[]);
+>>>>>>> config
 static inline unsigned long int ran_get (void *vstate);
 static double ran_get_double (void *vstate);
 static void ran_set (void *state, unsigned long int s);
@@ -55,7 +73,11 @@ typedef struct
 {
   unsigned int i;
   unsigned long int aa[BUFLEN]; /* [Carlo]: I can't pass n to ran_array like
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                    Knuth does */
+=======
+				   Knuth does */
+>>>>>>> config
   unsigned long int ran_x[KK];  /* the generator state */
 }
 ran_state_t;
@@ -121,7 +143,11 @@ ran_set (void *vstate, unsigned long int s)
       x[j] = ss;                /* bootstrap the buffer */
       ss <<= 1;
       if (ss >= MM)             /* cyclic shift 29 bits */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ss -= MM - 2;
+=======
+	ss -= MM - 2;
+>>>>>>> config
     }
   for (; j < KK + KK - 1; j++)
     x[j] = 0;
@@ -131,6 +157,7 @@ ran_set (void *vstate, unsigned long int s)
   while (t)
     {
       for (j = KK - 1; j > 0; j--)      /* square */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         x[j + j] = x[j];
       for (j = KK + KK - 2; j > KK - LL; j -= 2)
         x[KK + KK - 1 - j] = evenize (x[j]);
@@ -152,6 +179,29 @@ ran_set (void *vstate, unsigned long int s)
         ss >>= 1;
       else
         t--;
+=======
+	x[j + j] = x[j];
+      for (j = KK + KK - 2; j > KK - LL; j -= 2)
+	x[KK + KK - 1 - j] = evenize (x[j]);
+      for (j = KK + KK - 2; j >= KK; j--)
+	if (is_odd (x[j]))
+	  {
+	    x[j - (KK - LL)] = mod_diff (x[j - (KK - LL)], x[j]);
+	    x[j - KK] = mod_diff (x[j - KK], x[j]);
+	  }
+      if (is_odd (ss))
+	{                       /* multiply by "z" */
+	  for (j = KK; j > 0; j--)
+	    x[j] = x[j - 1];
+	  x[0] = x[KK];         /* shift the buffer cyclically */
+	  if (is_odd (x[KK]))
+	    x[LL] = mod_diff (x[LL], x[KK]);
+	}
+      if (ss)
+	ss >>= 1;
+      else
+	t--;
+>>>>>>> config
     }
 
   state->i = 0;

@@ -1,17 +1,31 @@
 /* block/test_complex_source.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -38,7 +52,11 @@ FUNCTION (test, func) (void)
 
   gsl_test (data == 0, NAME (gsl_block) "_data returns valid pointer");
   gsl_test (size != N, NAME (gsl_block) "_size returns valid size");
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   FUNCTION (gsl_block, free) (b);       /* free whatever is in v */
 
   b = FUNCTION (gsl_block, calloc) (N);
@@ -53,11 +71,19 @@ FUNCTION (test, func) (void)
   gsl_test (size != N, NAME (gsl_block) "_size returns valid size from calloc");
 
   status = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   for (i = 0; i < N; i++)
     {
       if (b->data[2 * i] != 0.0 || b->data[2 * i + 1] != 0.0)
         status = 1;
+=======
+
+  for (i = 0; i < N; i++)
+    {
+      if (b->data[2 * i] != 0.0 || b->data[2 * i + 1] != 0.0)
+	status = 1;
+>>>>>>> config
     };
 
   gsl_test (status, NAME (gsl_block) "_calloc initializes array to zero");
@@ -77,14 +103,23 @@ FUNCTION (test, binary) (void)
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         v->data[2*i] = (ATOMIC)(N - i);
         v->data[2*i + 1] = (ATOMIC)(10*(N-i) + 1);
+=======
+	v->data[2*i] = (ATOMIC)(N - i);
+	v->data[2*i + 1] = (ATOMIC)(10*(N-i) + 1);
+>>>>>>> config
       };
 
     FUNCTION (gsl_block, fwrite) (f, v);
 
     fclose (f);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     FUNCTION (gsl_block, free) (v);
   }
 
@@ -98,8 +133,13 @@ FUNCTION (test, binary) (void)
     status = 0;
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         if (w->data[2 * i] != (ATOMIC) (N - i) || w->data[2 * i + 1] != (ATOMIC) (10*(N - i) + 1))
           status = 1;
+=======
+	if (w->data[2 * i] != (ATOMIC) (N - i) || w->data[2 * i + 1] != (ATOMIC) (10*(N - i) + 1))
+	  status = 1;
+>>>>>>> config
       };
     fclose (f);
 
@@ -118,7 +158,10 @@ FUNCTION (test, trap) (void)
 
   gsl_test (b != 0, NAME (gsl_block) "_alloc traps zero length");
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
 
 
+=======
+>>>>>>> config

@@ -1,17 +1,31 @@
 /* specfunc/bessel_zero.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -1034,6 +1048,7 @@ gsl_sf_bessel_zero_J0_e(unsigned int s, gsl_sf_result * result)
     /* See [F. Lether, J. Comp. Appl .Math. 67, 167 (1996)]. */
 
     static const double P[] = { 1567450796.0/12539606369.0,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                 8903660.0/2365861.0,
                                 10747040.0/536751.0,
                                 17590991.0/1696654.0
@@ -1043,6 +1058,17 @@ gsl_sf_bessel_zero_J0_e(unsigned int s, gsl_sf_result * result)
                                 76900001.0/431847.0,
                                 67237052.0/442411.0
                               };
+=======
+				8903660.0/2365861.0,
+				10747040.0/536751.0,
+				17590991.0/1696654.0
+			      };
+    static const double Q[] = { 1.0,
+				29354255.0/954518.0,
+				76900001.0/431847.0,
+				67237052.0/442411.0
+			      };
+>>>>>>> config
 
     const double beta = (s - 0.25) * M_PI;
     const double bi2  = 1.0/(beta*beta);
@@ -1070,6 +1096,7 @@ gsl_sf_bessel_zero_J1_e(unsigned int s, gsl_sf_result * result)
     /* See [M. Branders et al., J. Comp. Phys. 42, 403 (1981)]. */
 
     static const double a[] = { -0.362804405737084,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                  0.120341279038597,
                                  0.439454547101171e-01,
                                  0.159340088474713e-02
@@ -1079,6 +1106,17 @@ gsl_sf_bessel_zero_J1_e(unsigned int s, gsl_sf_result * result)
                                 -0.117453445968927,
                                 -0.424906902601794e-02
                               };
+=======
+				 0.120341279038597,
+				 0.439454547101171e-01,
+				 0.159340088474713e-02
+			      };
+    static const double b[] = {  1.0,
+				-0.325641790801361,
+				-0.117453445968927,
+				-0.424906902601794e-02
+			      };
+>>>>>>> config
 
     const double beta = (s + 0.25) * M_PI;
     const double bi2  = 1.0/(beta*beta);
@@ -1158,7 +1196,11 @@ gsl_sf_bessel_zero_Jnu_e(double nu, unsigned int s, gsl_sf_result * result)
        * s = 5 fit. Need to fix that.
        */
       if(s == 5) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         result->err *= 5.0e+06;
+=======
+	result->err *= 5.0e+06;
+>>>>>>> config
       }
     }
     return GSL_SUCCESS;

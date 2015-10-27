@@ -55,6 +55,7 @@ downheap (void *data, const size_t size, const size_t N, size_t k, gsl_compariso
       size_t j = 2 * k;
 
       if (j < N && CMP (data, size, j, j + 1) < 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           j++;
         }
@@ -67,6 +68,20 @@ downheap (void *data, const size_t size, const size_t N, size_t k, gsl_compariso
         {
           break;
         }
+=======
+	{
+	  j++;
+	}
+
+      if (CMP (data, size, k, j) < 0)
+	{
+	  swap (data, size, j, k);
+	}
+      else
+	{
+	  break;
+	}
+>>>>>>> config
 
       k = j;
     }

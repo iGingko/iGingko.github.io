@@ -1,17 +1,31 @@
 /* min/convergence.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -35,14 +49,22 @@ gsl_min_test_interval (double x_lower, double x_upper, double epsabs, double eps
 
   if (epsrel < 0.0)
     GSL_ERROR ("relative tolerance is negative", GSL_EBADTOL);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   if (epsabs < 0.0)
     GSL_ERROR ("absolute tolerance is negative", GSL_EBADTOL);
 
   if (lower > upper)
     GSL_ERROR ("lower bound larger than upper_bound", GSL_EINVAL);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if ((lower > 0 && upper > 0) || (lower < 0 && upper < 0)) 
+=======
+  if ((lower > 0 && upper > 0) || (lower < 0 && upper < 0))
+>>>>>>> config
     {
       min_abs = GSL_MIN_DBL(abs_lower, abs_upper) ;
     }
@@ -52,6 +74,7 @@ gsl_min_test_interval (double x_lower, double x_upper, double epsabs, double eps
     }
 
   tolerance = epsabs + epsrel * min_abs  ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   if (fabs(upper - lower) < tolerance)
     return GSL_SUCCESS;
@@ -59,3 +82,11 @@ gsl_min_test_interval (double x_lower, double x_upper, double epsabs, double eps
   return GSL_CONTINUE ;
 }
 
+=======
+
+  if (fabs(upper - lower) < tolerance)
+    return GSL_SUCCESS;
+
+  return GSL_CONTINUE ;
+}
+>>>>>>> config

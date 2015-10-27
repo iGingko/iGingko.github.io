@@ -1,17 +1,31 @@
 /* ode-initval/bsimp.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2004 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2004 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -91,7 +105,11 @@ compute_weights (const double y[], double w[], size_t dim)
 }
 
 /* Calculate a choice for the "order" of the method, using the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * Deuflhard criteria.  
+=======
+ * Deuflhard criteria.
+>>>>>>> config
  */
 
 static size_t
@@ -116,11 +134,19 @@ bsimp_deuf_kchoice (double eps, size_t dimension)
     {
       alpha[i][i] = 1.0;
       for (k = 0; k < i; k++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           const double tmp1 = a_work[k + 1] - a_work[i + 1];
           const double tmp2 = (a_work[i + 1] - a_work[0] + 1.0) * (2 * k + 1);
           alpha[k][i] = pow (small_eps, tmp1 / tmp2);
         }
+=======
+	{
+	  const double tmp1 = a_work[k + 1] - a_work[i + 1];
+	  const double tmp2 = (a_work[i + 1] - a_work[0] + 1.0) * (2 * k + 1);
+	  alpha[k][i] = pow (small_eps, tmp1 / tmp2);
+	}
+>>>>>>> config
     }
 
   a_work[0] += dimension;
@@ -133,7 +159,11 @@ bsimp_deuf_kchoice (double eps, size_t dimension)
   for (k = 0; k < SEQUENCE_MAX - 1; k++)
     {
       if (a_work[k + 2] > a_work[k + 1] * alpha[k][k + 1])
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         break;
+=======
+	break;
+>>>>>>> config
     }
 
   return k;
@@ -141,11 +171,19 @@ bsimp_deuf_kchoice (double eps, size_t dimension)
 
 static void
 poly_extrap (gsl_matrix * d,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              const double x[],
              const unsigned int i_step,
              const double x_i,
              const double y_i[],
              double y_0[], double y_0_err[], double work[], const size_t dim)
+=======
+	     const double x[],
+	     const unsigned int i_step,
+	     const double x_i,
+	     const double y_i[],
+	     double y_0[], double y_0_err[], double work[], const size_t dim)
+>>>>>>> config
 {
   size_t j, k;
 
@@ -155,15 +193,22 @@ poly_extrap (gsl_matrix * d,
   if (i_step == 0)
     {
       for (j = 0; j < dim; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           gsl_matrix_set (d, 0, j, y_i[j]);
         }
+=======
+	{
+	  gsl_matrix_set (d, 0, j, y_i[j]);
+	}
+>>>>>>> config
     }
   else
     {
       DBL_MEMCPY (work, y_i, dim);
 
       for (k = 0; k < i_step; k++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double delta = 1.0 / (x[i_step - k - 1] - x_i);
           const double f1 = delta * x_i;
@@ -184,6 +229,28 @@ poly_extrap (gsl_matrix * d,
         {
           gsl_matrix_set (d, i_step, j, y_0_err[j]);
         }
+=======
+	{
+	  double delta = 1.0 / (x[i_step - k - 1] - x_i);
+	  const double f1 = delta * x_i;
+	  const double f2 = delta * x[i_step - k - 1];
+
+	  for (j = 0; j < dim; j++)
+	    {
+	      const double q_kj = gsl_matrix_get (d, k, j);
+	      gsl_matrix_set (d, k, j, y_0_err[j]);
+	      delta = work[j] - q_kj;
+	      y_0_err[j] = f1 * delta;
+	      work[j] = f2 * delta;
+	      y_0[j] += y_0_err[j];
+	    }
+	}
+
+      for (j = 0; j < dim; j++)
+	{
+	  gsl_matrix_set (d, i_step, j, y_0_err[j]);
+	}
+>>>>>>> config
     }
 }
 
@@ -193,6 +260,7 @@ poly_extrap (gsl_matrix * d,
 
 static int
 bsimp_step_local (void *vstate,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   size_t dim,
                   const double t0,
                   const double h_total,
@@ -203,6 +271,18 @@ bsimp_step_local (void *vstate,
                   const gsl_matrix * dfdy,
                   double y_out[], 
                   const gsl_odeiv_system * sys)
+=======
+		  size_t dim,
+		  const double t0,
+		  const double h_total,
+		  const unsigned int n_step,
+		  const double y[],
+		  const double yp[],
+		  const double dfdt[],
+		  const gsl_matrix * dfdy,
+		  double y_out[],
+		  const gsl_odeiv_system * sys)
+>>>>>>> config
 {
   bsimp_state_t *state = (bsimp_state_t *) vstate;
 
@@ -239,9 +319,15 @@ bsimp_step_local (void *vstate,
   for (i = 0; i < dim; i++)
     {
       for (j = 0; j < dim; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           gsl_matrix_set (a_mat, i, j, -h * gsl_matrix_get (dfdy, i, j));
         }
+=======
+	{
+	  gsl_matrix_set (a_mat, i, j, -h * gsl_matrix_get (dfdy, i, j));
+	}
+>>>>>>> config
       gsl_matrix_set (a_mat, i, i, gsl_matrix_get (a_mat, i, i) + 1.0);
     }
 
@@ -272,7 +358,11 @@ bsimp_step_local (void *vstate,
       sum += fabs(di) / w[i];
     }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (sum > max_sum) 
+=======
+  if (sum > max_sum)
+>>>>>>> config
     {
       return GSL_EFAILED ;
     }
@@ -289,15 +379,22 @@ bsimp_step_local (void *vstate,
   for (n_inter = 1; n_inter < n_step; n_inter++)
     {
       for (i = 0; i < dim; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           rhs_temp[i] = h * y_out[i] - delta[i];
         }
+=======
+	{
+	  rhs_temp[i] = h * y_out[i] - delta[i];
+	}
+>>>>>>> config
 
       gsl_linalg_LU_solve (a_mat, p_vec, &rhs_temp_vec.vector, &delta_temp_vec.vector);
 
       sum = 0.0;
 
       for (i = 0; i < dim; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           delta[i] += 2.0 * delta_temp[i];
           y_temp[i] += delta[i];
@@ -308,15 +405,33 @@ bsimp_step_local (void *vstate,
         {
           return GSL_EFAILED ;
         }
+=======
+	{
+	  delta[i] += 2.0 * delta_temp[i];
+	  y_temp[i] += delta[i];
+	  sum += fabs(delta[i]) / w[i];
+	}
+
+      if (sum > max_sum)
+	{
+	  return GSL_EFAILED ;
+	}
+>>>>>>> config
 
       t += h;
 
       status = GSL_ODEIV_FN_EVAL (sys, t, y_temp, y_out);
 
       if (status)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           return status;
         }
+=======
+	{
+	  return status;
+	}
+>>>>>>> config
     }
 
 
@@ -337,7 +452,11 @@ bsimp_step_local (void *vstate,
       sum += fabs(delta_temp[i]) / w[i];
     }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (sum > max_sum) 
+=======
+  if (sum > max_sum)
+>>>>>>> config
     {
       return GSL_EFAILED ;
     }
@@ -388,6 +507,7 @@ bsimp_alloc (size_t dim)
  */
 static int
 bsimp_apply (void *vstate,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              size_t dim,
              double t,
              double h,
@@ -396,6 +516,16 @@ bsimp_apply (void *vstate,
              const double dydt_in[],
              double dydt_out[], 
              const gsl_odeiv_system * sys)
+=======
+	     size_t dim,
+	     double t,
+	     double h,
+	     double y[],
+	     double yerr[],
+	     const double dydt_in[],
+	     double dydt_out[],
+	     const gsl_odeiv_system * sys)
+>>>>>>> config
 {
   bsimp_state_t *state = (bsimp_state_t *) vstate;
 
@@ -423,7 +553,11 @@ bsimp_apply (void *vstate,
   /* Save inputs */
   DBL_MEMCPY (y_save, y, dim);
   DBL_MEMCPY (yerr_save, yerr, dim);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   /* Evaluate the derivative. */
   if (dydt_in != NULL)
     {
@@ -435,17 +569,28 @@ bsimp_apply (void *vstate,
 
       if (s != GSL_SUCCESS)
 	{
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           return s;
+=======
+	  return s;
+>>>>>>> config
 	}
     }
 
   /* Evaluate the Jacobian for the system. */
   {
     int s = GSL_ODEIV_JA_EVAL (sys, t_local, y, dfdy->data, dfdt);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
     if (s != GSL_SUCCESS)
       {
         return s;
+=======
+
+    if (s != GSL_SUCCESS)
+      {
+	return s;
+>>>>>>> config
       }
   }
 
@@ -460,6 +605,7 @@ bsimp_apply (void *vstate,
       const double x_k = r * r;
 
       int status = bsimp_step_local (state,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                      dim, t_local, h, N,
                                      y_extrap_save, yp,
                                      dfdt, dfdy,
@@ -479,11 +625,36 @@ bsimp_apply (void *vstate,
           break;
         }
       
+=======
+				     dim, t_local, h, N,
+				     y_extrap_save, yp,
+				     dfdt, dfdy,
+				     y_extrap_sequence,
+				     sys);
+
+      if (status == GSL_EFAILED)
+	{
+	  /* If the local step fails, set the error to infinity in
+	     order to force a reduction in the step size */
+
+	  for (i = 0; i < dim; i++)
+	    {
+	      yerr[i] = GSL_POSINF;
+	    }
+
+	  break;
+	}
+
+>>>>>>> config
       else if (status != GSL_SUCCESS)
 	{
 	  return status;
 	}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
       x[k] = x_k;
 
       poly_extrap (d, x, k, x_k, y_extrap_sequence, y, yerr, extrap_work, dim);
@@ -496,11 +667,19 @@ bsimp_apply (void *vstate,
       int s = GSL_ODEIV_FN_EVAL (sys, t + h, y, dydt_out);
 
       if (s != GSL_SUCCESS)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           DBL_MEMCPY (y, y_save, dim);
           DBL_MEMCPY (yerr, yerr_save, dim);
           return s;
         }
+=======
+	{
+	  DBL_MEMCPY (y, y_save, dim);
+	  DBL_MEMCPY (yerr, yerr_save, dim);
+	  return s;
+	}
+>>>>>>> config
     }
 
   return GSL_SUCCESS;
@@ -553,7 +732,11 @@ bsimp_free (void * vstate)
   free (state);
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static const gsl_odeiv_step_type bsimp_type = { 
+=======
+static const gsl_odeiv_step_type bsimp_type = {
+>>>>>>> config
   "bsimp",                      /* name */
   1,                            /* can use dydt_in */
   1,                            /* gives exact dydt_out */

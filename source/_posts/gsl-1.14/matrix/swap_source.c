@@ -1,17 +1,31 @@
 /* matrix/swap_source.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -19,7 +33,11 @@
 
 int
 FUNCTION (gsl_matrix, swap_rows) (TYPE (gsl_matrix) * m,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                  const size_t i, const size_t j)
+=======
+				 const size_t i, const size_t j)
+>>>>>>> config
 {
   const size_t size1 = m->size1;
   const size_t size2 = m->size2;
@@ -38,6 +56,7 @@ FUNCTION (gsl_matrix, swap_rows) (TYPE (gsl_matrix) * m,
     {
       ATOMIC *row1 = m->data + MULTIPLICITY * i * m->tda;
       ATOMIC *row2 = m->data + MULTIPLICITY * j * m->tda;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
       size_t k;
       
@@ -47,6 +66,17 @@ FUNCTION (gsl_matrix, swap_rows) (TYPE (gsl_matrix) * m,
           row1[k] = row2[k] ;
           row2[k] = tmp ;
         }
+=======
+
+      size_t k;
+
+      for (k = 0; k < MULTIPLICITY * size2; k++)
+	{
+	  ATOMIC tmp = row1[k] ;
+	  row1[k] = row2[k] ;
+	  row2[k] = tmp ;
+	}
+>>>>>>> config
     }
 
   return GSL_SUCCESS;
@@ -54,7 +84,11 @@ FUNCTION (gsl_matrix, swap_rows) (TYPE (gsl_matrix) * m,
 
 int
 FUNCTION (gsl_matrix, swap_columns) (TYPE (gsl_matrix) * m,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                      const size_t i, const size_t j)
+=======
+				     const size_t i, const size_t j)
+>>>>>>> config
 {
   const size_t size1 = m->size1;
   const size_t size2 = m->size2;
@@ -73,6 +107,7 @@ FUNCTION (gsl_matrix, swap_columns) (TYPE (gsl_matrix) * m,
     {
       ATOMIC *col1 = m->data + MULTIPLICITY * i;
       ATOMIC *col2 = m->data + MULTIPLICITY * j;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
       size_t p;
       
@@ -88,6 +123,23 @@ FUNCTION (gsl_matrix, swap_columns) (TYPE (gsl_matrix) * m,
               col2[n+k] = tmp ;
             }
         }
+=======
+
+      size_t p;
+
+      for (p = 0; p < size1; p++)
+	{
+	  size_t k;
+	  size_t n = p * MULTIPLICITY * m->tda;
+
+	  for (k = 0; k < MULTIPLICITY; k++)
+	    {
+	      ATOMIC tmp = col1[n+k] ;
+	      col1[n+k] = col2[n+k] ;
+	      col2[n+k] = tmp ;
+	    }
+	}
+>>>>>>> config
     }
 
   return GSL_SUCCESS;
@@ -96,7 +148,11 @@ FUNCTION (gsl_matrix, swap_columns) (TYPE (gsl_matrix) * m,
 
 int
 FUNCTION (gsl_matrix, swap_rowcol) (TYPE (gsl_matrix) * m,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                     const size_t i, const size_t j)
+=======
+				    const size_t i, const size_t j)
+>>>>>>> config
 {
   const size_t size1 = m->size1;
   const size_t size2 = m->size2;
@@ -119,6 +175,7 @@ FUNCTION (gsl_matrix, swap_rowcol) (TYPE (gsl_matrix) * m,
   {
     ATOMIC *row = m->data + MULTIPLICITY * i * m->tda;
     ATOMIC *col = m->data + MULTIPLICITY * j;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
     size_t p;
     
@@ -136,6 +193,25 @@ FUNCTION (gsl_matrix, swap_rowcol) (TYPE (gsl_matrix) * m,
               row[r+k] = tmp ;
             }
         }
+=======
+
+    size_t p;
+
+    for (p = 0; p < size1; p++)
+      {
+	size_t k;
+
+	size_t r = p * MULTIPLICITY;
+	size_t c = p * MULTIPLICITY * m->tda;
+
+	  for (k = 0; k < MULTIPLICITY; k++)
+	    {
+	      ATOMIC tmp = col[c+k] ;
+	      col[c+k] = row[r+k] ;
+	      row[r+k] = tmp ;
+	    }
+	}
+>>>>>>> config
     }
 
   return GSL_SUCCESS;
@@ -156,6 +232,7 @@ FUNCTION (gsl_matrix, transpose) (TYPE (gsl_matrix) * m)
 
   for (i = 0; i < size1; i++)
     {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       for (j = i + 1 ; j < size2 ; j++) 
         {
           for (k = 0; k < MULTIPLICITY; k++)
@@ -169,14 +246,34 @@ FUNCTION (gsl_matrix, transpose) (TYPE (gsl_matrix) * m)
               }
             }
         }
+=======
+      for (j = i + 1 ; j < size2 ; j++)
+	{
+	  for (k = 0; k < MULTIPLICITY; k++)
+	    {
+	      size_t e1 = (i *  m->tda + j) * MULTIPLICITY + k ;
+	      size_t e2 = (j *  m->tda + i) * MULTIPLICITY + k ;
+	      {
+		ATOMIC tmp = m->data[e1] ;
+		m->data[e1] = m->data[e2] ;
+		m->data[e2] = tmp ;
+	      }
+	    }
+	}
+>>>>>>> config
     }
 
   return GSL_SUCCESS;
 }
 
 int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 FUNCTION (gsl_matrix, transpose_memcpy) (TYPE (gsl_matrix) * dest, 
                                          const TYPE (gsl_matrix) * src)
+=======
+FUNCTION (gsl_matrix, transpose_memcpy) (TYPE (gsl_matrix) * dest,
+					 const TYPE (gsl_matrix) * src)
+>>>>>>> config
 {
   const size_t src_size1 = src->size1;
   const size_t src_size2 = src->size2;
@@ -188,12 +285,18 @@ FUNCTION (gsl_matrix, transpose_memcpy) (TYPE (gsl_matrix) * dest,
 
   if (dest_size2 != src_size1 || dest_size1 != src_size2)
     {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       GSL_ERROR ("dimensions of dest matrix must be transpose of src matrix", 
                  GSL_EBADLEN);
+=======
+      GSL_ERROR ("dimensions of dest matrix must be transpose of src matrix",
+		 GSL_EBADLEN);
+>>>>>>> config
     }
 
   for (i = 0; i < dest_size1; i++)
     {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       for (j = 0 ; j < dest_size2; j++) 
         {
           for (k = 0; k < MULTIPLICITY; k++)
@@ -204,6 +307,18 @@ FUNCTION (gsl_matrix, transpose_memcpy) (TYPE (gsl_matrix) * dest,
               dest->data[e1] = src->data[e2] ;
             }
         }
+=======
+      for (j = 0 ; j < dest_size2; j++)
+	{
+	  for (k = 0; k < MULTIPLICITY; k++)
+	    {
+	      size_t e1 = (i *  dest->tda + j) * MULTIPLICITY + k ;
+	      size_t e2 = (j *  src->tda + i) * MULTIPLICITY + k ;
+
+	      dest->data[e1] = src->data[e2] ;
+	    }
+	}
+>>>>>>> config
     }
 
   return GSL_SUCCESS;

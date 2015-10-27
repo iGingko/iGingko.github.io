@@ -242,12 +242,20 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 noinst_LTLIBRARIES = libgslmultimin.la 
+=======
+noinst_LTLIBRARIES = libgslmultimin.la
+>>>>>>> config
 pkginclude_HEADERS = gsl_multimin.h
 INCLUDES = -I$(top_srcdir)
 libgslmultimin_la_SOURCES = fdfminimizer.c steepest_descent.c conjugate_fr.c conjugate_pr.c convergence.c diff.c vector_bfgs.c vector_bfgs2.c fminimizer.c simplex.c simplex2.c
 noinst_HEADERS = directional_minimize.c linear_minimize.c linear_wrapper.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 TESTS = $(check_PROGRAMS) 
+=======
+TESTS = $(check_PROGRAMS)
+>>>>>>> config
 test_SOURCES = test.c test_funcs.c test_funcs.h
 test_LDADD = libgslmultimin.la ../min/libgslmin.la ../poly/libgslpoly.la ../blas/libgslblas.la ../cblas/libgslcblas.la ../linalg/libgsllinalg.la ../permutation/libgslpermutation.la ../matrix/libgslmatrix.la ../vector/libgslvector.la ../block/libgslblock.la ../complex/libgslcomplex.la ../ieee-utils/libgslieeeutils.la ../err/libgslerr.la ../test/libgsltest.la ../sys/libgslsys.la ../utils/libutils.la
 all: all-am
@@ -259,7 +267,11 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__confi
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
 	      ( cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh ) \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	        && { if test -f $@; then exit 0; else break; fi; }; \
+=======
+		&& { if test -f $@; then exit 0; else break; fi; }; \
+>>>>>>> config
 	      exit 1;; \
 	  esac; \
 	done; \
@@ -293,7 +305,11 @@ clean-noinstLTLIBRARIES:
 	  echo "rm -f \"$${dir}/so_locations\""; \
 	  rm -f "$${dir}/so_locations"; \
 	done
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 libgslmultimin.la: $(libgslmultimin_la_OBJECTS) $(libgslmultimin_la_DEPENDENCIES) 
+=======
+libgslmultimin.la: $(libgslmultimin_la_OBJECTS) $(libgslmultimin_la_DEPENDENCIES)
+>>>>>>> config
 	$(LINK)  $(libgslmultimin_la_OBJECTS) $(libgslmultimin_la_LIBADD) $(LIBS)
 
 clean-checkPROGRAMS:
@@ -304,7 +320,11 @@ clean-checkPROGRAMS:
 	list=`for p in $$list; do echo "$$p"; done | sed 's/$(EXEEXT)$$//'`; \
 	echo " rm -f" $$list; \
 	rm -f $$list
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 test$(EXEEXT): $(test_OBJECTS) $(test_DEPENDENCIES) 
+=======
+test$(EXEEXT): $(test_OBJECTS) $(test_DEPENDENCIES)
+>>>>>>> config
 	@rm -f test$(EXEEXT)
 	$(LINK) $(test_OBJECTS) $(test_LDADD) $(LIBS)
 
@@ -672,7 +692,11 @@ uninstall-am: uninstall-pkgincludeHEADERS
 	uninstall-am uninstall-pkgincludeHEADERS
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 #demo_SOURCES = demo.c 
+=======
+#demo_SOURCES = demo.c
+>>>>>>> config
 #demo_LDADD = libgslmultimin.la ../min/libgslmin.la ../blas/libgslblas.la ../cblas/libgslcblas.la ../linalg/libgsllinalg.la ../matrix/libgslmatrix.la ../vector/libgslvector.la ../block/libgslblock.la ../complex/libgslcomplex.la ../ieee-utils/libgslieeeutils.la ../err/libgslerr.la ../test/libgsltest.la ../sys/libgslsys.la ../utils/libutils.la
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.

@@ -1,17 +1,31 @@
 /* complex/math.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Jorma Olavi Tähtinen, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Jorma Olavi Tähtinen, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -283,6 +297,7 @@ gsl_complex_sqrt (gsl_complex a)
       double w;
 
       if (x >= y)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double t = y / x;
           w = sqrt (x) * sqrt (0.5 * (1.0 + sqrt (1.0 + t * t)));
@@ -304,6 +319,29 @@ gsl_complex_sqrt (gsl_complex a)
           double vi = (ai >= 0) ? w : -w;
           GSL_SET_COMPLEX (&z, ai / (2.0 * vi), vi);
         }
+=======
+	{
+	  double t = y / x;
+	  w = sqrt (x) * sqrt (0.5 * (1.0 + sqrt (1.0 + t * t)));
+	}
+      else
+	{
+	  double t = x / y;
+	  w = sqrt (y) * sqrt (0.5 * (t + sqrt (1.0 + t * t)));
+	}
+
+      if (GSL_REAL (a) >= 0.0)
+	{
+	  double ai = GSL_IMAG (a);
+	  GSL_SET_COMPLEX (&z, w, ai / (2.0 * w));
+	}
+      else
+	{
+	  double ai = GSL_IMAG (a);
+	  double vi = (ai >= 0) ? w : -w;
+	  GSL_SET_COMPLEX (&z, ai / (2.0 * vi), vi);
+	}
+>>>>>>> config
     }
 
   return z;
@@ -345,6 +383,7 @@ gsl_complex_pow (gsl_complex a, gsl_complex b)
   if (GSL_REAL (a) == 0 && GSL_IMAG (a) == 0.0)
     {
       if (GSL_REAL (b) == 0 && GSL_IMAG (b) == 0.0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           GSL_SET_COMPLEX (&z, 1.0, 0.0);
         }
@@ -358,6 +397,21 @@ gsl_complex_pow (gsl_complex a, gsl_complex b)
       return a;
     }
   else if (GSL_REAL (b) == -1.0 && GSL_IMAG (b) == 0.0) 
+=======
+	{
+	  GSL_SET_COMPLEX (&z, 1.0, 0.0);
+	}
+      else
+	{
+	  GSL_SET_COMPLEX (&z, 0.0, 0.0);
+	}
+    }
+  else if (GSL_REAL (b) == 1.0 && GSL_IMAG (b) == 0.0)
+    {
+      return a;
+    }
+  else if (GSL_REAL (b) == -1.0 && GSL_IMAG (b) == 0.0)
+>>>>>>> config
     {
       return gsl_complex_inverse (a);
     }
@@ -432,6 +486,7 @@ gsl_complex_sin (gsl_complex a)
 
   gsl_complex z;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (I == 0.0) 
     {
       /* avoid returing negative zero (-0.0) for the imaginary part  */
@@ -439,6 +494,15 @@ gsl_complex_sin (gsl_complex a)
       GSL_SET_COMPLEX (&z, sin (R), 0.0);  
     } 
   else 
+=======
+  if (I == 0.0)
+    {
+      /* avoid returing negative zero (-0.0) for the imaginary part  */
+
+      GSL_SET_COMPLEX (&z, sin (R), 0.0);
+    }
+  else
+>>>>>>> config
     {
       GSL_SET_COMPLEX (&z, sin (R) * cosh (I), cos (R) * sinh (I));
     }
@@ -453,6 +517,7 @@ gsl_complex_cos (gsl_complex a)
 
   gsl_complex z;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (I == 0.0) 
     {
       /* avoid returing negative zero (-0.0) for the imaginary part  */
@@ -460,6 +525,15 @@ gsl_complex_cos (gsl_complex a)
       GSL_SET_COMPLEX (&z, cos (R), 0.0);  
     } 
   else 
+=======
+  if (I == 0.0)
+    {
+      /* avoid returing negative zero (-0.0) for the imaginary part  */
+
+      GSL_SET_COMPLEX (&z, cos (R), 0.0);
+    }
+  else
+>>>>>>> config
     {
       GSL_SET_COMPLEX (&z, cos (R) * cosh (I), sin (R) * sinh (-I));
     }
@@ -544,6 +618,7 @@ gsl_complex_arcsin (gsl_complex a)
       const double A_crossover = 1.5, B_crossover = 0.6417;
 
       if (B <= B_crossover)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           real = asin (B);
         }
@@ -581,6 +656,45 @@ gsl_complex_arcsin (gsl_complex a)
         {
           imag = log (A + sqrt (A * A - 1));
         }
+=======
+	{
+	  real = asin (B);
+	}
+      else
+	{
+	  if (x <= 1)
+	    {
+	      double D = 0.5 * (A + x) * (y2 / (r + x + 1) + (s + (1 - x)));
+	      real = atan (x / sqrt (D));
+	    }
+	  else
+	    {
+	      double Apx = A + x;
+	      double D = 0.5 * (Apx / (r + x + 1) + Apx / (s + (x - 1)));
+	      real = atan (x / (y * sqrt (D)));
+	    }
+	}
+
+      if (A <= A_crossover)
+	{
+	  double Am1;
+
+	  if (x < 1)
+	    {
+	      Am1 = 0.5 * (y2 / (r + (x + 1)) + y2 / (s + (1 - x)));
+	    }
+	  else
+	    {
+	      Am1 = 0.5 * (y2 / (r + (x + 1)) + (s + (x - 1)));
+	    }
+
+	  imag = log1p (Am1 + sqrt (Am1 * (A + 1)));
+	}
+      else
+	{
+	  imag = log (A + sqrt (A * A - 1));
+	}
+>>>>>>> config
 
       GSL_SET_COMPLEX (&z, (R >= 0) ? real : -real, (I >= 0) ? imag : -imag);
     }
@@ -600,6 +714,7 @@ gsl_complex_arcsin_real (double a)
   else
     {
       if (a < 0.0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           GSL_SET_COMPLEX (&z, -M_PI_2, acosh (-a));
         }
@@ -607,6 +722,15 @@ gsl_complex_arcsin_real (double a)
         {
           GSL_SET_COMPLEX (&z, M_PI_2, -acosh (a));
         }
+=======
+	{
+	  GSL_SET_COMPLEX (&z, -M_PI_2, acosh (-a));
+	}
+      else
+	{
+	  GSL_SET_COMPLEX (&z, M_PI_2, -acosh (a));
+	}
+>>>>>>> config
     }
 
   return z;
@@ -635,6 +759,7 @@ gsl_complex_arccos (gsl_complex a)
       const double A_crossover = 1.5, B_crossover = 0.6417;
 
       if (B <= B_crossover)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           real = acos (B);
         }
@@ -672,6 +797,45 @@ gsl_complex_arccos (gsl_complex a)
         {
           imag = log (A + sqrt (A * A - 1));
         }
+=======
+	{
+	  real = acos (B);
+	}
+      else
+	{
+	  if (x <= 1)
+	    {
+	      double D = 0.5 * (A + x) * (y2 / (r + x + 1) + (s + (1 - x)));
+	      real = atan (sqrt (D) / x);
+	    }
+	  else
+	    {
+	      double Apx = A + x;
+	      double D = 0.5 * (Apx / (r + x + 1) + Apx / (s + (x - 1)));
+	      real = atan ((y * sqrt (D)) / x);
+	    }
+	}
+
+      if (A <= A_crossover)
+	{
+	  double Am1;
+
+	  if (x < 1)
+	    {
+	      Am1 = 0.5 * (y2 / (r + (x + 1)) + y2 / (s + (1 - x)));
+	    }
+	  else
+	    {
+	      Am1 = 0.5 * (y2 / (r + (x + 1)) + (s + (x - 1)));
+	    }
+
+	  imag = log1p (Am1 + sqrt (Am1 * (A + 1)));
+	}
+      else
+	{
+	  imag = log (A + sqrt (A * A - 1));
+	}
+>>>>>>> config
 
       GSL_SET_COMPLEX (&z, (R >= 0) ? real : M_PI - real, (I >= 0) ? -imag : imag);
     }
@@ -691,6 +855,7 @@ gsl_complex_arccos_real (double a)
   else
     {
       if (a < 0.0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           GSL_SET_COMPLEX (&z, M_PI, -acosh (-a));
         }
@@ -698,6 +863,15 @@ gsl_complex_arccos_real (double a)
         {
           GSL_SET_COMPLEX (&z, 0, acosh (a));
         }
+=======
+	{
+	  GSL_SET_COMPLEX (&z, M_PI, -acosh (-a));
+	}
+      else
+	{
+	  GSL_SET_COMPLEX (&z, 0, acosh (a));
+	}
+>>>>>>> config
     }
 
   return z;
@@ -716,8 +890,13 @@ gsl_complex_arctan (gsl_complex a)
   else
     {
       /* FIXME: This is a naive implementation which does not fully
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          take into account cancellation errors, overflow, underflow
          etc.  It would benefit from the Hull et al treatment. */
+=======
+	 take into account cancellation errors, overflow, underflow
+	 etc.  It would benefit from the Hull et al treatment. */
+>>>>>>> config
 
       double r = hypot (R, I);
 
@@ -726,6 +905,7 @@ gsl_complex_arctan (gsl_complex a)
       double u = 2 * I / (1 + r * r);
 
       /* FIXME: the following cross-over should be optimized but 0.1
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          seems to work ok */
 
       if (fabs (u) < 0.1)
@@ -758,6 +938,40 @@ gsl_complex_arctan (gsl_complex a)
         {
           GSL_SET_COMPLEX (&z, 0.5 * atan2 (2 * R, ((1 + r) * (1 - r))), imag);
         }
+=======
+	 seems to work ok */
+
+      if (fabs (u) < 0.1)
+	{
+	  imag = 0.25 * (log1p (u) - log1p (-u));
+	}
+      else
+	{
+	  double A = hypot (R, I + 1);
+	  double B = hypot (R, I - 1);
+	  imag = 0.5 * log (A / B);
+	}
+
+      if (R == 0)
+	{
+	  if (I > 1)
+	    {
+	      GSL_SET_COMPLEX (&z, M_PI_2, imag);
+	    }
+	  else if (I < -1)
+	    {
+	      GSL_SET_COMPLEX (&z, -M_PI_2, imag);
+	    }
+	  else
+	    {
+	      GSL_SET_COMPLEX (&z, 0, imag);
+	    };
+	}
+      else
+	{
+	  GSL_SET_COMPLEX (&z, 0.5 * atan2 (2 * R, ((1 + r) * (1 - r))), imag);
+	}
+>>>>>>> config
     }
 
   return z;
@@ -782,6 +996,7 @@ gsl_complex_arcsec_real (double a)
   else
     {
       if (a >= 0.0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           GSL_SET_COMPLEX (&z, 0, acosh (1 / a));
         }
@@ -789,6 +1004,15 @@ gsl_complex_arcsec_real (double a)
         {
           GSL_SET_COMPLEX (&z, M_PI, -acosh (-1 / a));
         }
+=======
+	{
+	  GSL_SET_COMPLEX (&z, 0, acosh (1 / a));
+	}
+      else
+	{
+	  GSL_SET_COMPLEX (&z, M_PI, -acosh (-1 / a));
+	}
+>>>>>>> config
     }
 
   return z;
@@ -813,6 +1037,7 @@ gsl_complex_arccsc_real (double a)
   else
     {
       if (a >= 0.0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           GSL_SET_COMPLEX (&z, M_PI_2, -acosh (1 / a));
         }
@@ -820,6 +1045,15 @@ gsl_complex_arccsc_real (double a)
         {
           GSL_SET_COMPLEX (&z, -M_PI_2, acosh (-1 / a));
         }
+=======
+	{
+	  GSL_SET_COMPLEX (&z, M_PI_2, -acosh (1 / a));
+	}
+      else
+	{
+	  GSL_SET_COMPLEX (&z, -M_PI_2, acosh (-1 / a));
+	}
+>>>>>>> config
     }
 
   return z;
@@ -874,10 +1108,17 @@ gsl_complex_tanh (gsl_complex a)
 
   gsl_complex z;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (fabs(R) < 1.0) 
     {
       double D = pow (cos (I), 2.0) + pow (sinh (R), 2.0);
       
+=======
+  if (fabs(R) < 1.0)
+    {
+      double D = pow (cos (I), 2.0) + pow (sinh (R), 2.0);
+
+>>>>>>> config
       GSL_SET_COMPLEX (&z, sinh (R) * cosh (R) / D, 0.5 * sin (2 * I) / D);
     }
   else
@@ -945,6 +1186,7 @@ gsl_complex_arccosh_real (double a)
   else
     {
       if (a >= -1.0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           GSL_SET_COMPLEX (&z, 0, acos (a));
         }
@@ -952,6 +1194,15 @@ gsl_complex_arccosh_real (double a)
         {
           GSL_SET_COMPLEX (&z, acosh (-a), M_PI);
         }
+=======
+	{
+	  GSL_SET_COMPLEX (&z, 0, acos (a));
+	}
+      else
+	{
+	  GSL_SET_COMPLEX (&z, acosh (-a), M_PI);
+	}
+>>>>>>> config
     }
 
   return z;

@@ -1,17 +1,31 @@
 /* eigen/gsl_eigen.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2006, 2007 Gerard Jungman, Brian Gough, Patrick Alken
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2006, 2007 Gerard Jungman, Brian Gough, Patrick Alken
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -67,7 +81,11 @@ typedef struct {
 gsl_eigen_herm_workspace * gsl_eigen_herm_alloc (const size_t n);
 void gsl_eigen_herm_free (gsl_eigen_herm_workspace * w);
 int gsl_eigen_herm (gsl_matrix_complex * A, gsl_vector * eval,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                          gsl_eigen_herm_workspace * w);
+=======
+			 gsl_eigen_herm_workspace * w);
+>>>>>>> config
 
 typedef struct {
   size_t size;
@@ -80,9 +98,15 @@ typedef struct {
 
 gsl_eigen_hermv_workspace * gsl_eigen_hermv_alloc (const size_t n);
 void gsl_eigen_hermv_free (gsl_eigen_hermv_workspace * w);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int gsl_eigen_hermv (gsl_matrix_complex * A, gsl_vector * eval, 
                            gsl_matrix_complex * evec,
                            gsl_eigen_hermv_workspace * w);
+=======
+int gsl_eigen_hermv (gsl_matrix_complex * A, gsl_vector * eval,
+			   gsl_matrix_complex * evec,
+			   gsl_eigen_hermv_workspace * w);
+>>>>>>> config
 
 typedef struct {
   size_t size;           /* matrix size */
@@ -99,12 +123,21 @@ typedef struct {
 gsl_eigen_francis_workspace * gsl_eigen_francis_alloc (void);
 void gsl_eigen_francis_free (gsl_eigen_francis_workspace * w);
 void gsl_eigen_francis_T (const int compute_t,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                           gsl_eigen_francis_workspace * w);
 int gsl_eigen_francis (gsl_matrix * H, gsl_vector_complex * eval,
                        gsl_eigen_francis_workspace * w);
 int gsl_eigen_francis_Z (gsl_matrix * H, gsl_vector_complex * eval,
                          gsl_matrix * Z,
                          gsl_eigen_francis_workspace * w);
+=======
+			  gsl_eigen_francis_workspace * w);
+int gsl_eigen_francis (gsl_matrix * H, gsl_vector_complex * eval,
+		       gsl_eigen_francis_workspace * w);
+int gsl_eigen_francis_Z (gsl_matrix * H, gsl_vector_complex * eval,
+			 gsl_matrix * Z,
+			 gsl_eigen_francis_workspace * w);
+>>>>>>> config
 
 typedef struct {
   size_t size;                 /* size of matrices */
@@ -120,11 +153,19 @@ typedef struct {
 gsl_eigen_nonsymm_workspace * gsl_eigen_nonsymm_alloc (const size_t n);
 void gsl_eigen_nonsymm_free (gsl_eigen_nonsymm_workspace * w);
 void gsl_eigen_nonsymm_params (const int compute_t, const int balance,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                gsl_eigen_nonsymm_workspace *w);
 int gsl_eigen_nonsymm (gsl_matrix * A, gsl_vector_complex * eval,
                        gsl_eigen_nonsymm_workspace * w);
 int gsl_eigen_nonsymm_Z (gsl_matrix * A, gsl_vector_complex * eval,
                          gsl_matrix * Z, gsl_eigen_nonsymm_workspace * w);
+=======
+			       gsl_eigen_nonsymm_workspace *w);
+int gsl_eigen_nonsymm (gsl_matrix * A, gsl_vector_complex * eval,
+		       gsl_eigen_nonsymm_workspace * w);
+int gsl_eigen_nonsymm_Z (gsl_matrix * A, gsl_vector_complex * eval,
+			 gsl_matrix * Z, gsl_eigen_nonsymm_workspace * w);
+>>>>>>> config
 
 typedef struct {
   size_t size;                 /* size of matrices */
@@ -140,11 +181,19 @@ typedef struct {
 gsl_eigen_nonsymmv_workspace * gsl_eigen_nonsymmv_alloc (const size_t n);
 void gsl_eigen_nonsymmv_free (gsl_eigen_nonsymmv_workspace * w);
 int gsl_eigen_nonsymmv (gsl_matrix * A, gsl_vector_complex * eval,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         gsl_matrix_complex * evec,
                         gsl_eigen_nonsymmv_workspace * w);
 int gsl_eigen_nonsymmv_Z (gsl_matrix * A, gsl_vector_complex * eval,
                           gsl_matrix_complex * evec, gsl_matrix * Z,
                           gsl_eigen_nonsymmv_workspace * w);
+=======
+			gsl_matrix_complex * evec,
+			gsl_eigen_nonsymmv_workspace * w);
+int gsl_eigen_nonsymmv_Z (gsl_matrix * A, gsl_vector_complex * eval,
+			  gsl_matrix_complex * evec, gsl_matrix * Z,
+			  gsl_eigen_nonsymmv_workspace * w);
+>>>>>>> config
 
 typedef struct {
   size_t size;            /* size of matrices */
@@ -154,7 +203,11 @@ typedef struct {
 gsl_eigen_gensymm_workspace * gsl_eigen_gensymm_alloc (const size_t n);
 void gsl_eigen_gensymm_free (gsl_eigen_gensymm_workspace * w);
 int gsl_eigen_gensymm (gsl_matrix * A, gsl_matrix * B,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                        gsl_vector * eval, gsl_eigen_gensymm_workspace * w);
+=======
+		       gsl_vector * eval, gsl_eigen_gensymm_workspace * w);
+>>>>>>> config
 int gsl_eigen_gensymm_standardize (gsl_matrix * A, const gsl_matrix * B);
 
 typedef struct {
@@ -165,8 +218,13 @@ typedef struct {
 gsl_eigen_gensymmv_workspace * gsl_eigen_gensymmv_alloc (const size_t n);
 void gsl_eigen_gensymmv_free (gsl_eigen_gensymmv_workspace * w);
 int gsl_eigen_gensymmv (gsl_matrix * A, gsl_matrix * B,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         gsl_vector * eval, gsl_matrix * evec,
                         gsl_eigen_gensymmv_workspace * w);
+=======
+			gsl_vector * eval, gsl_matrix * evec,
+			gsl_eigen_gensymmv_workspace * w);
+>>>>>>> config
 
 typedef struct {
   size_t size;            /* size of matrices */
@@ -176,9 +234,15 @@ typedef struct {
 gsl_eigen_genherm_workspace * gsl_eigen_genherm_alloc (const size_t n);
 void gsl_eigen_genherm_free (gsl_eigen_genherm_workspace * w);
 int gsl_eigen_genherm (gsl_matrix_complex * A, gsl_matrix_complex * B,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                        gsl_vector * eval, gsl_eigen_genherm_workspace * w);
 int gsl_eigen_genherm_standardize (gsl_matrix_complex * A,
                                    const gsl_matrix_complex * B);
+=======
+		       gsl_vector * eval, gsl_eigen_genherm_workspace * w);
+int gsl_eigen_genherm_standardize (gsl_matrix_complex * A,
+				   const gsl_matrix_complex * B);
+>>>>>>> config
 
 typedef struct {
   size_t size;            /* size of matrices */
@@ -188,8 +252,13 @@ typedef struct {
 gsl_eigen_genhermv_workspace * gsl_eigen_genhermv_alloc (const size_t n);
 void gsl_eigen_genhermv_free (gsl_eigen_genhermv_workspace * w);
 int gsl_eigen_genhermv (gsl_matrix_complex * A, gsl_matrix_complex * B,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         gsl_vector * eval, gsl_matrix_complex * evec,
                         gsl_eigen_genhermv_workspace * w);
+=======
+			gsl_vector * eval, gsl_matrix_complex * evec,
+			gsl_eigen_genhermv_workspace * w);
+>>>>>>> config
 
 typedef struct {
   size_t size;            /* size of matrices */
@@ -221,6 +290,7 @@ typedef struct {
 gsl_eigen_gen_workspace * gsl_eigen_gen_alloc (const size_t n);
 void gsl_eigen_gen_free (gsl_eigen_gen_workspace * w);
 void gsl_eigen_gen_params (const int compute_s, const int compute_t,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                            const int balance, gsl_eigen_gen_workspace * w);
 int gsl_eigen_gen (gsl_matrix * A, gsl_matrix * B,
                    gsl_vector_complex * alpha, gsl_vector * beta,
@@ -229,6 +299,16 @@ int gsl_eigen_gen_QZ (gsl_matrix * A, gsl_matrix * B,
                       gsl_vector_complex * alpha, gsl_vector * beta,
                       gsl_matrix * Q, gsl_matrix * Z,
                       gsl_eigen_gen_workspace * w);
+=======
+			   const int balance, gsl_eigen_gen_workspace * w);
+int gsl_eigen_gen (gsl_matrix * A, gsl_matrix * B,
+		   gsl_vector_complex * alpha, gsl_vector * beta,
+		   gsl_eigen_gen_workspace * w);
+int gsl_eigen_gen_QZ (gsl_matrix * A, gsl_matrix * B,
+		      gsl_vector_complex * alpha, gsl_vector * beta,
+		      gsl_matrix * Q, gsl_matrix * Z,
+		      gsl_eigen_gen_workspace * w);
+>>>>>>> config
 
 typedef struct {
   size_t size;            /* size of matrices */
@@ -249,6 +329,7 @@ typedef struct {
 gsl_eigen_genv_workspace * gsl_eigen_genv_alloc (const size_t n);
 void gsl_eigen_genv_free (gsl_eigen_genv_workspace * w);
 int gsl_eigen_genv (gsl_matrix * A, gsl_matrix * B,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                     gsl_vector_complex * alpha, gsl_vector * beta,
                     gsl_matrix_complex * evec,
                     gsl_eigen_genv_workspace * w);
@@ -257,6 +338,16 @@ int gsl_eigen_genv_QZ (gsl_matrix * A, gsl_matrix * B,
                        gsl_matrix_complex * evec,
                        gsl_matrix * Q, gsl_matrix * Z,
                        gsl_eigen_genv_workspace * w);
+=======
+		    gsl_vector_complex * alpha, gsl_vector * beta,
+		    gsl_matrix_complex * evec,
+		    gsl_eigen_genv_workspace * w);
+int gsl_eigen_genv_QZ (gsl_matrix * A, gsl_matrix * B,
+		       gsl_vector_complex * alpha, gsl_vector * beta,
+		       gsl_matrix_complex * evec,
+		       gsl_matrix * Q, gsl_matrix * Z,
+		       gsl_eigen_genv_workspace * w);
+>>>>>>> config
 
 
 
@@ -276,6 +367,7 @@ gsl_eigen_sort_t;
  */
 
 int gsl_eigen_symmv_sort(gsl_vector * eval, gsl_matrix * evec,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                          gsl_eigen_sort_t sort_type);
 
 int gsl_eigen_hermv_sort(gsl_vector * eval, gsl_matrix_complex * evec,
@@ -294,10 +386,31 @@ int gsl_eigen_genhermv_sort (gsl_vector * eval, gsl_matrix_complex * evec,
 int gsl_eigen_genv_sort (gsl_vector_complex * alpha, gsl_vector * beta,
                          gsl_matrix_complex * evec,
                          gsl_eigen_sort_t sort_type);
+=======
+			 gsl_eigen_sort_t sort_type);
+
+int gsl_eigen_hermv_sort(gsl_vector * eval, gsl_matrix_complex * evec,
+			 gsl_eigen_sort_t sort_type);
+
+int gsl_eigen_nonsymmv_sort(gsl_vector_complex * eval,
+			    gsl_matrix_complex * evec,
+			    gsl_eigen_sort_t sort_type);
+
+int gsl_eigen_gensymmv_sort (gsl_vector * eval, gsl_matrix * evec,
+			     gsl_eigen_sort_t sort_type);
+
+int gsl_eigen_genhermv_sort (gsl_vector * eval, gsl_matrix_complex * evec,
+			     gsl_eigen_sort_t sort_type);
+
+int gsl_eigen_genv_sort (gsl_vector_complex * alpha, gsl_vector * beta,
+			 gsl_matrix_complex * evec,
+			 gsl_eigen_sort_t sort_type);
+>>>>>>> config
 
 /* Prototypes for the schur module */
 
 int gsl_schur_gen_eigvals(const gsl_matrix *A, const gsl_matrix *B,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                           double *wr1, double *wr2, double *wi,
                           double *scale1, double *scale2);
 
@@ -311,6 +424,21 @@ int gsl_schur_solve_equation_z(double ca, const gsl_matrix *A,
                                const gsl_vector_complex *b,
                                gsl_vector_complex *x, double *s,
                                double *xnorm, double smin);
+=======
+			  double *wr1, double *wr2, double *wi,
+			  double *scale1, double *scale2);
+
+int gsl_schur_solve_equation(double ca, const gsl_matrix *A, double z,
+			     double d1, double d2, const gsl_vector *b,
+			     gsl_vector *x, double *s, double *xnorm,
+			     double smin);
+
+int gsl_schur_solve_equation_z(double ca, const gsl_matrix *A,
+			       gsl_complex *z, double d1, double d2,
+			       const gsl_vector_complex *b,
+			       gsl_vector_complex *x, double *s,
+			       double *xnorm, double smin);
+>>>>>>> config
 
 
 /* The following functions are obsolete: */
@@ -319,6 +447,7 @@ int gsl_schur_solve_equation_z(double ca, const gsl_matrix *A,
  *
  * The data in the matrix input is destroyed.
  *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * exceptions: 
  */
 int
@@ -327,16 +456,35 @@ gsl_eigen_jacobi(gsl_matrix * matrix,
                       gsl_matrix * evec,
                       unsigned int max_rot, 
                       unsigned int * nrot);
+=======
+ * exceptions:
+ */
+int
+gsl_eigen_jacobi(gsl_matrix * matrix,
+		      gsl_vector * eval,
+		      gsl_matrix * evec,
+		      unsigned int max_rot,
+		      unsigned int * nrot);
+>>>>>>> config
 
 
 /* Invert by Jacobi Method
  *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * exceptions: 
  */
 int
 gsl_eigen_invert_jacobi(const gsl_matrix * matrix,
                              gsl_matrix * ainv,
                              unsigned int max_rot);
+=======
+ * exceptions:
+ */
+int
+gsl_eigen_invert_jacobi(const gsl_matrix * matrix,
+			     gsl_matrix * ainv,
+			     unsigned int max_rot);
+>>>>>>> config
 
 
 

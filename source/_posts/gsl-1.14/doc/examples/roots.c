@@ -25,12 +25,21 @@ main (void)
   s = gsl_root_fsolver_alloc (T);
   gsl_root_fsolver_set (s, &F, x_lo, x_hi);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   printf ("using %s method\n", 
           gsl_root_fsolver_name (s));
 
   printf ("%5s [%9s, %9s] %9s %10s %9s\n",
           "iter", "lower", "upper", "root", 
           "err", "err(est)");
+=======
+  printf ("using %s method\n",
+	  gsl_root_fsolver_name (s));
+
+  printf ("%5s [%9s, %9s] %9s %10s %9s\n",
+	  "iter", "lower", "upper", "root",
+	  "err", "err(est)");
+>>>>>>> config
 
   do
     {
@@ -40,6 +49,7 @@ main (void)
       x_lo = gsl_root_fsolver_x_lower (s);
       x_hi = gsl_root_fsolver_x_upper (s);
       status = gsl_root_test_interval (x_lo, x_hi,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                        0, 0.001);
 
       if (status == GSL_SUCCESS)
@@ -49,6 +59,17 @@ main (void)
               iter, x_lo, x_hi,
               r, r - r_expected, 
               x_hi - x_lo);
+=======
+				       0, 0.001);
+
+      if (status == GSL_SUCCESS)
+	printf ("Converged:\n");
+
+      printf ("%5d [%.7f, %.7f] %.7f %+.7f %.7f\n",
+	      iter, x_lo, x_hi,
+	      r, r - r_expected,
+	      x_hi - x_lo);
+>>>>>>> config
     }
   while (status == GSL_CONTINUE && iter < max_iter);
 

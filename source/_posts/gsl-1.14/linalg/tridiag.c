@@ -1,17 +1,31 @@
 /* linalg/tridiag.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2002, 2004, 2007 Gerard Jungman, Brian Gough, David Necas
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2002, 2004, 2007 Gerard Jungman, Brian Gough, David Necas
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -34,7 +48,11 @@
  *           0           0    offdiag[2]   .....
  */
 static
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int 
+=======
+int
+>>>>>>> config
 solve_tridiag(
   const double diag[], size_t d_stride,
   const double offdiag[], size_t o_stride,
@@ -57,14 +75,21 @@ solve_tridiag(
       size_t i, j;
 
       /* Cholesky decomposition
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          A = L.D.L^t
          lower_diag(L) = gamma
          diag(D) = alpha
+=======
+	 A = L.D.L^t
+	 lower_diag(L) = gamma
+	 diag(D) = alpha
+>>>>>>> config
        */
       alpha[0] = diag[0];
       gamma[0] = offdiag[0] / alpha[0];
 
       if (alpha[0] == 0) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         status = GSL_EZERODIV;
       }
 
@@ -81,10 +106,29 @@ solve_tridiag(
         {
           alpha[N - 1] = diag[d_stride * (N - 1)] - offdiag[o_stride*(N - 2)] * gamma[N - 2];
         }
+=======
+	status = GSL_EZERODIV;
+      }
+
+      for (i = 1; i < N - 1; i++)
+	{
+	  alpha[i] = diag[d_stride * i] - offdiag[o_stride*(i - 1)] * gamma[i - 1];
+	  gamma[i] = offdiag[o_stride * i] / alpha[i];
+	  if (alpha[i] == 0) {
+	    status = GSL_EZERODIV;
+	  }
+	}
+
+      if (N > 1)
+	{
+	  alpha[N - 1] = diag[d_stride * (N - 1)] - offdiag[o_stride*(N - 2)] * gamma[N - 2];
+	}
+>>>>>>> config
 
       /* update RHS */
       z[0] = b[0];
       for (i = 1; i < N; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           z[i] = b[b_stride * i] - gamma[i - 1] * z[i - 1];
         }
@@ -92,16 +136,34 @@ solve_tridiag(
         {
           c[i] = z[i] / alpha[i];
         }
+=======
+	{
+	  z[i] = b[b_stride * i] - gamma[i - 1] * z[i - 1];
+	}
+      for (i = 0; i < N; i++)
+	{
+	  c[i] = z[i] / alpha[i];
+	}
+>>>>>>> config
 
       /* backsubstitution */
       x[x_stride * (N - 1)] = c[N - 1];
       if (N >= 2)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           for (i = N - 2, j = 0; j <= N - 2; j++, i--)
             {
               x[x_stride * i] = c[i] - gamma[i] * x[x_stride * (i + 1)];
             }
         }
+=======
+	{
+	  for (i = N - 2, j = 0; j <= N - 2; j++, i--)
+	    {
+	      x[x_stride * i] = c[i] - gamma[i] * x[x_stride * (i + 1)];
+	    }
+	}
+>>>>>>> config
     }
 
   if (z != 0)
@@ -128,7 +190,11 @@ solve_tridiag(
  *             0             0  belowdiag[2]   .....
  */
 static
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int 
+=======
+int
+>>>>>>> config
 solve_tridiag_nonsym(
   const double diag[], size_t d_stride,
   const double abovediag[], size_t a_stride,
@@ -150,6 +216,7 @@ solve_tridiag_nonsym(
       size_t i, j;
 
       /* Bidiagonalization (eliminating belowdiag)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          & rhs update
          diag' = alpha
          rhs' = z
@@ -170,16 +237,47 @@ solve_tridiag_nonsym(
             status = GSL_EZERODIV;
           }
         }
+=======
+	 & rhs update
+	 diag' = alpha
+	 rhs' = z
+       */
+      alpha[0] = diag[0];
+      z[0] = rhs[0];
+
+      if (alpha[0] == 0) {
+	status = GSL_EZERODIV;
+      }
+
+      for (i = 1; i < N; i++)
+	{
+	  const double t = belowdiag[b_stride*(i - 1)]/alpha[i-1];
+	  alpha[i] = diag[d_stride*i] - t*abovediag[a_stride*(i - 1)];
+	  z[i] = rhs[r_stride*i] - t*z[i-1];
+	  if (alpha[i] == 0) {
+	    status = GSL_EZERODIV;
+	  }
+	}
+>>>>>>> config
 
       /* backsubstitution */
       x[x_stride * (N - 1)] = z[N - 1]/alpha[N - 1];
       if (N >= 2)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           for (i = N - 2, j = 0; j <= N - 2; j++, i--)
             {
               x[x_stride * i] = (z[i] - abovediag[a_stride*i] * x[x_stride * (i + 1)])/alpha[i];
             }
         }
+=======
+	{
+	  for (i = N - 2, j = 0; j <= N - 2; j++, i--)
+	    {
+	      x[x_stride * i] = (z[i] - abovediag[a_stride*i] * x[x_stride * (i + 1)])/alpha[i];
+	    }
+	}
+>>>>>>> config
     }
 
   if (z != 0)
@@ -205,7 +303,11 @@ solve_tridiag_nonsym(
  *
  */
 static
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int 
+=======
+int
+>>>>>>> config
 solve_cyc_tridiag(
   const double diag[], size_t d_stride,
   const double offdiag[], size_t o_stride,
@@ -231,17 +333,26 @@ solve_cyc_tridiag(
 
       /* factor */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       if (N == 1) 
         {
           x[0] = b[0] / diag[0];
           return GSL_SUCCESS;
         }
+=======
+      if (N == 1)
+	{
+	  x[0] = b[0] / diag[0];
+	  return GSL_SUCCESS;
+	}
+>>>>>>> config
 
       alpha[0] = diag[0];
       gamma[0] = offdiag[0] / alpha[0];
       delta[0] = offdiag[o_stride * (N-1)] / alpha[0];
 
       if (alpha[0] == 0) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         status = GSL_EZERODIV;
       }
 
@@ -259,6 +370,25 @@ solve_cyc_tridiag(
         {
           sum += alpha[i] * delta[i] * delta[i];
         }
+=======
+	status = GSL_EZERODIV;
+      }
+
+      for (i = 1; i < N - 2; i++)
+	{
+	  alpha[i] = diag[d_stride * i] - offdiag[o_stride * (i-1)] * gamma[i - 1];
+	  gamma[i] = offdiag[o_stride * i] / alpha[i];
+	  delta[i] = -delta[i - 1] * offdiag[o_stride * (i-1)] / alpha[i];
+	  if (alpha[i] == 0) {
+	    status = GSL_EZERODIV;
+	  }
+	}
+
+      for (i = 0; i < N - 2; i++)
+	{
+	  sum += alpha[i] * delta[i] * delta[i];
+	}
+>>>>>>> config
 
       alpha[N - 2] = diag[d_stride * (N - 2)] - offdiag[o_stride * (N - 3)] * gamma[N - 3];
 
@@ -269,6 +399,7 @@ solve_cyc_tridiag(
       /* update */
       z[0] = b[0];
       for (i = 1; i < N - 1; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           z[i] = b[b_stride * i] - z[i - 1] * gamma[i - 1];
         }
@@ -282,17 +413,41 @@ solve_cyc_tridiag(
         {
           c[i] = z[i] / alpha[i];
         }
+=======
+	{
+	  z[i] = b[b_stride * i] - z[i - 1] * gamma[i - 1];
+	}
+      sum = 0.0;
+      for (i = 0; i < N - 2; i++)
+	{
+	  sum += delta[i] * z[i];
+	}
+      z[N - 1] = b[b_stride * (N - 1)] - sum - gamma[N - 2] * z[N - 2];
+      for (i = 0; i < N; i++)
+	{
+	  c[i] = z[i] / alpha[i];
+	}
+>>>>>>> config
 
       /* backsubstitution */
       x[x_stride * (N - 1)] = c[N - 1];
       x[x_stride * (N - 2)] = c[N - 2] - gamma[N - 2] * x[x_stride * (N - 1)];
       if (N >= 3)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           for (i = N - 3, j = 0; j <= N - 3; j++, i--)
             {
               x[x_stride * i] = c[i] - gamma[i] * x[x_stride * (i + 1)] - delta[i] * x[x_stride * (N - 1)];
             }
         }
+=======
+	{
+	  for (i = N - 3, j = 0; j <= N - 3; j++, i--)
+	    {
+	      x[x_stride * i] = c[i] - gamma[i] * x[x_stride * (i + 1)] - delta[i] * x[x_stride * (N - 1)];
+	    }
+	}
+>>>>>>> config
     }
 
   if (z != 0)
@@ -347,23 +502,38 @@ int solve_cyc_tridiag_nonsym(
       double beta;
 
       /* Bidiagonalization (eliminating belowdiag)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          & rhs update
          diag' = alpha
          rhs' = zb
          rhs' for Aq=u is zu
+=======
+	 & rhs update
+	 diag' = alpha
+	 rhs' = zb
+	 rhs' for Aq=u is zu
+>>>>>>> config
        */
       zb[0] = rhs[0];
       if (diag[0] != 0) beta = -diag[0]; else beta = 1;
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         const double q = 1 - abovediag[0]*belowdiag[0]/(diag[0]*diag[d_stride]);
         if (fabs(q/beta) > 0.5 && fabs(q/beta) < 2) {
           beta *= (fabs(q/beta) < 1) ? 0.5 : 2;
         }
+=======
+	const double q = 1 - abovediag[0]*belowdiag[0]/(diag[0]*diag[d_stride]);
+	if (fabs(q/beta) > 0.5 && fabs(q/beta) < 2) {
+	  beta *= (fabs(q/beta) < 1) ? 0.5 : 2;
+	}
+>>>>>>> config
       }
       zu[0] = beta;
       alpha[0] = diag[0] - beta;
 
       if (alpha[0] == 0) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         status = GSL_EZERODIV;
       }
 
@@ -394,10 +564,43 @@ int solve_cyc_tridiag_nonsym(
         if (alpha[i] == 0) {
           status = GSL_EZERODIV;
         }
+=======
+	status = GSL_EZERODIV;
+      }
+
+      {
+	size_t i;
+	for (i = 1; i+1 < N; i++)
+	{
+	  const double t = belowdiag[b_stride*(i - 1)]/alpha[i-1];
+	  alpha[i] = diag[d_stride*i] - t*abovediag[a_stride*(i - 1)];
+	  zb[i] = rhs[r_stride*i] - t*zb[i-1];
+	  zu[i] = -t*zu[i-1];
+	  /* FIXME!!! */
+	  if (alpha[i] == 0) {
+	    status = GSL_EZERODIV;
+	  }
+	}
+      }
+
+      {
+	const size_t i = N-1;
+	const double t = belowdiag[b_stride*(i - 1)]/alpha[i-1];
+	alpha[i] = diag[d_stride*i]
+		   - abovediag[a_stride*i]*belowdiag[b_stride*i]/beta
+		   - t*abovediag[a_stride*(i - 1)];
+	zb[i] = rhs[r_stride*i] - t*zb[i-1];
+	zu[i] = abovediag[a_stride*i] - t*zu[i-1];
+	/* FIXME!!! */
+	if (alpha[i] == 0) {
+	  status = GSL_EZERODIV;
+	}
+>>>>>>> config
       }
 
       /* backsubstitution */
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         size_t i, j;
         w[N-1] = zu[N-1]/alpha[N-1];
         x[x_stride*(N-1)] = zb[N-1]/alpha[N-1];
@@ -422,6 +625,32 @@ int solve_cyc_tridiag_nonsym(
           for (i = 0; i < N; i++)
             x[i*x_stride] -= vx/(1 + vw)*w[i];
         }
+=======
+	size_t i, j;
+	w[N-1] = zu[N-1]/alpha[N-1];
+	x[x_stride*(N-1)] = zb[N-1]/alpha[N-1];
+	for (i = N - 2, j = 0; j <= N - 2; j++, i--)
+	  {
+	    w[i] = (zu[i] - abovediag[a_stride*i] * w[i+1])/alpha[i];
+	    x[i*x_stride] = (zb[i] - abovediag[a_stride*i] * x[x_stride*(i + 1)])/alpha[i];
+	  }
+      }
+
+      /* Sherman-Morrison */
+      {
+	const double vw = w[0] + belowdiag[b_stride*(N - 1)]/beta * w[N-1];
+	const double vx = x[0] + belowdiag[b_stride*(N - 1)]/beta * x[x_stride*(N - 1)];
+	/* FIXME!!! */
+	if (vw + 1 == 0) {
+	  status = GSL_EZERODIV;
+	}
+
+	{
+	  size_t i;
+	  for (i = 0; i < N; i++)
+	    x[i*x_stride] -= vx/(1 + vw)*w[i];
+	}
+>>>>>>> config
       }
     }
 
@@ -460,6 +689,7 @@ gsl_linalg_solve_symm_tridiag(
     {
       GSL_ERROR ("size of solution must match rhs", GSL_EBADLEN);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else 
     {
       return solve_tridiag(diag->data, diag->stride,
@@ -467,6 +697,15 @@ gsl_linalg_solve_symm_tridiag(
                            rhs->data, rhs->stride,
                            solution->data, solution->stride,
                            diag->size);
+=======
+  else
+    {
+      return solve_tridiag(diag->data, diag->stride,
+			   offdiag->data, offdiag->stride,
+			   rhs->data, rhs->stride,
+			   solution->data, solution->stride,
+			   diag->size);
+>>>>>>> config
 
     }
 }
@@ -495,6 +734,7 @@ gsl_linalg_solve_tridiag(
     {
       GSL_ERROR ("size of solution must match rhs", GSL_EBADLEN);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else 
     {
       return solve_tridiag_nonsym(diag->data, diag->stride,
@@ -503,6 +743,16 @@ gsl_linalg_solve_tridiag(
                                   rhs->data, rhs->stride,
                                   solution->data, solution->stride,
                                   diag->size);
+=======
+  else
+    {
+      return solve_tridiag_nonsym(diag->data, diag->stride,
+				  abovediag->data, abovediag->stride,
+				  belowdiag->data, belowdiag->stride,
+				  rhs->data, rhs->stride,
+				  solution->data, solution->stride,
+				  diag->size);
+>>>>>>> config
     }
 }
 
@@ -530,6 +780,7 @@ gsl_linalg_solve_symm_cyc_tridiag(
     {
       GSL_ERROR ("size of cyclic system must be 3 or more", GSL_EBADLEN);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else 
     {
       return solve_cyc_tridiag(diag->data, diag->stride,
@@ -537,6 +788,15 @@ gsl_linalg_solve_symm_cyc_tridiag(
                                rhs->data, rhs->stride,
                                solution->data, solution->stride,
                                diag->size);
+=======
+  else
+    {
+      return solve_cyc_tridiag(diag->data, diag->stride,
+			       offdiag->data, offdiag->stride,
+			       rhs->data, rhs->stride,
+			       solution->data, solution->stride,
+			       diag->size);
+>>>>>>> config
     }
 }
 
@@ -568,6 +828,7 @@ gsl_linalg_solve_cyc_tridiag(
     {
       GSL_ERROR ("size of cyclic system must be 3 or more", GSL_EBADLEN);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else 
     {
       return solve_cyc_tridiag_nonsym(diag->data, diag->stride,
@@ -576,5 +837,15 @@ gsl_linalg_solve_cyc_tridiag(
                                       rhs->data, rhs->stride,
                                       solution->data, solution->stride,
                                       diag->size);
+=======
+  else
+    {
+      return solve_cyc_tridiag_nonsym(diag->data, diag->stride,
+				      abovediag->data, abovediag->stride,
+				      belowdiag->data, belowdiag->stride,
+				      rhs->data, rhs->stride,
+				      solution->data, solution->stride,
+				      diag->size);
+>>>>>>> config
     }
 }

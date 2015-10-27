@@ -1,17 +1,31 @@
 /* statistics/covar_source.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Jim Davies, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Jim Davies, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -19,6 +33,7 @@
 
 static double
 FUNCTION(compute,covariance) (const BASE data1[], const size_t stride1,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                               const BASE data2[], const size_t stride2,
                               const size_t n, 
                               const double mean1, const double mean2);
@@ -28,6 +43,17 @@ FUNCTION(compute,covariance) (const BASE data1[], const size_t stride1,
                               const BASE data2[], const size_t stride2,
                               const size_t n, 
                               const double mean1, const double mean2)
+=======
+			      const BASE data2[], const size_t stride2,
+			      const size_t n,
+			      const double mean1, const double mean2);
+
+static double
+FUNCTION(compute,covariance) (const BASE data1[], const size_t stride1,
+			      const BASE data2[], const size_t stride2,
+			      const size_t n,
+			      const double mean1, const double mean2)
+>>>>>>> config
 {
   /* takes a dataset and finds the covariance */
 
@@ -46,6 +72,7 @@ FUNCTION(compute,covariance) (const BASE data1[], const size_t stride1,
   return covariance ;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 double 
 FUNCTION(gsl_stats,covariance_m) (const BASE data1[], const size_t stride1, 
                                   const BASE data2[], const size_t stride2, 
@@ -64,14 +91,41 @@ double
 FUNCTION(gsl_stats,covariance) (const BASE data1[], const size_t stride1,
                                 const BASE data2[], const size_t stride2,
                                 const size_t n)
+=======
+double
+FUNCTION(gsl_stats,covariance_m) (const BASE data1[], const size_t stride1,
+				  const BASE data2[], const size_t stride2,
+				  const size_t n,
+				  const double mean1, const double mean2)
+{
+  const double covariance = FUNCTION(compute,covariance) (data1, stride1,
+							  data2, stride2,
+							  n,
+							  mean1, mean2);
+
+  return covariance * ((double)n / (double)(n - 1));
+}
+
+double
+FUNCTION(gsl_stats,covariance) (const BASE data1[], const size_t stride1,
+				const BASE data2[], const size_t stride2,
+				const size_t n)
+>>>>>>> config
 {
   const double mean1 = FUNCTION(gsl_stats,mean) (data1, stride1, n);
   const double mean2 = FUNCTION(gsl_stats,mean) (data2, stride2, n);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   return FUNCTION(gsl_stats,covariance_m)(data1, stride1, 
                                           data2, stride2, 
                                           n, 
                                           mean1, mean2);
+=======
+  return FUNCTION(gsl_stats,covariance_m)(data1, stride1,
+					  data2, stride2,
+					  n,
+					  mean1, mean2);
+>>>>>>> config
 }
 
 /*
@@ -95,8 +149,13 @@ S_n = S_{n-1} + ((n-1)/n) * (x_n - mu_x_{n-1}) * (y_n - mu_y_{n-1})
 
 double
 FUNCTION(gsl_stats,correlation) (const BASE data1[], const size_t stride1,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                  const BASE data2[], const size_t stride2,
                                  const size_t n)
+=======
+				 const BASE data2[], const size_t stride2,
+				 const size_t n)
+>>>>>>> config
 {
   size_t i;
   long double sum_xsq = 0.0;

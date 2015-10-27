@@ -1,17 +1,31 @@
 /* specfunc/exp.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -51,7 +65,11 @@ exprel_n_CF(const double N, const double x, gsl_sf_result * result)
 
   double An = b1*Anm1 + a1*Anm2;   /* A1 */
   double Bn = b1*Bnm1 + a1*Bnm2;   /* B1 */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   /* One explicit step, before we get to the main pattern. */
   n++;
   Anm2 = Anm1;
@@ -88,7 +106,11 @@ exprel_n_CF(const double N, const double x, gsl_sf_result * result)
     old_fn = fn;
     fn = An/Bn;
     del = old_fn/fn;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     if(fabs(del - 1.0) < 2.0*GSL_DBL_EPSILON) break;
   }
 
@@ -147,7 +169,11 @@ int gsl_sf_exp_mult_e(const double x, const double y, gsl_sf_result * result)
     return GSL_SUCCESS;
   }
   else if(   ( x < 0.5*GSL_LOG_DBL_MAX   &&   x > 0.5*GSL_LOG_DBL_MIN)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           && (ay < 0.8*GSL_SQRT_DBL_MAX  &&  ay > 1.2*GSL_SQRT_DBL_MIN)
+=======
+	  && (ay < 0.8*GSL_SQRT_DBL_MAX  &&  ay > 1.2*GSL_SQRT_DBL_MIN)
+>>>>>>> config
     ) {
     const double ex = exp(x);
     result->val = y * ex;
@@ -191,7 +217,11 @@ int gsl_sf_exp_mult_e10_e(const double x, const double y, gsl_sf_result_e10 * re
     return GSL_SUCCESS;
   }
   else if(   ( x < 0.5*GSL_LOG_DBL_MAX   &&   x > 0.5*GSL_LOG_DBL_MIN)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           && (ay < 0.8*GSL_SQRT_DBL_MAX  &&  ay > 1.2*GSL_SQRT_DBL_MIN)
+=======
+	  && (ay < 0.8*GSL_SQRT_DBL_MAX  &&  ay > 1.2*GSL_SQRT_DBL_MIN)
+>>>>>>> config
     ) {
     const double ex = exp(x);
     result->val = y * ex;
@@ -227,8 +257,13 @@ int gsl_sf_exp_mult_e10_e(const double x, const double y, gsl_sf_result_e10 * re
 
 
 int gsl_sf_exp_mult_err_e(const double x, const double dx,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                              const double y, const double dy,
                              gsl_sf_result * result)
+=======
+			     const double y, const double dy,
+			     gsl_sf_result * result)
+>>>>>>> config
 {
   const double ay  = fabs(y);
 
@@ -238,7 +273,11 @@ int gsl_sf_exp_mult_err_e(const double x, const double dx,
     return GSL_SUCCESS;
   }
   else if(   ( x < 0.5*GSL_LOG_DBL_MAX   &&   x > 0.5*GSL_LOG_DBL_MIN)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           && (ay < 0.8*GSL_SQRT_DBL_MAX  &&  ay > 1.2*GSL_SQRT_DBL_MIN)
+=======
+	  && (ay < 0.8*GSL_SQRT_DBL_MAX  &&  ay > 1.2*GSL_SQRT_DBL_MIN)
+>>>>>>> config
     ) {
     double ex = exp(x);
     result->val  = y * ex;
@@ -275,8 +314,13 @@ int gsl_sf_exp_mult_err_e(const double x, const double dx,
 
 
 int gsl_sf_exp_mult_err_e10_e(const double x, const double dx,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                              const double y, const double dy,
                              gsl_sf_result_e10 * result)
+=======
+			     const double y, const double dy,
+			     gsl_sf_result_e10 * result)
+>>>>>>> config
 {
   const double ay  = fabs(y);
 
@@ -287,7 +331,11 @@ int gsl_sf_exp_mult_err_e10_e(const double x, const double dx,
     return GSL_SUCCESS;
   }
   else if(   ( x < 0.5*GSL_LOG_DBL_MAX   &&   x > 0.5*GSL_LOG_DBL_MIN)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           && (ay < 0.8*GSL_SQRT_DBL_MAX  &&  ay > 1.2*GSL_SQRT_DBL_MIN)
+=======
+	  && (ay < 0.8*GSL_SQRT_DBL_MAX  &&  ay > 1.2*GSL_SQRT_DBL_MIN)
+>>>>>>> config
     ) {
     const double ex = exp(x);
     result->val  = y * ex;
@@ -341,7 +389,11 @@ int gsl_sf_expm1_e(const double x, gsl_sf_result * result)
     result->val = x * (1.0 + 0.5*x*(1.0 + x/3.0*(1.0 + 0.25*x*(1.0 + 0.2*x))));
     result->err = 2.0 * GSL_DBL_EPSILON * fabs(result->val);
     return GSL_SUCCESS;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   } 
+=======
+  }
+>>>>>>> config
   else if(x < GSL_LOG_DBL_MAX) {
     result->val = exp(x) - 1.0;
     result->err = 2.0 * GSL_DBL_EPSILON * fabs(result->val);
@@ -371,7 +423,11 @@ int gsl_sf_exprel_e(const double x, gsl_sf_result * result)
     result->val = (1.0 + 0.5*x*(1.0 + x/3.0*(1.0 + 0.25*x*(1.0 + 0.2*x))));
     result->err = 2.0 * GSL_DBL_EPSILON * fabs(result->val);
     return GSL_SUCCESS;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   } 
+=======
+  }
+>>>>>>> config
   else if(x < GSL_LOG_DBL_MAX) {
     result->val = (exp(x) - 1.0)/x;
     result->err = 2.0 * GSL_DBL_EPSILON * fabs(result->val);
@@ -401,7 +457,11 @@ int gsl_sf_exprel_2_e(double x, gsl_sf_result * result)
     result->val = (1.0 + 1.0/3.0*x*(1.0 + 0.25*x*(1.0 + 0.2*x*(1.0 + 1.0/6.0*x))));
     result->err = 2.0 * GSL_DBL_EPSILON * fabs(result->val);
     return GSL_SUCCESS;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   } 
+=======
+  }
+>>>>>>> config
   else if(x < GSL_LOG_DBL_MAX) {
     result->val = 2.0*(exp(x) - 1.0 - x)/(x*x);
     result->err = 2.0 * GSL_DBL_EPSILON * fabs(result->val);
@@ -478,6 +538,7 @@ gsl_sf_exprel_n_e(const int N, const double x, gsl_sf_result * result)
       lnpre_err  = GSL_DBL_EPSILON * (fabs(x) + fabs(lnf_N.val) + fabs(N*ln_x));
       lnpre_err += lnf_N.err;
       if(lnpre_val < GSL_LOG_DBL_MAX - 5.0) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         int stat_eG;
         gsl_sf_result bigG_ratio;
         gsl_sf_result pre;
@@ -506,6 +567,36 @@ gsl_sf_exprel_n_e(const int N, const double x, gsl_sf_result * result)
       }
       else {
         OVERFLOW_ERROR(result);
+=======
+	int stat_eG;
+	gsl_sf_result bigG_ratio;
+	gsl_sf_result pre;
+	int stat_ex = gsl_sf_exp_err_e(lnpre_val, lnpre_err, &pre);
+	double ln_bigG_ratio_pre = -x + (N-1)*ln_x - lg_N;
+	double bigGsum = 1.0;
+	double term = 1.0;
+	int k;
+	for(k=1; k<N; k++) {
+	  term *= (N-k)/x;
+	  bigGsum += term;
+	}
+	stat_eG = gsl_sf_exp_mult_e(ln_bigG_ratio_pre, bigGsum, &bigG_ratio);
+	if(stat_eG == GSL_SUCCESS) {
+	  result->val  = pre.val * (1.0 - bigG_ratio.val);
+	  result->err  = pre.val * (2.0*GSL_DBL_EPSILON + bigG_ratio.err);
+	  result->err += pre.err * fabs(1.0 - bigG_ratio.val);
+	  result->err += 2.0 * GSL_DBL_EPSILON * fabs(result->val);
+	  return stat_ex;
+	}
+	else {
+	  result->val = 0.0;
+	  result->err = 0.0;
+	  return stat_eG;
+	}
+      }
+      else {
+	OVERFLOW_ERROR(result);
+>>>>>>> config
       }
     }
     else if(x > -10.0*N) {
@@ -520,8 +611,13 @@ gsl_sf_exprel_n_e(const int N, const double x, gsl_sf_result * result)
       double term = 1.0;
       int k;
       for(k=1; k<N; k++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         term *= (N-k)/x;
         sum  += term;
+=======
+	term *= (N-k)/x;
+	sum  += term;
+>>>>>>> config
       }
       result->val = -N/x * sum;
       result->err = 2.0 * GSL_DBL_EPSILON * fabs(result->val);

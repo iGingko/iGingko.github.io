@@ -1,17 +1,31 @@
 /* specfunc/bessel_temme.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -57,10 +71,17 @@ static cheb_series g1_cs = {
 };
 
 /* nu = (x+1)/4, -1<x<1,  1/2 (1/Gamma[1-nu]+1/Gamma[1+nu]) */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static double g2_dat[15] = 
 {
   1.882645524949671835019616975350,
  -0.077490658396167518329547945212,  
+=======
+static double g2_dat[15] =
+{
+  1.882645524949671835019616975350,
+ -0.077490658396167518329547945212,
+>>>>>>> config
  -0.018256714847324929419579340950,
   0.0006338030209074895795923971731,
   0.0000762290543508729021194461175,
@@ -103,11 +124,19 @@ gsl_sf_temme_gamma(const double nu, double * g_1pnu, double * g_1mnu, double * g
 
 int
 gsl_sf_bessel_Y_temme(const double nu, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       gsl_sf_result * Ynu,
                       gsl_sf_result * Ynup1)
 {
   const int max_iter = 15000;
   
+=======
+		      gsl_sf_result * Ynu,
+		      gsl_sf_result * Ynup1)
+{
+  const int max_iter = 15000;
+
+>>>>>>> config
   const double half_x = 0.5 * x;
   const double ln_half_x = log(half_x);
   const double half_x_nu = exp(nu*ln_half_x);
@@ -118,7 +147,11 @@ gsl_sf_bessel_Y_temme(const double nu, const double x,
   const double sinhrat = (fabs(sigma) < GSL_DBL_EPSILON ? 1.0 : sinh(sigma)/sigma);
   const double sinhalf = (fabs(alpha) < GSL_DBL_EPSILON ? 1.0 : sin(alpha)/alpha);
   const double sin_sqr = nu*M_PI*M_PI*0.5 * sinhalf*sinhalf;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   double sum0, sum1;
   double fk, pk, qk, hk, ck;
   int k = 0;
@@ -146,7 +179,11 @@ gsl_sf_bessel_Y_temme(const double nu, const double x,
     pk /= (k - nu);
     qk /= (k + nu);
     gk  = fk + sin_sqr * qk;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     hk  = -k*gk + pk; 
+=======
+    hk  = -k*gk + pk;
+>>>>>>> config
     del0 = ck * gk;
     del1 = ck * hk;
     sum0 += del0;
@@ -166,7 +203,11 @@ gsl_sf_bessel_Y_temme(const double nu, const double x,
 
 int
 gsl_sf_bessel_K_scaled_temme(const double nu, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                              double * K_nu, double * K_nup1, double * Kp_nu)
+=======
+			     double * K_nu, double * K_nup1, double * Kp_nu)
+>>>>>>> config
 {
   const int max_iter = 15000;
 
@@ -209,7 +250,11 @@ gsl_sf_bessel_K_scaled_temme(const double nu, const double x,
     sum1 += del1;
     if(fabs(del0) < 0.5*fabs(sum0)*GSL_DBL_EPSILON) break;
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   *K_nu   = sum0 * ex;
   *K_nup1 = sum1 * 2.0/x * ex;
   *Kp_nu  = - *K_nup1 + nu/x * *K_nu;

@@ -18,8 +18,13 @@
  */
 /***************************************************************
  *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * File gsl_histogram2d_copy.c: 
  * Routine to copy a 2D histogram. 
+=======
+ * File gsl_histogram2d_copy.c:
+ * Routine to copy a 2D histogram.
+>>>>>>> config
  * Need GSL library and header.
  *
  * Author: S. Piccardi
@@ -44,9 +49,15 @@ gsl_histogram2d_memcpy (gsl_histogram2d * dest, const gsl_histogram2d * src)
   if (dest->nx != src->nx || dest->ny != src->ny)
     {
       GSL_ERROR ("histograms have different sizes, cannot copy",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_EINVAL);
     }
   
+=======
+		 GSL_EINVAL);
+    }
+
+>>>>>>> config
   for (i = 0; i <= nx; i++)
     {
       dest->xrange[i] = src->xrange[i];
@@ -84,7 +95,11 @@ gsl_histogram2d_clone (const gsl_histogram2d * src)
   if (h == 0)
     {
       GSL_ERROR_VAL ("failed to allocate space for histogram struct",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_ENOMEM, 0);
+=======
+			GSL_ENOMEM, 0);
+>>>>>>> config
     }
 
   for (i = 0; i < nx * ny; i++)

@@ -1,17 +1,31 @@
 /* fft/c_radix2.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -19,7 +33,11 @@
 
 int
 FUNCTION(gsl_fft_complex,radix2_forward) (TYPE(gsl_complex_packed_array) data,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                           const size_t stride, const size_t n)
+=======
+					  const size_t stride, const size_t n)
+>>>>>>> config
 {
   gsl_fft_direction sign = gsl_fft_forward;
   int status = FUNCTION(gsl_fft_complex,radix2_transform) (data, stride, n, sign);
@@ -28,7 +46,11 @@ FUNCTION(gsl_fft_complex,radix2_forward) (TYPE(gsl_complex_packed_array) data,
 
 int
 FUNCTION(gsl_fft_complex,radix2_backward) (TYPE(gsl_complex_packed_array) data,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                            const size_t stride, const size_t n)
+=======
+					   const size_t stride, const size_t n)
+>>>>>>> config
 {
   gsl_fft_direction sign = gsl_fft_backward;
   int status = FUNCTION(gsl_fft_complex,radix2_transform) (data, stride, n, sign);
@@ -37,7 +59,11 @@ FUNCTION(gsl_fft_complex,radix2_backward) (TYPE(gsl_complex_packed_array) data,
 
 int
 FUNCTION(gsl_fft_complex,radix2_inverse) (TYPE(gsl_complex_packed_array) data,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                           const size_t stride, const size_t n)
+=======
+					  const size_t stride, const size_t n)
+>>>>>>> config
 {
   gsl_fft_direction sign = gsl_fft_backward;
   int status = FUNCTION(gsl_fft_complex,radix2_transform) (data, stride, n, sign);
@@ -54,8 +80,13 @@ FUNCTION(gsl_fft_complex,radix2_inverse) (TYPE(gsl_complex_packed_array) data,
     size_t i;
     for (i = 0; i < n; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         REAL(data,stride,i) *= norm;
         IMAG(data,stride,i) *= norm;
+=======
+	REAL(data,stride,i) *= norm;
+	IMAG(data,stride,i) *= norm;
+>>>>>>> config
       }
   }
 
@@ -66,6 +97,7 @@ FUNCTION(gsl_fft_complex,radix2_inverse) (TYPE(gsl_complex_packed_array) data,
 
 int
 FUNCTION(gsl_fft_complex,radix2_transform) (TYPE(gsl_complex_packed_array) data,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                             const size_t stride, 
                                             const size_t n,
                                             const gsl_fft_direction sign)
@@ -73,6 +105,15 @@ FUNCTION(gsl_fft_complex,radix2_transform) (TYPE(gsl_complex_packed_array) data,
   int result ;
   size_t dual;
   size_t bit; 
+=======
+					    const size_t stride,
+					    const size_t n,
+					    const gsl_fft_direction sign)
+{
+  int result ;
+  size_t dual;
+  size_t bit;
+>>>>>>> config
   size_t logn = 0;
   int status;
 
@@ -85,17 +126,29 @@ FUNCTION(gsl_fft_complex,radix2_transform) (TYPE(gsl_complex_packed_array) data,
 
   result = fft_binary_logn(n) ;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (result == -1) 
     {
       GSL_ERROR ("n is not a power of 2", GSL_EINVAL);
     } 
   else 
+=======
+  if (result == -1)
+    {
+      GSL_ERROR ("n is not a power of 2", GSL_EINVAL);
+    }
+  else
+>>>>>>> config
     {
       logn = result ;
     }
 
   /* bit reverse the ordering of input data for decimation in time algorithm */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   status = FUNCTION(fft_complex,bitreverse_order) (data, stride, n, logn) ;
 
   /* apply fft recursion */
@@ -118,6 +171,7 @@ FUNCTION(gsl_fft_complex,radix2_transform) (TYPE(gsl_complex_packed_array) data,
       /* a = 0 */
 
       for (b = 0; b < n; b += 2 * dual)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           const size_t i = b ;
           const size_t j = b + dual;
@@ -165,6 +219,55 @@ FUNCTION(gsl_fft_complex,radix2_transform) (TYPE(gsl_complex_packed_array) data,
               IMAG(data,stride,i) += wd_imag;
             }
         }
+=======
+	{
+	  const size_t i = b ;
+	  const size_t j = b + dual;
+
+	  const ATOMIC z1_real = REAL(data,stride,j) ;
+	  const ATOMIC z1_imag = IMAG(data,stride,j) ;
+
+	  const ATOMIC wd_real = z1_real ;
+	  const ATOMIC wd_imag = z1_imag ;
+
+	  REAL(data,stride,j) = REAL(data,stride,i) - wd_real;
+	  IMAG(data,stride,j) = IMAG(data,stride,i) - wd_imag;
+	  REAL(data,stride,i) += wd_real;
+	  IMAG(data,stride,i) += wd_imag;
+	}
+
+      /* a = 1 .. (dual-1) */
+
+      for (a = 1; a < dual; a++)
+	{
+
+	  /* trignometric recurrence for w-> exp(i theta) w */
+
+	  {
+	    const ATOMIC tmp_real = w_real - s * w_imag - s2 * w_real;
+	    const ATOMIC tmp_imag = w_imag + s * w_real - s2 * w_imag;
+	    w_real = tmp_real;
+	    w_imag = tmp_imag;
+	  }
+
+	  for (b = 0; b < n; b += 2 * dual)
+	    {
+	      const size_t i = b + a;
+	      const size_t j = b + a + dual;
+
+	      const ATOMIC z1_real = REAL(data,stride,j) ;
+	      const ATOMIC z1_imag = IMAG(data,stride,j) ;
+
+	      const ATOMIC wd_real = w_real * z1_real - w_imag * z1_imag;
+	      const ATOMIC wd_imag = w_real * z1_imag + w_imag * z1_real;
+
+	      REAL(data,stride,j) = REAL(data,stride,i) - wd_real;
+	      IMAG(data,stride,j) = IMAG(data,stride,i) - wd_imag;
+	      REAL(data,stride,i) += wd_real;
+	      IMAG(data,stride,i) += wd_imag;
+	    }
+	}
+>>>>>>> config
       dual *= 2;
     }
 
@@ -174,9 +277,15 @@ FUNCTION(gsl_fft_complex,radix2_transform) (TYPE(gsl_complex_packed_array) data,
 
 
 int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 FUNCTION(gsl_fft_complex,radix2_dif_forward) (TYPE(gsl_complex_packed_array) data, 
                                               const size_t stride, 
                                               const size_t n)
+=======
+FUNCTION(gsl_fft_complex,radix2_dif_forward) (TYPE(gsl_complex_packed_array) data,
+					      const size_t stride,
+					      const size_t n)
+>>>>>>> config
 {
   gsl_fft_direction sign = gsl_fft_forward;
   int status = FUNCTION(gsl_fft_complex,radix2_dif_transform) (data, stride, n, sign);
@@ -185,8 +294,13 @@ FUNCTION(gsl_fft_complex,radix2_dif_forward) (TYPE(gsl_complex_packed_array) dat
 
 int
 FUNCTION(gsl_fft_complex,radix2_dif_backward) (TYPE(gsl_complex_packed_array) data,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                                const size_t stride, 
                                                const size_t n)
+=======
+					       const size_t stride,
+					       const size_t n)
+>>>>>>> config
 {
   gsl_fft_direction sign = gsl_fft_backward;
   int status = FUNCTION(gsl_fft_complex,radix2_dif_transform) (data, stride, n, sign);
@@ -194,9 +308,15 @@ FUNCTION(gsl_fft_complex,radix2_dif_backward) (TYPE(gsl_complex_packed_array) da
 }
 
 int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 FUNCTION(gsl_fft_complex,radix2_dif_inverse) (TYPE(gsl_complex_packed_array) data, 
                                               const size_t stride, 
                                               const size_t n)
+=======
+FUNCTION(gsl_fft_complex,radix2_dif_inverse) (TYPE(gsl_complex_packed_array) data,
+					      const size_t stride,
+					      const size_t n)
+>>>>>>> config
 {
   gsl_fft_direction sign = gsl_fft_backward;
   int status = FUNCTION(gsl_fft_complex,radix2_dif_transform) (data, stride, n, sign);
@@ -213,8 +333,13 @@ FUNCTION(gsl_fft_complex,radix2_dif_inverse) (TYPE(gsl_complex_packed_array) dat
     size_t i;
     for (i = 0; i < n; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         REAL(data,stride,i) *= norm;
         IMAG(data,stride,i) *= norm;
+=======
+	REAL(data,stride,i) *= norm;
+	IMAG(data,stride,i) *= norm;
+>>>>>>> config
       }
   }
 
@@ -222,6 +347,7 @@ FUNCTION(gsl_fft_complex,radix2_dif_inverse) (TYPE(gsl_complex_packed_array) dat
 }
 
 int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 FUNCTION(gsl_fft_complex,radix2_dif_transform) (TYPE(gsl_complex_packed_array) data, 
                                       const size_t stride, 
                                       const size_t n,
@@ -230,6 +356,16 @@ FUNCTION(gsl_fft_complex,radix2_dif_transform) (TYPE(gsl_complex_packed_array) d
   int result ;
   size_t dual;
   size_t bit; 
+=======
+FUNCTION(gsl_fft_complex,radix2_dif_transform) (TYPE(gsl_complex_packed_array) data,
+				      const size_t stride,
+				      const size_t n,
+				      const gsl_fft_direction sign)
+{
+  int result ;
+  size_t dual;
+  size_t bit;
+>>>>>>> config
   size_t logn = 0;
   int status;
 
@@ -242,11 +378,19 @@ FUNCTION(gsl_fft_complex,radix2_dif_transform) (TYPE(gsl_complex_packed_array) d
 
   result = fft_binary_logn(n) ;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (result == -1) 
     {
       GSL_ERROR ("n is not a power of 2", GSL_EINVAL);
     } 
   else 
+=======
+  if (result == -1)
+    {
+      GSL_ERROR ("n is not a power of 2", GSL_EINVAL);
+    }
+  else
+>>>>>>> config
     {
       logn = result ;
     }
@@ -269,6 +413,7 @@ FUNCTION(gsl_fft_complex,radix2_dif_transform) (TYPE(gsl_complex_packed_array) d
       size_t a, b;
 
       for (b = 0; b < dual; b++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           for (a = 0; a < n; a+= 2 * dual)
             {
@@ -295,17 +440,50 @@ FUNCTION(gsl_fft_complex,radix2_dif_transform) (TYPE(gsl_complex_packed_array) d
             w_imag = tmp_imag;
           }
         }
+=======
+	{
+	  for (a = 0; a < n; a+= 2 * dual)
+	    {
+	      const size_t i = b + a;
+	      const size_t j = b + a + dual;
+
+	      const ATOMIC t1_real = REAL(data,stride,i) + REAL(data,stride,j);
+	      const ATOMIC t1_imag = IMAG(data,stride,i) + IMAG(data,stride,j);
+	      const ATOMIC t2_real = REAL(data,stride,i) - REAL(data,stride,j);
+	      const ATOMIC t2_imag = IMAG(data,stride,i) - IMAG(data,stride,j);
+
+	      REAL(data,stride,i) = t1_real;
+	      IMAG(data,stride,i) = t1_imag;
+	      REAL(data,stride,j) = w_real*t2_real - w_imag * t2_imag;
+	      IMAG(data,stride,j) = w_real*t2_imag + w_imag * t2_real;
+	    }
+
+	  /* trignometric recurrence for w-> exp(i theta) w */
+
+	  {
+	    const ATOMIC tmp_real = w_real - s * w_imag - s2 * w_real;
+	    const ATOMIC tmp_imag = w_imag + s * w_real - s2 * w_imag;
+	    w_real = tmp_real;
+	    w_imag = tmp_imag;
+	  }
+	}
+>>>>>>> config
       dual /= 2;
     }
 
   /* bit reverse the ordering of output data for decimation in
      frequency algorithm */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   status = FUNCTION(fft_complex,bitreverse_order)(data, stride, n, logn) ;
 
   return 0;
 
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
 
@@ -314,3 +492,5 @@ FUNCTION(gsl_fft_complex,radix2_dif_transform) (TYPE(gsl_complex_packed_array) d
 
 
 
+=======
+>>>>>>> config

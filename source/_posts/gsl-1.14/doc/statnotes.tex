@@ -19,7 +19,11 @@ W       &=& \sum_i w_i
 %
 \noindent
 we want an unbiased estimator of the variance of the underlying
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 distribution $\sigma^2$.  
+=======
+distribution $\sigma^2$.
+>>>>>>> config
 
 We start with the standard definition of the sample variance $V$ and
 compute the bias correction factor.
@@ -27,6 +31,7 @@ compute the bias correction factor.
 \begin{eqnarray}
 V &=& {1\over W} \sum_i w_i (x_i - \bar{x})^2 \\
   &=& {1\over W} \sum_i w_i \left(x_i - {1\over W}\sum_j w_j x_j\right)^2 \\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   &=& {1\over W} \sum_i w_i \left(x_i^2 - {2 \over W} x_i \sum_j w_j x_j 
        + {1 \over W^2} (\sum_j w_j x_j)^2\right) \\
   &=& {1\over W} \left( \sum_i w_i x_i^2 
@@ -35,6 +40,16 @@ V &=& {1\over W} \sum_i w_i (x_i - \bar{x})^2 \\
   &=& {1\over W} \left( \sum_i w_i x_i^2 
        - {1 \over W} \sum_i w_i x_i \sum_j w_j x_j\right)\\
   &=& {1\over W} \left( \sum_i w_i x_i^2 
+=======
+  &=& {1\over W} \sum_i w_i \left(x_i^2 - {2 \over W} x_i \sum_j w_j x_j
+       + {1 \over W^2} (\sum_j w_j x_j)^2\right) \\
+  &=& {1\over W} \left( \sum_i w_i x_i^2
+       - {2 \over W} \sum_i w_i x_i \sum_j w_j x_j
+       + {1 \over W} (\sum_j w_j x_j)^2\right)\\
+  &=& {1\over W} \left( \sum_i w_i x_i^2
+       - {1 \over W} \sum_i w_i x_i \sum_j w_j x_j\right)\\
+  &=& {1\over W} \left( \sum_i w_i x_i^2
+>>>>>>> config
        - {1 \over W} \sum_{ij} w_i w_j x_i x_j\right)
 \end{eqnarray}
 %
@@ -72,7 +87,11 @@ Note the following properties:
 \item
 The formula is invariant under rescaling of the weights.
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 \item 
+=======
+\item
+>>>>>>> config
 For equal weights $w_i = w$ the factor reduces to $N/(N^2-N) =
 1/(N-1)$, which is the familiar factor of the unbiased estimator of
 the variance for data without weights.
@@ -90,4 +109,7 @@ will come from the gaussian fluctuations represented by the
 $w_i$). The appropriate expectation in this case is $\expectation{x_i
   x_j} = \mu^2 + \delta_{ij} (\sigma^2 + 1/w_i)$
 \end{document}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

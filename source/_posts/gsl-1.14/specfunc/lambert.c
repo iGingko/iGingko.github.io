@@ -1,5 +1,9 @@
 /* specfunc/lambert.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * Copyright (C) 2007 Brian Gough
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001 Gerard Jungman
  *
@@ -150,7 +154,11 @@ gsl_sf_lambert_W0_e(double x, gsl_sf_result * result)
        * converges nicely on this branch
        */
       const double p = sqrt(2.0 * M_E * q);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       w = -1.0 + p*(1.0 + p*(-1.0/3.0 + p*11.0/72.0)); 
+=======
+      w = -1.0 + p*(1.0 + p*(-1.0/3.0 + p*11.0/72.0));
+>>>>>>> config
     }
     else {
       /* obtain initial approximation from rough asymptotic */
@@ -182,7 +190,11 @@ gsl_sf_lambert_Wm1_e(double x, gsl_sf_result * result)
 
     if (q < 0.0) {
       /* As in the W0 branch above, return some reasonable answer anyway. */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       result->val = -1.0; 
+=======
+      result->val = -1.0;
+>>>>>>> config
       result->err =  sqrt(-q);
       return GSL_EDOM;
     }
@@ -198,10 +210,17 @@ gsl_sf_lambert_Wm1_e(double x, gsl_sf_result * result)
       const double r = -sqrt(q);
       w = series_eval(r);
       if(q < 3.0e-3) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         /* this approximation is good enough */
         result->val = w;
         result->err = 5.0 * GSL_DBL_EPSILON * fabs(w);
         return GSL_SUCCESS;
+=======
+	/* this approximation is good enough */
+	result->val = w;
+	result->err = 5.0 * GSL_DBL_EPSILON * fabs(w);
+	return GSL_SUCCESS;
+>>>>>>> config
       }
     }
     else {

@@ -1,17 +1,31 @@
 /* specfunc/bessel_I1.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -39,6 +53,7 @@
 /* chebyshev expansions
 
  series for bi1        on the interval  0.          to  9.00000d+00
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                         with weighted error   2.40e-17
                                          log weighted error  16.62
                                significant figures required  16.23
@@ -55,6 +70,24 @@
                                         log weighted error  16.45
                               significant figures required  14.69
                                    decimal places required  17.12
+=======
+					with weighted error   2.40e-17
+					 log weighted error  16.62
+			       significant figures required  16.23
+				    decimal places required  17.14
+
+ series for ai1        on the interval  1.25000d-01 to  3.33333d-01
+					with weighted error   6.98e-17
+					 log weighted error  16.16
+			       significant figures required  14.53
+				    decimal places required  16.82
+
+ series for ai12       on the interval  0.          to  1.25000d-01
+				       with weighted error   3.55e-17
+					log weighted error  16.45
+			      significant figures required  14.69
+				   decimal places required  17.12
+>>>>>>> config
 */
 
 static double bi1_data[11] = {

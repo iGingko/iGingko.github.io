@@ -1,17 +1,31 @@
 /* specfunc/bessel_K0.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -34,6 +48,7 @@
 
 /* based on SLATEC bk0(), bk0e() */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* chebyshev expansions 
 
  series for bk0        on the interval  0.          to  4.00000d+00
@@ -53,11 +68,36 @@
                                          log weighted error  16.63
                                significant figures required  14.67
                                     decimal places required  17.20
+=======
+/* chebyshev expansions
+
+ series for bk0        on the interval  0.          to  4.00000d+00
+					with weighted error   3.57e-19
+					 log weighted error  18.45
+			       significant figures required  17.99
+				    decimal places required  18.97
+
+ series for ak0        on the interval  1.25000d-01 to  5.00000d-01
+					with weighted error   5.34e-17
+					 log weighted error  16.27
+			       significant figures required  14.92
+				    decimal places required  16.89
+
+ series for ak02       on the interval  0.          to  1.25000d-01
+					with weighted error   2.34e-17
+					 log weighted error  16.63
+			       significant figures required  14.67
+				    decimal places required  17.20
+>>>>>>> config
 */
 
 static double bk0_data[11] = {
   -0.03532739323390276872,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    0.3442898999246284869, 
+=======
+   0.3442898999246284869,
+>>>>>>> config
    0.03597993651536150163,
    0.00126461541144692592,
    0.00002286212103119451,
@@ -164,7 +204,11 @@ int gsl_sf_bessel_K0_scaled_e(const double x, gsl_sf_result * result)
     result->err  = (c.err + GSL_DBL_EPSILON) / sx;
     result->err += 2.0 * GSL_DBL_EPSILON * fabs(result->val);
     return GSL_SUCCESS;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   } 
+=======
+  }
+>>>>>>> config
 }
 
 
@@ -191,8 +235,13 @@ int gsl_sf_bessel_K0_e(const double x, gsl_sf_result * result)
     gsl_sf_result K0_scaled;
     int stat_K0 = gsl_sf_bessel_K0_scaled_e(x, &K0_scaled);
     int stat_e  = gsl_sf_exp_mult_err_e(-x, GSL_DBL_EPSILON*fabs(x),
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                            K0_scaled.val, K0_scaled.err,
                                            result);
+=======
+					   K0_scaled.val, K0_scaled.err,
+					   result);
+>>>>>>> config
     return GSL_ERROR_SELECT_2(stat_e, stat_K0);
   }
 }
@@ -211,4 +260,7 @@ double gsl_sf_bessel_K0(const double x)
 {
   EVAL_RESULT(gsl_sf_bessel_K0_e(x, &result));
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

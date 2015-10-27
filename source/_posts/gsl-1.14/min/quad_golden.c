@@ -132,13 +132,21 @@ quad_golden_iterate (void *vstate, gsl_function * f, double *x_minimum,
 
   const double x_prev_small = state->x_prev_small;
   const double f_prev_small = state->f_prev_small;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   double stored_step = state->stored_step; /* update on exit */
   double prev_stored_step = state->prev_stored_step; /* update on exit */
   double step_size = state->step_size; /* update on exit */
 
   double quad_step_size = prev_stored_step;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   double x_trial;
   double x_eval, f_eval;
 
@@ -184,14 +192,24 @@ quad_golden_iterate (void *vstate, gsl_function * f, double *x_minimum,
 
       /* Do not evaluate function too close to x_l or x_u */
       if ((x_trial - x_l) < 2.0 * tol || (x_u - x_trial) < 2.0 * tol)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           step_size = (x_midpoint >= x_m ? +1.0 : -1.0) * fabs(tol);
         }
+=======
+	{
+	  step_size = (x_midpoint >= x_m ? +1.0 : -1.0) * fabs(tol);
+	}
+>>>>>>> config
 
       DEBUG_PRINTF(("quadratic step: %g\n", step_size));
     }
   else if ((x_small != x_prev_small && x_small < x_m && x_prev_small < x_m) ||
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
            (x_small != x_prev_small && x_small > x_m && x_prev_small > x_m))
+=======
+	   (x_small != x_prev_small && x_small > x_m && x_prev_small > x_m))
+>>>>>>> config
     {
       /* Take safeguarded function comparison step */
       double outside_interval, inside_interval;
@@ -209,13 +227,19 @@ quad_golden_iterate (void *vstate, gsl_function * f, double *x_minimum,
 
       if (fabs (inside_interval) <= tol)
 	{
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           /* Swap inside and outside intervals */
           double tmp = outside_interval;
+=======
+	  /* Swap inside and outside intervals */
+	  double tmp = outside_interval;
+>>>>>>> config
 	  outside_interval = inside_interval;
 	  inside_interval = tmp;
 	}
 
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         double step = inside_interval;
         double scale_factor;
 
@@ -230,6 +254,22 @@ quad_golden_iterate (void *vstate, gsl_function * f, double *x_minimum,
 
         state->stored_step = step;
         step_size = scale_factor * step;
+=======
+	double step = inside_interval;
+	double scale_factor;
+
+	if (fabs (outside_interval) < fabs (inside_interval))
+	  {
+	    scale_factor = 0.5 * sqrt (-outside_interval / inside_interval);
+	  }
+	else
+	  {
+	    scale_factor = (5.0 / 11.0) * (0.1 - inside_interval / outside_interval);
+	  }
+
+	state->stored_step = step;
+	step_size = scale_factor * step;
+>>>>>>> config
       }
 
       DEBUG_PRINTF(("safeguard step: %g\n", step_size));
@@ -240,6 +280,7 @@ quad_golden_iterate (void *vstate, gsl_function * f, double *x_minimum,
       double step;
 
       if (x_m < x_midpoint)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           step = x_u - x_m;
         }
@@ -247,6 +288,15 @@ quad_golden_iterate (void *vstate, gsl_function * f, double *x_minimum,
         {
           step = x_l - x_m;
         }
+=======
+	{
+	  step = x_u - x_m;
+	}
+      else
+	{
+	  step = x_l - x_m;
+	}
+>>>>>>> config
 
       state->stored_step = step;
       step_size = GOLDEN_MEAN * step;
@@ -272,6 +322,7 @@ quad_golden_iterate (void *vstate, gsl_function * f, double *x_minimum,
     {
       if (x_eval < x_m)
 	{
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           *x_upper = x_m;
           *f_upper = f_m;
         }
@@ -280,6 +331,16 @@ quad_golden_iterate (void *vstate, gsl_function * f, double *x_minimum,
           *x_lower = x_m;
           *f_upper = f_m;
         }
+=======
+	  *x_upper = x_m;
+	  *f_upper = f_m;
+	}
+      else
+	{
+	  *x_lower = x_m;
+	  *f_upper = f_m;
+	}
+>>>>>>> config
 
       state->x_prev_small = x_small;
       state->f_prev_small = f_small;
@@ -293,6 +354,7 @@ quad_golden_iterate (void *vstate, gsl_function * f, double *x_minimum,
   else
     {
       if (x_eval < x_m)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           *x_lower = x_eval;
           *f_lower = f_eval;
@@ -302,6 +364,17 @@ quad_golden_iterate (void *vstate, gsl_function * f, double *x_minimum,
           *x_upper = x_eval;
           *f_upper = f_eval;
         }
+=======
+	{
+	  *x_lower = x_eval;
+	  *f_lower = f_eval;
+	}
+      else
+	{
+	  *x_upper = x_eval;
+	  *f_upper = f_eval;
+	}
+>>>>>>> config
 
       if (f_eval <= f_small || fabs (x_small - x_m) < 2.0 * GSL_DBL_EPSILON)
 	{

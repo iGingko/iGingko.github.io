@@ -26,11 +26,19 @@ main (void)
   s = gsl_root_fdfsolver_alloc (T);
   gsl_root_fdfsolver_set (s, &FDF, x);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   printf ("using %s method\n", 
           gsl_root_fdfsolver_name (s));
 
   printf ("%-5s %10s %10s %10s\n",
           "iter", "root", "err", "err(est)");
+=======
+  printf ("using %s method\n",
+	  gsl_root_fdfsolver_name (s));
+
+  printf ("%-5s %10s %10s %10s\n",
+	  "iter", "root", "err", "err(est)");
+>>>>>>> config
   do
     {
       iter++;
@@ -40,10 +48,17 @@ main (void)
       status = gsl_root_test_delta (x, x0, 0, 1e-3);
 
       if (status == GSL_SUCCESS)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         printf ("Converged:\n");
 
       printf ("%5d %10.7f %+10.7f %10.7f\n",
               iter, x, x - r_expected, x - x0);
+=======
+	printf ("Converged:\n");
+
+      printf ("%5d %10.7f %+10.7f %10.7f\n",
+	      iter, x, x - r_expected, x - x0);
+>>>>>>> config
     }
   while (status == GSL_CONTINUE && iter < max_iter);
 

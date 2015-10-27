@@ -12,12 +12,21 @@ with full access to any intermediate steps.
 These functions are declared in the header file @file{gsl_odeiv.h}.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Defining the ODE System::     
 * Stepping Functions::          
 * Adaptive Step-size Control::  
 * Evolution::                   
 * ODE Example programs::        
 * ODE References and Further Reading::  
+=======
+* Defining the ODE System::
+* Stepping Functions::
+* Adaptive Step-size Control::
+* Evolution::
+* ODE Example programs::
+* ODE References and Further Reading::
+>>>>>>> config
 @end menu
 
 @node Defining the ODE System
@@ -40,9 +49,15 @@ dy_i(t)/dt = f_i(t, y_1(t), ..., y_n(t))
 @end ifinfo
 @noindent
 for @math{i = 1, \dots, n}.  The stepping functions rely on the vector
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 of derivatives @math{f_i} and the Jacobian matrix, 
 @c{$J_{ij} = \partial f_i(t, y(t)) / \partial y_j$}
 @math{J_@{ij@} = df_i(t,y(t)) / dy_j}. 
+=======
+of derivatives @math{f_i} and the Jacobian matrix,
+@c{$J_{ij} = \partial f_i(t, y(t)) / \partial y_j$}
+@math{J_@{ij@} = df_i(t,y(t)) / dy_j}.
+>>>>>>> config
 A system of equations is defined using the @code{gsl_odeiv_system}
 datatype.
 
@@ -55,20 +70,34 @@ This function should store the vector elements
 @c{$f_i(t,y,\hbox{\it params})$}
 @math{f_i(t,y,params)} in the array @var{dydt},
 for arguments (@var{t},@var{y}) and parameters @var{params}.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 The function should return @code{GSL_SUCCESS} if the calculation 
+=======
+The function should return @code{GSL_SUCCESS} if the calculation
+>>>>>>> config
 was completed successfully. Any other return value indicates
 an error.
 
 @item  int (* jacobian) (double t, const double y[], double * dfdy, double dfdt[], void * params);
 @cindex Jacobian matrix, ODEs
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 This function should store the vector of derivative elements 
 @c{$\partial f_i(t,y,params) / \partial t$}
 @math{df_i(t,y,params)/dt} in the array @var{dfdt} and the 
+=======
+This function should store the vector of derivative elements
+@c{$\partial f_i(t,y,params) / \partial t$}
+@math{df_i(t,y,params)/dt} in the array @var{dfdt} and the
+>>>>>>> config
 Jacobian matrix @c{$J_{ij}$}
 @math{J_@{ij@}} in the array
 @var{dfdy}, regarded as a row-ordered matrix @code{J(i,j) = dfdy[i * dimension + j]}
 where @code{dimension} is the dimension of the system.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 The function should return @code{GSL_SUCCESS} if the calculation 
+=======
+The function should return @code{GSL_SUCCESS} if the calculation
+>>>>>>> config
 was completed successfully.  Any other return value indicates
 an error.
 
@@ -118,7 +147,11 @@ For example,
 
 @example
 printf ("step method is '%s'\n",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          gsl_odeiv_step_name (s));
+=======
+	 gsl_odeiv_step_name (s));
+>>>>>>> config
 @end example
 
 @noindent
@@ -146,9 +179,15 @@ be stored in @var{dydt_out} if it is not null.
 If the user-supplied functions defined in the system @var{dydt} return a
 status other than @code{GSL_SUCCESS} the step will be aborted.  In this
 case, the elements of @var{y} will be restored to their pre-step values
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 and the error code from the user-supplied function will be returned. 
 The step-size @var{h} will be set to the step-size which caused the error.  
 If the function is called again with a smaller step-size, e.g. @math{@var{h}/10},  
+=======
+and the error code from the user-supplied function will be returned.
+The step-size @var{h} will be set to the step-size which caused the error.
+If the function is called again with a smaller step-size, e.g. @math{@var{h}/10},
+>>>>>>> config
 it should be possible to get closer to any singularity.
 To distinguish between error codes from the user-supplied functions and
 those from @code{gsl_odeiv_step_apply} itself, any user-defined return
@@ -177,18 +216,27 @@ Embedded Runge-Kutta-Fehlberg (4, 5) method.  This method is a good
 general-purpose integrator.
 @end deffn
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @deffn {Step Type} gsl_odeiv_step_rkck 
+=======
+@deffn {Step Type} gsl_odeiv_step_rkck
+>>>>>>> config
 @cindex Runge-Kutta Cash-Karp method
 @cindex Cash-Karp, Runge-Kutta method
 Embedded Runge-Kutta Cash-Karp (4, 5) method.
 @end deffn
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @deffn {Step Type} gsl_odeiv_step_rk8pd  
+=======
+@deffn {Step Type} gsl_odeiv_step_rk8pd
+>>>>>>> config
 @cindex Runge-Kutta Prince-Dormand method
 @cindex Prince-Dormand, Runge-Kutta method
 Embedded Runge-Kutta Prince-Dormand (8,9) method.
 @end deffn
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @deffn {Step Type} gsl_odeiv_step_rk2imp  
 Implicit 2nd order Runge-Kutta at Gaussian points.
 @end deffn
@@ -198,6 +246,17 @@ Implicit 4th order Runge-Kutta at Gaussian points.
 @end deffn
 
 @deffn {Step Type} gsl_odeiv_step_bsimp   
+=======
+@deffn {Step Type} gsl_odeiv_step_rk2imp
+Implicit 2nd order Runge-Kutta at Gaussian points.
+@end deffn
+
+@deffn {Step Type} gsl_odeiv_step_rk4imp
+Implicit 4th order Runge-Kutta at Gaussian points.
+@end deffn
+
+@deffn {Step Type} gsl_odeiv_step_bsimp
+>>>>>>> config
 @cindex Bulirsch-Stoer method
 @cindex Bader and Deuflhard, Bulirsch-Stoer method.
 @cindex Deuflhard and Bader, Bulirsch-Stoer method.
@@ -205,12 +264,20 @@ Implicit Bulirsch-Stoer method of Bader and Deuflhard.  This algorithm
 requires the Jacobian.
 @end deffn
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @deffn {Step Type} gsl_odeiv_step_gear1 
+=======
+@deffn {Step Type} gsl_odeiv_step_gear1
+>>>>>>> config
 @cindex Gear method, differential equations
 M=1 implicit Gear method.
 @end deffn
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @deffn {Step Type} gsl_odeiv_step_gear2 
+=======
+@deffn {Step Type} gsl_odeiv_step_gear2
+>>>>>>> config
 M=2 implicit Gear method.
 @end deffn
 
@@ -269,7 +336,11 @@ h_new = h_old * S * (E/D)^(-1/q)
 where @math{q} is the consistency order of the method (e.g. @math{q=4} for
 4(5) embedded RK), and @math{S} is a safety factor of 0.9. The ratio
 @math{E/D} is taken to be the maximum of the ratios
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{E_i/D_i}. 
+=======
+@math{E_i/D_i}.
+>>>>>>> config
 
 If the observed error @math{E} is less than 50% of the desired error
 level @var{D} for the maximum ratio @math{E_i/D_i} then the algorithm
@@ -333,14 +404,22 @@ D_i = eps_abs * s_i + eps_rel * (a_y |y_i| + a_dydt h |y'_i|)
 @end ifinfo
 @noindent
 where @math{s_i} is the @math{i}-th component of the array @var{scale_abs}.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 The same error control heuristic is used by the Matlab @sc{ode} suite. 
+=======
+The same error control heuristic is used by the Matlab @sc{ode} suite.
+>>>>>>> config
 @end deftypefun
 
 @deftypefun {gsl_odeiv_control *} gsl_odeiv_control_alloc (const gsl_odeiv_control_type * @var{T})
 This function returns a pointer to a newly allocated instance of a
 control function of type @var{T}.  This function is only needed for
 defining new types of control functions.  For most purposes the standard
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 control functions described above should be sufficient. 
+=======
+control functions described above should be sufficient.
+>>>>>>> config
 @end deftypefun
 
 @deftypefun int gsl_odeiv_control_init (gsl_odeiv_control * @var{c}, double @var{eps_abs}, double @var{eps_rel}, double @var{a_y}, double @var{a_dydt})
@@ -374,8 +453,13 @@ This function returns a pointer to the name of the control function.
 For example,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 printf ("control method is '%s'\n", 
         gsl_odeiv_control_name (c));
+=======
+printf ("control method is '%s'\n",
+	gsl_odeiv_control_name (c));
+>>>>>>> config
 @end example
 
 @noindent
@@ -407,9 +491,15 @@ The new time and position are stored in @var{t} and @var{y} on output.
 The initial step-size is taken as @var{h}, but this will be modified
 using the control function @var{c} to achieve the appropriate error
 bound if necessary.  The routine may make several calls to @var{step} in
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 order to determine the optimum step-size. An estimate of 
 the local error for the step can be obtained from the components of the array @code{@var{e}->yerr[]}. 
 If the step-size has been changed the value of @var{h} will be modified on output. 
+=======
+order to determine the optimum step-size. An estimate of
+the local error for the step can be obtained from the components of the array @code{@var{e}->yerr[]}.
+If the step-size has been changed the value of @var{h} will be modified on output.
+>>>>>>> config
 The maximum time @var{t1} is guaranteed not to be exceeded by the time-step.  On the
 final time-step the value of @var{t} will be set to @var{t1} exactly.
 
@@ -440,7 +530,11 @@ in sequence.  For example, if a step-change in an external driving
 force occurs at times @math{t_a, t_b, t_c, \dots} then evolving over
 the ranges @math{(t_0,t_a)}, @math{(t_a,t_b)}, @dots{},
 @math{(t_c,t_1)} is more efficient than using the single range
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{(t_0,t_1)}.  
+=======
+@math{(t_0,t_1)}.
+>>>>>>> config
 
 Evolving the system directly through a discontinuity with a strict
 tolerance may result in extremely small steps being taken at the edge
@@ -515,13 +609,21 @@ a struct.
 The main loop of the program evolves the solution from @math{(y, y') =
 (1, 0)} at @math{t=0} to @math{t=100}.  The step-size @math{h} is
 automatically adjusted by the controller to maintain an absolute
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 accuracy of @c{$10^{-6}$} 
+=======
+accuracy of @c{$10^{-6}$}
+>>>>>>> config
 @math{10^@{-6@}} in the function values @var{y}.
 
 @iftex
 @sp 1
 @center @image{vdp,3.4in}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @center Numerical solution of the Van der Pol oscillator equation 
+=======
+@center Numerical solution of the Van der Pol oscillator equation
+>>>>>>> config
 @center using Prince-Dormand 8th order Runge-Kutta.
 @end iftex
 
@@ -538,6 +640,7 @@ following main loop prints the solution at the points @math{t_i = 0,
       double ti = i * t1 / 100.0;
 
       while (t < ti)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         @{
           gsl_odeiv_evolve_apply (e, c, s, 
                                   &sys, 
@@ -545,6 +648,15 @@ following main loop prints the solution at the points @math{t_i = 0,
                                   y);
         @}
  
+=======
+	@{
+	  gsl_odeiv_evolve_apply (e, c, s,
+				  &sys,
+				  &t, ti, &h,
+				  y);
+	@}
+
+>>>>>>> config
       printf ("%.5e %.5e %.5e\n", t, y[0], y[1]);
     @}
 @end example

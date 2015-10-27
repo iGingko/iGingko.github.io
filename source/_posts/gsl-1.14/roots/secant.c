@@ -1,23 +1,41 @@
 /* roots/secant.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Reid Priedhorsky, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Reid Priedhorsky, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* secant.c -- secant root finding algorithm 
+=======
+/* secant.c -- secant root finding algorithm
+>>>>>>> config
 
    The secant algorithm is a variant of the Newton algorithm with the
    derivative term replaced by a numerical estimate from the last two
@@ -63,7 +81,11 @@ secant_init (void * vstate, gsl_function_fdf * fdf, double * root)
   const double x = *root;
 
   GSL_FN_FDF_EVAL_F_DF (fdf, x, &(state->f), &(state->df));
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   return GSL_SUCCESS;
 
 }
@@ -72,7 +94,11 @@ static int
 secant_iterate (void * vstate, gsl_function_fdf * fdf, double * root)
 {
   secant_state_t * state = (secant_state_t *) vstate;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   const double x = *root ;
   const double f = state->f;
   const double df = state->df;
@@ -103,7 +129,11 @@ secant_iterate (void * vstate, gsl_function_fdf * fdf, double * root)
     {
       GSL_ERROR ("derivative value is not finite", GSL_EBADFUNC);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
   return GSL_SUCCESS;
 }
 

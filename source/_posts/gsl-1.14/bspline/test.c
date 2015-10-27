@@ -49,6 +49,7 @@ test_bspline(gsl_bspline_workspace * bw, gsl_bspline_deriv_workspace * dbw)
       gsl_bspline_eval(xi, B, bw);
 
       for (j = 0; j < ncoeffs; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double Bj = gsl_vector_get(B, j);
           int s = (Bj < 0 || Bj > 1);
@@ -61,6 +62,20 @@ test_bspline(gsl_bspline_workspace * bw, gsl_bspline_deriv_workspace * dbw)
       gsl_test_rel(sum, 1.0, order * GSL_DBL_EPSILON,
                    "basis-spline order %u is normalized for x=%g", order,
                    xi);
+=======
+	{
+	  double Bj = gsl_vector_get(B, j);
+	  int s = (Bj < 0 || Bj > 1);
+	  gsl_test(s,
+		   "basis-spline coefficient %u is in range [0,1] for x=%g",
+		   j, xi);
+	  sum += Bj;
+	}
+
+      gsl_test_rel(sum, 1.0, order * GSL_DBL_EPSILON,
+		   "basis-spline order %u is normalized for x=%g", order,
+		   xi);
+>>>>>>> config
     }
 
   /* Ensure B-splines 0th derivatives agree with regular evaluation */
@@ -71,12 +86,21 @@ test_bspline(gsl_bspline_workspace * bw, gsl_bspline_deriv_workspace * dbw)
       gsl_bspline_deriv_eval(xi, 0, dB, bw, dbw);
 
       for (j = 0; j < ncoeffs; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           gsl_test_abs(gsl_matrix_get(dB, j, 0), gsl_vector_get(B, j),
                        GSL_DBL_EPSILON,
                        "b-spline order %d basis #%d evaluation and 0th derivative consistent for x=%g",
                        order, j, xi);
         }
+=======
+	{
+	  gsl_test_abs(gsl_matrix_get(dB, j, 0), gsl_vector_get(B, j),
+		       GSL_DBL_EPSILON,
+		       "b-spline order %d basis #%d evaluation and 0th derivative consistent for x=%g",
+		       order, j, xi);
+	}
+>>>>>>> config
 
     }
 
@@ -97,6 +121,7 @@ main(int argc, char **argv)
   for (order = 1; order < 10; order++)
     {
       for (breakpoints = 2; breakpoints < 100; breakpoints++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double a = -1.23 * order, b = 45.6 * order;
           gsl_bspline_workspace *bw = gsl_bspline_alloc(order, breakpoints);
@@ -106,12 +131,24 @@ main(int argc, char **argv)
           gsl_bspline_deriv_free(dbw);
           gsl_bspline_free(bw);
         }
+=======
+	{
+	  double a = -1.23 * order, b = 45.6 * order;
+	  gsl_bspline_workspace *bw = gsl_bspline_alloc(order, breakpoints);
+	  gsl_bspline_deriv_workspace *dbw = gsl_bspline_deriv_alloc(order);
+	  gsl_bspline_knots_uniform(a, b, bw);
+	  test_bspline(bw, dbw);
+	  gsl_bspline_deriv_free(dbw);
+	  gsl_bspline_free(bw);
+	}
+>>>>>>> config
     }
 
 
   for (order = 1; order < 10; order++)
     {
       for (breakpoints = 2; breakpoints < 100; breakpoints++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double a = -1.23 * order, b = 45.6 * order;
           gsl_bspline_workspace *bw = gsl_bspline_alloc(order, breakpoints);
@@ -130,6 +167,26 @@ main(int argc, char **argv)
           gsl_bspline_deriv_free(dbw);
           gsl_bspline_free(bw);
         }
+=======
+	{
+	  double a = -1.23 * order, b = 45.6 * order;
+	  gsl_bspline_workspace *bw = gsl_bspline_alloc(order, breakpoints);
+	  gsl_bspline_deriv_workspace *dbw = gsl_bspline_deriv_alloc(order);
+	  gsl_vector *k = gsl_vector_alloc(breakpoints);
+	  for (i = 0; i < breakpoints; i++)
+	    {
+	      double f, x;
+	      f = sqrt(i / (breakpoints - 1.0));
+	      x = (1 - f) * a + f * b;
+	      gsl_vector_set(k, i, x);
+	    };
+	  gsl_bspline_knots(k, bw);
+	  test_bspline(bw, dbw);
+	  gsl_vector_free(k);
+	  gsl_bspline_deriv_free(dbw);
+	  gsl_bspline_free(bw);
+	}
+>>>>>>> config
     }
 
   /* Spot check known 0th, 1st, 2nd derivative
@@ -149,7 +206,11 @@ main(int argc, char **argv)
     gsl_bspline_workspace *bw = gsl_bspline_alloc(2, 3);
     gsl_bspline_deriv_workspace *dbw = gsl_bspline_deriv_alloc(2);
     gsl_matrix *dB = gsl_matrix_alloc(gsl_bspline_ncoeffs(bw),
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                       gsl_bspline_order(bw) + 1);
+=======
+				      gsl_bspline_order(bw) + 1);
+>>>>>>> config
 
     gsl_vector *breakpts = gsl_vector_alloc(3);
     gsl_vector_set(breakpts, 0, 0.0);
@@ -160,6 +221,7 @@ main(int argc, char **argv)
 
     for (i = 0; i < 4; ++i)  /* at each location */
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         /* Initialize dB with poison to ensure we overwrite it */
         gsl_matrix_set_all(dB, GSL_NAN);
 
@@ -180,6 +242,28 @@ main(int argc, char **argv)
                          gsl_bspline_order(bw), j, gsl_bspline_order(bw),
                          xloc[i]);
           }
+=======
+	/* Initialize dB with poison to ensure we overwrite it */
+	gsl_matrix_set_all(dB, GSL_NAN);
+
+	gsl_bspline_deriv_eval(xloc[i], gsl_bspline_order(bw), dB, bw, dbw);
+	for (j = 0; j < gsl_bspline_ncoeffs(bw) ; ++j)
+	  {
+	    /* check basis function 1st deriv */
+	    gsl_test_abs(gsl_matrix_get(dB, j, 1), deriv[i][j], GSL_DBL_EPSILON,
+			 "b-spline k=%d basis #%d derivative %d at x = %f",
+			 gsl_bspline_order(bw), j, 1, xloc[i]);
+	  }
+	for (j = 0; j < gsl_bspline_ncoeffs(bw); ++j)
+	  {
+	    /* check k order basis function has k-th deriv equal to 0 */
+	    gsl_test_abs(gsl_matrix_get(dB, j, gsl_bspline_order(bw)), 0.0,
+			 GSL_DBL_EPSILON,
+			 "b-spline k=%d basis #%d derivative %d at x = %f",
+			 gsl_bspline_order(bw), j, gsl_bspline_order(bw),
+			 xloc[i]);
+	  }
+>>>>>>> config
       }
 
     gsl_matrix_free(dB);
@@ -222,7 +306,11 @@ main(int argc, char **argv)
     gsl_bspline_deriv_workspace *dbw = gsl_bspline_deriv_alloc(3);
 
     gsl_matrix *dB = gsl_matrix_alloc(gsl_bspline_ncoeffs(bw),
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                       gsl_bspline_order(bw) + 1);
+=======
+				      gsl_bspline_order(bw) + 1);
+>>>>>>> config
 
     gsl_vector *breakpts = gsl_vector_alloc(5);
     gsl_vector_set(breakpts, 0, -3.0);
@@ -234,6 +322,7 @@ main(int argc, char **argv)
 
     for (i = 0; i < 5; ++i)  /* at each location */
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         /* Initialize dB with poison to ensure we overwrite it */
         gsl_matrix_set_all(dB, GSL_NAN);
         gsl_bspline_deriv_eval(xloc[i], gsl_bspline_order(bw), dB, bw, dbw);
@@ -259,6 +348,33 @@ main(int argc, char **argv)
                          "b-spline k=%d basis #%d derivative %d at x = %f",
                          gsl_bspline_order(bw), j, 2, xloc[i]);
           }
+=======
+	/* Initialize dB with poison to ensure we overwrite it */
+	gsl_matrix_set_all(dB, GSL_NAN);
+	gsl_bspline_deriv_eval(xloc[i], gsl_bspline_order(bw), dB, bw, dbw);
+
+	/* check basis function evaluation */
+	for (j = 0; j < gsl_bspline_ncoeffs(bw); ++j)
+	  {
+	    gsl_test_abs(gsl_matrix_get(dB, j, 0), eval[i][j], GSL_DBL_EPSILON,
+			 "b-spline k=%d basis #%d derivative %d at x = %f",
+			 gsl_bspline_order(bw), j, 0, xloc[i]);
+	  }
+	/* check 1st derivative evaluation */
+	for (j = 0; j < gsl_bspline_ncoeffs(bw); ++j)
+	  {
+	    gsl_test_abs(gsl_matrix_get(dB, j, 1), deriv[i][j], GSL_DBL_EPSILON,
+			 "b-spline k=%d basis #%d derivative %d at x = %f",
+			 gsl_bspline_order(bw), j, 1, xloc[i]);
+	  }
+	/* check 2nd derivative evaluation */
+	for (j = 0; j < gsl_bspline_ncoeffs(bw); ++j)
+	  {
+	    gsl_test_abs(gsl_matrix_get(dB, j, 2), deriv2[i][j], GSL_DBL_EPSILON,
+			 "b-spline k=%d basis #%d derivative %d at x = %f",
+			 gsl_bspline_order(bw), j, 2, xloc[i]);
+	  }
+>>>>>>> config
       }
 
     gsl_matrix_free(dB);
@@ -285,11 +401,19 @@ main(int argc, char **argv)
     gsl_bspline_knots((const gsl_vector *) &bpoints, w);
 
     gsl_test_int(nabscissae, gsl_bspline_ncoeffs(w),
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         "b-spline k=%d number of abscissae", k);
     for (i = 0; i < nabscissae; ++i)
       {
         gsl_test_abs(gsl_bspline_greville_abscissa(i, w), abscissae_data[i], 2*k*GSL_DBL_EPSILON,
             "b-spline k=%d Greville abscissa #%d at x = %f", k, i, abscissae_data[i]);
+=======
+	"b-spline k=%d number of abscissae", k);
+    for (i = 0; i < nabscissae; ++i)
+      {
+	gsl_test_abs(gsl_bspline_greville_abscissa(i, w), abscissae_data[i], 2*k*GSL_DBL_EPSILON,
+	    "b-spline k=%d Greville abscissa #%d at x = %f", k, i, abscissae_data[i]);
+>>>>>>> config
       }
 
     gsl_bspline_free(w);
@@ -313,11 +437,19 @@ main(int argc, char **argv)
     gsl_bspline_knots((const gsl_vector *) &bpoints, w);
 
     gsl_test_int(nabscissae, gsl_bspline_ncoeffs(w),
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         "b-spline k=%d number of abscissae", k);
     for (i = 0; i < nabscissae; ++i)
       {
         gsl_test_abs(gsl_bspline_greville_abscissa(i, w), abscissae_data[i], 2*k*GSL_DBL_EPSILON,
             "b-spline k=%d Greville abscissa #%d at x = %f", k, i, abscissae_data[i]);
+=======
+	"b-spline k=%d number of abscissae", k);
+    for (i = 0; i < nabscissae; ++i)
+      {
+	gsl_test_abs(gsl_bspline_greville_abscissa(i, w), abscissae_data[i], 2*k*GSL_DBL_EPSILON,
+	    "b-spline k=%d Greville abscissa #%d at x = %f", k, i, abscissae_data[i]);
+>>>>>>> config
       }
 
     gsl_bspline_free(w);
@@ -334,7 +466,11 @@ main(int argc, char **argv)
 
     /* Expected results */
     const double abscissae_data[] = {      0.0, 1.0/10.0, 7.0/20.0,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                       5.0/ 8.0, 7.0/ 8.0,      1.0 };
+=======
+				      5.0/ 8.0, 7.0/ 8.0,      1.0 };
+>>>>>>> config
     const size_t nabscissae       = sizeof(abscissae_data)/sizeof(abscissae_data[0]);
 
     gsl_vector_const_view bpoints = gsl_vector_const_view_array(bpoint_data, nbreak);
@@ -342,11 +478,19 @@ main(int argc, char **argv)
     gsl_bspline_knots((const gsl_vector *) &bpoints, w);
 
     gsl_test_int(nabscissae, gsl_bspline_ncoeffs(w),
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         "b-spline k=%d number of abscissae", k);
     for (i = 0; i < nabscissae; ++i)
       {
         gsl_test_abs(gsl_bspline_greville_abscissa(i, w), abscissae_data[i], 2*k*GSL_DBL_EPSILON,
             "b-spline k=%d Greville abscissa #%d at x = %f", k, i, abscissae_data[i]);
+=======
+	"b-spline k=%d number of abscissae", k);
+    for (i = 0; i < nabscissae; ++i)
+      {
+	gsl_test_abs(gsl_bspline_greville_abscissa(i, w), abscissae_data[i], 2*k*GSL_DBL_EPSILON,
+	    "b-spline k=%d Greville abscissa #%d at x = %f", k, i, abscissae_data[i]);
+>>>>>>> config
       }
 
     gsl_bspline_free(w);
@@ -363,7 +507,11 @@ main(int argc, char **argv)
 
     /* Expected results */
     const double abscissae_data[] = { 0.0,  1.0/15.0,  7.0/30.0,  29.0/60.0,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                             3.0/ 4.0, 11.0/12.0,        1.0 };
+=======
+					    3.0/ 4.0, 11.0/12.0,        1.0 };
+>>>>>>> config
     const size_t nabscissae       = sizeof(abscissae_data)/sizeof(abscissae_data[0]);
 
     gsl_vector_const_view bpoints = gsl_vector_const_view_array(bpoint_data, nbreak);
@@ -371,11 +519,19 @@ main(int argc, char **argv)
     gsl_bspline_knots((const gsl_vector *) &bpoints, w);
 
     gsl_test_int(nabscissae, gsl_bspline_ncoeffs(w),
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         "b-spline k=%d number of abscissae", k);
     for (i = 0; i < nabscissae; ++i)
       {
         gsl_test_abs(gsl_bspline_greville_abscissa(i, w), abscissae_data[i], 2*k*GSL_DBL_EPSILON,
             "b-spline k=%d Greville abscissa #%d at x = %f", k, i, abscissae_data[i]);
+=======
+	"b-spline k=%d number of abscissae", k);
+    for (i = 0; i < nabscissae; ++i)
+      {
+	gsl_test_abs(gsl_bspline_greville_abscissa(i, w), abscissae_data[i], 2*k*GSL_DBL_EPSILON,
+	    "b-spline k=%d Greville abscissa #%d at x = %f", k, i, abscissae_data[i]);
+>>>>>>> config
       }
 
     gsl_bspline_free(w);

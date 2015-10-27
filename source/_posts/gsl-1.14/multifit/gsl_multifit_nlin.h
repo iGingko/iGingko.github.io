@@ -1,17 +1,31 @@
 /* multifit_nlin/gsl_multifit_nlin.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -39,7 +53,11 @@
 __BEGIN_DECLS
 
 int gsl_multifit_gradient (const gsl_matrix * J, const gsl_vector * f,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                            gsl_vector * g);
+=======
+			   gsl_vector * g);
+>>>>>>> config
 
 int gsl_multifit_covar (const gsl_matrix * J, double epsrel, gsl_matrix * covar);
 
@@ -81,6 +99,7 @@ typedef struct
 gsl_multifit_fsolver;
 
 gsl_multifit_fsolver *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_multifit_fsolver_alloc (const gsl_multifit_fsolver_type * T, 
                             size_t n, size_t p);
 
@@ -89,6 +108,16 @@ void gsl_multifit_fsolver_free (gsl_multifit_fsolver * s);
 int gsl_multifit_fsolver_set (gsl_multifit_fsolver * s, 
                                    gsl_multifit_function * f, 
                                    const gsl_vector * x);
+=======
+gsl_multifit_fsolver_alloc (const gsl_multifit_fsolver_type * T,
+			    size_t n, size_t p);
+
+void gsl_multifit_fsolver_free (gsl_multifit_fsolver * s);
+
+int gsl_multifit_fsolver_set (gsl_multifit_fsolver * s,
+				   gsl_multifit_function * f,
+				   const gsl_vector * x);
+>>>>>>> config
 
 int gsl_multifit_fsolver_iterate (gsl_multifit_fsolver * s);
 
@@ -139,6 +168,7 @@ gsl_multifit_fdfsolver;
 
 
 gsl_multifit_fdfsolver *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_multifit_fdfsolver_alloc (const gsl_multifit_fdfsolver_type * T, 
                               size_t n, size_t p);
 
@@ -146,6 +176,15 @@ int
 gsl_multifit_fdfsolver_set (gsl_multifit_fdfsolver * s, 
                                  gsl_multifit_function_fdf * fdf,
                                  const gsl_vector * x);
+=======
+gsl_multifit_fdfsolver_alloc (const gsl_multifit_fdfsolver_type * T,
+			      size_t n, size_t p);
+
+int
+gsl_multifit_fdfsolver_set (gsl_multifit_fdfsolver * s,
+				 gsl_multifit_function_fdf * fdf,
+				 const gsl_vector * x);
+>>>>>>> config
 
 int
 gsl_multifit_fdfsolver_iterate (gsl_multifit_fdfsolver * s);
@@ -156,8 +195,13 @@ gsl_multifit_fdfsolver_free (gsl_multifit_fdfsolver * s);
 const char * gsl_multifit_fdfsolver_name (const gsl_multifit_fdfsolver * s);
 gsl_vector * gsl_multifit_fdfsolver_position (const gsl_multifit_fdfsolver * s);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int gsl_multifit_test_delta (const gsl_vector * dx, const gsl_vector * x, 
                              double epsabs, double epsrel);
+=======
+int gsl_multifit_test_delta (const gsl_vector * dx, const gsl_vector * x,
+			     double epsabs, double epsrel);
+>>>>>>> config
 
 int gsl_multifit_test_gradient (const gsl_vector * g, double epsabs);
 

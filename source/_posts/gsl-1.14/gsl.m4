@@ -5,18 +5,31 @@
 AC_DEFUN([AX_PATH_GSL],
 [
 AC_ARG_WITH(gsl-prefix,[  --with-gsl-prefix=PFX   Prefix where GSL is installed (optional)],
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             gsl_prefix="$withval", gsl_prefix="")
 AC_ARG_WITH(gsl-exec-prefix,[  --with-gsl-exec-prefix=PFX Exec prefix where GSL is installed (optional)],
             gsl_exec_prefix="$withval", gsl_exec_prefix="")
+=======
+	    gsl_prefix="$withval", gsl_prefix="")
+AC_ARG_WITH(gsl-exec-prefix,[  --with-gsl-exec-prefix=PFX Exec prefix where GSL is installed (optional)],
+	    gsl_exec_prefix="$withval", gsl_exec_prefix="")
+>>>>>>> config
 AC_ARG_ENABLE(gsltest, [  --disable-gsltest       Do not try to compile and run a test GSL program],
 		    , enable_gsltest=yes)
 
   if test "x${GSL_CONFIG+set}" != xset ; then
      if test "x$gsl_prefix" != x ; then
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          GSL_CONFIG="$gsl_prefix/bin/gsl-config"
      fi
      if test "x$gsl_exec_prefix" != x ; then
         GSL_CONFIG="$gsl_exec_prefix/bin/gsl-config"
+=======
+	 GSL_CONFIG="$gsl_prefix/bin/gsl-config"
+     fi
+     if test "x$gsl_exec_prefix" != x ; then
+	GSL_CONFIG="$gsl_exec_prefix/bin/gsl-config"
+>>>>>>> config
      fi
   fi
 
@@ -31,19 +44,31 @@ AC_ARG_ENABLE(gsltest, [  --disable-gsltest       Do not try to compile and run 
     GSL_LIBS=`$GSL_CONFIG --libs`
 
     gsl_major_version=`$GSL_CONFIG --version | \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
            sed 's/^\([[0-9]]*\).*/\1/'`
+=======
+	   sed 's/^\([[0-9]]*\).*/\1/'`
+>>>>>>> config
     if test "x${gsl_major_version}" = "x" ; then
        gsl_major_version=0
     fi
 
     gsl_minor_version=`$GSL_CONFIG --version | \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
            sed 's/^\([[0-9]]*\)\.\{0,1\}\([[0-9]]*\).*/\2/'`
+=======
+	   sed 's/^\([[0-9]]*\)\.\{0,1\}\([[0-9]]*\).*/\2/'`
+>>>>>>> config
     if test "x${gsl_minor_version}" = "x" ; then
        gsl_minor_version=0
     fi
 
     gsl_micro_version=`$GSL_CONFIG --version | \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
            sed 's/^\([[0-9]]*\)\.\{0,1\}\([[0-9]]*\)\.\{0,1\}\([[0-9]]*\).*/\3/'`
+=======
+	   sed 's/^\([[0-9]]*\)\.\{0,1\}\([[0-9]]*\)\.\{0,1\}\([[0-9]]*\).*/\3/'`
+>>>>>>> config
     if test "x${gsl_micro_version}" = "x" ; then
        gsl_micro_version=0
     fi
@@ -66,7 +91,11 @@ char*
 my_strdup (const char *str)
 {
   char *new_str;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   if (str)
     {
       new_str = (char *)malloc ((strlen (str) + 1) * sizeof(char));
@@ -74,7 +103,11 @@ my_strdup (const char *str)
     }
   else
     new_str = NULL;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   return new_str;
 }
 
@@ -99,9 +132,15 @@ int main (void)
    if (($gsl_major_version > major) ||
       (($gsl_major_version == major) && ($gsl_minor_version > minor)) ||
       (($gsl_major_version == major) && ($gsl_minor_version == minor) && ($gsl_micro_version >= micro)))
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
      { 
        exit(0);
      }   
+=======
+     {
+       exit(0);
+     }
+>>>>>>> config
    else
      {
        exit(1);
@@ -115,7 +154,11 @@ int main (void)
   fi
   if test "x$no_gsl" = x ; then
      AC_MSG_RESULT(yes)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
      ifelse([$2], , :, [$2])     
+=======
+     ifelse([$2], , :, [$2])
+>>>>>>> config
   else
      AC_MSG_RESULT(no)
      if test "$GSL_CONFIG" = "no" ; then
@@ -125,6 +168,7 @@ int main (void)
        echo "*** full path to gsl-config."
      else
        if test -f conf.gsltest ; then
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         :
        else
           echo "*** Could not run GSL test program, checking why..."
@@ -148,6 +192,31 @@ int main (void)
           echo "*** may want to edit the gsl-config script: $GSL_CONFIG" ])
           CFLAGS="$ac_save_CFLAGS"
           LIBS="$ac_save_LIBS"
+=======
+	:
+       else
+	  echo "*** Could not run GSL test program, checking why..."
+	  CFLAGS="$CFLAGS $GSL_CFLAGS"
+	  LIBS="$LIBS $GSL_LIBS"
+	  AC_TRY_LINK([
+#include <stdio.h>
+],      [ return 0; ],
+	[ echo "*** The test program compiled, but did not run. This usually means"
+	  echo "*** that the run-time linker is not finding GSL or finding the wrong"
+	  echo "*** version of GSL. If it is not finding GSL, you'll need to set your"
+	  echo "*** LD_LIBRARY_PATH environment variable, or edit /etc/ld.so.conf to point"
+	  echo "*** to the installed location  Also, make sure you have run ldconfig if that"
+	  echo "*** is required on your system"
+	  echo "***"
+	  echo "*** If you have an old version installed, it is best to remove it, although"
+	  echo "*** you may also be able to get things to work by modifying LD_LIBRARY_PATH"],
+	[ echo "*** The test program failed to compile or link. See the file config.log for the"
+	  echo "*** exact error that occured. This usually means GSL was incorrectly installed"
+	  echo "*** or that you have moved GSL since it was installed. In the latter case, you"
+	  echo "*** may want to edit the gsl-config script: $GSL_CONFIG" ])
+	  CFLAGS="$ac_save_CFLAGS"
+	  LIBS="$ac_save_LIBS"
+>>>>>>> config
        fi
      fi
 #     GSL_CFLAGS=""

@@ -1,18 +1,33 @@
 /* specfunc/legendre_con.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * Copyright (C) 2010 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ * Copyright (C) 2010 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -55,7 +70,11 @@
 static
 int
 conicalP_negmu_xlt1_CF1(const double mu, const int ell, const double tau,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         const double x, gsl_sf_result * result)
+=======
+			const double x, gsl_sf_result * result)
+>>>>>>> config
 {
   const double RECUR_BIG = GSL_SQRT_DBL_MAX;
   const int maxiter = 5000;
@@ -97,7 +116,11 @@ conicalP_negmu_xlt1_CF1(const double mu, const int ell, const double tau,
     old_fn = fn;
     fn = An/Bn;
     del = old_fn/fn;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     if(fabs(del - 1.0) < 2.0*GSL_DBL_EPSILON) break;
   }
 
@@ -119,8 +142,13 @@ conicalP_negmu_xlt1_CF1(const double mu, const int ell, const double tau,
 static
 int
 conicalP_negmu_xgt1_CF1(const double mu, const int ell, const double tau,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         const double x, gsl_sf_result * result)
 { 
+=======
+			const double x, gsl_sf_result * result)
+{
+>>>>>>> config
   const int maxk = 20000;
   const double gamma = 1.0-1.0/(x*x);
   const double pre = sqrt(x-1.0)*sqrt(x+1.0) / (x*(2.0*(ell+mu+1.0)));
@@ -128,7 +156,11 @@ conicalP_negmu_xgt1_CF1(const double mu, const int ell, const double tau,
   double sum  = 1.0;
   double rhok = 0.0;
   int k;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  
+=======
+
+>>>>>>> config
   for(k=1; k<maxk; k++) {
     double tlk = 2.0*(ell + mu + k);
     double l1k = (ell + mu - 0.5 + 1.0 + k);
@@ -173,6 +205,7 @@ static double olver_U2(double beta2, double p)
 
 static const double U3c1[] = {   -1307.0,   -1647.0,    3375.0,    3675.0 };
 static const double U3c2[] = {   29366.0,   35835.0, -252360.0, -272630.0,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                 276810.0,  290499.0 };
 static const double U3c3[] = {  -29748.0,   -8840.0, 1725295.0, 1767025.0,
                               -7313470.0, -754778.0, 6309875.0, 6480045.0 };
@@ -183,6 +216,18 @@ static const double U3c5[] = {       9136.0,      22480.0,     12760.0,
                                   -252480.0,   -4662165.0,   -1705341.0,
                                  92370135.0,   86244015.0, -263678415.0,
                                -260275015.0, 185910725.0,  185910725.0 };
+=======
+				276810.0,  290499.0 };
+static const double U3c3[] = {  -29748.0,   -8840.0, 1725295.0, 1767025.0,
+			      -7313470.0, -754778.0, 6309875.0, 6480045.0 };
+static const double U3c4[] = {    2696.0,    -16740.0,   -524250.0,  -183975.0,
+			      14670540.0,  14172939.0, -48206730.0, -48461985.0,
+			      36756720.0,  37182145.0 };
+static const double U3c5[] = {       9136.0,      22480.0,     12760.0,
+				  -252480.0,   -4662165.0,   -1705341.0,
+				 92370135.0,   86244015.0, -263678415.0,
+			       -260275015.0, 185910725.0,  185910725.0 };
+>>>>>>> config
 
 #if 0
 static double olver_U3(double beta2, double p)
@@ -196,11 +241,19 @@ static double olver_U3(double beta2, double p)
   double poly3 = gsl_poly_eval(U3c3, 8, p);
   double poly4 = gsl_poly_eval(U3c4, 10, p);
   double poly5 = gsl_poly_eval(U3c5, 12, p);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   return (p-1.0)*(     1215.0*poly1 + 324.0*beta2*poly2
                  + 54.0*beta4*poly3 +  12.0*beta6*poly4
                  + beta4*beta4*poly5
                  ) / den;
+=======
+
+  return (p-1.0)*(     1215.0*poly1 + 324.0*beta2*poly2
+		 + 54.0*beta4*poly3 +  12.0*beta6*poly4
+		 + beta4*beta4*poly5
+		 ) / den;
+>>>>>>> config
 }
 #endif /* 0 */
 
@@ -213,7 +266,11 @@ static double olver_U3(double beta2, double p)
  */
 int
 gsl_sf_conicalP_xlt1_large_neg_mu_e(double mu, double tau, double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                        gsl_sf_result * result, double * ln_multiplier)
+=======
+				       gsl_sf_result * result, double * ln_multiplier)
+>>>>>>> config
 {
   double beta  = tau/mu;
   double beta2 = beta*beta;
@@ -299,13 +356,22 @@ static double olver_A1_th(double mu, double theta, double x)
 /* Large tau uniform asymptotics
  * P^{-mu}_{-1/2 + I tau}
  * 1 < x
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * tau -> Inf 
+=======
+ * tau -> Inf
+>>>>>>> config
  * [Olver, p. 469]
  */
 int
 gsl_sf_conicalP_xgt1_neg_mu_largetau_e(const double mu, const double tau,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                           const double x, double acosh_x,
                                           gsl_sf_result * result, double * ln_multiplier)
+=======
+					  const double x, double acosh_x,
+					  gsl_sf_result * result, double * ln_multiplier)
+>>>>>>> config
 {
   double xi = acosh_x;
   double ln_xi_pre;
@@ -361,13 +427,22 @@ gsl_sf_conicalP_xgt1_neg_mu_largetau_e(const double mu, const double tau,
 /* Large tau uniform asymptotics
  * P^{-mu}_{-1/2 + I tau}
  * -1 < x < 1
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * tau -> Inf 
+=======
+ * tau -> Inf
+>>>>>>> config
  * [Olver, p. 473]
  */
 int
 gsl_sf_conicalP_xlt1_neg_mu_largetau_e(const double mu, const double tau,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                           const double x, const double acos_x,
                                           gsl_sf_result * result, double * ln_multiplier)
+=======
+					  const double x, const double acos_x,
+					  gsl_sf_result * result, double * ln_multiplier)
+>>>>>>> config
 {
   double theta = acos_x;
   double ln_th_pre;
@@ -430,7 +505,11 @@ gsl_sf_conicalP_xlt1_neg_mu_largetau_e(const double mu, const double tau,
 static
 int
 conicalP_hyperg_large_x(const double mu, const double tau, const double y,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         double * reF, double * imF)
+=======
+			double * reF, double * imF)
+>>>>>>> config
 {
   const int kmax = 1000;
   const double re_a = 0.25 - 0.5*mu;
@@ -471,7 +550,11 @@ conicalP_hyperg_large_x(const double mu, const double tau, const double y,
 
   if(k == kmax)
     GSL_ERROR ("error", GSL_EMAXITER);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else  
+=======
+  else
+>>>>>>> config
     return GSL_SUCCESS;
 }
 
@@ -481,7 +564,11 @@ conicalP_hyperg_large_x(const double mu, const double tau, const double y,
  */
 int
 gsl_sf_conicalP_large_x_e(const double mu, const double tau, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                              gsl_sf_result * result, double * ln_multiplier)
+=======
+			     gsl_sf_result * result, double * ln_multiplier)
+>>>>>>> config
 {
   /* 2F1 term
    */
@@ -505,8 +592,13 @@ gsl_sf_conicalP_large_x_e(const double mu, const double tau, const double x,
   double lnpre_const = 0.5*M_LN2 - 0.5*M_LNPI;
   double lnpre_comm = (mu-0.5)*lnx - 0.5*mu*(lnxp1 + lnxm1);
   double lnpre_err  =   GSL_DBL_EPSILON * (0.5*M_LN2 + 0.5*M_LNPI)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       + GSL_DBL_EPSILON * fabs((mu-0.5)*lnx)
                       + GSL_DBL_EPSILON * fabs(0.5*mu)*(fabs(lnxp1)+fabs(lnxm1));
+=======
+		      + GSL_DBL_EPSILON * fabs((mu-0.5)*lnx)
+		      + GSL_DBL_EPSILON * fabs(0.5*mu)*(fabs(lnxp1)+fabs(lnxm1));
+>>>>>>> config
 
   /*  result = pre*|F|*|f| * cos(angle - tau * (log(x)+M_LN2))
    */
@@ -524,8 +616,13 @@ gsl_sf_conicalP_large_x_e(const double mu, const double tau, const double x,
     double lnnoc_val = lnpre_const + lnpre_comm + lnFf_val;
     double lnnoc_err = lnpre_err + lnFf_err + GSL_DBL_EPSILON * fabs(lnnoc_val);
     int stat_e = gsl_sf_exp_mult_err_e(lnnoc_val, lnnoc_err,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                           cos_result.val, cos_result.err,
                                           result);
+=======
+					  cos_result.val, cos_result.err,
+					  result);
+>>>>>>> config
     if(stat_e == GSL_SUCCESS) {
       *ln_multiplier = 0.0;
     }
@@ -611,7 +708,11 @@ conicalP_def_hyperg(double mu, double tau, double x, double * result)
 
 
 /* P^{mu}_{-1/2 + I tau}  second hypergeometric representation
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * [Zhurina+Karmazina, (3.1)] 
+=======
+ * [Zhurina+Karmazina, (3.1)]
+>>>>>>> config
  * -1 < x < 3
  * effective for x near 1
  *
@@ -645,7 +746,11 @@ conicalP_xnear1_hyperg_C(double mu, double tau, double x, double * result)
 static
 int
 conicalP_0_V(const double t, const double f, const double tau, const double sgn,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              double * V0, double * V1)
+=======
+	     double * V0, double * V1)
+>>>>>>> config
 {
   double C[8];
   double T[8];
@@ -668,6 +773,7 @@ conicalP_0_V(const double t, const double f, const double tau, const double sgn,
   C[2] = (9.0*H[2] + 6.0*H[1] - 15.0 - sgn*8.0*T[2])/(128.0*T[2]);
   C[3] = 5.0*(15.0*H[3] + 27.0*H[2] + 21.0*H[1] - 63.0 - sgn*T[2]*(16.0*H[1]+24.0))/(1024.0*T[3]);
   C[4] = 7.0*(525.0*H[4] + 1500.0*H[3] + 2430.0*H[2] + 1980.0*H[1] - 6435.0
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
               + 192.0*T[4] - sgn*T[2]*(720.0*H[2]+1600.0*H[1]+2160.0)
               ) / (32768.0*T[4]);
   C[5] = 21.0*(2835.0*H[5] + 11025.0*H[4] + 24750.0*H[3] + 38610.0*H[2]
@@ -694,6 +800,34 @@ conicalP_0_V(const double t, const double f, const double tau, const double sgn,
                            + (48.0*C[4]/T[3]-72.0*C[5]/T[2] + 18.0*C[6]/T[1])/V[7]
                            + (3840.0*C[6]/T[5])/V[11]
                            );
+=======
+	      + 192.0*T[4] - sgn*T[2]*(720.0*H[2]+1600.0*H[1]+2160.0)
+	      ) / (32768.0*T[4]);
+  C[5] = 21.0*(2835.0*H[5] + 11025.0*H[4] + 24750.0*H[3] + 38610.0*H[2]
+	       + 32175.0*H[1] - 109395.0 + T[4]*(1984.0*H[1]+4032.0)
+	       - sgn*T[2]*(4800.0*H[3]+15120.0*H[2]+26400.0*H[1]+34320.0)
+	       ) / (262144.0*T[5]);
+  C[6] = 11.0*(218295.0*H[6] + 1071630.0*H[5] + 3009825.0*H[4] + 6142500.0*H[3]
+	       + 9398025.0*H[2] + 7936110.0*H[1] - 27776385.0
+	       + T[4]*(254016.0*H[2]+749952.0*H[1]+1100736.0)
+	       - sgn*T[2]*(441000.0*H[4] + 1814400.0*H[3] + 4127760.0*H[2]
+			 + 6552000.0*H[1] + 8353800.0 + 31232.0*T[4]
+			 )
+	       ) / (4194304.0*T[6]);
+
+  *V0 = C[0] + (-4.0*C[3]/T[1]+C[4])/V[4]
+	     + (-192.0*C[5]/T[3]+144.0*C[6]/T[2])/V[8]
+	     + sgn * (-C[2]/V[2]
+		      + (-24.0*C[4]/T[2]+12.0*C[5]/T[1]-C[6])/V[6]
+		      + (-1920.0*C[6]/T[4])/V[10]
+		      );
+  *V1 = C[1]/V[1] + (8.0*(C[3]/T[2]-C[4]/T[1])+C[5])/V[5]
+		  + (384.0*C[5]/T[4] - 768.0*C[6]/T[3])/V[9]
+		  + sgn * ((2.0*C[2]/T[1]-C[3])/V[3]
+			   + (48.0*C[4]/T[3]-72.0*C[5]/T[2] + 18.0*C[6]/T[1])/V[7]
+			   + (3840.0*C[6]/T[5])/V[11]
+			   );
+>>>>>>> config
 
   return GSL_SUCCESS;
 }
@@ -704,7 +838,11 @@ conicalP_0_V(const double t, const double f, const double tau, const double sgn,
 static
 int
 conicalP_1_V(const double t, const double f, const double tau, const double sgn,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              double * V0, double * V1)
+=======
+	     double * V0, double * V1)
+>>>>>>> config
 {
   double Cm1;
   double C[8];
@@ -728,6 +866,7 @@ conicalP_1_V(const double t, const double f, const double tau, const double sgn,
   C[1] = (-15.0*H[2]+6.0*H[1]+9.0+sgn*8.0*T[2])/(128.0*T[2]);
   C[2] = 3.0*(-35.0*H[3] - 15.0*H[2] + 15.0*H[1] + 35.0 + sgn*T[2]*(32.0*H[1]+8.0))/(1024.0*T[3]);
   C[3] = (-4725.0*H[4] - 6300.0*H[3] - 3150.0*H[2] + 3780.0*H[1] + 10395.0
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           -1216.0*T[4] + sgn*T[2]*(6000.0*H[2]+5760.0*H[1]+1680.0)) / (32768.0*T[4]);
   C[4] = 7.0*(-10395.0*H[5] - 23625.0*H[4] - 28350.0*H[3] - 14850.0*H[2]
               +19305.0*H[1] + 57915.0 - T[4]*(6336.0*H[1]+6080.0)
@@ -752,6 +891,32 @@ conicalP_1_V(const double t, const double f, const double tau, const double sgn,
                   + sgn * (Cm1*V[1] + (2.0*C[2]/T[1]-C[3])/V[3]
                            + (48.0*C[4]/T[3]-72.0*C[5]/T[2] + 18.0*C[6]/T[1])/V[7]
                            );
+=======
+	  -1216.0*T[4] + sgn*T[2]*(6000.0*H[2]+5760.0*H[1]+1680.0)) / (32768.0*T[4]);
+  C[4] = 7.0*(-10395.0*H[5] - 23625.0*H[4] - 28350.0*H[3] - 14850.0*H[2]
+	      +19305.0*H[1] + 57915.0 - T[4]*(6336.0*H[1]+6080.0)
+	      + sgn*T[2]*(16800.0*H[3] + 30000.0*H[2] + 25920.0*H[1] + 7920.0)
+	      ) / (262144.0*T[5]);
+  C[5] = (-2837835.0*H[6] - 9168390.0*H[5] - 16372125.0*H[4] - 18918900*H[3]
+	  -10135125.0*H[2] + 13783770.0*H[1] + 43648605.0
+	  -T[4]*(3044160.0*H[2] + 5588352.0*H[1] + 4213440.0)
+	  +sgn*T[2]*(5556600.0*H[4] + 14817600.0*H[3] + 20790000.0*H[2]
+		     + 17297280.0*H[1] + 5405400.0 + 323072.0*T[4]
+		     )
+	  ) / (4194304.0*T[6]);
+  C[6] = 0.0;
+
+  *V0 = C[0] + (-4.0*C[3]/T[1]+C[4])/V[4]
+	     + (-192.0*C[5]/T[3]+144.0*C[6]/T[2])/V[8]
+	     + sgn * (-C[2]/V[2]
+		      + (-24.0*C[4]/T[2]+12.0*C[5]/T[1]-C[6])/V[6]
+		      );
+  *V1 = C[1]/V[1] + (8.0*(C[3]/T[2]-C[4]/T[1])+C[5])/V[5]
+		  + (384.0*C[5]/T[4] - 768.0*C[6]/T[3])/V[9]
+		  + sgn * (Cm1*V[1] + (2.0*C[2]/T[1]-C[3])/V[3]
+			   + (48.0*C[4]/T[3]-72.0*C[5]/T[2] + 18.0*C[6]/T[1])/V[7]
+			   );
+>>>>>>> config
 
   return GSL_SUCCESS;
 }
@@ -799,13 +964,22 @@ gsl_sf_conicalP_0_e(const double lambda, const double x, gsl_sf_result * result)
     }
   }
   else if(   (x <= 0.0 && lambda < 1000.0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           || (x <  0.1 && lambda < 17.0)
           || (x <  0.2 && lambda < 5.0 )
+=======
+	  || (x <  0.1 && lambda < 17.0)
+	  || (x <  0.2 && lambda < 5.0 )
+>>>>>>> config
     ) {
     return conicalP_xlt1_hyperg_A(0.0, lambda, x, result);
   }
   else if(   (x <= 0.2 && lambda < 17.0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           || (x <= 1.5 && lambda < 20.0)
+=======
+	  || (x <= 1.5 && lambda < 20.0)
+>>>>>>> config
     ) {
     return gsl_sf_hyperg_2F1_conj_e(0.5, lambda, 1.0, (1.0-x)/2, result);
   }
@@ -813,11 +987,19 @@ gsl_sf_conicalP_0_e(const double lambda, const double x, gsl_sf_result * result)
     gsl_sf_result P;
     double lm;
     int stat_P = gsl_sf_conicalP_large_x_e(0.0, lambda, x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                               &P, &lm
                                               );
     int stat_e = gsl_sf_exp_mult_err_e(lm, 2.0*GSL_DBL_EPSILON * fabs(lm),
                                           P.val, P.err,
                                           result);
+=======
+					      &P, &lm
+					      );
+    int stat_e = gsl_sf_exp_mult_err_e(lm, 2.0*GSL_DBL_EPSILON * fabs(lm),
+					  P.val, P.err,
+					  result);
+>>>>>>> config
     return GSL_ERROR_SELECT_2(stat_e, stat_P);
   }
   else {
@@ -835,8 +1017,13 @@ gsl_sf_conicalP_0_e(const double lambda, const double x, gsl_sf_result * result)
       double arg1 = th*lambda;
       double sqts = sqrt(th/sth);
       int stat_e = gsl_sf_exp_mult_err_e(arg1, 4.0 * GSL_DBL_EPSILON * fabs(arg1),
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                             sqts * bessterm, sqts * besserr,
                                             result);
+=======
+					    sqts * bessterm, sqts * besserr,
+					    result);
+>>>>>>> config
       return GSL_ERROR_SELECT_3(stat_e, stat_V, stat_I);
     }
     else {
@@ -881,6 +1068,7 @@ gsl_sf_conicalP_1_e(const double lambda, const double x, gsl_sf_result * result)
     }
     else if(x < 1.0) {
       if(1.0-x < GSL_SQRT_DBL_EPSILON) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         double err_amp = GSL_MAX_DBL(1.0, 1.0/(GSL_DBL_EPSILON + fabs(1.0-x)));
         result->val = 0.25/M_SQRT2 * sqrt(1.0-x) * (1.0 + 5.0/16.0 * (1.0-x));
         result->err = err_amp * 3.0 * GSL_DBL_EPSILON * fabs(result->val);
@@ -898,10 +1086,30 @@ gsl_sf_conicalP_1_e(const double lambda, const double x, gsl_sf_result * result)
         result->err  = pre * (E.err + fabs(c2) * K.err);
         result->err += 2.0 * GSL_DBL_EPSILON * fabs(result->val);
         return GSL_ERROR_SELECT_2(stat_K, stat_E);
+=======
+	double err_amp = GSL_MAX_DBL(1.0, 1.0/(GSL_DBL_EPSILON + fabs(1.0-x)));
+	result->val = 0.25/M_SQRT2 * sqrt(1.0-x) * (1.0 + 5.0/16.0 * (1.0-x));
+	result->err = err_amp * 3.0 * GSL_DBL_EPSILON * fabs(result->val);
+	return GSL_SUCCESS;
+      }
+      else {
+	const double th = acos(x);
+	const double s  = sin(0.5*th);
+	const double c2 = 1.0 - s*s;
+	const double sth = sin(th);
+	const double pre = 2.0/(M_PI*sth);
+	stat_K = gsl_sf_ellint_Kcomp_e(s, GSL_MODE_DEFAULT, &K);
+	stat_E = gsl_sf_ellint_Ecomp_e(s, GSL_MODE_DEFAULT, &E);
+	result->val  = pre * (E.val - c2 * K.val);
+	result->err  = pre * (E.err + fabs(c2) * K.err);
+	result->err += 2.0 * GSL_DBL_EPSILON * fabs(result->val);
+	return GSL_ERROR_SELECT_2(stat_K, stat_E);
+>>>>>>> config
       }
     }
     else {
       if(x-1.0 < GSL_SQRT_DBL_EPSILON) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         double err_amp = GSL_MAX_DBL(1.0, 1.0/(GSL_DBL_EPSILON + fabs(1.0-x)));
         result->val = -0.25/M_SQRT2 * sqrt(x-1.0) * (1.0 - 5.0/16.0 * (x-1.0));
         result->err = err_amp * 3.0 * GSL_DBL_EPSILON * fabs(result->val);
@@ -919,17 +1127,45 @@ gsl_sf_conicalP_1_e(const double lambda, const double x, gsl_sf_result * result)
         result->err  = pre * (E.err + K.err);
         result->err += 2.0 * GSL_DBL_EPSILON * fabs(result->val);
         return GSL_ERROR_SELECT_2(stat_K, stat_E);
+=======
+	double err_amp = GSL_MAX_DBL(1.0, 1.0/(GSL_DBL_EPSILON + fabs(1.0-x)));
+	result->val = -0.25/M_SQRT2 * sqrt(x-1.0) * (1.0 - 5.0/16.0 * (x-1.0));
+	result->err = err_amp * 3.0 * GSL_DBL_EPSILON * fabs(result->val);
+	return GSL_SUCCESS;
+      }
+      else {
+	const double xi = acosh(x);
+	const double c  = cosh(0.5*xi);
+	const double t  = tanh(0.5*xi);
+	const double sxi = sinh(xi);
+	const double pre = 2.0/(M_PI*sxi) * c;
+	stat_K = gsl_sf_ellint_Kcomp_e(t, GSL_MODE_DEFAULT, &K);
+	stat_E = gsl_sf_ellint_Ecomp_e(t, GSL_MODE_DEFAULT, &E);
+	result->val  = pre * (E.val - K.val);
+	result->err  = pre * (E.err + K.err);
+	result->err += 2.0 * GSL_DBL_EPSILON * fabs(result->val);
+	return GSL_ERROR_SELECT_2(stat_K, stat_E);
+>>>>>>> config
       }
     }
   }
   else if(   (x <= 0.0 && lambda < 1000.0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           || (x <  0.1 && lambda < 17.0)
           || (x <  0.2 && lambda < 5.0 )
+=======
+	  || (x <  0.1 && lambda < 17.0)
+	  || (x <  0.2 && lambda < 5.0 )
+>>>>>>> config
     ) {
     return conicalP_xlt1_hyperg_A(1.0, lambda, x, result);
   }
   else if(   (x <= 0.2 && lambda < 17.0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           || (x <  1.5 && lambda < 20.0)
+=======
+	  || (x <  1.5 && lambda < 20.0)
+>>>>>>> config
     ) {
     const double arg = fabs(x*x - 1.0);
     const double sgn = GSL_SIGN(1.0 - x);
@@ -945,11 +1181,19 @@ gsl_sf_conicalP_1_e(const double lambda, const double x, gsl_sf_result * result)
     gsl_sf_result P;
     double lm;
     int stat_P = gsl_sf_conicalP_large_x_e(1.0, lambda, x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                               &P, &lm
                                               );
     int stat_e = gsl_sf_exp_mult_err_e(lm, 2.0 * GSL_DBL_EPSILON * fabs(lm),
                                           P.val, P.err,
                                           result);
+=======
+					      &P, &lm
+					      );
+    int stat_e = gsl_sf_exp_mult_err_e(lm, 2.0 * GSL_DBL_EPSILON * fabs(lm),
+					  P.val, P.err,
+					  result);
+>>>>>>> config
     return GSL_ERROR_SELECT_2(stat_e, stat_P);
   }
   else {
@@ -966,6 +1210,7 @@ gsl_sf_conicalP_1_e(const double lambda, const double x, gsl_sf_result * result)
       int stat_V  = conicalP_1_V(th, x/sth, lambda, -1.0, &V0, &V1);
       double bessterm = V0 * I0.val + V1 * I1.val;
       double besserr  =  fabs(V0) * I0.err + fabs(V1) * I1.err
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                        + 2.0 * GSL_DBL_EPSILON * fabs(V0 * I0.val)
                        + 2.0 * GSL_DBL_EPSILON * fabs(V1 * I1.val);
       double arg1 = th * lambda;
@@ -973,6 +1218,15 @@ gsl_sf_conicalP_1_e(const double lambda, const double x, gsl_sf_result * result)
       int stat_e = gsl_sf_exp_mult_err_e(arg1, 2.0 * GSL_DBL_EPSILON * fabs(arg1),
                                             sqts * bessterm, sqts * besserr,
                                             result);
+=======
+		       + 2.0 * GSL_DBL_EPSILON * fabs(V0 * I0.val)
+		       + 2.0 * GSL_DBL_EPSILON * fabs(V1 * I1.val);
+      double arg1 = th * lambda;
+      double sqts = sqrt(th/sth);
+      int stat_e = gsl_sf_exp_mult_err_e(arg1, 2.0 * GSL_DBL_EPSILON * fabs(arg1),
+					    sqts * bessterm, sqts * besserr,
+					    result);
+>>>>>>> config
       result->err *= 1.0/sqrt_1mx;
       return GSL_ERROR_SELECT_3(stat_e, stat_V, stat_I);
     }
@@ -989,10 +1243,17 @@ gsl_sf_conicalP_1_e(const double lambda, const double x, gsl_sf_result * result)
       const int stat_V  = conicalP_1_V(xi, x/sh, lambda, 1.0, &V0, &V1);
       const double bessterm = V0 * J0.val + V1 * J1.val;
       const double besserr  = fabs(V0) * J0.err + fabs(V1) * J1.err
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                        + 512.0 * 2.0 * GSL_DBL_EPSILON * fabs(V0 * J0.val)
                        + 512.0 * 2.0 * GSL_DBL_EPSILON * fabs(V1 * J1.val)
                        + GSL_DBL_EPSILON * fabs(xi_lam * V0 * J1.val)
                        + GSL_DBL_EPSILON * fabs(xi_lam * V1 * J0.val);
+=======
+		       + 512.0 * 2.0 * GSL_DBL_EPSILON * fabs(V0 * J0.val)
+		       + 512.0 * 2.0 * GSL_DBL_EPSILON * fabs(V1 * J1.val)
+		       + GSL_DBL_EPSILON * fabs(xi_lam * V0 * J1.val)
+		       + GSL_DBL_EPSILON * fabs(xi_lam * V1 * J0.val);
+>>>>>>> config
       const double pre = sqrt(xi/sh);
       result->val  = pre * bessterm;
       result->err  = pre * besserr * sqrt_xp1 / sqrt_xm1;
@@ -1005,11 +1266,19 @@ gsl_sf_conicalP_1_e(const double lambda, const double x, gsl_sf_result * result)
 
 /* P^{1/2}_{-1/2 + I lambda} (x)
  * [Abramowitz+Stegun 8.6.8, 8.6.12]
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * checked OK [GJ] Fri May  8 12:24:36 MDT 1998 
  */
 int gsl_sf_conicalP_half_e(const double lambda, const double x,
                               gsl_sf_result * result
                               )
+=======
+ * checked OK [GJ] Fri May  8 12:24:36 MDT 1998
+ */
+int gsl_sf_conicalP_half_e(const double lambda, const double x,
+			      gsl_sf_result * result
+			      )
+>>>>>>> config
 {
   /* CHECK_POINTER(result) */
 
@@ -1050,7 +1319,11 @@ int gsl_sf_conicalP_half_e(const double lambda, const double x,
 
 /* P^{-1/2}_{-1/2 + I lambda} (x)
  * [Abramowitz+Stegun 8.6.9, 8.6.14]
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * checked OK [GJ] Fri May  8 12:24:43 MDT 1998 
+=======
+ * checked OK [GJ] Fri May  8 12:24:43 MDT 1998
+>>>>>>> config
  */
 int gsl_sf_conicalP_mhalf_e(const double lambda, const double x, gsl_sf_result * result)
 {
@@ -1107,9 +1380,15 @@ int gsl_sf_conicalP_mhalf_e(const double lambda, const double x, gsl_sf_result *
 
 
 int gsl_sf_conicalP_sph_reg_e(const int l, const double lambda,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                  const double x,
                                  gsl_sf_result * result
                                  )
+=======
+				 const double x,
+				 gsl_sf_result * result
+				 )
+>>>>>>> config
 {
   /* CHECK_POINTER(result) */
 
@@ -1223,9 +1502,15 @@ int gsl_sf_conicalP_sph_reg_e(const int l, const double lambda,
 
 
 int gsl_sf_conicalP_cyl_reg_e(const int m, const double lambda,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                  const double x,
                                  gsl_sf_result * result
                                  )
+=======
+				 const double x,
+				 gsl_sf_result * result
+				 )
+>>>>>>> config
 {
   /* CHECK_POINTER(result) */
 

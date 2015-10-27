@@ -9,11 +9,16 @@ main(void)
   double median, upperq, lowerq;
 
   printf ("Original dataset:  %g, %g, %g, %g, %g\n",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          data[0], data[1], data[2], data[3], data[4]);
+=======
+	 data[0], data[1], data[2], data[3], data[4]);
+>>>>>>> config
 
   gsl_sort (data, 1, 5);
 
   printf ("Sorted dataset: %g, %g, %g, %g, %g\n",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          data[0], data[1], data[2], data[3], data[4]);
 
   median 
@@ -28,6 +33,22 @@ main(void)
     = gsl_stats_quantile_from_sorted_data (data, 
                                            1, 5,
                                            0.25);
+=======
+	 data[0], data[1], data[2], data[3], data[4]);
+
+  median
+    = gsl_stats_median_from_sorted_data (data,
+					 1, 5);
+
+  upperq
+    = gsl_stats_quantile_from_sorted_data (data,
+					   1, 5,
+					   0.75);
+  lowerq
+    = gsl_stats_quantile_from_sorted_data (data,
+					   1, 5,
+					   0.25);
+>>>>>>> config
 
   printf ("The median is %g\n", median);
   printf ("The upper quartile is %g\n", upperq);

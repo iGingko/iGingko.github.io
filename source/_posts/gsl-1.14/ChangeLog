@@ -7,7 +7,11 @@
 
 	* configure.ac: added RETURN_IF_NULL macro to handle null argument
 	in free() type functions.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	
+=======
+
+>>>>>>> config
 2009-05-09  Brian Gough  <bjg@network-theory.co.uk>
 
 	* configure.ac: improve tests for C99 inline, and don't test when
@@ -174,7 +178,11 @@
 Fri Sep  6 15:00:40 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* acconfig.h (GSL_RANGE_CHECK_OFF): turned range checking off in
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	acconfig.h as it overwrites config.h.in
+=======
+	acconfig.h as it overwrites config.h.in
+>>>>>>> config
 
 Wed Aug  7 22:34:36 2002  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -187,10 +195,17 @@ Sun Jul 14 12:48:50 2002  Brian Gough  <bjg@network-theory.co.uk>
 Fri Jun 14 22:09:52 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* gsl_types.h: define GSL_VAR macro as ANSI C 'export' or
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	'__declspec(dllexport/dllimport)' depending on platform
 
 	* changed 'export' to GSL_VAR macro throughout to make it easier
  	to build nonstandard shared libraries such as DLLs
+=======
+	'__declspec(dllexport/dllimport)' depending on platform
+
+	* changed 'export' to GSL_VAR macro throughout to make it easier
+	to build nonstandard shared libraries such as DLLs
+>>>>>>> config
 
 Sun May 19 22:24:00 2002  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -200,7 +215,11 @@ Sun May 19 22:24:00 2002  Brian Gough  <bjg@network-theory.co.uk>
 Sat May 11 22:27:52 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* configure.in (ac_cv_func_printf_longdouble): fixed ieee
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	comparisons test so it actually works
+=======
+	comparisons test so it actually works
+>>>>>>> config
 	(ac_cv_c_ieee_comparisons): added a test for denormalized values
 
 Fri Apr 26 19:53:31 2002  Brian Gough  <bjg@network-theory.co.uk>
@@ -218,32 +237,57 @@ Sun Feb 10 21:28:29 2002  Brian Gough  <bjg@network-theory.co.uk>
 Wed Jan 16 16:55:25 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* configure.in acconfig.h: check whether IEEE comparisons work for
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	Inf, NaN and define HAVE_IEEE_COMPARISONS
+=======
+	Inf, NaN and define HAVE_IEEE_COMPARISONS
+>>>>>>> config
 
 Tue Jan  8 21:38:23 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* config.h (GSL_RANGE_CHECK_OFF): turn off range checking when
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	building the library, still on by default when compiling user
  	applications
+=======
+	building the library, still on by default when compiling user
+	applications
+>>>>>>> config
 
 Mon Nov 19 21:40:30 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* standardised all files to #include <gsl/...> for exported header
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	files rather than having some as #include "...", to simplify build
  	procedure
+=======
+	files rather than having some as #include "...", to simplify build
+	procedure
+>>>>>>> config
 
 Fri Oct 19 15:19:45 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* gsl-histogram.c (main): use gsl_histogram_alloc instead of
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	calloc
+=======
+	calloc
+>>>>>>> config
 
 Wed Oct  3 11:06:51 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* removed auto-expanding RCS tokens from comments as they
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	interfere with making patches
 
 	* configure.in: check for isinf(), finite(), isnan() as
  	macros. Also check for isfinite() as an alternative to finite().
+=======
+	interfere with making patches
+
+	* configure.in: check for isinf(), finite(), isnan() as
+	macros. Also check for isfinite() as an alternative to finite().
+>>>>>>> config
 
 Sat Sep 29 18:04:35 2001  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -252,38 +296,67 @@ Sat Sep 29 18:04:35 2001  Brian Gough  <bjg@network-theory.co.uk>
 Wed Sep 19 17:41:13 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* gsl-histogram.c (main): turn off the display of mean and
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	standard deviation it is too confusing because it is not the mean
  	of the data itself.
+=======
+	standard deviation it is too confusing because it is not the mean
+	of the data itself.
+>>>>>>> config
 
 Tue Sep 18 20:08:39 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* test_gsl_histogram.sh: modified the expected test output to
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	account for the mean,sigma lines now produced
  
 Wed Sep 12 13:39:55 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* gsl-histogram.c (main): print out the mean and standard
  	deviation as comments
+=======
+	account for the mean,sigma lines now produced
+
+Wed Sep 12 13:39:55 2001  Brian Gough  <bjg@network-theory.co.uk>
+
+	* gsl-histogram.c (main): print out the mean and standard
+	deviation as comments
+>>>>>>> config
 
 Sun Sep  9 22:57:11 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* configure.in: print out a warning for OS/2 telling the user to
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	run an extra script
+=======
+	run an extra script
+>>>>>>> config
 
 Fri Sep  7 14:32:01 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* gsl.pc.in: added pkg-config file
 
 	* configure.in: avoid clobbering any LIBS specified, by not
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	putting -lm in front of them.  This allows the user to specify an
  	alternate math library for the configure script.
 	(ac_cv_func_printf_longdouble): added generation of gsl.pc for
  	pkg-config
+=======
+	putting -lm in front of them.  This allows the user to specify an
+	alternate math library for the configure script.
+	(ac_cv_func_printf_longdouble): added generation of gsl.pc for
+	pkg-config
+>>>>>>> config
 
 Thu Sep  6 21:08:10 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* configure.in: added an option to specify an alternative math
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	library
+=======
+	library
+>>>>>>> config
 
 Tue Sep  4 09:41:37 2001  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -292,27 +365,47 @@ Tue Sep  4 09:41:37 2001  Brian Gough  <bjg@network-theory.co.uk>
 Sun Aug 26 17:19:24 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* acconfig.h: fixed incorrect #ifdef for HAVE_FINITE (Henry
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	Sobotka)
+=======
+	Sobotka)
+>>>>>>> config
 
 Sat Aug 25 10:25:41 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* gsl_math.h: moved includes to beginning of file to avoid
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	redefinition errors on OS/2
+=======
+	redefinition errors on OS/2
+>>>>>>> config
 
 Tue Aug 21 23:54:45 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* gsl_nan.h (GSL_POSINF): removed incorrect use of _FPCLASS.. for
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	MSVC, these are flags not numerical values.
+=======
+	MSVC, these are flags not numerical values.
+>>>>>>> config
 
 Thu Aug  9 22:51:00 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* config.h.in: added a macro for discarding a pointer, used to
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	suppress warnings from gcc about unused parameters
+=======
+	suppress warnings from gcc about unused parameters
+>>>>>>> config
 
 Sun Aug  5 20:35:09 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* configure.in: move PPC bug test to beginning of configure
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	script, to save waiting for it to appear at the end
+=======
+	script, to save waiting for it to appear at the end
+>>>>>>> config
 
 Sat Jul 14 21:13:55 2001  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -321,12 +414,20 @@ Sat Jul 14 21:13:55 2001  Brian Gough  <bjg@network-theory.co.uk>
 Fri Jul 13 21:31:01 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* templates_on.h: added macros for unqualified views, needed for
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	initialization of views
+=======
+	initialization of views
+>>>>>>> config
 
 Mon Jul  9 11:22:16 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* configure.in: made check for extended precision registers
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	independent of test for os ieee interface type
+=======
+	independent of test for os ieee interface type
+>>>>>>> config
 
 Sun Jul  1 22:44:00 2001  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -339,27 +440,47 @@ Wed Jun 27 12:15:19 2001  Brian Gough  <bjg@network-theory.co.uk>
 Mon Jun 25 10:21:17 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* configure.in: catch case of openbsd, which is not supported yet
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	in ieee directory
+=======
+	in ieee directory
+>>>>>>> config
 
 Mon Jun 18 22:31:26 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* configure.in (GSL_CFLAGS): now just uses includedir for
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	gsl-config.in
+=======
+	gsl-config.in
+>>>>>>> config
 
 Wed Jun  6 18:10:18 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* removed explicit dependencies from Makefile.am's since automake
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	now handles these automatically
+=======
+	now handles these automatically
+>>>>>>> config
 
 Tue May 29 12:40:08 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* configure.in: added missing wildcard to end of hpux11* to match
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	different versions of hpux11, e.g. hpux11.2.
+=======
+	different versions of hpux11, e.g. hpux11.2.
+>>>>>>> config
 
 Tue May 22 10:38:59 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* gsl.m4: try to make C-code compatible with C++, also changed
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	return() to exit() as mentioned in the autoconf documentation.
+=======
+	return() to exit() as mentioned in the autoconf documentation.
+>>>>>>> config
 
 2001-05-21  Mark Galassi  <rosalia@galassi.org>
 
@@ -381,7 +502,11 @@ Mon Apr 30 13:46:39 2001  Brian Gough  <bjg@network-theory.co.uk>
 Wed Mar 21 14:16:29 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* gsl-config.in (Usage): allow user to specify an external blas
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	library through an environment variable
+=======
+	library through an environment variable
+>>>>>>> config
 
 2000-12-14  Mark Galassi  <rosalia@galassi.org>
 
@@ -413,27 +538,47 @@ Wed Mar 21 14:16:29 2001  Brian Gough  <bjg@network-theory.co.uk>
 Thu Jul 20 20:20:04 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* gsl.m4: changed \? to \{0,1\} in the sed commands to allow for
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	SGI sed (from Steve ROBBINS <stever@bic.mni.mcgill.ca>)
+=======
+	SGI sed (from Steve ROBBINS <stever@bic.mni.mcgill.ca>)
+>>>>>>> config
 
 Sun Jul  9 19:34:03 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* gsl.m4: modified to accept x.y version numbers as the first
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	argument in addition to x.y.z version numbers
+=======
+	argument in addition to x.y.z version numbers
+>>>>>>> config
 
 Mon Jun 12 22:18:27 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* Makefile.am (SUBLIBS): added missing complex lib to top-level
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	SUBLIBS
+=======
+	SUBLIBS
+>>>>>>> config
 
 Sun Jun 11 17:39:18 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* gsl.spec (BuildRoot): fixed directory for install, it is now
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	/usr/lib/ instead of /usr/lib/gsl/
+=======
+	/usr/lib/ instead of /usr/lib/gsl/
+>>>>>>> config
 
 Tue Jun  6 20:02:02 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* acconfig.h, configure.in: use HAVE_X86LINUX_IEEE_INTEFACE for
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	x86 instead of generic HAVE_LINUX_IEEE_INTEFACE
+=======
+	x86 instead of generic HAVE_LINUX_IEEE_INTEFACE
+>>>>>>> config
 
 2000-06-02  Mark Galassi  <rosalia@galassi.org>
 
@@ -453,7 +598,11 @@ Tue Jun  6 20:02:02 2000  Brian Gough  <bjg@network-theory.co.uk>
 Sun May 28 12:03:36 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* gsl/Makefile.am (header-links): use configurable macro variable
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	$(LN_S) instead of explicit "ln -s"
+=======
+	$(LN_S) instead of explicit "ln -s"
+>>>>>>> config
 
 Mon May 15 19:16:31 2000  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -462,7 +611,11 @@ Mon May 15 19:16:31 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 2000-05-14  Steve Robbins  <steve@nyongwa.montreal.qc.ca>
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	* acconfig.h: 
+=======
+	* acconfig.h:
+>>>>>>> config
 	* configure.in: look in both <float.h> and /usr/include/float.h,
 	to find FP_RND_RN, as some versions of GCC don't copy these
 	symbols into the `fixed' header.
@@ -470,15 +623,26 @@ Mon May 15 19:16:31 2000  Brian Gough  <bjg@network-theory.co.uk>
 Thu May 11 12:47:19 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* gsl_math.h (GSL_POSZERO): added macros for IEEE signed zeros, +0
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	and -0. They don't do anything useful yet, but use the macro so
  	that will be possible to work around compilers that don't
  	understand the difference between the constants -0 and +0.
+=======
+	and -0. They don't do anything useful yet, but use the macro so
+	that will be possible to work around compilers that don't
+	understand the difference between the constants -0 and +0.
+>>>>>>> config
 
 Wed May 10 11:30:15 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* gsl_math.h (GSL_POSINF): make use of HUGE_VAL which is actually
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	+Inf when IEEE is available, and can be detected by the NAN being
  	defined (it is only defined on IEEE machines)
+=======
+	+Inf when IEEE is available, and can be detected by the NAN being
+	defined (it is only defined on IEEE machines)
+>>>>>>> config
 	(GSL_NEGINF): as for GSL_POSINF
 
 Fri May  5 11:20:50 2000  Brian Gough  <bjg@network-theory.co.uk>
@@ -492,15 +656,26 @@ Thu May  4 12:14:42 2000  Brian Gough  <bjg@network-theory.co.uk>
 Mon May  1 22:11:32 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* modified all the makefiles to compile test programs as "test",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	for simpler automated builds
+=======
+	for simpler automated builds
+>>>>>>> config
 
 Tue Apr 11 14:51:59 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* eigen/eigen_sort.c (gsl_eigen_sort_impl): updated occurrence of
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	gsl_matrix_swap_cols to gsl_matrix_swap_columns
 
 	* gsl.m4, Makefile.am: added gsl.m4 macros for autoconf
  	support
+=======
+	gsl_matrix_swap_cols to gsl_matrix_swap_columns
+
+	* gsl.m4, Makefile.am: added gsl.m4 macros for autoconf
+	support
+>>>>>>> config
 
 2000-04-03  Mark Galassi  <rosalia@lanl.gov>
 
@@ -513,12 +688,20 @@ Tue Apr 11 14:51:59 2000  Brian Gough  <bjg@network-theory.co.uk>
 Mon Apr  3 15:43:25 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* applied patch from C M Murphy <C.M.Murphy@bath.ac.uk> to fix up
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	missing consts in header files.
+=======
+	missing consts in header files.
+>>>>>>> config
 
 Sat Apr  1 20:12:34 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* gsl_math.h: added some missing extra constants from BSD
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	(e.g. M_PI_2)
+=======
+	(e.g. M_PI_2)
+>>>>>>> config
 
 Wed Mar 15 11:16:14 2000  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -527,7 +710,11 @@ Wed Mar 15 11:16:14 2000  Brian Gough  <bjg@network-theory.co.uk>
 Tue Mar 14 10:28:43 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* added support for including headers in C++ programs using
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	__BEGIN_DECLS and __END_DECLS macros
+=======
+	__BEGIN_DECLS and __END_DECLS macros
+>>>>>>> config
 
 Sat Mar 11 11:18:33 2000  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -538,16 +725,28 @@ Sat Mar 11 11:18:33 2000  Brian Gough  <bjg@network-theory.co.uk>
 Mon Mar  6 19:48:27 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* gsl_version.h: added simple release-number based support for
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	accessing the version number at compile-time and run-time. This is
  	not a complete solution but it will do for now, as libtool
  	interface numbers are too complicated to worry about at the
  	moment due to other problems with libtool.
+=======
+	accessing the version number at compile-time and run-time. This is
+	not a complete solution but it will do for now, as libtool
+	interface numbers are too complicated to worry about at the
+	moment due to other problems with libtool.
+>>>>>>> config
 
 Thu Mar  2 20:52:50 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* templates_on.h (ATOMIC_IO): added an internal type for IO, for
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	the cases where it isn't possible to read and write a type
  	directly as text (e.g. char)
+=======
+	the cases where it isn't possible to read and write a type
+	directly as text (e.g. char)
+>>>>>>> config
 
 2000-02-23  Mark Galassi  <rosalia@lanl.gov>
 
@@ -594,8 +793,13 @@ Mon Aug 16 21:10:23 1999  Brian Gough  <bjg@network-theory.co.uk>
 Fri Aug  6 11:15:58 1999  Brian Gough  <bjg@network-theory.co.uk>
 
 	* configure.in: removed need to configure for rand() and RAND_MAX
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	by providing a simple random number generator in the directories
  	that used rand().
+=======
+	by providing a simple random number generator in the directories
+	that used rand().
+>>>>>>> config
 
 1999-08-05  Mark Galassi  <rosalia@lanl.gov>
 
@@ -618,8 +822,13 @@ Fri Aug  6 11:15:58 1999  Brian Gough  <bjg@network-theory.co.uk>
 Sat May  8 21:06:31 1999  Brian Gough  <bjg@network-theory.co.uk>
 
 	* configure.in: now check for "extern inline" using a modified
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	version of AC_C_INLINE, since we use "extern inline" but only
  	checked for "inline", and some compilers only support the latter.
+=======
+	version of AC_C_INLINE, since we use "extern inline" but only
+	checked for "inline", and some compilers only support the latter.
+>>>>>>> config
 
 Sun Apr 11 20:40:35 1999  Brian Gough  <bjg@netsci.freeserve.co.uk>
 
@@ -632,7 +841,11 @@ Sun Apr 11 20:40:35 1999  Brian Gough  <bjg@netsci.freeserve.co.uk>
 Mon Mar  1 15:41:25 1999  Brian Gough  <bjg@netsci.freeserve.co.uk>
 
 	* gsl_math.h: renamed gsl_fdf to gsl_function_fdf, so that it will
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	be more obvious what it is
+=======
+	be more obvious what it is
+>>>>>>> config
 
 Sun Feb 28 20:37:31 1999  Brian Gough  <bjg@netsci.freeserve.co.uk>
 
@@ -645,7 +858,11 @@ Tue Feb 23 14:18:39 1999  Brian Gough  <bjg@netsci.freeserve.co.uk>
 Sat Feb 20 12:14:07 1999  Brian Gough  <bjg@netsci.freeserve.co.uk>
 
 	* split out polynomial root finding algorithms into a new poly/
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	directory
+=======
+	directory
+>>>>>>> config
 
 1999-02-25  Mark Galassi  <rosalia@cygnus.com>
 
@@ -663,12 +880,20 @@ Sun Feb 14 20:47:07 1999  Brian Gough  <bjg@netsci.freeserve.co.uk>
 Mon Feb  8 18:39:35 1999  Brian Gough  <bjg@netsci.freeserve.co.uk>
 
 	* added new type gsl_function for arbitrary functions with
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	parameters, and gsl_fdf for functions and their derivatives
+=======
+	parameters, and gsl_fdf for functions and their derivatives
+>>>>>>> config
 
 Mon Feb  8 18:39:35 1999  Brian Gough  <bjg@netsci.freeserve.co.uk>
 
 	* gsl_complex.h: added GSL_SET_REAL(&z,x) and GSL_SET_IMAG(&z,y),
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	changed GSL_COMPLEX_SET(z,x,y) to GSL_SET_COMPLEX(&z,x,y) to match.
+=======
+	changed GSL_COMPLEX_SET(z,x,y) to GSL_SET_COMPLEX(&z,x,y) to match.
+>>>>>>> config
 
 1999-01-03  Mark Galassi  <rosalia@cygnus.com>
 
@@ -692,7 +917,11 @@ Mon Feb  8 18:39:35 1999  Brian Gough  <bjg@netsci.freeserve.co.uk>
 Fri Dec 11 16:50:27 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* AUTHORS: corrected the spelling of Gerard Jungman's name (it's
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	either Gerard or Jerry, but not Gerry)
+=======
+	either Gerard or Jerry, but not Gerry)
+>>>>>>> config
 
 1998-12-05  Mark Galassi  <rosalia@cygnus.com>
 
@@ -704,6 +933,7 @@ Fri Dec 11 16:50:27 1998  Brian Gough  <bjg@vvv.lanl.gov>
 Mon Nov 23 16:09:21 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* gsl_config.h: removed, it was an unnecessary hack just for
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	defining macros. Autoconf's config.h should be used by the
  	programmer instead.
  
@@ -715,16 +945,36 @@ Sat Nov 21 20:39:14 1998  Brian Gough  <bjg@vvv.lanl.gov>
 	* move any included headers in _source.c files into the master
  	file that includes the _source.c, since this saves time when
  	compiling
+=======
+	defining macros. Autoconf's config.h should be used by the
+	programmer instead.
+
+Sat Nov 21 20:39:14 1998  Brian Gough  <bjg@vvv.lanl.gov>
+
+	* texinfo.tex: removed, this is a duplicate and shouldn't be
+	needed in the top-level directory (it is in docs)
+
+	* move any included headers in _source.c files into the master
+	file that includes the _source.c, since this saves time when
+	compiling
+>>>>>>> config
 
 	* config.h.in: standardized on HAVE_PRINTF_LONGDOUBLE
 
 Fri Nov 20 15:14:53 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* replaced DBL_EPSILON, DBL_MAX, ... by GSL_DBL_EPSILON,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	GSL_DBL_MAX, ...
 
 	* added sys directory for miscellaneous gsl system functions like
  	max and min
+=======
+	GSL_DBL_MAX, ...
+
+	* added sys directory for miscellaneous gsl system functions like
+	max and min
+>>>>>>> config
 
 Thu Nov 19 22:46:43 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
@@ -733,19 +983,33 @@ Thu Nov 19 22:46:43 1998  Brian Gough  <bjg@vvv.lanl.gov>
 Wed Nov 18 10:40:18 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* gsl_math.h: added prototypes for inline functions GSL_MAX_INT
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	etc
+=======
+	etc
+>>>>>>> config
 
 Tue Nov 10 20:05:27 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* gsl_math.h: moved the MAX(a,b) and MIN(a,b) to gsl_math.h and
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	renamed them GSL_MAX(a,b) and GSL_MIN(a,b) to avoid inevitable
  	conflicts with system macros.
+=======
+	renamed them GSL_MAX(a,b) and GSL_MIN(a,b) to avoid inevitable
+	conflicts with system macros.
+>>>>>>> config
 
 Mon Nov  9 21:08:10 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* config.h: added MAX(a,b) and MIN(a,b) macros since we use these
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	everywhere. We assume that if they are defined by the system then
  	they do actually work.
+=======
+	everywhere. We assume that if they are defined by the system then
+	they do actually work.
+>>>>>>> config
 
 1998-11-06    <bjg@ancho.lanl.gov>
 
@@ -756,7 +1020,11 @@ Mon Nov  9 21:08:10 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* Makefile.am (SUBDIRS): added utils directory
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	* configure.in (AC_OUTPUT): added utils/Makefile 
+=======
+	* configure.in (AC_OUTPUT): added utils/Makefile
+>>>>>>> config
 
 	* configure.in (AC_REPLACE_FUNCS): added strtol, strtoul; removed
 	strerror since it's already hardcoded into the err/ directory
@@ -785,7 +1053,11 @@ Mon Nov  9 21:08:10 1998  Brian Gough  <bjg@vvv.lanl.gov>
 Thu Jul 30 16:12:05 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* Makefile.am: now using a script to write the AR commands
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	explicitly, this should be more portable
+=======
+	explicitly, this should be more portable
+>>>>>>> config
 
 Tue Jul 28 23:07:04 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
@@ -794,18 +1066,31 @@ Tue Jul 28 23:07:04 1998  Brian Gough  <bjg@vvv.lanl.gov>
 Fri Jul 10 19:57:49 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* configure.in: removed AC_FUNC_ALLOCA since we don't use alloca
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	(it is not ansi)
+=======
+	(it is not ansi)
+>>>>>>> config
 
 Sun Jun 28 14:31:31 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* replaced the random/ directory by the rng/ directory and made
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	minor changes in randist/, siman/ to accommodate it
+=======
+	minor changes in randist/, siman/ to accommodate it
+>>>>>>> config
 
 Tue Jun 23 19:49:22 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* added a top-level file gsl_config.h for detecting features when
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	users include the library headers. Currently it just turns on
  	HAVE_INLINE if you are using GCC or C++.
+=======
+	users include the library headers. Currently it just turns on
+	HAVE_INLINE if you are using GCC or C++.
+>>>>>>> config
 
 1998-05-16  Mark Galassi  <rosalia@cygnus.com>
 
@@ -821,8 +1106,13 @@ Tue Jun 23 19:49:22 1998  Brian Gough  <bjg@vvv.lanl.gov>
 Wed Apr  8 18:30:48 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* Now using the automake variable check_PROGRAMS everywhere for
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	the testing programs (no need to build them unless we do make
  	check)
+=======
+	the testing programs (no need to build them unless we do make
+	check)
+>>>>>>> config
 
 Mon Apr  6 15:09:08 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
@@ -831,7 +1121,11 @@ Mon Apr  6 15:09:08 1998  Brian Gough  <bjg@vvv.lanl.gov>
 Wed Mar 18 10:27:27 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* gsl_complex.h: the typedef for 'complex' has been renamed to
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	gsl_complex, to avoid conflicts with C++ bindings and libstdc++
+=======
+	gsl_complex, to avoid conflicts with C++ bindings and libstdc++
+>>>>>>> config
 
 1998-02-09  Mark Galassi  <rosalia@cygnus.com>
 
@@ -845,4 +1139,7 @@ Wed Mar 18 10:27:27 1998  Brian Gough  <bjg@vvv.lanl.gov>
 1998-01-30  Mark Galassi  <rosalia@cygnus.com>
 
 	* AUTHORS: added Gerry Jungman to the authors list.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

@@ -1,17 +1,31 @@
 /* rng/test.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -26,7 +40,11 @@
 #include <gsl/gsl_ieee_utils.h>
 
 void rng_test (const gsl_rng_type * T, unsigned long int seed, unsigned int n,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                unsigned long int result);
+=======
+	       unsigned long int result);
+>>>>>>> config
 void rng_float_test (const gsl_rng_type * T);
 void generic_rng_test (const gsl_rng_type * T);
 void rng_state_test (const gsl_rng_type * T);
@@ -70,6 +88,7 @@ main (void)
   /* Fishman18 test value from PARI: (62089911^10000)%(2^31-1) */
   rng_test (gsl_rng_fishman18, 1, 10000, 330402013UL);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   /* Fishman2x test value from PARI: 
      ((48271^10000)%(2^31-1) - (40692^10000)%(2^31-249))%(2^31-1) */
   rng_test (gsl_rng_fishman2x, 1, 10000, 540133597UL);
@@ -78,6 +97,16 @@ main (void)
      { xn1=1; xn2=1; for (n=1,10000, 
             xn = (271828183*xn1 - 314159269*xn2)%(2^31-1);
             xn2=xn1; xn1=xn; print(xn); ) } */
+=======
+  /* Fishman2x test value from PARI:
+     ((48271^10000)%(2^31-1) - (40692^10000)%(2^31-249))%(2^31-1) */
+  rng_test (gsl_rng_fishman2x, 1, 10000, 540133597UL);
+
+  /* Knuthran2 test value from PARI:
+     { xn1=1; xn2=1; for (n=1,10000,
+	    xn = (271828183*xn1 - 314159269*xn2)%(2^31-1);
+	    xn2=xn1; xn1=xn; print(xn); ) } */
+>>>>>>> config
   rng_test (gsl_rng_knuthran2, 1, 10000, 1084477620UL);
 
   /* Knuthran test value taken from p188 in Knuth Vol 2. 3rd Ed */
@@ -118,7 +147,11 @@ main (void)
   rng_test (gsl_rng_ranlxs1, 1, 10000, 8734328);
   /* 0.520606517791748047 * ldexp(1.0,24) */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   rng_test (gsl_rng_ranlxs2, 1, 10000, 6843140); 
+=======
+  rng_test (gsl_rng_ranlxs2, 1, 10000, 6843140);
+>>>>>>> config
   /* 0.407882928848266602 * ldexp(1.0,24) */
 
   rng_test (gsl_rng_ranlxd1, 1, 10000, 1998227290UL);
@@ -209,7 +242,11 @@ main (void)
 
 void
 rng_test (const gsl_rng_type * T, unsigned long int seed, unsigned int n,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           unsigned long int result)
+=======
+	  unsigned long int result)
+>>>>>>> config
 {
   gsl_rng *r = gsl_rng_alloc (T);
   unsigned int i;
@@ -228,7 +265,11 @@ rng_test (const gsl_rng_type * T, unsigned long int seed, unsigned int n,
 
   status = (k != result);
   gsl_test (status, "%s, %u steps (%u observed vs %u expected)",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             gsl_rng_name (r), n, k, result);
+=======
+	    gsl_rng_name (r), n, k, result);
+>>>>>>> config
 
   gsl_rng_free (r);
 }
@@ -239,16 +280,28 @@ rng_float_test (const gsl_rng_type * T)
   gsl_rng *ri = gsl_rng_alloc (T);
   gsl_rng *rf = gsl_rng_alloc (T);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   double u, c ; 
+=======
+  double u, c ;
+>>>>>>> config
   unsigned int i;
   unsigned long int k = 0;
   int status = 0 ;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   do 
     {
       k = gsl_rng_get (ri);
       u = gsl_rng_get (rf);
     } 
+=======
+  do
+    {
+      k = gsl_rng_get (ri);
+      u = gsl_rng_get (rf);
+    }
+>>>>>>> config
   while (k == 0) ;
 
   c = k / u ;
@@ -257,6 +310,7 @@ rng_float_test (const gsl_rng_type * T)
       k = gsl_rng_get (ri);
       u = gsl_rng_get (rf);
       if (c*k != u)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           status = 1 ;
           break ;
@@ -265,6 +319,16 @@ rng_float_test (const gsl_rng_type * T)
 
   gsl_test (status, "%s, ratio of int to double (%g observed vs %g expected)",
             gsl_rng_name (ri), c, k/u);
+=======
+	{
+	  status = 1 ;
+	  break ;
+	}
+    }
+
+  gsl_test (status, "%s, ratio of int to double (%g observed vs %g expected)",
+	    gsl_rng_name (ri), c, k/u);
+>>>>>>> config
 
   gsl_rng_free (ri);
   gsl_rng_free (rf);
@@ -305,10 +369,17 @@ rng_state_test (const gsl_rng_type * T)
     int status = 0;
     for (i = 0; i < N; ++i)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         status |= (test_b[i] != test_a[i]);
       }
     gsl_test (status, "%s, random number state consistency",
               gsl_rng_name (r));
+=======
+	status |= (test_b[i] != test_a[i]);
+      }
+    gsl_test (status, "%s, random number state consistency",
+	      gsl_rng_name (r));
+>>>>>>> config
   }
 
   gsl_rng_free (r);
@@ -337,11 +408,19 @@ rng_parallel_state_test (const gsl_rng_type * T)
   for (i = 0; i < N; ++i)
     {
       /* check that there is no hidden state intermixed between r1 and r2 */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       test_a[i] = gsl_rng_get (r1);     
       test_b[i] = gsl_rng_get (r2);
       test_c[i] = gsl_rng_uniform_int (r1, 1234);       
       test_d[i] = gsl_rng_uniform_int (r2, 1234);
       test_e[i] = gsl_rng_uniform (r1); 
+=======
+      test_a[i] = gsl_rng_get (r1);
+      test_b[i] = gsl_rng_get (r2);
+      test_c[i] = gsl_rng_uniform_int (r1, 1234);
+      test_d[i] = gsl_rng_uniform_int (r2, 1234);
+      test_e[i] = gsl_rng_uniform (r1);
+>>>>>>> config
       test_f[i] = gsl_rng_uniform (r2);
     }
 
@@ -349,12 +428,21 @@ rng_parallel_state_test (const gsl_rng_type * T)
     int status = 0;
     for (i = 0; i < N; ++i)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         status |= (test_b[i] != test_a[i]);
         status |= (test_c[i] != test_d[i]);
         status |= (test_e[i] != test_f[i]);
       }
     gsl_test (status, "%s, parallel random number state consistency",
               gsl_rng_name (r1));
+=======
+	status |= (test_b[i] != test_a[i]);
+	status |= (test_c[i] != test_d[i]);
+	status |= (test_e[i] != test_f[i]);
+      }
+    gsl_test (status, "%s, parallel random number state consistency",
+	      gsl_rng_name (r1));
+>>>>>>> config
   }
 
   gsl_rng_free (r1);
@@ -377,7 +465,11 @@ rng_read_write_test (const gsl_rng_type * T)
     }
 
   { /* save the state to a binary file */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     FILE *f = fopen("test.dat", "wb"); 
+=======
+    FILE *f = fopen("test.dat", "wb");
+>>>>>>> config
     gsl_rng_fwrite(f, r);
     fclose(f);
   }
@@ -388,7 +480,11 @@ rng_read_write_test (const gsl_rng_type * T)
     }
 
   { /* read the state from a binary file */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     FILE *f = fopen("test.dat", "rb"); 
+=======
+    FILE *f = fopen("test.dat", "rb");
+>>>>>>> config
     gsl_rng_fread(f, r);
     fclose(f);
   }
@@ -402,10 +498,17 @@ rng_read_write_test (const gsl_rng_type * T)
     int status = 0;
     for (i = 0; i < N; ++i)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         status |= (test_b[i] != test_a[i]);
       }
     gsl_test (status, "%s, random number generator read and write",
               gsl_rng_name (r));
+=======
+	status |= (test_b[i] != test_a[i]);
+      }
+    gsl_test (status, "%s, random number generator read and write",
+	      gsl_rng_name (r));
+>>>>>>> config
   }
 
   gsl_rng_free (r);
@@ -424,26 +527,46 @@ generic_rng_test (const gsl_rng_type * T)
   int status = rng_max_test (r, &kmax, ran_max);
 
   gsl_test (status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             "%s, observed vs theoretical maximum (%lu vs %lu)",
             name, kmax, ran_max);
+=======
+	    "%s, observed vs theoretical maximum (%lu vs %lu)",
+	    name, kmax, ran_max);
+>>>>>>> config
 
   status = rng_min_test (r, &kmin, ran_min, ran_max);
 
   gsl_test (status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             "%s, observed vs theoretical minimum (%lu vs %lu)",
             name, kmin, ran_min);
+=======
+	    "%s, observed vs theoretical minimum (%lu vs %lu)",
+	    name, kmin, ran_min);
+>>>>>>> config
 
   status = rng_sum_test (r, &sigma);
 
   gsl_test (status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             "%s, sum test within acceptable sigma (observed %.2g sigma)",
             name, sigma);
+=======
+	    "%s, sum test within acceptable sigma (observed %.2g sigma)",
+	    name, sigma);
+>>>>>>> config
 
   status = rng_bin_test (r, &sigma);
 
   gsl_test (status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             "%s, bin test within acceptable chisq (observed %.2g sigma)",
             name, sigma);
+=======
+	    "%s, bin test within acceptable chisq (observed %.2g sigma)",
+	    name, sigma);
+>>>>>>> config
 
   gsl_rng_set (r, 1);   /* set seed to 1 */
   status = rng_max_test (r, &kmax, ran_max);
@@ -483,7 +606,11 @@ rng_max_test (gsl_rng * r, unsigned long int *kmax, unsigned long int ran_max)
     {
       unsigned long int k = gsl_rng_get (r);
       if (k > max)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         max = k;
+=======
+	max = k;
+>>>>>>> config
     }
 
   *kmax = max;
@@ -497,8 +624,13 @@ rng_max_test (gsl_rng * r, unsigned long int *kmax, unsigned long int ran_max)
 }
 
 int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 rng_min_test (gsl_rng * r, unsigned long int *kmin, 
               unsigned long int ran_min, unsigned long int ran_max)
+=======
+rng_min_test (gsl_rng * r, unsigned long int *kmin,
+	      unsigned long int ran_min, unsigned long int ran_max)
+>>>>>>> config
 {
   unsigned long int actual_uncovered;
   double expect_uncovered;
@@ -510,7 +642,11 @@ rng_min_test (gsl_rng * r, unsigned long int *kmin,
     {
       unsigned long int k = gsl_rng_get (r);
       if (k < min)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         min = k;
+=======
+	min = k;
+>>>>>>> config
     }
 
   *kmin = min;
@@ -542,7 +678,11 @@ rng_sum_test (gsl_rng * r, double *sigma)
   *sigma = sum * sqrt (12.0 * N2);
 
   /* more than 3 sigma is an error (increased to 3.1 to avoid false alarms) */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   status = (fabs (*sigma) > 3.1 || fabs(*sigma) < 0.003);
 
   if (status) {
@@ -582,12 +722,17 @@ rng_bin_test (gsl_rng * r, double *sigma)
   *sigma = sqrt(chisq/BINS) ;
 
   /* more than 3 sigma is an error */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   status = (fabs (*sigma) > 3 || fabs(*sigma) < 0.003);
 
   for (i = BINS; i < BINS+EXTRA; i++)
     {
       if (count[i] != 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           status = 1 ;
           gsl_test (status, 
@@ -595,8 +740,20 @@ rng_bin_test (gsl_rng * r, double *sigma)
                     "(%d observed vs %d expected)",
                     gsl_rng_name(r), i, BINS - 1);
         }
+=======
+	{
+	  status = 1 ;
+	  gsl_test (status,
+		    "%s, wrote outside range in bin test "
+		    "(%d observed vs %d expected)",
+		    gsl_rng_name(r), i, BINS - 1);
+	}
+>>>>>>> config
     }
 
   return status;
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

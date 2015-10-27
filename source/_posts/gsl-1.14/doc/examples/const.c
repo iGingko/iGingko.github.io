@@ -9,7 +9,11 @@ main (void)
   double minutes = GSL_CONST_MKSA_MINUTE;
 
   /* distance stored in meters */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   double r_earth = 1.00 * au;  
+=======
+  double r_earth = 1.00 * au;
+>>>>>>> config
   double r_mars  = 1.52 * au;
 
   double t_min, t_max;

@@ -1,17 +1,31 @@
 /* integration/qpsrt2.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -45,6 +59,7 @@ increase_nrmax (gsl_integration_workspace * workspace)
     {
       jupbnd = last;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   for (k = id; k <= jupbnd; k++)
     {
@@ -56,6 +71,19 @@ increase_nrmax (gsl_integration_workspace * workspace)
         {
           return 1;
         }
+=======
+
+  for (k = id; k <= jupbnd; k++)
+    {
+      size_t i_max = order[workspace->nrmax];
+
+      workspace->i = i_max ;
+
+      if (level[i_max] < workspace->maximum_level)
+	{
+	  return 1;
+	}
+>>>>>>> config
 
       workspace->nrmax++;
 
@@ -68,7 +96,11 @@ large_interval (gsl_integration_workspace * workspace)
 {
   size_t i = workspace->i ;
   const size_t * level = workspace->level;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   if (level[i] < workspace->maximum_level)
     {
       return 1 ;
@@ -78,4 +110,7 @@ large_interval (gsl_integration_workspace * workspace)
       return 0 ;
     }
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

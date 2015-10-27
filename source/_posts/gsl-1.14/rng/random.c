@@ -1,17 +1,31 @@
 /* rng/random.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -36,7 +50,11 @@
    They all produce different numbers, due to the different seeding
    algorithms, but the algorithm for the generator is the same in each
    case.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
  */
 
 static inline long int random_get (int * i, int * j, int n, long int * x);
@@ -125,11 +143,19 @@ random_get (int * i, int * j, int n, long int * x)
 
   x[*i] += x[*j] ;
   k = (x[*i] >> 1) & 0x7FFFFFFF ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   (*i)++ ;
   if (*i == n)
     *i = 0 ;
   
+=======
+
+  (*i)++ ;
+  if (*i == n)
+    *i = 0 ;
+
+>>>>>>> config
   (*j)++ ;
   if (*j == n)
     *j = 0 ;
@@ -141,7 +167,11 @@ static inline unsigned long int
 random32_get (void *vstate)
 {
   random32_state_t *state = (random32_state_t *) vstate;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   unsigned long int k = random_get (&state->i, &state->j, 7, state->x) ; 
+=======
+  unsigned long int k = random_get (&state->i, &state->j, 7, state->x) ;
+>>>>>>> config
   return k ;
 }
 
@@ -149,7 +179,11 @@ static inline unsigned long int
 random64_get (void *vstate)
 {
   random64_state_t *state = (random64_state_t *) vstate;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   long int k = random_get (&state->i, &state->j, 15, state->x) ; 
+=======
+  long int k = random_get (&state->i, &state->j, 15, state->x) ;
+>>>>>>> config
   return k ;
 }
 
@@ -157,7 +191,11 @@ static inline unsigned long int
 random128_get (void *vstate)
 {
   random128_state_t *state = (random128_state_t *) vstate;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   unsigned long int k = random_get (&state->i, &state->j, 31, state->x) ; 
+=======
+  unsigned long int k = random_get (&state->i, &state->j, 31, state->x) ;
+>>>>>>> config
   return k ;
 }
 
@@ -165,7 +203,11 @@ static inline unsigned long int
 random256_get (void *vstate)
 {
   random256_state_t *state = (random256_state_t *) vstate;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   long int k = random_get (&state->i, &state->j, 63, state->x) ; 
+=======
+  long int k = random_get (&state->i, &state->j, 63, state->x) ;
+>>>>>>> config
   return k ;
 }
 
@@ -203,8 +245,13 @@ static void
 random8_bsd_set (void *vstate, unsigned long int s)
 {
   random8_state_t *state = (random8_state_t *) vstate;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   if (s == 0) 
+=======
+
+  if (s == 0)
+>>>>>>> config
     s = 1;
 
   state->x = s;
@@ -220,9 +267,15 @@ random32_bsd_set (void *vstate, unsigned long int s)
 
   state->i = 3;
   state->j = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   for (i = 0 ; i < 10 * 7 ; i++)
     random32_get (state) ; 
+=======
+
+  for (i = 0 ; i < 10 * 7 ; i++)
+    random32_get (state) ;
+>>>>>>> config
 }
 
 static void
@@ -235,9 +288,15 @@ random64_bsd_set (void *vstate, unsigned long int s)
 
   state->i = 1;
   state->j = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   for (i = 0 ; i < 10 * 15 ; i++)
     random64_get (state) ; 
+=======
+
+  for (i = 0 ; i < 10 * 15 ; i++)
+    random64_get (state) ;
+>>>>>>> config
 }
 
 static void
@@ -250,9 +309,15 @@ random128_bsd_set (void *vstate, unsigned long int s)
 
   state->i = 3;
   state->j = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   for (i = 0 ; i < 10 * 31 ; i++)
     random128_get (state) ; 
+=======
+
+  for (i = 0 ; i < 10 * 31 ; i++)
+    random128_get (state) ;
+>>>>>>> config
 }
 
 static void
@@ -265,6 +330,7 @@ random256_bsd_set (void *vstate, unsigned long int s)
 
   state->i = 1;
   state->j = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   for (i = 0 ; i < 10 * 63 ; i++)
     random256_get (state) ; 
@@ -274,6 +340,17 @@ static void
 bsd_initialize (long int * x, int n, unsigned long int s)
 {
   int i; 
+=======
+
+  for (i = 0 ; i < 10 * 63 ; i++)
+    random256_get (state) ;
+}
+
+static void
+bsd_initialize (long int * x, int n, unsigned long int s)
+{
+  int i;
+>>>>>>> config
 
   if (s == 0)
     s = 1 ;
@@ -284,10 +361,17 @@ bsd_initialize (long int * x, int n, unsigned long int s)
     x[i] = 1103515245 * x[i-1] + 12345 ;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static void 
 libc5_initialize (long int * x, int n, unsigned long int s)
 {
   int i; 
+=======
+static void
+libc5_initialize (long int * x, int n, unsigned long int s)
+{
+  int i;
+>>>>>>> config
 
   if (s == 0)
     s = 1 ;
@@ -298,10 +382,17 @@ libc5_initialize (long int * x, int n, unsigned long int s)
     x[i] = 1103515145 * x[i-1] + 12345 ;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static void 
 glibc2_initialize (long int * x, int n, unsigned long int s)
 {
   int i; 
+=======
+static void
+glibc2_initialize (long int * x, int n, unsigned long int s)
+{
+  int i;
+>>>>>>> config
 
   if (s == 0)
     s = 1 ;
@@ -313,6 +404,7 @@ glibc2_initialize (long int * x, int n, unsigned long int s)
       const long int h = s / 127773;
       const long int t = 16807 * (s - h * 127773) - h * 2836;
       if (t < 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           s = t + 2147483647 ;
         }
@@ -320,6 +412,15 @@ glibc2_initialize (long int * x, int n, unsigned long int s)
         {
           s = t ;
         }
+=======
+	{
+	  s = t + 2147483647 ;
+	}
+      else
+	{
+	  s = t ;
+	}
+>>>>>>> config
 
     x[i] = s ;
     }
@@ -329,8 +430,13 @@ static void
 random8_glibc2_set (void *vstate, unsigned long int s)
 {
   random8_state_t *state = (random8_state_t *) vstate;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   if (s == 0) 
+=======
+
+  if (s == 0)
+>>>>>>> config
     s = 1;
 
   state->x = s;
@@ -346,9 +452,15 @@ random32_glibc2_set (void *vstate, unsigned long int s)
 
   state->i = 3;
   state->j = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   for (i = 0 ; i < 10 * 7 ; i++)
     random32_get (state) ; 
+=======
+
+  for (i = 0 ; i < 10 * 7 ; i++)
+    random32_get (state) ;
+>>>>>>> config
 }
 
 static void
@@ -361,9 +473,15 @@ random64_glibc2_set (void *vstate, unsigned long int s)
 
   state->i = 1;
   state->j = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   for (i = 0 ; i < 10 * 15 ; i++)
     random64_get (state) ; 
+=======
+
+  for (i = 0 ; i < 10 * 15 ; i++)
+    random64_get (state) ;
+>>>>>>> config
 }
 
 static void
@@ -376,9 +494,15 @@ random128_glibc2_set (void *vstate, unsigned long int s)
 
   state->i = 3;
   state->j = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   for (i = 0 ; i < 10 * 31 ; i++)
     random128_get (state) ; 
+=======
+
+  for (i = 0 ; i < 10 * 31 ; i++)
+    random128_get (state) ;
+>>>>>>> config
 }
 
 static void
@@ -391,9 +515,15 @@ random256_glibc2_set (void *vstate, unsigned long int s)
 
   state->i = 1;
   state->j = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   for (i = 0 ; i < 10 * 63 ; i++)
     random256_get (state) ; 
+=======
+
+  for (i = 0 ; i < 10 * 63 ; i++)
+    random256_get (state) ;
+>>>>>>> config
 }
 
 
@@ -401,8 +531,13 @@ static void
 random8_libc5_set (void *vstate, unsigned long int s)
 {
   random8_state_t *state = (random8_state_t *) vstate;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   if (s == 0) 
+=======
+
+  if (s == 0)
+>>>>>>> config
     s = 1;
 
   state->x = s;
@@ -418,9 +553,15 @@ random32_libc5_set (void *vstate, unsigned long int s)
 
   state->i = 3;
   state->j = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   for (i = 0 ; i < 10 * 7 ; i++)
     random32_get (state) ; 
+=======
+
+  for (i = 0 ; i < 10 * 7 ; i++)
+    random32_get (state) ;
+>>>>>>> config
 }
 
 static void
@@ -433,9 +574,15 @@ random64_libc5_set (void *vstate, unsigned long int s)
 
   state->i = 1;
   state->j = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   for (i = 0 ; i < 10 * 15 ; i++)
     random64_get (state) ; 
+=======
+
+  for (i = 0 ; i < 10 * 15 ; i++)
+    random64_get (state) ;
+>>>>>>> config
 }
 
 static void
@@ -448,9 +595,15 @@ random128_libc5_set (void *vstate, unsigned long int s)
 
   state->i = 3;
   state->j = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   for (i = 0 ; i < 10 * 31 ; i++)
     random128_get (state) ; 
+=======
+
+  for (i = 0 ; i < 10 * 31 ; i++)
+    random128_get (state) ;
+>>>>>>> config
 }
 
 static void
@@ -463,9 +616,15 @@ random256_libc5_set (void *vstate, unsigned long int s)
 
   state->i = 1;
   state->j = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   for (i = 0 ; i < 10 * 63 ; i++)
     random256_get (state) ; 
+=======
+
+  for (i = 0 ; i < 10 * 63 ; i++)
+    random256_get (state) ;
+>>>>>>> config
 }
 
 static const gsl_rng_type random_glibc2_type =
@@ -650,7 +809,10 @@ const gsl_rng_type *gsl_rng_random32_bsd  = &random32_bsd_type;
 const gsl_rng_type *gsl_rng_random64_bsd  = &random64_bsd_type;
 const gsl_rng_type *gsl_rng_random128_bsd = &random128_bsd_type;
 const gsl_rng_type *gsl_rng_random256_bsd = &random256_bsd_type;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
 
 
+=======
+>>>>>>> config

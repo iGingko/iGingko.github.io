@@ -13,7 +13,11 @@ main(void)
   smallest = gsl_stats_min(data, 1, 5);
 
   printf ("The dataset is %g, %g, %g, %g, %g\n",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          data[0], data[1], data[2], data[3], data[4]);
+=======
+	 data[0], data[1], data[2], data[3], data[4]);
+>>>>>>> config
 
   printf ("The sample mean is %g\n", mean);
   printf ("The estimated variance is %g\n", variance);

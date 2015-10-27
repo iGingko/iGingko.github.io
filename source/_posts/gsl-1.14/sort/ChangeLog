@@ -19,42 +19,72 @@
 Tue Jun 26 12:06:58 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* subset_source. subsetind_source.c: make prototypes match header
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	file
+=======
+	file
+>>>>>>> config
 
 Sun Jan 21 18:36:04 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* subset.c, subsetind.c: added functions for selecting subsets
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	(k-th smallest or largest values)
+=======
+	(k-th smallest or largest values)
+>>>>>>> config
 
 Mon Mar 13 13:57:33 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* sortind.c (gsl_heapsort_index): changed to use an array of
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	size_t's directly instead of gsl_permutation
+=======
+	size_t's directly instead of gsl_permutation
+>>>>>>> config
 
 Mon Feb 28 20:30:06 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* renamed gsl_sort to gsl_heapsort, since this is more meaningful
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	and gsl_sort, gsl_sort_float, ... is now used for sorting of
  	arrays.
 
 	* added support for sorting of arrays, without going through a
  	gsl_vector object (gsl_sort_vector is now implemented in terms of
  	these functions)
+=======
+	and gsl_sort, gsl_sort_float, ... is now used for sorting of
+	arrays.
+
+	* added support for sorting of arrays, without going through a
+	gsl_vector object (gsl_sort_vector is now implemented in terms of
+	these functions)
+>>>>>>> config
 
 Sat Feb 26 14:47:36 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* added support for indirect sorting of objects
 
 	* fixed bug in indirect sorting from use of BASE type instead of
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	size_t for index.
+=======
+	size_t for index.
+>>>>>>> config
 
 	* reorganized directory
 
 Fri Feb 25 19:30:08 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* sortind_source.c: changed return type of indirect sort to int,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	to allow error return code in case where permutation and vector
  	sizes do not match
+=======
+	to allow error return code in case where permutation and vector
+	sizes do not match
+>>>>>>> config
 
 Sat Feb 19 12:18:28 2000  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -63,4 +93,8 @@ Sat Feb 19 12:18:28 2000  Brian Gough  <bjg@network-theory.co.uk>
 Fri Feb 18 10:48:24 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* initial GPL sources from Thomas Walter
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	<walter@pctc.chemie.uni-erlangen.de>
+=======
+	<walter@pctc.chemie.uni-erlangen.de>
+>>>>>>> config

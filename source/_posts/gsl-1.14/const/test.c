@@ -1,17 +1,31 @@
 /* const/test.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2003, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 2003, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -45,7 +59,11 @@ main (void)
     double ly = GSL_CONST_CGS_LIGHT_YEAR;
     double c = GSL_CONST_CGS_SPEED_OF_LIGHT;
     double y = 365.2425 * GSL_CONST_CGS_DAY;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     gsl_test_rel (ly, c * y, 1e-6, "light year (cgs)");
   }
 
@@ -61,7 +79,11 @@ main (void)
     double ly = GSL_CONST_CGSM_LIGHT_YEAR;
     double c = GSL_CONST_CGSM_SPEED_OF_LIGHT;
     double y = 365.2425 * GSL_CONST_CGSM_DAY;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     gsl_test_rel (ly, c * y, 1e-6, "light year (cgsm)");
   }
 
@@ -77,7 +99,11 @@ main (void)
     double d = GSL_CONST_MKSA_DEBYE;
     double c = GSL_CONST_MKSA_SPEED_OF_LIGHT;
     double desu = d * c * 1000.0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     gsl_test_rel (desu, 1e-18, 1e-10, "debye (esu)");
   }
 
@@ -87,11 +113,18 @@ main (void)
     double h = GSL_CONST_MKSA_PLANCKS_CONSTANT_H;
     double s = 2 * pow(M_PI, 5.0) * pow(k, 4.0) / (15 * pow(c, 2.0) * pow(h, 3.0));
     double sigma = GSL_CONST_MKSA_STEFAN_BOLTZMANN_CONSTANT;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     gsl_test_rel(s, sigma, 1e-10, "stefan boltzmann constant");
   }
 
 
   exit (gsl_test_summary ());
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

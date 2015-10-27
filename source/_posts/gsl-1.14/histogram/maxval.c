@@ -18,8 +18,13 @@
  */
 /***************************************************************
  *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * File gsl_histogram_maxval.c: 
  * Routine to find maximum and minumum content of a hisogram. 
+=======
+ * File gsl_histogram_maxval.c:
+ * Routine to find maximum and minumum content of a hisogram.
+>>>>>>> config
  * Need GSL library and header.
  * Contains the routines:
  * gsl_histogram_max_val find max content values
@@ -44,9 +49,15 @@ gsl_histogram_max_val (const gsl_histogram * h)
   for (i = 0; i < n; i++)
     {
       if (h->bin[i] > max)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           max = h->bin[i];
         }
+=======
+	{
+	  max = h->bin[i];
+	}
+>>>>>>> config
     }
   return max;
 }
@@ -60,10 +71,17 @@ gsl_histogram_max_bin (const gsl_histogram * h)
   for (i = 0; i < h->n; i++)
     {
       if (h->bin[i] > max)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           max = h->bin[i];
           imax = i;
         }
+=======
+	{
+	  max = h->bin[i];
+	  imax = i;
+	}
+>>>>>>> config
     }
   return imax;
 }
@@ -76,9 +94,15 @@ gsl_histogram_min_val (const gsl_histogram * h)
   for (i = 0; i < h->n; i++)
     {
       if (h->bin[i] < min)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           min = h->bin[i];
         }
+=======
+	{
+	  min = h->bin[i];
+	}
+>>>>>>> config
     }
   return min;
 }
@@ -92,10 +116,17 @@ gsl_histogram_min_bin (const gsl_histogram * h)
   for (i = 0; i < h->n; i++)
     {
       if (h->bin[i] < min)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           min = h->bin[i];
           imin = i;
         }
+=======
+	{
+	  min = h->bin[i];
+	  imin = i;
+	}
+>>>>>>> config
     }
   return imin;
 }

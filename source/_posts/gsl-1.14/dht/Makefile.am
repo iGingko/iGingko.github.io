@@ -1,4 +1,8 @@
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 noinst_LTLIBRARIES = libgsldht.la 
+=======
+noinst_LTLIBRARIES = libgsldht.la
+>>>>>>> config
 
 pkginclude_HEADERS = gsl_dht.h
 

@@ -1,18 +1,33 @@
 /* specfunc/test_hyperg.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2007, 2009, 2010 Brian Gough
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2004 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 2007, 2009, 2010 Brian Gough
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2004 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -306,7 +321,11 @@ int test_hyperg(void)
   TEST_SF(s, gsl_sf_hyperg_1F1_int_e, (-1, -1, 0.1, &r), 1.1, TEST_TOL0, GSL_SUCCESS);
   TEST_SF(s, gsl_sf_hyperg_1F1_e, (-1, -1, 0.1, &r),  1.1, TEST_TOL0, GSL_SUCCESS);
 #endif
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   /* U for integer parameters */
 
   TEST_SF(s, gsl_sf_hyperg_U_int_e, (1, 1, 0.0001, &r),  8.634088070212725330, TEST_TOL0, GSL_SUCCESS);
@@ -660,7 +679,11 @@ int test_hyperg(void)
   TEST_SF(s, gsl_sf_hyperg_2F1_renorm_e, (5, 5, -1, 0.5, &r), 4949760.0, TEST_TOL1, GSL_SUCCESS);
   TEST_SF(s, gsl_sf_hyperg_2F1_renorm_e, (5, 5, -10, 0.5, &r), 139408493229637632000.0, TEST_TOL2, GSL_SUCCESS);
   TEST_SF(s, gsl_sf_hyperg_2F1_renorm_e, (5, 5, -100, 0.5, &r), 3.0200107544594411315e+206, TEST_TOL3, GSL_SUCCESS);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   /* 2F1 conj renorm */
 
   TEST_SF(s, gsl_sf_hyperg_2F1_conj_renorm_e, (9, 9, -1.5, 0.99, &r), 5.912269095984229412e+49, TEST_TOL2, GSL_SUCCESS);

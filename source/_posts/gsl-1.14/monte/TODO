@@ -22,4 +22,7 @@ way the error would be increased.
 quantities.  The appropriate way to implement it in GSL would be to
 provide a separate routine which returns sample points and weights so
 that the user can caculate any quantity.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

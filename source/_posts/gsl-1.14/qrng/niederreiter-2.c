@@ -31,7 +31,11 @@ static int nied2_init(void * state, unsigned int dimension);
 static int nied2_get(void * state, unsigned int dimension, double * v);
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static const gsl_qrng_type nied2_type = 
+=======
+static const gsl_qrng_type nied2_type =
+>>>>>>> config
 {
   "niederreiter-base-2",
   NIED2_MAX_DIMENSION,
@@ -273,7 +277,11 @@ static void calculate_cj(nied2_state_t * ns, unsigned int dimension)
        * Niederreiter's C(I,J,R).
        */
       for(r=0; r<NIED2_NBITS; r++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ci[r][j] = v[r+u];
+=======
+	ci[r][j] = v[r+u];
+>>>>>>> config
       }
 
       /* Advance Niederreiter's state variables. */
@@ -288,7 +296,11 @@ static void calculate_cj(nied2_state_t * ns, unsigned int dimension)
     for(r=0; r<NIED2_NBITS; r++) {
       int term = 0;
       for(j=0; j<NIED2_NBITS; j++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         term = 2*term + ci[r][j];
+=======
+	term = 2*term + ci[r][j];
+>>>>>>> config
       }
       ns->cj[r][i_dim] = term;
     }

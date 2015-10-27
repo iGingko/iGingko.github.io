@@ -5,12 +5,21 @@ consistency across platforms and reliable error estimates.  These
 functions are declared in the header file @file{gsl_sf_trig.h}.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Circular Trigonometric Functions::  
 * Trigonometric Functions for Complex Arguments::  
 * Hyperbolic Trigonometric Functions::  
 * Conversion Functions::        
 * Restriction Functions::       
 * Trigonometric Functions With Error Estimates::  
+=======
+* Circular Trigonometric Functions::
+* Trigonometric Functions for Complex Arguments::
+* Hyperbolic Trigonometric Functions::
+* Conversion Functions::
+* Restriction Functions::
+* Trigonometric Functions With Error Estimates::
+>>>>>>> config
 @end menu
 
 @node Circular Trigonometric Functions
@@ -78,7 +87,11 @@ This function computes the logarithm of the complex sine,
 @deftypefunx int gsl_sf_lnsinh_e (double @var{x}, gsl_sf_result * @var{result})
 @cindex logarithm of sinh function, special functions
 These routines compute @math{\log(\sinh(x))} for @math{x > 0}.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment Domain: x > 0 
+=======
+@comment Domain: x > 0
+>>>>>>> config
 @comment Exceptional Return Values: GSL_EDOM
 @end deftypefun
 
@@ -95,7 +108,11 @@ These routines compute @math{\log(\cosh(x))} for any @var{x}.
 @cindex polar to rectangular conversion
 @cindex rectangular to polar conversion
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @deftypefun int gsl_sf_polar_to_rect (double @var{r}, double @var{theta}, gsl_sf_result * @var{x}, gsl_sf_result * @var{y}); 
+=======
+@deftypefun int gsl_sf_polar_to_rect (double @var{r}, double @var{theta}, gsl_sf_result * @var{x}, gsl_sf_result * @var{y});
+>>>>>>> config
 This function converts the polar coordinates (@var{r},@var{theta}) to
 rectilinear coordinates (@var{x},@var{y}), @math{x = r\cos(\theta)},
 @math{y = r\sin(\theta)}.
@@ -118,7 +135,11 @@ lies in the range @math{[-\pi, \pi]}.
 @deftypefun double gsl_sf_angle_restrict_symm (double @var{theta})
 @deftypefunx int gsl_sf_angle_restrict_symm_e (double * @var{theta})
 These routines force the angle @var{theta} to lie in the range
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{(-\pi,\pi]}.  
+=======
+@math{(-\pi,\pi]}.
+>>>>>>> config
 
 Note that the mathematical value of @math{\pi} is slightly greater
 than @code{M_PI}, so the machine numbers @code{M_PI} and @code{-M_PI}
@@ -129,7 +150,11 @@ are included in the range.
 @deftypefun double gsl_sf_angle_restrict_pos (double @var{theta})
 @deftypefunx int gsl_sf_angle_restrict_pos_e (double * @var{theta})
 These routines force the angle @var{theta} to lie in the range @math{[0,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 2\pi)}. 
+=======
+2\pi)}.
+>>>>>>> config
 
 Note that the mathematical value of @math{2\pi} is slightly greater
 than @code{2*M_PI}, so the machine number @code{2*M_PI} is included in
@@ -143,7 +168,11 @@ the range.
 @subsection Trigonometric Functions With Error Estimates
 
 @deftypefun int gsl_sf_sin_err_e (double @var{x}, double @var{dx}, gsl_sf_result * @var{result})
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 This routine computes the sine of an angle @var{x} with an associated 
+=======
+This routine computes the sine of an angle @var{x} with an associated
+>>>>>>> config
 absolute error @var{dx},
 @c{$\sin(x \pm dx)$}
 @math{\sin(x \pm dx)}.  Note that this function is provided in the error-handling form only since
@@ -152,9 +181,16 @@ its purpose is to compute the propagated error.
 
 @deftypefun int gsl_sf_cos_err_e (double @var{x}, double @var{dx}, gsl_sf_result * @var{result})
 This routine computes the cosine of an angle @var{x} with an associated
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 absolute error @var{dx}, 
+=======
+absolute error @var{dx},
+>>>>>>> config
 @c{$\cos(x \pm dx)$}
 @math{\cos(x \pm dx)}.  Note that this function is provided in the error-handling form only since
 its purpose is to compute the propagated error.
 @end deftypefun
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

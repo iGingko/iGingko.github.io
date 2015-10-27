@@ -6,10 +6,17 @@ permutations. A permutation @math{p} is represented by an array of
 @math{p_i} occurs once and only once.  The application of a permutation
 @math{p} to a vector @math{v} yields a new vector @math{v'} where
 @c{$v'_i = v_{p_i}$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{v'_i = v_@{p_i@}}. 
 For example, the array @math{(0,1,3,2)} represents a permutation
 which exchanges the last two elements of a four element vector.
 The corresponding identity permutation is @math{(0,1,2,3)}.   
+=======
+@math{v'_i = v_@{p_i@}}.
+For example, the array @math{(0,1,3,2)} represents a permutation
+which exchanges the last two elements of a four element vector.
+The corresponding identity permutation is @math{(0,1,2,3)}.
+>>>>>>> config
 
 Note that the permutations produced by the linear algebra routines
 correspond to the exchange of matrix columns, and so should be considered
@@ -20,6 +27,7 @@ The functions described in this chapter are defined in the header file
 @file{gsl_permutation.h}.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * The Permutation struct::      
 * Permutation allocation::      
 * Accessing permutation elements::  
@@ -30,6 +38,18 @@ The functions described in this chapter are defined in the header file
 * Permutations in cyclic form::  
 * Permutation Examples::        
 * Permutation References and Further Reading::  
+=======
+* The Permutation struct::
+* Permutation allocation::
+* Accessing permutation elements::
+* Permutation properties::
+* Permutation functions::
+* Applying Permutations::
+* Reading and writing permutations::
+* Permutations in cyclic form::
+* Permutation Examples::
+* Permutation References and Further Reading::
+>>>>>>> config
 @end menu
 
 @node The Permutation struct
@@ -188,7 +208,11 @@ and the vector @var{v} must have the same length.
 @deftypefun int gsl_permutation_mul (gsl_permutation * @var{p}, const gsl_permutation * @var{pa}, const gsl_permutation * @var{pb})
 This function combines the two permutations @var{pa} and @var{pb} into a
 single permutation @var{p}, where @c{$@var{p} = @var{pa} \ast @var{pb}$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{@var{p} = @var{pa} * @var{pb}}. 
+=======
+@math{@var{p} = @var{pa} * @var{pb}}.
+>>>>>>> config
 The permutation @var{p} is equivalent to applying @var{pb} first and
 then @var{pa}.
 @end deftypefun
@@ -220,10 +244,17 @@ same architecture.
 @deftypefun int gsl_permutation_fprintf (FILE * @var{stream}, const gsl_permutation * @var{p}, const char * @var{format})
 This function writes the elements of the permutation @var{p}
 line-by-line to the stream @var{stream} using the format specifier
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @var{format}, which should be suitable for a type of @var{size_t}. 
 In ISO C99 the type modifier @code{z} represents @code{size_t}, so
 @code{"%zu\n"} is a suitable format.@footnote{In versions of the 
 GNU C library prior to the ISO C99 standard, 
+=======
+@var{format}, which should be suitable for a type of @var{size_t}.
+In ISO C99 the type modifier @code{z} represents @code{size_t}, so
+@code{"%zu\n"} is a suitable format.@footnote{In versions of the
+GNU C library prior to the ISO C99 standard,
+>>>>>>> config
 the type modifier @code{Z} was used instead.}
 The function returns @code{GSL_EFAILED} if there was a problem writing
 to the file.
@@ -321,7 +352,11 @@ elements of the identity) and finds its inverse.
 Here is the output from the program,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 $ ./a.out 
+=======
+$ ./a.out
+>>>>>>> config
 initial permutation: 0 1 2 3 4 5 6 7 8 9
  random permutation: 1 3 5 2 7 6 0 4 9 8
 inverse permutation: 6 0 3 1 7 2 5 4 9 8
@@ -343,7 +378,11 @@ permutations, starting from the identity,
 Here is the output from the program,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 $ ./a.out 
+=======
+$ ./a.out
+>>>>>>> config
  0 1 2
  0 2 1
  1 0 2
@@ -379,4 +418,7 @@ Donald E. Knuth, @cite{The Art of Computer Programming: Fundamental
 Algorithms} (Vol 1, 3rd Ed, 1997), Addison-Wesley, ISBN 0201896850.
 Section 1.3.3, @cite{An Unusual Correspondence}, p.178--179.
 @end itemize
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

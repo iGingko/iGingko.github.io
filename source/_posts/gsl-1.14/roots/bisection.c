@@ -1,17 +1,31 @@
 /* roots/bisection.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Reid Priedhorsky, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Reid Priedhorsky, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -54,7 +68,11 @@ bisection_init (void * vstate, gsl_function * f, double * root, double x_lower, 
 
   SAFE_FUNC_CALL (f, x_lower, &f_lower);
   SAFE_FUNC_CALL (f, x_upper, &f_upper);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   state->f_lower = f_lower;
   state->f_upper = f_upper;
 
@@ -77,7 +95,11 @@ bisection_iterate (void * vstate, gsl_function * f, double * root, double * x_lo
   const double x_left = *x_lower ;
   const double x_right = *x_upper ;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   const double f_lower = state->f_lower; 
+=======
+  const double f_lower = state->f_lower;
+>>>>>>> config
   const double f_upper = state->f_upper;
 
   if (f_lower == 0.0)
@@ -86,18 +108,30 @@ bisection_iterate (void * vstate, gsl_function * f, double * root, double * x_lo
       *x_upper = x_left;
       return GSL_SUCCESS;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   if (f_upper == 0.0)
     {
       *root = x_right ;
       *x_lower = x_right;
       return GSL_SUCCESS;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   x_bisect = (x_left + x_right) / 2.0;
   
   SAFE_FUNC_CALL (f, x_bisect, &f_bisect);
       
+=======
+
+  x_bisect = (x_left + x_right) / 2.0;
+
+  SAFE_FUNC_CALL (f, x_bisect, &f_bisect);
+
+>>>>>>> config
   if (f_bisect == 0.0)
     {
       *root = x_bisect;
@@ -105,9 +139,15 @@ bisection_iterate (void * vstate, gsl_function * f, double * root, double * x_lo
       *x_upper = x_bisect;
       return GSL_SUCCESS;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
   /* Discard the half of the interval which doesn't contain the root. */
   
+=======
+
+  /* Discard the half of the interval which doesn't contain the root. */
+
+>>>>>>> config
   if ((f_lower > 0.0 && f_bisect < 0.0) || (f_lower < 0.0 && f_bisect > 0.0))
     {
       *root = 0.5 * (x_left + x_bisect) ;

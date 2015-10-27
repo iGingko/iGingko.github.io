@@ -304,7 +304,11 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__confi
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
 	      ( cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh ) \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	        && { if test -f $@; then exit 0; else break; fi; }; \
+=======
+		&& { if test -f $@; then exit 0; else break; fi; }; \
+>>>>>>> config
 	      exit 1;; \
 	  esac; \
 	done; \
@@ -738,7 +742,11 @@ install-info-am: $(INFO_DEPS)
 	  if test -f $$file; then d=.; else d=$(srcdir); fi; \
 	  file_i=`echo "$$file" | sed 's|\.info$$||;s|$$|.i|'`; \
 	  for ifile in $$d/$$file $$d/$$file-[0-9] $$d/$$file-[0-9][0-9] \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	               $$d/$$file_i[0-9] $$d/$$file_i[0-9][0-9] ; do \
+=======
+		       $$d/$$file_i[0-9] $$d/$$file_i[0-9][0-9] ; do \
+>>>>>>> config
 	    if test -f $$ifile; then \
 	      echo "$$ifile"; \
 	    else : ; fi; \

@@ -156,8 +156,13 @@ case $os in
 		os=
 		basic_machine=$1
 		;;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         -bluegene*)
 	        os=-cnk
+=======
+	-bluegene*)
+		os=-cnk
+>>>>>>> config
 		;;
 	-sim | -cisco | -oki | -wec | -winbond)
 		os=
@@ -173,10 +178,17 @@ case $os in
 		os=-chorusos
 		basic_machine=$1
 		;;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	-chorusrdb)
  		os=-chorusrdb
 		basic_machine=$1
  		;;
+=======
+	-chorusrdb)
+		os=-chorusrdb
+		basic_machine=$1
+		;;
+>>>>>>> config
 	-hiux*)
 		os=-hiuxwe2
 		;;
@@ -410,7 +422,11 @@ case $basic_machine in
 		basic_machine=a29k-amd
 		os=-udi
 		;;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     	abacus)
+=======
+	abacus)
+>>>>>>> config
 		basic_machine=abacus-unknown
 		;;
 	adobe68k)
@@ -484,7 +500,11 @@ case $basic_machine in
 		basic_machine=c90-cray
 		os=-unicos
 		;;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         cegcc)
+=======
+	cegcc)
+>>>>>>> config
 		basic_machine=arm-unknown
 		os=-cegcc
 		;;
@@ -732,7 +752,11 @@ case $basic_machine in
 		basic_machine=ns32k-utek
 		os=-sysv
 		;;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         microblaze)
+=======
+	microblaze)
+>>>>>>> config
 		basic_machine=microblaze-xilinx
 		;;
 	mingw32)
@@ -1253,11 +1277,19 @@ esac
 if [ x"$os" != x"" ]
 then
 case $os in
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         # First match some system type aliases
         # that might get confused with valid system types.
 	# -solaris* is a basic system type, with this one exception.
         -auroraux)
 	        os=-auroraux
+=======
+	# First match some system type aliases
+	# that might get confused with valid system types.
+	# -solaris* is a basic system type, with this one exception.
+	-auroraux)
+		os=-auroraux
+>>>>>>> config
 		;;
 	-solaris1 | -solaris1.*)
 		os=`echo $os | sed -e 's|solaris1|sunos4|'`
@@ -1341,7 +1373,11 @@ case $os in
 	-opened*)
 		os=-openedition
 		;;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         -os400*)
+=======
+	-os400*)
+>>>>>>> config
 		os=-os400
 		;;
 	-wince*)
@@ -1390,7 +1426,11 @@ case $os in
 	-sinix*)
 		os=-sysv4
 		;;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         -tpf*)
+=======
+	-tpf*)
+>>>>>>> config
 		os=-tpf
 		;;
 	-triton*)
@@ -1457,10 +1497,17 @@ else
 # system, and we'll never get to this point.
 
 case $basic_machine in
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         score-*)
 		os=-elf
 		;;
         spu-*)
+=======
+	score-*)
+		os=-elf
+		;;
+	spu-*)
+>>>>>>> config
 		os=-elf
 		;;
 	*-acorn)
@@ -1472,8 +1519,13 @@ case $basic_machine in
 	arm*-semi)
 		os=-aout
 		;;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         c4x-* | tic4x-*)
         	os=-coff
+=======
+	c4x-* | tic4x-*)
+		os=-coff
+>>>>>>> config
 		;;
 	# This must come before the *-dec entry.
 	pdp10-*)
@@ -1500,7 +1552,11 @@ case $basic_machine in
 	m68*-cisco)
 		os=-aout
 		;;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         mep-*)
+=======
+	mep-*)
+>>>>>>> config
 		os=-elf
 		;;
 	mips*-cisco)
@@ -1527,7 +1583,11 @@ case $basic_machine in
 	*-ibm)
 		os=-aix
 		;;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     	*-knuth)
+=======
+	*-knuth)
+>>>>>>> config
 		os=-mmixware
 		;;
 	*-wec)

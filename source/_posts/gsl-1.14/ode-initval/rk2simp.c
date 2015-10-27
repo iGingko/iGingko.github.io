@@ -1,17 +1,31 @@
 /* ode-initval/rk2simp.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2004 Tuomo Keskitalo
  * 
+=======
+ *
+ * Copyright (C) 2004 Tuomo Keskitalo
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -59,7 +73,11 @@ rk2simp_alloc (size_t dim)
   if (state == 0)
     {
       GSL_ERROR_NULL ("failed to allocate space for rk2simp_state",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       GSL_ENOMEM);
+=======
+		      GSL_ENOMEM);
+>>>>>>> config
     }
 
   state->Y1 = (double *) malloc (dim * sizeof (double));
@@ -159,11 +177,19 @@ rk2simp_alloc (size_t dim)
 
 static int
 rk2simp_step (double *y, rk2simp_state_t * state,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
               const double h, const double t,
               const size_t dim, const gsl_odeiv_system * sys)
 {
   /* Makes a Runge-Kutta 2nd order semi-implicit advance with step size h.
      y0 is initial values of variables y. 
+=======
+	      const double h, const double t,
+	      const size_t dim, const gsl_odeiv_system * sys)
+{
+  /* Makes a Runge-Kutta 2nd order semi-implicit advance with step size h.
+     y0 is initial values of variables y.
+>>>>>>> config
 
      The linearized semi-implicit equations to calculate are:
 
@@ -181,8 +207,13 @@ rk2simp_step (double *y, rk2simp_state_t * state,
 
   gsl_matrix_view J = gsl_matrix_view_array (state->dfdy, dim, dim);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   /* First solve Y1. 
      Calculate the inverse matrix (1 - h/2 * df/dy)^-1 
+=======
+  /* First solve Y1.
+     Calculate the inverse matrix (1 - h/2 * df/dy)^-1
+>>>>>>> config
    */
 
   /* Create matrix to J */
@@ -222,9 +253,15 @@ rk2simp_step (double *y, rk2simp_state_t * state,
     gsl_vector_view ytmp_view = gsl_vector_view_array(ytmp, dim);
     gsl_vector_view Y1_view = gsl_vector_view_array(Y1, dim);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     s = gsl_linalg_LU_solve (&J.matrix, state->p, 
                              &ytmp_view.vector, &Y1_view.vector);
       
+=======
+    s = gsl_linalg_LU_solve (&J.matrix, state->p,
+			     &ytmp_view.vector, &Y1_view.vector);
+
+>>>>>>> config
     gsl_vector_scale (&Y1_view.vector, 0.5 * h);
     gsl_vector_add (&Y1_view.vector, &y0_view.vector);
   }
@@ -248,8 +285,13 @@ rk2simp_step (double *y, rk2simp_state_t * state,
 
 static int
 rk2simp_apply (void *vstate, size_t dim, double t, double h,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                double y[], double yerr[], const double dydt_in[],
                double dydt_out[], const gsl_odeiv_system * sys)
+=======
+	       double y[], double yerr[], const double dydt_in[],
+	       double dydt_out[], const gsl_odeiv_system * sys)
+>>>>>>> config
 {
   rk2simp_state_t *state = (rk2simp_state_t *) vstate;
 
@@ -274,7 +316,11 @@ rk2simp_apply (void *vstate, size_t dim, double t, double h,
 
     if (s != GSL_SUCCESS)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         return s;
+=======
+	return s;
+>>>>>>> config
       }
   }
 
@@ -285,9 +331,15 @@ rk2simp_apply (void *vstate, size_t dim, double t, double h,
 
     if (s != GSL_SUCCESS)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         /* Restore original y vector */
         DBL_MEMCPY (y, y0_orig, dim);
         return s;
+=======
+	/* Restore original y vector */
+	DBL_MEMCPY (y, y0_orig, dim);
+	return s;
+>>>>>>> config
       }
   }
 
@@ -298,9 +350,15 @@ rk2simp_apply (void *vstate, size_t dim, double t, double h,
 
     if (s != GSL_SUCCESS)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         /* Restore original y vector */
         DBL_MEMCPY (y, y0_orig, dim);
         return s;
+=======
+	/* Restore original y vector */
+	DBL_MEMCPY (y, y0_orig, dim);
+	return s;
+>>>>>>> config
       }
   }
 
@@ -311,11 +369,19 @@ rk2simp_apply (void *vstate, size_t dim, double t, double h,
       int s = GSL_ODEIV_FN_EVAL (sys, t + h, y, dydt_out);
 
       if (s != GSL_SUCCESS)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           /* Restore original y vector */
           DBL_MEMCPY (y, y0_orig, dim);
           return s;
         }
+=======
+	{
+	  /* Restore original y vector */
+	  DBL_MEMCPY (y, y0_orig, dim);
+	  return s;
+	}
+>>>>>>> config
     }
 
   /* Error estimation */

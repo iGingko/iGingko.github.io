@@ -1,4 +1,8 @@
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 noinst_LTLIBRARIES = libgslvector.la 
+=======
+noinst_LTLIBRARIES = libgslvector.la
+>>>>>>> config
 
 check_PROGRAMS = test test_static
 

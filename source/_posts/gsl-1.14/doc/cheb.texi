@@ -7,15 +7,23 @@ to univariate functions.  A Chebyshev approximation is a truncation of
 the series @math{f(x) = \sum c_n T_n(x)}, where the Chebyshev
 polynomials @math{T_n(x) = \cos(n \arccos x)} provide an orthogonal
 basis of polynomials on the interval @math{[-1,1]} with the weight
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 function @c{$1 / \sqrt{1-x^2}$} 
 @math{1 / \sqrt@{1-x^2@}}.  The first few Chebyshev polynomials are,
 @math{T_0(x) = 1}, @math{T_1(x) = x}, @math{T_2(x) = 2 x^2 - 1}.
 For further information see Abramowitz & Stegun, Chapter 22. 
+=======
+function @c{$1 / \sqrt{1-x^2}$}
+@math{1 / \sqrt@{1-x^2@}}.  The first few Chebyshev polynomials are,
+@math{T_0(x) = 1}, @math{T_1(x) = x}, @math{T_2(x) = 2 x^2 - 1}.
+For further information see Abramowitz & Stegun, Chapter 22.
+>>>>>>> config
 
 The functions described in this chapter are declared in the header file
 @file{gsl_chebyshev.h}.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Chebyshev Definitions::       
 * Creation and Calculation of Chebyshev Series::  
 * Auxiliary Functions for Chebyshev Series::  
@@ -23,6 +31,15 @@ The functions described in this chapter are declared in the header file
 * Derivatives and Integrals::   
 * Chebyshev Approximation Examples::  
 * Chebyshev Approximation References and Further Reading::  
+=======
+* Chebyshev Definitions::
+* Creation and Calculation of Chebyshev Series::
+* Auxiliary Functions for Chebyshev Series::
+* Chebyshev Series Evaluation::
+* Derivatives and Integrals::
+* Chebyshev Approximation Examples::
+* Chebyshev Approximation References and Further Reading::
+>>>>>>> config
 @end menu
 
 @node Chebyshev Definitions
@@ -187,7 +204,11 @@ approximation and 40-th order approximation, all sampled at intervals of
 The following paper describes the use of Chebyshev series,
 
 @itemize @w{}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @item 
+=======
+@item
+>>>>>>> config
 R. Broucke, ``Ten Subroutines for the Manipulation of Chebyshev Series
 [C1] (Algorithm 446)''. @cite{Communications of the ACM} 16(4), 254--256
 (1973)

@@ -1,18 +1,33 @@
 /* dht/dht.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * Copyright (C) 2009 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ * Copyright (C) 2009 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -46,7 +61,11 @@ gsl_dht_alloc (size_t size)
   t->size = size;
 
   t->xmax = -1.0; /* Make it clear that this needs to be calculated. */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   t->nu   = -1.0; 
+=======
+  t->nu   = -1.0;
+>>>>>>> config
 
   t->j = (double *)malloc((size+2)*sizeof(double));
 
@@ -106,7 +125,11 @@ gsl_dht_new (size_t size, double nu, double xmax)
     return 0;
 
   status = gsl_dht_init(dht, nu, xmax);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   if (status)
     return 0;
 
@@ -149,10 +172,17 @@ gsl_dht_init(gsl_dht * t, double nu, double xmax)
      */
     for(n=1; n<t->size+1; n++) {
       for(m=1; m<=n; m++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         double arg = t->j[n] * t->j[m] / jN;
         gsl_sf_result J;
         stat_J += gsl_sf_bessel_Jnu_e(nu, arg, &J);
         t->Jjj[n*(n-1)/2 + m - 1] = J.val;
+=======
+	double arg = t->j[n] * t->j[m] / jN;
+	gsl_sf_result J;
+	stat_J += gsl_sf_bessel_Jnu_e(nu, arg, &J);
+	t->Jjj[n*(n-1)/2 + m - 1] = J.val;
+>>>>>>> config
       }
     }
 
@@ -206,6 +236,7 @@ gsl_dht_apply(const gsl_dht * t, double * f_in, double * f_out)
        * by just running over the elements of Jjj
        * in a deterministic manner.
        */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       size_t m_local; 
       size_t n_local;
       if(i < m) {
@@ -215,6 +246,17 @@ gsl_dht_apply(const gsl_dht * t, double * f_in, double * f_out)
       else {
         m_local = m;
         n_local = i;
+=======
+      size_t m_local;
+      size_t n_local;
+      if(i < m) {
+	m_local = i;
+	n_local = m;
+      }
+      else {
+	m_local = m;
+	n_local = i;
+>>>>>>> config
       }
       Y = t->Jjj[n_local*(n_local+1)/2 + m_local] / t->J2[i+1];
       sum += Y * f_in[i];
@@ -224,4 +266,7 @@ gsl_dht_apply(const gsl_dht * t, double * f_in, double * f_out)
 
   return GSL_SUCCESS;
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

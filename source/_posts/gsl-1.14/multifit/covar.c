@@ -1,17 +1,31 @@
 /* multifit/covar.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2004, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2004, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -45,8 +59,13 @@ gsl_multifit_covar (const gsl_matrix * J, double epsrel, gsl_matrix * covar)
   gsl_permutation * perm;
 
   size_t m = J->size1, n = J->size2 ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   if (m < n) 
+=======
+
+  if (m < n)
+>>>>>>> config
     {
       GSL_ERROR ("Jacobian be rectangular M x N with M >= N", GSL_EBADLEN);
     }
@@ -60,14 +79,23 @@ gsl_multifit_covar (const gsl_matrix * J, double epsrel, gsl_matrix * covar)
   tau = gsl_vector_alloc (n);
   perm = gsl_permutation_alloc (n) ;
   norm = gsl_vector_alloc (n) ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   {
     int signum = 0;
     gsl_matrix_memcpy (r, J);
     gsl_linalg_QRPT_decomp (r, tau, perm, &signum, norm);
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   
+=======
+
+
+>>>>>>> config
   /* Form the inverse of R in the full upper triangle of R */
 
   tolr = epsrel * fabs(gsl_matrix_get(r, 0, 0));
@@ -77,13 +105,20 @@ gsl_multifit_covar (const gsl_matrix * J, double epsrel, gsl_matrix * covar)
       double rkk = gsl_matrix_get(r, k, k);
 
       if (fabs(rkk) <= tolr)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           break;
         }
+=======
+	{
+	  break;
+	}
+>>>>>>> config
 
       gsl_matrix_set(r, k, k, 1.0/rkk);
 
       for (j = 0; j < k ; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double t = gsl_matrix_get(r, j, k) / rkk;
           gsl_matrix_set (r, j, k, 0.0);
@@ -96,6 +131,20 @@ gsl_multifit_covar (const gsl_matrix * J, double epsrel, gsl_matrix * covar)
               gsl_matrix_set (r, i, k, rik - t * rij);
             }
         }
+=======
+	{
+	  double t = gsl_matrix_get(r, j, k) / rkk;
+	  gsl_matrix_set (r, j, k, 0.0);
+
+	  for (i = 0; i <= j; i++)
+	    {
+	      double rik = gsl_matrix_get (r, i, k);
+	      double rij = gsl_matrix_get (r, i, j);
+
+	      gsl_matrix_set (r, i, k, rik - t * rij);
+	    }
+	}
+>>>>>>> config
       kmax = k;
     }
 
@@ -105,6 +154,7 @@ gsl_multifit_covar (const gsl_matrix * J, double epsrel, gsl_matrix * covar)
   for (k = 0; k <= kmax ; k++)
     {
       for (j = 0; j < k; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double rjk = gsl_matrix_get (r, j, k);
 
@@ -126,6 +176,29 @@ gsl_multifit_covar (const gsl_matrix * J, double epsrel, gsl_matrix * covar)
 
             gsl_matrix_set (r, i, k, t * rik);
           };
+=======
+	{
+	  double rjk = gsl_matrix_get (r, j, k);
+
+	  for (i = 0; i <= j ; i++)
+	    {
+	      double rij = gsl_matrix_get (r, i, j);
+	      double rik = gsl_matrix_get (r, i, k);
+
+	      gsl_matrix_set (r, i, j, rij + rjk * rik);
+	    }
+	}
+
+      {
+	double t = gsl_matrix_get (r, k, k);
+
+	for (i = 0; i <= k; i++)
+	  {
+	    double rik = gsl_matrix_get (r, i, k);
+
+	    gsl_matrix_set (r, i, k, t * rik);
+	  };
+>>>>>>> config
       }
     }
 
@@ -135,6 +208,7 @@ gsl_multifit_covar (const gsl_matrix * J, double epsrel, gsl_matrix * covar)
   for (j = 0 ; j < n ; j++)
     {
       size_t pj = gsl_permutation_get (perm, j);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
       for (i = 0; i <= j; i++)
         {
@@ -170,17 +244,63 @@ gsl_multifit_covar (const gsl_matrix * J, double epsrel, gsl_matrix * covar)
     }
 
      
+=======
+
+      for (i = 0; i <= j; i++)
+	{
+	  size_t pi = gsl_permutation_get (perm, i);
+
+	  double rij;
+
+	  if (j > kmax)
+	    {
+	      gsl_matrix_set (r, i, j, 0.0);
+	      rij = 0.0 ;
+	    }
+	  else
+	    {
+	      rij = gsl_matrix_get (r, i, j);
+	    }
+
+	  if (pi > pj)
+	    {
+	      gsl_matrix_set (r, pi, pj, rij);
+	    }
+	  else if (pi < pj)
+	    {
+	      gsl_matrix_set (r, pj, pi, rij);
+	    }
+
+	}
+
+      {
+	double rjj = gsl_matrix_get (r, j, j);
+	gsl_matrix_set (covar, pj, pj, rjj);
+      }
+    }
+
+
+>>>>>>> config
   /* symmetrize the covariance matrix */
 
   for (j = 0 ; j < n ; j++)
     {
       for (i = 0; i < j ; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double rji = gsl_matrix_get (r, j, i);
 
           gsl_matrix_set (covar, j, i, rji);
           gsl_matrix_set (covar, i, j, rji);
         }
+=======
+	{
+	  double rji = gsl_matrix_get (r, j, i);
+
+	  gsl_matrix_set (covar, j, i, rji);
+	  gsl_matrix_set (covar, i, j, rji);
+	}
+>>>>>>> config
     }
 
   gsl_matrix_free (r);

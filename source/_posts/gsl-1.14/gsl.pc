@@ -6,5 +6,9 @@ includedir=/usr/local/include
 Name: GSL
 Description: GNU Scientific Library
 Version: 1.14
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 Libs: -L/usr/local/lib -lgsl -lgslcblas -lm 
+=======
+Libs: -L/usr/local/lib -lgsl -lgslcblas -lm
+>>>>>>> config
 Cflags: -I/usr/local/include

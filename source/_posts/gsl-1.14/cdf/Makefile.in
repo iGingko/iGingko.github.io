@@ -245,7 +245,11 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 noinst_LTLIBRARIES = libgslcdf.la
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 pkginclude_HEADERS = gsl_cdf.h 
+=======
+pkginclude_HEADERS = gsl_cdf.h
+>>>>>>> config
 INCLUDES = -I$(top_srcdir)
 libgslcdf_la_SOURCES = beta.c betainv.c cauchy.c cauchyinv.c chisq.c chisqinv.c exponential.c exponentialinv.c exppow.c fdist.c fdistinv.c flat.c flatinv.c gamma.c gammainv.c gauss.c gaussinv.c gumbel1.c gumbel1inv.c gumbel2.c gumbel2inv.c laplace.c laplaceinv.c logistic.c logisticinv.c lognormal.c lognormalinv.c pareto.c paretoinv.c rayleigh.c rayleighinv.c tdist.c tdistinv.c weibull.c weibullinv.c binomial.c poisson.c geometric.c nbinomial.c pascal.c hypergeometric.c
 noinst_HEADERS = beta_inc.c rat_eval.h test_auto.c error.h
@@ -261,7 +265,11 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__confi
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
 	      ( cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh ) \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	        && { if test -f $@; then exit 0; else break; fi; }; \
+=======
+		&& { if test -f $@; then exit 0; else break; fi; }; \
+>>>>>>> config
 	      exit 1;; \
 	  esac; \
 	done; \
@@ -295,7 +303,11 @@ clean-noinstLTLIBRARIES:
 	  echo "rm -f \"$${dir}/so_locations\""; \
 	  rm -f "$${dir}/so_locations"; \
 	done
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 libgslcdf.la: $(libgslcdf_la_OBJECTS) $(libgslcdf_la_DEPENDENCIES) 
+=======
+libgslcdf.la: $(libgslcdf_la_OBJECTS) $(libgslcdf_la_DEPENDENCIES)
+>>>>>>> config
 	$(LINK)  $(libgslcdf_la_OBJECTS) $(libgslcdf_la_LIBADD) $(LIBS)
 
 clean-checkPROGRAMS:
@@ -306,7 +318,11 @@ clean-checkPROGRAMS:
 	list=`for p in $$list; do echo "$$p"; done | sed 's/$(EXEEXT)$$//'`; \
 	echo " rm -f" $$list; \
 	rm -f $$list
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 test$(EXEEXT): $(test_OBJECTS) $(test_DEPENDENCIES) 
+=======
+test$(EXEEXT): $(test_OBJECTS) $(test_DEPENDENCIES)
+>>>>>>> config
 	@rm -f test$(EXEEXT)
 	$(LINK) $(test_OBJECTS) $(test_LDADD) $(LIBS)
 

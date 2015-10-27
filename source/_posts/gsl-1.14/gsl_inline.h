@@ -1,17 +1,31 @@
 /* gsl_inline.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2008, 2009 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 2008, 2009 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -33,17 +47,29 @@
    errors on linking.  The 'inline' keyword on its own (without
    extern) has the same behavior as the original GNU 'extern inline'.
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    The C99 style is the default with -std=c99 in GCC 4.3.  
+=======
+   The C99 style is the default with -std=c99 in GCC 4.3.
+>>>>>>> config
 
    This header file allows either form of inline to be used by
    redefining the macros INLINE_DECL and INLINE_FUN.  These are used
    in the public header files as
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         INLINE_DECL double gsl_foo (double x);
 	#ifdef HAVE_INLINE
 	INLINE_FUN double gsl_foo (double x) { return x+1.0; } ;
         #endif
    
+=======
+	INLINE_DECL double gsl_foo (double x);
+	#ifdef HAVE_INLINE
+	INLINE_FUN double gsl_foo (double x) { return x+1.0; } ;
+	#endif
+
+>>>>>>> config
 */
 
 #ifdef HAVE_INLINE

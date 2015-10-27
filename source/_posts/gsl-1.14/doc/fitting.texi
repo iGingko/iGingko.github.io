@@ -16,12 +16,21 @@ two-parameter regression and multiple-parameter fits.  The functions
 are declared in the header file @file{gsl_fit.h}.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Fitting Overview::            
 * Linear regression::           
 * Linear fitting without a constant term::  
 * Multi-parameter fitting::     
 * Fitting Examples::            
 * Fitting References and Further Reading::  
+=======
+* Fitting Overview::
+* Linear regression::
+* Linear fitting without a constant term::
+* Multi-parameter fitting::
+* Fitting Examples::
+* Fitting References and Further Reading::
+>>>>>>> config
 @end menu
 
 @node Fitting Overview
@@ -50,12 +59,21 @@ The @math{p} parameters of the model are @c{$c = \{c_0, c_1, \dots\}$}
 weight factors @math{w_i} are given by @math{w_i = 1/\sigma_i^2},
 where @math{\sigma_i} is the experimental error on the data-point
 @math{y_i}.  The errors are assumed to be
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gaussian and uncorrelated. 
 For unweighted data the chi-squared sum is computed without any weight factors. 
 
 The fitting routines return the best-fit parameters @math{c} and their
 @math{p \times p} covariance matrix.  The covariance matrix measures the
 statistical errors on the best-fit parameters resulting from the 
+=======
+gaussian and uncorrelated.
+For unweighted data the chi-squared sum is computed without any weight factors.
+
+The fitting routines return the best-fit parameters @math{c} and their
+@math{p \times p} covariance matrix.  The covariance matrix measures the
+statistical errors on the best-fit parameters resulting from the
+>>>>>>> config
 errors on the data, @math{\sigma_i}, and is defined
 @cindex covariance matrix, linear fits
 as @c{$C_{ab} = \langle \delta c_a \delta c_b \rangle$}
@@ -86,8 +104,13 @@ allowing the covariance matrix to be written in terms of the errors on the data,
 \beforedisplay
 $$
 C_{ab} =  \sum_{i,j} {\partial c_a \over \partial y_i}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                      {\partial c_b \over \partial y_j} 
                      \langle \delta y_i \delta y_j \rangle
+=======
+		     {\partial c_b \over \partial y_j}
+		     \langle \delta y_i \delta y_j \rangle
+>>>>>>> config
 $$
 \afterdisplay
 @end tex
@@ -101,27 +124,46 @@ C_@{ab@} = \sum_@{i,j@} (dc_a/dy_i) (dc_b/dy_j) <\delta y_i \delta y_j>
 @noindent
 For uncorrelated data the fluctuations of the underlying datapoints satisfy
 @c{$\langle \delta y_i \delta y_j \rangle = \sigma_i^2 \delta_{ij}$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{<\delta y_i \delta y_j> = \sigma_i^2 \delta_@{ij@}}, giving a 
+=======
+@math{<\delta y_i \delta y_j> = \sigma_i^2 \delta_@{ij@}}, giving a
+>>>>>>> config
 corresponding parameter covariance matrix of
 @tex
 \beforedisplay
 $$
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 C_{ab} = \sum_{i} {1 \over w_i} {\partial c_a \over \partial y_i} {\partial c_b \over \partial y_i} 
+=======
+C_{ab} = \sum_{i} {1 \over w_i} {\partial c_a \over \partial y_i} {\partial c_b \over \partial y_i}
+>>>>>>> config
 $$
 \afterdisplay
 @end tex
 @ifinfo
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 C_@{ab@} = \sum_i (1/w_i) (dc_a/dy_i) (dc_b/dy_i) 
+=======
+C_@{ab@} = \sum_i (1/w_i) (dc_a/dy_i) (dc_b/dy_i)
+>>>>>>> config
 @end example
 
 @end ifinfo
 @noindent
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 When computing the covariance matrix for unweighted data, i.e. data with unknown errors, 
 the weight factors @math{w_i} in this sum are replaced by the single estimate @math{w =
 1/\sigma^2}, where @math{\sigma^2} is the computed variance of the
 residuals about the best-fit model, @math{\sigma^2 = \sum (y_i - Y(c,x_i))^2 / (n-p)}.  
+=======
+When computing the covariance matrix for unweighted data, i.e. data with unknown errors,
+the weight factors @math{w_i} in this sum are replaced by the single estimate @math{w =
+1/\sigma^2}, where @math{\sigma^2} is the computed variance of the
+residuals about the best-fit model, @math{\sigma^2 = \sum (y_i - Y(c,x_i))^2 / (n-p)}.
+>>>>>>> config
 This is referred to as the @dfn{variance-covariance matrix}.
 @cindex variance-covariance matrix, linear fits
 
@@ -145,11 +187,19 @@ least-squares fits to a straight line model, @math{Y(c,x) = c_0 + c_1 x}.
 This function computes the best-fit linear regression coefficients
 (@var{c0},@var{c1}) of the model @math{Y = c_0 + c_1 X} for the dataset
 (@var{x}, @var{y}), two vectors of length @var{n} with strides
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @var{xstride} and @var{ystride}.  The errors on @var{y} are assumed unknown so 
 the variance-covariance matrix for the
 parameters (@var{c0}, @var{c1}) is estimated from the scatter of the
 points around the best-fit line and returned via the parameters
 (@var{cov00}, @var{cov01}, @var{cov11}).   
+=======
+@var{xstride} and @var{ystride}.  The errors on @var{y} are assumed unknown so
+the variance-covariance matrix for the
+parameters (@var{c0}, @var{c1}) is estimated from the scatter of the
+points around the best-fit line and returned via the parameters
+(@var{cov00}, @var{cov01}, @var{cov11}).
+>>>>>>> config
 The sum of squares of the residuals from the best-fit line is returned
 in @var{sumsq}.  Note: the correlation coefficient of the data can be computed using @code{gsl_stats_correlation} (@pxref{Correlation}), it does not depend on the fit.
 @end deftypefun
@@ -188,7 +238,11 @@ least-squares fits to a straight line model without a constant term,
 This function computes the best-fit linear regression coefficient
 @var{c1} of the model @math{Y = c_1 X} for the datasets (@var{x},
 @var{y}), two vectors of length @var{n} with strides @var{xstride} and
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @var{ystride}.  The errors on @var{y} are assumed unknown so the 
+=======
+@var{ystride}.  The errors on @var{y} are assumed unknown so the
+>>>>>>> config
 variance of the parameter @var{c1} is estimated from
 the scatter of the points around the best-fit line and returned via the
 parameter @var{cov11}.  The sum of squares of the residuals from the
@@ -350,7 +404,11 @@ These functions compute the fit using an SVD without column scaling.
 This function uses the best-fit multilinear regression coefficients
 @var{c} and their covariance matrix
 @var{cov} to compute the fitted function value
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @var{y} and its standard deviation @var{y_err} for the model @math{y = x.c} 
+=======
+@var{y} and its standard deviation @var{y_err} for the model @math{y = x.c}
+>>>>>>> config
 at the point @var{x}.
 @end deftypefun
 
@@ -373,7 +431,11 @@ associated one standard-deviation error bars.
 
 @noindent
 The following commands extract the data from the output of the program
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 and display it using the @sc{gnu} plotutils @code{graph} utility, 
+=======
+and display it using the @sc{gnu} plotutils @code{graph} utility,
+>>>>>>> config
 
 @example
 $ ./demo > tmp
@@ -384,11 +446,19 @@ $ more tmp
 #   -19.9, 0.01]
 # chisq = 0.8
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 $ for n in data fit hi lo ; 
    do 
      grep "^$n" tmp | cut -d: -f2 > $n ; 
    done
 $ graph -T X -X x -Y y -y 0 20 -m 0 -S 2 -Ie data 
+=======
+$ for n in data fit hi lo ;
+   do
+     grep "^$n" tmp | cut -d: -f2 > $n ;
+   done
+$ graph -T X -X x -Y y -y 0 20 -m 0 -S 2 -Ie data
+>>>>>>> config
      -S 0 -I a -m 1 fit -m 2 hi -m 2 lo
 @end example
 
@@ -469,8 +539,13 @@ $ ./fit 19 < exp.dat
 ...
 # best fit: Y = 1.02318 + 0.956201 X + 0.876796 X^2
 # covariance matrix:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 [ +1.25612e-02, -3.64387e-02, +1.94389e-02  
   -3.64387e-02, +1.42339e-01, -8.48761e-02  
+=======
+[ +1.25612e-02, -3.64387e-02, +1.94389e-02
+  -3.64387e-02, +1.42339e-01, -8.48761e-02
+>>>>>>> config
   +1.94389e-02, -8.48761e-02, +5.60243e-02 ]
 # chisq = 23.0987
 @end example
@@ -514,5 +589,8 @@ Statistical Reference Datasets. The datasets and their documentation are
 available from NIST at the following website,
 
 @center @uref{http://www.nist.gov/itl/div898/strd/index.html}.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
+=======
+>>>>>>> config

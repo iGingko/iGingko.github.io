@@ -1,5 +1,9 @@
 /* Authors: O. Teytaud
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * Copyright (C) 2007  O. Teytaud 
+=======
+ * Copyright (C) 2007  O. Teytaud
+>>>>>>> config
  * (all comments welcome at olivier.teytaud@inria.fr)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -178,7 +182,11 @@ static const int prime_numbers[HALTON_MAX_DIMENSION] = {
 typedef struct
 {
   unsigned int sequence_count;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 } 
+=======
+}
+>>>>>>> config
 halton_state_t;
 
 static size_t

@@ -2,8 +2,13 @@
 
 The functions described in this chapter provide support for complex
 numbers.  The algorithms take care to avoid unnecessary intermediate
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 underflows and overflows, allowing the functions to be evaluated over 
 as much of the complex plane as possible. 
+=======
+underflows and overflows, allowing the functions to be evaluated over
+as much of the complex plane as possible.
+>>>>>>> config
 
 @comment FIXME: this still needs to be
 @comment done for the csc,sec,cot,csch,sech,coth functions
@@ -21,6 +26,7 @@ while the corresponding complex functions and arithmetic operations are
 defined in @file{gsl_complex_math.h}.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Representation of complex numbers::  
 * Properties of complex numbers::  
 * Complex arithmetic operators::  
@@ -30,6 +36,17 @@ defined in @file{gsl_complex_math.h}.
 * Complex Hyperbolic Functions::  
 * Inverse Complex Hyperbolic Functions::  
 * Complex Number References and Further Reading::  
+=======
+* Representation of complex numbers::
+* Properties of complex numbers::
+* Complex arithmetic operators::
+* Elementary Complex Functions::
+* Complex Trigonometric Functions::
+* Inverse Complex Trigonometric Functions::
+* Complex Hyperbolic Functions::
+* Inverse Complex Hyperbolic Functions::
+* Complex Number References and Further Reading::
+>>>>>>> config
 @end menu
 
 @node Representation of complex numbers
@@ -99,14 +116,22 @@ pointed to by @var{zp} to be set independently.
 @section Properties of complex numbers
 
 @deftypefun double gsl_complex_arg (gsl_complex @var{z})
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @cindex argument of complex number 
+=======
+@cindex argument of complex number
+>>>>>>> config
 This function returns the argument of the complex number @var{z},
 @math{\arg(z)}, where @c{$-\pi < \arg(z) \leq \pi$}
 @math{-\pi < \arg(z) <= \pi}.
 @end deftypefun
 
 @deftypefun double gsl_complex_abs (gsl_complex @var{z})
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @cindex magnitude of complex number 
+=======
+@cindex magnitude of complex number
+>>>>>>> config
 This function returns the magnitude of the complex number @var{z}, @math{|z|}.
 @end deftypefun
 
@@ -245,7 +270,11 @@ This function returns the complex exponential of the complex number
 @cindex logarithm of complex number
 This function returns the complex natural logarithm (base @math{e}) of
 the complex number @var{z}, @math{\log(z)}.  The branch cut is the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 negative real axis. 
+=======
+negative real axis.
+>>>>>>> config
 @end deftypefun
 
 @deftypefun gsl_complex gsl_complex_log10 (gsl_complex @var{z})
@@ -341,27 +370,47 @@ below @math{-i} and above @math{i}.
 
 @deftypefun gsl_complex gsl_complex_arcsec (gsl_complex @var{z})
 This function returns the complex arcsecant of the complex number @var{z},
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{\arcsec(z) = \arccos(1/z)}. 
+=======
+@math{\arcsec(z) = \arccos(1/z)}.
+>>>>>>> config
 @end deftypefun
 
 @deftypefun gsl_complex gsl_complex_arcsec_real (double @var{z})
 This function returns the complex arcsecant of the real number @var{z},
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{\arcsec(z) = \arccos(1/z)}. 
+=======
+@math{\arcsec(z) = \arccos(1/z)}.
+>>>>>>> config
 @end deftypefun
 
 @deftypefun gsl_complex gsl_complex_arccsc (gsl_complex @var{z})
 This function returns the complex arccosecant of the complex number @var{z},
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{\arccsc(z) = \arcsin(1/z)}. 
+=======
+@math{\arccsc(z) = \arcsin(1/z)}.
+>>>>>>> config
 @end deftypefun
 
 @deftypefun gsl_complex gsl_complex_arccsc_real (double @var{z})
 This function returns the complex arccosecant of the real number @var{z},
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{\arccsc(z) = \arcsin(1/z)}. 
+=======
+@math{\arccsc(z) = \arcsin(1/z)}.
+>>>>>>> config
 @end deftypefun
 
 @deftypefun gsl_complex gsl_complex_arccot (gsl_complex @var{z})
 This function returns the complex arccotangent of the complex number @var{z},
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{\arccot(z) = \arctan(1/z)}. 
+=======
+@math{\arccot(z) = \arctan(1/z)}.
+>>>>>>> config
 @end deftypefun
 
 

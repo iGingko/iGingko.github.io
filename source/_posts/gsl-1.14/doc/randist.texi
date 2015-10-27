@@ -7,7 +7,11 @@ This chapter describes functions for generating random variates and
 computing their probability distributions.  Samples from the
 distributions described in this chapter can be obtained using any of the
 random number generators in the library as an underlying source of
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 randomness.  
+=======
+randomness.
+>>>>>>> config
 
 In the simplest cases a non-uniform distribution can be obtained
 analytically from the uniform distribution of a random number generator
@@ -30,13 +34,18 @@ corresponding cumulative distribution functions are declared in
 
 Note that the discrete random variate functions always
 return a value of type @code{unsigned int}, and on most platforms this
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 has a maximum value of @c{$2^{32}-1 \approx 4.29\times10^9$} 
+=======
+has a maximum value of @c{$2^{32}-1 \approx 4.29\times10^9$}
+>>>>>>> config
 @math{2^32-1 ~=~ 4.29e9}. They should only be called with
 a safe range of parameters (where there is a negligible probability of
 a variate exceeding this limit) to prevent incorrect results due to
 overflow.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Random Number Distribution Introduction::  
 * The Gaussian Distribution::   
 * The Gaussian Tail Distribution::  
@@ -77,6 +86,48 @@ overflow.
 * Shuffling and Sampling::      
 * Random Number Distribution Examples::  
 * Random Number Distribution References and Further Reading::  
+=======
+* Random Number Distribution Introduction::
+* The Gaussian Distribution::
+* The Gaussian Tail Distribution::
+* The Bivariate Gaussian Distribution::
+* The Exponential Distribution::
+* The Laplace Distribution::
+* The Exponential Power Distribution::
+* The Cauchy Distribution::
+* The Rayleigh Distribution::
+* The Rayleigh Tail Distribution::
+* The Landau Distribution::
+* The Levy alpha-Stable Distributions::
+* The Levy skew alpha-Stable Distribution::
+* The Gamma Distribution::
+* The Flat (Uniform) Distribution::
+* The Lognormal Distribution::
+* The Chi-squared Distribution::
+* The F-distribution::
+* The t-distribution::
+* The Beta Distribution::
+* The Logistic Distribution::
+* The Pareto Distribution::
+* Spherical Vector Distributions::
+* The Weibull Distribution::
+* The Type-1 Gumbel Distribution::
+* The Type-2 Gumbel Distribution::
+* The Dirichlet Distribution::
+* General Discrete Distributions::
+* The Poisson Distribution::
+* The Bernoulli Distribution::
+* The Binomial Distribution::
+* The Multinomial Distribution::
+* The Negative Binomial Distribution::
+* The Pascal Distribution::
+* The Geometric Distribution::
+* The Hypergeometric Distribution::
+* The Logarithmic Distribution::
+* Shuffling and Sampling::
+* Random Number Distribution Examples::
+* Random Number Distribution References and Further Reading::
+>>>>>>> config
 @end menu
 
 @node Random Number Distribution Introduction
@@ -133,7 +184,11 @@ The upper and lower cumulative distribution functions are related by
 The inverse cumulative distributions, @c{$x=P^{-1}(P)$}
 @math{x=P^@{-1@}(P)} and @c{$x=Q^{-1}(Q)$}
 @math{x=Q^@{-1@}(Q)} give the values of @math{x}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 which correspond to a specific value of @math{P} or @math{Q}.  
+=======
+which correspond to a specific value of @math{P} or @math{Q}.
+>>>>>>> config
 They can be used to find confidence limits from probability values.
 
 For discrete distributions the probability of sampling the integer
@@ -143,7 +198,11 @@ discrete distribution is defined as,
 @tex
 \beforedisplay
 $$
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 P(k) = \sum_{i \le k} p(i) 
+=======
+P(k) = \sum_{i \le k} p(i)
+>>>>>>> config
 $$
 \afterdisplay
 @end tex
@@ -156,14 +215,22 @@ P(k) = \sum_@{i <= k@} p(i)
 @end ifinfo
 @noindent
 where the sum is over the allowed range of the distribution less than
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 or equal to @math{k}.  
+=======
+or equal to @math{k}.
+>>>>>>> config
 
 The cumulative distribution for the upper tail of a discrete
 distribution @math{Q(k)} is defined as
 @tex
 \beforedisplay
 $$
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 Q(k) = \sum_{i > k} p(i) 
+=======
+Q(k) = \sum_{i > k} p(i)
+>>>>>>> config
 $$
 \afterdisplay
 @end tex
@@ -265,7 +332,11 @@ distribution.
 This function provides random variates from the upper tail of a Gaussian
 distribution with standard deviation @var{sigma}.  The values returned
 are larger than the lower limit @var{a}, which must be positive.  The
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 method is based on Marsaglia's famous rectangle-wedge-tail algorithm (Ann. 
+=======
+method is based on Marsaglia's famous rectangle-wedge-tail algorithm (Ann.
+>>>>>>> config
 Math. Stat. 32, 894--899 (1961)), with this aspect explained in Knuth, v2,
 3rd ed, p139,586 (exercise 11).
 
@@ -388,7 +459,11 @@ p(x) dx = @{1 \over \mu@} \exp(-x/\mu) dx
 @end ifinfo
 @noindent
 for @c{$x \ge 0$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{x >= 0}. 
+=======
+@math{x >= 0}.
+>>>>>>> config
 @end deftypefun
 
 @deftypefun double gsl_ran_exponential_pdf (double @var{x}, double @var{mu})
@@ -648,15 +723,24 @@ analytically by the complex integral,
 @tex
 \beforedisplay
 $$
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 p(x) = 
 {1 \over {2 \pi i}} \int_{c-i\infty}^{c+i\infty} ds\, \exp(s \log(s) + x s) 
+=======
+p(x) =
+{1 \over {2 \pi i}} \int_{c-i\infty}^{c+i\infty} ds\, \exp(s \log(s) + x s)
+>>>>>>> config
 $$
 \afterdisplay
 @end tex
 @ifinfo
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 p(x) = (1/(2 \pi i)) \int_@{c-i\infty@}^@{c+i\infty@} ds exp(s log(s) + x s) 
+=======
+p(x) = (1/(2 \pi i)) \int_@{c-i\infty@}^@{c+i\infty@} ds exp(s log(s) + x s)
+>>>>>>> config
 @end example
 @end ifinfo
 For numerical purposes it is more convenient to use the following
@@ -713,7 +797,11 @@ p(x) = @{1 \over 2 \pi@} \int_@{-\infty@}^@{+\infty@} dt \exp(-it x - |c t|^alph
 There is no explicit solution for the form of @math{p(x)} and the
 library does not define a corresponding @code{pdf} function.  For
 @math{\alpha = 1} the distribution reduces to the Cauchy distribution.  For
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{\alpha = 2} it is a Gaussian distribution with @c{$\sigma = \sqrt{2} c$} 
+=======
+@math{\alpha = 2} it is a Gaussian distribution with @c{$\sigma = \sqrt{2} c$}
+>>>>>>> config
 @math{\sigma = \sqrt@{2@} c}.  For @math{\alpha < 1} the tails of the
 distribution become extremely wide.
 
@@ -757,8 +845,13 @@ When @math{\alpha = 1} the term @math{\tan(\pi \alpha/2)} is replaced by
 @math{-(2/\pi)\log|t|}.  There is no explicit solution for the form of
 @math{p(x)} and the library does not define a corresponding @code{pdf}
 function.  For @math{\alpha = 2} the distribution reduces to a Gaussian
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 distribution with @c{$\sigma = \sqrt{2} c$} 
 @math{\sigma = \sqrt@{2@} c} and the skewness parameter has no effect.  
+=======
+distribution with @c{$\sigma = \sqrt{2} c$}
+@math{\sigma = \sqrt@{2@} c} and the skewness parameter has no effect.
+>>>>>>> config
 For @math{\alpha < 1} the tails of the distribution become extremely
 wide.  The symmetric distribution corresponds to @math{\beta =
 0}.
@@ -771,7 +864,11 @@ The Levy alpha-stable distributions have the property that if @math{N}
 alpha-stable variates are drawn from the distribution @math{p(c, \alpha,
 \beta)} then the sum @math{Y = X_1 + X_2 + \dots + X_N} will also be
 distributed as an alpha-stable variate,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @c{$p(N^{1/\alpha} c, \alpha, \beta)$}  
+=======
+@c{$p(N^{1/\alpha} c, \alpha, \beta)$}
+>>>>>>> config
 @math{p(N^(1/\alpha) c, \alpha, \beta)}.
 
 @comment PDF not available because there is no analytic expression for it
@@ -983,7 +1080,11 @@ p(x) dx = @{1 \over 2 \Gamma(\nu/2) @} (x/2)^@{\nu/2 - 1@} \exp(-x/2) dx
 @end ifinfo
 @noindent
 for @c{$x \ge 0$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{x >= 0}. 
+=======
+@math{x >= 0}.
+>>>>>>> config
 @end deftypefun
 
 @deftypefun double gsl_ran_chisq_pdf (double @var{x}, double @var{nu})
@@ -1037,10 +1138,17 @@ This function returns a random variate from the F-distribution with degrees of f
 @tex
 \beforedisplay
 $$
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 p(x) dx = 
    { \Gamma((\nu_1 + \nu_2)/2)
         \over \Gamma(\nu_1/2) \Gamma(\nu_2/2) } 
    \nu_1^{\nu_1/2} \nu_2^{\nu_2/2} 
+=======
+p(x) dx =
+   { \Gamma((\nu_1 + \nu_2)/2)
+	\over \Gamma(\nu_1/2) \Gamma(\nu_2/2) }
+   \nu_1^{\nu_1/2} \nu_2^{\nu_2/2}
+>>>>>>> config
    x^{\nu_1/2 - 1} (\nu_2 + \nu_1 x)^{-\nu_1/2 -\nu_2/2}
 $$
 \afterdisplay
@@ -1048,17 +1156,28 @@ $$
 @ifinfo
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 p(x) dx = 
    @{ \Gamma((\nu_1 + \nu_2)/2)
         \over \Gamma(\nu_1/2) \Gamma(\nu_2/2) @} 
    \nu_1^@{\nu_1/2@} \nu_2^@{\nu_2/2@} 
+=======
+p(x) dx =
+   @{ \Gamma((\nu_1 + \nu_2)/2)
+	\over \Gamma(\nu_1/2) \Gamma(\nu_2/2) @}
+   \nu_1^@{\nu_1/2@} \nu_2^@{\nu_2/2@}
+>>>>>>> config
    x^@{\nu_1/2 - 1@} (\nu_2 + \nu_1 x)^@{-\nu_1/2 -\nu_2/2@}
 @end example
 
 @end ifinfo
 @noindent
 for @c{$x \ge 0$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{x >= 0}. 
+=======
+@math{x >= 0}.
+>>>>>>> config
 @end deftypefun
 
 @deftypefun double gsl_ran_fdist_pdf (double @var{x}, double @var{nu1}, double @var{nu2})
@@ -1341,7 +1460,11 @@ dimensions).
 This function returns a random direction vector
 @c{$v = (x_1,x_2,\ldots,x_n)$}
 @math{v = (x_1,x_2,...,x_n)} in @var{n} dimensions.  The vector is normalized
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 such that 
+=======
+such that
+>>>>>>> config
 @c{$|v|^2 = x_1^2 + x_2^2 + \cdots + x_n^2 = 1$}
 @math{|v|^2 = x_1^2 + x_2^2 + ... + x_n^2 = 1}.  The method
 uses the fact that a multivariate gaussian distribution is spherically
@@ -1421,7 +1544,11 @@ p(x) dx = a b \exp(-(b \exp(-ax) + ax)) dx
 
 @end ifinfo
 @noindent
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 for @math{-\infty < x < \infty}. 
+=======
+for @math{-\infty < x < \infty}.
+>>>>>>> config
 @end deftypefun
 
 @deftypefun double gsl_ran_gumbel1_pdf (double @var{x}, double @var{a}, double @var{b})
@@ -1496,30 +1623,50 @@ distribution with parameters @var{a} and @var{b}.
 @node The Dirichlet Distribution
 @section The Dirichlet Distribution
 @deftypefun void gsl_ran_dirichlet (const gsl_rng * @var{r}, size_t @var{K}, const double @var{alpha}[], double @var{theta}[])
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @cindex Dirichlet distribution 
+=======
+@cindex Dirichlet distribution
+>>>>>>> config
 This function returns an array of @var{K} random variates from a Dirichlet
 distribution of order @var{K}-1. The distribution function is
 @tex
 \beforedisplay
 $$
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 p(\theta_1,\ldots,\theta_K) \, d\theta_1 \cdots d\theta_K = 
         {1 \over Z} \prod_{i=1}^{K} \theta_i^{\alpha_i - 1} 
           \; \delta(1 -\sum_{i=1}^K \theta_i) d\theta_1 \cdots d\theta_K
+=======
+p(\theta_1,\ldots,\theta_K) \, d\theta_1 \cdots d\theta_K =
+	{1 \over Z} \prod_{i=1}^{K} \theta_i^{\alpha_i - 1}
+	  \; \delta(1 -\sum_{i=1}^K \theta_i) d\theta_1 \cdots d\theta_K
+>>>>>>> config
 $$
 \afterdisplay
 @end tex
 @ifinfo
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 p(\theta_1, ..., \theta_K) d\theta_1 ... d\theta_K = 
+=======
+p(\theta_1, ..., \theta_K) d\theta_1 ... d\theta_K =
+>>>>>>> config
   (1/Z) \prod_@{i=1@}^K \theta_i^@{\alpha_i - 1@} \delta(1 -\sum_@{i=1@}^K \theta_i) d\theta_1 ... d\theta_K
 @end example
 
 @end ifinfo
 @noindent
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 for @c{$\theta_i \ge 0$} 
 @math{theta_i >= 0}
 and @c{$\alpha_i > 0$} 
+=======
+for @c{$\theta_i \ge 0$}
+@math{theta_i >= 0}
+and @c{$\alpha_i > 0$}
+>>>>>>> config
 @math{alpha_i > 0}.  The delta function ensures that @math{\sum \theta_i = 1}.
 The normalization factor @math{Z} is
 @tex
@@ -1536,6 +1683,7 @@ Z = @{\prod_@{i=1@}^K \Gamma(\alpha_i)@} / @{\Gamma( \sum_@{i=1@}^K \alpha_i)@}
 @end example
 @end ifinfo
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 The random variates are generated by sampling @var{K} values 
 from gamma distributions with parameters 
 @c{$a=\alpha_i$, $b=1$} 
@@ -1557,6 +1705,29 @@ This function computes the logarithm of the probability density
 @c{$p(\theta_1, \ldots , \theta_K)$}
 @math{p(\theta_1, ... , \theta_K)}
 for a Dirichlet distribution with parameters 
+=======
+The random variates are generated by sampling @var{K} values
+from gamma distributions with parameters
+@c{$a=\alpha_i$, $b=1$}
+@math{a=alpha_i, b=1},
+and renormalizing.
+See A.M. Law, W.D. Kelton, @cite{Simulation Modeling and Analysis} (1991).
+@end deftypefun
+
+@deftypefun double gsl_ran_dirichlet_pdf (size_t @var{K}, const double @var{alpha}[], const double @var{theta}[])
+This function computes the probability density
+@c{$p(\theta_1, \ldots , \theta_K)$}
+@math{p(\theta_1, ... , \theta_K)}
+at @var{theta}[@var{K}] for a Dirichlet distribution with parameters
+@var{alpha}[@var{K}], using the formula given above.
+@end deftypefun
+
+@deftypefun double gsl_ran_dirichlet_lnpdf (size_t @var{K}, const double @var{alpha}[], const double @var{theta}[])
+This function computes the logarithm of the probability density
+@c{$p(\theta_1, \ldots , \theta_K)$}
+@math{p(\theta_1, ... , \theta_K)}
+for a Dirichlet distribution with parameters
+>>>>>>> config
 @var{alpha}[@var{K}].
 @end deftypefun
 
@@ -1582,7 +1753,11 @@ $$
 @ifinfo
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   C[0] = 0 
+=======
+  C[0] = 0
+>>>>>>> config
 C[k+1] = C[k]+P[k].
 @end example
 
@@ -1591,7 +1766,11 @@ C[k+1] = C[k]+P[k].
 Note that this construction produces @math{C[K]=1}.  Now choose a
 uniform deviate @math{u} between 0 and 1, and find the value of @math{k}
 such that @c{$C[k] \le u < C[k+1]$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{C[k] <= u < C[k+1]}.  
+=======
+@math{C[k] <= u < C[k+1]}.
+>>>>>>> config
 Although this in principle requires of order @math{\log K} steps per
 random number generation, they are fast steps, and if you use something
 like @math{\lfloor uK \rfloor} as a starting point, you can often do
@@ -1604,7 +1783,11 @@ An approach invented by G. Marsaglia (Generating discrete random variables
 in a computer, Comm ACM 6, 37--38 (1963)) is very clever, and readers
 interested in examples of good algorithm design are directed to this
 short and well-written paper.  Unfortunately, for large @math{K},
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 Marsaglia's lookup table can be quite large.  
+=======
+Marsaglia's lookup table can be quite large.
+>>>>>>> config
 
 A much better approach is due to Alastair J. Walker (An efficient method
 for generating discrete random variables with general distributions, ACM
@@ -1631,7 +1814,11 @@ be made, since it only takes a finite set of @math{K} outcomes.
 @cindex Discrete random numbers, preprocessing
 This function returns a pointer to a structure that contains the lookup
 table for the discrete random number generator.  The array @var{P}[] contains
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 the probabilities of the discrete events; these array elements must all be 
+=======
+the probabilities of the discrete events; these array elements must all be
+>>>>>>> config
 positive, but they needn't add up to one (so you can think of them more
 generally as ``weights'')---the preprocessor will normalize appropriately.
 This return value is used
@@ -1793,7 +1980,11 @@ distribution with parameters @var{p} and @var{n}.
 @node The Multinomial Distribution
 @section The Multinomial Distribution
 @deftypefun void gsl_ran_multinomial (const gsl_rng * @var{r}, size_t @var{K}, unsigned int @var{N}, const double @var{p}[], unsigned int @var{n}[])
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @cindex Multinomial distribution 
+=======
+@cindex Multinomial distribution
+>>>>>>> config
 
 This function computes a random sample @var{n}[] from the multinomial
 distribution formed by @var{N} trials from an underlying distribution
@@ -1809,13 +2000,18 @@ $$
 @ifinfo
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 P(n_1, n_2, ..., n_K) = 
+=======
+P(n_1, n_2, ..., n_K) =
+>>>>>>> config
   (N!/(n_1! n_2! ... n_K!)) p_1^n_1 p_2^n_2 ... p_K^n_K
 @end example
 
 @end ifinfo
 @noindent
 where @c{($n_1$, $n_2$, $\ldots$, $n_K$)}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{(n_1, n_2, ..., n_K)} 
 are nonnegative integers with 
 @c{$\sum_{k=1}^{K} n_k =N$} 
@@ -1824,6 +2020,16 @@ and
 @c{$(p_1, p_2, \ldots, p_K)$} 
 @math{(p_1, p_2, ..., p_K)}
 is a probability distribution with @math{\sum p_i = 1}.  
+=======
+@math{(n_1, n_2, ..., n_K)}
+are nonnegative integers with
+@c{$\sum_{k=1}^{K} n_k =N$}
+@math{sum_@{k=1@}^K n_k = N},
+and
+@c{$(p_1, p_2, \ldots, p_K)$}
+@math{(p_1, p_2, ..., p_K)}
+is a probability distribution with @math{\sum p_i = 1}.
+>>>>>>> config
 If the array @var{p}[@var{K}] is not normalized then its entries will be
 treated as weights and normalized appropriately.  The arrays @var{n}[]
 and @var{p}[] must both be of length @var{K}.
@@ -1833,6 +2039,7 @@ C.S. Davis, @cite{The computer generation of multinomial random
 variates}, Comp. Stat. Data Anal. 16 (1993) 205--217 for details).
 @end deftypefun
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @deftypefun double gsl_ran_multinomial_pdf (size_t @var{K}, const double @var{p}[], const unsigned int @var{n}[]) 
 This function computes the probability 
 @c{$P(n_1, n_2, \ldots, n_K)$}
@@ -1842,6 +2049,17 @@ with parameters @var{p}[@var{K}], using the formula given above.
 @end deftypefun
 
 @deftypefun double gsl_ran_multinomial_lnpdf (size_t @var{K}, const double @var{p}[], const unsigned int @var{n}[]) 
+=======
+@deftypefun double gsl_ran_multinomial_pdf (size_t @var{K}, const double @var{p}[], const unsigned int @var{n}[])
+This function computes the probability
+@c{$P(n_1, n_2, \ldots, n_K)$}
+@math{P(n_1, n_2, ..., n_K)}
+of sampling @var{n}[@var{K}] from a multinomial distribution
+with parameters @var{p}[@var{K}], using the formula given above.
+@end deftypefun
+
+@deftypefun double gsl_ran_multinomial_lnpdf (size_t @var{K}, const double @var{p}[], const unsigned int @var{n}[])
+>>>>>>> config
 This function returns the logarithm of the probability for the
 multinomial distribution @c{$P(n_1, n_2, \ldots, n_K)$}
 @math{P(n_1, n_2, ..., n_K)} with parameters @var{p}[@var{K}].
@@ -1963,7 +2181,11 @@ p(k) =  p (1-p)^(k-1)
 @noindent
 for @c{$k \ge 1$}
 @math{k >= 1}.  Note that the distribution begins with @math{k=1} with this
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 definition.  There is another convention in which the exponent @math{k-1} 
+=======
+definition.  There is another convention in which the exponent @math{k-1}
+>>>>>>> config
 is replaced by @math{k}.
 @end deftypefun
 
@@ -2010,10 +2232,17 @@ p(k) =  C(n_1, k) C(n_2, t - k) / C(n_1 + n_2, t)
 
 @end ifinfo
 @noindent
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 where @math{C(a,b) = a!/(b!(a-b)!)} and 
 @c{$t \leq n_1 + n_2$}
 @math{t <= n_1 + n_2}.  The domain of @math{k} is 
 @c{$\hbox{max}(0,t-n_2), \ldots, \hbox{min}(t,n_1)$} 
+=======
+where @math{C(a,b) = a!/(b!(a-b)!)} and
+@c{$t \leq n_1 + n_2$}
+@math{t <= n_1 + n_2}.  The domain of @math{k} is
+@c{$\hbox{max}(0,t-n_2), \ldots, \hbox{min}(t,n_1)$}
+>>>>>>> config
 @math{max(0,t-n_2), ..., min(t,n_1)}.
 
 If a population contains @math{n_1} elements of ``type 1'' and
@@ -2179,7 +2408,11 @@ $ gcc -Wall demo.c -lgsl -lgslcblas -lm
 Here is the output of the program,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 $ ./a.out 
+=======
+$ ./a.out
+>>>>>>> config
 @verbatiminclude examples/randpoisson.out
 @end example
 
@@ -2190,7 +2423,11 @@ default generator type @code{gsl_rng_default} can be changed with the
 of variates,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 $ GSL_RNG_SEED=123 ./a.out 
+=======
+$ GSL_RNG_SEED=123 ./a.out
+>>>>>>> config
 @verbatiminclude examples/randpoisson.2.out
 @end example
 
@@ -2278,7 +2515,11 @@ Marcel Dekker, ISBN 0-8247-6898-1.
 
 @itemize @w{}
 @item
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 Ronald A. Thisted, @cite{Elements of Statistical Computing} (1988), 
+=======
+Ronald A. Thisted, @cite{Elements of Statistical Computing} (1988),
+>>>>>>> config
 Chapman & Hall, ISBN 0-412-01371-1.
 @end itemize
 

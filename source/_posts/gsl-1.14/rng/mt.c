@@ -36,7 +36,11 @@
    your work".
 
    Makoto Matsumoto has a web page with more information about the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    generator, http://www.math.keio.ac.jp/~matumoto/emt.html. 
+=======
+   generator, http://www.math.keio.ac.jp/~matumoto/emt.html.
+>>>>>>> config
 
    The paper below has details of the algorithm.
 
@@ -63,10 +67,17 @@ static void mt_set (void *state, unsigned long int s);
 #define M 397
 
 /* most significant w-r bits */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static const unsigned long UPPER_MASK = 0x80000000UL;   
 
 /* least significant r bits */
 static const unsigned long LOWER_MASK = 0x7fffffffUL;   
+=======
+static const unsigned long UPPER_MASK = 0x80000000UL;
+
+/* least significant r bits */
+static const unsigned long LOWER_MASK = 0x7fffffffUL;
+>>>>>>> config
 
 typedef struct
   {
@@ -90,6 +101,7 @@ mt_get (void *vstate)
       int kk;
 
       for (kk = 0; kk < N - M; kk++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           unsigned long y = (mt[kk] & UPPER_MASK) | (mt[kk + 1] & LOWER_MASK);
           mt[kk] = mt[kk + M] ^ (y >> 1) ^ MAGIC(y);
@@ -103,13 +115,32 @@ mt_get (void *vstate)
       {
         unsigned long y = (mt[N - 1] & UPPER_MASK) | (mt[0] & LOWER_MASK);
         mt[N - 1] = mt[M - 1] ^ (y >> 1) ^ MAGIC(y);
+=======
+	{
+	  unsigned long y = (mt[kk] & UPPER_MASK) | (mt[kk + 1] & LOWER_MASK);
+	  mt[kk] = mt[kk + M] ^ (y >> 1) ^ MAGIC(y);
+	}
+      for (; kk < N - 1; kk++)
+	{
+	  unsigned long y = (mt[kk] & UPPER_MASK) | (mt[kk + 1] & LOWER_MASK);
+	  mt[kk] = mt[kk + (M - N)] ^ (y >> 1) ^ MAGIC(y);
+	}
+
+      {
+	unsigned long y = (mt[N - 1] & UPPER_MASK) | (mt[0] & LOWER_MASK);
+	mt[N - 1] = mt[M - 1] ^ (y >> 1) ^ MAGIC(y);
+>>>>>>> config
       }
 
       state->mti = 0;
     }
 
   /* Tempering */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   k = mt[state->mti];
   k ^= (k >> 11);
   k ^= (k << 7) & 0x9d2c5680UL;
@@ -141,11 +172,19 @@ mt_set (void *vstate, unsigned long int s)
   for (i = 1; i < N; i++)
     {
       /* See Knuth's "Art of Computer Programming" Vol. 2, 3rd
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          Ed. p.106 for multiplier. */
 
       state->mt[i] =
         (1812433253UL * (state->mt[i-1] ^ (state->mt[i-1] >> 30)) + i);
       
+=======
+	 Ed. p.106 for multiplier. */
+
+      state->mt[i] =
+	(1812433253UL * (state->mt[i-1] ^ (state->mt[i-1] >> 30)) + i);
+
+>>>>>>> config
       state->mt[i] &= 0xffffffffUL;
     }
 

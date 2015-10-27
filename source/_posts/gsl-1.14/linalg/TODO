@@ -1,5 +1,6 @@
 * Support M<N for SVD
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Provide support for the following special systems: 
 
    Vandermonde, Toeplitz, ...
@@ -10,3 +11,13 @@
     http://www.tau.ac.il/~stoledo/taucs/
 
 
+=======
+* Provide support for the following special systems:
+
+   Vandermonde, Toeplitz, ...
+
+* Sparse systems and BLAS
+
+   TAUCS is a C library of sparse linear solvers.
+    http://www.tau.ac.il/~stoledo/taucs/
+>>>>>>> config

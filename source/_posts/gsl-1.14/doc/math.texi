@@ -10,6 +10,7 @@ The functions and macros described in this chapter are defined in the
 header file @file{gsl_math.h}.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Mathematical Constants::      
 * Infinities and Not-a-number::  
 * Elementary Functions::        
@@ -18,6 +19,16 @@ header file @file{gsl_math.h}.
 * Testing for Odd and Even Numbers::  
 * Maximum and Minimum functions::  
 * Approximate Comparison of Floating Point Numbers::  
+=======
+* Mathematical Constants::
+* Infinities and Not-a-number::
+* Elementary Functions::
+* Small integer powers::
+* Testing the Sign of Numbers::
+* Testing for Odd and Even Numbers::
+* Maximum and Minimum functions::
+* Approximate Comparison of Floating Point Numbers::
+>>>>>>> config
 @end menu
 
 @node Mathematical Constants
@@ -225,7 +236,11 @@ math function @code{frexp(x, e)}.
 A common complaint about the standard C library is its lack of a
 function for calculating (small) integer powers.  GSL provides some simple
 functions to fill this gap.  For reasons of efficiency, these functions
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 do not check for overflow or underflow conditions. 
+=======
+do not check for overflow or underflow conditions.
+>>>>>>> config
 
 @deftypefun double gsl_pow_int (double @var{x}, int @var{n})
 This routine computes the power @math{x^n} for integer @var{n}.  The
@@ -244,9 +259,15 @@ available as @code{gsl_sf_pow_int_e}.
 @deftypefunx double gsl_pow_8 (const double @var{x})
 @deftypefunx double gsl_pow_9 (const double @var{x})
 These functions can be used to compute small integer powers @math{x^2},
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{x^3}, etc. efficiently. The functions will be inlined when 
 @code{HAVE_INLINE} is defined, so that use of these functions 
 should be as efficient as explicitly writing the corresponding 
+=======
+@math{x^3}, etc. efficiently. The functions will be inlined when
+@code{HAVE_INLINE} is defined, so that use of these functions
+should be as efficient as explicitly writing the corresponding
+>>>>>>> config
 product expression.
 @end deftypefun
 
@@ -288,12 +309,20 @@ effects (such as a call to a random number generator).
 @defmac GSL_MAX (a, b)
 @cindex maximum of two numbers
 This macro returns the maximum of @var{a} and @var{b}. It is defined
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 as @code{((a) > (b) ? (a):(b))}.  
+=======
+as @code{((a) > (b) ? (a):(b))}.
+>>>>>>> config
 @end defmac
 
 @defmac GSL_MIN (a, b)
 @cindex minimum of two numbers
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 This macro returns the minimum of @var{a} and @var{b}. It is defined as 
+=======
+This macro returns the minimum of @var{a} and @var{b}. It is defined as
+>>>>>>> config
 @code{((a) < (b) ? (a):(b))}.
 @end defmac
 
@@ -348,7 +377,11 @@ equal to a relative accuracy @var{epsilon}.
 The relative accuracy is measured using an interval of size @math{2
 \delta}, where @math{\delta = 2^k \epsilon} and @math{k} is the
 maximum base-2 exponent of @math{x} and @math{y} as computed by the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 function @code{frexp}.  
+=======
+function @code{frexp}.
+>>>>>>> config
 
 If @math{x} and @math{y} lie within this interval, they are considered
 approximately equal and the function returns 0. Otherwise if @math{x <
@@ -357,7 +390,11 @@ y}, the function returns @math{-1}, or if @math{x > y}, the function returns
 
 Note that @math{x} and @math{y} are compared to relative accuracy, so
 this function is not suitable for testing whether a value is
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 approximately zero. 
+=======
+approximately zero.
+>>>>>>> config
 
 The implementation is based on the package @code{fcmp} by T.C. Belding.
 @end deftypefun

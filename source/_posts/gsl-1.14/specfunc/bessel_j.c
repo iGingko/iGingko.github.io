@@ -1,17 +1,31 @@
 /* specfunc/bessel_j.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996,1997,1998,1999,2000,2001,2002,2003 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996,1997,1998,1999,2000,2001,2002,2003 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -109,7 +123,11 @@ int gsl_sf_bessel_j2_e(const double x, gsl_sf_result * result)
   double ax = fabs(x);
 
   /* CHECK_POINTER(result) */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   if(x == 0.0) {
     result->val = 0.0;
     result->err = 0.0;
@@ -204,7 +222,11 @@ gsl_sf_bessel_jl_e(const int l, const double x, gsl_sf_result * result)
     double pre = sqrt((0.5*M_PI)/x);
     result->val = pre * b.val;
     result->err = 2.0 * GSL_DBL_EPSILON * fabs(result->val) + pre * b.err;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     return status;  
+=======
+    return status;
+>>>>>>> config
   }
   else {
     double sgn;
@@ -320,9 +342,15 @@ int gsl_sf_bessel_jl_steed_array(const int lmax, const double x, double * jl_x)
     double end = B + 20000.0*W;
     double D = 1.0/B;
     double del = -D;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     FP += del;
     
+=======
+
+    FP += del;
+
+>>>>>>> config
     /* continued fraction */
     do {
       B += W;
@@ -331,6 +359,7 @@ int gsl_sf_bessel_jl_steed_array(const int lmax, const double x, double * jl_x)
       FP += del;
       if(D < 0.0) F = -F;
       if(B > end) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         GSL_ERROR ("error", GSL_EMAXITER);
       }
     }
@@ -338,6 +367,15 @@ int gsl_sf_bessel_jl_steed_array(const int lmax, const double x, double * jl_x)
     
     FP *= F;
     
+=======
+	GSL_ERROR ("error", GSL_EMAXITER);
+      }
+    }
+    while(fabs(del) >= fabs(FP) * GSL_DBL_EPSILON);
+
+    FP *= F;
+
+>>>>>>> config
     if(lmax > 0) {
       /* downward recursion */
       double XP2 = FP;
@@ -346,6 +384,7 @@ int gsl_sf_bessel_jl_steed_array(const int lmax, const double x, double * jl_x)
       int LP;
       jl_x[lmax] = F;
       for(LP = 1; LP<=lmax; LP++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         jl_x[L-1] = PL * jl_x[L] + XP2;
         FP = PL*jl_x[L-1] - jl_x[L];
         XP2 = FP;
@@ -355,13 +394,28 @@ int gsl_sf_bessel_jl_steed_array(const int lmax, const double x, double * jl_x)
       F = jl_x[0];
     }
     
+=======
+	jl_x[L-1] = PL * jl_x[L] + XP2;
+	FP = PL*jl_x[L-1] - jl_x[L];
+	XP2 = FP;
+	PL -= x_inv;
+	--L;
+      }
+      F = jl_x[0];
+    }
+
+>>>>>>> config
     /* normalization */
     W = x_inv / hypot(FP, F);
     jl_x[0] = W*F;
     if(lmax > 0) {
       int L;
       for(L=1; L<=lmax; L++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         jl_x[L] *= W;
+=======
+	jl_x[L] *= W;
+>>>>>>> config
       }
     }
 
@@ -393,4 +447,7 @@ double gsl_sf_bessel_jl(const int l, const double x)
 {
   EVAL_RESULT(gsl_sf_bessel_jl_e(l, x, &result));
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

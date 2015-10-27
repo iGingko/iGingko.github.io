@@ -6,12 +6,21 @@ Stegun, Chapter 5.  These functions are declared in the header file
 @file{gsl_sf_expint.h}.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Exponential Integral::        
 * Ei(x)::                       
 * Hyperbolic Integrals::        
 * Ei_3(x)::                     
 * Trigonometric Integrals::     
 * Arctangent Integral::         
+=======
+* Exponential Integral::
+* Ei(x)::
+* Hyperbolic Integrals::
+* Ei_3(x)::
+* Trigonometric Integrals::
+* Arctangent Integral::
+>>>>>>> config
 @end menu
 
 @node Exponential Integral
@@ -64,7 +73,11 @@ E_2(x) := \Re \int_1^\infty dt \exp(-xt)/t^2.
 
 @deftypefun double gsl_sf_expint_En (int @var{n}, double @var{x})
 @deftypefunx int gsl_sf_expint_En_e (int @var{n}, double @var{x}, gsl_sf_result * @var{result})
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 These routines compute the exponential integral @math{E_n(x)} of order @math{n}, 
+=======
+These routines compute the exponential integral @math{E_n(x)} of order @math{n},
+>>>>>>> config
 @tex
 \beforedisplay
 $$
@@ -130,7 +143,11 @@ These routines compute the integral @c{$\hbox{Shi}(x) = \int_0^x dt \sinh(t)/t$}
 @deftypefun double gsl_sf_Chi (double @var{x})
 @deftypefunx int gsl_sf_Chi_e (double @var{x}, gsl_sf_result * @var{result})
 These routines compute the integral @c{$\hbox{Chi}(x) := \Re[ \gamma_E + \log(x) + \int_0^x dt (\cosh(t)-1)/t]$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{ Chi(x) := \Re[ \gamma_E + \log(x) + \int_0^x dt (\cosh(t)-1)/t] }, 
+=======
+@math{ Chi(x) := \Re[ \gamma_E + \log(x) + \int_0^x dt (\cosh(t)-1)/t] },
+>>>>>>> config
 where @math{\gamma_E} is the Euler constant (available as the macro @code{M_EULER}).
 @comment Domain: x != 0.0
 @comment Exceptional Return Values: GSL_EDOM, GSL_EOVRFLW, GSL_EUNDRFLW
@@ -160,11 +177,19 @@ These routines compute the Sine integral @c{$\hbox{Si}(x) = \int_0^x dt \sin(t)/
 @comment Exceptional Return Values: none
 @end deftypefun
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  
 @deftypefun double gsl_sf_Ci (const double @var{x})
 @deftypefunx int gsl_sf_Ci_e (double @var{x}, gsl_sf_result * @var{result})
 These routines compute the Cosine integral @c{$\hbox{Ci}(x) = -\int_x^\infty dt \cos(t)/t$}
 @math{Ci(x) = -\int_x^\infty dt \cos(t)/t} for @math{x > 0}.  
+=======
+
+@deftypefun double gsl_sf_Ci (const double @var{x})
+@deftypefunx int gsl_sf_Ci_e (double @var{x}, gsl_sf_result * @var{result})
+These routines compute the Cosine integral @c{$\hbox{Ci}(x) = -\int_x^\infty dt \cos(t)/t$}
+@math{Ci(x) = -\int_x^\infty dt \cos(t)/t} for @math{x > 0}.
+>>>>>>> config
 @comment Domain: x > 0.0
 @comment Exceptional Return Values: GSL_EDOM
 @end deftypefun
@@ -177,7 +202,13 @@ These routines compute the Cosine integral @c{$\hbox{Ci}(x) = -\int_x^\infty dt 
 @deftypefunx int gsl_sf_atanint_e (double @var{x}, gsl_sf_result * @var{result})
 These routines compute the Arctangent integral, which is defined as @c{$\hbox{AtanInt}(x) = \int_0^x dt \arctan(t)/t$}
 @math{AtanInt(x) = \int_0^x dt \arctan(t)/t}.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment Domain: 
 @comment Exceptional Return Values: 
 @end deftypefun
 
+=======
+@comment Domain:
+@comment Exceptional Return Values:
+@end deftypefun
+>>>>>>> config

@@ -1,4 +1,8 @@
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 noinst_LTLIBRARIES = libgslhistogram.la 
+=======
+noinst_LTLIBRARIES = libgslhistogram.la
+>>>>>>> config
 
 pkginclude_HEADERS = gsl_histogram.h gsl_histogram2d.h
 
@@ -17,4 +21,7 @@ test_SOURCES = test.c test1d.c test2d.c test1d_resample.c test2d_resample.c test
 test_LDADD = libgslhistogram.la ../block/libgslblock.la ../ieee-utils/libgslieeeutils.la ../err/libgslerr.la ../test/libgsltest.la ../sys/libgslsys.la
 
 CLEANFILES = test.txt test.dat
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

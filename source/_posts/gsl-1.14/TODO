@@ -10,7 +10,11 @@ reproducible, and that all relevant information is supplied)
 
 * Modified Ei(x) function (see specfunc/TODO)
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Quasi-random number distributions 
+=======
+* Quasi-random number distributions
+>>>>>>> config
 
 * ODE algorithms from RKSUITE
 
@@ -64,7 +68,11 @@ It should be replaced with a preprocessor variable ACC_DOUBLE so
 that the user can compile the library with the old long double
 behavior if desired.
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Use BLAS internally as much as possible, to take advantage of 
+=======
+* Use BLAS internally as much as possible, to take advantage of
+>>>>>>> config
 speed improvements on large-scale systems.  There may be some
 instances where a simple for() loop is preferred since there's a
 function-call overhead in calling BLAS routines.
@@ -103,6 +111,7 @@ gsl_roots_fsolver_brent)
 
 
 * From Goose
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ASCII import
         Categorical Sets
         Kernel Density Estimation
@@ -119,6 +128,24 @@ gsl_roots_fsolver_brent)
         wilcoxon_statistic, wilcoxon_noties_cdf, wilcoxon_general_cdf
         Cochran Q test, KruskalWallis, McNemar, spearman_Rocc
         
+=======
+	ASCII import
+	Categorical Sets
+	Kernel Density Estimation
+	Shampine Polynomial Regression
+	Bootstrapping, Jacknife
+	Descriptive: Range, Trimmed Mean, Winsorized Mean, Moments
+		Harmonic mean, RMS, Durbin-Watson, AR1 independence
+		Autocorr, Autocorr_z, Cramer vos Mises, Anderson-Darling
+		Spearman-rho, Kendall-tau, EDF_D_both EDF_D_plus,
+		EDF_D_minus, EDF_D, EDF_kuiper_V, pooled mean
+		pooled var,
+	Tests: kolmogorov_smirnov
+	Moving average, Exponential moving average
+	wilcoxon_statistic, wilcoxon_noties_cdf, wilcoxon_general_cdf
+	Cochran Q test, KruskalWallis, McNemar, spearman_Rocc
+
+>>>>>>> config
 
 Wishlist or vague ideas
 =======================
@@ -134,14 +161,22 @@ are.  Some parts of LAPACK are included in octave so maybe the Octave
 maintainers will know more.
 
 * Public domain or free texts which could be distributed with GSL:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
      
+=======
+
+>>>>>>> config
 Abramowitz and Stegun, "Handbook of Mathematical Functions" appears to
 be public domain.
 
 SEPT/02: See online images at http://members.fortunecity.com/aands/
 
 Devroye's book on Random Variates (1st ed) is/was in the public
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 domain.  
+=======
+domain.
+>>>>>>> config
 
 
 * Investigate complex support in GCC: Operations like sin(z) silently
@@ -183,6 +218,9 @@ evaluate C and Fortran expressions could be useful.
 * We should have an index mapping type object which handles elements
 of size_t for vectors and matrices, or at least vectors and matrices
 of size_t in addition to long, int, etc.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
 
+=======
+>>>>>>> config

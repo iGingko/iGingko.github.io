@@ -29,6 +29,7 @@ FUNCTION (index, downheap) (size_t * p, const BASE * data, const size_t stride, 
       size_t j = 2 * k;
 
       if (j < N && data[p[j] * stride] < data[p[j + 1] * stride])
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           j++;
         }
@@ -37,6 +38,16 @@ FUNCTION (index, downheap) (size_t * p, const BASE * data, const size_t stride, 
         {
           break;
         }
+=======
+	{
+	  j++;
+	}
+
+      if (!(data[pki * stride] < data[p[j] * stride])) /* avoid infinite loop if nan */
+	{
+	  break;
+	}
+>>>>>>> config
 
       p[k] = p[j];
 
@@ -101,6 +112,10 @@ FUNCTION (gsl_sort_vector, index) (gsl_permutation * permutation, const TYPE (gs
     }
 
   FUNCTION (gsl_sort, index) (permutation->data, v->data, v->stride, v->size) ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   return GSL_SUCCESS ;
 }

@@ -1,17 +1,31 @@
 /* sys/test.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -284,9 +298,15 @@ main (void)
     int n;
     for (n = -9; n < 10; n++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         y = gsl_pow_int (-3.14, n);
         y_expected = pow (-3.14, n);
         gsl_test_rel (y, y_expected, 1e-15, "gsl_pow_n(-3.14,%d)", n);
+=======
+	y = gsl_pow_int (-3.14, n);
+	y_expected = pow (-3.14, n);
+	gsl_test_rel (y, y_expected, 1e-15, "gsl_pow_n(-3.14,%d)", n);
+>>>>>>> config
       }
   }
 
@@ -322,6 +342,7 @@ main (void)
     int i = 0;
     volatile double x = GSL_DBL_MIN;
     y_expected = 2.554675596204441378334779940e294;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     x /= 2;
     while (x > 0)
@@ -330,6 +351,16 @@ main (void)
         y = gsl_ldexp (x, 2000 + i);
         gsl_test_rel (y, y_expected, 1e-15, "gsl_ldexp(DBL_MIN/2**%d,%d)",i,2000+i);
         x /= 2;
+=======
+
+    x /= 2;
+    while (x > 0)
+      {
+	i++ ;
+	y = gsl_ldexp (x, 2000 + i);
+	gsl_test_rel (y, y_expected, 1e-15, "gsl_ldexp(DBL_MIN/2**%d,%d)",i,2000+i);
+	x /= 2;
+>>>>>>> config
       }
   }
 
@@ -397,11 +428,16 @@ main (void)
     volatile double x = GSL_DBL_MIN;
     y_expected = 0.5;
     e_expected = -1021;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     x /= 2;
 
     while (x > 0)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         e_expected--;
         i++ ;
         
@@ -409,6 +445,15 @@ main (void)
         gsl_test_rel (y, y_expected, 1e-15, "gsl_frexp(DBL_MIN/2**%d) fraction",i);
         gsl_test_int (e, e_expected, "gsl_frexp(DBL_MIN/2**%d) exponent", i);
         x /= 2;
+=======
+	e_expected--;
+	i++ ;
+
+	y = gsl_frexp (x, &e);
+	gsl_test_rel (y, y_expected, 1e-15, "gsl_frexp(DBL_MIN/2**%d) fraction",i);
+	gsl_test_int (e, e_expected, "gsl_frexp(DBL_MIN/2**%d) exponent", i);
+	x /= 2;
+>>>>>>> config
       }
   }
 
@@ -425,19 +470,34 @@ main (void)
 
     for (i = 0; i < 10; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         double tol = pow (10, -i);
         int res = gsl_fcmp (x, y, tol);
         gsl_test_int (res, -(i >= 4), "gsl_fcmp(%.5f,%.5f,%g)", x, y, tol);
+=======
+	double tol = pow (10, -i);
+	int res = gsl_fcmp (x, y, tol);
+	gsl_test_int (res, -(i >= 4), "gsl_fcmp(%.5f,%.5f,%g)", x, y, tol);
+>>>>>>> config
       }
 
     for (i = 0; i < 10; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         double tol = pow (10, -i);
         int res = gsl_fcmp (y, x, tol);
         gsl_test_int (res, (i >= 4), "gsl_fcmp(%.5f,%.5f,%g)", y, x, tol);
       }
   }
     
+=======
+	double tol = pow (10, -i);
+	int res = gsl_fcmp (y, x, tol);
+	gsl_test_int (res, (i >= 4), "gsl_fcmp(%.5f,%.5f,%g)", y, x, tol);
+      }
+  }
+
+>>>>>>> config
 
 #if HAVE_IEEE_COMPARISONS
   /* Test for isinf, isnan, finite */
@@ -460,7 +520,11 @@ main (void)
     s = gsl_isinf (inf);
     gsl_test_int (s, 1, "gsl_isinf(inf)");
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     s = gsl_isinf (-inf);  
+=======
+    s = gsl_isinf (-inf);
+>>>>>>> config
     gsl_test_int (s, -1, "gsl_isinf(-inf)");
 
     s = gsl_isinf (nan);
@@ -513,12 +577,20 @@ main (void)
     double x = log(M_E);
     gsl_test_rel (x, 1.0, 4 * GSL_DBL_EPSILON, "ln(M_E)");
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   {
     double x=pow(2.0,M_LOG2E);
     gsl_test_rel (x, exp(1.0), 4 * GSL_DBL_EPSILON, "2^M_LOG2E");
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  
+=======
+
+>>>>>>> config
   {
     double x=pow(10.0,M_LOG10E);
     gsl_test_rel (x, exp(1.0), 4 * GSL_DBL_EPSILON, "10^M_LOG10E");
@@ -527,72 +599,128 @@ main (void)
   {
     double x=pow(M_SQRT2, 2.0);
     gsl_test_rel (x, 2.0, 4 * GSL_DBL_EPSILON, "M_SQRT2^2");
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   }    
+=======
+  }
+>>>>>>> config
 
   {
     double x=pow(M_SQRT1_2, 2.0);
     gsl_test_rel (x, 1.0/2.0, 4 * GSL_DBL_EPSILON, "M_SQRT1_2");
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   }    
+=======
+  }
+>>>>>>> config
 
   {
     double x=pow(M_SQRT3, 2.0);
     gsl_test_rel (x, 3.0, 4 * GSL_DBL_EPSILON, "M_SQRT3^2");
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   }    
+=======
+  }
+>>>>>>> config
 
   {
     double x = M_PI;
     gsl_test_rel (x, 3.1415926535897932384626433832795, 4 * GSL_DBL_EPSILON, "M_PI");
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   }    
+=======
+  }
+>>>>>>> config
 
   {
     double x = 2 * M_PI_2;
     gsl_test_rel (x, M_PI, 4 * GSL_DBL_EPSILON, "2*M_PI_2");
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   }    
+=======
+  }
+>>>>>>> config
 
   {
     double x = 4 * M_PI_4;
     gsl_test_rel (x, M_PI, 4 * GSL_DBL_EPSILON, "4*M_PI_4");
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   }    
+=======
+  }
+>>>>>>> config
 
   {
     double x = pow(M_SQRTPI, 2.0);
     gsl_test_rel (x, M_PI, 4 * GSL_DBL_EPSILON, "M_SQRTPI^2");
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   }    
+=======
+  }
+>>>>>>> config
 
   {
     double x = pow(M_2_SQRTPI, 2.0);
     gsl_test_rel (x, 4/M_PI, 4 * GSL_DBL_EPSILON, "M_SQRTPI^2");
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   }    
+=======
+  }
+>>>>>>> config
 
   {
     double x = M_1_PI;
     gsl_test_rel (x, 1/M_PI, 4 * GSL_DBL_EPSILON, "M_1_SQRTPI");
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   }    
+=======
+  }
+>>>>>>> config
 
   {
     double x = M_2_PI;
     gsl_test_rel (x, 2.0/M_PI, 4 * GSL_DBL_EPSILON, "M_2_PI");
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   }    
+=======
+  }
+>>>>>>> config
 
   {
     double x = exp(M_LN10);
     gsl_test_rel (x, 10, 4 * GSL_DBL_EPSILON, "exp(M_LN10)");
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   }    
+=======
+  }
+>>>>>>> config
 
   {
     double x = exp(M_LN2);
     gsl_test_rel (x, 2, 4 * GSL_DBL_EPSILON, "exp(M_LN2)");
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   }    
+=======
+  }
+>>>>>>> config
 
   {
     double x = exp(M_LNPI);
     gsl_test_rel (x, M_PI, 4 * GSL_DBL_EPSILON, "exp(M_LNPI)");
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   }    
+=======
+  }
+>>>>>>> config
 
   {
     double x = M_EULER;
     gsl_test_rel (x, 0.5772156649015328606065120900824, 4 * GSL_DBL_EPSILON, "M_EULER");
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   }    
+=======
+  }
+>>>>>>> config
 
   exit (gsl_test_summary ());
 }

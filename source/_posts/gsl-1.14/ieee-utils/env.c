@@ -1,17 +1,31 @@
 /* ieee-utils/env.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -40,14 +54,23 @@ gsl_ieee_env_setup (void)
   gsl_ieee_read_mode_string (p, &precision, &rounding, &exception_mask) ;
 
   gsl_ieee_set_mode (precision, rounding, exception_mask) ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   fprintf(stderr, "GSL_IEEE_MODE=\"") ;
 
   /* Print string with a preceeding comma if the list has already begun */
 
 #define PRINTC(x) do {if(comma) fprintf(stderr,","); fprintf(stderr,x); comma++ ;} while(0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   switch (precision) 
+=======
+
+  switch (precision)
+>>>>>>> config
     {
     case GSL_IEEE_SINGLE_PRECISION:
       PRINTC("single-precision") ;
@@ -60,7 +83,11 @@ gsl_ieee_env_setup (void)
       break ;
     }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   switch (rounding) 
+=======
+  switch (rounding)
+>>>>>>> config
     {
     case GSL_IEEE_ROUND_TO_NEAREST:
       PRINTC("round-to-nearest") ;
@@ -84,6 +111,7 @@ gsl_ieee_env_setup (void)
     {
       PRINTC("trap-common") ;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else 
     {
       if (exception_mask & GSL_IEEE_MASK_INVALID)
@@ -100,10 +128,29 @@ gsl_ieee_env_setup (void)
       
       if (exception_mask & GSL_IEEE_MASK_UNDERFLOW)
         PRINTC("mask-underflow") ;
+=======
+  else
+    {
+      if (exception_mask & GSL_IEEE_MASK_INVALID)
+	PRINTC("mask-invalid") ;
+
+      if (exception_mask & GSL_IEEE_MASK_DENORMALIZED)
+	PRINTC("mask-denormalized") ;
+
+      if (exception_mask & GSL_IEEE_MASK_DIVISION_BY_ZERO)
+	PRINTC("mask-division-by-zero") ;
+
+      if (exception_mask & GSL_IEEE_MASK_OVERFLOW)
+	PRINTC("mask-overflow") ;
+
+      if (exception_mask & GSL_IEEE_MASK_UNDERFLOW)
+	PRINTC("mask-underflow") ;
+>>>>>>> config
     }
 
   if (exception_mask & GSL_IEEE_TRAP_INEXACT)
     PRINTC("trap-inexact") ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   fprintf(stderr,"\"\n") ;
 }
@@ -112,3 +159,8 @@ gsl_ieee_env_setup (void)
 
 
 
+=======
+
+  fprintf(stderr,"\"\n") ;
+}
+>>>>>>> config

@@ -1,17 +1,31 @@
 /* vector/test_complex_source.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -45,15 +59,23 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
   size_t i, j;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (stride == 1) 
     {
       v = FUNCTION (gsl_vector, calloc) (N);
       
+=======
+  if (stride == 1)
+    {
+      v = FUNCTION (gsl_vector, calloc) (N);
+
+>>>>>>> config
       TEST(v->data == 0, "_calloc pointer");
       TEST(v->size != N, "_calloc size");
       TEST(v->stride != 1, "_calloc stride");
 
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         int status = (FUNCTION(gsl_vector,isnull)(v) != 1);
         TEST (status, "_isnull" DESC " on calloc vector");
 
@@ -62,15 +84,32 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
         status = (FUNCTION(gsl_vector,isneg)(v) != 0);
         TEST (status, "_isneg" DESC " on calloc vector");
+=======
+	int status = (FUNCTION(gsl_vector,isnull)(v) != 1);
+	TEST (status, "_isnull" DESC " on calloc vector");
+
+	status = (FUNCTION(gsl_vector,ispos)(v) != 0);
+	TEST (status, "_ispos" DESC " on calloc vector");
+
+	status = (FUNCTION(gsl_vector,isneg)(v) != 0);
+	TEST (status, "_isneg" DESC " on calloc vector");
+>>>>>>> config
       }
 
       FUNCTION (gsl_vector, free) (v);      /* free whatever is in v */
     }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (stride == 1) 
     {
       v = FUNCTION (gsl_vector, alloc) (N);
       
+=======
+  if (stride == 1)
+    {
+      v = FUNCTION (gsl_vector, alloc) (N);
+
+>>>>>>> config
       TEST(v->data == 0, "_alloc pointer");
       TEST(v->size != N, "_alloc size");
       TEST(v->stride != 1, "_alloc stride");
@@ -89,6 +128,7 @@ FUNCTION (test, func) (size_t stride, size_t N)
       v0 = FUNCTION (gsl_vector, alloc) (N * stride);
 
       for (i = 0; i < N*stride; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           BASE x = ZERO;
           GSL_REAL (x) = (ATOMIC)i;
@@ -100,23 +140,50 @@ FUNCTION (test, func) (size_t stride, size_t N)
       v = &view.vector;
     }
       
+=======
+	{
+	  BASE x = ZERO;
+	  GSL_REAL (x) = (ATOMIC)i;
+	  GSL_IMAG (x) = (ATOMIC)(i + 1234);
+	  FUNCTION (gsl_vector, set) (v0, i, x);
+	}
+
+      view = FUNCTION (gsl_vector, subvector_with_stride) (v0, 0, stride, N);
+      v = &view.vector;
+    }
+
+>>>>>>> config
   {
     int status = 0;
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         BASE x = ZERO;
         GSL_REAL (x) = (ATOMIC)i;
         GSL_IMAG (x) = (ATOMIC)(i + 1234);
         FUNCTION (gsl_vector, set) (v, i, x);
+=======
+	BASE x = ZERO;
+	GSL_REAL (x) = (ATOMIC)i;
+	GSL_IMAG (x) = (ATOMIC)(i + 1234);
+	FUNCTION (gsl_vector, set) (v, i, x);
+>>>>>>> config
       }
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         if (v->data[2*i*stride] != (ATOMIC) (i) || v->data[2 * i * stride + 1] != (ATOMIC) (i + 1234))
           status = 1;
       };
   
+=======
+	if (v->data[2*i*stride] != (ATOMIC) (i) || v->data[2 * i * stride + 1] != (ATOMIC) (i + 1234))
+	  status = 1;
+      };
+
+>>>>>>> config
     TEST(status,"_set" DESC " writes into array");
   }
 
@@ -126,24 +193,42 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         BASE x, y;
         GSL_REAL (x) = (ATOMIC)i;
         GSL_IMAG (x) = (ATOMIC)(i + 1234);
         y = FUNCTION (gsl_vector, get) (v, i);
         if (!GSL_COMPLEX_EQ (x, y))
           status = 1;
+=======
+	BASE x, y;
+	GSL_REAL (x) = (ATOMIC)i;
+	GSL_IMAG (x) = (ATOMIC)(i + 1234);
+	y = FUNCTION (gsl_vector, get) (v, i);
+	if (!GSL_COMPLEX_EQ (x, y))
+	  status = 1;
+>>>>>>> config
       };
 
     TEST (status, "_get" DESC " reads from array");
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   {
     int status = 0;
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         if (FUNCTION (gsl_vector, ptr) (v, i) != (BASE *)v->data + i*stride)
           status = 1;
+=======
+	if (FUNCTION (gsl_vector, ptr) (v, i) != (BASE *)v->data + i*stride)
+	  status = 1;
+>>>>>>> config
       };
 
     TEST (status, "_ptr" DESC " access to array");
@@ -152,6 +237,7 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
   {
     int status = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     for (i = 0; i < N; i++)
       {
@@ -171,6 +257,27 @@ FUNCTION (test, func) (size_t stride, size_t N)
         FUNCTION (gsl_vector, set) (v, i, x);
       }
     
+=======
+
+    for (i = 0; i < N; i++)
+      {
+	if (FUNCTION (gsl_vector, const_ptr) (v, i) != (BASE *)v->data + i*stride)
+	  status = 1;
+      };
+
+    TEST (status, "_const_ptr" DESC " access to array");
+  }
+
+  {
+    int status = 0;
+
+    for (i = 0; i < N; i++)
+      {
+	BASE x = ZERO;
+	FUNCTION (gsl_vector, set) (v, i, x);
+      }
+
+>>>>>>> config
     status = (FUNCTION(gsl_vector,isnull)(v) != 1);
     TEST (status, "_isnull" DESC " on null vector") ;
 
@@ -186,12 +293,21 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         BASE x = ZERO;
         GSL_REAL (x) = (ATOMIC)i;
         GSL_IMAG (x) = (ATOMIC)(i + 1234);
         FUNCTION (gsl_vector, set) (v, i, x);
       }
     
+=======
+	BASE x = ZERO;
+	GSL_REAL (x) = (ATOMIC)i;
+	GSL_IMAG (x) = (ATOMIC)(i + 1234);
+	FUNCTION (gsl_vector, set) (v, i, x);
+      }
+
+>>>>>>> config
     status = (FUNCTION(gsl_vector,isnull)(v) != 0);
     TEST (status, "_isnull" DESC " on non-null vector") ;
 
@@ -204,15 +320,26 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
   {
     int status = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     FUNCTION (gsl_vector, set_zero) (v);
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         BASE x, y = ZERO;
         x = FUNCTION (gsl_vector, get) (v, i);
         if (!GSL_COMPLEX_EQ (x, y))
           status = 1;
+=======
+	BASE x, y = ZERO;
+	x = FUNCTION (gsl_vector, get) (v, i);
+	if (!GSL_COMPLEX_EQ (x, y))
+	  status = 1;
+>>>>>>> config
       };
 
     TEST (status, "_setzero" DESC " on non-null vector") ;
@@ -229,9 +356,15 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         BASE y = FUNCTION (gsl_vector, get) (v, i);
         if (!GSL_COMPLEX_EQ (x, y))
           status = 1;
+=======
+	BASE y = FUNCTION (gsl_vector, get) (v, i);
+	if (!GSL_COMPLEX_EQ (x, y))
+	  status = 1;
+>>>>>>> config
       };
 
     TEST (status, "_setall" DESC " to non-zero value") ;
@@ -243,6 +376,7 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         FUNCTION (gsl_vector, set_basis) (v, i);
 
         for (j = 0; j < N; j++)
@@ -262,6 +396,27 @@ FUNCTION (test, func) (size_t stride, size_t N)
                   status = 1;
               }
           };
+=======
+	FUNCTION (gsl_vector, set_basis) (v, i);
+
+	for (j = 0; j < N; j++)
+	  {
+	    BASE x = FUNCTION (gsl_vector, get) (v, j);
+	    BASE one = ONE;
+	    BASE zero = ZERO;
+
+	    if (i == j)
+	      {
+		if (!GSL_COMPLEX_EQ (x, one))
+		  status = 1 ;
+	      }
+	    else
+	      {
+		if (!GSL_COMPLEX_EQ (x, zero))
+		  status = 1;
+	      }
+	  };
+>>>>>>> config
       }
 
     TEST (status, "_setbasis" DESC " over range") ;
@@ -272,10 +427,17 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         BASE x = ZERO;
         GSL_REAL (x) = (ATOMIC)i;
         GSL_IMAG (x) = (ATOMIC)(i + 1234);
         FUNCTION (gsl_vector, set) (v, i, x);
+=======
+	BASE x = ZERO;
+	GSL_REAL (x) = (ATOMIC)i;
+	GSL_IMAG (x) = (ATOMIC)(i + 1234);
+	FUNCTION (gsl_vector, set) (v, i, x);
+>>>>>>> config
       }
 
     {
@@ -287,11 +449,19 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         BASE r = FUNCTION(gsl_vector,get) (v,i);
         ATOMIC real = -(ATOMIC)i-(ATOMIC)3702;
         ATOMIC imag = 5*(ATOMIC)i+(ATOMIC)2468;
         if (GSL_REAL(r) != real || GSL_IMAG(r) != imag)
           status = 1;
+=======
+	BASE r = FUNCTION(gsl_vector,get) (v,i);
+	ATOMIC real = -(ATOMIC)i-(ATOMIC)3702;
+	ATOMIC imag = 5*(ATOMIC)i+(ATOMIC)2468;
+	if (GSL_REAL(r) != real || GSL_IMAG(r) != imag)
+	  status = 1;
+>>>>>>> config
       };
 
     TEST (status, "_scale" DESC " by 2") ;
@@ -310,12 +480,21 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         BASE r = FUNCTION(gsl_vector,get) (v,i);
         ATOMIC real = -(ATOMIC)i-(ATOMIC)3695;
         ATOMIC imag = 5*(ATOMIC)i+(ATOMIC)2481;
 
         if (GSL_REAL(r) != real || GSL_IMAG(r) != imag)
           status = 1;
+=======
+	BASE r = FUNCTION(gsl_vector,get) (v,i);
+	ATOMIC real = -(ATOMIC)i-(ATOMIC)3695;
+	ATOMIC imag = 5*(ATOMIC)i+(ATOMIC)2481;
+
+	if (GSL_REAL(r) != real || GSL_IMAG(r) != imag)
+	  status = 1;
+>>>>>>> config
       };
 
     TEST (status, "_add_constant" DESC) ;
@@ -338,20 +517,31 @@ FUNCTION (test, func) (size_t stride, size_t N)
     GSL_IMAG(y) = 5 + 1234;
 
     FUNCTION (gsl_vector,swap_elements) (v, 2, 5) ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     r = FUNCTION(gsl_vector,get)(v,2);
     s = FUNCTION(gsl_vector,get)(v,5);
 
     status = ! GSL_COMPLEX_EQ(r,y) ;
     status |= ! GSL_COMPLEX_EQ(s,x) ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     FUNCTION (gsl_vector,swap_elements) (v, 2, 5) ;
     
+=======
+
+    FUNCTION (gsl_vector,swap_elements) (v, 2, 5) ;
+
+>>>>>>> config
     r = FUNCTION(gsl_vector,get)(v,2);
     s = FUNCTION(gsl_vector,get)(v,5);
 
     status |= ! GSL_COMPLEX_EQ(r,x) ;
     status |= ! GSL_COMPLEX_EQ(s,y) ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
     TEST (status, "_swap_elements" DESC " exchanges elements") ;
   }
@@ -386,6 +576,42 @@ FUNCTION (test, func) (size_t stride, size_t N)
         BASE y = FUNCTION (gsl_vector, get) (v, i);
         if (!GSL_COMPLEX_EQ(x,y)) 
           status = 1;
+=======
+
+    TEST (status, "_swap_elements" DESC " exchanges elements") ;
+  }
+
+  {
+    int status = 0;
+
+    FUNCTION (gsl_vector,reverse) (v) ;
+
+    for (i = 0; i < N; i++)
+      {
+	BASE x,r ;
+	GSL_REAL(x) = (ATOMIC)(N - i - 1) ;
+	GSL_IMAG(x) = (ATOMIC)(N - i - 1 + 1234);
+
+	r = FUNCTION (gsl_vector, get) (v, i);
+
+	status |= !GSL_COMPLEX_EQ(r,x);
+      }
+
+    gsl_test (status, NAME(gsl_vector) "_reverse" DESC " reverses elements") ;
+  }
+
+  {
+    int status = 0;
+
+    QUALIFIED_VIEW(gsl_vector,view) v1 = FUNCTION(gsl_vector, view_array) (v->data, N*stride);
+
+    for (i = 0; i < N; i++)
+      {
+	BASE x = FUNCTION (gsl_vector, get) (&v1.vector, i*stride) ;
+	BASE y = FUNCTION (gsl_vector, get) (v, i);
+	if (!GSL_COMPLEX_EQ(x,y))
+	  status = 1;
+>>>>>>> config
       };
 
     TEST (status, "_view_array" DESC);
@@ -393,6 +619,7 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
   {
     int status = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     QUALIFIED_VIEW(gsl_vector,view) v1 = FUNCTION(gsl_vector, view_array_with_stride) (v->data, stride, N*stride);
     
@@ -402,6 +629,17 @@ FUNCTION (test, func) (size_t stride, size_t N)
         BASE y = FUNCTION (gsl_vector, get) (v, i);
         if (!GSL_COMPLEX_EQ(x,y)) 
           status = 1;
+=======
+
+    QUALIFIED_VIEW(gsl_vector,view) v1 = FUNCTION(gsl_vector, view_array_with_stride) (v->data, stride, N*stride);
+
+    for (i = 0; i < N; i++)
+      {
+	BASE x = FUNCTION (gsl_vector, get) (&v1.vector, i) ;
+	BASE y = FUNCTION (gsl_vector, get) (v, i);
+	if (!GSL_COMPLEX_EQ(x,y))
+	  status = 1;
+>>>>>>> config
       };
 
     TEST (status, "_view_array_with_stride" DESC);
@@ -410,6 +648,7 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
   {
     int status = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     QUALIFIED_VIEW(gsl_vector,view) v1 = FUNCTION(gsl_vector, subvector) (v, N/3, N/2);
     
@@ -419,6 +658,17 @@ FUNCTION (test, func) (size_t stride, size_t N)
         BASE y = FUNCTION (gsl_vector, get) (v, (N/3)+i);
         if (!GSL_COMPLEX_EQ(x,y)) 
           status = 1;
+=======
+
+    QUALIFIED_VIEW(gsl_vector,view) v1 = FUNCTION(gsl_vector, subvector) (v, N/3, N/2);
+
+    for (i = 0; i < N/2; i++)
+      {
+	BASE x = FUNCTION (gsl_vector, get) (&v1.vector, i) ;
+	BASE y = FUNCTION (gsl_vector, get) (v, (N/3)+i);
+	if (!GSL_COMPLEX_EQ(x,y))
+	  status = 1;
+>>>>>>> config
       };
 
     TEST (status, "_view_subvector" DESC);
@@ -426,6 +676,7 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
   {
     int status = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     QUALIFIED_VIEW(gsl_vector,view) v1 = FUNCTION(gsl_vector, subvector_with_stride) (v, N/5, 3, N/4);
     
@@ -435,6 +686,17 @@ FUNCTION (test, func) (size_t stride, size_t N)
         BASE y = FUNCTION (gsl_vector, get) (v, (N/5)+3*i);
         if (!GSL_COMPLEX_EQ(x,y)) 
           status = 1;
+=======
+
+    QUALIFIED_VIEW(gsl_vector,view) v1 = FUNCTION(gsl_vector, subvector_with_stride) (v, N/5, 3, N/4);
+
+    for (i = 0; i < N/4; i++)
+      {
+	BASE x = FUNCTION (gsl_vector, get) (&v1.vector, i) ;
+	BASE y = FUNCTION (gsl_vector, get) (v, (N/5)+3*i);
+	if (!GSL_COMPLEX_EQ(x,y))
+	  status = 1;
+>>>>>>> config
       };
 
     TEST (status, "_view_subvector_with_stride" DESC);
@@ -443,6 +705,7 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
   {
     int status = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     QUALIFIED_REAL_VIEW(gsl_vector,view) vv = FUNCTION(gsl_vector, real) (v);
     
@@ -454,6 +717,19 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
         if (xr != yr) 
           status = 1;
+=======
+
+    QUALIFIED_REAL_VIEW(gsl_vector,view) vv = FUNCTION(gsl_vector, real) (v);
+
+    for (i = 0; i < N; i++)
+      {
+	ATOMIC xr = REAL_VIEW (gsl_vector, get) (&vv.vector, i) ;
+	BASE y = FUNCTION (gsl_vector, get) (v, i);
+	ATOMIC yr = GSL_REAL(y);
+
+	if (xr != yr)
+	  status = 1;
+>>>>>>> config
       };
 
     TEST (status, "_real" DESC);
@@ -461,6 +737,7 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
   {
     int status = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     QUALIFIED_REAL_VIEW(gsl_vector,view) vv = FUNCTION(gsl_vector, imag) (v);
     
@@ -472,6 +749,19 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
         if (xr != yr) 
           status = 1;
+=======
+
+    QUALIFIED_REAL_VIEW(gsl_vector,view) vv = FUNCTION(gsl_vector, imag) (v);
+
+    for (i = 0; i < N; i++)
+      {
+	ATOMIC xr = REAL_VIEW (gsl_vector, get) (&vv.vector, i) ;
+	BASE y = FUNCTION (gsl_vector, get) (v, i);
+	ATOMIC yr = GSL_IMAG(y);
+
+	if (xr != yr)
+	  status = 1;
+>>>>>>> config
       };
 
     TEST (status, "_imag" DESC);
@@ -488,7 +778,11 @@ FUNCTION (test, ops) (size_t stride1, size_t stride2, size_t N)
   TYPE (gsl_vector) * a = FUNCTION (create, vector) (stride1, N);
   TYPE (gsl_vector) * b = FUNCTION (create, vector) (stride2, N);
   TYPE (gsl_vector) * v = FUNCTION (create, vector) (stride1, N);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   for (i = 0; i < N; i++)
     {
       BASE z, z1;
@@ -500,6 +794,7 @@ FUNCTION (test, ops) (size_t stride1, size_t stride2, size_t N)
       FUNCTION (gsl_vector, set) (a, i, z);
       FUNCTION (gsl_vector, set) (b, i, z1);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   FUNCTION(gsl_vector, memcpy) (v, a);
   FUNCTION(gsl_vector, add) (v, b);
@@ -513,17 +808,37 @@ FUNCTION (test, ops) (size_t stride1, size_t stride2, size_t N)
         if (GSL_REAL(r) != (ATOMIC) (3*i+11) 
             || GSL_IMAG(r) != (ATOMIC) (3*i+36))
           status = 1;
+=======
+
+  FUNCTION(gsl_vector, memcpy) (v, a);
+  FUNCTION(gsl_vector, add) (v, b);
+
+  {
+    int status = 0;
+
+    for (i = 0; i < N; i++)
+      {
+	BASE r = FUNCTION(gsl_vector,get) (v,i);
+	if (GSL_REAL(r) != (ATOMIC) (3*i+11)
+	    || GSL_IMAG(r) != (ATOMIC) (3*i+36))
+	  status = 1;
+>>>>>>> config
       }
     TEST2 (status, "_add vector addition");
   }
 
   {
     int status = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     FUNCTION(gsl_vector, swap) (a, b);
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         BASE z, z1;
 
         BASE x = FUNCTION (gsl_vector, get) (a, i);
@@ -536,12 +851,27 @@ FUNCTION (test, ops) (size_t stride1, size_t stride2, size_t N)
 
         status |= !GSL_COMPLEX_EQ(z,y);
         status |= !GSL_COMPLEX_EQ(z1,x);
+=======
+	BASE z, z1;
+
+	BASE x = FUNCTION (gsl_vector, get) (a, i);
+	BASE y = FUNCTION (gsl_vector, get) (b, i);
+
+	GSL_REAL (z) = (ATOMIC) 3+i;
+	GSL_IMAG (z) = (ATOMIC) (3+i + 10);
+	GSL_REAL (z1) = (ATOMIC) (3 + 2*i + 5);
+	GSL_IMAG (z1) = (ATOMIC) (3 + 2*i + 20);
+
+	status |= !GSL_COMPLEX_EQ(z,y);
+	status |= !GSL_COMPLEX_EQ(z1,x);
+>>>>>>> config
       }
 
     FUNCTION(gsl_vector, swap) (a, b);
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         BASE z, z1;
 
         BASE x = FUNCTION (gsl_vector, get) (a, i);
@@ -554,10 +884,25 @@ FUNCTION (test, ops) (size_t stride1, size_t stride2, size_t N)
 
         status |= !GSL_COMPLEX_EQ(z,x);
         status |= !GSL_COMPLEX_EQ(z1,y);
+=======
+	BASE z, z1;
+
+	BASE x = FUNCTION (gsl_vector, get) (a, i);
+	BASE y = FUNCTION (gsl_vector, get) (b, i);
+
+	GSL_REAL (z) = (ATOMIC) 3+i;
+	GSL_IMAG (z) = (ATOMIC) (3+i + 10);
+	GSL_REAL (z1) = (ATOMIC) (3 + 2*i + 5);
+	GSL_IMAG (z1) = (ATOMIC) (3 + 2*i + 20);
+
+	status |= !GSL_COMPLEX_EQ(z,x);
+	status |= !GSL_COMPLEX_EQ(z1,y);
+>>>>>>> config
       }
 
     TEST2 (status, "_swap exchange vectors");
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   FUNCTION(gsl_vector, memcpy) (v, a);
   FUNCTION(gsl_vector, sub) (v, b);
@@ -570,10 +915,25 @@ FUNCTION (test, ops) (size_t stride1, size_t stride2, size_t N)
         BASE r = FUNCTION(gsl_vector,get) (v,i);
         if (GSL_REAL(r) != (-(ATOMIC)i-(ATOMIC)5) || GSL_IMAG(r) != (-(ATOMIC)i-(ATOMIC)10))
           status = 1;
+=======
+
+  FUNCTION(gsl_vector, memcpy) (v, a);
+  FUNCTION(gsl_vector, sub) (v, b);
+
+  {
+    int status = 0;
+
+    for (i = 0; i < N; i++)
+      {
+	BASE r = FUNCTION(gsl_vector,get) (v,i);
+	if (GSL_REAL(r) != (-(ATOMIC)i-(ATOMIC)5) || GSL_IMAG(r) != (-(ATOMIC)i-(ATOMIC)10))
+	  status = 1;
+>>>>>>> config
       }
 
     TEST2 (status, "_sub vector subtraction");
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   FUNCTION(gsl_vector, memcpy) (v, a);
   FUNCTION(gsl_vector, mul) (v, b);
@@ -589,10 +949,28 @@ FUNCTION (test, ops) (size_t stride1, size_t stride2, size_t N)
         if (fabs(GSL_REAL(r) - real) > 100 * BASE_EPSILON ||
             fabs(GSL_IMAG(r) - imag) > 100 * BASE_EPSILON)
           status = 1;
+=======
+
+  FUNCTION(gsl_vector, memcpy) (v, a);
+  FUNCTION(gsl_vector, mul) (v, b);
+
+  {
+    int status = 0;
+
+    for (i = 0; i < N; i++)
+      {
+	BASE r = FUNCTION(gsl_vector,get) (v,i);
+	ATOMIC real = (-35*(ATOMIC)i-275);
+	ATOMIC imag = (173+((ATOMIC)i)*(63+4*(ATOMIC)i));
+	if (fabs(GSL_REAL(r) - real) > 100 * BASE_EPSILON ||
+	    fabs(GSL_IMAG(r) - imag) > 100 * BASE_EPSILON)
+	  status = 1;
+>>>>>>> config
       }
 
     TEST2 (status, "_mul multiplication");
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   FUNCTION(gsl_vector, memcpy) (v, a);
   FUNCTION(gsl_vector, div) (v, b);
@@ -610,6 +988,25 @@ FUNCTION (test, ops) (size_t stride1, size_t stride2, size_t N)
           status = 1;
         if (fabs(GSL_IMAG(r) - imag) > 100 * BASE_EPSILON)
           status = 1;
+=======
+
+  FUNCTION(gsl_vector, memcpy) (v, a);
+  FUNCTION(gsl_vector, div) (v, b);
+
+  {
+    int status = 0;
+
+    for (i = 0; i < N; i++)
+      {
+	BASE r = FUNCTION(gsl_vector,get) (v,i);
+	ATOMIC denom = 593 + ((ATOMIC)i)*(124+((ATOMIC)i)*8);
+	ATOMIC real = (323+((ATOMIC)i)*(63+4*((ATOMIC)i))) / denom;
+	ATOMIC imag = (35 +((ATOMIC)i)*5) / denom;
+	if (fabs(GSL_REAL(r) - real) > 100 * BASE_EPSILON)
+	  status = 1;
+	if (fabs(GSL_IMAG(r) - imag) > 100 * BASE_EPSILON)
+	  status = 1;
+>>>>>>> config
       }
     TEST2 (status, "_div division");
   }
@@ -619,7 +1016,11 @@ FUNCTION (test, ops) (size_t stride1, size_t stride2, size_t N)
   FUNCTION(gsl_vector, free) (v);
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 void 
+=======
+void
+>>>>>>> config
 FUNCTION (test, file) (size_t stride, size_t N)
 {
   TYPE (gsl_vector) * v = FUNCTION (create, vector) (stride, N);
@@ -632,10 +1033,17 @@ FUNCTION (test, file) (size_t stride, size_t N)
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         BASE x = ZERO;
         GSL_REAL (x) = (ATOMIC)(N - i);
         GSL_IMAG (x) = (ATOMIC)(N - i + 1);
         FUNCTION (gsl_vector, set) (v, i, x);
+=======
+	BASE x = ZERO;
+	GSL_REAL (x) = (ATOMIC)(N - i);
+	GSL_IMAG (x) = (ATOMIC)(N - i + 1);
+	FUNCTION (gsl_vector, set) (v, i, x);
+>>>>>>> config
       };
 
     FUNCTION (gsl_vector, fwrite) (f, v);
@@ -651,8 +1059,13 @@ FUNCTION (test, file) (size_t stride, size_t N)
     status = 0;
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         if (w->data[2 * i * stride] != (ATOMIC) (N - i) || w->data[2 * i * stride + 1] != (ATOMIC) (N - i + 1))
           status = 1;
+=======
+	if (w->data[2 * i * stride] != (ATOMIC) (N - i) || w->data[2 * i * stride + 1] != (ATOMIC) (N - i + 1))
+	  status = 1;
+>>>>>>> config
       };
     fclose (f);
   }
@@ -680,10 +1093,17 @@ FUNCTION (test, text) (size_t stride, size_t N)
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         BASE x;
         GSL_REAL (x) = (ATOMIC)i;
         GSL_IMAG (x) = (ATOMIC)(i + 1);
         FUNCTION (gsl_vector, set) (v, i, x);
+=======
+	BASE x;
+	GSL_REAL (x) = (ATOMIC)i;
+	GSL_IMAG (x) = (ATOMIC)(i + 1);
+	FUNCTION (gsl_vector, set) (v, i, x);
+>>>>>>> config
       };
 
     FUNCTION (gsl_vector, fprintf) (f, v, OUT_FORMAT);
@@ -699,8 +1119,13 @@ FUNCTION (test, text) (size_t stride, size_t N)
     status = 0;
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         if (w->data[2 * i * stride] != (ATOMIC) i || w->data[2 * i * stride + 1] != (ATOMIC) (i + 1))
           status = 1;
+=======
+	if (w->data[2 * i * stride] != (ATOMIC) i || w->data[2 * i * stride + 1] != (ATOMIC) (i + 1))
+	  status = 1;
+>>>>>>> config
       };
     fclose (f);
   }
@@ -725,12 +1150,20 @@ FUNCTION (test, trap) (size_t stride, size_t N)
   status = 0;
   FUNCTION (gsl_vector, set) (vc, j - 1, z);
   gsl_test (!status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             NAME (gsl_vector) "_set traps index below lower bound");
+=======
+	    NAME (gsl_vector) "_set traps index below lower bound");
+>>>>>>> config
 
   status = 0;
   FUNCTION (gsl_vector, set) (vc, N + 1, z);
   gsl_test (!status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             NAME (gsl_vector) "_set traps index above upper bound");
+=======
+	    NAME (gsl_vector) "_set traps index above upper bound");
+>>>>>>> config
 
   status = 0;
   FUNCTION (gsl_vector, set) (vc, N, z);
@@ -739,26 +1172,44 @@ FUNCTION (test, trap) (size_t stride, size_t N)
   status = 0;
   z1 = FUNCTION (gsl_vector, get) (vc, j - 1);
   gsl_test (!status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             NAME (gsl_vector) "_get traps index below lower bound");
 
   gsl_test (GSL_REAL (z1) != 0,
             NAME (gsl_vector) "_get returns zero real below lower bound");
   gsl_test (GSL_IMAG (z1) != 0,
             NAME (gsl_vector) "_get returns zero imag below lower bound");
+=======
+	    NAME (gsl_vector) "_get traps index below lower bound");
+
+  gsl_test (GSL_REAL (z1) != 0,
+	    NAME (gsl_vector) "_get returns zero real below lower bound");
+  gsl_test (GSL_IMAG (z1) != 0,
+	    NAME (gsl_vector) "_get returns zero imag below lower bound");
+>>>>>>> config
 
   status = 0;
   z1 = FUNCTION (gsl_vector, get) (vc, N + 1);
   gsl_test (!status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             NAME (gsl_vector) "_get traps index above upper bound");
   gsl_test (GSL_REAL (z1) != 0,
             NAME (gsl_vector) "_get returns zero real above upper bound");
   gsl_test (GSL_IMAG (z1) != 0,
             NAME (gsl_vector) "_get returns zero imag above upper bound");
+=======
+	    NAME (gsl_vector) "_get traps index above upper bound");
+  gsl_test (GSL_REAL (z1) != 0,
+	    NAME (gsl_vector) "_get returns zero real above upper bound");
+  gsl_test (GSL_IMAG (z1) != 0,
+	    NAME (gsl_vector) "_get returns zero imag above upper bound");
+>>>>>>> config
 
   status = 0;
   z1 = FUNCTION (gsl_vector, get) (vc, N);
   gsl_test (!status, NAME (gsl_vector) "_get traps index at upper bound");
   gsl_test (GSL_REAL (z1) != 0,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             NAME (gsl_vector) "_get returns zero real at upper bound");
   gsl_test (GSL_IMAG (z1) != 0,
             NAME (gsl_vector) "_get returns zero imag at upper bound");
@@ -769,3 +1220,11 @@ FUNCTION (test, trap) (size_t stride, size_t N)
 
 
 
+=======
+	    NAME (gsl_vector) "_get returns zero real at upper bound");
+  gsl_test (GSL_IMAG (z1) != 0,
+	    NAME (gsl_vector) "_get returns zero imag at upper bound");
+
+  FUNCTION (gsl_vector, free) (vc);
+}
+>>>>>>> config

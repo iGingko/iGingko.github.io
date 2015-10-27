@@ -15,9 +15,15 @@ associated error in @var{result}.
 
 @deftypefun int gsl_sf_multiply_err_e (double @var{x}, double @var{dx}, double @var{y}, double @var{dy}, gsl_sf_result * @var{result})
 This function multiplies @var{x} and @var{y} with associated absolute
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 errors @var{dx} and @var{dy}.  The product 
 @c{$xy \pm xy \sqrt{(dx/x)^2 +(dy/y)^2}$} 
 @math{xy +/- xy \sqrt((dx/x)^2 +(dy/y)^2)} 
+=======
+errors @var{dx} and @var{dy}.  The product
+@c{$xy \pm xy \sqrt{(dx/x)^2 +(dy/y)^2}$}
+@math{xy +/- xy \sqrt((dx/x)^2 +(dy/y)^2)}
+>>>>>>> config
 is stored in @var{result}.
 @comment Exceptional Return Values: GSL_EOVRFLW, GSL_EUNDRFLW
 @end deftypefun

@@ -1,17 +1,31 @@
 /* poly/solve_quadratic.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -24,15 +38,22 @@
 
 #include <gsl/gsl_poly.h>
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int 
 gsl_poly_solve_quadratic (double a, double b, double c, 
                           double *x0, double *x1)
+=======
+int
+gsl_poly_solve_quadratic (double a, double b, double c,
+			  double *x0, double *x1)
+>>>>>>> config
 {
   double disc = b * b - 4 * a * c;
 
   if (a == 0) /* Handle linear case */
     {
       if (b == 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           return 0;
         }
@@ -41,11 +62,22 @@ gsl_poly_solve_quadratic (double a, double b, double c,
           *x0 = -c / b;
           return 1;
         };
+=======
+	{
+	  return 0;
+	}
+      else
+	{
+	  *x0 = -c / b;
+	  return 1;
+	};
+>>>>>>> config
     }
 
   if (disc > 0)
     {
       if (b == 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double r = fabs (0.5 * sqrt (disc) / a);
           *x0 = -r;
@@ -72,6 +104,34 @@ gsl_poly_solve_quadratic (double a, double b, double c,
       return 2;
     }
   else if (disc == 0) 
+=======
+	{
+	  double r = fabs (0.5 * sqrt (disc) / a);
+	  *x0 = -r;
+	  *x1 =  r;
+	}
+      else
+	{
+	  double sgnb = (b > 0 ? 1 : -1);
+	  double temp = -0.5 * (b + sgnb * sqrt (disc));
+	  double r1 = temp / a ;
+	  double r2 = c / temp ;
+
+	  if (r1 < r2)
+	    {
+	      *x0 = r1 ;
+	      *x1 = r2 ;
+	    }
+	  else
+	    {
+	      *x0 = r2 ;
+	      *x1 = r1 ;
+	    }
+	}
+      return 2;
+    }
+  else if (disc == 0)
+>>>>>>> config
     {
       *x0 = -0.5 * b / a ;
       *x1 = -0.5 * b / a ;
@@ -82,4 +142,7 @@ gsl_poly_solve_quadratic (double a, double b, double c,
       return 0;
     }
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

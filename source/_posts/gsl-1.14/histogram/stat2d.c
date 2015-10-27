@@ -20,7 +20,11 @@
 /***************************************************************
  *
  * File histogram/stat2d.c:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * Routine to return statistical values of the content of a 2D hisogram. 
+=======
+ * Routine to return statistical values of the content of a 2D hisogram.
+>>>>>>> config
  *
  * Contains the routines:
  * gsl_histogram2d_sum sum up all bin values
@@ -65,7 +69,11 @@ gsl_histogram2d_xmean (const gsl_histogram2d * h)
   /* Compute the bin-weighted arithmetic mean M of a histogram using the
      recurrence relation
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
      M(n) = M(n-1) + (x[n] - M(n-1)) (w(n)/(W(n-1) + w(n))) 
+=======
+     M(n) = M(n-1) + (x[n] - M(n-1)) (w(n)/(W(n-1) + w(n)))
+>>>>>>> config
      W(n) = W(n-1) + w(n)
 
    */
@@ -79,6 +87,7 @@ gsl_histogram2d_xmean (const gsl_histogram2d * h)
       double wi = 0;
 
       for (j = 0; j < ny; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double wij = h->bin[i * ny + j];
           if (wij > 0)
@@ -89,6 +98,18 @@ gsl_histogram2d_xmean (const gsl_histogram2d * h)
           W += wi;
           wmean += (xi - wmean) * (wi / W);
         }
+=======
+	{
+	  double wij = h->bin[i * ny + j];
+	  if (wij > 0)
+	    wi += wij;
+	}
+      if (wi > 0)
+	{
+	  W += wi;
+	  wmean += (xi - wmean) * (wi / W);
+	}
+>>>>>>> config
     }
 
   return wmean;
@@ -105,7 +126,11 @@ gsl_histogram2d_ymean (const gsl_histogram2d * h)
   /* Compute the bin-weighted arithmetic mean M of a histogram using the
      recurrence relation
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
      M(n) = M(n-1) + (x[n] - M(n-1)) (w(n)/(W(n-1) + w(n))) 
+=======
+     M(n) = M(n-1) + (x[n] - M(n-1)) (w(n)/(W(n-1) + w(n)))
+>>>>>>> config
      W(n) = W(n-1) + w(n)
 
    */
@@ -119,6 +144,7 @@ gsl_histogram2d_ymean (const gsl_histogram2d * h)
       double wj = 0;
 
       for (i = 0; i < nx; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double wij = h->bin[i * ny + j];
           if (wij > 0)
@@ -130,6 +156,19 @@ gsl_histogram2d_ymean (const gsl_histogram2d * h)
           W += wj;
           wmean += (yj - wmean) * (wj / W);
         }
+=======
+	{
+	  double wij = h->bin[i * ny + j];
+	  if (wij > 0)
+	    wj += wij;
+	}
+
+      if (wj > 0)
+	{
+	  W += wj;
+	  wmean += (yj - wmean) * (wj / W);
+	}
+>>>>>>> config
     }
 
   return wmean;
@@ -147,7 +186,11 @@ gsl_histogram2d_xsigma (const gsl_histogram2d * h)
   /* Compute the bin-weighted arithmetic mean M of a histogram using the
      recurrence relation
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
      M(n) = M(n-1) + (x[n] - M(n-1)) (w(n)/(W(n-1) + w(n))) 
+=======
+     M(n) = M(n-1) + (x[n] - M(n-1)) (w(n)/(W(n-1) + w(n)))
+>>>>>>> config
      W(n) = W(n-1) + w(n)
 
    */
@@ -161,6 +204,7 @@ gsl_histogram2d_xsigma (const gsl_histogram2d * h)
       double wi = 0;
 
       for (j = 0; j < ny; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double wij = h->bin[i * ny + j];
           if (wij > 0)
@@ -172,6 +216,19 @@ gsl_histogram2d_xsigma (const gsl_histogram2d * h)
           W += wi;
           wvariance += ((xi * xi) - wvariance) * (wi / W);
         }
+=======
+	{
+	  double wij = h->bin[i * ny + j];
+	  if (wij > 0)
+	    wi += wij;
+	}
+
+      if (wi > 0)
+	{
+	  W += wi;
+	  wvariance += ((xi * xi) - wvariance) * (wi / W);
+	}
+>>>>>>> config
     }
 
   {
@@ -192,7 +249,11 @@ gsl_histogram2d_ysigma (const gsl_histogram2d * h)
   /* Compute the bin-weighted arithmetic mean M of a histogram using the
      recurrence relation
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
      M(n) = M(n-1) + (x[n] - M(n-1)) (w(n)/(W(n-1) + w(n))) 
+=======
+     M(n) = M(n-1) + (x[n] - M(n-1)) (w(n)/(W(n-1) + w(n)))
+>>>>>>> config
      W(n) = W(n-1) + w(n)
 
    */
@@ -206,6 +267,7 @@ gsl_histogram2d_ysigma (const gsl_histogram2d * h)
       double wj = 0;
 
       for (i = 0; i < nx; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double wij = h->bin[i * ny + j];
           if (wij > 0)
@@ -216,6 +278,18 @@ gsl_histogram2d_ysigma (const gsl_histogram2d * h)
           W += wj;
           wvariance += ((yj * yj) - wvariance) * (wj / W);
         }
+=======
+	{
+	  double wij = h->bin[i * ny + j];
+	  if (wij > 0)
+	    wj += wij;
+	}
+      if (wj > 0)
+	{
+	  W += wj;
+	  wvariance += ((yj * yj) - wvariance) * (wj / W);
+	}
+>>>>>>> config
     }
 
   {
@@ -237,7 +311,11 @@ gsl_histogram2d_cov (const gsl_histogram2d * h)
   /* Compute the bin-weighted arithmetic mean M of a histogram using the
      recurrence relation
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
      M(n) = M(n-1) + (x[n] - M(n-1)) (w(n)/(W(n-1) + w(n))) 
+=======
+     M(n) = M(n-1) + (x[n] - M(n-1)) (w(n)/(W(n-1) + w(n)))
+>>>>>>> config
      W(n) = W(n-1) + w(n)
 
    */
@@ -248,6 +326,7 @@ gsl_histogram2d_cov (const gsl_histogram2d * h)
   for (j = 0; j < ny; j++)
     {
       for (i = 0; i < nx; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double xi = (h->xrange[i + 1] + h->xrange[i]) / 2.0 - xmean;
           double yj = (h->yrange[j + 1] + h->yrange[j]) / 2.0 - ymean;
@@ -259,6 +338,19 @@ gsl_histogram2d_cov (const gsl_histogram2d * h)
               wcovariance += ((xi * yj) - wcovariance) * (wij / W);
             }
         }
+=======
+	{
+	  double xi = (h->xrange[i + 1] + h->xrange[i]) / 2.0 - xmean;
+	  double yj = (h->yrange[j + 1] + h->yrange[j]) / 2.0 - ymean;
+	  double wij = h->bin[i * ny + j];
+
+	  if (wij > 0)
+	    {
+	      W += wij;
+	      wcovariance += ((xi * yj) - wcovariance) * (wij / W);
+	    }
+	}
+>>>>>>> config
     }
 
   return wcovariance;

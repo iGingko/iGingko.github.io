@@ -18,11 +18,19 @@
  */
 /***************************************************************
  *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * File gsl_histogram2d_oper.c: 
  * Routine to make operation on 2D histograms. 
  * Need GSL library and header.
  * Contains the routines:
  * gsl_histogram2d_same_binning check if two histograms have the same binning 
+=======
+ * File gsl_histogram2d_oper.c:
+ * Routine to make operation on 2D histograms.
+ * Need GSL library and header.
+ * Contains the routines:
+ * gsl_histogram2d_same_binning check if two histograms have the same binning
+>>>>>>> config
  * gsl_histogram2d_add          add two histogram
  * gsl_histogram2d_sub          subctract two histogram
  * gsl_histogram2d_mult         multiply two histogram
@@ -38,14 +46,22 @@
 #include <gsl/gsl_errno.h>
 #include <gsl/gsl_histogram2d.h>
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* 
+=======
+/*
+>>>>>>> config
  * gsl_histogram2d_same_binning:
  * control if two histogram have the
  * same binning
  */
 int
 gsl_histogram2d_equal_bins_p (const gsl_histogram2d * h1,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                               const gsl_histogram2d * h2)
+=======
+			      const gsl_histogram2d * h2)
+>>>>>>> config
 {
 
   if ((h1->nx != h2->nx) || (h1->ny != h2->ny))
@@ -57,6 +73,7 @@ gsl_histogram2d_equal_bins_p (const gsl_histogram2d * h1,
     /* init ranges */
     for (i = 0; i <= (h1->nx); i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         if (h1->xrange[i] != h2->xrange[i])
           {
             return 0;
@@ -68,17 +85,38 @@ gsl_histogram2d_equal_bins_p (const gsl_histogram2d * h1,
           {
             return 0;
           }
+=======
+	if (h1->xrange[i] != h2->xrange[i])
+	  {
+	    return 0;
+	  }
+      }
+    for (i = 0; i <= (h1->ny); i++)
+      {
+	if (h1->yrange[i] != h2->yrange[i])
+	  {
+	    return 0;
+	  }
+>>>>>>> config
       }
   }
   return 1;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* 
+=======
+/*
+>>>>>>> config
  * gsl_histogram2d_add:
  * add two histogram
  */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int 
+=======
+int
+>>>>>>> config
 gsl_histogram2d_add (gsl_histogram2d * h1, const gsl_histogram2d * h2)
 {
   size_t i;
@@ -96,12 +134,20 @@ gsl_histogram2d_add (gsl_histogram2d * h1, const gsl_histogram2d * h2)
   return GSL_SUCCESS;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* 
+=======
+/*
+>>>>>>> config
  * gsl_histogram2d_sub:
  * subtract two histogram
  */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int 
+=======
+int
+>>>>>>> config
 gsl_histogram2d_sub (gsl_histogram2d * h1, const gsl_histogram2d * h2)
 {
   size_t i;
@@ -119,12 +165,20 @@ gsl_histogram2d_sub (gsl_histogram2d * h1, const gsl_histogram2d * h2)
   return GSL_SUCCESS;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* 
+=======
+/*
+>>>>>>> config
  * gsl_histogram2d_mult:
  * multiply two histogram
  */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int 
+=======
+int
+>>>>>>> config
 gsl_histogram2d_mul (gsl_histogram2d * h1, const gsl_histogram2d * h2)
 {
   size_t i;
@@ -142,12 +196,20 @@ gsl_histogram2d_mul (gsl_histogram2d * h1, const gsl_histogram2d * h2)
   return GSL_SUCCESS;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* 
+=======
+/*
+>>>>>>> config
  * gsl_histogram2d_div:
  * divide two histogram
  */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int 
+=======
+int
+>>>>>>> config
 gsl_histogram2d_div (gsl_histogram2d * h1, const gsl_histogram2d * h2)
 {
   size_t i;
@@ -165,12 +227,20 @@ gsl_histogram2d_div (gsl_histogram2d * h1, const gsl_histogram2d * h2)
   return GSL_SUCCESS;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* 
+=======
+/*
+>>>>>>> config
  * gsl_histogram2d_scale:
  * scale a histogram by a numeric factor
  */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int 
+=======
+int
+>>>>>>> config
 gsl_histogram2d_scale (gsl_histogram2d * h, double scale)
 {
   size_t i;
@@ -179,16 +249,28 @@ gsl_histogram2d_scale (gsl_histogram2d * h, double scale)
     {
       h->bin[i] *= scale;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   return GSL_SUCCESS;
 }
 
 /* 
+=======
+
+  return GSL_SUCCESS;
+}
+
+/*
+>>>>>>> config
  * gsl_histogram2d_shift:
  * shift a histogram by a numeric offset
  */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int 
+=======
+int
+>>>>>>> config
 gsl_histogram2d_shift (gsl_histogram2d * h, double shift)
 {
   size_t i;
@@ -197,7 +279,13 @@ gsl_histogram2d_shift (gsl_histogram2d * h, double shift)
     {
       h->bin[i] += shift;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   return GSL_SUCCESS;
 }
 
+=======
+
+  return GSL_SUCCESS;
+}
+>>>>>>> config

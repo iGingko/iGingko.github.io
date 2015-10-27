@@ -1,17 +1,31 @@
 /* diff/test.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2000 David Morrison
  * 
+=======
+ *
+ * Copyright (C) 2000 David Morrison
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -132,7 +146,11 @@ df6 (double x, void *params)
 typedef int (diff_fn) (const gsl_function * f, double x, double * res, double *abserr);
 
 void
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 test (diff_fn * diff, gsl_function * f, gsl_function * df, double x, 
+=======
+test (diff_fn * diff, gsl_function * f, gsl_function * df, double x,
+>>>>>>> config
       const char * desc)
 {
   double result, abserr;
@@ -166,7 +184,11 @@ main ()
 
   F6.function = &f6;
   DF6.function = &df6;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   test (&gsl_diff_central, &F1, &DF1, 1.0, "exp(x), x=1, central diff");
   test (&gsl_diff_forward, &F1, &DF1, 1.0, "exp(x), x=1, forward diff");
   test (&gsl_diff_backward, &F1, &DF1, 1.0, "exp(x), x=1, backward diff");
@@ -193,5 +215,8 @@ main ()
 
   exit (gsl_test_summary ());
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
+=======
+>>>>>>> config

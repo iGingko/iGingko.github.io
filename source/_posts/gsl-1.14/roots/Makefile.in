@@ -238,11 +238,19 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 noinst_LTLIBRARIES = libgslroots.la 
 pkginclude_HEADERS = gsl_roots.h
 noinst_HEADERS = roots.h
 INCLUDES = -I$(top_srcdir)
 libgslroots_la_SOURCES = bisection.c brent.c falsepos.c	newton.c  secant.c steffenson.c	convergence.c fsolver.c fdfsolver.c 
+=======
+noinst_LTLIBRARIES = libgslroots.la
+pkginclude_HEADERS = gsl_roots.h
+noinst_HEADERS = roots.h
+INCLUDES = -I$(top_srcdir)
+libgslroots_la_SOURCES = bisection.c brent.c falsepos.c	newton.c  secant.c steffenson.c	convergence.c fsolver.c fdfsolver.c
+>>>>>>> config
 TESTS = $(check_PROGRAMS)
 test_SOURCES = test.c test_funcs.c test.h
 test_LDADD = libgslroots.la ../ieee-utils/libgslieeeutils.la  ../err/libgslerr.la ../test/libgsltest.la ../sys/libgslsys.la ../utils/libutils.la
@@ -255,7 +263,11 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__confi
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
 	      ( cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh ) \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	        && { if test -f $@; then exit 0; else break; fi; }; \
+=======
+		&& { if test -f $@; then exit 0; else break; fi; }; \
+>>>>>>> config
 	      exit 1;; \
 	  esac; \
 	done; \
@@ -289,7 +301,11 @@ clean-noinstLTLIBRARIES:
 	  echo "rm -f \"$${dir}/so_locations\""; \
 	  rm -f "$${dir}/so_locations"; \
 	done
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 libgslroots.la: $(libgslroots_la_OBJECTS) $(libgslroots_la_DEPENDENCIES) 
+=======
+libgslroots.la: $(libgslroots_la_OBJECTS) $(libgslroots_la_DEPENDENCIES)
+>>>>>>> config
 	$(LINK)  $(libgslroots_la_OBJECTS) $(libgslroots_la_LIBADD) $(LIBS)
 
 clean-checkPROGRAMS:
@@ -300,7 +316,11 @@ clean-checkPROGRAMS:
 	list=`for p in $$list; do echo "$$p"; done | sed 's/$(EXEEXT)$$//'`; \
 	echo " rm -f" $$list; \
 	rm -f $$list
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 test$(EXEEXT): $(test_OBJECTS) $(test_DEPENDENCIES) 
+=======
+test$(EXEEXT): $(test_OBJECTS) $(test_DEPENDENCIES)
+>>>>>>> config
 	@rm -f test$(EXEEXT)
 	$(LINK) $(test_OBJECTS) $(test_LDADD) $(LIBS)
 

@@ -17,9 +17,15 @@ main (void)
 {
   struct data ntuple_row;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   gsl_ntuple *ntuple 
     = gsl_ntuple_open ("test.dat", &ntuple_row,
                        sizeof (ntuple_row));
+=======
+  gsl_ntuple *ntuple
+    = gsl_ntuple_open ("test.dat", &ntuple_row,
+		       sizeof (ntuple_row));
+>>>>>>> config
   double lower = 1.5;
 
   gsl_ntuple_select_fn S;
@@ -45,10 +51,17 @@ main (void)
 int
 sel_func (void *ntuple_data, void *params)
 {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   struct data * data = (struct data *) ntuple_data;  
   double x, y, z, E2, scale;
   scale = *(double *) params;
   
+=======
+  struct data * data = (struct data *) ntuple_data;
+  double x, y, z, E2, scale;
+  scale = *(double *) params;
+
+>>>>>>> config
   x = data->x;
   y = data->y;
   z = data->z;
@@ -61,7 +74,11 @@ sel_func (void *ntuple_data, void *params)
 double
 val_func (void *ntuple_data, void *params)
 {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   struct data * data = (struct data *) ntuple_data;  
+=======
+  struct data * data = (struct data *) ntuple_data;
+>>>>>>> config
   double x, y, z;
 
   x = data->x;

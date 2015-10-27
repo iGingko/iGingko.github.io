@@ -1,17 +1,31 @@
 /* vector/init_source.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -26,7 +40,11 @@ FUNCTION (gsl_vector, alloc) (const size_t n)
   if (n == 0)
     {
       GSL_ERROR_VAL ("vector length n must be positive integer",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_EINVAL, 0);
+=======
+			GSL_EINVAL, 0);
+>>>>>>> config
     }
 
   v = (TYPE (gsl_vector) *) malloc (sizeof (TYPE (gsl_vector)));
@@ -34,7 +52,11 @@ FUNCTION (gsl_vector, alloc) (const size_t n)
   if (v == 0)
     {
       GSL_ERROR_VAL ("failed to allocate space for vector struct",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_ENOMEM, 0);
+=======
+			GSL_ENOMEM, 0);
+>>>>>>> config
     }
 
   block = FUNCTION (gsl_block,alloc) (n);
@@ -44,9 +66,15 @@ FUNCTION (gsl_vector, alloc) (const size_t n)
       free (v) ;
 
       GSL_ERROR_VAL ("failed to allocate space for block",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_ENOMEM, 0);
     }
       
+=======
+			GSL_ENOMEM, 0);
+    }
+
+>>>>>>> config
   v->data = block->data ;
   v->size = n;
   v->stride = 1;
@@ -77,17 +105,28 @@ FUNCTION (gsl_vector, calloc) (const size_t n)
 }
 
 TYPE (gsl_vector) *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 FUNCTION (gsl_vector, alloc_from_block) (TYPE(gsl_block) * block, 
                                          const size_t offset, 
                                          const size_t n, 
                                          const size_t stride)
+=======
+FUNCTION (gsl_vector, alloc_from_block) (TYPE(gsl_block) * block,
+					 const size_t offset,
+					 const size_t n,
+					 const size_t stride)
+>>>>>>> config
 {
   TYPE (gsl_vector) * v;
 
   if (n == 0)
     {
       GSL_ERROR_VAL ("vector length n must be positive integer",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_EINVAL, 0);
+=======
+			GSL_EINVAL, 0);
+>>>>>>> config
     }
 
   if (stride == 0)
@@ -105,7 +144,11 @@ FUNCTION (gsl_vector, alloc_from_block) (TYPE(gsl_block) * block,
   if (v == 0)
     {
       GSL_ERROR_VAL ("failed to allocate space for vector struct",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_ENOMEM, 0);
+=======
+			GSL_ENOMEM, 0);
+>>>>>>> config
     }
 
   v->data = block->data + MULTIPLICITY * offset ;
@@ -118,17 +161,28 @@ FUNCTION (gsl_vector, alloc_from_block) (TYPE(gsl_block) * block,
 }
 
 TYPE (gsl_vector) *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 FUNCTION (gsl_vector, alloc_from_vector) (TYPE(gsl_vector) * w, 
                                          const size_t offset, 
                                          const size_t n, 
                                          const size_t stride)
+=======
+FUNCTION (gsl_vector, alloc_from_vector) (TYPE(gsl_vector) * w,
+					 const size_t offset,
+					 const size_t n,
+					 const size_t stride)
+>>>>>>> config
 {
   TYPE (gsl_vector) * v;
 
   if (n == 0)
     {
       GSL_ERROR_VAL ("vector length n must be positive integer",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_EINVAL, 0);
+=======
+			GSL_EINVAL, 0);
+>>>>>>> config
     }
 
   if (stride == 0)
@@ -146,7 +200,11 @@ FUNCTION (gsl_vector, alloc_from_vector) (TYPE(gsl_vector) * w,
   if (v == 0)
     {
       GSL_ERROR_VAL ("failed to allocate space for vector struct",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_ENOMEM, 0);
+=======
+			GSL_ENOMEM, 0);
+>>>>>>> config
     }
 
   v->data = w->data + MULTIPLICITY * w->stride * offset ;

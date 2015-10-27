@@ -147,7 +147,11 @@
 
 	* laguerre.c (gsl_sf_laguerre_n_e): use recursion for a=0 in
 	addition to a>0
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	
+=======
+
+>>>>>>> config
 2007-02-17  Brian Gough  <bjg@network-theory.co.uk>
 
 	* log.c (gsl_sf_log_e): removed HIDE_INLINE_STATIC
@@ -469,8 +473,13 @@
 Sat Sep  7 15:56:15 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* test_sf.h (TEST_FACTOR): include an overall factor in the test
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	tolerances, otherwise there are too many bug reports for minor
  	failures.
+=======
+	tolerances, otherwise there are too many bug reports for minor
+	failures.
+>>>>>>> config
 
 Sun Sep  1 17:34:27 2002  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -479,22 +488,38 @@ Sun Sep  1 17:34:27 2002  Brian Gough  <bjg@network-theory.co.uk>
 Sat Jul 13 23:11:37 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* ellint.c (gsl_sf_ellint_Kcomp_e): improved error estimate to
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	take cancellation of y=1-k^2 into account near k=1 
+=======
+	take cancellation of y=1-k^2 into account near k=1
+>>>>>>> config
 
 Sun Jul  7 21:39:12 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* test_bessel.c (test_bessel): increased tolerance on test of
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	bessel_Jn_array
+=======
+	bessel_Jn_array
+>>>>>>> config
 
 Tue May 28 21:04:29 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* psi.c (gsl_sf_psi_1piy_e): changed log(y) to log(ay) since
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	function is even and can be extended to negative y
+=======
+	function is even and can be extended to negative y
+>>>>>>> config
 
 Mon Jan 28 19:02:42 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* gamma_inc.c (gamma_inc_Q_CF): express 'small' constant in terms
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	of GSL_DBL_EPSILON
+=======
+	of GSL_DBL_EPSILON
+>>>>>>> config
 	(gamma_inc_Q_CF): patch for more reliable series from Hans Plesser
 
 Sat Jan 26 17:33:29 2002  Brian Gough  <bjg@network-theory.co.uk>
@@ -502,7 +527,11 @@ Sat Jan 26 17:33:29 2002  Brian Gough  <bjg@network-theory.co.uk>
 	* test_gamma.c (test_gamma): increased tolerance on a test
 
 	* test_hyperg.c (test_hyperg): increased tolerance on a couple of
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	tests
+=======
+	tests
+>>>>>>> config
 
 Fri Jan 18 15:12:30 2002  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -511,44 +540,75 @@ Fri Jan 18 15:12:30 2002  Brian Gough  <bjg@network-theory.co.uk>
 Tue Jan  8 14:31:04 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* test_legendre.c (test_legendre): increased tolerance by one
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	level on _array tests
+=======
+	level on _array tests
+>>>>>>> config
 
 	* hyperg_1F1.c (hyperg_1F1_small_a_bgt0): fix branch for a==1
 
 Fri Dec  7 12:38:40 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* laguerre.c (laguerre_n_cp): catch internal error, not global
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	error
 
 	* error.h (INTERNAL_OVERFLOW_ERROR): added internal error macros
  	which do not call the error handler.
+=======
+	error
+
+	* error.h (INTERNAL_OVERFLOW_ERROR): added internal error macros
+	which do not call the error handler.
+>>>>>>> config
 
 Wed Dec  5 19:25:26 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* gamma.c (gamma_xgthalf): return gamma(x) exactly when x is an
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	integer
 
 	* hyperg_1F1.c (hyperg_1F1_ab_posint):  fix bug in recurrence
  	initialisation, as done for hyperg_1F1_ab_pos
+=======
+	integer
+
+	* hyperg_1F1.c (hyperg_1F1_ab_posint):  fix bug in recurrence
+	initialisation, as done for hyperg_1F1_ab_pos
+>>>>>>> config
 
 Thu Oct 18 11:37:25 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* coulomb.c (gsl_sf_coulomb_CL_array): renamed from
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	gsl_sf_coulomb_CL_list for consistency
+=======
+	gsl_sf_coulomb_CL_list for consistency
+>>>>>>> config
 
 Sat Oct 13 15:55:56 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* cheb_eval.c (cheb_eval_e): keep track of cancellation error to
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	prevent underestimates of total error.
+=======
+	prevent underestimates of total error.
+>>>>>>> config
 
 Fri Oct 12 16:39:27 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* test_hyperg.c (test_hyperg): increased tolerance from TOL0 to
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	TOL1 on one test to allow it to pass under different optimizations
+=======
+	TOL1 on one test to allow it to pass under different optimizations
+>>>>>>> config
 
 Thu Oct 11 14:21:34 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* gegenbauer.c (gsl_sf_gegenpoly_n_e): initialize variable gk to
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	zero to avoid warning
 
 	* bessel_i.c (gsl_sf_bessel_il_scaled_e): initialize variable
@@ -559,6 +619,18 @@ Thu Oct 11 14:21:34 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* legendre_poly.c (gsl_sf_legendre_sphPlm_e): initialize variables
  	p_ell, y_ell to zero to avoid warning
+=======
+	zero to avoid warning
+
+	* bessel_i.c (gsl_sf_bessel_il_scaled_e): initialize variable
+	iellm1 to zero to avoid warning
+
+	* bessel_Jnu.c (gsl_sf_bessel_Jnu_e): initialize variable Ynp1 to
+	zero to avoid warning
+
+	* legendre_poly.c (gsl_sf_legendre_sphPlm_e): initialize variables
+	p_ell, y_ell to zero to avoid warning
+>>>>>>> config
 
 Thu Sep  6 10:38:51 2001  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -567,18 +639,30 @@ Thu Sep  6 10:38:51 2001  Brian Gough  <bjg@network-theory.co.uk>
 	* pow_int.c (gsl_sf_pow_int_e): handle the case x == 0, n < 0
 
 	* legendre_poly.c (gsl_sf_legendre_array_size): added missing
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	static version of this inline function
+=======
+	static version of this inline function
+>>>>>>> config
 
 Wed Aug 15 20:18:43 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* hyperg_1F1.c (hyperg_1F1_ab_pos): fix bug in recurrence
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	initialisation
+=======
+	initialisation
+>>>>>>> config
 	(hyperg_1F1_ab_neg): if all else fails, try the series.
 
 Wed Aug  8 19:55:34 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* test_sf.c (test_coupling): used analytic expressions for the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	exact values to problems with insufficient precision
+=======
+	exact values to problems with insufficient precision
+>>>>>>> config
 
 Thu Jul 12 15:25:04 2001  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -586,22 +670,39 @@ Thu Jul 12 15:25:04 2001  Brian Gough  <bjg@network-theory.co.uk>
 	floating point arguments near singularities.
 
 	* legendre_Qn.c (gsl_sf_legendre_Q0_e): removed unnecessary error
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	terms that I added
 	(gsl_sf_legendre_Q1_e): removed unnecessary error terms that I
  	added
+=======
+	terms that I added
+	(gsl_sf_legendre_Q1_e): removed unnecessary error terms that I
+	added
+>>>>>>> config
 
 Wed Jul 11 16:06:45 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* error.h: moved domain, overflow and underflow errors into
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	macros, return Nan for domain error, Inf for overflow.
+=======
+	macros, return Nan for domain error, Inf for overflow.
+>>>>>>> config
 
 Tue Jul 10 22:00:55 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* erfc.c (gsl_sf_log_erfc_e): introduce an additional log(erfc)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	branch to prevent loss of accuracy for small x
 
 	* test_sf.c (test_zeta): increased tolerance on zeta function test
  	to take into account differences in rounding
+=======
+	branch to prevent loss of accuracy for small x
+
+	* test_sf.c (test_zeta): increased tolerance on zeta function test
+	to take into account differences in rounding
+>>>>>>> config
 
 2001-07-10  Brian Gough  <bjg@hppav.local>
 
@@ -622,10 +723,17 @@ Tue Jul 10 22:00:55 2001  Brian Gough  <bjg@network-theory.co.uk>
 Fri Jul  6 20:16:19 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* zeta.c (riemann_zeta1m_slt0): added a function to compute
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	zeta(1-s) without loss of accuracy for s near zero, as used by the
  	reflection formula.  This fixes a bug in the accuracy of results
  	of zeta(-x) for small x, where loss of precision previously
  	occurred by evaluating 1-x.
+=======
+	zeta(1-s) without loss of accuracy for s near zero, as used by the
+	reflection formula.  This fixes a bug in the accuracy of results
+	of zeta(-x) for small x, where loss of precision previously
+	occurred by evaluating 1-x.
+>>>>>>> config
 
 2001-07-06  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -635,12 +743,20 @@ Fri Jul  6 20:16:19 2001  Brian Gough  <bjg@network-theory.co.uk>
 Thu Jul  5 16:16:13 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* erfc.c (gsl_sf_erfc_e): corrected case of -10<x<-5 to take into
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	account that chebyshev fit is defined in terms of positive x.
+=======
+	account that chebyshev fit is defined in terms of positive x.
+>>>>>>> config
 
 Tue Jul  3 12:09:33 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* eval.h (EVAL_DOUBLE): avoid returning the status value as a
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	numerical result
+=======
+	numerical result
+>>>>>>> config
 
 2001-06-28  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -652,41 +768,67 @@ Tue Jul  3 12:09:33 2001  Brian Gough  <bjg@network-theory.co.uk>
 Wed Jun 27 21:20:22 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* test_sf.c (test_fermidirac): increased tolerance on test of
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	gsl_sf_fermi_dirac_int(9,500) by factor of two to allow for MSVC
+=======
+	gsl_sf_fermi_dirac_int(9,500) by factor of two to allow for MSVC
+>>>>>>> config
 
 Tue Jun 26 12:10:17 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* gsl_sf_gamma.h: added const to prototype, to match function
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	definition
+=======
+	definition
+>>>>>>> config
 
 Sun May  6 13:01:01 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* test_sf.c: initialize message_buff to null string to prevent
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	random segmentation faults
+=======
+	random segmentation faults
+>>>>>>> config
 
 	* test_sf.h: simplified test macros to reduce stack usage
 
 Mon Apr 30 12:38:15 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* airy_zero.c bessel_zero.c: zeros are now counted using an
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	unsigned int
+=======
+	unsigned int
+>>>>>>> config
 
 	* poly.c: moved poly_eval function into poly/ directory
 
 Wed Apr 25 17:28:48 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* trig.c (gsl_sf_polar_to_rect): dropped _e from polar/rect
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	conversion functions
+=======
+	conversion functions
+>>>>>>> config
 
 Tue Apr 24 17:05:22 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* split out chebyshev functions into their own cheb/ directory,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	leaving behind an internal cheb struct and cheb evaluation
  	function.
+=======
+	leaving behind an internal cheb struct and cheb evaluation
+	function.
+>>>>>>> config
 
 Mon Apr 23 10:21:06 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* changed tests for EFAULT into a commented-out macro, since
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	EFAULT should only apply to invalid non-null pointers, but it
  	might be useful to keep the tests around for debugging in this
  	directory.
@@ -694,6 +836,15 @@ Mon Apr 23 10:21:06 2001  Brian Gough  <bjg@network-theory.co.uk>
 	* unified error handling conventions to _e for error handling
  	functions and no suffix for plain functions, so _impl functions
  	are no longer needed.
+=======
+	EFAULT should only apply to invalid non-null pointers, but it
+	might be useful to keep the tests around for debugging in this
+	directory.
+
+	* unified error handling conventions to _e for error handling
+	functions and no suffix for plain functions, so _impl functions
+	are no longer needed.
+>>>>>>> config
 
 1999-08-02  Mark Galassi  <rosalia@lanl.gov>
 
@@ -731,12 +882,20 @@ Tue Nov 17 17:29:31 1998  Brian Gough  <bjg@vvv.lanl.gov>
 	* added #include <config.h> to all top-level source files
 
 	* chebyshev.c (gsl_sf_cheb_eval_n): changed local gslMIN and
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	gslMAX to the standard GSL_MIN and GSL_MAX macros
+=======
+	gslMAX to the standard GSL_MIN and GSL_MAX macros
+>>>>>>> config
 
 Tue Aug 18 13:36:15 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* coulomb.c (C0sq): changed to using gsl_sf_expm1_impl instead of
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	expm1, since the latter is a GNU extension.
+=======
+	expm1, since the latter is a GNU extension.
+>>>>>>> config
 
 Mon Aug  3 14:43:16 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
@@ -745,13 +904,21 @@ Mon Aug  3 14:43:16 1998  Brian Gough  <bjg@vvv.lanl.gov>
 Mon Jul 13 12:40:27 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* gamma.c: changed all the factorial functions to take unsigned
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	int arguments, since negative values are not allowed.
+=======
+	int arguments, since negative values are not allowed.
+>>>>>>> config
 	(gsl_sf_choose): fixed off by one error in call to factorial.
 
 Sun Jul 12 13:21:41 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* gsl_sf_legendre.h, gsl_sf_poly.h, gsl_sf_pow_int.h: added
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	HAVE_INLINE around some inline definitions in the header files
+=======
+	HAVE_INLINE around some inline definitions in the header files
+>>>>>>> config
 
 	* gamma.c: implemented the natural versions of gsl_sf_lnchoose and
 	gsl_sf_choose.
@@ -759,8 +926,13 @@ Sun Jul 12 13:21:41 1998  Brian Gough  <bjg@vvv.lanl.gov>
 Wed Apr 15 21:27:48 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* added the return code as the second argument of GSL_WARNING, so
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	we can filter on the error number or output a standard message for
  	each one.
+=======
+	we can filter on the error number or output a standard message for
+	each one.
+>>>>>>> config
 
 1998-02-02  Mark Galassi  <rosalia@cygnus.com>
 

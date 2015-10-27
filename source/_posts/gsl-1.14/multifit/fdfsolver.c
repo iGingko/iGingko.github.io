@@ -1,17 +1,31 @@
 /* multifit/fdfsolver.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -24,8 +38,13 @@
 #include <gsl/gsl_multifit_nlin.h>
 
 gsl_multifit_fdfsolver *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_multifit_fdfsolver_alloc (const gsl_multifit_fdfsolver_type * T, 
                               size_t n, size_t p)
+=======
+gsl_multifit_fdfsolver_alloc (const gsl_multifit_fdfsolver_type * T,
+			      size_t n, size_t p)
+>>>>>>> config
 {
   int status;
 
@@ -41,12 +60,20 @@ gsl_multifit_fdfsolver_alloc (const gsl_multifit_fdfsolver_type * T,
   if (s == 0)
     {
       GSL_ERROR_VAL ("failed to allocate space for multifit solver struct",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                      GSL_ENOMEM, 0);
+=======
+		     GSL_ENOMEM, 0);
+>>>>>>> config
     }
 
   s->x = gsl_vector_calloc (p);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (s->x == 0) 
+=======
+  if (s->x == 0)
+>>>>>>> config
     {
       free (s);
       GSL_ERROR_VAL ("failed to allocate space for x", GSL_ENOMEM, 0);
@@ -54,7 +81,11 @@ gsl_multifit_fdfsolver_alloc (const gsl_multifit_fdfsolver_type * T,
 
   s->f = gsl_vector_calloc (n);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (s->f == 0) 
+=======
+  if (s->f == 0)
+>>>>>>> config
     {
       gsl_vector_free (s->x);
       free (s);
@@ -63,7 +94,11 @@ gsl_multifit_fdfsolver_alloc (const gsl_multifit_fdfsolver_type * T,
 
   s->J = gsl_matrix_calloc (n,p);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (s->J == 0) 
+=======
+  if (s->J == 0)
+>>>>>>> config
     {
       gsl_vector_free (s->x);
       gsl_vector_free (s->f);
@@ -73,7 +108,11 @@ gsl_multifit_fdfsolver_alloc (const gsl_multifit_fdfsolver_type * T,
 
   s->dx = gsl_vector_calloc (p);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (s->dx == 0) 
+=======
+  if (s->dx == 0)
+>>>>>>> config
     {
       gsl_matrix_free (s->J);
       gsl_vector_free (s->x);
@@ -91,9 +130,15 @@ gsl_multifit_fdfsolver_alloc (const gsl_multifit_fdfsolver_type * T,
       gsl_vector_free (s->f);
       gsl_matrix_free (s->J);
       free (s);         /* exception in constructor, avoid memory leak */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
       GSL_ERROR_VAL ("failed to allocate space for multifit solver state",
                         GSL_ENOMEM, 0);
+=======
+
+      GSL_ERROR_VAL ("failed to allocate space for multifit solver state",
+			GSL_ENOMEM, 0);
+>>>>>>> config
     }
 
   s->type = T ;
@@ -108,7 +153,11 @@ gsl_multifit_fdfsolver_alloc (const gsl_multifit_fdfsolver_type * T,
       gsl_vector_free (s->f);
       gsl_matrix_free (s->J);
       free (s);         /* exception in constructor, avoid memory leak */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
       GSL_ERROR_VAL ("failed to set solver", status, 0);
     }
 
@@ -118,9 +167,15 @@ gsl_multifit_fdfsolver_alloc (const gsl_multifit_fdfsolver_type * T,
 }
 
 int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_multifit_fdfsolver_set (gsl_multifit_fdfsolver * s, 
                              gsl_multifit_function_fdf * f, 
                              const gsl_vector * x)
+=======
+gsl_multifit_fdfsolver_set (gsl_multifit_fdfsolver * s,
+			     gsl_multifit_function_fdf * f,
+			     const gsl_vector * x)
+>>>>>>> config
 {
   if (s->f->size != f->n)
     {
@@ -130,11 +185,19 @@ gsl_multifit_fdfsolver_set (gsl_multifit_fdfsolver * s,
   if (s->x->size != x->size)
     {
       GSL_ERROR ("vector length does not match solver", GSL_EBADLEN);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     }  
 
   s->fdf = f;
   gsl_vector_memcpy(s->x,x);
   
+=======
+    }
+
+  s->fdf = f;
+  gsl_vector_memcpy(s->x,x);
+
+>>>>>>> config
   return (s->type->set) (s->state, s->fdf, s->x, s->f, s->J, s->dx);
 }
 
@@ -168,4 +231,7 @@ gsl_multifit_fdfsolver_position (const gsl_multifit_fdfsolver * s)
 {
   return s->x;
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

@@ -1,18 +1,33 @@
 /* specfunc/psi.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2007 Brian Gough
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2004, 2005, 2006 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 2007 Brian Gough
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2004, 2005, 2006 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -90,6 +105,7 @@ static cheb_series r1py_cs = {
 /* Chebyshev fits from SLATEC code for psi(x)
 
  Series for PSI        on the interval  0.         to  1.00000D+00
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                        with weighted error   2.03E-17
                                         log weighted error  16.69
                               significant figures required  16.39
@@ -100,12 +116,28 @@ static cheb_series r1py_cs = {
                                         log weighted error  16.26
                               significant figures required  14.42
                                    decimal places required  16.86
+=======
+				       with weighted error   2.03E-17
+					log weighted error  16.69
+			      significant figures required  16.39
+				   decimal places required  17.37
+
+ Series for APSI       on the interval  0.         to  2.50000D-01
+				       with weighted error   5.54E-17
+					log weighted error  16.26
+			      significant figures required  14.42
+				   decimal places required  16.86
+>>>>>>> config
 
 */
 
 static double psics_data[23] = {
   -.038057080835217922,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    .491415393029387130, 
+=======
+   .491415393029387130,
+>>>>>>> config
   -.056815747821244730,
    .008357821225914313,
   -.001333232857994342,
@@ -135,7 +167,11 @@ static cheb_series psi_cs = {
   17
 };
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static double apsics_data[16] = {    
+=======
+static double apsics_data[16] = {
+>>>>>>> config
   -.0204749044678185,
   -.0101801271534859,
    .0000559718725387,
@@ -151,8 +187,13 @@ static double apsics_data[16] = {
    .0000000000000045,
   -.0000000000000009,
    .0000000000000002,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   -.0000000000000000 
 };    
+=======
+  -.0000000000000000
+};
+>>>>>>> config
 static cheb_series apsi_cs = {
   apsics_data,
   15,
@@ -392,6 +433,7 @@ psi_x(const double x, gsl_sf_result * result)
       const double s = sin(M_PI*x);
       const double c = cos(M_PI*x);
       if(fabs(s) < 2.0*GSL_SQRT_DBL_MIN) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         DOMAIN_ERROR(result);
       }
       else {
@@ -400,6 +442,16 @@ psi_x(const double x, gsl_sf_result * result)
         result->err += result_c.err;
         result->err += GSL_DBL_EPSILON * fabs(result->val);
         return GSL_SUCCESS;
+=======
+	DOMAIN_ERROR(result);
+      }
+      else {
+	result->val  = log(y) - 0.5/x + result_c.val - M_PI * c/s;
+	result->err  = M_PI*fabs(x)*GSL_DBL_EPSILON/(s*s);
+	result->err += result_c.err;
+	result->err += GSL_DBL_EPSILON * fabs(result->val);
+	return GSL_SUCCESS;
+>>>>>>> config
       }
     }
     else {
@@ -418,7 +470,11 @@ psi_x(const double x, gsl_sf_result * result)
       const double t2 = 1.0/(x+1.0);
       const double t3 = 1.0/v;
       cheb_eval_e(&psi_cs, 2.0*v-1.0, &result_c);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
       result->val  = -(t1 + t2 + t3) + result_c.val;
       result->err  = GSL_DBL_EPSILON * (fabs(t1) + fabs(x/(t2*t2)) + fabs(x/(t3*t3)));
       result->err += result_c.err;
@@ -430,7 +486,11 @@ psi_x(const double x, gsl_sf_result * result)
       const double t1 = 1.0/x;
       const double t2 = 1.0/v;
       cheb_eval_e(&psi_cs, 2.0*v-1.0, &result_c);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
       result->val  = -(t1 + t2) + result_c.val;
       result->err  = GSL_DBL_EPSILON * (fabs(t1) + fabs(x/(t2*t2)));
       result->err += result_c.err;
@@ -440,7 +500,11 @@ psi_x(const double x, gsl_sf_result * result)
     else if(x < 1.0) { /* x = v */
       const double t1 = 1.0/x;
       cheb_eval_e(&psi_cs, 2.0*x-1.0, &result_c);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
       result->val  = -t1 + result_c.val;
       result->err  = GSL_DBL_EPSILON * t1;
       result->err += result_c.err;
@@ -568,8 +632,13 @@ psi_n_xg0(const int n, const double x, gsl_sf_result * result)
     int stat_hz = gsl_sf_hzeta_e(n+1.0, x, &hzeta);
     int stat_nf = gsl_sf_lnfact_e((unsigned int) n, &ln_nf);
     int stat_e  = gsl_sf_exp_mult_err_e(ln_nf.val, ln_nf.err,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                            hzeta.val, hzeta.err,
                                            result);
+=======
+					   hzeta.val, hzeta.err,
+					   result);
+>>>>>>> config
     if(GSL_IS_EVEN(n)) result->val = -result->val;
     return GSL_ERROR_SELECT_3(stat_e, stat_nf, stat_hz);
   }
@@ -635,10 +704,17 @@ gsl_sf_psi_1piy_e(const double y, gsl_sf_result * result)
     const double yi2 = 1.0/(ay*ay);
     const double lny = log(ay);
     const double sum = yi2 * (1.0/12.0 +
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                          yi2 * (1.0/120.0 +
                            yi2 * (1.0/252.0 +
                              yi2 * (1.0/240.0 +
                                yi2 * (1.0/132.0 + 691.0/32760.0 * yi2)))));
+=======
+			 yi2 * (1.0/120.0 +
+			   yi2 * (1.0/252.0 +
+			     yi2 * (1.0/240.0 +
+			       yi2 * (1.0/132.0 + 691.0/32760.0 * yi2)))));
+>>>>>>> config
     result->val = lny + sum;
     result->err = 2.0 * GSL_DBL_EPSILON * (fabs(lny) + fabs(sum));
     return GSL_SUCCESS;
@@ -677,7 +753,11 @@ gsl_sf_psi_1piy_e(const double y, gsl_sf_result * result)
     const double p  = c0 + y2 *(-c2 + y2*(c4 - y2*c6));
     double sum = 0.0;
     double v;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     int n;
     for(n=1; n<=M; n++) {
       sum += 1.0/(n * (n*n + y*y));
@@ -786,8 +866,13 @@ int gsl_sf_psi_n_e(const int n, const double x, gsl_sf_result * result)
     int stat_hz = gsl_sf_hzeta_e(n+1.0, x, &hzeta);
     int stat_nf = gsl_sf_lnfact_e((unsigned int) n, &ln_nf);
     int stat_e  = gsl_sf_exp_mult_err_e(ln_nf.val, ln_nf.err,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                            hzeta.val, hzeta.err,
                                            result);
+=======
+					   hzeta.val, hzeta.err,
+					   result);
+>>>>>>> config
     if(GSL_IS_EVEN(n)) result->val = -result->val;
     return GSL_ERROR_SELECT_3(stat_e, stat_nf, stat_hz);
   }

@@ -1,17 +1,31 @@
 /* interpolation/gsl_interp.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2004 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2004 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -90,7 +104,11 @@ gsl_interp_accel_free(gsl_interp_accel * a);
 
 gsl_interp *
 gsl_interp_alloc(const gsl_interp_type * T, size_t n);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
      
+=======
+
+>>>>>>> config
 int
 gsl_interp_init(gsl_interp * obj, const double xa[], const double ya[], size_t size);
 
@@ -100,6 +118,7 @@ unsigned int gsl_interp_min_size(const gsl_interp * interp);
 
 int
 gsl_interp_eval_e(const gsl_interp * obj,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   const double xa[], const double ya[], double x,
                   gsl_interp_accel * a, double * y);
 
@@ -142,18 +161,70 @@ gsl_interp_eval_integ(const gsl_interp * obj,
                       const double xa[], const double ya[],
                       double a, double b,
                       gsl_interp_accel * acc);
+=======
+		  const double xa[], const double ya[], double x,
+		  gsl_interp_accel * a, double * y);
+
+double
+gsl_interp_eval(const gsl_interp * obj,
+		const double xa[], const double ya[], double x,
+		gsl_interp_accel * a);
+
+int
+gsl_interp_eval_deriv_e(const gsl_interp * obj,
+			const double xa[], const double ya[], double x,
+			gsl_interp_accel * a,
+			double * d);
+
+double
+gsl_interp_eval_deriv(const gsl_interp * obj,
+		      const double xa[], const double ya[], double x,
+		      gsl_interp_accel * a);
+
+int
+gsl_interp_eval_deriv2_e(const gsl_interp * obj,
+			 const double xa[], const double ya[], double x,
+			 gsl_interp_accel * a,
+			 double * d2);
+
+double
+gsl_interp_eval_deriv2(const gsl_interp * obj,
+		       const double xa[], const double ya[], double x,
+		       gsl_interp_accel * a);
+
+int
+gsl_interp_eval_integ_e(const gsl_interp * obj,
+			const double xa[], const double ya[],
+			double a, double b,
+			gsl_interp_accel * acc,
+			double * result);
+
+double
+gsl_interp_eval_integ(const gsl_interp * obj,
+		      const double xa[], const double ya[],
+		      double a, double b,
+		      gsl_interp_accel * acc);
+>>>>>>> config
 
 void
 gsl_interp_free(gsl_interp * interp);
 
 INLINE_DECL size_t
 gsl_interp_bsearch(const double x_array[], double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                    size_t index_lo, size_t index_hi);
+=======
+		   size_t index_lo, size_t index_hi);
+>>>>>>> config
 
 #ifdef HAVE_INLINE
 
 /* Perform a binary search of an array of values.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * The parameters index_lo and index_hi provide an initial bracket,
  * and it is assumed that index_lo < index_hi. The resulting index
  * is guaranteed to be strictly less than index_hi and greater than
@@ -171,12 +242,20 @@ gsl_interp_bsearch(const double x_array[], double x,
  *    if ( x > x0 && x <= x1 ) then  index == 0, and sim. for other interior pts
  *    if ( x == xN )           then  index == N-1
  *    if ( x > xN )            then  index == N-1
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  *    if ( x < x0 )            then  index == 0 
+=======
+ *    if ( x < x0 )            then  index == 0
+>>>>>>> config
  */
 
 INLINE_FUN size_t
 gsl_interp_bsearch(const double x_array[], double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                    size_t index_lo, size_t index_hi)
+=======
+		   size_t index_lo, size_t index_hi)
+>>>>>>> config
 {
   size_t ilo = index_lo;
   size_t ihi = index_hi;
@@ -187,12 +266,20 @@ gsl_interp_bsearch(const double x_array[], double x,
     else
       ilo = i;
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   return ilo;
 }
 #endif
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 INLINE_DECL size_t 
+=======
+INLINE_DECL size_t
+>>>>>>> config
 gsl_interp_accel_find(gsl_interp_accel * a, const double x_array[], size_t size, double x);
 
 #ifdef HAVE_INLINE
@@ -200,7 +287,11 @@ INLINE_FUN size_t
 gsl_interp_accel_find(gsl_interp_accel * a, const double xa[], size_t len, double x)
 {
   size_t x_index = a->cache;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  
+=======
+
+>>>>>>> config
   if(x < xa[x_index]) {
     a->miss_count++;
     a->cache = gsl_interp_bsearch(xa, x, 0, x_index);
@@ -212,7 +303,11 @@ gsl_interp_accel_find(gsl_interp_accel * a, const double xa[], size_t len, doubl
   else {
     a->hit_count++;
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   return a->cache;
 }
 #endif /* HAVE_INLINE */

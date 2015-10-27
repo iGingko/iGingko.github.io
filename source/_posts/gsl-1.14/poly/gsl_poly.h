@@ -1,17 +1,31 @@
 /* poly/gsl_poly.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2004, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2004, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -57,7 +71,11 @@ int gsl_poly_eval_derivs(const double c[], const size_t lenc, const double x, do
 
 #ifdef HAVE_INLINE
 INLINE_FUN
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 double 
+=======
+double
+>>>>>>> config
 gsl_poly_eval(const double c[], const int len, const double x)
 {
   int i;
@@ -75,12 +93,20 @@ gsl_poly_complex_eval(const double c[], const int len, const gsl_complex z)
   GSL_SET_COMPLEX (&ans, c[len-1], 0.0);
   for(i=len-1; i>0; i--) {
     /* The following three lines are equivalent to
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
        ans = gsl_complex_add_real (gsl_complex_mul (z, ans), c[i-1]); 
+=======
+       ans = gsl_complex_add_real (gsl_complex_mul (z, ans), c[i-1]);
+>>>>>>> config
        but faster */
     double tmp = c[i-1] + GSL_REAL (z) * GSL_REAL (ans) - GSL_IMAG (z) * GSL_IMAG (ans);
     GSL_SET_IMAG (&ans, GSL_IMAG (z) * GSL_REAL (ans) + GSL_REAL (z) * GSL_IMAG (ans));
     GSL_SET_REAL (&ans, tmp);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   } 
+=======
+  }
+>>>>>>> config
   return ans;
 }
 
@@ -106,14 +132,22 @@ gsl_complex_poly_complex_eval(const gsl_complex c[], const int len, const gsl_co
 
 int
 gsl_poly_dd_init (double dd[], const double x[], const double y[],
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   size_t size);
+=======
+		  size_t size);
+>>>>>>> config
 
 INLINE_DECL double
 gsl_poly_dd_eval (const double dd[], const double xa[], const size_t size, const double x);
 
 #ifdef HAVE_INLINE
 INLINE_FUN
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 double 
+=======
+double
+>>>>>>> config
 gsl_poly_dd_eval(const double dd[], const double xa[], const size_t size, const double x)
 {
   size_t i;
@@ -126,20 +160,34 @@ gsl_poly_dd_eval(const double dd[], const double xa[], const size_t size, const 
 
 int
 gsl_poly_dd_taylor (double c[], double xp,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                     const double dd[], const double x[], size_t size,
                     double w[]);
+=======
+		    const double dd[], const double x[], size_t size,
+		    double w[]);
+>>>>>>> config
 
 /* Solve for real or complex roots of the standard quadratic equation,
  * returning the number of real roots.
  *
  * Roots are returned ordered.
  */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int gsl_poly_solve_quadratic (double a, double b, double c, 
                               double * x0, double * x1);
 
 int 
 gsl_poly_complex_solve_quadratic (double a, double b, double c, 
                                   gsl_complex * z0, gsl_complex * z1);
+=======
+int gsl_poly_solve_quadratic (double a, double b, double c,
+			      double * x0, double * x1);
+
+int
+gsl_poly_complex_solve_quadratic (double a, double b, double c,
+				  gsl_complex * z0, gsl_complex * z1);
+>>>>>>> config
 
 
 /* Solve for real roots of the cubic equation
@@ -148,6 +196,7 @@ gsl_poly_complex_solve_quadratic (double a, double b, double c,
  *
  * Roots are returned ordered.
  */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int gsl_poly_solve_cubic (double a, double b, double c, 
                           double * x0, double * x1, double * x2);
 
@@ -155,24 +204,47 @@ int
 gsl_poly_complex_solve_cubic (double a, double b, double c, 
                               gsl_complex * z0, gsl_complex * z1, 
                               gsl_complex * z2);
+=======
+int gsl_poly_solve_cubic (double a, double b, double c,
+			  double * x0, double * x1, double * x2);
+
+int
+gsl_poly_complex_solve_cubic (double a, double b, double c,
+			      gsl_complex * z0, gsl_complex * z1,
+			      gsl_complex * z2);
+>>>>>>> config
 
 
 /* Solve for the complex roots of a general real polynomial */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 typedef struct 
 { 
   size_t nc ;
   double * matrix ; 
 } 
+=======
+typedef struct
+{
+  size_t nc ;
+  double * matrix ;
+}
+>>>>>>> config
 gsl_poly_complex_workspace ;
 
 gsl_poly_complex_workspace * gsl_poly_complex_workspace_alloc (size_t n);
 void gsl_poly_complex_workspace_free (gsl_poly_complex_workspace * w);
 
 int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_poly_complex_solve (const double * a, size_t n, 
                         gsl_poly_complex_workspace * w,
                         gsl_complex_packed_ptr z);
+=======
+gsl_poly_complex_solve (const double * a, size_t n,
+			gsl_poly_complex_workspace * w,
+			gsl_complex_packed_ptr z);
+>>>>>>> config
 
 __END_DECLS
 

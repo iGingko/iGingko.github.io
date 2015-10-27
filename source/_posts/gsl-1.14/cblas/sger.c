@@ -4,8 +4,13 @@
 
 void
 cblas_sger (const enum CBLAS_ORDER order, const int M, const int N,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             const float alpha, const float *X, const int incX, const float *Y,
             const int incY, float *A, const int lda)
+=======
+	    const float alpha, const float *X, const int incX, const float *Y,
+	    const int incY, float *A, const int lda)
+>>>>>>> config
 {
 #define BASE float
 #include "source_ger.h"

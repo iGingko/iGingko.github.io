@@ -1,17 +1,31 @@
 /* specfunc/test_bessel.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -97,8 +111,13 @@ int test_bessel(void)
 
   /* BJG: the "exact" values in the following two tests were originally computed from the
      taylor series for I_nu using "long double" and rescaling.  The last few digits
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
      were inaccurate due to cumulative roundoff. 
      
+=======
+     were inaccurate due to cumulative roundoff.
+
+>>>>>>> config
      BJG: 2006/05 I have now replaced these with the term asymptotic
      expansion from A&S 9.7.1 which should be fully accurate. */
 
@@ -205,11 +224,19 @@ int test_bessel(void)
   TEST_SF(s,  gsl_sf_bessel_y2_e, (100.0, &r), 0.008772511458592903927, TEST_TOL0, GSL_SUCCESS);
   TEST_SF(s,  gsl_sf_bessel_y2_e, (4294967296.0, &r), -2.0649445123857054207e-10, TEST_SQRT_TOL0, GSL_SUCCESS);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   TEST_SF(s,  gsl_sf_bessel_yl_e, (0,        0.01, &r), -99.995000041666528,    TEST_TOL0, GSL_SUCCESS); 
   TEST_SF(s,  gsl_sf_bessel_yl_e, (0,        1.0, &r),  -0.54030230586813972,   TEST_TOL0, GSL_SUCCESS);
   TEST_SF(s,  gsl_sf_bessel_yl_e, (1,       10.0, &r),   0.062792826379701506,   TEST_TOL0, GSL_SUCCESS);
   TEST_SF(s,  gsl_sf_bessel_yl_e, (5,        1.0, &r),  -999.44034339223641,     TEST_TOL0, GSL_SUCCESS);
   TEST_SF(s,  gsl_sf_bessel_yl_e, (10,       0.01, &r), -6.5473079797378378e+30, TEST_TOL0, GSL_SUCCESS); 
+=======
+  TEST_SF(s,  gsl_sf_bessel_yl_e, (0,        0.01, &r), -99.995000041666528,    TEST_TOL0, GSL_SUCCESS);
+  TEST_SF(s,  gsl_sf_bessel_yl_e, (0,        1.0, &r),  -0.54030230586813972,   TEST_TOL0, GSL_SUCCESS);
+  TEST_SF(s,  gsl_sf_bessel_yl_e, (1,       10.0, &r),   0.062792826379701506,   TEST_TOL0, GSL_SUCCESS);
+  TEST_SF(s,  gsl_sf_bessel_yl_e, (5,        1.0, &r),  -999.44034339223641,     TEST_TOL0, GSL_SUCCESS);
+  TEST_SF(s,  gsl_sf_bessel_yl_e, (10,       0.01, &r), -6.5473079797378378e+30, TEST_TOL0, GSL_SUCCESS);
+>>>>>>> config
   TEST_SF(s,  gsl_sf_bessel_yl_e, (10,      10.0, &r),  -0.172453672088057849,    TEST_TOL0, GSL_SUCCESS);
   TEST_SF(s,  gsl_sf_bessel_yl_e, (100,      1.0, &r),  -6.6830794632586775e+186, TEST_TOL1, GSL_SUCCESS);
   TEST_SF(s,  gsl_sf_bessel_yl_e, (100,    100.0, &r),  -0.0229838504915622811,   TEST_TOL1, GSL_SUCCESS);

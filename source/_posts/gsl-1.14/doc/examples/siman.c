@@ -6,12 +6,17 @@
 /* set up parameters for this simulated annealing run */
 
 /* how many points do we try before stepping */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 #define N_TRIES 200             
+=======
+#define N_TRIES 200
+>>>>>>> config
 
 /* how many iterations for each T? */
 #define ITERS_FIXED_T 1000
 
 /* max step size in random walk */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 #define STEP_SIZE 1.0            
 
 /* Boltzmann constant */
@@ -25,6 +30,21 @@
 #define T_MIN 2.0e-6
 
 gsl_siman_params_t params 
+=======
+#define STEP_SIZE 1.0
+
+/* Boltzmann constant */
+#define K 1.0
+
+/* initial temperature */
+#define T_INITIAL 0.008
+
+/* damping factor for temperature */
+#define MU_T 1.003
+#define T_MIN 2.0e-6
+
+gsl_siman_params_t params
+>>>>>>> config
   = {N_TRIES, ITERS_FIXED_T, STEP_SIZE,
      K, T_INITIAL, MU_T, T_MIN};
 
@@ -74,8 +94,13 @@ main(int argc, char *argv[])
   r = gsl_rng_alloc(T);
 
   gsl_siman_solve(r, &x_initial, E1, S1, M1, P1,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   NULL, NULL, NULL, 
                   sizeof(double), params);
+=======
+		  NULL, NULL, NULL,
+		  sizeof(double), params);
+>>>>>>> config
 
   gsl_rng_free (r);
   return 0;

@@ -1,17 +1,31 @@
 /* specfunc/bessel_Jnu.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -38,7 +52,11 @@
 static
 int
 bessel_J_recur_asymp(const double nu, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                      gsl_sf_result * Jnu, gsl_sf_result * Jnup1)
+=======
+		     gsl_sf_result * Jnu, gsl_sf_result * Jnup1)
+>>>>>>> config
 {
   const double nu_cut = 25.0;
   int n;
@@ -123,15 +141,25 @@ gsl_sf_bessel_Jnu_e(const double nu, const double x, gsl_sf_result * result)
        */
       gsl_sf_result Y_mu, Y_mup1;
       const int stat_mu = gsl_sf_bessel_Y_temme(mu, x, &Y_mu, &Y_mup1);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
       double Ynm1 = Y_mu.val;
       double Yn   = Y_mup1.val;
       double Ynp1 = 0.0;
       int n;
       for(n=1; n<N; n++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         Ynp1 = 2.0*(mu+n)/x * Yn - Ynm1;
         Ynm1 = Yn;
         Yn   = Ynp1;
+=======
+	Ynp1 = 2.0*(mu+n)/x * Yn - Ynm1;
+	Ynm1 = Yn;
+	Yn   = Ynp1;
+>>>>>>> config
       }
 
       result->val = 2.0/(M_PI*x) / (Jnup1_Jnu*Yn - Ynp1);
@@ -150,15 +178,25 @@ gsl_sf_bessel_Jnu_e(const double nu, const double x, gsl_sf_result * result)
       double P, Q;
       const int stat_CF2 = gsl_sf_bessel_JY_steed_CF2(mu, x, &P, &Q);
       double gamma;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  
+=======
+
+>>>>>>> config
       double Jnp1 = sgn_Jnu * GSL_SQRT_DBL_MIN * Jnup1_Jnu;
       double Jn   = sgn_Jnu * GSL_SQRT_DBL_MIN;
       double Jnm1;
       int n;
       for(n=N; n>0; n--) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         Jnm1 = 2.0*(mu+n)/x * Jn - Jnp1;
         Jnp1 = Jn;
         Jn   = Jnm1;
+=======
+	Jnm1 = 2.0*(mu+n)/x * Jn - Jnp1;
+	Jnp1 = Jn;
+	Jn   = Jnm1;
+>>>>>>> config
       }
       Jmup1_Jmu = Jnp1/Jn;
       sgn_Jmu   = GSL_SIGN(Jn);

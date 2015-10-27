@@ -1,6 +1,10 @@
 static double
 rat_eval (const double a[], const size_t na,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           const double b[], const size_t nb, const double x)
+=======
+	  const double b[], const size_t nb, const double x)
+>>>>>>> config
 {
   size_t i, j;
   double u, v, r;

@@ -1,17 +1,31 @@
 /* fft/test.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -38,7 +52,11 @@
 #include <gsl/gsl_test.h>
 
 void my_error_handler (const char *reason, const char *file,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                        int line, int err);
+=======
+		       int line, int err);
+>>>>>>> config
 
 #include "complex_internal.h"
 
@@ -76,9 +94,15 @@ main (int argc, char *argv[])
 
   gsl_ieee_env_setup ();
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (argc == 2) 
     n = strtol (argv[1], NULL, 0);
  
+=======
+  if (argc == 2)
+    n = strtol (argv[1], NULL, 0);
+
+>>>>>>> config
   if (n)
     {
       start = n ;
@@ -86,6 +110,7 @@ main (int argc, char *argv[])
     }
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   for (i = 1 ; i <= end ; i *= 2) 
     {
       if (i >= start) 
@@ -109,6 +134,31 @@ main (int argc, char *argv[])
           test_real_func (stride, i) ;
           test_real_float_func (stride, i) ;
         }
+=======
+  for (i = 1 ; i <= end ; i *= 2)
+    {
+      if (i >= start)
+	{
+	  for (stride = 1 ; stride < 4 ; stride++)
+	    {
+	      test_complex_bitreverse_order (stride, i) ;
+	      test_complex_radix2 (stride, i) ;
+	      test_real_bitreverse_order (stride, i) ;
+	      test_real_radix2 (stride, i) ;
+	    }
+	}
+    }
+
+  for (i = start ; i <= end ; i++)
+    {
+      for (stride = 1 ; stride < 4 ; stride++)
+	{
+	  test_complex_func (stride, i) ;
+	  test_complex_float_func (stride, i) ;
+	  test_real_func (stride, i) ;
+	  test_real_float_func (stride, i) ;
+	}
+>>>>>>> config
     }
 
   gsl_set_error_handler (&my_error_handler);

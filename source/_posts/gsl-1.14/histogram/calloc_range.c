@@ -18,10 +18,17 @@
  */
 /***************************************************************
  *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * File gsl_histogram_calloc_range.c: 
  * Routine to create a variable binning histogram providing 
  * an input range vector. Need GSL library and header.
  * Do range check and allocate the histogram data. 
+=======
+ * File gsl_histogram_calloc_range.c:
+ * Routine to create a variable binning histogram providing
+ * an input range vector. Need GSL library and header.
+ * Do range check and allocate the histogram data.
+>>>>>>> config
  *
  * Author: S. Piccardi
  * Jan. 2000
@@ -43,7 +50,11 @@ gsl_histogram_calloc_range (size_t n, double *range)
   if (n == 0)
     {
       GSL_ERROR_VAL ("histogram length n must be positive integer",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_EDOM, 0);
+=======
+			GSL_EDOM, 0);
+>>>>>>> config
     }
 
   /* check ranges */
@@ -51,10 +62,17 @@ gsl_histogram_calloc_range (size_t n, double *range)
   for (i = 0; i < n; i++)
     {
       if (range[i] >= range[i + 1])
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           GSL_ERROR_VAL ("histogram bin extremes  must be "
                             "in increasing order", GSL_EDOM, 0);
         }
+=======
+	{
+	  GSL_ERROR_VAL ("histogram bin extremes  must be "
+			    "in increasing order", GSL_EDOM, 0);
+	}
+>>>>>>> config
     }
 
   /* Allocate histogram  */
@@ -64,7 +82,11 @@ gsl_histogram_calloc_range (size_t n, double *range)
   if (h == 0)
     {
       GSL_ERROR_VAL ("failed to allocate space for histogram struct",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_ENOMEM, 0);
+=======
+			GSL_ENOMEM, 0);
+>>>>>>> config
     }
 
   h->range = (double *) malloc ((n + 1) * sizeof (double));
@@ -74,7 +96,11 @@ gsl_histogram_calloc_range (size_t n, double *range)
       /* exception in constructor, avoid memory leak */
       free (h);
       GSL_ERROR_VAL ("failed to allocate space for histogram ranges",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_ENOMEM, 0);
+=======
+			GSL_ENOMEM, 0);
+>>>>>>> config
     }
 
   h->bin = (double *) malloc (n * sizeof (double));
@@ -85,7 +111,11 @@ gsl_histogram_calloc_range (size_t n, double *range)
       free (h->range);
       free (h);
       GSL_ERROR_VAL ("failed to allocate space for histogram bins",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_ENOMEM, 0);
+=======
+			GSL_ENOMEM, 0);
+>>>>>>> config
     }
 
   /* initialize ranges */

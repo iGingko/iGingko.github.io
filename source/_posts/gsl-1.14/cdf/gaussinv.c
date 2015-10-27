@@ -18,8 +18,13 @@
  */
 
 /*
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * Computes the inverse normal cumulative distribution function 
  * according to the algorithm shown in 
+=======
+ * Computes the inverse normal cumulative distribution function
+ * according to the algorithm shown in
+>>>>>>> config
  *
  *      Wichura, M.J. (1988).
  *      Algorithm AS 241: The Percentage Points of the Normal Distribution.

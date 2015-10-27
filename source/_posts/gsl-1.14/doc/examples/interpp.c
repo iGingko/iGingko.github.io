@@ -9,11 +9,19 @@ main (void)
 {
   int N = 4;
   double x[4] = {0.00, 0.10,  0.27,  0.30};
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   double y[4] = {0.15, 0.70, -0.10,  0.15}; 
              /* Note: y[0] == y[3] for periodic data */
 
   gsl_interp_accel *acc = gsl_interp_accel_alloc ();
   const gsl_interp_type *t = gsl_interp_cspline_periodic; 
+=======
+  double y[4] = {0.15, 0.70, -0.10,  0.15};
+	     /* Note: y[0] == y[3] for periodic data */
+
+  gsl_interp_accel *acc = gsl_interp_accel_alloc ();
+  const gsl_interp_type *t = gsl_interp_cspline_periodic;
+>>>>>>> config
   gsl_spline *spline = gsl_spline_alloc (t, N);
 
   int i; double xi, yi;
@@ -33,7 +41,11 @@ main (void)
       yi = gsl_spline_eval (spline, xi, acc);
       printf ("%g %g\n", xi, yi);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   gsl_spline_free (spline);
   gsl_interp_accel_free (acc);
   return 0;

@@ -1,17 +1,31 @@
 /* wavelet/gsl_wavelet.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2004 Ivo Alxneit
  * 
+=======
+ *
+ * Copyright (C) 2004 Ivo Alxneit
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -37,6 +51,7 @@
 
 __BEGIN_DECLS
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int gsl_wavelet2d_transform (const gsl_wavelet * w, 
                              double *data, 
                              size_t tda, size_t size1, size_t size2,
@@ -101,6 +116,72 @@ int
 gsl_wavelet2d_nstransform_matrix_inverse (const gsl_wavelet * w, 
                                           gsl_matrix * a, 
                                           gsl_wavelet_workspace * work);
+=======
+int gsl_wavelet2d_transform (const gsl_wavelet * w,
+			     double *data,
+			     size_t tda, size_t size1, size_t size2,
+			     gsl_wavelet_direction dir,
+			     gsl_wavelet_workspace * work);
+
+int gsl_wavelet2d_transform_forward (const gsl_wavelet * w,
+				     double *data,
+				     size_t tda, size_t size1, size_t size2,
+				     gsl_wavelet_workspace * work);
+
+int gsl_wavelet2d_transform_inverse (const gsl_wavelet * w,
+				     double *data,
+				     size_t tda, size_t size1, size_t size2,
+				     gsl_wavelet_workspace * work);
+
+int gsl_wavelet2d_nstransform (const gsl_wavelet * w,
+			       double *data,
+			       size_t tda, size_t size1, size_t size2,
+			       gsl_wavelet_direction dir,
+			       gsl_wavelet_workspace * work);
+
+int gsl_wavelet2d_nstransform_forward (const gsl_wavelet * w,
+				       double *data,
+				       size_t tda, size_t size1, size_t size2,
+				       gsl_wavelet_workspace * work);
+
+int gsl_wavelet2d_nstransform_inverse (const gsl_wavelet * w,
+				       double *data,
+				       size_t tda, size_t size1, size_t size2,
+				       gsl_wavelet_workspace * work);
+
+int
+gsl_wavelet2d_transform_matrix (const gsl_wavelet * w,
+				gsl_matrix * a,
+				gsl_wavelet_direction dir,
+				gsl_wavelet_workspace * work);
+
+int
+gsl_wavelet2d_transform_matrix_forward (const gsl_wavelet * w,
+					gsl_matrix * a,
+					gsl_wavelet_workspace * work);
+
+int
+gsl_wavelet2d_transform_matrix_inverse (const gsl_wavelet * w,
+					gsl_matrix * a,
+					gsl_wavelet_workspace * work);
+
+
+int
+gsl_wavelet2d_nstransform_matrix (const gsl_wavelet * w,
+				  gsl_matrix * a,
+				  gsl_wavelet_direction dir,
+				  gsl_wavelet_workspace * work);
+
+int
+gsl_wavelet2d_nstransform_matrix_forward (const gsl_wavelet * w,
+					  gsl_matrix * a,
+					  gsl_wavelet_workspace * work);
+
+int
+gsl_wavelet2d_nstransform_matrix_inverse (const gsl_wavelet * w,
+					  gsl_matrix * a,
+					  gsl_wavelet_workspace * work);
+>>>>>>> config
 
 __END_DECLS
 

@@ -1,17 +1,31 @@
 /* randist/binomial_tpe.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 2003, 2007 James Theiler, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 2003, 2007 James Theiler, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -27,7 +41,11 @@
 /* The binomial distribution has the form,
 
    f(x) =  n!/(x!(n-x)!) * p^x (1-p)^(n-x) for integer 0 <= x <= n
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         =  0                               otherwise
+=======
+	=  0                               otherwise
+>>>>>>> config
 
    This implementation follows the public domain ranlib function
    "ignbin", the bulk of which is the BTPE (Binomial Triangle
@@ -63,17 +81,30 @@
    Additional polishing for GSL coding standards by Brian Gough.  */
 
 #define SMALL_MEAN 14           /* If n*p < SMALL_MEAN then use BINV
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                    algorithm. The ranlib
                                    implementation used cutoff=30; but
                                    on my computer 14 works better */
+=======
+				   algorithm. The ranlib
+				   implementation used cutoff=30; but
+				   on my computer 14 works better */
+>>>>>>> config
 
 #define BINV_CUTOFF 110         /* In BINV, do not permit ix too large */
 
 #define FAR_FROM_MEAN 20        /* If ix-n*p is larger than this, then
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                    use the "squeeze" algorithm.
                                    Ranlib used 20, and this seems to
                                    be the best choice on my machine as
                                    well */
+=======
+				   use the "squeeze" algorithm.
+				   Ranlib used 20, and this seems to
+				   be the best choice on my machine as
+				   well */
+>>>>>>> config
 
 #define LNFACT(x) gsl_sf_lnfact(x)
 
@@ -120,6 +151,7 @@ gsl_ran_binomial (const gsl_rng * rng, double p, unsigned int n)
       double f0 = gsl_pow_int (q, n);   /* f(x), starting with x=0 */
 
       while (1)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           /* This while(1) loop will almost certainly only loop once; but
            * if u=1 to within a few epsilons of machine precision, then it
@@ -161,6 +193,49 @@ gsl_ran_binomial (const gsl_rng * rng, double p, unsigned int n)
            * ix=n, f=0, and the loop will continue until ix=LARGE_N.
            */
         }
+=======
+	{
+	  /* This while(1) loop will almost certainly only loop once; but
+	   * if u=1 to within a few epsilons of machine precision, then it
+	   * is possible for roundoff to prevent the main loop over ix to
+	   * achieve its proper value.  following the ranlib implementation,
+	   * we introduce a check for that situation, and when it occurs,
+	   * we just try again.
+	   */
+
+	  double f = f0;
+	  double u = gsl_rng_uniform (rng);
+
+	  for (ix = 0; ix <= BINV_CUTOFF; ++ix)
+	    {
+	      if (u < f)
+		goto Finish;
+	      u -= f;
+	      /* Use recursion f(x+1) = f(x)*[(n-x)/(x+1)]*[p/(1-p)] */
+	      f *= s * (n - ix) / (ix + 1);
+	    }
+
+	  /* It should be the case that the 'goto Finish' was encountered
+	   * before this point was ever reached.  But if we have reached
+	   * this point, then roundoff has prevented u from decreasing
+	   * all the way to zero.  This can happen only if the initial u
+	   * was very nearly equal to 1, which is a rare situation.  In
+	   * that rare situation, we just try again.
+	   *
+	   * Note, following the ranlib implementation, we loop ix only to
+	   * a hardcoded value of SMALL_MEAN_LARGE_N=110; we could have
+	   * looped to n, and 99.99...% of the time it won't matter.  This
+	   * choice, I think is a little more robust against the rare
+	   * roundoff error.  If n>LARGE_N, then it is technically
+	   * possible for ix>LARGE_N, but it is astronomically rare, and
+	   * if ix is that large, it is more likely due to roundoff than
+	   * probability, so better to nip it at LARGE_N than to take a
+	   * chance that roundoff will somehow conspire to produce an even
+	   * larger (and more improbable) ix.  If n<LARGE_N, then once
+	   * ix=n, f=0, and the loop will continue until ix=LARGE_N.
+	   */
+	}
+>>>>>>> config
     }
   else
     {
@@ -215,6 +290,7 @@ gsl_ran_binomial (const gsl_rng * rng, double p, unsigned int n)
       v = gsl_rng_uniform (rng);
 
       if (u <= p1)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           /* Triangular region */
           ix = (int) (xm - p1 * v + u);
@@ -247,6 +323,40 @@ gsl_ran_binomial (const gsl_rng * rng, double p, unsigned int n)
         }
 
       /* At this point, the goal is to test whether v <= f(x)/f(m) 
+=======
+	{
+	  /* Triangular region */
+	  ix = (int) (xm - p1 * v + u);
+	  goto Finish;
+	}
+      else if (u <= p2)
+	{
+	  /* Parallelogram region */
+	  double x = xl + (u - p1) / c;
+	  v = v * c + 1.0 - fabs (x - xm) / p1;
+	  if (v > 1.0 || v <= 0.0)
+	    goto TryAgain;
+	  ix = (int) x;
+	}
+      else if (u <= p3)
+	{
+	  /* Left tail */
+	  ix = (int) (xl + log (v) / lambda_l);
+	  if (ix < 0)
+	    goto TryAgain;
+	  v *= ((u - p2) * lambda_l);
+	}
+      else
+	{
+	  /* Right tail */
+	  ix = (int) (xr - log (v) / lambda_r);
+	  if (ix > (double) n)
+	    goto TryAgain;
+	  v *= ((u - p3) * lambda_r);
+	}
+
+      /* At this point, the goal is to test whether v <= f(x)/f(m)
+>>>>>>> config
        *
        *  v <= f(x)/f(m) = (m!(n-m)! / (x!(n-x)!)) * (p/q)^{x-m}
        *
@@ -261,8 +371,13 @@ gsl_ran_binomial (const gsl_rng * rng, double p, unsigned int n)
       var = log (v);
 
       accept =
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         LNFACT (m) + LNFACT (n - m) - LNFACT (ix) - LNFACT (n - ix)
         + (ix - m) * log (p / q);
+=======
+	LNFACT (m) + LNFACT (n - m) - LNFACT (ix) - LNFACT (n - ix)
+	+ (ix - m) * log (p / q);
+>>>>>>> config
 
 #else /* SQUEEZE METHOD */
 
@@ -271,6 +386,7 @@ gsl_ran_binomial (const gsl_rng * rng, double p, unsigned int n)
       k = abs (ix - m);
 
       if (k <= FAR_FROM_MEAN)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           /* 
            * If ix near m (ie, |ix-m|<FAR_FROM_MEAN), then do
@@ -373,6 +489,110 @@ gsl_ran_binomial (const gsl_rng * rng, double p, unsigned int n)
         {
           goto TryAgain;
         }
+=======
+	{
+	  /*
+	   * If ix near m (ie, |ix-m|<FAR_FROM_MEAN), then do
+	   * explicit evaluation using recursion relation for f(x)
+	   */
+	  double g = (n + 1) * s;
+	  double f = 1.0;
+
+	  var = v;
+
+	  if (m < ix)
+	    {
+	      int i;
+	      for (i = m + 1; i <= ix; i++)
+		{
+		  f *= (g / i - s);
+		}
+	    }
+	  else if (m > ix)
+	    {
+	      int i;
+	      for (i = ix + 1; i <= m; i++)
+		{
+		  f /= (g / i - s);
+		}
+	    }
+
+	  accept = f;
+	}
+      else
+	{
+	  /* If ix is far from the mean m: k=ABS(ix-m) large */
+
+	  var = log (v);
+
+	  if (k < npq / 2 - 1)
+	    {
+	      /* "Squeeze" using upper and lower bounds on
+	       * log(f(x)) The squeeze condition was derived
+	       * under the condition k < npq/2-1 */
+	      double amaxp =
+		k / npq * ((k * (k / 3.0 + 0.625) + (1.0 / 6.0)) / npq + 0.5);
+	      double ynorm = -(k * k / (2.0 * npq));
+	      if (var < ynorm - amaxp)
+		goto Finish;
+	      if (var > ynorm + amaxp)
+		goto TryAgain;
+	    }
+
+	  /* Now, again: do the test log(v) vs. log f(x)/f(M) */
+
+#if USE_EXACT
+	  /* This is equivalent to the above, but is a little (~20%) slower */
+	  /* There are five log's vs three above, maybe that's it? */
+
+	  accept = LNFACT (m) + LNFACT (n - m)
+	    - LNFACT (ix) - LNFACT (n - ix) + (ix - m) * log (p / q);
+
+#else /* USE STIRLING */
+	  /* The "#define Stirling" above corresponds to the first five
+	   * terms in asymptoic formula for
+	   * log Gamma (y) - (y-0.5)log(y) + y - 0.5 log(2*pi);
+	   * See Abramowitz and Stegun, eq 6.1.40
+	   */
+
+	  /* Note below: two Stirling's are added, and two are
+	   * subtracted.  In both K+S, and in the ranlib
+	   * implementation, all four are added.  I (jt) believe that
+	   * is a mistake -- this has been confirmed by personal
+	   * correspondence w/ Dr. Kachitvichyanukul.  Note, however,
+	   * the corrections are so small, that I couldn't find an
+	   * example where it made a difference that could be
+	   * observed, let alone tested.  In fact, define'ing Stirling
+	   * to be zero gave identical results!!  In practice, alv is
+	   * O(1), ranging 0 to -10 or so, while the Stirling
+	   * correction is typically O(10^{-5}) ...setting the
+	   * correction to zero gives about a 2% performance boost;
+	   * might as well keep it just to be pendantic.  */
+
+	  {
+	    double x1 = ix + 1.0;
+	    double w1 = n - ix + 1.0;
+	    double f1 = fm + 1.0;
+	    double z1 = n + 1.0 - fm;
+
+	    accept = xm * log (f1 / x1) + (n - m + 0.5) * log (z1 / w1)
+	      + (ix - m) * log (w1 * p / (x1 * q))
+	      + Stirling (f1) + Stirling (z1) - Stirling (x1) - Stirling (w1);
+	  }
+#endif
+#endif
+	}
+
+
+      if (var <= accept)
+	{
+	  goto Finish;
+	}
+      else
+	{
+	  goto TryAgain;
+	}
+>>>>>>> config
     }
 
 Finish:

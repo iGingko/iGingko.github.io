@@ -1,8 +1,13 @@
 #set term postscript eps enhanced
 set term pstex monochrome
 set samples 300
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 #set size 0.8,0.88  # paperback 6x9  #CHANGE THESE LATER IN FILE ALSO 
 set size 1,1.1      # us letter      #IF MODIFIED 
+=======
+#set size 0.8,0.88  # paperback 6x9  #CHANGE THESE LATER IN FILE ALSO
+set size 1,1.1      # us letter      #IF MODIFIED
+>>>>>>> config
 set border 31 lw 0.5
 set tics out
 set ticscale 0.5 0.25
@@ -230,7 +235,11 @@ set ytics 0.1
 set output "rand-levy.tex"
 set title "Levy Distribution"
 p1(x)=1/(pi*mu*(1+(x/mu)**2))
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 p2(x)=1/sqrt(2*pi*2*mu**2)*exp(-x**2/(4*mu**2)) 
+=======
+p2(x)=1/sqrt(2*pi*2*mu**2)*exp(-x**2/(4*mu**2))
+>>>>>>> config
 plot mu=1.0, a=1, p1(x) title "$c=1, \\alpha=1.0$", \
 	mu=1.0, a=2, p2(x) title "$c=1, \\alpha=2.0$"
 
@@ -372,5 +381,8 @@ set nokey
 set noxlabel
 set noylabel
 plot "rand-walk.dat" using 1:2 with linesp
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
+=======
+>>>>>>> config

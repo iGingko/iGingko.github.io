@@ -1,17 +1,31 @@
 /* interpolation/interp_poly.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2001 DAN, HO-JIN
  * 
+=======
+ *
+ * Copyright (C) 2001 DAN, HO-JIN
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -40,7 +54,11 @@ polynomial_alloc (size_t size)
   if (state == 0)
     {
       GSL_ERROR_NULL ("failed to allocate space for polynomial state",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       GSL_ENOMEM);
+=======
+		      GSL_ENOMEM);
+>>>>>>> config
     }
 
   state->d = (double *) malloc (sizeof (double) * size);
@@ -75,7 +93,11 @@ polynomial_alloc (size_t size)
 
 static int
 polynomial_init (void *vstate,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  const double xa[], const double ya[], size_t size)
+=======
+		 const double xa[], const double ya[], size_t size)
+>>>>>>> config
 {
   polynomial_state_t *state = (polynomial_state_t *) vstate;
 
@@ -86,8 +108,13 @@ polynomial_init (void *vstate,
 
 static int
 polynomial_eval (const void *vstate,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  const double xa[], const double ya[], size_t size, double x,
                  gsl_interp_accel * acc, double *y)
+=======
+		 const double xa[], const double ya[], size_t size, double x,
+		 gsl_interp_accel * acc, double *y)
+>>>>>>> config
 {
   const polynomial_state_t *state = (const polynomial_state_t *) vstate;
 
@@ -99,8 +126,13 @@ polynomial_eval (const void *vstate,
 
 static int
 polynomial_deriv (const void *vstate,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   const double xa[], const double ya[], size_t size, double x,
                   gsl_interp_accel * acc, double *y)
+=======
+		  const double xa[], const double ya[], size_t size, double x,
+		  gsl_interp_accel * acc, double *y)
+>>>>>>> config
 {
   const polynomial_state_t *state = (const polynomial_state_t *) vstate;
 
@@ -113,8 +145,13 @@ polynomial_deriv (const void *vstate,
 
 static int
 polynomial_deriv2 (const void *vstate,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                    const double xa[], const double ya[], size_t size,
                    double x, gsl_interp_accel * acc, double *y)
+=======
+		   const double xa[], const double ya[], size_t size,
+		   double x, gsl_interp_accel * acc, double *y)
+>>>>>>> config
 {
   const polynomial_state_t *state = (const polynomial_state_t *) vstate;
 
@@ -127,8 +164,13 @@ polynomial_deriv2 (const void *vstate,
 
 static int
 polynomial_integ (const void *vstate, const double xa[], const double ya[],
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   size_t size, gsl_interp_accel * acc, double a, double b,
                   double *result)
+=======
+		  size_t size, gsl_interp_accel * acc, double a, double b,
+		  double *result)
+>>>>>>> config
 {
   const polynomial_state_t *state = (const polynomial_state_t *) vstate;
   size_t i;

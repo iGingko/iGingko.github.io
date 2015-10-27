@@ -1,17 +1,31 @@
 /* blas/source_herk.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2001, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 2001, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -36,6 +50,7 @@
   if (beta == 0.0) {
     if (uplo == CblasUpper) {
       for (i = 0; i < N; i++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         for (j = i; j < N; j++) {
           REAL(C, ldc * i + j) = 0.0;
           IMAG(C, ldc * i + j) = 0.0;
@@ -47,11 +62,25 @@
           REAL(C, ldc * i + j) = 0.0;
           IMAG(C, ldc * i + j) = 0.0;
         }
+=======
+	for (j = i; j < N; j++) {
+	  REAL(C, ldc * i + j) = 0.0;
+	  IMAG(C, ldc * i + j) = 0.0;
+	}
+      }
+    } else {
+      for (i = 0; i < N; i++) {
+	for (j = 0; j <= i; j++) {
+	  REAL(C, ldc * i + j) = 0.0;
+	  IMAG(C, ldc * i + j) = 0.0;
+	}
+>>>>>>> config
       }
     }
   } else if (beta != 1.0) {
     if (uplo == CblasUpper) {
       for (i = 0; i < N; i++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         REAL(C, ldc * i + i) *= beta;
         IMAG(C, ldc * i + i) = 0;
         for (j = i + 1; j < N; j++) {
@@ -67,6 +96,23 @@
         }
         REAL(C, ldc * i + i) *= beta;
         IMAG(C, ldc * i + i) = 0;
+=======
+	REAL(C, ldc * i + i) *= beta;
+	IMAG(C, ldc * i + i) = 0;
+	for (j = i + 1; j < N; j++) {
+	  REAL(C, ldc * i + j) *= beta;
+	  IMAG(C, ldc * i + j) *= beta;
+	}
+      }
+    } else {
+      for (i = 0; i < N; i++) {
+	for (j = 0; j < i; j++) {
+	  REAL(C, ldc * i + j) *= beta;
+	  IMAG(C, ldc * i + j) *= beta;
+	}
+	REAL(C, ldc * i + i) *= beta;
+	IMAG(C, ldc * i + i) = 0;
+>>>>>>> config
       }
     }
   } else {
@@ -83,6 +129,7 @@
 
     for (i = 0; i < N; i++) {
       for (j = i; j < N; j++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         BASE temp_real = 0.0;
         BASE temp_imag = 0.0;
         for (k = 0; k < K; k++) {
@@ -95,6 +142,20 @@
         }
         REAL(C, i * ldc + j) += alpha * temp_real;
         IMAG(C, i * ldc + j) += alpha * temp_imag;
+=======
+	BASE temp_real = 0.0;
+	BASE temp_imag = 0.0;
+	for (k = 0; k < K; k++) {
+	  const BASE Aik_real = CONST_REAL(A, i * lda + k);
+	  const BASE Aik_imag = CONST_IMAG(A, i * lda + k);
+	  const BASE Ajk_real = CONST_REAL(A, j * lda + k);
+	  const BASE Ajk_imag = -CONST_IMAG(A, j * lda + k);
+	  temp_real += Aik_real * Ajk_real - Aik_imag * Ajk_imag;
+	  temp_imag += Aik_real * Ajk_imag + Aik_imag * Ajk_real;
+	}
+	REAL(C, i * ldc + j) += alpha * temp_real;
+	IMAG(C, i * ldc + j) += alpha * temp_imag;
+>>>>>>> config
       }
     }
 
@@ -102,6 +163,7 @@
 
     for (i = 0; i < N; i++) {
       for (j = i; j < N; j++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         BASE temp_real = 0.0;
         BASE temp_imag = 0.0;
         for (k = 0; k < K; k++) {
@@ -114,6 +176,20 @@
         }
         REAL(C, i * ldc + j) += alpha * temp_real;
         IMAG(C, i * ldc + j) += alpha * temp_imag;
+=======
+	BASE temp_real = 0.0;
+	BASE temp_imag = 0.0;
+	for (k = 0; k < K; k++) {
+	  const BASE Aki_real = CONST_REAL(A, k * lda + i);
+	  const BASE Aki_imag = -CONST_IMAG(A, k * lda + i);
+	  const BASE Akj_real = CONST_REAL(A, k * lda + j);
+	  const BASE Akj_imag = CONST_IMAG(A, k * lda + j);
+	  temp_real += Aki_real * Akj_real - Aki_imag * Akj_imag;
+	  temp_imag += Aki_real * Akj_imag + Aki_imag * Akj_real;
+	}
+	REAL(C, i * ldc + j) += alpha * temp_real;
+	IMAG(C, i * ldc + j) += alpha * temp_imag;
+>>>>>>> config
       }
     }
 
@@ -121,6 +197,7 @@
 
     for (i = 0; i < N; i++) {
       for (j = 0; j <= i; j++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         BASE temp_real = 0.0;
         BASE temp_imag = 0.0;
         for (k = 0; k < K; k++) {
@@ -133,6 +210,20 @@
         }
         REAL(C, i * ldc + j) += alpha * temp_real;
         IMAG(C, i * ldc + j) += alpha * temp_imag;
+=======
+	BASE temp_real = 0.0;
+	BASE temp_imag = 0.0;
+	for (k = 0; k < K; k++) {
+	  const BASE Aik_real = CONST_REAL(A, i * lda + k);
+	  const BASE Aik_imag = CONST_IMAG(A, i * lda + k);
+	  const BASE Ajk_real = CONST_REAL(A, j * lda + k);
+	  const BASE Ajk_imag = -CONST_IMAG(A, j * lda + k);
+	  temp_real += Aik_real * Ajk_real - Aik_imag * Ajk_imag;
+	  temp_imag += Aik_real * Ajk_imag + Aik_imag * Ajk_real;
+	}
+	REAL(C, i * ldc + j) += alpha * temp_real;
+	IMAG(C, i * ldc + j) += alpha * temp_imag;
+>>>>>>> config
       }
     }
 
@@ -140,6 +231,7 @@
 
     for (i = 0; i < N; i++) {
       for (j = 0; j <= i; j++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         BASE temp_real = 0.0;
         BASE temp_imag = 0.0;
         for (k = 0; k < K; k++) {
@@ -152,6 +244,20 @@
         }
         REAL(C, i * ldc + j) += alpha * temp_real;
         IMAG(C, i * ldc + j) += alpha * temp_imag;
+=======
+	BASE temp_real = 0.0;
+	BASE temp_imag = 0.0;
+	for (k = 0; k < K; k++) {
+	  const BASE Aki_real = CONST_REAL(A, k * lda + i);
+	  const BASE Aki_imag = -CONST_IMAG(A, k * lda + i);
+	  const BASE Akj_real = CONST_REAL(A, k * lda + j);
+	  const BASE Akj_imag = CONST_IMAG(A, k * lda + j);
+	  temp_real += Aki_real * Akj_real - Aki_imag * Akj_imag;
+	  temp_imag += Aki_real * Akj_imag + Aki_imag * Akj_real;
+	}
+	REAL(C, i * ldc + j) += alpha * temp_real;
+	IMAG(C, i * ldc + j) += alpha * temp_imag;
+>>>>>>> config
       }
     }
 

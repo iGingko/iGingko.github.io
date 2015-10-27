@@ -1,19 +1,34 @@
 /* combination/init.c
  * based on permutation/init.c by Brian Gough
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2001 Szymon Jaroszewicz
  * Copyright (C) 2009 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 2001 Szymon Jaroszewicz
+ * Copyright (C) 2009 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -32,19 +47,31 @@ gsl_combination_alloc (const size_t n, const size_t k)
   if (n == 0)
     {
       GSL_ERROR_VAL ("combination parameter n must be positive integer",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_EDOM, 0);
+=======
+			GSL_EDOM, 0);
+>>>>>>> config
     }
   if (k > n)
     {
       GSL_ERROR_VAL ("combination length k must be an integer less than or equal to n",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_EDOM, 0);
+=======
+			GSL_EDOM, 0);
+>>>>>>> config
     }
   c = (gsl_combination *) malloc (sizeof (gsl_combination));
 
   if (c == 0)
     {
       GSL_ERROR_VAL ("failed to allocate space for combination struct",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_ENOMEM, 0);
+=======
+			GSL_ENOMEM, 0);
+>>>>>>> config
     }
 
   if (k > 0)
@@ -52,12 +79,21 @@ gsl_combination_alloc (const size_t n, const size_t k)
       c->data = (size_t *) malloc (k * sizeof (size_t));
 
       if (c->data == 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           free (c);             /* exception in constructor, avoid memory leak */
 
           GSL_ERROR_VAL ("failed to allocate space for combination data",
                          GSL_ENOMEM, 0);
         }
+=======
+	{
+	  free (c);             /* exception in constructor, avoid memory leak */
+
+	  GSL_ERROR_VAL ("failed to allocate space for combination data",
+			 GSL_ENOMEM, 0);
+	}
+>>>>>>> config
     }
   else
     {

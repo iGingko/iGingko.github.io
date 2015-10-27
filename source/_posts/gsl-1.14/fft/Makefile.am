@@ -1,4 +1,8 @@
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 noinst_LTLIBRARIES = libgslfft.la 
+=======
+noinst_LTLIBRARIES = libgslfft.la
+>>>>>>> config
 
 pkginclude_HEADERS = gsl_fft.h gsl_fft_complex.h gsl_fft_halfcomplex.h gsl_fft_real.h gsl_dft_complex.h gsl_dft_complex_float.h gsl_fft_complex_float.h gsl_fft_halfcomplex_float.h gsl_fft_real_float.h
 
@@ -18,4 +22,7 @@ test_LDADD = libgslfft.la ../ieee-utils/libgslieeeutils.la ../err/libgslerr.la .
 
 #errs_LDADD = libgslfft.la ../err/libgslerr.la ../test/libgsltest.la ../sys/libgslsys.la
 #benchmark_LDADD = libgslfft.la ../err/libgslerr.la ../test/libgsltest.la ../sys/libgslsys.la
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

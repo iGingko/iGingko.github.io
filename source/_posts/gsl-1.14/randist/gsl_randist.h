@@ -1,17 +1,31 @@
 /* randist/gsl_randist.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -118,12 +132,21 @@ unsigned int gsl_ran_logarithmic (const gsl_rng * r, const double p);
 double gsl_ran_logarithmic_pdf (const unsigned int k, const double p);
 
 void gsl_ran_multinomial (const gsl_rng * r, const size_t K,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                           const unsigned int N, const double p[],
                           unsigned int n[] );
 double gsl_ran_multinomial_pdf (const size_t K,
                                 const double p[], const unsigned int n[] );
 double gsl_ran_multinomial_lnpdf (const size_t K,
                            const double p[], const unsigned int n[] );
+=======
+			  const unsigned int N, const double p[],
+			  unsigned int n[] );
+double gsl_ran_multinomial_pdf (const size_t K,
+				const double p[], const unsigned int n[] );
+double gsl_ran_multinomial_lnpdf (const size_t K,
+			   const double p[], const unsigned int n[] );
+>>>>>>> config
 
 
 unsigned int gsl_ran_negative_binomial (const gsl_rng * r, double p, double n);
@@ -137,7 +160,11 @@ double gsl_ran_pareto_pdf (const double x, const double a, const double b);
 
 unsigned int gsl_ran_poisson (const gsl_rng * r, double mu);
 void gsl_ran_poisson_array (const gsl_rng * r, size_t n, unsigned int array[],
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                             double mu);
+=======
+			    double mu);
+>>>>>>> config
 double gsl_ran_poisson_pdf (const unsigned int k, const double mu);
 
 double gsl_ran_rayleigh (const gsl_rng * r, const double sigma);

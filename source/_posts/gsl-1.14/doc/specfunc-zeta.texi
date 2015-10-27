@@ -15,6 +15,7 @@ header file @file{gsl_sf_zeta.h}.
 @subsection Riemann Zeta Function
 @cindex Riemann Zeta Function
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 The Riemann zeta function is defined by the infinite sum 
 @c{$\zeta(s) = \sum_{k=1}^\infty k^{-s}$}
 @math{\zeta(s) = \sum_@{k=1@}^\infty k^@{-s@}}.  
@@ -22,6 +23,15 @@ The Riemann zeta function is defined by the infinite sum
 @deftypefun double gsl_sf_zeta_int (int @var{n})
 @deftypefunx int gsl_sf_zeta_int_e (int @var{n}, gsl_sf_result * @var{result})
 These routines compute the Riemann zeta function @math{\zeta(n)} 
+=======
+The Riemann zeta function is defined by the infinite sum
+@c{$\zeta(s) = \sum_{k=1}^\infty k^{-s}$}
+@math{\zeta(s) = \sum_@{k=1@}^\infty k^@{-s@}}.
+
+@deftypefun double gsl_sf_zeta_int (int @var{n})
+@deftypefunx int gsl_sf_zeta_int_e (int @var{n}, gsl_sf_result * @var{result})
+These routines compute the Riemann zeta function @math{\zeta(n)}
+>>>>>>> config
 for integer @var{n},
 @math{n \ne 1}.
 @comment Domain: n integer, n != 1
@@ -98,4 +108,7 @@ These routines compute the eta function @math{\eta(n)} for integer @var{n}.
 These routines compute the eta function @math{\eta(s)} for arbitrary @var{s}.
 @comment Exceptional Return Values: GSL_EUNDRFLW, GSL_EOVRFLW
 @end deftypefun
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

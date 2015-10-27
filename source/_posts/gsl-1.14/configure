@@ -573,7 +573,11 @@ if test -z "$lt_ECHO"; then
       if { echo_test_string=`eval $cmd`; } 2>/dev/null &&
 	 { test "X$echo_test_string" = "X$echo_test_string"; } 2>/dev/null
       then
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         break
+=======
+	break
+>>>>>>> config
       fi
     done
   fi
@@ -593,11 +597,19 @@ if test -z "$lt_ECHO"; then
     for dir in $PATH /usr/ucb; do
       IFS="$lt_save_ifs"
       if (test -f $dir/echo || test -f $dir/echo$ac_exeext) &&
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          test "X`($dir/echo '\t') 2>/dev/null`" = 'X\t' &&
          echo_testing_string=`($dir/echo "$echo_test_string") 2>/dev/null` &&
          test "X$echo_testing_string" = "X$echo_test_string"; then
         ECHO="$dir/echo"
         break
+=======
+	 test "X`($dir/echo '\t') 2>/dev/null`" = 'X\t' &&
+	 echo_testing_string=`($dir/echo "$echo_test_string") 2>/dev/null` &&
+	 test "X$echo_testing_string" = "X$echo_test_string"; then
+	ECHO="$dir/echo"
+	break
+>>>>>>> config
       fi
     done
     IFS="$lt_save_ifs"
@@ -605,6 +617,7 @@ if test -z "$lt_ECHO"; then
     if test "X$ECHO" = Xecho; then
       # We didn't find a better echo, so look for alternatives.
       if test "X`{ print -r '\t'; } 2>/dev/null`" = 'X\t' &&
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          echo_testing_string=`{ print -r "$echo_test_string"; } 2>/dev/null` &&
          test "X$echo_testing_string" = "X$echo_test_string"; then
         # This shell has a builtin print -r that does the trick.
@@ -621,11 +634,33 @@ if test -z "$lt_ECHO"; then
         # Try using printf.
         ECHO='printf %s\n'
         if test "X`{ $ECHO '\t'; } 2>/dev/null`" = 'X\t' &&
+=======
+	 echo_testing_string=`{ print -r "$echo_test_string"; } 2>/dev/null` &&
+	 test "X$echo_testing_string" = "X$echo_test_string"; then
+	# This shell has a builtin print -r that does the trick.
+	ECHO='print -r'
+      elif { test -f /bin/ksh || test -f /bin/ksh$ac_exeext; } &&
+	   test "X$CONFIG_SHELL" != X/bin/ksh; then
+	# If we have ksh, try running configure again with it.
+	ORIGINAL_CONFIG_SHELL=${CONFIG_SHELL-/bin/sh}
+	export ORIGINAL_CONFIG_SHELL
+	CONFIG_SHELL=/bin/ksh
+	export CONFIG_SHELL
+	exec $CONFIG_SHELL "$0" --no-reexec ${1+"$@"}
+      else
+	# Try using printf.
+	ECHO='printf %s\n'
+	if test "X`{ $ECHO '\t'; } 2>/dev/null`" = 'X\t' &&
+>>>>>>> config
 	   echo_testing_string=`{ $ECHO "$echo_test_string"; } 2>/dev/null` &&
 	   test "X$echo_testing_string" = "X$echo_test_string"; then
 	  # Cool, printf works
 	  :
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         elif echo_testing_string=`($ORIGINAL_CONFIG_SHELL "$0" --fallback-echo '\t') 2>/dev/null` &&
+=======
+	elif echo_testing_string=`($ORIGINAL_CONFIG_SHELL "$0" --fallback-echo '\t') 2>/dev/null` &&
+>>>>>>> config
 	     test "X$echo_testing_string" = 'X\t' &&
 	     echo_testing_string=`($ORIGINAL_CONFIG_SHELL "$0" --fallback-echo "$echo_test_string") 2>/dev/null` &&
 	     test "X$echo_testing_string" = "X$echo_test_string"; then
@@ -634,12 +669,20 @@ if test -z "$lt_ECHO"; then
 	  SHELL="$CONFIG_SHELL"
 	  export SHELL
 	  ECHO="$CONFIG_SHELL $0 --fallback-echo"
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         elif echo_testing_string=`($CONFIG_SHELL "$0" --fallback-echo '\t') 2>/dev/null` &&
+=======
+	elif echo_testing_string=`($CONFIG_SHELL "$0" --fallback-echo '\t') 2>/dev/null` &&
+>>>>>>> config
 	     test "X$echo_testing_string" = 'X\t' &&
 	     echo_testing_string=`($CONFIG_SHELL "$0" --fallback-echo "$echo_test_string") 2>/dev/null` &&
 	     test "X$echo_testing_string" = "X$echo_test_string"; then
 	  ECHO="$CONFIG_SHELL $0 --fallback-echo"
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         else
+=======
+	else
+>>>>>>> config
 	  # maybe with a smaller string...
 	  prev=:
 
@@ -659,7 +702,11 @@ if test -z "$lt_ECHO"; then
 	    # Oops.  We lost completely, so just stick with echo.
 	    ECHO=echo
 	  fi
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         fi
+=======
+	fi
+>>>>>>> config
       fi
     fi
   fi
@@ -1461,9 +1508,15 @@ Configuration:
 
 Installation directories:
   --prefix=PREFIX         install architecture-independent files in PREFIX
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                           [$ac_default_prefix]
   --exec-prefix=EPREFIX   install architecture-dependent files in EPREFIX
                           [PREFIX]
+=======
+			  [$ac_default_prefix]
+  --exec-prefix=EPREFIX   install architecture-dependent files in EPREFIX
+			  [PREFIX]
+>>>>>>> config
 
 By default, \`make install' will install all the files in
 \`$ac_default_prefix/bin', \`$ac_default_prefix/lib' etc.  You can specify
@@ -1524,24 +1577,39 @@ Optional Features:
   --enable-shared[=PKGS]  build shared libraries [default=yes]
   --enable-static[=PKGS]  build static libraries [default=yes]
   --enable-fast-install[=PKGS]
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                           optimize for fast installation [default=yes]
+=======
+			  optimize for fast installation [default=yes]
+>>>>>>> config
   --disable-libtool-lock  avoid locking (might break parallel builds)
 
 Optional Packages:
   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
   --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
   --with-pic              try to use only PIC/non-PIC objects [default=use
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                           both]
+=======
+			  both]
+>>>>>>> config
   --with-gnu-ld           assume the C compiler uses GNU ld [default=no]
 
 Some influential environment variables:
   CC          C compiler command
   CFLAGS      C compiler flags
   LDFLAGS     linker flags, e.g. -L<lib dir> if you have libraries in a
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
               nonstandard directory <lib dir>
   LIBS        libraries to pass to the linker, e.g. -l<library>
   CPPFLAGS    (Objective) C/C++ preprocessor flags, e.g. -I<include dir> if
               you have headers in a nonstandard directory <include dir>
+=======
+	      nonstandard directory <lib dir>
+  LIBS        libraries to pass to the linker, e.g. -l<library>
+  CPPFLAGS    (Objective) C/C++ preprocessor flags, e.g. -I<include dir> if
+	      you have headers in a nonstandard directory <include dir>
+>>>>>>> config
   CPP         C preprocessor
 
 Use these variables to override the choices made by `configure' or to help
@@ -2960,12 +3028,20 @@ GSL_LT_CBLAS_VERSION="${CBLAS_CURRENT}:${CBLAS_REVISION}:${CBLAS_AGE}"
 
 case "$VERSION" in
     *+)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ;;
+=======
+	;;
+>>>>>>> config
     *)
 
 $as_echo "#define RELEASED /**/" >>confdefs.h
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ;;
+=======
+	;;
+>>>>>>> config
 esac
 
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for a sed that does not truncate output" >&5
@@ -2973,7 +3049,11 @@ $as_echo_n "checking for a sed that does not truncate output... " >&6; }
 if test "${ac_cv_path_SED+set}" = set; then :
   $as_echo_n "(cached) " >&6
 else
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             ac_script=s/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb/
+=======
+	    ac_script=s/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb/
+>>>>>>> config
      for ac_i in 1 2 3 4 5 6 7; do
        ac_script="$ac_script$as_nl$ac_script"
      done
@@ -3250,7 +3330,11 @@ else
 fi
 
 if test -z "$CC"; then
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           if test -n "$ac_tool_prefix"; then
+=======
+	  if test -n "$ac_tool_prefix"; then
+>>>>>>> config
     # Extract the first word of "${ac_tool_prefix}cc", so it can be a program name with args.
 set dummy ${ac_tool_prefix}cc; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
@@ -3472,7 +3556,11 @@ $as_echo "$ac_try_echo"; } >&5
   if test -s conftest.err; then
     sed '10a\
 ... rest of stderr output deleted ...
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          10q' conftest.err >conftest.er1
+=======
+	 10q' conftest.err >conftest.er1
+>>>>>>> config
     cat conftest.er1 >&5
   fi
   rm -f conftest.er1 conftest.err
@@ -4090,7 +4178,11 @@ else
        source=sub/conftest.c object=$am__obj \
        depfile=sub/conftest.Po tmpdepfile=sub/conftest.TPo \
        $SHELL ./depcomp $depcc -c $am__minus_obj sub/conftest.c \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          >/dev/null 2>conftest.err &&
+=======
+	 >/dev/null 2>conftest.err &&
+>>>>>>> config
        grep sub/conftst1.h sub/conftest.Po > /dev/null 2>&1 &&
        grep sub/conftst6.h sub/conftest.Po > /dev/null 2>&1 &&
        grep $am__obj sub/conftest.Po > /dev/null 2>&1 &&
@@ -4103,9 +4195,15 @@ else
       # The diagnosis changed in icc 8.0:
       #   icc: Command line remark: option '-MP' not supported
       if (grep 'ignoring option' conftest.err ||
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           grep 'not supported' conftest.err) >/dev/null 2>&1; then :; else
         am_cv_CC_dependencies_compiler_type=$depmode
         break
+=======
+	  grep 'not supported' conftest.err) >/dev/null 2>&1; then :; else
+	am_cv_CC_dependencies_compiler_type=$depmode
+	break
+>>>>>>> config
       fi
     fi
   done
@@ -4311,7 +4409,11 @@ $as_echo_n "checking for a sed that does not truncate output... " >&6; }
 if test "${ac_cv_path_SED+set}" = set; then :
   $as_echo_n "(cached) " >&6
 else
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             ac_script=s/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb/
+=======
+	    ac_script=s/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb/
+>>>>>>> config
      for ac_i in 1 2 3 4 5 6 7; do
        ac_script="$ac_script$as_nl$ac_script"
      done
@@ -4976,7 +5078,11 @@ else
     #
     if test -x /sbin/sysconfig; then
       case `/sbin/sysconfig -q proc exec_disable_arg_limit` in
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         *1*) lt_cv_sys_max_cmd_len=-1 ;;
+=======
+	*1*) lt_cv_sys_max_cmd_len=-1 ;;
+>>>>>>> config
       esac
     fi
     ;;
@@ -5000,18 +5106,30 @@ else
       # Make teststring a little bigger before we do anything with it.
       # a 1K string should be a reasonable start.
       for i in 1 2 3 4 5 6 7 8 ; do
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         teststring=$teststring$teststring
+=======
+	teststring=$teststring$teststring
+>>>>>>> config
       done
       SHELL=${SHELL-${CONFIG_SHELL-/bin/sh}}
       # If test is not a shell built-in, we'll probably end up computing a
       # maximum length that is only half of the actual maximum length, but
       # we can't tell.
       while { test "X"`$SHELL $0 --fallback-echo "X$teststring$teststring" 2>/dev/null` \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	         = "XX$teststring$teststring"; } >/dev/null 2>&1 &&
 	      test $i != 17 # 1/2 MB should be enough
       do
         i=`expr $i + 1`
         teststring=$teststring$teststring
+=======
+		 = "XX$teststring$teststring"; } >/dev/null 2>&1 &&
+	      test $i != 17 # 1/2 MB should be enough
+      do
+	i=`expr $i + 1`
+	teststring=$teststring$teststring
+>>>>>>> config
       done
       # Only check the string length outside the loop.
       lt_cv_sys_max_cmd_len=`expr "X$teststring" : ".*" 2>&1`
@@ -6759,7 +6877,11 @@ else
 -dynamiclib -Wl,-single_module conftest.c" >&5
 	$LTCC $LTCFLAGS $LDFLAGS -o libconftest.dylib \
 	  -dynamiclib -Wl,-single_module conftest.c 2>conftest.err
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         _lt_result=$?
+=======
+	_lt_result=$?
+>>>>>>> config
 	if test -f libconftest.dylib && test ! -s conftest.err && test $_lt_result = 0; then
 	  lt_cv_apple_cc_single_mod=yes
 	else
@@ -6988,13 +7110,21 @@ done
 
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         enable_dlopen=no
+=======
+	enable_dlopen=no
+>>>>>>> config
 
 
   enable_win32_dll=no
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             # Check whether --enable-shared was given.
+=======
+	    # Check whether --enable-shared was given.
+>>>>>>> config
 if test "${enable_shared+set}" = set; then :
   enableval=$enable_shared; p=${PACKAGE-default}
     case $enableval in
@@ -7536,6 +7666,7 @@ $as_echo_n "checking for $compiler option to produce PIC... " >&6; }
     amigaos*)
       case $host_cpu in
       powerpc)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             # see comment about AmigaOS4 .so support
             lt_prog_compiler_pic='-fPIC'
         ;;
@@ -7545,6 +7676,17 @@ $as_echo_n "checking for $compiler option to produce PIC... " >&6; }
             # like `-m68040'.
             lt_prog_compiler_pic='-m68020 -resident32 -malways-restore-a4'
         ;;
+=======
+	    # see comment about AmigaOS4 .so support
+	    lt_prog_compiler_pic='-fPIC'
+	;;
+      m68k)
+	    # FIXME: we need at least 68020 code to build shared libraries, but
+	    # adding the `-m68020' flag to GCC prevents building anything better,
+	    # like `-m68040'.
+	    lt_prog_compiler_pic='-m68020 -resident32 -malways-restore-a4'
+	;;
+>>>>>>> config
       esac
       ;;
 
@@ -7656,14 +7798,22 @@ $as_echo_n "checking for $compiler option to produce PIC... " >&6; }
 	lt_prog_compiler_wl='-Wl,'
 	lt_prog_compiler_pic='-KPIC'
 	lt_prog_compiler_static='-static'
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ;;
+=======
+	;;
+>>>>>>> config
       # icc used to be incompatible with GCC.
       # ICC 10 doesn't accept -KPIC any more.
       icc* | ifort*)
 	lt_prog_compiler_wl='-Wl,'
 	lt_prog_compiler_pic='-fPIC'
 	lt_prog_compiler_static='-static'
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ;;
+=======
+	;;
+>>>>>>> config
       # Lahey Fortran 8.1.
       lf95*)
 	lt_prog_compiler_wl='-Wl,'
@@ -7671,17 +7821,30 @@ $as_echo_n "checking for $compiler option to produce PIC... " >&6; }
 	lt_prog_compiler_static='--static'
 	;;
       pgcc* | pgf77* | pgf90* | pgf95*)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         # Portland Group compilers (*not* the Pentium gcc compiler,
+=======
+	# Portland Group compilers (*not* the Pentium gcc compiler,
+>>>>>>> config
 	# which looks to be a dead project)
 	lt_prog_compiler_wl='-Wl,'
 	lt_prog_compiler_pic='-fpic'
 	lt_prog_compiler_static='-Bstatic'
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ;;
       ccc*)
         lt_prog_compiler_wl='-Wl,'
         # All Alpha code is PIC.
         lt_prog_compiler_static='-non_shared'
         ;;
+=======
+	;;
+      ccc*)
+	lt_prog_compiler_wl='-Wl,'
+	# All Alpha code is PIC.
+	lt_prog_compiler_static='-non_shared'
+	;;
+>>>>>>> config
       xl*)
 	# IBM XL C 8.0/Fortran 10.1 on PPC
 	lt_prog_compiler_wl='-Wl,'
@@ -7878,7 +8041,11 @@ else
        $ECHO "X$_lt_linker_boilerplate" | $Xsed -e '/^$/d' > conftest.exp
        $SED '/^$/d; /^ *+/d' conftest.err >conftest.er2
        if diff conftest.exp conftest.er2 >/dev/null; then
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          lt_cv_prog_compiler_static_works=yes
+=======
+	 lt_cv_prog_compiler_static_works=yes
+>>>>>>> config
        fi
      else
        lt_cv_prog_compiler_static_works=yes
@@ -8147,6 +8314,7 @@ _LT_EOF
     amigaos*)
       case $host_cpu in
       powerpc)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             # see comment about AmigaOS4 .so support
             archive_cmds='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
             archive_expsym_cmds=''
@@ -8156,6 +8324,17 @@ _LT_EOF
             hardcode_libdir_flag_spec='-L$libdir'
             hardcode_minus_L=yes
         ;;
+=======
+	    # see comment about AmigaOS4 .so support
+	    archive_cmds='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
+	    archive_expsym_cmds=''
+	;;
+      m68k)
+	    archive_cmds='$RM $output_objdir/a2ixlibrary.data~$ECHO "#define NAME $libname" > $output_objdir/a2ixlibrary.data~$ECHO "#define LIBRARY_ID 1" >> $output_objdir/a2ixlibrary.data~$ECHO "#define VERSION $major" >> $output_objdir/a2ixlibrary.data~$ECHO "#define REVISION $revision" >> $output_objdir/a2ixlibrary.data~$AR $AR_FLAGS $lib $libobjs~$RANLIB $lib~(cd $output_objdir && a2ixlibrary -32)'
+	    hardcode_libdir_flag_spec='-L$libdir'
+	    hardcode_minus_L=yes
+	;;
+>>>>>>> config
       esac
       ;;
 
@@ -8180,7 +8359,11 @@ _LT_EOF
       export_symbols_cmds='$NM $libobjs $convenience | $global_symbol_pipe | $SED -e '\''/^[BCDGRS][ ]/s/.*[ ]\([^ ]*\)/\1 DATA/'\'' | $SED -e '\''/^[AITW][ ]/s/.*[ ]//'\'' | sort | uniq > $export_symbols'
 
       if $LD --help 2>&1 | $GREP 'auto-import' > /dev/null; then
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         archive_cmds='$CC -shared $libobjs $deplibs $compiler_flags -o $output_objdir/$soname ${wl}--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
+=======
+	archive_cmds='$CC -shared $libobjs $deplibs $compiler_flags -o $output_objdir/$soname ${wl}--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
+>>>>>>> config
 	# If the export-symbols file already is a .def file (1st line
 	# is EXPORTS), use it as is; otherwise, prepend...
 	archive_expsym_cmds='if test "x`$SED 1q $export_symbols`" = xEXPORTS; then
@@ -8223,7 +8406,11 @@ _LT_EOF
 	tmp_addflag=
 	tmp_sharedflag='-shared'
 	case $cc_basename,$host_cpu in
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         pgcc*)				# Portland Group C compiler
+=======
+	pgcc*)				# Portland Group C compiler
+>>>>>>> config
 	  whole_archive_flag_spec='${wl}--whole-archive`for conv in $convenience\"\"; do test  -n \"$conv\" && new_convenience=\"$new_convenience,$conv\"; done; $ECHO \"$new_convenience\"` ${wl}--no-whole-archive'
 	  tmp_addflag=' $pic_flag'
 	  ;;
@@ -8253,12 +8440,21 @@ _LT_EOF
 	esac
 	archive_cmds='$CC '"$tmp_sharedflag""$tmp_addflag"' $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         if test "x$supports_anon_versioning" = xyes; then
           archive_expsym_cmds='echo "{ global:" > $output_objdir/$libname.ver~
 	    cat $export_symbols | sed -e "s/\(.*\)/\1;/" >> $output_objdir/$libname.ver~
 	    echo "local: *; };" >> $output_objdir/$libname.ver~
 	    $CC '"$tmp_sharedflag""$tmp_addflag"' $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname ${wl}-version-script ${wl}$output_objdir/$libname.ver -o $lib'
         fi
+=======
+	if test "x$supports_anon_versioning" = xyes; then
+	  archive_expsym_cmds='echo "{ global:" > $output_objdir/$libname.ver~
+	    cat $export_symbols | sed -e "s/\(.*\)/\1;/" >> $output_objdir/$libname.ver~
+	    echo "local: *; };" >> $output_objdir/$libname.ver~
+	    $CC '"$tmp_sharedflag""$tmp_addflag"' $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname ${wl}-version-script ${wl}$output_objdir/$libname.ver -o $lib'
+	fi
+>>>>>>> config
 
 	case $cc_basename in
 	xlf*)
@@ -8276,7 +8472,11 @@ _LT_EOF
 	  ;;
 	esac
       else
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ld_shlibs=no
+=======
+	ld_shlibs=no
+>>>>>>> config
       fi
       ;;
 
@@ -8313,7 +8513,11 @@ _LT_EOF
 
     sysv5* | sco3.2v5* | sco5v6* | unixware* | OpenUNIX*)
       case `$LD -v 2>&1` in
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         *\ [01].* | *\ 2.[0-9].* | *\ 2.1[0-5].*)
+=======
+	*\ [01].* | *\ 2.[0-9].* | *\ 2.1[0-5].*)
+>>>>>>> config
 	ld_shlibs=no
 	cat <<_LT_EOF 1>&2
 
@@ -8478,9 +8682,15 @@ _LT_EOF
 	# Warning - without using the other runtime loading flags (-brtl),
 	# -berok will link without error, but may produce a broken library.
 	allow_undefined_flag='-berok'
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         # Determine the default libpath from the value encoded in an
         # empty executable.
         cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+=======
+	# Determine the default libpath from the value encoded in an
+	# empty executable.
+	cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+>>>>>>> config
 /* end confdefs.h.  */
 
 int
@@ -8510,8 +8720,13 @@ rm -f core conftest.err conftest.$ac_objext \
     conftest$ac_exeext conftest.$ac_ext
 if test -z "$aix_libpath"; then aix_libpath="/usr/lib:/lib"; fi
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         hardcode_libdir_flag_spec='${wl}-blibpath:$libdir:'"$aix_libpath"
         archive_expsym_cmds='$CC -o $output_objdir/$soname $libobjs $deplibs '"\${wl}$no_entry_flag"' $compiler_flags `if test "x${allow_undefined_flag}" != "x"; then $ECHO "X${wl}${allow_undefined_flag}" | $Xsed; else :; fi` '"\${wl}$exp_sym_flag:\$export_symbols $shared_flag"
+=======
+	hardcode_libdir_flag_spec='${wl}-blibpath:$libdir:'"$aix_libpath"
+	archive_expsym_cmds='$CC -o $output_objdir/$soname $libobjs $deplibs '"\${wl}$no_entry_flag"' $compiler_flags `if test "x${allow_undefined_flag}" != "x"; then $ECHO "X${wl}${allow_undefined_flag}" | $Xsed; else :; fi` '"\${wl}$exp_sym_flag:\$export_symbols $shared_flag"
+>>>>>>> config
       else
 	if test "$host_cpu" = ia64; then
 	  hardcode_libdir_flag_spec='${wl}-R $libdir:/usr/lib:/lib'
@@ -8567,6 +8782,7 @@ if test -z "$aix_libpath"; then aix_libpath="/usr/lib:/lib"; fi
     amigaos*)
       case $host_cpu in
       powerpc)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             # see comment about AmigaOS4 .so support
             archive_cmds='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
             archive_expsym_cmds=''
@@ -8576,6 +8792,17 @@ if test -z "$aix_libpath"; then aix_libpath="/usr/lib:/lib"; fi
             hardcode_libdir_flag_spec='-L$libdir'
             hardcode_minus_L=yes
         ;;
+=======
+	    # see comment about AmigaOS4 .so support
+	    archive_cmds='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
+	    archive_expsym_cmds=''
+	;;
+      m68k)
+	    archive_cmds='$RM $output_objdir/a2ixlibrary.data~$ECHO "#define NAME $libname" > $output_objdir/a2ixlibrary.data~$ECHO "#define LIBRARY_ID 1" >> $output_objdir/a2ixlibrary.data~$ECHO "#define VERSION $major" >> $output_objdir/a2ixlibrary.data~$ECHO "#define REVISION $revision" >> $output_objdir/a2ixlibrary.data~$AR $AR_FLAGS $lib $libobjs~$RANLIB $lib~(cd $output_objdir && a2ixlibrary -32)'
+	    hardcode_libdir_flag_spec='-L$libdir'
+	    hardcode_minus_L=yes
+	;;
+>>>>>>> config
       esac
       ;;
 
@@ -8757,9 +8984,15 @@ if test -z "$aix_libpath"; then aix_libpath="/usr/lib:/lib"; fi
 	# Try to use the -exported_symbol ld option, if it does not
 	# work, assume that -exports_file does not work either and
 	# implicitly export all symbols.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         save_LDFLAGS="$LDFLAGS"
         LDFLAGS="$LDFLAGS -shared ${wl}-exported_symbol ${wl}foo ${wl}-update_registry ${wl}/dev/null"
         cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+=======
+	save_LDFLAGS="$LDFLAGS"
+	LDFLAGS="$LDFLAGS -shared ${wl}-exported_symbol ${wl}foo ${wl}-update_registry ${wl}/dev/null"
+	cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+>>>>>>> config
 /* end confdefs.h.  */
 int foo(void) {}
 _ACEOF
@@ -8769,7 +9002,11 @@ if ac_fn_c_try_link "$LINENO"; then :
 fi
 rm -f core conftest.err conftest.$ac_objext \
     conftest$ac_exeext conftest.$ac_ext
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         LDFLAGS="$save_LDFLAGS"
+=======
+	LDFLAGS="$save_LDFLAGS"
+>>>>>>> config
       else
 	archive_cmds='$CC -shared $libobjs $deplibs $compiler_flags -soname $soname `test -n "$verstring" && $ECHO "X-set_version $verstring" | $Xsed` -update_registry ${output_objdir}/so_locations -o $lib'
 	archive_expsym_cmds='$CC -shared $libobjs $deplibs $compiler_flags -soname $soname `test -n "$verstring" && $ECHO "X-set_version $verstring" | $Xsed` -update_registry ${output_objdir}/so_locations -exports_file $export_symbols -o $lib'
@@ -8937,7 +9174,11 @@ rm -f core conftest.err conftest.$ac_objext \
 	  archive_cmds='$LD -G -o $lib $libobjs $deplibs $linker_flags'
 	  reload_cmds='$CC -r -o $output$reload_objs'
 	  hardcode_direct=no
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ;;
+=======
+	;;
+>>>>>>> config
 	motorola)
 	  archive_cmds='$LD -G -h $soname -o $lib $libobjs $deplibs $linker_flags'
 	  hardcode_direct=no #Motorola manual says yes, but my tests say they lie
@@ -9071,6 +9312,7 @@ $as_echo_n "checking whether -lc should be explicitly linked in... " >&6; }
   ac_status=$?
   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
   test $ac_status = 0; } 2>conftest.err; then
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         soname=conftest
         lib=conftest
         libobjs=conftest.$ac_objext
@@ -9085,10 +9327,27 @@ $as_echo_n "checking whether -lc should be explicitly linked in... " >&6; }
         lt_save_allow_undefined_flag=$allow_undefined_flag
         allow_undefined_flag=
         if { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$archive_cmds 2\>\&1 \| $GREP \" -lc \" \>/dev/null 2\>\&1\""; } >&5
+=======
+	soname=conftest
+	lib=conftest
+	libobjs=conftest.$ac_objext
+	deplibs=
+	wl=$lt_prog_compiler_wl
+	pic_flag=$lt_prog_compiler_pic
+	compiler_flags=-v
+	linker_flags=-v
+	verstring=
+	output_objdir=.
+	libname=conftest
+	lt_save_allow_undefined_flag=$allow_undefined_flag
+	allow_undefined_flag=
+	if { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$archive_cmds 2\>\&1 \| $GREP \" -lc \" \>/dev/null 2\>\&1\""; } >&5
+>>>>>>> config
   (eval $archive_cmds 2\>\&1 \| $GREP \" -lc \" \>/dev/null 2\>\&1) 2>&5
   ac_status=$?
   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
   test $ac_status = 0; }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         then
 	  archive_cmds_need_lc=no
         else
@@ -9097,6 +9356,16 @@ $as_echo_n "checking whether -lc should be explicitly linked in... " >&6; }
         allow_undefined_flag=$lt_save_allow_undefined_flag
       else
         cat conftest.err 1>&5
+=======
+	then
+	  archive_cmds_need_lc=no
+	else
+	  archive_cmds_need_lc=yes
+	fi
+	allow_undefined_flag=$lt_save_allow_undefined_flag
+      else
+	cat conftest.err 1>&5
+>>>>>>> config
       fi
       $RM conftest*
       { $as_echo "$as_me:${as_lineno-$LINENO}: result: $archive_cmds_need_lc" >&5
@@ -9300,6 +9569,7 @@ BEGIN {RS=" "; FS="/|\n";} {
   for (lt_i = NF; lt_i > 0; lt_i--) {
     if ($lt_i != "" && $lt_i != ".") {
       if ($lt_i == "..") {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         lt_count++;
       } else {
         if (lt_count == 0) {
@@ -9307,6 +9577,15 @@ BEGIN {RS=" "; FS="/|\n";} {
         } else {
           lt_count--;
         }
+=======
+	lt_count++;
+      } else {
+	if (lt_count == 0) {
+	  lt_foo="/" $lt_i lt_foo;
+	} else {
+	  lt_count--;
+	}
+>>>>>>> config
       }
     }
   }
@@ -9443,7 +9722,11 @@ cygwin* | mingw* | pw32* | cegcc*)
       $install_prog $dir/$dlname \$dldir/$dlname~
       chmod a+x \$dldir/$dlname~
       if test -n '\''$stripme'\'' && test -n '\''$striplib'\''; then
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         eval '\''$striplib \$dldir/$dlname'\'' || exit \$?;
+=======
+	eval '\''$striplib \$dldir/$dlname'\'' || exit \$?;
+>>>>>>> config
       fi'
     postuninstall_cmds='dldll=`$SHELL 2>&1 -c '\''. $file; echo \$dlname'\''`~
       dlpath=$dir/\$dldll~
@@ -9461,6 +9744,7 @@ cygwin* | mingw* | pw32* | cegcc*)
       soname_spec='${libname}`echo ${release} | $SED -e 's/[.]/-/g'`${versuffix}${shared_ext}'
       sys_lib_search_path_spec=`$CC -print-search-dirs | $GREP "^libraries:" | $SED -e "s/^libraries://" -e "s,=/,/,g"`
       if $ECHO "$sys_lib_search_path_spec" | $GREP ';[c-zC-Z]:/' >/dev/null; then
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         # It is most probably a Windows format PATH printed by
         # mingw gcc, but we are running on Cygwin. Gcc prints its search
         # path with ; separators, and with drive letters. We can handle the
@@ -9470,6 +9754,17 @@ cygwin* | mingw* | pw32* | cegcc*)
         sys_lib_search_path_spec=`$ECHO "$sys_lib_search_path_spec" | $SED -e 's/;/ /g'`
       else
         sys_lib_search_path_spec=`$ECHO "$sys_lib_search_path_spec" | $SED  -e "s/$PATH_SEPARATOR/ /g"`
+=======
+	# It is most probably a Windows format PATH printed by
+	# mingw gcc, but we are running on Cygwin. Gcc prints its search
+	# path with ; separators, and with drive letters. We can handle the
+	# drive letters (cygwin fileutils understands them), so leave them,
+	# especially as we might pass files found there to a mingw objdump,
+	# which wouldn't understand a cygwinified path. Ahh.
+	sys_lib_search_path_spec=`$ECHO "$sys_lib_search_path_spec" | $SED -e 's/;/ /g'`
+      else
+	sys_lib_search_path_spec=`$ECHO "$sys_lib_search_path_spec" | $SED  -e "s/$PATH_SEPARATOR/ /g"`
+>>>>>>> config
       fi
       ;;
     pw32*)
@@ -9885,7 +10180,11 @@ sysv5* | sco3.2v5* | sco5v6* | unixware* | OpenUNIX* | sysv4*uw2*)
     sys_lib_search_path_spec='/usr/ccs/lib /usr/lib'
     case $host_os in
       sco3.2v5*)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         sys_lib_search_path_spec="$sys_lib_search_path_spec /lib"
+=======
+	sys_lib_search_path_spec="$sys_lib_search_path_spec /lib"
+>>>>>>> config
 	;;
     esac
   fi
@@ -10340,7 +10639,11 @@ $as_echo_n "checking whether a program can dlopen itself... " >&6; }
 if test "${lt_cv_dlopen_self+set}" = set; then :
   $as_echo_n "(cached) " >&6
 else
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   	  if test "$cross_compiling" = yes; then :
+=======
+	  if test "$cross_compiling" = yes; then :
+>>>>>>> config
   lt_cv_dlopen_self=cross
 else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
@@ -10436,7 +10739,11 @@ $as_echo_n "checking whether a statically linked program can dlopen itself... " 
 if test "${lt_cv_dlopen_self_static+set}" = set; then :
   $as_echo_n "(cached) " >&6
 else
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   	  if test "$cross_compiling" = yes; then :
+=======
+	  if test "$cross_compiling" = yes; then :
+>>>>>>> config
   lt_cv_dlopen_self_static=cross
 else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
@@ -10661,7 +10968,11 @@ CC="$lt_save_CC"
 
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ac_config_commands="$ac_config_commands libtool"
+=======
+	ac_config_commands="$ac_config_commands libtool"
+>>>>>>> config
 
 
 
@@ -10836,7 +11147,11 @@ if test "${ac_cv_c_c99inline+set}" = set; then :
   $as_echo_n "(cached) " >&6
 else
   ac_cv_c_c99inline=no
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+=======
+	    cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+>>>>>>> config
 /* end confdefs.h.  */
 extern inline void* foo() { foo(); return &foo ; };
 int
@@ -10851,8 +11166,13 @@ if ac_fn_c_try_compile "$LINENO"; then :
   ac_cv_c_c99inline="yes"
 fi
 rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             if test "$ac_cv_c_c99inline" != no ; then
             cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+=======
+	    if test "$ac_cv_c_c99inline" != no ; then
+	    cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+>>>>>>> config
 /* end confdefs.h.  */
 inline void* foo() { foo(); return &foo ; };
 int
@@ -11207,7 +11527,11 @@ case "$host" in
 $as_echo "avoiding OpenBSD system log1p - using gsl version" >&6; }
        ;;
     *)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ac_fn_c_check_decl "$LINENO" "log1p" "ac_cv_have_decl_log1p" "#include <math.h>
+=======
+	ac_fn_c_check_decl "$LINENO" "log1p" "ac_cv_have_decl_log1p" "#include <math.h>
+>>>>>>> config
 "
 if test "x$ac_cv_have_decl_log1p" = x""yes; then :
   ac_have_decl=1
@@ -11269,6 +11593,7 @@ if test "${ac_cv_c_extended_fp+set}" = set; then :
 else
   case "$host" in
     *sparc*-*-*)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ac_cv_c_extended_fp=no
         ;;
     *powerpc*-*-*)
@@ -11292,6 +11617,31 @@ else
     *)
         ac_cv_c_extended_fp=unknown
         ;;
+=======
+	ac_cv_c_extended_fp=no
+	;;
+    *powerpc*-*-*)
+	ac_cv_c_extended_fp=no
+	;;
+    *hppa*-*-*)
+	ac_cv_c_extended_fp=no
+	;;
+    *alpha*-*-*)
+	ac_cv_c_extended_fp=no
+	;;
+    *68k*-*-*)
+	ac_cv_c_extended_fp=yes
+	;;
+    *86-*-*)
+	ac_cv_c_extended_fp=yes
+	;;
+    x86_64-*-*)
+	ac_cv_c_extended_fp=yes
+	;;
+    *)
+	ac_cv_c_extended_fp=unknown
+	;;
+>>>>>>> config
 esac
 
 fi
@@ -11311,6 +11661,7 @@ if test "${ac_cv_c_ieee_interface+set}" = set; then :
 else
   case "$host" in
     sparc-*-linux*)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ac_cv_c_ieee_interface=gnusparc
         ;;
     m68k-*-linux*)
@@ -11364,6 +11715,61 @@ else
     *)
         ac_cv_c_ieee_interface=unknown
         ;;
+=======
+	ac_cv_c_ieee_interface=gnusparc
+	;;
+    m68k-*-linux*)
+	ac_cv_c_ieee_interface=gnum68k
+	;;
+    powerpc-*-linux*)
+	ac_cv_c_ieee_interface=gnuppc
+	;;
+    *86-*-gnu | *86_64-*-gnu | *86-*-linux* | *86_64-*-linux*)
+	ac_cv_c_ieee_interface=gnux86
+	;;
+    *-*-sunos4*)
+	ac_cv_c_ieee_interface=sunos4
+	;;
+    *-*-solaris*)
+	ac_cv_c_ieee_interface=solaris
+	;;
+    *-*-hpux11*)
+	ac_cv_c_ieee_interface=hpux11
+	;;
+    *-*-hpux*)
+	ac_cv_c_ieee_interface=hpux
+	;;
+    *-*-osf*)
+	ac_cv_c_ieee_interface=tru64
+	;;
+    *-*-aix*)
+	ac_cv_c_ieee_interface=aix
+	;;
+    *-*-irix*)
+	ac_cv_c_ieee_interface=irix
+	;;
+    powerpc-*-*darwin*)
+	ac_cv_c_ieee_interface=darwin
+	;;
+    *86-*-*darwin*)
+	ac_cv_c_ieee_interface=darwin86
+	;;
+    *-*-*netbsd*)
+	ac_cv_c_ieee_interface=netbsd
+	;;
+    *-*-*openbsd*)
+	ac_cv_c_ieee_interface=openbsd
+	;;
+    *-*-*bsd*)
+	ac_cv_c_ieee_interface=freebsd
+	;;
+    *-*-os2*)
+	ac_cv_c_ieee_interface=os2emx
+	;;
+    *)
+	ac_cv_c_ieee_interface=unknown
+	;;
+>>>>>>> config
 esac
 
 fi
@@ -11414,7 +11820,11 @@ else
   ac_cv_c_fpu_sse=no
     if test "$cross_compiling" = yes; then :
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+=======
+	cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+>>>>>>> config
 /* end confdefs.h.  */
 
 #include <stdlib.h>
@@ -11505,6 +11915,7 @@ else
 
 case "$host" in
     alpha*-*-*)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         if test X"$GCC" = Xyes ; then
             ieee_flags='-mieee -mfp-rounding-mode=d'
         else
@@ -11512,6 +11923,15 @@ case "$host" in
             ieee_flags='-ieee -fprm d'
         fi
         ;;
+=======
+	if test X"$GCC" = Xyes ; then
+	    ieee_flags='-mieee -mfp-rounding-mode=d'
+	else
+	    # This assumes Compaq's C compiler.
+	    ieee_flags='-ieee -fprm d'
+	fi
+	;;
+>>>>>>> config
 esac
 if test X"$ieee_flags" != X ; then
   CFLAGS="$ieee_flags $CFLAGS"
@@ -12220,6 +12640,7 @@ Usage: $0 [OPTION]... [TAG]...
   -V, --version    print version number and configuration settings, then exit
       --config     print configuration, then exit
   -q, --quiet, --silent
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                    do not print progress messages
   -d, --debug      don't remove temporary files
       --recheck    update $as_me by reconfiguring in the same conditions
@@ -12227,6 +12648,15 @@ Usage: $0 [OPTION]... [TAG]...
                    instantiate the configuration file FILE
       --header=FILE[:TEMPLATE]
                    instantiate the configuration header FILE
+=======
+		   do not print progress messages
+  -d, --debug      don't remove temporary files
+      --recheck    update $as_me by reconfiguring in the same conditions
+      --file=FILE[:TEMPLATE]
+		   instantiate the configuration file FILE
+      --header=FILE[:TEMPLATE]
+		   instantiate the configuration header FILE
+>>>>>>> config
 
 Configuration files:
 $config_files
@@ -13909,9 +14339,15 @@ func_stripname ()
 {
   case ${2} in
     .*) func_stripname_result=`$ECHO "X${3}" \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
            | $Xsed -e "s%^${1}%%" -e "s%\\\\${2}\$%%"`;;
     *)  func_stripname_result=`$ECHO "X${3}" \
            | $Xsed -e "s%^${1}%%" -e "s%${2}\$%%"`;;
+=======
+	   | $Xsed -e "s%^${1}%%" -e "s%\\\\${2}\$%%"`;;
+    *)  func_stripname_result=`$ECHO "X${3}" \
+	   | $Xsed -e "s%^${1}%%" -e "s%${2}\$%%"`;;
+>>>>>>> config
   esac
 }
 
@@ -14026,4 +14462,7 @@ if test -n "$ac_unrecognized_opts" && test "$enable_option_checking" != no; then
   { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: unrecognized options: $ac_unrecognized_opts" >&5
 $as_echo "$as_me: WARNING: unrecognized options: $ac_unrecognized_opts" >&2;}
 fi
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

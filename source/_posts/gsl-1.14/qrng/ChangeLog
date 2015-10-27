@@ -39,5 +39,9 @@ Mon Apr 22 19:20:05 2002  Brian Gough  <bjg@network-theory.co.uk>
 Mon Oct 23 19:59:46 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* qrng.c (gsl_qrng_get): use an array type for the array
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	arguments, rather than a pointer
 
+=======
+	arguments, rather than a pointer
+>>>>>>> config

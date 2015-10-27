@@ -15,7 +15,11 @@ higher-level interface for operations on GSL vectors and matrices.
 Users who are interested in simple operations on GSL vector and matrix
 objects should use the high-level layer described
 in this chapter.  The functions are declared in the file
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @file{gsl_blas.h} and should satisfy the needs of most users.  
+=======
+@file{gsl_blas.h} and should satisfy the needs of most users.
+>>>>>>> config
 
 Note that GSL matrices are implemented using dense-storage so the
 interface only includes the corresponding dense-storage @sc{blas}
@@ -27,7 +31,11 @@ strides as specified in the @sc{blas} standard.@footnote{In the low-level
 @sc{cblas} interface, a negative stride accesses the vector elements
 in reverse order, i.e. the @math{i}-th element is given by
 @math{(N-i)*|incx|} for @math{incx < 0}.}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  
+=======
+
+>>>>>>> config
 The interface for the @code{gsl_cblas} layer is specified in the file
 @file{gsl_cblas.h}.  This interface corresponds to the @sc{blas} Technical
 Forum's standard for the C interface to legacy @sc{blas}
@@ -92,7 +100,11 @@ hermitian band
 @item HP
 hermitian packed
 @item TR
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 triangular 
+=======
+triangular
+>>>>>>> config
 @item TB
 triangular band
 @item TP
@@ -120,12 +132,21 @@ general matrix-matrix multiply'' and @sc{zgemm} stands for
 
 Note that the vector and matrix arguments to BLAS functions must not
 be aliased, as the results are undefined when the underlying arrays
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 overlap (@pxref{Aliasing of arrays}). 
 
 @menu
 * GSL BLAS Interface::          
 * BLAS Examples::               
 * BLAS References and Further Reading::  
+=======
+overlap (@pxref{Aliasing of arrays}).
+
+@menu
+* GSL BLAS Interface::
+* BLAS Examples::
+* BLAS References and Further Reading::
+>>>>>>> config
 @end menu
 
 @node GSL BLAS Interface
@@ -142,6 +163,7 @@ functionality is given in the file @file{gsl_blas.h}.
 @comment CblasLeft, CblasRight
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Level 1 GSL BLAS Interface::  
 * Level 2 GSL BLAS Interface::  
 * Level 3 GSL BLAS Interface::  
@@ -149,6 +171,15 @@ functionality is given in the file @file{gsl_blas.h}.
 
 @node Level 1 GSL BLAS Interface
 @subsection Level 1 
+=======
+* Level 1 GSL BLAS Interface::
+* Level 2 GSL BLAS Interface::
+* Level 3 GSL BLAS Interface::
+@end menu
+
+@node Level 1 GSL BLAS Interface
+@subsection Level 1
+>>>>>>> config
 
 @deftypefun int gsl_blas_sdsdot (float @var{alpha}, const gsl_vector_float * @var{x}, const gsl_vector_float * @var{y}, float * @var{result})
 @cindex DOT, Level-1 BLAS
@@ -179,7 +210,11 @@ y} for the vectors @var{x} and @var{y}, returning the result in
 @deftypefun float gsl_blas_snrm2 (const gsl_vector_float * @var{x})
 @deftypefunx double gsl_blas_dnrm2 (const gsl_vector * @var{x})
 @cindex NRM2, Level-1 BLAS
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 These functions compute the Euclidean norm 
+=======
+These functions compute the Euclidean norm
+>>>>>>> config
 @c{$||x||_2 = \sqrt{\sum x_i^2}$}
 @math{||x||_2 = \sqrt @{\sum x_i^2@}} of the vector @var{x}.
 @end deftypefun
@@ -212,7 +247,11 @@ elements of the vector @var{x}.
 @deftypefun float gsl_blas_scasum (const gsl_vector_complex_float * @var{x})
 @deftypefunx double gsl_blas_dzasum (const gsl_vector_complex * @var{x})
 These functions compute the sum of the magnitudes of the real and
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 imaginary parts of the complex vector @var{x}, 
+=======
+imaginary parts of the complex vector @var{x},
+>>>>>>> config
 @c{$\sum \left( |\Re(x_i)| + |\Im(x_i)| \right)$}
 @math{\sum |\Re(x_i)| + |\Im(x_i)|}.
 @end deftypefun
@@ -324,11 +363,19 @@ specification, given in the references.
 
 @deftypefun int gsl_blas_srotm (gsl_vector_float * @var{x}, gsl_vector_float * @var{y}, const float @var{P}[])
 @deftypefunx int gsl_blas_drotm (gsl_vector * @var{x}, gsl_vector * @var{y}, const double @var{P}[])
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 These functions apply a modified Givens transformation.  
 @end deftypefun
 
 @node Level 2 GSL BLAS Interface
 @subsection Level 2 
+=======
+These functions apply a modified Givens transformation.
+@end deftypefun
+
+@node Level 2 GSL BLAS Interface
+@subsection Level 2
+>>>>>>> config
 
 @deftypefun int gsl_blas_sgemv (CBLAS_TRANSPOSE_t @var{TransA}, float @var{alpha}, const gsl_matrix_float * @var{A}, const gsl_vector_float * @var{x}, float @var{beta}, gsl_vector_float * @var{y})
 @deftypefunx int gsl_blas_dgemv (CBLAS_TRANSPOSE_t @var{TransA}, double @var{alpha}, const gsl_matrix * @var{A}, const gsl_vector * @var{x}, double @var{beta}, gsl_vector * @var{y})
@@ -347,7 +394,11 @@ These functions compute the matrix-vector product and sum @math{y =
 @deftypefunx int gsl_blas_ctrmv (CBLAS_UPLO_t @var{Uplo}, CBLAS_TRANSPOSE_t @var{TransA}, CBLAS_DIAG_t @var{Diag}, const gsl_matrix_complex_float * @var{A}, gsl_vector_complex_float * @var{x})
 @deftypefunx int gsl_blas_ztrmv (CBLAS_UPLO_t @var{Uplo}, CBLAS_TRANSPOSE_t @var{TransA}, CBLAS_DIAG_t @var{Diag}, const gsl_matrix_complex * @var{A}, gsl_vector_complex * @var{x})
 @cindex TRMV, Level-2 BLAS
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 These functions compute the matrix-vector product 
+=======
+These functions compute the matrix-vector product
+>>>>>>> config
 @math{x = op(A) x} for the triangular matrix @var{A}, where
 @math{op(A) = A}, @math{A^T}, @math{A^H} for @var{TransA} =
 @code{CblasNoTrans}, @code{CblasTrans}, @code{CblasConjTrans}.  When
@@ -533,8 +584,13 @@ not referenced.
 @deftypefunx int gsl_blas_ctrsm (CBLAS_SIDE_t @var{Side}, CBLAS_UPLO_t @var{Uplo}, CBLAS_TRANSPOSE_t @var{TransA}, CBLAS_DIAG_t @var{Diag}, const gsl_complex_float @var{alpha}, const gsl_matrix_complex_float * @var{A}, gsl_matrix_complex_float * @var{B})
 @deftypefunx int gsl_blas_ztrsm (CBLAS_SIDE_t @var{Side}, CBLAS_UPLO_t @var{Uplo}, CBLAS_TRANSPOSE_t @var{TransA}, CBLAS_DIAG_t @var{Diag}, const gsl_complex @var{alpha}, const gsl_matrix_complex * @var{A}, gsl_matrix_complex * @var{B})
 @cindex TRSM, Level-3 BLAS
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 These functions compute the inverse-matrix matrix product 
 @math{B = \alpha op(inv(A))B} for @var{Side} is 
+=======
+These functions compute the inverse-matrix matrix product
+@math{B = \alpha op(inv(A))B} for @var{Side} is
+>>>>>>> config
 @code{CblasLeft} and @math{B = \alpha B op(inv(A))} for
 @var{Side} is @code{CblasRight}.  The matrix @var{A} is triangular and
 @math{op(A) = A}, @math{A^T}, @math{A^H} for @var{TransA} =
@@ -635,12 +691,20 @@ $$
 @example
 [ 0.11 0.12 0.13 ]  [ 1011 1012 ]     [ 367.76 368.12 ]
 [ 0.21 0.22 0.23 ]  [ 1021 1022 ]  =  [ 674.06 674.72 ]
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                     [ 1031 1032 ]
+=======
+		    [ 1031 1032 ]
+>>>>>>> config
 @end example
 
 @end ifinfo
 @noindent
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 The matrices are stored in row major order, according to the C convention 
+=======
+The matrices are stored in row major order, according to the C convention
+>>>>>>> config
 for arrays.
 
 @example

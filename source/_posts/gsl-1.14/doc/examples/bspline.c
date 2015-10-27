@@ -80,10 +80,17 @@ main (void)
 
       /* fill in row i of X */
       for (j = 0; j < ncoeffs; ++j)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double Bj = gsl_vector_get(B, j);
           gsl_matrix_set(X, i, j, Bj);
         }
+=======
+	{
+	  double Bj = gsl_vector_get(B, j);
+	  gsl_matrix_set(X, i, j, Bj);
+	}
+>>>>>>> config
     }
 
   /* do the fit */
@@ -93,8 +100,13 @@ main (void)
   tss = gsl_stats_wtss(w->data, 1, y->data, 1, y->size);
   Rsq = 1.0 - chisq / tss;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   fprintf(stderr, "chisq/dof = %e, Rsq = %f\n", 
                    chisq / dof, Rsq);
+=======
+  fprintf(stderr, "chisq/dof = %e, Rsq = %f\n",
+		   chisq / dof, Rsq);
+>>>>>>> config
 
   /* output the smoothed curve */
   {
@@ -103,9 +115,15 @@ main (void)
     printf("#m=1,S=0\n");
     for (xi = 0.0; xi < 15.0; xi += 0.1)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gsl_bspline_eval(xi, B, bw);
         gsl_multifit_linear_est(B, c, cov, &yi, &yerr);
         printf("%f %f\n", xi, yi);
+=======
+	gsl_bspline_eval(xi, B, bw);
+	gsl_multifit_linear_est(B, c, cov, &yi, &yerr);
+	printf("%f %f\n", xi, yi);
+>>>>>>> config
       }
   }
 

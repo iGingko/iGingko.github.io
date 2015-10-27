@@ -75,9 +75,15 @@ gsl_multiset_fprintf (FILE * stream, const gsl_multiset * c, const char *format)
       int status = fprintf (stream, format, data[i]);
 
       if (status < 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           GSL_ERROR ("fprintf failed", GSL_EFAILED);
         }
+=======
+	{
+	  GSL_ERROR ("fprintf failed", GSL_EFAILED);
+	}
+>>>>>>> config
     }
 
   return GSL_SUCCESS;
@@ -98,15 +104,26 @@ gsl_multiset_fscanf (FILE * stream, gsl_multiset * c)
 
       /* FIXME: what if size_t != unsigned long ???
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          want read in size_t but have to read in unsigned long to avoid
          error from compiler */
+=======
+	 want read in size_t but have to read in unsigned long to avoid
+	 error from compiler */
+>>>>>>> config
 
       int status = fscanf (stream, IN_FORMAT, &j);
 
       if (status != 1)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           GSL_ERROR ("fscanf failed", GSL_EFAILED);
         }
+=======
+	{
+	  GSL_ERROR ("fscanf failed", GSL_EFAILED);
+	}
+>>>>>>> config
 
       data[i] = j;
     }

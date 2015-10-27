@@ -1,17 +1,31 @@
 /* specfunc/gegenbauer.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -125,9 +139,15 @@ gsl_sf_gegenpoly_n_e(int n, double lambda, double x, gsl_sf_result * result)
       double gkm1 = g3.val;
       double gk = 0.0;
       for(k=4; k<=n; k++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gk = (2.0*(k+lambda-1.0)*x*gkm1 - (k+2.0*lambda-2.0)*gkm2) / k;
         gkm2 = gkm1;
         gkm1 = gk;
+=======
+	gk = (2.0*(k+lambda-1.0)*x*gkm1 - (k+2.0*lambda-2.0)*gkm2) / k;
+	gkm2 = gkm1;
+	gkm1 = gk;
+>>>>>>> config
       }
       result->val = gk;
       result->err = 2.0 * GSL_DBL_EPSILON * 0.5 * n * fabs(gk);
@@ -164,7 +184,11 @@ gsl_sf_gegenpoly_array(int nmax, double lambda, double x, double * result_array)
     double term2 = (k+2.0*lambda-2.0)     * result_array[k-2];
     result_array[k] = (term1 - term2) / k;
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   return GSL_SUCCESS;
 }
 

@@ -1,17 +1,31 @@
 /* integration/tests.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -61,7 +75,11 @@ double f7 (double x, void * params) {
 }
 
 /* f8(x) = |x - pi/4|^alpha */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* integ(f8,x,0,1) = 
+=======
+/* integ(f8,x,0,1) =
+>>>>>>> config
    ((1 - pi/4)^(alpha+1) + (pi/4)^(alpha+1))/(alpha + 1) */
 
 double f8 (double x, void * params) {
@@ -94,7 +112,11 @@ double f11 (double x, void * params) {
 }
 
 /* f12(x) = exp(20*(x-1)) * sin(2^alpha * x) */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* integ(f12,x,0,1) = 
+=======
+/* integ(f12,x,0,1) =
+>>>>>>> config
    (20 sin(2^alpha) - 2^alpha cos(2^alpha) + 2^alpha exp(-20))
    /(400 + 4^alpha) */
 
@@ -176,12 +198,18 @@ double f457 (double x, void * params) {
 }
 
 /* f458(x) = 1/(1 + log(x)^2)^2 */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* integ(log(x) f458(x),x,0,1) = (Ci(1) sin(1) + (pi/2 - Si(1)) cos(1))/pi 
                                = -0.1892752 */
+=======
+/* integ(log(x) f458(x),x,0,1) = (Ci(1) sin(1) + (pi/2 - Si(1)) cos(1))/pi
+			       = -0.1892752 */
+>>>>>>> config
 
 double f458 (double x, void * params) {
   params = 0 ;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (x == 0.0) 
     {
       return 0;
@@ -191,6 +219,17 @@ double f458 (double x, void * params) {
       double u = log(x);
       double v = 1 + u * u;
       
+=======
+  if (x == 0.0)
+    {
+      return 0;
+    }
+  else
+    {
+      double u = log(x);
+      double v = 1 + u * u;
+
+>>>>>>> config
       return 1.0 / (v * v) ;
     }
 }

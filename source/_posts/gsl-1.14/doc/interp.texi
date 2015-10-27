@@ -17,6 +17,7 @@ The functions described in this section are declared in the header files
 @file{gsl_interp.h} and @file{gsl_spline.h}.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Introduction to Interpolation::  
 * Interpolation Functions::     
 * Interpolation Types::         
@@ -25,6 +26,16 @@ The functions described in this section are declared in the header files
 * Higher-level Interface::      
 * Interpolation Example programs::  
 * Interpolation References and Further Reading::  
+=======
+* Introduction to Interpolation::
+* Interpolation Functions::
+* Interpolation Types::
+* Index Look-up and Acceleration::
+* Evaluation of Interpolating Functions::
+* Higher-level Interface::
+* Interpolation Example programs::
+* Interpolation References and Further Reading::
+>>>>>>> config
 @end menu
 
 @node Introduction to Interpolation
@@ -54,7 +65,11 @@ data (@var{xa},@var{ya}) where @var{xa} and @var{ya} are arrays of size
 @var{size}.  The interpolation object (@code{gsl_interp}) does not save
 the data arrays @var{xa} and @var{ya} and only stores the static state
 computed from the data.  The @var{xa} data array is always assumed to be
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 strictly ordered, with increasing @math{x} values; 
+=======
+strictly ordered, with increasing @math{x} values;
+>>>>>>> config
 the behavior for other arrangements is not defined.
 @end deftypefun
 
@@ -119,8 +134,13 @@ This function returns the name of the interpolation type used by @var{interp}.
 For example,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 printf ("interp uses '%s' interpolation.\n", 
         gsl_interp_name (interp));
+=======
+printf ("interp uses '%s' interpolation.\n",
+	gsl_interp_name (interp));
+>>>>>>> config
 @end example
 
 @noindent
@@ -193,7 +213,11 @@ point @var{x}, using the interpolation object @var{interp}, data arrays
 These functions return the derivative @var{d} of an interpolated
 function for a given point @var{x}, using the interpolation object
 @var{interp}, data arrays @var{xa} and @var{ya} and the accelerator
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @var{acc}. 
+=======
+@var{acc}.
+>>>>>>> config
 @end deftypefun
 
 @deftypefun double gsl_interp_eval_deriv2 (const gsl_interp * @var{interp}, const double @var{xa}[], const double @var{ya}[], double @var{x}, gsl_interp_accel * @var{acc})
@@ -201,7 +225,11 @@ function for a given point @var{x}, using the interpolation object
 These functions return the second derivative @var{d2} of an interpolated
 function for a given point @var{x}, using the interpolation object
 @var{interp}, data arrays @var{xa} and @var{ya} and the accelerator
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @var{acc}. 
+=======
+@var{acc}.
+>>>>>>> config
 @end deftypefun
 
 @deftypefun double gsl_interp_eval_integ (const gsl_interp * @var{interp}, const double @var{xa}[], const double @var{ya}[], double @var{a}, double @var{b}, gsl_interp_accel * @var{acc})
@@ -287,7 +315,11 @@ interpolation method can be changed simply by varying the first argument of
 @code{gsl_spline_alloc}.
 
 The next program demonstrates a periodic cubic spline with 4 data
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 points.  Note that the first and last points must be supplied with 
+=======
+points.  Note that the first and last points must be supplied with
+>>>>>>> config
 the same y-value for a periodic spline.
 
 @example

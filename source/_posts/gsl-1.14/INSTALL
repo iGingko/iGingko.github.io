@@ -17,7 +17,11 @@ You can then build the library by typing,
 Both static and shared versions of the libraries will be compiled by
 default.  Compilation of shared libraries can be turned off by
 specifying the `--disable-shared' option to `configure', e.g.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   ./configure --disable-shared
 
 If you encounter problems building the library try using the above
@@ -66,7 +70,11 @@ symbols enabled by default (CFLAGS="-g -O2").  It's part of the
 philosophy that anyone should be able to examine any program on the
 system.
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                     ------------------------------
+=======
+		    ------------------------------
+>>>>>>> config
 
 Platform Specific Compilation Notes
 ===================================
@@ -90,10 +98,17 @@ Hints for any platform
 
 1) If there are problems building the library try using
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ./configure --disable-shared
 
 This will turn off the compilation of shared libraries and may allow
 the build process to complete successfully.  
+=======
+	./configure --disable-shared
+
+This will turn off the compilation of shared libraries and may allow
+the build process to complete successfully.
+>>>>>>> config
 
 If you get any problems try this first.
 
@@ -121,7 +136,11 @@ FAIL: y.imag, gsl_complex_poly_complex_eval ({-2.31 + 0.44i, 4.21 - 3.19i, 0.93 
 
 With gcc-2.95/2.96 the tests fail in the eigen/ directory.  This is
 due to a compiler optimization bug which causes errors in the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 manipulation of complex numbers.  
+=======
+manipulation of complex numbers.
+>>>>>>> config
 
 If you encounter these problems, install a different version of gcc.
 
@@ -143,7 +162,11 @@ meantime compile without -g instead if you need to reduce the file size.
     Segmentation fault
 
 This is due to a bug in bash, related to the MAIL environment
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 variable.  To work around it use 
+=======
+variable.  To work around it use
+>>>>>>> config
 
     $ unset ENV MAIL MAILPATH
     $ ./configure
@@ -168,18 +191,30 @@ the tests to fail.
 
 If you get the error,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    ld: 0711-781 ERROR: TOC overflow. 
+=======
+   ld: 0711-781 ERROR: TOC overflow.
+>>>>>>> config
 
 you can try building the library with a larger linker
 table-of-contents by setting LDFLAGS before compilation,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    ./configure LDFLAGS="-Wl,-bbigtoc" 
+=======
+   ./configure LDFLAGS="-Wl,-bbigtoc"
+>>>>>>> config
 
 On older versions of AIX (e.g. 4.2) the size of the command-line is
 limited to 24kb, which causes linking to fail (due to the large number
 of files to be linked). Unfortunately this limit cannot be increased.
 To link the library you may need to use a manual approach of
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 incrementally combining the object files in smaller groups. 
+=======
+incrementally combining the object files in smaller groups.
+>>>>>>> config
 
 On more recent versions of AIX (e.g >= 5.1) use
 
@@ -202,7 +237,11 @@ into a new header file and #include that in fp-aix.c
 Hints for Compaq/DEC Alpha
 ==========================
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 When comping with GCC use the -mieee and -mfp-rounding-mode options 
+=======
+When comping with GCC use the -mieee and -mfp-rounding-mode options
+>>>>>>> config
 as appropriate, e.g.
 
     ./configure CFLAGS="-mieee -mfp-rounding-mode=d -g -O2"
@@ -210,7 +249,11 @@ as appropriate, e.g.
 The library should compile successfully with Compaq's C compiler on
 Tru64 Unix 'cc' using the -std, -ieee and -fprm options.  Use
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     ./configure CC=cc 
+=======
+    ./configure CC=cc
+>>>>>>> config
     make CFLAGS="-std -ieee -fprm d"
 
 to build the library this way.
@@ -226,7 +269,11 @@ The default mode of the HP-UX C compiler does not use ANSI C.
 To compile GSL you need to select ANSI C mode with the following
 configuration option:
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       ./configure CFLAGS="-Ae"  
+=======
+      ./configure CFLAGS="-Ae"
+>>>>>>> config
 
 To switch on optimization use CFLAGS="-Ae -O".
 
@@ -241,9 +288,15 @@ sys/ will fail without this option.  The older deprecated option
 The 32 bit IRIX compiler gives warnings about "long double" not being
 supported. These can be ignored or turned off with,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    ./configure CFLAGS="-woff 728" 
 
 or 
+=======
+   ./configure CFLAGS="-woff 728"
+
+or
+>>>>>>> config
 
    make CFLAGS="-woff 728"
 
@@ -257,7 +310,11 @@ parameter with the systune(1m) command.
 
 For 64-bit compilation use the following options,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   ./configure CC=cc CFLAGS="-64" LDFLAGS="-64" 
+=======
+  ./configure CC=cc CFLAGS="-64" LDFLAGS="-64"
+>>>>>>> config
 
 or for gcc
 
@@ -306,7 +363,11 @@ run).  This problem is fixed in more recent versions of GCC.
 Hints for Microsoft Windows
 ===========================
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 GSL should compile with GCC under Cygwin on Microsoft Windows.  
+=======
+GSL should compile with GCC under Cygwin on Microsoft Windows.
+>>>>>>> config
 There is a gsl package in the standard Cygwin distribution which
 contains any patches needed.
 
@@ -346,8 +407,13 @@ For example,
   $ PATH=/opt/SUNWspro/bin:/usr/ccs/bin:/usr/ucb:$PATH
   $ ./configure CC=cc CFLAGS=-O
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 If you see configure output 
   
+=======
+If you see configure output
+
+>>>>>>> config
    checking for ar... :
 
 it means that 'ar' has not been found, and the library will fail to
@@ -364,7 +430,11 @@ statement in the GSL_ERROR macro.
 If you get errors such as symbol `gsl_complex_rect' is	multiply-defined
 you will need to use ./configure CFLAGS="-DGSL_C99_INLINE -g -O2"
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                     ------------------------------
+=======
+		    ------------------------------
+>>>>>>> config
 
 Further information on the standard GNU installation procedure
 ==============================================================
@@ -547,4 +617,7 @@ operates.
      script, and exit.
 
 `configure' also accepts some other, not widely useful, options.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

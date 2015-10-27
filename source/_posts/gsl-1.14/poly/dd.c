@@ -1,17 +1,31 @@
 /* interpolation/interp_poly.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2001 DAN, HO-JIN
  * 
+=======
+ *
+ * Copyright (C) 2001 DAN, HO-JIN
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -25,7 +39,11 @@
 
 int
 gsl_poly_dd_init (double dd[], const double xa[], const double ya[],
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   size_t size)
+=======
+		  size_t size)
+>>>>>>> config
 {
   size_t i, j;
 
@@ -41,18 +59,30 @@ gsl_poly_dd_init (double dd[], const double xa[], const double ya[],
   for (i = 2; i < size; i++)
     {
       for (j = size - 1; j >= i; j--)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           dd[j] = (dd[j] - dd[j - 1]) / (xa[j] - xa[j - i]);
         }
+=======
+	{
+	  dd[j] = (dd[j] - dd[j - 1]) / (xa[j] - xa[j - i]);
+	}
+>>>>>>> config
     }
 
   return GSL_SUCCESS;
 }
 
 int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_poly_dd_taylor (double c[], double xp, 
                     const double dd[], const double xa[], size_t size,
                     double w[])
+=======
+gsl_poly_dd_taylor (double c[], double xp,
+		    const double dd[], const double xa[], size_t size,
+		    double w[])
+>>>>>>> config
 {
   size_t i, j;
 
@@ -71,6 +101,7 @@ gsl_poly_dd_taylor (double c[], double xp,
       w[i] = -w[i + 1] * (xa[size - 2 - i] - xp);
 
       for (j = i + 1; j < size - 1; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           w[j] = w[j] - w[j + 1] * (xa[size - 2 - i] - xp);
         }
@@ -83,3 +114,17 @@ gsl_poly_dd_taylor (double c[], double xp,
 
   return GSL_SUCCESS;
 }  
+=======
+	{
+	  w[j] = w[j] - w[j + 1] * (xa[size - 2 - i] - xp);
+	}
+
+      for (j = i; j < size; j++)
+	{
+	  c[j - i] += w[j] * dd[size - i - 1];
+	}
+    }
+
+  return GSL_SUCCESS;
+}
+>>>>>>> config

@@ -1,17 +1,31 @@
 /* ode-initval/evolve.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -37,7 +51,11 @@ gsl_odeiv_evolve_alloc (size_t dim)
   if (e == 0)
     {
       GSL_ERROR_NULL ("failed to allocate space for evolve struct",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       GSL_ENOMEM);
+=======
+		      GSL_ENOMEM);
+>>>>>>> config
     }
 
   e->y0 = (double *) malloc (dim * sizeof (double));
@@ -112,10 +130,17 @@ gsl_odeiv_evolve_free (gsl_odeiv_evolve * e)
  */
 int
 gsl_odeiv_evolve_apply (gsl_odeiv_evolve * e,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         gsl_odeiv_control * con,
                         gsl_odeiv_step * step,
                         const gsl_odeiv_system * dydt,
                         double *t, double t1, double *h, double y[])
+=======
+			gsl_odeiv_control * con,
+			gsl_odeiv_step * step,
+			const gsl_odeiv_system * dydt,
+			double *t, double t1, double *h, double y[])
+>>>>>>> config
 {
   const double t0 = *t;
   double h0 = *h;
@@ -146,6 +171,7 @@ gsl_odeiv_evolve_apply (gsl_odeiv_evolve * e,
     {
       int status = GSL_ODEIV_FN_EVAL (dydt, t0, y, e->dydt_in);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       if (status) 
         {
           return status;
@@ -154,6 +180,16 @@ gsl_odeiv_evolve_apply (gsl_odeiv_evolve * e,
 
 try_step:
     
+=======
+      if (status)
+	{
+	  return status;
+	}
+    }
+
+try_step:
+
+>>>>>>> config
   if ((dt >= 0.0 && h0 > dt) || (dt < 0.0 && h0 < dt))
     {
       h0 = dt;
@@ -167,19 +203,33 @@ try_step:
   if (step->type->can_use_dydt_in)
     {
       step_status =
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gsl_odeiv_step_apply (step, t0, h0, y, e->yerr, e->dydt_in,
                               e->dydt_out, dydt);
+=======
+	gsl_odeiv_step_apply (step, t0, h0, y, e->yerr, e->dydt_in,
+			      e->dydt_out, dydt);
+>>>>>>> config
     }
   else
     {
       step_status =
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gsl_odeiv_step_apply (step, t0, h0, y, e->yerr, NULL, e->dydt_out,
                               dydt);
+=======
+	gsl_odeiv_step_apply (step, t0, h0, y, e->yerr, NULL, e->dydt_out,
+			      dydt);
+>>>>>>> config
     }
 
   /* Check for stepper internal failure */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (step_status != GSL_SUCCESS) 
+=======
+  if (step_status != GSL_SUCCESS)
+>>>>>>> config
     {
       *h = h0;  /* notify user of step-size which caused the failure */
       *t = t0;  /* restore original t value */
@@ -204,6 +254,7 @@ try_step:
 
       double h_old = h0;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       const int hadjust_status 
         = gsl_odeiv_control_hadjust (con, step, y, e->yerr, e->dydt_out, &h0);
 
@@ -228,6 +279,32 @@ try_step:
               h0 = h_old; /* keep current step size */
             }
         }
+=======
+      const int hadjust_status
+	= gsl_odeiv_control_hadjust (con, step, y, e->yerr, e->dydt_out, &h0);
+
+      if (hadjust_status == GSL_ODEIV_HADJ_DEC)
+	{
+	  /* Check that the reported status is correct (i.e. an actual
+	     decrease in h0 occured) and the suggested h0 will change
+	     the time by at least 1 ulp */
+
+	  double t_curr = GSL_COERCE_DBL(*t);
+	  double t_next = GSL_COERCE_DBL((*t) + h0);
+
+	  if (fabs(h0) < fabs(h_old) && t_next != t_curr)
+	    {
+	      /* Step was decreased. Undo step, and try again with new h0. */
+	      DBL_MEMCPY (y, e->y0, dydt->dimension);
+	      e->failed_steps++;
+	      goto try_step;
+	    }
+	  else
+	    {
+	      h0 = h_old; /* keep current step size */
+	    }
+	}
+>>>>>>> config
     }
 
   *h = h0;  /* suggest step size for next time-step */

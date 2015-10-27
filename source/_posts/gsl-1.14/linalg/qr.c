@@ -1,17 +1,31 @@
 /* linalg/qr.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -33,7 +47,11 @@
 #include "apply_givens.c"
 
 /* Factorise a general M x N matrix A into
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  *  
+=======
+ *
+>>>>>>> config
  *   A = Q R
  *
  * where Q is orthogonal (M x M) and R is upper triangular (M x N).
@@ -72,6 +90,7 @@ gsl_linalg_QR_decomp (gsl_matrix * A, gsl_vector * tau)
       size_t i;
 
       for (i = 0; i < GSL_MIN (M, N); i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           /* Compute the Householder transformation to reduce the j-th
              column of the matrix to a multiple of the j-th unit vector */
@@ -92,6 +111,28 @@ gsl_linalg_QR_decomp (gsl_matrix * A, gsl_vector * tau)
               gsl_linalg_householder_hm (tau_i, &(c.vector), &(m.matrix));
             }
         }
+=======
+	{
+	  /* Compute the Householder transformation to reduce the j-th
+	     column of the matrix to a multiple of the j-th unit vector */
+
+	  gsl_vector_view c_full = gsl_matrix_column (A, i);
+	  gsl_vector_view c = gsl_vector_subvector (&(c_full.vector), i, M-i);
+
+	  double tau_i = gsl_linalg_householder_transform (&(c.vector));
+
+	  gsl_vector_set (tau, i, tau_i);
+
+	  /* Apply the transformation to the remaining columns and
+	     update the norms */
+
+	  if (i + 1 < N)
+	    {
+	      gsl_matrix_view m = gsl_matrix_submatrix (A, i, i + 1, M - i, N - (i + 1));
+	      gsl_linalg_householder_hm (tau_i, &(c.vector), &(m.matrix));
+	    }
+	}
+>>>>>>> config
 
       return GSL_SUCCESS;
     }
@@ -101,7 +142,11 @@ gsl_linalg_QR_decomp (gsl_matrix * A, gsl_vector * tau)
 
  *  R x = Q^T b
  *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * to obtain x. Based on SLATEC code. 
+=======
+ * to obtain x. Based on SLATEC code.
+>>>>>>> config
  */
 
 int
@@ -137,7 +182,11 @@ gsl_linalg_QR_solve (const gsl_matrix * QR, const gsl_vector * tau, const gsl_ve
 
  *  R x = Q^T b
  *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * to obtain x. Based on SLATEC code. 
+=======
+ * to obtain x. Based on SLATEC code.
+>>>>>>> config
  */
 
 int
@@ -167,11 +216,19 @@ gsl_linalg_QR_svx (const gsl_matrix * QR, const gsl_vector * tau, gsl_vector * x
 }
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* Find the least squares solution to the overdetermined system 
  *
  *   A x = b 
  *  
  * for M >= N using the QR factorization A = Q R. 
+=======
+/* Find the least squares solution to the overdetermined system
+ *
+ *   A x = b
+ *
+ * for M >= N using the QR factorization A = Q R.
+>>>>>>> config
  */
 
 int
@@ -214,7 +271,11 @@ gsl_linalg_QR_lssolve (const gsl_matrix * QR, const gsl_vector * tau, const gsl_
       gsl_blas_dtrsv (CblasUpper, CblasNoTrans, CblasNonUnit, &(R.matrix), x);
 
       /* Compute residual = b - A x = Q (Q^T b - R x) */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
       gsl_vector_set_zero(&(c.vector));
 
       gsl_linalg_QR_Qvec(QR, tau, residual);
@@ -327,7 +388,11 @@ gsl_linalg_R_svx (const gsl_matrix * R, gsl_vector * x)
 
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* Form the product Q^T v  from a QR factorized matrix 
+=======
+/* Form the product Q^T v  from a QR factorized matrix
+>>>>>>> config
  */
 
 int
@@ -351,6 +416,7 @@ gsl_linalg_QR_QTvec (const gsl_matrix * QR, const gsl_vector * tau, gsl_vector *
       /* compute Q^T v */
 
       for (i = 0; i < GSL_MIN (M, N); i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           gsl_vector_const_view c = gsl_matrix_const_column (QR, i);
           gsl_vector_const_view h = gsl_vector_const_subvector (&(c.vector), i, M - i);
@@ -358,6 +424,15 @@ gsl_linalg_QR_QTvec (const gsl_matrix * QR, const gsl_vector * tau, gsl_vector *
           double ti = gsl_vector_get (tau, i);
           gsl_linalg_householder_hv (ti, &(h.vector), &(w.vector));
         }
+=======
+	{
+	  gsl_vector_const_view c = gsl_matrix_const_column (QR, i);
+	  gsl_vector_const_view h = gsl_vector_const_subvector (&(c.vector), i, M - i);
+	  gsl_vector_view w = gsl_vector_subvector (v, i, M - i);
+	  double ti = gsl_vector_get (tau, i);
+	  gsl_linalg_householder_hv (ti, &(h.vector), &(w.vector));
+	}
+>>>>>>> config
       return GSL_SUCCESS;
     }
 }
@@ -384,6 +459,7 @@ gsl_linalg_QR_Qvec (const gsl_matrix * QR, const gsl_vector * tau, gsl_vector * 
       /* compute Q^T v */
 
       for (i = GSL_MIN (M, N); i-- > 0;)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           gsl_vector_const_view c = gsl_matrix_const_column (QR, i);
           gsl_vector_const_view h = gsl_vector_const_subvector (&(c.vector), 
@@ -392,6 +468,16 @@ gsl_linalg_QR_Qvec (const gsl_matrix * QR, const gsl_vector * tau, gsl_vector * 
           double ti = gsl_vector_get (tau, i);
           gsl_linalg_householder_hv (ti, &h.vector, &w.vector);
         }
+=======
+	{
+	  gsl_vector_const_view c = gsl_matrix_const_column (QR, i);
+	  gsl_vector_const_view h = gsl_vector_const_subvector (&(c.vector),
+								i, M - i);
+	  gsl_vector_view w = gsl_vector_subvector (v, i, M - i);
+	  double ti = gsl_vector_get (tau, i);
+	  gsl_linalg_householder_hv (ti, &h.vector, &w.vector);
+	}
+>>>>>>> config
       return GSL_SUCCESS;
     }
 }
@@ -419,6 +505,7 @@ gsl_linalg_QR_QTmat (const gsl_matrix * QR, const gsl_vector * tau, gsl_matrix *
       /* compute Q^T A */
 
       for (i = 0; i < GSL_MIN (M, N); i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           gsl_vector_const_view c = gsl_matrix_const_column (QR, i);
           gsl_vector_const_view h = gsl_vector_const_subvector (&(c.vector), i, M - i);
@@ -426,6 +513,15 @@ gsl_linalg_QR_QTmat (const gsl_matrix * QR, const gsl_vector * tau, gsl_matrix *
           double ti = gsl_vector_get (tau, i);
           gsl_linalg_householder_hm (ti, &(h.vector), &(m.matrix));
         }
+=======
+	{
+	  gsl_vector_const_view c = gsl_matrix_const_column (QR, i);
+	  gsl_vector_const_view h = gsl_vector_const_subvector (&(c.vector), i, M - i);
+	  gsl_matrix_view m = gsl_matrix_submatrix(A, i, 0, M - i, A->size2);
+	  double ti = gsl_vector_get (tau, i);
+	  gsl_linalg_householder_hm (ti, &(h.vector), &(m.matrix));
+	}
+>>>>>>> config
       return GSL_SUCCESS;
     }
 }
@@ -460,6 +556,7 @@ gsl_linalg_QR_unpack (const gsl_matrix * QR, const gsl_vector * tau, gsl_matrix 
       gsl_matrix_set_identity (Q);
 
       for (i = GSL_MIN (M, N); i-- > 0;)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           gsl_vector_const_view c = gsl_matrix_const_column (QR, i);
           gsl_vector_const_view h = gsl_vector_const_subvector (&c.vector,
@@ -468,10 +565,21 @@ gsl_linalg_QR_unpack (const gsl_matrix * QR, const gsl_vector * tau, gsl_matrix 
           double ti = gsl_vector_get (tau, i);
           gsl_linalg_householder_hm (ti, &h.vector, &m.matrix);
         }
+=======
+	{
+	  gsl_vector_const_view c = gsl_matrix_const_column (QR, i);
+	  gsl_vector_const_view h = gsl_vector_const_subvector (&c.vector,
+								i, M - i);
+	  gsl_matrix_view m = gsl_matrix_submatrix (Q, i, i, M - i, M - i);
+	  double ti = gsl_vector_get (tau, i);
+	  gsl_linalg_householder_hm (ti, &h.vector, &m.matrix);
+	}
+>>>>>>> config
 
       /*  Form the right triangular matrix R from a packed QR matrix */
 
       for (i = 0; i < M; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           for (j = 0; j < i && j < N; j++)
             gsl_matrix_set (R, i, j, 0.0);
@@ -479,6 +587,15 @@ gsl_linalg_QR_unpack (const gsl_matrix * QR, const gsl_vector * tau, gsl_matrix 
           for (j = i; j < N; j++)
             gsl_matrix_set (R, i, j, gsl_matrix_get (QR, i, j));
         }
+=======
+	{
+	  for (j = 0; j < i && j < N; j++)
+	    gsl_matrix_set (R, i, j, 0.0);
+
+	  for (j = i; j < N; j++)
+	    gsl_matrix_set (R, i, j, gsl_matrix_get (QR, i, j));
+	}
+>>>>>>> config
 
       return GSL_SUCCESS;
     }
@@ -494,12 +611,20 @@ gsl_linalg_QR_unpack (const gsl_matrix * QR, const gsl_vector * tau, gsl_matrix 
  * where w = Q^T u.
  *
  * Algorithm from Golub and Van Loan, "Matrix Computations", Section
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 12.5 (Updating Matrix Factorizations, Rank-One Changes)  
+=======
+ * 12.5 (Updating Matrix Factorizations, Rank-One Changes)
+>>>>>>> config
  */
 
 int
 gsl_linalg_QR_update (gsl_matrix * Q, gsl_matrix * R,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       gsl_vector * w, const gsl_vector * v)
+=======
+		      gsl_vector * w, const gsl_vector * v)
+>>>>>>> config
 {
   const size_t M = R->size1;
   const size_t N = R->size2;
@@ -523,6 +648,7 @@ gsl_linalg_QR_update (gsl_matrix * Q, gsl_matrix * R,
 
       /* Apply Given's rotations to reduce w to (|w|, 0, 0, ... , 0)
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          J_1^T .... J_(n-1)^T w = +/- |w| e_1
 
          simultaneously applied to R,  H = J_1^T ... J^T_(n-1) R
@@ -538,12 +664,30 @@ gsl_linalg_QR_update (gsl_matrix * Q, gsl_matrix * R,
           apply_givens_vec (w, k - 1, k, c, s);
           apply_givens_qr (M, N, Q, R, k - 1, k, c, s);
         }
+=======
+	 J_1^T .... J_(n-1)^T w = +/- |w| e_1
+
+	 simultaneously applied to R,  H = J_1^T ... J^T_(n-1) R
+	 so that H is upper Hessenberg.  (12.5.2) */
+
+      for (k = M - 1; k > 0; k--)  /* loop from k = M-1 to 1 */
+	{
+	  double c, s;
+	  double wk = gsl_vector_get (w, k);
+	  double wkm1 = gsl_vector_get (w, k - 1);
+
+	  create_givens (wkm1, wk, &c, &s);
+	  apply_givens_vec (w, k - 1, k, c, s);
+	  apply_givens_qr (M, N, Q, R, k - 1, k, c, s);
+	}
+>>>>>>> config
 
       w0 = gsl_vector_get (w, 0);
 
       /* Add in w v^T  (Equation 12.5.3) */
 
       for (j = 0; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double r0j = gsl_matrix_get (R, 0, j);
           double vj = gsl_vector_get (v, j);
@@ -564,6 +708,28 @@ gsl_linalg_QR_update (gsl_matrix * Q, gsl_matrix * R,
 
           gsl_matrix_set (R, k, k - 1, 0.0);    /* exact zero of G^T */
         }
+=======
+	{
+	  double r0j = gsl_matrix_get (R, 0, j);
+	  double vj = gsl_vector_get (v, j);
+	  gsl_matrix_set (R, 0, j, r0j + w0 * vj);
+	}
+
+      /* Apply Givens transformations R' = G_(n-1)^T ... G_1^T H
+	 Equation 12.5.4 */
+
+      for (k = 1; k < GSL_MIN(M,N+1); k++)
+	{
+	  double c, s;
+	  double diag = gsl_matrix_get (R, k - 1, k - 1);
+	  double offdiag = gsl_matrix_get (R, k, k - 1);
+
+	  create_givens (diag, offdiag, &c, &s);
+	  apply_givens_qr (M, N, Q, R, k - 1, k, c, s);
+
+	  gsl_matrix_set (R, k, k - 1, 0.0);    /* exact zero of G^T */
+	}
+>>>>>>> config
 
       return GSL_SUCCESS;
     }

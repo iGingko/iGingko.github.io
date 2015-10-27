@@ -1,4 +1,8 @@
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Sine and Cosine Transforms from FFTPACK. 
+=======
+* Sine and Cosine Transforms from FFTPACK.
+>>>>>>> config
 
 * A simple multidimensional fft.
 
@@ -11,4 +15,7 @@ multiplication F*G.  Theoretically someone might want to convolve real
 and complex data together which could be done but would double the
 number of interfaces. It would be reasonable to restrict the
 convolutions to real-real and complex-complex.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

@@ -6,4 +6,7 @@ test.
 from an f and optionally a df. (We'll need to approximate the
 derivative if it is not provided; this is something which should be
 done outside the root finding package.)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

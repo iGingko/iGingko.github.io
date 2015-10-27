@@ -4,7 +4,11 @@
 
 float
 cblas_sdot (const int N, const float *X, const int incX, const float *Y,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             const int incY)
+=======
+	    const int incY)
+>>>>>>> config
 {
 #define INIT_VAL  0.0
 #define ACC_TYPE  float

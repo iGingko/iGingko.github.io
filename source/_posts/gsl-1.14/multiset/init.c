@@ -34,19 +34,31 @@ gsl_multiset_alloc (const size_t n, const size_t k)
   if (n == 0)
     {
       GSL_ERROR_VAL ("multiset parameter n must be positive integer",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_EDOM, 0);
+=======
+			GSL_EDOM, 0);
+>>>>>>> config
     }
   if (k > n)
     {
       GSL_ERROR_VAL ("multiset length k must be an integer less than or equal to n",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_EDOM, 0);
+=======
+			GSL_EDOM, 0);
+>>>>>>> config
     }
   c = (gsl_multiset *) malloc (sizeof (gsl_multiset));
 
   if (c == 0)
     {
       GSL_ERROR_VAL ("failed to allocate space for multiset struct",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_ENOMEM, 0);
+=======
+			GSL_ENOMEM, 0);
+>>>>>>> config
     }
 
   if (k > 0)
@@ -54,12 +66,21 @@ gsl_multiset_alloc (const size_t n, const size_t k)
       c->data = (size_t *) malloc (k * sizeof (size_t));
 
       if (c->data == 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           free (c);             /* exception in constructor, avoid memory leak */
 
           GSL_ERROR_VAL ("failed to allocate space for multiset data",
                          GSL_ENOMEM, 0);
         }
+=======
+	{
+	  free (c);             /* exception in constructor, avoid memory leak */
+
+	  GSL_ERROR_VAL ("failed to allocate space for multiset data",
+			 GSL_ENOMEM, 0);
+	}
+>>>>>>> config
     }
   else
     {

@@ -1,17 +1,31 @@
 /* multiroots/dnewton.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -31,9 +45,15 @@
 #include <gsl/gsl_linalg.h>
 
 /* Newton method using a finite difference approximation to the jacobian.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    The derivatives are estimated using a step size of 
 
    h_i = sqrt(DBL_EPSILON) * x_i 
+=======
+   The derivatives are estimated using a step size of
+
+   h_i = sqrt(DBL_EPSILON) * x_i
+>>>>>>> config
 
    */
 
@@ -58,8 +78,13 @@ dnewton_alloc (void * vstate, size_t n)
   gsl_matrix * m, * J;
 
   m = gsl_matrix_calloc (n,n);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   if (m == 0) 
+=======
+
+  if (m == 0)
+>>>>>>> config
     {
       GSL_ERROR ("failed to allocate space for lu", GSL_ENOMEM);
     }
@@ -120,7 +145,11 @@ static int
 dnewton_iterate (void * vstate, gsl_multiroot_function * function, gsl_vector * x, gsl_vector * f, gsl_vector * dx)
 {
   dnewton_state_t * state = (dnewton_state_t *) vstate;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   int signum ;
 
   size_t i;
@@ -134,7 +163,11 @@ dnewton_iterate (void * vstate, gsl_multiroot_function * function, gsl_vector * 
     if (status)
       return status;
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   {
     int status = gsl_linalg_LU_solve (state->lu, state->permutation, f, dx);
     if (status)
@@ -148,6 +181,7 @@ dnewton_iterate (void * vstate, gsl_multiroot_function * function, gsl_vector * 
       gsl_vector_set (dx, i, -e);
       gsl_vector_set (x, i, y - e);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   {
     int status = GSL_MULTIROOT_FN_EVAL (function, x, f);
@@ -158,6 +192,18 @@ dnewton_iterate (void * vstate, gsl_multiroot_function * function, gsl_vector * 
       }
   }
  
+=======
+
+  {
+    int status = GSL_MULTIROOT_FN_EVAL (function, x, f);
+
+    if (status != GSL_SUCCESS)
+      {
+	return GSL_EBADFUNC;
+      }
+  }
+
+>>>>>>> config
   gsl_multiroot_fdjacobian (function, x, f, GSL_SQRT_DBL_EPSILON, state->J);
 
   return GSL_SUCCESS;

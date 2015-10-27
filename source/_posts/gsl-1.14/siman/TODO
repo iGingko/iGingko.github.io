@@ -2,5 +2,9 @@
 
 * Maybe the routines can be made to work with pointers instead of structs
   so that only pointer manipulation is done by the siman algorithm and
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   there is no need for malloc. A call would look something like 
+=======
+  there is no need for malloc. A call would look something like
+>>>>>>> config
   siman(&start,&result, ...)

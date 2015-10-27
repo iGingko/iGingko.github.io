@@ -27,10 +27,17 @@ For further information see Abramowitz & Stegun, Section 10.4. The Airy
 functions are defined in the header file @file{gsl_sf_airy.h}.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Airy Functions::              
 * Derivatives of Airy Functions::  
 * Zeros of Airy Functions::     
 * Zeros of Derivatives of Airy Functions::  
+=======
+* Airy Functions::
+* Derivatives of Airy Functions::
+* Zeros of Airy Functions::
+* Zeros of Derivatives of Airy Functions::
+>>>>>>> config
 @end menu
 
 @node Airy Functions
@@ -52,7 +59,11 @@ specified by @var{mode}.
 @deftypefunx int gsl_sf_airy_Ai_scaled_e (double @var{x}, gsl_mode_t @var{mode}, gsl_sf_result * @var{result})
 These routines compute a scaled version of the Airy function
 @math{S_A(x) Ai(x)}.  For @math{x>0} the scaling factor @math{S_A(x)} is @c{$\exp(+(2/3) x^{3/2})$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{\exp(+(2/3) x^(3/2))}, 
+=======
+@math{\exp(+(2/3) x^(3/2))},
+>>>>>>> config
 and is 1
 for @math{x<0}.
 @end deftypefun
@@ -82,15 +93,24 @@ an accuracy specified by @var{mode}.
 
 @deftypefun double gsl_sf_airy_Ai_deriv_scaled (double @var{x}, gsl_mode_t @var{mode})
 @deftypefunx int gsl_sf_airy_Ai_deriv_scaled_e (double @var{x}, gsl_mode_t @var{mode}, gsl_sf_result * @var{result})
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 These routines compute the scaled Airy function derivative 
 @math{S_A(x) Ai'(x)}.  
+=======
+These routines compute the scaled Airy function derivative
+@math{S_A(x) Ai'(x)}.
+>>>>>>> config
 For @math{x>0} the scaling factor @math{S_A(x)} is @c{$\exp(+(2/3) x^{3/2})$}
 @math{\exp(+(2/3) x^(3/2))}, and is 1 for @math{x<0}.
 @end deftypefun
 
 @deftypefun double gsl_sf_airy_Bi_deriv_scaled (double @var{x}, gsl_mode_t @var{mode})
 @deftypefunx int gsl_sf_airy_Bi_deriv_scaled_e (double @var{x}, gsl_mode_t @var{mode}, gsl_sf_result * @var{result})
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 These routines compute the scaled Airy function derivative 
+=======
+These routines compute the scaled Airy function derivative
+>>>>>>> config
 @math{S_B(x) Bi'(x)}.
 For @math{x>0} the scaling factor @math{S_B(x)} is @c{$\exp(-(2/3) x^{3/2})$}
 @math{exp(-(2/3) x^(3/2))}, and is 1 for @math{x<0}.
@@ -127,4 +147,7 @@ function derivative @math{Ai'(x)}.
 These routines compute the location of the @var{s}-th zero of the Airy
 function derivative @math{Bi'(x)}.
 @end deftypefun
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

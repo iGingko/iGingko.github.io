@@ -142,7 +142,11 @@ top_distdir = $(distdir)
 am__remove_distdir = \
   { test ! -d "$(distdir)" \
     || { find "$(distdir)" -type d ! -perm -200 -exec chmod u+w {} ';' \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          && rm -fr "$(distdir)"; }; }
+=======
+	 && rm -fr "$(distdir)"; }; }
+>>>>>>> config
 am__relativize = \
   dir0=`pwd`; \
   sed_first='s,^\([^/]*\)/.*$$,\1,'; \
@@ -153,6 +157,7 @@ am__relativize = \
     first=`echo "$$dir1" | sed -e "$$sed_first"`; \
     if test "$$first" != "."; then \
       if test "$$first" = ".."; then \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         dir2=`echo "$$dir0" | sed -e "$$sed_last"`/"$$dir2"; \
         dir0=`echo "$$dir0" | sed -e "$$sed_butlast"`; \
       else \
@@ -163,6 +168,18 @@ am__relativize = \
           dir2="../$$dir2"; \
         fi; \
         dir0="$$dir0"/"$$first"; \
+=======
+	dir2=`echo "$$dir0" | sed -e "$$sed_last"`/"$$dir2"; \
+	dir0=`echo "$$dir0" | sed -e "$$sed_butlast"`; \
+      else \
+	first2=`echo "$$dir2" | sed -e "$$sed_first"`; \
+	if test "$$first2" = "$$first"; then \
+	  dir2=`echo "$$dir2" | sed -e "$$sed_rest"`; \
+	else \
+	  dir2="../$$dir2"; \
+	fi; \
+	dir0="$$dir0"/"$$first"; \
+>>>>>>> config
       fi; \
     fi; \
     dir1=`echo "$$dir1" | sed -e "$$sed_rest"`; \
@@ -412,7 +429,11 @@ config.h: stamp-h1
 stamp-h1: $(srcdir)/config.h.in $(top_builddir)/config.status
 	@rm -f stamp-h1
 	cd $(top_builddir) && $(SHELL) ./config.status config.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 $(srcdir)/config.h.in: @MAINTAINER_MODE_TRUE@ $(am__configure_deps) 
+=======
+$(srcdir)/config.h.in: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
+>>>>>>> config
 	($(am__cd) $(top_srcdir) && $(AUTOHEADER))
 	rm -f stamp-h1
 	touch $@
@@ -454,7 +475,11 @@ clean-libLTLIBRARIES:
 	  echo "rm -f \"$${dir}/so_locations\""; \
 	  rm -f "$${dir}/so_locations"; \
 	done
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 libgsl.la: $(libgsl_la_OBJECTS) $(libgsl_la_DEPENDENCIES) 
+=======
+libgsl.la: $(libgsl_la_OBJECTS) $(libgsl_la_DEPENDENCIES)
+>>>>>>> config
 	$(libgsl_la_LINK) -rpath $(libdir) $(libgsl_la_OBJECTS) $(libgsl_la_LIBADD) $(LIBS)
 install-binPROGRAMS: $(bin_PROGRAMS)
 	@$(NORMAL_INSTALL)
@@ -499,10 +524,17 @@ clean-binPROGRAMS:
 	list=`for p in $$list; do echo "$$p"; done | sed 's/$(EXEEXT)$$//'`; \
 	echo " rm -f" $$list; \
 	rm -f $$list
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl-histogram$(EXEEXT): $(gsl_histogram_OBJECTS) $(gsl_histogram_DEPENDENCIES) 
 	@rm -f gsl-histogram$(EXEEXT)
 	$(LINK) $(gsl_histogram_OBJECTS) $(gsl_histogram_LDADD) $(LIBS)
 gsl-randist$(EXEEXT): $(gsl_randist_OBJECTS) $(gsl_randist_DEPENDENCIES) 
+=======
+gsl-histogram$(EXEEXT): $(gsl_histogram_OBJECTS) $(gsl_histogram_DEPENDENCIES)
+	@rm -f gsl-histogram$(EXEEXT)
+	$(LINK) $(gsl_histogram_OBJECTS) $(gsl_histogram_LDADD) $(LIBS)
+gsl-randist$(EXEEXT): $(gsl_randist_OBJECTS) $(gsl_randist_DEPENDENCIES)
+>>>>>>> config
 	@rm -f gsl-randist$(EXEEXT)
 	$(LINK) $(gsl_randist_OBJECTS) $(gsl_randist_LDADD) $(LIBS)
 install-binSCRIPTS: $(bin_SCRIPTS)
@@ -918,12 +950,21 @@ distdir: $(DISTFILES)
 	    echo "     am__remove_distdir=: am__skip_length_check=: am__skip_mode_fix=: distdir)"; \
 	    ($(am__cd) $$subdir && \
 	      $(MAKE) $(AM_MAKEFLAGS) \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	        top_distdir="$$new_top_distdir" \
 	        distdir="$$new_distdir" \
 		am__remove_distdir=: \
 		am__skip_length_check=: \
 		am__skip_mode_fix=: \
 	        distdir) \
+=======
+		top_distdir="$$new_top_distdir" \
+		distdir="$$new_distdir" \
+		am__remove_distdir=: \
+		am__skip_length_check=: \
+		am__skip_mode_fix=: \
+		distdir) \
+>>>>>>> config
 	      || exit 1; \
 	  fi; \
 	done
@@ -1005,14 +1046,22 @@ distcheck: dist
 	  && $(MAKE) $(AM_MAKEFLAGS) installcheck \
 	  && $(MAKE) $(AM_MAKEFLAGS) uninstall \
 	  && $(MAKE) $(AM_MAKEFLAGS) distuninstallcheck_dir="$$dc_install_base" \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	        distuninstallcheck \
+=======
+		distuninstallcheck \
+>>>>>>> config
 	  && chmod -R a-w "$$dc_install_base" \
 	  && ({ \
 	       (cd ../.. && umask 077 && mkdir "$$dc_destdir") \
 	       && $(MAKE) $(AM_MAKEFLAGS) DESTDIR="$$dc_destdir" install \
 	       && $(MAKE) $(AM_MAKEFLAGS) DESTDIR="$$dc_destdir" uninstall \
 	       && $(MAKE) $(AM_MAKEFLAGS) DESTDIR="$$dc_destdir" \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	            distuninstallcheck_dir="$$dc_destdir" distuninstallcheck; \
+=======
+		    distuninstallcheck_dir="$$dc_destdir" distuninstallcheck; \
+>>>>>>> config
 	      } || { rm -rf "$$dc_destdir"; exit 1; }) \
 	  && rm -rf "$$dc_destdir" \
 	  && $(MAKE) $(AM_MAKEFLAGS) dist \
@@ -1028,11 +1077,19 @@ distuninstallcheck:
 	@$(am__cd) '$(distuninstallcheck_dir)' \
 	&& test `$(distuninstallcheck_listfiles) | wc -l` -le 1 \
 	   || { echo "ERROR: files left after uninstall:" ; \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	        if test -n "$(DESTDIR)"; then \
 	          echo "  (check DESTDIR support)"; \
 	        fi ; \
 	        $(distuninstallcheck_listfiles) ; \
 	        exit 1; } >&2
+=======
+		if test -n "$(DESTDIR)"; then \
+		  echo "  (check DESTDIR support)"; \
+		fi ; \
+		$(distuninstallcheck_listfiles) ; \
+		exit 1; } >&2
+>>>>>>> config
 distcleancheck: distclean
 	@if test '$(srcdir)' = . ; then \
 	  echo "ERROR: distcleancheck can only run from a VPATH build" ; \
@@ -1187,7 +1244,11 @@ uninstall-am: uninstall-binPROGRAMS uninstall-binSCRIPTS \
 	uninstall-pkgincludeHEADERS
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl-config gsl.pc: Makefile 
+=======
+gsl-config gsl.pc: Makefile
+>>>>>>> config
 	@rm -f $@ $@.tmp
 	@$(edit) '$(srcdir)/$@.in' >>$@.tmp
 	@chmod a-w $@.tmp

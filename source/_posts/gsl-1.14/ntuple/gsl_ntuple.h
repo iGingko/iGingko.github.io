@@ -1,17 +1,31 @@
 /* histogram/ntuple.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2000 Simone Piccardi
  * 
+=======
+ *
+ * Copyright (C) 2000 Simone Piccardi
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -56,10 +70,17 @@ typedef struct {
   void * params;
 } gsl_ntuple_value_fn;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_ntuple * 
 gsl_ntuple_open (char * filename, void * ntuple_data, size_t size);
 
 gsl_ntuple * 
+=======
+gsl_ntuple *
+gsl_ntuple_open (char * filename, void * ntuple_data, size_t size);
+
+gsl_ntuple *
+>>>>>>> config
 gsl_ntuple_create (char * filename, void * ntuple_data, size_t size);
 
 int gsl_ntuple_write (gsl_ntuple * ntuple);
@@ -67,16 +88,25 @@ int gsl_ntuple_read (gsl_ntuple * ntuple);
 
 int gsl_ntuple_bookdata (gsl_ntuple * ntuple);  /* synonym for write */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int gsl_ntuple_project (gsl_histogram * h, gsl_ntuple * ntuple, 
                         gsl_ntuple_value_fn *value_func,
                         gsl_ntuple_select_fn *select_func);
+=======
+int gsl_ntuple_project (gsl_histogram * h, gsl_ntuple * ntuple,
+			gsl_ntuple_value_fn *value_func,
+			gsl_ntuple_select_fn *select_func);
+>>>>>>> config
 
 int gsl_ntuple_close (gsl_ntuple * ntuple);
 
 __END_DECLS
 
 #endif /* __GSL_NTUPLE_H__ */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
 
 
+=======
+>>>>>>> config

@@ -1,17 +1,31 @@
 /* specfunc/bessel_amp_phase.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -32,7 +46,11 @@
    These are the same for J0,Y0 and for J1,Y1, so
    they sit outside those functions.
 */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         
+=======
+
+>>>>>>> config
 static double bm0_data[21] = {
    0.09284961637381644,
   -0.00142987707403484,
@@ -55,14 +73,22 @@ static double bm0_data[21] = {
    0.00000000000000034,
   -0.00000000000000012,
    0.00000000000000004
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 }; 
+=======
+};
+>>>>>>> config
 const cheb_series _gsl_sf_bessel_amp_phase_bm0_cs = {
   bm0_data,
   20,
   -1, 1,
   10
 };
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
 static double bth0_data[24] = {
   -0.24639163774300119,
    0.001737098307508963,
@@ -98,7 +124,11 @@ const cheb_series _gsl_sf_bessel_amp_phase_bth0_cs = {
 
 
 static double bm1_data[21] = {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    0.1047362510931285, 
+=======
+   0.1047362510931285,
+>>>>>>> config
    0.00442443893702345,
   -0.00005661639504035,
    0.00000231349417339,
@@ -119,7 +149,11 @@ static double bm1_data[21] = {
   -0.00000000000000039,
    0.00000000000000014,
   -0.00000000000000005,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 }; 
+=======
+};
+>>>>>>> config
 const cheb_series _gsl_sf_bessel_amp_phase_bm1_cs = {
   bm1_data,
   20,
@@ -128,7 +162,11 @@ const cheb_series _gsl_sf_bessel_amp_phase_bm1_cs = {
 };
 
 static double bth1_data[24] = {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    0.74060141026313850, 
+=======
+   0.74060141026313850,
+>>>>>>> config
   -0.004571755659637690,
    0.000119818510964326,
   -0.000006964561891648,

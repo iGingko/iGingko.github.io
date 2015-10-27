@@ -8,6 +8,7 @@ On Thu, 9 Dec 2004, John Lamb wrote:
 
 ] Raimondo Giammanco wrote:
 ] > Hello,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 ] > 
 ] >  I was wondering if there is a way to compute "running" statistics with
 ] > gsl.
@@ -15,12 +16,22 @@ On Thu, 9 Dec 2004, John Lamb wrote:
 ] Yes you can do it, but there's nothing in GSL that does it and its eay 
 ] enough that you don't need GSL. Something like (untested)
 ] 
+=======
+] >
+] >  I was wondering if there is a way to compute "running" statistics with
+] > gsl.
+] >
+] Yes you can do it, but there's nothing in GSL that does it and its eay
+] enough that you don't need GSL. Something like (untested)
+]
+>>>>>>> config
 ] double update_mean( double* mean, int* n, double x ){
 ]    if( *n == 1 )
 ]      *mean = x;
 ]    else
 ]      *mean = (1 - (double)1 / *n ) * *mean + x / n;
 ] }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 ] 
 ] will work and you can derive a similar method for updating the variance 
 ] using the usual textbook formula.
@@ -31,6 +42,18 @@ On Thu, 9 Dec 2004, John Lamb wrote:
 ] don't know why so many textbooks repeat this formula without the 
 ] slightest warning that it can go so badly wrong.
 ] 
+=======
+]
+] will work and you can derive a similar method for updating the variance
+] using the usual textbook formula.
+]
+] var[x] = (1/n) sum x^2_i - mean(x)^2
+]
+] I don't know if there is a method that avoids the rounding errors. I
+] don't know why so many textbooks repeat this formula without the
+] slightest warning that it can go so badly wrong.
+]
+>>>>>>> config
 ]
 
 Stably updating mean and variance is remarkably nontrivial.  There was
@@ -47,7 +70,11 @@ and S2:
     SUMW = W_1
     M = X_1
     T = 0
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     For i=2,3,...,n 
+=======
+    For i=2,3,...,n
+>>>>>>> config
     {
        Q = X_i - M
        TEMP = SUM + W_i    // typo: He meant SUMW
@@ -61,9 +88,15 @@ and S2:
 
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 jt 
 
 -- 
+=======
+jt
+
+--
+>>>>>>> config
 James Theiler            Space and Remote Sensing Sciences
 MS-B244, ISR-2, LANL     Los Alamos National Laboratory
 Los Alamos, NM 87545     http://nis-www.lanl.gov/~jt
@@ -77,12 +110,21 @@ NIST tests (see Brian for details, below is a sketch of the algorithm).
 
       sum = x(1)
       c = 0
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
       DO i = 2, 1000000, 1
          y = x(i) - c
          t = sum + y
          c = (t - sum) - y
          sum = t
+=======
+
+      DO i = 2, 1000000, 1
+	 y = x(i) - c
+	 t = sum + y
+	 c = (t - sum) - y
+	 sum = t
+>>>>>>> config
       ENDDO
 
 * Prevent incorrect use of unsorted data for quartile calculations
@@ -99,4 +141,7 @@ missing data and gaps?
    There is a new GNU package called gretl which does econometrics
 
 * Statistical tests (equal means, equal variance, etc).
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

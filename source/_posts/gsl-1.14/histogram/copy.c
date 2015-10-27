@@ -18,8 +18,13 @@
  */
 /***************************************************************
  *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * File gsl_histogram_copy.c: 
  * Routine to copy an histogram. 
+=======
+ * File gsl_histogram_copy.c:
+ * Routine to copy an histogram.
+>>>>>>> config
  * Need GSL library and headers.
  *
  * Author: S. Piccardi
@@ -45,7 +50,11 @@ gsl_histogram_memcpy (gsl_histogram * dest, const gsl_histogram * src)
   if (dest->n != src->n)
     {
       GSL_ERROR ("histograms have different sizes, cannot copy",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_EINVAL);
+=======
+		 GSL_EINVAL);
+>>>>>>> config
     }
 
   for (i = 0; i <= n; i++)
@@ -79,7 +88,11 @@ gsl_histogram_clone (const gsl_histogram * src)
   if (h == 0)
     {
       GSL_ERROR_VAL ("failed to allocate space for histogram struct",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_ENOMEM, 0);
+=======
+			GSL_ENOMEM, 0);
+>>>>>>> config
     }
 
   for (i = 0; i < n; i++)

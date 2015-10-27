@@ -180,7 +180,11 @@ static const int prime_numbers[REVERSEHALTON_MAX_DIMENSION] = {
 typedef struct
 {
   unsigned int sequence_count;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 } 
+=======
+}
+>>>>>>> config
 reversehalton_state_t;
 
 static size_t

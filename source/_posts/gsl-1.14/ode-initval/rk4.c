@@ -1,17 +1,31 @@
 /* ode-initval/rk4.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -22,7 +36,11 @@
 /* Author:  G. Jungman
  */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* Reference: Abramowitz & Stegun, section 25.5. equation 25.5.10 
+=======
+/* Reference: Abramowitz & Stegun, section 25.5. equation 25.5.10
+>>>>>>> config
 
    Error estimation by step doubling, see eg. Ascher, U.M., Petzold,
    L.R., Computer methods for ordinary differential and
@@ -116,15 +134,26 @@ rk4_step (double *y, const rk4_state_t *state,
 	  const gsl_odeiv_system *sys)
 {
   /* Makes a Runge-Kutta 4th order advance with step size h. */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   /* initial values of variables y. */
   const double *y0 = state->y0;
   
+=======
+
+  /* initial values of variables y. */
+  const double *y0 = state->y0;
+
+>>>>>>> config
   /* work space */
   double *ytmp = state->ytmp;
 
   /* Runge-Kutta coefficients. Contains values of coefficient k1
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
      in the beginning 
+=======
+     in the beginning
+>>>>>>> config
   */
   double *k = state->k;
 
@@ -191,6 +220,7 @@ rk4_step (double *y, const rk4_state_t *state,
 
 static int
 rk4_apply (void *vstate,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
            size_t dim,
            double t,
            double h,
@@ -199,6 +229,16 @@ rk4_apply (void *vstate,
            const double dydt_in[],
            double dydt_out[], 
            const gsl_odeiv_system * sys)
+=======
+	   size_t dim,
+	   double t,
+	   double h,
+	   double y[],
+	   double yerr[],
+	   const double dydt_in[],
+	   double dydt_out[],
+	   const gsl_odeiv_system * sys)
+>>>>>>> config
 {
   rk4_state_t *state = (rk4_state_t *) vstate;
 
@@ -228,7 +268,11 @@ rk4_apply (void *vstate,
   /* Error estimation is done by step doubling procedure */
 
   /* Save first point derivatives*/
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   DBL_MEMCPY (k1, k, dim);
 
   /* First traverse h with one step (save to y_onestep) */
@@ -238,6 +282,7 @@ rk4_apply (void *vstate,
   {
     int s = rk4_step (y_onestep, state, h, t, dim, sys);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     if (s != GSL_SUCCESS) 
       {
         return s;
@@ -245,6 +290,15 @@ rk4_apply (void *vstate,
   }
 
   /* Then with two steps with half step length (save to y) */ 
+=======
+    if (s != GSL_SUCCESS)
+      {
+	return s;
+      }
+  }
+
+  /* Then with two steps with half step length (save to y) */
+>>>>>>> config
 
   DBL_MEMCPY (k, k1, dim);
 
@@ -270,7 +324,11 @@ rk4_apply (void *vstate,
 	return s;
       }
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   /* Save original y0 to k1 for possible failures */
   DBL_MEMCPY (k1, y0, dim);
 
@@ -300,7 +358,11 @@ rk4_apply (void *vstate,
 	return s;
       }
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   /* Error estimation
 
      yerr = C * 0.5 * | y(onestep) - y(twosteps) | / (2^order - 1)

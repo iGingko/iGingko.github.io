@@ -1,17 +1,31 @@
 /* blas/source_syr2k_r.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2001, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 2001, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -41,6 +55,7 @@
   if (beta == 0.0) {
     if (uplo == CblasUpper) {
       for (i = 0; i < N; i++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         for (j = i; j < N; j++) {
           C[ldc * i + j] = 0.0;
         }
@@ -50,11 +65,23 @@
         for (j = 0; j <= i; j++) {
           C[ldc * i + j] = 0.0;
         }
+=======
+	for (j = i; j < N; j++) {
+	  C[ldc * i + j] = 0.0;
+	}
+      }
+    } else {
+      for (i = 0; i < N; i++) {
+	for (j = 0; j <= i; j++) {
+	  C[ldc * i + j] = 0.0;
+	}
+>>>>>>> config
       }
     }
   } else if (beta != 1.0) {
     if (uplo == CblasUpper) {
       for (i = 0; i < N; i++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         for (j = i; j < N; j++) {
           C[ldc * i + j] *= beta;
         }
@@ -64,6 +91,17 @@
         for (j = 0; j <= i; j++) {
           C[ldc * i + j] *= beta;
         }
+=======
+	for (j = i; j < N; j++) {
+	  C[ldc * i + j] *= beta;
+	}
+      }
+    } else {
+      for (i = 0; i < N; i++) {
+	for (j = 0; j <= i; j++) {
+	  C[ldc * i + j] *= beta;
+	}
+>>>>>>> config
       }
     }
   }
@@ -75,12 +113,21 @@
 
     for (i = 0; i < N; i++) {
       for (j = i; j < N; j++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         BASE temp = 0.0;
         for (k = 0; k < K; k++) {
           temp += (A[i * lda + k] * B[j * ldb + k]
                    + B[i * ldb + k] * A[j * lda + k]);
         }
         C[i * ldc + j] += alpha * temp;
+=======
+	BASE temp = 0.0;
+	for (k = 0; k < K; k++) {
+	  temp += (A[i * lda + k] * B[j * ldb + k]
+		   + B[i * ldb + k] * A[j * lda + k]);
+	}
+	C[i * ldc + j] += alpha * temp;
+>>>>>>> config
       }
     }
 
@@ -88,11 +135,19 @@
 
     for (k = 0; k < K; k++) {
       for (i = 0; i < N; i++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         BASE temp1 = alpha * A[k * lda + i];
         BASE temp2 = alpha * B[k * ldb + i];
         for (j = i; j < N; j++) {
           C[i * lda + j] += temp1 * B[k * ldb + j] + temp2 * A[k * lda + j];
         }
+=======
+	BASE temp1 = alpha * A[k * lda + i];
+	BASE temp2 = alpha * B[k * ldb + i];
+	for (j = i; j < N; j++) {
+	  C[i * lda + j] += temp1 * B[k * ldb + j] + temp2 * A[k * lda + j];
+	}
+>>>>>>> config
       }
     }
 
@@ -101,12 +156,21 @@
 
     for (i = 0; i < N; i++) {
       for (j = 0; j <= i; j++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         BASE temp = 0.0;
         for (k = 0; k < K; k++) {
           temp += (A[i * lda + k] * B[j * ldb + k]
                    + B[i * ldb + k] * A[j * lda + k]);
         }
         C[i * ldc + j] += alpha * temp;
+=======
+	BASE temp = 0.0;
+	for (k = 0; k < K; k++) {
+	  temp += (A[i * lda + k] * B[j * ldb + k]
+		   + B[i * ldb + k] * A[j * lda + k]);
+	}
+	C[i * ldc + j] += alpha * temp;
+>>>>>>> config
       }
     }
 
@@ -114,11 +178,19 @@
 
     for (k = 0; k < K; k++) {
       for (i = 0; i < N; i++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         BASE temp1 = alpha * A[k * lda + i];
         BASE temp2 = alpha * B[k * ldb + i];
         for (j = 0; j <= i; j++) {
           C[i * lda + j] += temp1 * B[k * ldb + j] + temp2 * A[k * lda + j];
         }
+=======
+	BASE temp1 = alpha * A[k * lda + i];
+	BASE temp2 = alpha * B[k * ldb + i];
+	for (j = 0; j <= i; j++) {
+	  C[i * lda + j] += temp1 * B[k * ldb + j] + temp2 * A[k * lda + j];
+	}
+>>>>>>> config
       }
     }
 

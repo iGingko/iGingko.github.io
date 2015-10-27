@@ -1,17 +1,31 @@
 /* sum/gsl_sum.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -38,7 +52,11 @@
 __BEGIN_DECLS
 
 /*  Workspace for Levin U Transform with error estimation,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  *   
+=======
+ *
+>>>>>>> config
  *   size        = number of terms the workspace can handle
  *   sum_plain   = simple sum of series
  *   q_num       = backward diagonal of numerator; length = size
@@ -70,15 +88,25 @@ void gsl_sum_levin_u_free (gsl_sum_levin_u_workspace * w);
  *   array       = array of series elements
  *   n           = size of array
  *   sum_accel   = result of summation acceleration
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  *   err         = estimated error   
+=======
+ *   err         = estimated error
+>>>>>>> config
  *
  * See [Fessler et al., ACM TOMS 9, 346 (1983) and TOMS-602]
  */
 
 int gsl_sum_levin_u_accel (const double *array,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                            const size_t n,
                            gsl_sum_levin_u_workspace * w,
                            double *sum_accel, double *abserr);
+=======
+			   const size_t n,
+			   gsl_sum_levin_u_workspace * w,
+			   double *sum_accel, double *abserr);
+>>>>>>> config
 
 /* Basic Levin-u acceleration method with constraints on the terms
  * used,
@@ -88,6 +116,7 @@ int gsl_sum_levin_u_accel (const double *array,
  *   min_terms   = minimum number of terms to sum
  *   max_terms   = maximum number of terms to sum
  *   sum_accel   = result of summation acceleration
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  *   err         = estimated error   
  *
  * See [Fessler et al., ACM TOMS 9, 346 (1983) and TOMS-602] 
@@ -99,6 +128,19 @@ int gsl_sum_levin_u_minmax (const double *array,
                             const size_t max_terms,
                             gsl_sum_levin_u_workspace * w,
                             double *sum_accel, double *abserr);
+=======
+ *   err         = estimated error
+ *
+ * See [Fessler et al., ACM TOMS 9, 346 (1983) and TOMS-602]
+ */
+
+int gsl_sum_levin_u_minmax (const double *array,
+			    const size_t n,
+			    const size_t min_terms,
+			    const size_t max_terms,
+			    gsl_sum_levin_u_workspace * w,
+			    double *sum_accel, double *abserr);
+>>>>>>> config
 
 /* Basic Levin-u step w/o reference to the array of terms.
  * We only need to specify the value of the current term
@@ -114,10 +156,17 @@ int gsl_sum_levin_u_minmax (const double *array,
 
 int
 gsl_sum_levin_u_step (const double term,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       const size_t n,
                       const size_t nmax,
                       gsl_sum_levin_u_workspace * w, 
                       double *sum_accel);
+=======
+		      const size_t n,
+		      const size_t nmax,
+		      gsl_sum_levin_u_workspace * w,
+		      double *sum_accel);
+>>>>>>> config
 
 /* The following functions perform the same calculation without
    estimating the errors. They require O(N) storage instead of O(N^2).
@@ -141,6 +190,7 @@ gsl_sum_levin_utrunc_workspace *gsl_sum_levin_utrunc_alloc (size_t n);
 void gsl_sum_levin_utrunc_free (gsl_sum_levin_utrunc_workspace * w);
 
 int gsl_sum_levin_utrunc_accel (const double *array,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                 const size_t n,
                                 gsl_sum_levin_utrunc_workspace * w,
                                 double *sum_accel, double *abserr_trunc);
@@ -156,6 +206,23 @@ int gsl_sum_levin_utrunc_step (const double term,
                                const size_t n,
                                gsl_sum_levin_utrunc_workspace * w, 
                                double *sum_accel);
+=======
+				const size_t n,
+				gsl_sum_levin_utrunc_workspace * w,
+				double *sum_accel, double *abserr_trunc);
+
+int gsl_sum_levin_utrunc_minmax (const double *array,
+				 const size_t n,
+				 const size_t min_terms,
+				 const size_t max_terms,
+				 gsl_sum_levin_utrunc_workspace * w,
+				 double *sum_accel, double *abserr_trunc);
+
+int gsl_sum_levin_utrunc_step (const double term,
+			       const size_t n,
+			       gsl_sum_levin_utrunc_workspace * w,
+			       double *sum_accel);
+>>>>>>> config
 
 __END_DECLS
 

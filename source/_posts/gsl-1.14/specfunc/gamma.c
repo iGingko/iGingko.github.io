@@ -1,17 +1,31 @@
 /* specfunc/gamma.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -695,7 +709,11 @@ lngamma_lanczos_complex(double zr, double zi, gsl_sf_result * yr, gsl_sf_result 
 
 
 /* Lanczos method for real x > 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * gamma=7, truncated at 1/(z+8) 
+=======
+ * gamma=7, truncated at 1/(z+8)
+>>>>>>> config
  * [J. SIAM Numer. Anal, Ser. B, 1 (1964) 86]
  */
 static
@@ -955,7 +973,11 @@ gammastar_ser(const double x, gsl_sf_result * result)
 {
   /* Use the Stirling series for the correction to Log(Gamma(x)),
    * which is better behaved and easier to compute than the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    * regular Stirling series for Gamma(x). 
+=======
+   * regular Stirling series for Gamma(x).
+>>>>>>> config
    */
   const double y = 1.0/(x*x);
   const double c0 =  1.0/12.0;
@@ -1029,7 +1051,11 @@ gamma_xgthalf(const double x, gsl_sf_result * result)
     result->val = fact_table[n - 1].f;
     result->err = GSL_DBL_EPSILON * result->val;
     return GSL_SUCCESS;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   }    
+=======
+  }
+>>>>>>> config
   else if(fabs(x - 1.0) < 0.01) {
     /* Use series for Gamma[1+eps] - 1/(1+eps).
      */
@@ -1154,6 +1180,7 @@ int gsl_sf_lngamma_e(double x, gsl_sf_result * result)
     else if(as < M_PI*0.015) {
       /* x is near a negative integer, -N */
       if(x < INT_MIN + 2.0) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         result->val = 0.0;
         result->err = 0.0;
         GSL_ERROR ("error", GSL_EROUND);
@@ -1163,6 +1190,17 @@ int gsl_sf_lngamma_e(double x, gsl_sf_result * result)
         double eps = x + N;
         double sgn;
         return lngamma_sgn_sing(N, eps, result, &sgn);
+=======
+	result->val = 0.0;
+	result->err = 0.0;
+	GSL_ERROR ("error", GSL_EROUND);
+      }
+      else {
+	int N = -(int)(x - 0.5);
+	double eps = x + N;
+	double sgn;
+	return lngamma_sgn_sing(N, eps, result, &sgn);
+>>>>>>> config
       }
     }
     else {
@@ -1221,6 +1259,7 @@ int gsl_sf_lngamma_sgn_e(double x, gsl_sf_result * result_lg, double * sgn)
     else if(as < M_PI*0.015) {
       /* x is near a negative integer, -N */
       if(x < INT_MIN + 2.0) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         result_lg->val = 0.0;
         result_lg->err = 0.0;
         *sgn = 0.0;
@@ -1230,6 +1269,17 @@ int gsl_sf_lngamma_sgn_e(double x, gsl_sf_result * result_lg, double * sgn)
         int N = -(int)(x - 0.5);
         double eps = x + N;
         return lngamma_sgn_sing(N, eps, result_lg, sgn);
+=======
+	result_lg->val = 0.0;
+	result_lg->err = 0.0;
+	*sgn = 0.0;
+	GSL_ERROR ("error", GSL_EROUND);
+      }
+      else {
+	int N = -(int)(x - 0.5);
+	double eps = x + N;
+	return lngamma_sgn_sing(N, eps, result_lg, sgn);
+>>>>>>> config
       }
     }
     else {
@@ -1267,6 +1317,7 @@ gsl_sf_gamma_e(const double x, gsl_sf_result * result)
       gsl_sf_result g;
       gamma_xgthalf(1.0-x, &g);
       if(fabs(sin_term) * g.val * GSL_DBL_MIN < 1.0) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         result->val  = 1.0/(sin_term * g.val);
         result->err  = fabs(g.err/g.val) * fabs(result->val);
         result->err += 2.0 * GSL_DBL_EPSILON * fabs(result->val);
@@ -1274,6 +1325,15 @@ gsl_sf_gamma_e(const double x, gsl_sf_result * result)
       }
       else {
         UNDERFLOW_ERROR(result);
+=======
+	result->val  = 1.0/(sin_term * g.val);
+	result->err  = fabs(g.err/g.val) * fabs(result->val);
+	result->err += 2.0 * GSL_DBL_EPSILON * fabs(result->val);
+	return GSL_SUCCESS;
+      }
+      else {
+	UNDERFLOW_ERROR(result);
+>>>>>>> config
       }
     }
     else {
@@ -1460,13 +1520,21 @@ int gsl_sf_taylorcoeff_e(const int n, const double x, gsl_sf_result * result)
       double product = 1.0;
       int k;
       for(k=1; k<=n; k++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         product *= (x/k);
+=======
+	product *= (x/k);
+>>>>>>> config
       }
       result->val = product;
       result->err = n * GSL_DBL_EPSILON * product;
       CHECK_UNDERFLOW(result);
       return GSL_SUCCESS;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     }    
+=======
+    }
+>>>>>>> config
   }
 }
 
@@ -1600,6 +1668,7 @@ int gsl_sf_choose_e(unsigned int n, unsigned int m, gsl_sf_result * result)
 
     if (n - m < 64)  /* compute product for a manageable number of terms */
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         double prod = 1.0;
         unsigned int k;
         
@@ -1620,6 +1689,28 @@ int gsl_sf_choose_e(unsigned int n, unsigned int m, gsl_sf_result * result)
         const int stat_lc = gsl_sf_lnchoose_e (n, m, &lc);
         const int stat_e  = gsl_sf_exp_err_e(lc.val, lc.err, result);
         return GSL_ERROR_SELECT_2(stat_lc, stat_e);
+=======
+	double prod = 1.0;
+	unsigned int k;
+
+	for(k=n; k>=m+1; k--) {
+	  double tk = (double)k / (double)(k-m);
+	  if(tk > GSL_DBL_MAX/prod) {
+	    OVERFLOW_ERROR(result);
+	  }
+	  prod *= tk;
+	}
+	result->val = prod;
+	result->err = 2.0 * GSL_DBL_EPSILON * prod * fabs(n-m);
+	return GSL_SUCCESS;
+      }
+    else
+      {
+	gsl_sf_result lc;
+	const int stat_lc = gsl_sf_lnchoose_e (n, m, &lc);
+	const int stat_e  = gsl_sf_exp_err_e(lc.val, lc.err, result);
+	return GSL_ERROR_SELECT_2(stat_lc, stat_e);
+>>>>>>> config
       }
   }
 }

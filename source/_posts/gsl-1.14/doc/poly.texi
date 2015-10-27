@@ -1,4 +1,8 @@
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @cindex polynomials, roots of 
+=======
+@cindex polynomials, roots of
+>>>>>>> config
 
 This chapter describes functions for evaluating and solving polynomials.
 There are routines for finding real and complex roots of quadratic and
@@ -8,6 +12,7 @@ coefficients (of any order).  The functions are declared in the header
 file @file{gsl_poly.h}.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Polynomial Evaluation::       
 * Divided Difference Representation of Polynomials::  
 * Quadratic Equations::         
@@ -15,6 +20,15 @@ file @file{gsl_poly.h}.
 * General Polynomial Equations::  
 * Roots of Polynomials Examples::  
 * Roots of Polynomials References and Further Reading::  
+=======
+* Polynomial Evaluation::
+* Divided Difference Representation of Polynomials::
+* Quadratic Equations::
+* Cubic Equations::
+* General Polynomial Equations::
+* Roots of Polynomials Examples::
+* Roots of Polynomials References and Further Reading::
+>>>>>>> config
 @end menu
 
 @node Polynomial Evaluation
@@ -22,7 +36,11 @@ file @file{gsl_poly.h}.
 @cindex polynomial evaluation
 @cindex evaluation of polynomials
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 The functions described here evaluate the polynomial 
+=======
+The functions described here evaluate the polynomial
+>>>>>>> config
 @c{$P(x) = c[0] + c[1] x + c[2] x^2 + \dots + c[len-1] x^{len-1}$}
 @math{P(x) = c[0] + c[1] x + c[2] x^2 + \dots + c[len-1] x^@{len-1@}} using
 Horner's method for stability. @inlinefns{}
@@ -232,9 +250,15 @@ This function frees all the memory associated with the workspace
 @end deftypefun
 
 @deftypefun int gsl_poly_complex_solve (const double * @var{a}, size_t @var{n}, gsl_poly_complex_workspace * @var{w}, gsl_complex_packed_ptr @var{z})
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 This function computes the roots of the general polynomial 
 @c{$P(x) = a_0 + a_1 x + a_2 x^2 + ... + a_{n-1} x^{n-1}$} 
 @math{P(x) = a_0 + a_1 x + a_2 x^2 + ... + a_@{n-1@} x^@{n-1@}} using 
+=======
+This function computes the roots of the general polynomial
+@c{$P(x) = a_0 + a_1 x + a_2 x^2 + ... + a_{n-1} x^{n-1}$}
+@math{P(x) = a_0 + a_1 x + a_2 x^2 + ... + a_@{n-1@} x^@{n-1@}} using
+>>>>>>> config
 balanced-QR reduction of the companion matrix.  The parameter @var{n}
 specifies the length of the coefficient array.  The coefficient of the
 highest order term must be non-zero.  The function requires a workspace
@@ -283,7 +307,11 @@ The following program will find these roots.
 The output of the program is,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 $ ./a.out 
+=======
+$ ./a.out
+>>>>>>> config
 @verbatiminclude examples/polyroots.out
 @end example
 

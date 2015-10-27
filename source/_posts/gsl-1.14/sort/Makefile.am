@@ -5,7 +5,11 @@ pkginclude_HEADERS = gsl_heapsort.h gsl_sort.h gsl_sort_char.h gsl_sort_double.h
 INCLUDES = -I$(top_srcdir)
 
 libgslsort_la_SOURCES = sort.c sortind.c sortvec.c sortvecind.c subset.c subsetind.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 noinst_HEADERS = sortvec_source.c sortvecind_source.c subset_source.c subsetind_source.c test_source.c test_heapsort.c 
+=======
+noinst_HEADERS = sortvec_source.c sortvecind_source.c subset_source.c subsetind_source.c test_source.c test_heapsort.c
+>>>>>>> config
 
 TESTS = $(check_PROGRAMS)
 
@@ -13,4 +17,7 @@ check_PROGRAMS = test
 
 test_SOURCES = test.c
 test_LDADD = libgslsort.la ../permutation/libgslpermutation.la ../vector/libgslvector.la ../block/libgslblock.la ../ieee-utils/libgslieeeutils.la ../err/libgslerr.la ../test/libgsltest.la ../sys/libgslsys.la
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

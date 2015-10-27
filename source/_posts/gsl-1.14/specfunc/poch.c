@@ -1,18 +1,33 @@
 /* specfunc/poch.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * Copyright (C) 2009 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ * Copyright (C) 2009 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -32,7 +47,11 @@
 #include "error.h"
 
 static const double bern[21] = {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    0.0   /* no element 0 */,  
+=======
+   0.0   /* no element 0 */,
+>>>>>>> config
   +0.833333333333333333333333333333333e-01,
   -0.138888888888888888888888888888888e-02,
   +0.330687830687830687830687830687830e-04,
@@ -121,6 +140,7 @@ pochrel_smallx(const double a, const double x, gsl_sf_result * result)
       poly1 = gbern[2] * term;
 
       if(nterms > 20) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         /* NTERMS IS TOO BIG, MAYBE D1MACH(3) IS BAD */
         /* nterms = 20; */
         result->val = 0.0;
@@ -137,6 +157,24 @@ pochrel_smallx(const double a, const double x, gsl_sf_result * result)
 
         term  *= (2*k-2-x)*(2*k-1-x)*var2;
         poly1 += gbern[k+1]*term;
+=======
+	/* NTERMS IS TOO BIG, MAYBE D1MACH(3) IS BAD */
+	/* nterms = 20; */
+	result->val = 0.0;
+	result->err = 0.0;
+	GSL_ERROR ("error", GSL_ESANITY);
+      }
+
+      for(k=2; k<=nterms; k++) {
+	double gbk = 0.0;
+	for(j=1; j<=k; j++) {
+	  gbk += bern[k-j+1]*gbern[j];
+	}
+	gbern[k+1] = -rho*gbk/k;
+
+	term  *= (2*k-2-x)*(2*k-1-x)*var2;
+	poly1 += gbern[k+1]*term;
+>>>>>>> config
       }
     }
 
@@ -178,7 +216,11 @@ pochrel_smallx(const double a, const double x, gsl_sf_result * result)
       result->err  = (fabs(dpoch1*x) + 1.0) * GSL_DBL_EPSILON * (fabs(t1) + fabs(t2));
       result->err += 2.0 * GSL_DBL_EPSILON * (fabs(incr) + 1.0) * fabs(result->val);
       return GSL_SUCCESS;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     }    
+=======
+    }
+>>>>>>> config
   }
 }
 
@@ -299,7 +341,11 @@ gsl_sf_lnpoch_e(const double a, const double x, gsl_sf_result * result)
 
 int
 gsl_sf_lnpoch_sgn_e(const double a, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                        gsl_sf_result * result, double * sgn)
+=======
+		       gsl_sf_result * result, double * sgn)
+>>>>>>> config
 {
   if(x == 0.0) {
     *sgn = 1.0;
@@ -317,7 +363,11 @@ gsl_sf_lnpoch_sgn_e(const double a, const double x,
       /* Handle the case where both a and a+x are negative integers. */
       gsl_sf_result result_pos;
       /* Use the reflection formula AMS6.1.17
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          poch(-a,-x) = (-1)^x (a/(a+x)) 1/poch(a,x) */
+=======
+	 poch(-a,-x) = (-1)^x (a/(a+x)) 1/poch(a,x) */
+>>>>>>> config
       int stat = lnpoch_pos (-a, -x, &result_pos);
       double f = log (a / (a + x));
       double s = (fmod(x, 2) == 0) ? 1 : -1;

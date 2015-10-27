@@ -241,7 +241,11 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 noinst_LTLIBRARIES = libgslrng.la 
+=======
+noinst_LTLIBRARIES = libgslrng.la
+>>>>>>> config
 pkginclude_HEADERS = gsl_rng.h
 INCLUDES = -I$(top_srcdir)
 libgslrng_la_SOURCES = borosh13.c cmrg.c coveyou.c default.c file.c fishman18.c fishman20.c fishman2x.c gfsr4.c knuthran2.c knuthran.c knuthran2002.c lecuyer21.c minstd.c mrg.c mt.c r250.c ran0.c ran1.c ran2.c ran3.c rand48.c rand.c random.c randu.c ranf.c ranlux.c ranlxd.c ranlxs.c ranmar.c rng.c slatec.c taus.c taus113.c transputer.c tt.c types.c uni32.c uni.c vax.c waterman14.c zuf.c inline.c
@@ -259,7 +263,11 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__confi
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
 	      ( cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh ) \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	        && { if test -f $@; then exit 0; else break; fi; }; \
+=======
+		&& { if test -f $@; then exit 0; else break; fi; }; \
+>>>>>>> config
 	      exit 1;; \
 	  esac; \
 	done; \
@@ -293,7 +301,11 @@ clean-noinstLTLIBRARIES:
 	  echo "rm -f \"$${dir}/so_locations\""; \
 	  rm -f "$${dir}/so_locations"; \
 	done
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 libgslrng.la: $(libgslrng_la_OBJECTS) $(libgslrng_la_DEPENDENCIES) 
+=======
+libgslrng.la: $(libgslrng_la_OBJECTS) $(libgslrng_la_DEPENDENCIES)
+>>>>>>> config
 	$(LINK)  $(libgslrng_la_OBJECTS) $(libgslrng_la_LIBADD) $(LIBS)
 
 clean-checkPROGRAMS:
@@ -304,7 +316,11 @@ clean-checkPROGRAMS:
 	list=`for p in $$list; do echo "$$p"; done | sed 's/$(EXEEXT)$$//'`; \
 	echo " rm -f" $$list; \
 	rm -f $$list
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 test$(EXEEXT): $(test_OBJECTS) $(test_DEPENDENCIES) 
+=======
+test$(EXEEXT): $(test_OBJECTS) $(test_DEPENDENCIES)
+>>>>>>> config
 	@rm -f test$(EXEEXT)
 	$(LINK) $(test_OBJECTS) $(test_LDADD) $(LIBS)
 
@@ -704,9 +720,15 @@ uninstall-am: uninstall-pkgincludeHEADERS
 	uninstall-am uninstall-pkgincludeHEADERS
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 # benchmark_SOURCES = benchmark.c 
 # benchmark_LDADD = libgslrng.la ../err/libgslerr.la ../utils/libutils.la
 # rng_dump_SOURCES = rng-dump.c 
+=======
+# benchmark_SOURCES = benchmark.c
+# benchmark_LDADD = libgslrng.la ../err/libgslerr.la ../utils/libutils.la
+# rng_dump_SOURCES = rng-dump.c
+>>>>>>> config
 # rng_dump_LDADD = libgslrng.la ../err/libgslerr.la ../utils/libutils.la
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.

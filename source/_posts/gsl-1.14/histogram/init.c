@@ -1,17 +1,31 @@
 /* histogram/init.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007, 2009 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007, 2009 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -30,7 +44,11 @@ gsl_histogram_alloc (size_t n)
   if (n == 0)
     {
       GSL_ERROR_VAL ("histogram length n must be positive integer",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_EDOM, 0);
+=======
+			GSL_EDOM, 0);
+>>>>>>> config
     }
 
   h = (gsl_histogram *) malloc (sizeof (gsl_histogram));
@@ -38,7 +56,11 @@ gsl_histogram_alloc (size_t n)
   if (h == 0)
     {
       GSL_ERROR_VAL ("failed to allocate space for histogram struct",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_ENOMEM, 0);
+=======
+			GSL_ENOMEM, 0);
+>>>>>>> config
     }
 
   h->range = (double *) malloc ((n + 1) * sizeof (double));
@@ -48,7 +70,11 @@ gsl_histogram_alloc (size_t n)
       free (h);         /* exception in constructor, avoid memory leak */
 
       GSL_ERROR_VAL ("failed to allocate space for histogram ranges",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_ENOMEM, 0);
+=======
+			GSL_ENOMEM, 0);
+>>>>>>> config
     }
 
   h->bin = (double *) malloc (n * sizeof (double));
@@ -59,7 +85,11 @@ gsl_histogram_alloc (size_t n)
       free (h);         /* exception in constructor, avoid memory leak */
 
       GSL_ERROR_VAL ("failed to allocate space for histogram bins",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_ENOMEM, 0);
+=======
+			GSL_ENOMEM, 0);
+>>>>>>> config
     }
 
   h->n = n;
@@ -82,7 +112,11 @@ make_uniform (double range[], size_t n, double xmin, double xmax)
 
 gsl_histogram *
 gsl_histogram_calloc_uniform (const size_t n, const double xmin,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                               const double xmax)
+=======
+			      const double xmax)
+>>>>>>> config
 {
   gsl_histogram *h;
 
@@ -118,12 +152,20 @@ gsl_histogram_calloc (size_t n)
 
     for (i = 0; i < n + 1; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         h->range[i] = i;
+=======
+	h->range[i] = i;
+>>>>>>> config
       }
 
     for (i = 0; i < n; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         h->bin[i] = 0;
+=======
+	h->bin[i] = 0;
+>>>>>>> config
       }
   }
 
@@ -144,7 +186,11 @@ gsl_histogram_free (gsl_histogram * h)
 
 /* These initialization functions suggested by Achim Gaedke */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int 
+=======
+int
+>>>>>>> config
 gsl_histogram_set_ranges_uniform (gsl_histogram * h, double xmin, double xmax)
 {
   size_t i;
@@ -169,7 +215,11 @@ gsl_histogram_set_ranges_uniform (gsl_histogram * h, double xmin, double xmax)
   return GSL_SUCCESS;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int 
+=======
+int
+>>>>>>> config
 gsl_histogram_set_ranges (gsl_histogram * h, const double range[], size_t size)
 {
   size_t i;
@@ -196,4 +246,7 @@ gsl_histogram_set_ranges (gsl_histogram * h, const double range[], size_t size)
 
   return GSL_SUCCESS;
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

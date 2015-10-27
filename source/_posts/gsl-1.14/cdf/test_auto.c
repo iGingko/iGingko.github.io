@@ -1461,4 +1461,7 @@ test_auto_gammalarge (void)
     TEST(gsl_cdf_gamma_Q, (1.0000000000000000e-10,1.3,123.0), 1.000000000000e+00, TEST_TOL6);
     TEST(gsl_cdf_gamma_Q, (0.0000000000000000e+00,1.3,123.0), 1.000000000000e+00, TEST_TOL6);
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

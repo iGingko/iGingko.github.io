@@ -19,7 +19,13 @@ Mon Apr 23 13:26:21 2001  Brian Gough  <bjg@network-theory.co.uk>
 Mon Feb  5 13:42:54 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* diff.c: moved gradient calculating function into multimin since
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	it depends on multimin functions
 
 	* test.c (main): tidied up the tests
 
+=======
+	it depends on multimin functions
+
+	* test.c (main): tidied up the tests
+>>>>>>> config

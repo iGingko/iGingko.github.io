@@ -1,17 +1,31 @@
 /* eigen/hermv.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2001, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 2001, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -34,7 +48,11 @@
 
 #include "qrstep.c"
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_eigen_hermv_workspace * 
+=======
+gsl_eigen_hermv_workspace *
+>>>>>>> config
 gsl_eigen_hermv_alloc (const size_t n)
 {
   gsl_eigen_hermv_workspace * w ;
@@ -43,7 +61,11 @@ gsl_eigen_hermv_alloc (const size_t n)
     {
       GSL_ERROR_NULL ("matrix dimension must be positive integer", GSL_EINVAL);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   w = (gsl_eigen_hermv_workspace *) malloc (sizeof(gsl_eigen_hermv_workspace));
 
   if (w == 0)
@@ -119,9 +141,15 @@ gsl_eigen_hermv_free (gsl_eigen_hermv_workspace * w)
 }
 
 int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_eigen_hermv (gsl_matrix_complex * A, gsl_vector * eval, 
                        gsl_matrix_complex * evec,
                        gsl_eigen_hermv_workspace * w)
+=======
+gsl_eigen_hermv (gsl_matrix_complex * A, gsl_vector * eval,
+		       gsl_matrix_complex * evec,
+		       gsl_eigen_hermv_workspace * w)
+>>>>>>> config
 {
   if (A->size1 != A->size2)
     {
@@ -146,16 +174,26 @@ gsl_eigen_hermv (gsl_matrix_complex * A, gsl_vector * eval,
       /* handle special case */
 
       if (N == 1)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           gsl_complex A00 = gsl_matrix_complex_get (A, 0, 0);
           gsl_vector_set (eval, 0, GSL_REAL(A00));
           gsl_matrix_complex_set (evec, 0, 0, GSL_COMPLEX_ONE);
           return GSL_SUCCESS;
         }
+=======
+	{
+	  gsl_complex A00 = gsl_matrix_complex_get (A, 0, 0);
+	  gsl_vector_set (eval, 0, GSL_REAL(A00));
+	  gsl_matrix_complex_set (evec, 0, 0, GSL_COMPLEX_ONE);
+	  return GSL_SUCCESS;
+	}
+>>>>>>> config
 
       /* Transform the matrix into a symmetric tridiagonal form */
 
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gsl_vector_view d_vec = gsl_vector_view_array (d, N);
         gsl_vector_view sd_vec = gsl_vector_view_array (sd, N - 1);
         gsl_vector_complex_view tau_vec = gsl_vector_complex_view_array (w->tau, N-1);
@@ -245,6 +283,97 @@ gsl_eigen_hermv (gsl_matrix_complex * A, gsl_vector * eval,
         gsl_vector_memcpy (eval, &d_vec.vector);
       }
       
+=======
+	gsl_vector_view d_vec = gsl_vector_view_array (d, N);
+	gsl_vector_view sd_vec = gsl_vector_view_array (sd, N - 1);
+	gsl_vector_complex_view tau_vec = gsl_vector_complex_view_array (w->tau, N-1);
+	gsl_linalg_hermtd_decomp (A, &tau_vec.vector);
+	gsl_linalg_hermtd_unpack (A, &tau_vec.vector, evec, &d_vec.vector, &sd_vec.vector);
+      }
+
+      /* Make an initial pass through the tridiagonal decomposition
+	 to remove off-diagonal elements which are effectively zero */
+
+      chop_small_elements (N, d, sd);
+
+      /* Progressively reduce the matrix until it is diagonal */
+
+      b = N - 1;
+
+      while (b > 0)
+	{
+	  if (sd[b - 1] == 0.0 || isnan(sd[b - 1]))
+	    {
+	      b--;
+	      continue;
+	    }
+
+	  /* Find the largest unreduced block (a,b) starting from b
+	     and working backwards */
+
+	  a = b - 1;
+
+	  while (a > 0)
+	    {
+	      if (sd[a - 1] == 0.0)
+		{
+		  break;
+		}
+	      a--;
+	    }
+
+	  {
+	    size_t i;
+	    const size_t n_block = b - a + 1;
+	    double *d_block = d + a;
+	    double *sd_block = sd + a;
+	    double * const gc = w->gc;
+	    double * const gs = w->gs;
+
+	    /* apply QR reduction with implicit deflation to the
+	       unreduced block */
+
+	    qrstep (n_block, d_block, sd_block, gc, gs);
+
+	    /* Apply  Givens rotation Gij(c,s) to matrix Q,  Q <- Q G */
+
+	    for (i = 0; i < n_block - 1; i++)
+	      {
+		const double c = gc[i], s = gs[i];
+		size_t k;
+
+		for (k = 0; k < N; k++)
+		  {
+		    gsl_complex qki = gsl_matrix_complex_get (evec, k, a + i);
+		    gsl_complex qkj = gsl_matrix_complex_get (evec, k, a + i + 1);
+		    /* qki <= qki * c - qkj * s */
+		    /* qkj <= qki * s + qkj * c */
+		    gsl_complex x1 = gsl_complex_mul_real(qki, c);
+		    gsl_complex y1 = gsl_complex_mul_real(qkj, -s);
+
+		    gsl_complex x2 = gsl_complex_mul_real(qki, s);
+		    gsl_complex y2 = gsl_complex_mul_real(qkj, c);
+
+		    gsl_complex qqki = gsl_complex_add(x1, y1);
+		    gsl_complex qqkj = gsl_complex_add(x2, y2);
+
+		    gsl_matrix_complex_set (evec, k, a + i, qqki);
+		    gsl_matrix_complex_set (evec, k, a + i + 1, qqkj);
+		  }
+	      }
+
+	    /* remove any small off-diagonal elements */
+
+	    chop_small_elements (n_block, d_block, sd_block);
+	  }
+	}
+
+      {
+	gsl_vector_view d_vec = gsl_vector_view_array (d, N);
+	gsl_vector_memcpy (eval, &d_vec.vector);
+      }
+
+>>>>>>> config
       return GSL_SUCCESS;
     }
 }

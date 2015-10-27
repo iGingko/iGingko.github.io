@@ -1,17 +1,31 @@
 /* specfunc/elljac.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -75,8 +89,13 @@ gsl_sf_elljac_e(double u, double m, double * sn, double * cn, double * dn)
       nu[n+1] = sqrt(mu[n] * nu[n]);
       ++n;
       if(n >= N - 1) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         status = GSL_EMAXITER;
         break;
+=======
+	status = GSL_EMAXITER;
+	break;
+>>>>>>> config
       }
     }
 
@@ -88,6 +107,7 @@ gsl_sf_elljac_e(double u, double m, double * sn, double * cn, double * dn)
 
     if (fabs(sin_umu) < fabs(cos_umu))
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         t = sin_umu / cos_umu;
         
         c[n] = mu[n] * t;
@@ -123,6 +143,43 @@ gsl_sf_elljac_e(double u, double m, double * sn, double * cn, double * dn)
         *cn = c[n] * (*sn);
       }
     
+=======
+	t = sin_umu / cos_umu;
+
+	c[n] = mu[n] * t;
+	d[n] = 1.0;
+
+	while(n > 0) {
+	  n--;
+	  c[n] = d[n+1] * c[n+1];
+	  r = (c[n+1] * c[n+1]) / mu[n+1];
+	  d[n] = (r + nu[n]) / (r + mu[n]);
+	  }
+
+	*dn = sqrt(1.0-m) / d[n];
+	*cn = (*dn) * GSL_SIGN(cos_umu) / gsl_hypot(1.0, c[n]);
+	*sn = (*cn) * c[n] /sqrt(1.0-m);
+      }
+    else
+      {
+	t = cos_umu / sin_umu;
+
+	c[n] = mu[n] * t;
+	d[n] = 1.0;
+
+	while(n > 0) {
+	  --n;
+	  c[n] = d[n+1] * c[n+1];
+	  r = (c[n+1] * c[n+1]) / mu[n+1];
+	  d[n] = (r + nu[n]) / (r + mu[n]);
+	}
+
+	*dn = d[n];
+	*sn = GSL_SIGN(sin_umu) / gsl_hypot(1.0, c[n]);
+	*cn = c[n] * (*sn);
+      }
+
+>>>>>>> config
     return status;
   }
 }

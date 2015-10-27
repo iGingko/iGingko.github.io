@@ -52,7 +52,11 @@ gamma_inc_D(const double a, const double x, gsl_sf_result * result)
     gsl_sf_result ln_term;
     double term1;
     if (x < 0.5*a) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       double u = x/a;   
+=======
+      double u = x/a;
+>>>>>>> config
       double ln_u = log(u);
       ln_term.val = ln_u - u + 1.0;
       ln_term.err = (fabs(ln_u) + fabs(u) + 1.0) * GSL_DBL_EPSILON;
@@ -60,7 +64,11 @@ gamma_inc_D(const double a, const double x, gsl_sf_result * result)
       double mu = (x-a)/a;
       gsl_sf_log_1plusx_mx_e(mu, &ln_term);  /* log(1+mu) - mu */
       /* Propagate cancellation error from x-a, since the absolute
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          error of mu=x-a is DBL_EPSILON */
+=======
+	 error of mu=x-a is DBL_EPSILON */
+>>>>>>> config
       ln_term.err += GSL_DBL_EPSILON * fabs(mu);
     };
     gsl_sf_gammastar_e(a, &gstar);
@@ -353,6 +361,7 @@ gamma_inc_Q_series(const double a, const double x, gsl_sf_result * result)
     const double c2 = M_PI*M_PI/12.0 - 0.5*el*el;
     const double c3 = el*(M_PI*M_PI/12.0 - el*el/6.0) + pg21/6.0;
     const double c4 = -0.04166666666666666667
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                        * (-1.758243446661483480 + lnx)
                        * (-0.764428657272716373 + lnx)
                        * ( 0.723980571623507657 + lnx)
@@ -408,6 +417,63 @@ gamma_inc_Q_series(const double a, const double x, gsl_sf_result * result)
                        * ( 1.7702236517651670 + lnx)
                        * ( 4.1231539047474080 + lnx)
                        * ( 10.342627908148680 + lnx);
+=======
+		       * (-1.758243446661483480 + lnx)
+		       * (-0.764428657272716373 + lnx)
+		       * ( 0.723980571623507657 + lnx)
+		       * ( 4.107554191916823640 + lnx);
+    const double c5 = -0.0083333333333333333
+		       * (-2.06563396085715900 + lnx)
+		       * (-1.28459889470864700 + lnx)
+		       * (-0.27583535756454143 + lnx)
+		       * ( 1.33677371336239618 + lnx)
+		       * ( 5.17537282427561550 + lnx);
+    const double c6 = -0.0013888888888888889
+		       * (-2.30814336454783200 + lnx)
+		       * (-1.65846557706987300 + lnx)
+		       * (-0.88768082560020400 + lnx)
+		       * ( 0.17043847751371778 + lnx)
+		       * ( 1.92135970115863890 + lnx)
+		       * ( 6.22578557795474900 + lnx);
+    const double c7 = -0.00019841269841269841
+		       * (-2.5078657901291800 + lnx)
+		       * (-1.9478900888958200 + lnx)
+		       * (-1.3194837322612730 + lnx)
+		       * (-0.5281322700249279 + lnx)
+		       * ( 0.5913834939078759 + lnx)
+		       * ( 2.4876819633378140 + lnx)
+		       * ( 7.2648160783762400 + lnx);
+    const double c8 = -0.00002480158730158730
+		       * (-2.677341544966400 + lnx)
+		       * (-2.182810448271700 + lnx)
+		       * (-1.649350342277400 + lnx)
+		       * (-1.014099048290790 + lnx)
+		       * (-0.191366955370652 + lnx)
+		       * ( 0.995403817918724 + lnx)
+		       * ( 3.041323283529310 + lnx)
+		       * ( 8.295966556941250 + lnx);
+    const double c9 = -2.75573192239859e-6
+		       * (-2.8243487670469080 + lnx)
+		       * (-2.3798494322701120 + lnx)
+		       * (-1.9143674728689960 + lnx)
+		       * (-1.3814529102920370 + lnx)
+		       * (-0.7294312810261694 + lnx)
+		       * ( 0.1299079285269565 + lnx)
+		       * ( 1.3873333251885240 + lnx)
+		       * ( 3.5857258865210760 + lnx)
+		       * ( 9.3214237073814600 + lnx);
+    const double c10 = -2.75573192239859e-7
+		       * (-2.9540329644556910 + lnx)
+		       * (-2.5491366926991850 + lnx)
+		       * (-2.1348279229279880 + lnx)
+		       * (-1.6741881076349450 + lnx)
+		       * (-1.1325949616098420 + lnx)
+		       * (-0.4590034650618494 + lnx)
+		       * ( 0.4399352987435699 + lnx)
+		       * ( 1.7702236517651670 + lnx)
+		       * ( 4.1231539047474080 + lnx)
+		       * ( 10.342627908148680 + lnx);
+>>>>>>> config
 
     term1 = a*(c1+a*(c2+a*(c3+a*(c4+a*(c5+a*(c6+a*(c7+a*(c8+a*(c9+a*c10)))))))));
   }
@@ -680,7 +746,11 @@ gsl_sf_gamma_inc_e(const double a, const double x, gsl_sf_result * result)
 
     gsl_sf_result g_da;
     const int stat_g_da = ( da > 0.0 ? gamma_inc_a_gt_0(da, x, &g_da)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                      : GAMMA_INC_A_0(x, &g_da));
+=======
+				     : GAMMA_INC_A_0(x, &g_da));
+>>>>>>> config
 
     double alpha = da;
     double gax = g_da.val;

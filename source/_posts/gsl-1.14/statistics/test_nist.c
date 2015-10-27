@@ -1,17 +1,31 @@
 /* statistics/test_nist.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Jim Davies, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Jim Davies, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -34,9 +48,15 @@ test_nist (void)
 {
   size_t i ;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   const size_t nlew = 200 ; 
 
   const double lew[200] = { 
+=======
+  const size_t nlew = 200 ;
+
+  const double lew[200] = {
+>>>>>>> config
     -213, -564,  -35,  -15,  141,  115, -420, -360,  203, -338, -431,  194,
     -220, -513,  154, -125, -559,   92,  -21, -579,  -52,   99, -543, -175,
      162, -457, -346,  204, -300, -474,  164, -107, -572,   -8,   83, -541,
@@ -57,7 +77,11 @@ test_nist (void)
 
   const size_t nlottery = 218 ;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   const double lottery[218] = { 
+=======
+  const double lottery[218] = {
+>>>>>>> config
     162, 671, 933, 414, 788, 730, 817, 33, 536, 875, 670, 236, 473, 167,
     877, 980, 316, 950, 456, 92, 517, 557, 956, 954, 104, 178, 794, 278,
     147, 773, 437, 435, 502, 610, 582, 780, 689, 562, 964, 791, 28, 97,
@@ -77,19 +101,31 @@ test_nist (void)
 
   const size_t nmavro = 50 ;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   const double mavro[50] = { 
+=======
+  const double mavro[50] = {
+>>>>>>> config
     2.00180, 2.00170, 2.00180, 2.00190, 2.00180, 2.00170, 2.00150,
     2.00140, 2.00150, 2.00150, 2.00170, 2.00180, 2.00180, 2.00190,
     2.00190, 2.00210, 2.00200, 2.00160, 2.00140, 2.00130, 2.00130,
     2.00150, 2.00150, 2.00160, 2.00150, 2.00140, 2.00130, 2.00140,
     2.00150, 2.00140, 2.00150, 2.00160, 2.00150, 2.00160, 2.00190,
     2.00200, 2.00200, 2.00210, 2.00220, 2.00230, 2.00240, 2.00250,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     2.00270, 2.00260, 2.00260, 2.00260, 2.00270, 2.00260, 2.00250, 
+=======
+    2.00270, 2.00260, 2.00260, 2.00260, 2.00270, 2.00260, 2.00250,
+>>>>>>> config
     2.00240 } ;
 
   const size_t nmichelson = 100 ;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   const double michelson [100] = { 
+=======
+  const double michelson [100] = {
+>>>>>>> config
     299.85, 299.74, 299.90, 300.07, 299.93, 299.85, 299.95, 299.98,
     299.98, 299.88, 300.00, 299.98, 299.93, 299.65, 299.76, 299.81,
     300.00, 300.00, 299.96, 299.96, 299.96, 299.94, 299.96, 299.94,
@@ -348,10 +384,17 @@ test_nist (void)
   double numacc4[1001] ;
 
   numacc2[0] = 1.2 ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   numacc3[0] = 1000000.2 ; 
   numacc4[0] = 10000000.2 ; 
  
   for (i = 1 ; i < 1000  ; i += 2) 
+=======
+  numacc3[0] = 1000000.2 ;
+  numacc4[0] = 10000000.2 ;
+
+  for (i = 1 ; i < 1000  ; i += 2)
+>>>>>>> config
     {
       numacc2[i] = 1.1 ;
       numacc2[i+1] = 1.3 ;
@@ -434,7 +477,11 @@ test_nist (void)
     gsl_test_rel (sd, expected_sd, 1e-15, "pidigits gsl_stats_sd") ;
     gsl_test_rel (lag1, expected_lag1, 1e-14, "pidigits autocorrelation") ;
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
   {
     double mean = gsl_stats_mean (numacc1, 1, nacc1);
     double sd = gsl_stats_sd (numacc1, 1, nacc1);
@@ -494,6 +541,7 @@ test_nist (void)
 
   return 0;
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
 
@@ -501,3 +549,5 @@ test_nist (void)
 
 
 
+=======
+>>>>>>> config

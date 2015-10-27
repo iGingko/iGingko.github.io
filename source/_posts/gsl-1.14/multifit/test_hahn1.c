@@ -3,7 +3,11 @@ const size_t hahn1_P = 7;
 
 /* double hahn1_x0[7] = { 10, -1, 0.05, -0.00001, -0.05, 0.001, -0.000001 }; */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 double hahn1_x0[7] = { 1, -0.1, 0.005, -0.000001, -0.005, 0.0001, -0.0000001}; 
+=======
+double hahn1_x0[7] = { 1, -0.1, 0.005, -0.000001, -0.005, 0.0001, -0.0000001};
+>>>>>>> config
 
 double hahn1_x[7] = {
 1.0776351733E+00,
@@ -28,7 +32,11 @@ double hahn1_sigma[7] = {
 };
 
 double hahn1_F1[236] = {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         .591E0,
+=======
+	.591E0,
+>>>>>>> config
        1.547E0,
        2.902E0,
        2.894E0,
@@ -84,8 +92,13 @@ double hahn1_F1[236] = {
       18.870E0,
       18.795E0,
       19.111E0,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         .367E0,
         .796E0,
+=======
+	.367E0,
+	.796E0,
+>>>>>>> config
        0.892E0,
        1.903E0,
        2.150E0,
@@ -522,7 +535,11 @@ hahn1_f (const gsl_vector * x, void *params, gsl_vector * f)
     {
       double x = hahn1_F0[i];
       double y = ((b[0] + x* (b[1]  + x * (b[2] + x * b[3])))
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   / (1 + x*(b[4]  + x *(b[5] + x*b[6]))));
+=======
+		  / (1 + x*(b[4]  + x *(b[5] + x*b[6]))));
+>>>>>>> config
       gsl_vector_set (f, i, hahn1_F1[i] - y);
     }
 
@@ -559,7 +576,11 @@ hahn1_df (const gsl_vector * x, void *params, gsl_matrix * df)
 
 int
 hahn1_fdf (const gsl_vector * x, void *params,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
            gsl_vector * f, gsl_matrix * df)
+=======
+	   gsl_vector * f, gsl_matrix * df)
+>>>>>>> config
 {
   hahn1_f (x, params, f);
   hahn1_df (x, params, df);

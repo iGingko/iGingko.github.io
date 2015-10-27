@@ -1,17 +1,31 @@
 /* specfunc/gsl_sf_coulomb.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -73,11 +87,19 @@ double gsl_sf_hydrogenicR(const int n, const int l, const double Z, const double
  */
 int
 gsl_sf_coulomb_wave_FG_e(const double eta, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                             const double lam_F,
                             const int  k_lam_G,
                             gsl_sf_result * F, gsl_sf_result * Fp,
                             gsl_sf_result * G, gsl_sf_result * Gp,
                             double * exp_F, double * exp_G);
+=======
+			    const double lam_F,
+			    const int  k_lam_G,
+			    gsl_sf_result * F, gsl_sf_result * Fp,
+			    gsl_sf_result * G, gsl_sf_result * Gp,
+			    double * exp_F, double * exp_G);
+>>>>>>> config
 
 
 /* F_L(eta,x) as array */
@@ -90,6 +112,7 @@ int gsl_sf_coulomb_wave_F_array(
 
 /* F_L(eta,x), G_L(eta,x) as arrays */
 int gsl_sf_coulomb_wave_FG_array(double lam_min, int kmax,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                 double eta, double x,
                                 double * fc_array, double * gc_array,
                                 double * F_exponent,
@@ -104,16 +127,39 @@ int gsl_sf_coulomb_wave_FGp_array(double lam_min, int kmax,
                                 double * F_exponent,
                                 double * G_exponent
                                 );
+=======
+				double eta, double x,
+				double * fc_array, double * gc_array,
+				double * F_exponent,
+				double * G_exponent
+				);
+
+/* F_L(eta,x), G_L(eta,x), F'_L(eta,x), G'_L(eta,x) as arrays */
+int gsl_sf_coulomb_wave_FGp_array(double lam_min, int kmax,
+				double eta, double x,
+				double * fc_array, double * fcp_array,
+				double * gc_array, double * gcp_array,
+				double * F_exponent,
+				double * G_exponent
+				);
+>>>>>>> config
 
 /* Coulomb wave function divided by the argument,
  * F(eta, x)/x. This is the function which reduces to
  * spherical Bessel functions in the limit eta->0.
  */
 int gsl_sf_coulomb_wave_sphF_array(double lam_min, int kmax,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                         double eta, double x,
                                         double * fc_array,
                                         double * F_exponent
                                         );
+=======
+					double eta, double x,
+					double * fc_array,
+					double * F_exponent
+					);
+>>>>>>> config
 
 
 /* Coulomb wave function normalization constant.

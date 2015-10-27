@@ -1,17 +1,31 @@
 /* ieee-utils/fp-os2.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2001 Henry Sobotka <sobotka@axess.com>
  * 
+=======
+ *
+ * Copyright (C) 2001 Henry Sobotka <sobotka@axess.com>
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -29,7 +43,11 @@ gsl_ieee_set_mode (int precision, int rounding, int exception_mask)
   switch (precision)
     {
     case GSL_IEEE_SINGLE_PRECISION:
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       _control87(PC_24, MCW_PC);    
+=======
+      _control87(PC_24, MCW_PC);
+>>>>>>> config
       break ;
     case GSL_IEEE_DOUBLE_PRECISION:
       _control87(PC_53, MCW_PC);

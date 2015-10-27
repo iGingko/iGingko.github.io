@@ -6,9 +6,15 @@ Transforms (DHTs).  The functions are declared in the header file
 @file{gsl_dht.h}.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Discrete Hankel Transform Definition::  
 * Discrete Hankel Transform Functions::  
 * Discrete Hankel Transform References::  
+=======
+* Discrete Hankel Transform Definition::
+* Discrete Hankel Transform Functions::
+* Discrete Hankel Transform References::
+>>>>>>> config
 @end menu
 
 @node Discrete Hankel Transform Definition
@@ -20,7 +26,11 @@ zeroes of a Bessel function of fixed order; compare this to the case of
 the discrete Fourier transform, where samples are taken at points
 related to the zeroes of the sine or cosine function.
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 Specifically, let @math{f(t)} be a function on the unit interval and 
+=======
+Specifically, let @math{f(t)} be a function on the unit interval and
+>>>>>>> config
 @c{$j_{\nu,m}$}
 @math{j_(\nu,m)} the @math{m}-th zero of the Bessel function
 @math{J_\nu(x)}.  Then the finite @math{\nu}-Hankel transform of
@@ -62,7 +72,11 @@ fundamental sampling theorem.
 $$
 g_m = {{2}\over{j_{\nu,M}^2}}
       \sum_{k=1}^{M-1} f\left({{j_{\nu,k}}\over{j_{\nu,M}}}\right)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           {{J_\nu(j_{\nu,m} j_{\nu,k} / j_{\nu,M})}\over{J_{\nu+1}(j_{\nu,k})^2}}.
+=======
+	  {{J_\nu(j_{\nu,m} j_{\nu,k} / j_{\nu,M})}\over{J_{\nu+1}(j_{\nu,k})^2}}.
+>>>>>>> config
 $$
 \afterdisplay
 @end tex
@@ -70,7 +84,11 @@ $$
 @example
 g_m = (2 / j_(\nu,M)^2)
       \sum_@{k=1@}^@{M-1@} f(j_(\nu,k)/j_(\nu,M))
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           (J_\nu(j_(\nu,m) j_(\nu,k) / j_(\nu,M)) / J_(\nu+1)(j_(\nu,k))^2).
+=======
+	  (J_\nu(j_(\nu,m) j_(\nu,k) / j_(\nu,M)) / J_(\nu+1)(j_(\nu,k))^2).
+>>>>>>> config
 @end example
 
 @end ifinfo
@@ -123,7 +141,11 @@ This function frees the transform @var{t}.
 @deftypefun int gsl_dht_apply (const gsl_dht * @var{t}, double * @var{f_in}, double * @var{f_out})
 This function applies the transform @var{t} to the array @var{f_in}
 whose size is equal to the size of the transform.  The result is stored
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 in the array @var{f_out} which must be of the same length.   
+=======
+in the array @var{f_out} which must be of the same length.
+>>>>>>> config
 
 Applying this function to its output gives the original data
 multiplied by @c{$(1/j_{\nu,M})^2$}

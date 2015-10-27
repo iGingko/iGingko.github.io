@@ -1,17 +1,31 @@
 /* ieee-utils/fp-gnuc99.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2003, 2004, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 2003, 2004, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -34,6 +48,7 @@ gsl_ieee_set_mode (int precision, int rounding, int exception_mask)
     {
     case GSL_IEEE_SINGLE_PRECISION:
       GSL_ERROR ("single precision rounding is not supported by <fenv.h>",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_EUNSUP) ;
       break ;
     case GSL_IEEE_DOUBLE_PRECISION:
@@ -43,6 +58,17 @@ gsl_ieee_set_mode (int precision, int rounding, int exception_mask)
     case GSL_IEEE_EXTENDED_PRECISION:
       GSL_ERROR ("extended precision rounding is not supported by <fenv.h>",
                  GSL_EUNSUP) ;
+=======
+		 GSL_EUNSUP) ;
+      break ;
+    case GSL_IEEE_DOUBLE_PRECISION:
+      GSL_ERROR ("double precision rounding is not supported by <fenv.h>",
+		 GSL_EUNSUP) ;
+      break ;
+    case GSL_IEEE_EXTENDED_PRECISION:
+      GSL_ERROR ("extended precision rounding is not supported by <fenv.h>",
+		 GSL_EUNSUP) ;
+>>>>>>> config
       break ;
     }
 
@@ -89,14 +115,22 @@ gsl_ieee_set_mode (int precision, int rounding, int exception_mask)
 
   mode = 0;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 #ifdef FE_INVALID 
+=======
+#ifdef FE_INVALID
+>>>>>>> config
   mode |= FE_INVALID;
 #endif
 
 #ifdef FE_DIVBYZERO
   mode |= FE_DIVBYZERO;
 #endif
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
 #ifdef FE_OVERFLOW
   mode |= FE_OVERFLOW ;
 #endif
@@ -110,8 +144,13 @@ gsl_ieee_set_mode (int precision, int rounding, int exception_mask)
 #ifdef FE_INVALID
     mode &= ~ FE_INVALID ;
 #else
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     GSL_ERROR ("invalid operation exception not supported by <fenv.h>", 
                GSL_EUNSUP);
+=======
+    GSL_ERROR ("invalid operation exception not supported by <fenv.h>",
+	       GSL_EUNSUP);
+>>>>>>> config
 #endif
     }
 
@@ -122,7 +161,11 @@ gsl_ieee_set_mode (int precision, int rounding, int exception_mask)
   else
     {
       GSL_ERROR ("denormalized operand exception not supported by <fenv.h>. "
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  "Use 'mask-denormalized' to work around this.", GSL_EUNSUP) ;
+=======
+		 "Use 'mask-denormalized' to work around this.", GSL_EUNSUP) ;
+>>>>>>> config
     }
 
   if (exception_mask & GSL_IEEE_MASK_DIVISION_BY_ZERO)
@@ -130,8 +173,13 @@ gsl_ieee_set_mode (int precision, int rounding, int exception_mask)
 #ifdef FE_DIVBYZERO
       mode &= ~ FE_DIVBYZERO ;
 #else
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       GSL_ERROR ("division by zero exception not supported by <fenv.h>", 
                  GSL_EUNSUP);
+=======
+      GSL_ERROR ("division by zero exception not supported by <fenv.h>",
+		 GSL_EUNSUP);
+>>>>>>> config
 #endif
     }
 

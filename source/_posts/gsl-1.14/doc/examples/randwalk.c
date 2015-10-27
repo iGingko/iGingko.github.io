@@ -20,7 +20,11 @@ main (void)
   for (i = 0; i < 10; i++)
     {
       gsl_ran_dir_2d (r, &dx, &dy);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       x += dx; y += dy; 
+=======
+      x += dx; y += dy;
+>>>>>>> config
       printf ("%g %g\n", x, y);
     }
 

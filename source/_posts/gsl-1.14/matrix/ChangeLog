@@ -48,22 +48,39 @@ Mon Jun 17 22:31:33 2002  Brian Gough  <bjg@network-theory.co.uk>
 Wed May  1 21:33:44 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* gsl_matrix_complex_float.h (gsl_matrix_complex_float_get): moved
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	constant zero inside GSL_RANGE_CHECK_OFF
+=======
+	constant zero inside GSL_RANGE_CHECK_OFF
+>>>>>>> config
 
 Sun Mar 24 20:28:48 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* oper_complex_source.c: complex matrix operations (from Toby
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	White)
 	
 Mon Feb 18 20:33:58 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* copy_source.c (gsl_matrix_swap): fixed prototype by removing
  	const from second arg.
+=======
+	White)
+
+Mon Feb 18 20:33:58 2002  Brian Gough  <bjg@network-theory.co.uk>
+
+	* copy_source.c (gsl_matrix_swap): fixed prototype by removing
+	const from second arg.
+>>>>>>> config
 
 Sun Jan 27 22:29:37 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* test.c: ensure that range check is working when running the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	tests
+=======
+	tests
+>>>>>>> config
 
 Fri Sep 14 18:56:34 2001  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -88,7 +105,11 @@ Fri Jul 13 21:29:27 2001  Brian Gough  <bjg@network-theory.co.uk>
 Mon Jul  2 12:35:16 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* view.h:  provide macros for initializing null
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	vectors and views
+=======
+	vectors and views
+>>>>>>> config
 
 Sun Jul  1 22:44:51 2001  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -97,17 +118,29 @@ Sun Jul  1 22:44:51 2001  Brian Gough  <bjg@network-theory.co.uk>
 Fri Jun  1 17:04:52 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* getset_source.c: made these routines work with the current
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	matrix struct, previously they would give incorrect results
+=======
+	matrix struct, previously they would give incorrect results
+>>>>>>> config
 
 Mon May 14 22:43:39 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* matrix_source.c (FUNCTION): removed unnecessary inline from
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	static function definition
+=======
+	static function definition
+>>>>>>> config
 
 Tue May  1 23:09:25 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* gsl_matrix_float.h (struct ): MS VC++ requires that the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	struct/typedef be made with a single definition
+=======
+	struct/typedef be made with a single definition
+>>>>>>> config
 
 Mon Mar 26 20:33:45 2001  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -116,20 +149,35 @@ Mon Mar 26 20:33:45 2001  Brian Gough  <bjg@network-theory.co.uk>
 Sat Sep  9 16:47:16 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* added an owner field for indicating whether the underlying
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	memory is owned by the vector. Changed the meaning of the block
  	field to always be the address of the underlying block, even for
  	subviews (previously the block field was set to NULL in this
  	case).
+=======
+	memory is owned by the vector. Changed the meaning of the block
+	field to always be the address of the underlying block, even for
+	subviews (previously the block field was set to NULL in this
+	case).
+>>>>>>> config
 
 Thu Aug 17 19:46:22 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* swap_source.c (FUNCTION): added function
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	gsl_matrix_transpose_memcpy for transposing rectangular matrices
+=======
+	gsl_matrix_transpose_memcpy for transposing rectangular matrices
+>>>>>>> config
 
 Sun Jul 16 10:40:15 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* init_source.c (FUNCTION):  added gsl_matrix_view function for
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	creating a matrix view of an ordinary C array
+=======
+	creating a matrix view of an ordinary C array
+>>>>>>> config
 
 Sat Jul 15 21:44:22 2000  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -137,15 +185,26 @@ Sat Jul 15 21:44:22 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 Sat Jun 17 15:38:30 2000  Brian Gough  <bjg@network-theory.co.uk>
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         * fixed up missing MULTIPLICITY factors in various functions 
+=======
+	* fixed up missing MULTIPLICITY factors in various functions
+>>>>>>> config
 
 Sun May 28 12:25:02 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* test_complex_source.c (FUNCTION): use binary mode "b" when
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	reading and writing binary files
 
 	* test_source.c (FUNCTION): use binary mode "b" when reading and
  	writing binary files
+=======
+	reading and writing binary files
+
+	* test_source.c (FUNCTION): use binary mode "b" when reading and
+	writing binary files
+>>>>>>> config
 
 Thu May  4 20:58:59 2000  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -158,7 +217,11 @@ Wed Apr 26 15:04:22 2000  Brian Gough  <bjg@network-theory.co.uk>
 Tue Apr 18 12:51:49 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* minmax_source.c (FUNCTION): fixed bug in minmax where
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	coordinates would be incorrect for min or max in the first element
+=======
+	coordinates would be incorrect for min or max in the first element
+>>>>>>> config
 
 	* test_source.c (FUNCTION): added tests for max/min functions
 
@@ -169,7 +232,11 @@ Thu Apr 13 18:39:27 2000  Brian Gough  <bjg@network-theory.co.uk>
 Sat Mar 25 20:29:41 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* swap_source.c (FUNCTION): renamed swap_cols to swap_columns, and
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	renamed swap_rowcol to swap_row_column
+=======
+	renamed swap_rowcol to swap_row_column
+>>>>>>> config
 
 Tue Mar 21 21:15:22 2000  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -178,15 +245,26 @@ Tue Mar 21 21:15:22 2000  Brian Gough  <bjg@network-theory.co.uk>
 Sat Mar 11 11:19:05 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* init_source.c (FUNCTION): added gsl_matrix_identity to set a
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	matrix to the identity, and gsl_matrix_zero for zeroing a matrix
 
 	* gsl_matrix.h: renamed struct element dim2 to tda (trailing
  	dimension) following blas conventions for row-major matrices
+=======
+	matrix to the identity, and gsl_matrix_zero for zeroing a matrix
+
+	* gsl_matrix.h: renamed struct element dim2 to tda (trailing
+	dimension) following blas conventions for row-major matrices
+>>>>>>> config
 
 Thu Dec  2 21:17:16 1999  Brian Gough  <bjg@network-theory.co.uk>
 
 	* rowcol_source.c (FUNCTION): added gsl_matrix_view_from_vector
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	(Thanks to Fabrice Rossi)
+=======
+	(Thanks to Fabrice Rossi)
+>>>>>>> config
 
 Sun Oct 31 20:01:39 1999  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -199,7 +277,11 @@ Tue Oct 19 14:13:35 1999  Brian Gough  <bjg@network-theory.co.uk>
 Fri Oct  1 15:48:07 1999  Brian Gough  <bjg@network-theory.co.uk>
 
 	* the matrix struct now supports a separate 'trailing dimension'
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	to allow handling of submatrices
+=======
+	to allow handling of submatrices
+>>>>>>> config
 
 	* now uses separate block directory for memory management
 
@@ -216,5 +298,9 @@ Mon Mar  1 20:05:52 1999  Brian Gough  <bjg@netsci.freeserve.co.uk>
 Mon Apr  6 15:06:38 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* make range checking the default, you have to define
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	GSL_RANGE_CHECK_OFF to turn it off
 
+=======
+	GSL_RANGE_CHECK_OFF to turn it off
+>>>>>>> config

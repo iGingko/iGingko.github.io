@@ -1,4 +1,8 @@
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 noinst_LTLIBRARIES = libgslmultifit.la 
+=======
+noinst_LTLIBRARIES = libgslmultifit.la
+>>>>>>> config
 
 pkginclude_HEADERS = gsl_multifit.h gsl_multifit_nlin.h
 
@@ -17,4 +21,7 @@ test_LDADD = libgslmultifit.la ../linalg/libgsllinalg.la ../permutation/libgslpe
 
 #demo_SOURCES = demo.c
 #demo_LDADD = libgslmultifit.la ../linalg/libgsllinalg.la ../permutation/libgslpermutation.la ../blas/libgslblas.la ../cblas/libgslcblas.la ../matrix/libgslmatrix.la ../vector/libgslvector.la ../block/libgslblock.la ../randist/libgslrandist.la ../rng/libgslrng.la ../complex/libgslcomplex.la ../ieee-utils/libgslieeeutils.la ../err/libgslerr.la ../test/libgsltest.la ../utils/libutils.la ../sys/libgslsys.la
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

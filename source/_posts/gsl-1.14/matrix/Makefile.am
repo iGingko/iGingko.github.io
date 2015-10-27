@@ -1,4 +1,8 @@
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 noinst_LTLIBRARIES = libgslmatrix.la 
+=======
+noinst_LTLIBRARIES = libgslmatrix.la
+>>>>>>> config
 
 check_PROGRAMS = test test_static
 
@@ -6,7 +10,11 @@ pkginclude_HEADERS = gsl_matrix.h gsl_matrix_char.h gsl_matrix_complex_double.h 
 
 INCLUDES = -I$(top_srcdir)
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 TESTS = $(check_PROGRAMS) 
+=======
+TESTS = $(check_PROGRAMS)
+>>>>>>> config
 
 test_LDADD = libgslmatrix.la ../vector/libgslvector.la ../block/libgslblock.la ../ieee-utils/libgslieeeutils.la  ../err/libgslerr.la ../test/libgsltest.la ../sys/libgslsys.la ../utils/libutils.la
 test_static_LDADD = libgslmatrix.la ../vector/libgslvector.la ../block/libgslblock.la ../ieee-utils/libgslieeeutils.la  ../err/libgslerr.la ../test/libgsltest.la ../sys/libgslsys.la ../utils/libutils.la
@@ -20,5 +28,8 @@ CLEANFILES = test.txt test.dat
 noinst_HEADERS = init_source.c file_source.c rowcol_source.c swap_source.c copy_source.c test_complex_source.c test_source.c minmax_source.c prop_source.c oper_source.c getset_source.c view_source.c submatrix_source.c oper_complex_source.c
 
 libgslmatrix_la_SOURCES = init.c matrix.c file.c rowcol.c swap.c copy.c minmax.c prop.c oper.c getset.c view.c submatrix.c view.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
+=======
+>>>>>>> config

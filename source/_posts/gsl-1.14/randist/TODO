@@ -1,3 +1,4 @@
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 *   ACM Computing Surveys (CSUR)  
    Volume 39 ,  Issue 4  (2007)                                                                     
 
@@ -10,6 +11,20 @@
 
 * DONE, for mu. 
   
+=======
+*   ACM Computing Surveys (CSUR)
+   Volume 39 ,  Issue 4  (2007)
+
+   Gaussian random number generators
+   David B. Thomas, Wayne Luk, Philip H.W. Leong, John D. Villasenor
+   Article No. 11
+
+
+* add Erlang dist back in?
+
+* DONE, for mu.
+
+>>>>>>> config
   Note that we need to get rid of mu when it is not the mean.
 
   From: Brian Gough <bjg@network-theory.co.uk>
@@ -31,9 +46,15 @@
    > which is not the mean.   This is non-standard and confusing.
    > (Also, in the Pareto function, `a' is normally called beta,
    > `b' is normally called alpha.)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    > 
    > Keith
    > 
+=======
+   >
+   > Keith
+   >
+>>>>>>> config
    > +-------------------------------------------------------------------+
    > | Dr. Keith M. Briggs, Complexity Research Group, BT Research Labs. |
    > | Adastral Park admin2 pp5, Martlesham Heath, IP5 3RE, Suffolk,  UK |
@@ -54,12 +75,20 @@ since returning an error code is not possible. Maybe just return zero.
 * Add the triangular distribution.
 
 * Look at Marsaglia & Tsang, "The Monte Python Method for generating
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 random variables", ACM TOMS Vol 24, No 3, p341 
+=======
+random variables", ACM TOMS Vol 24, No 3, p341
+>>>>>>> config
 
 and the paper on the Ziggurat Method: Journal of Statistical Software,
 Volume 05 Issue 08. George Marsaglia and Wai Wan Tsang. "The ziggurat
 method for generating random variables"
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    
+=======
+
+>>>>>>> config
 * Should 0 be included in distributions such as the exponential
 distribution? If we want a consistent behaviour, is it included in
 others?  Note that 1-gsl_rng_uniform() can have a slight loss of

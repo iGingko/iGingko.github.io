@@ -1,17 +1,31 @@
 /* histogram/file.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -49,7 +63,11 @@ gsl_histogram_fwrite (FILE * stream, const gsl_histogram * h)
 
 int
 gsl_histogram_fprintf (FILE * stream, const gsl_histogram * h,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                        const char *range_format, const char *bin_format)
+=======
+		       const char *range_format, const char *bin_format)
+>>>>>>> config
 {
   size_t i;
   const size_t n = h->n;
@@ -59,44 +77,80 @@ gsl_histogram_fprintf (FILE * stream, const gsl_histogram * h,
       int status = fprintf (stream, range_format, h->range[i]);
 
       if (status < 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           GSL_ERROR ("fprintf failed", GSL_EFAILED);
         }
+=======
+	{
+	  GSL_ERROR ("fprintf failed", GSL_EFAILED);
+	}
+>>>>>>> config
 
       status = putc (' ', stream);
 
       if (status == EOF)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           GSL_ERROR ("putc failed", GSL_EFAILED);
         }
+=======
+	{
+	  GSL_ERROR ("putc failed", GSL_EFAILED);
+	}
+>>>>>>> config
 
       status = fprintf (stream, range_format, h->range[i + 1]);
 
       if (status < 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           GSL_ERROR ("fprintf failed", GSL_EFAILED);
         }
+=======
+	{
+	  GSL_ERROR ("fprintf failed", GSL_EFAILED);
+	}
+>>>>>>> config
 
       status = putc (' ', stream);
 
       if (status == EOF)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           GSL_ERROR ("putc failed", GSL_EFAILED);
         }
+=======
+	{
+	  GSL_ERROR ("putc failed", GSL_EFAILED);
+	}
+>>>>>>> config
 
       status = fprintf (stream, bin_format, h->bin[i]);
 
       if (status < 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           GSL_ERROR ("fprintf failed", GSL_EFAILED);
         }
+=======
+	{
+	  GSL_ERROR ("fprintf failed", GSL_EFAILED);
+	}
+>>>>>>> config
 
       status = putc ('\n', stream);
 
       if (status == EOF)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           GSL_ERROR ("putc failed", GSL_EFAILED);
         }
+=======
+	{
+	  GSL_ERROR ("putc failed", GSL_EFAILED);
+	}
+>>>>>>> config
     }
 
   return GSL_SUCCESS;
@@ -112,6 +166,7 @@ gsl_histogram_fscanf (FILE * stream, gsl_histogram * h)
   for (i = 0; i < n; i++)
     {
       int status = fscanf (stream,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                            "%lg %lg %lg", h->range + i, &upper,
                            h->bin + i);
 
@@ -119,6 +174,15 @@ gsl_histogram_fscanf (FILE * stream, gsl_histogram * h)
         {
           GSL_ERROR ("fscanf failed", GSL_EFAILED);
         }
+=======
+			   "%lg %lg %lg", h->range + i, &upper,
+			   h->bin + i);
+
+      if (status != 3)
+	{
+	  GSL_ERROR ("fscanf failed", GSL_EFAILED);
+	}
+>>>>>>> config
     }
 
   h->range[n] = upper;

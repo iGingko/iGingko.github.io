@@ -1,17 +1,31 @@
 /* err/gsl_errno.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -36,8 +50,13 @@
 
 __BEGIN_DECLS
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 enum { 
   GSL_SUCCESS  = 0, 
+=======
+enum {
+  GSL_SUCCESS  = 0,
+>>>>>>> config
   GSL_FAILURE  = -1,
   GSL_CONTINUE = -2,  /* iteration has not converged */
   GSL_EDOM     = 1,   /* input domain error, e.g sqrt(-1) */
@@ -75,26 +94,46 @@ enum {
 } ;
 
 void gsl_error (const char * reason, const char * file, int line,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                 int gsl_errno);
 
 void gsl_stream_printf (const char *label, const char *file,
                         int line, const char *reason);
+=======
+		int gsl_errno);
+
+void gsl_stream_printf (const char *label, const char *file,
+			int line, const char *reason);
+>>>>>>> config
 
 const char * gsl_strerror (const int gsl_errno);
 
 typedef void gsl_error_handler_t (const char * reason, const char * file,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                   int line, int gsl_errno);
 
 typedef void gsl_stream_handler_t (const char * label, const char * file,
                                    int line, const char * reason);
 
 gsl_error_handler_t * 
+=======
+				  int line, int gsl_errno);
+
+typedef void gsl_stream_handler_t (const char * label, const char * file,
+				   int line, const char * reason);
+
+gsl_error_handler_t *
+>>>>>>> config
 gsl_set_error_handler (gsl_error_handler_t * new_handler);
 
 gsl_error_handler_t *
 gsl_set_error_handler_off (void);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_stream_handler_t * 
+=======
+gsl_stream_handler_t *
+>>>>>>> config
 gsl_set_stream_handler (gsl_stream_handler_t * new_handler);
 
 FILE * gsl_set_stream (FILE * new_stream);

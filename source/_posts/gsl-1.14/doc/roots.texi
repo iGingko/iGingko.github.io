@@ -20,6 +20,7 @@ The header file @file{gsl_roots.h} contains prototypes for the root
 finding functions and related declarations.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Root Finding Overview::       
 * Root Finding Caveats::        
 * Initializing the Solver::     
@@ -31,6 +32,19 @@ finding functions and related declarations.
 * Root Finding Algorithms using Derivatives::  
 * Root Finding Examples::       
 * Root Finding References and Further Reading::  
+=======
+* Root Finding Overview::
+* Root Finding Caveats::
+* Initializing the Solver::
+* Providing the function to solve::
+* Search Bounds and Guesses::
+* Root Finding Iteration::
+* Search Stopping Parameters::
+* Root Bracketing Algorithms::
+* Root Finding Algorithms using Derivatives::
+* Root Finding Examples::
+* Root Finding References and Further Reading::
+>>>>>>> config
 @end menu
 
 @node Root Finding Overview
@@ -88,18 +102,30 @@ found will be returned; however it is difficult to predict which of the
 roots this will be. @emph{In most cases, no error will be reported if
 you try to find a root in an area where there is more than one.}
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 Care must be taken when a function may have a multiple root (such as 
 @c{$f(x) = (x-x_0)^2$}
 @math{f(x) = (x-x_0)^2} or 
 @c{$f(x) = (x-x_0)^3$}
 @math{f(x) = (x-x_0)^3}).  
+=======
+Care must be taken when a function may have a multiple root (such as
+@c{$f(x) = (x-x_0)^2$}
+@math{f(x) = (x-x_0)^2} or
+@c{$f(x) = (x-x_0)^3$}
+@math{f(x) = (x-x_0)^3}).
+>>>>>>> config
 It is not possible to use root-bracketing algorithms on
 even-multiplicity roots.  For these algorithms the initial interval must
 contain a zero-crossing, where the function is negative at one end of
 the interval and positive at the other end.  Roots with even-multiplicity
 do not cross zero, but only touch it instantaneously.  Algorithms based
 on root bracketing will still work for odd-multiplicity roots
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 (e.g. cubic, quintic, @dots{}). 
+=======
+(e.g. cubic, quintic, @dots{}).
+>>>>>>> config
 Root polishing algorithms generally work with higher multiplicity roots,
 but at a reduced rate of convergence.  In these cases the @dfn{Steffenson
 algorithm} can be used to accelerate the convergence of multiple roots.
@@ -123,9 +149,15 @@ solver of type @var{T}.  For example, the following code creates an
 instance of a bisection solver,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 const gsl_root_fsolver_type * T 
   = gsl_root_fsolver_bisection;
 gsl_root_fsolver * s 
+=======
+const gsl_root_fsolver_type * T
+  = gsl_root_fsolver_bisection;
+gsl_root_fsolver * s
+>>>>>>> config
   = gsl_root_fsolver_alloc (T);
 @end example
 
@@ -142,9 +174,15 @@ derivative-based solver of type @var{T}.  For example, the following
 code creates an instance of a Newton-Raphson solver,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 const gsl_root_fdfsolver_type * T 
   = gsl_root_fdfsolver_newton;
 gsl_root_fdfsolver * s 
+=======
+const gsl_root_fdfsolver_type * T
+  = gsl_root_fdfsolver_newton;
+gsl_root_fdfsolver * s
+>>>>>>> config
   = gsl_root_fdfsolver_alloc (T);
 @end example
 
@@ -177,7 +215,11 @@ These functions return a pointer to the name of the solver.  For example,
 
 @example
 printf ("s is a '%s' solver\n",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gsl_root_fsolver_name (s));
+=======
+	gsl_root_fsolver_name (s));
+>>>>>>> config
 @end example
 
 @noindent
@@ -193,8 +235,13 @@ finders to operate on, and, sometimes, its first derivative.  In order
 to allow for general parameters the functions are defined by the
 following data types:
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @deftp {Data Type} gsl_function 
 This data type defines a general function with parameters. 
+=======
+@deftp {Data Type} gsl_function
+This data type defines a general function with parameters.
+>>>>>>> config
 
 @table @code
 @item double (* function) (double @var{x}, void * @var{params})
@@ -232,7 +279,11 @@ struct my_f_params @{ double a; double b; double c; @};
 
 double
 my_f (double x, void * p) @{
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    struct my_f_params * params 
+=======
+   struct my_f_params * params
+>>>>>>> config
      = (struct my_f_params *)p;
    double a = (params->a);
    double b = (params->b);
@@ -252,7 +303,11 @@ F.params = &params;
 The function @math{f(x)} can be evaluated using the following macro,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 #define GSL_FN_EVAL(F,x) 
+=======
+#define GSL_FN_EVAL(F,x)
+>>>>>>> config
     (*((F)->function))(x,(F)->params)
 @end example
 
@@ -273,12 +328,20 @@ respect to @var{x},
 @math{f'(x,params)}, for argument @var{x} and parameters @var{params}
 
 @item void (* fdf) (double @var{x}, void * @var{params}, double * @var{f}, double * @var{df})
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 this function should set the values of the function @var{f} to 
+=======
+this function should set the values of the function @var{f} to
+>>>>>>> config
 @c{$f(x,\hbox{\it params})$}
 @math{f(x,params)}
 and its derivative @var{df} to
 @c{$f'(x,\hbox{\it params})$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{f'(x,params)} 
+=======
+@math{f'(x,params)}
+>>>>>>> config
 for argument @var{x} and parameters @var{params}.  This function
 provides an optimization of the separate functions for @math{f(x)} and
 @math{f'(x)}---it is always faster to compute the function and its
@@ -289,7 +352,11 @@ a pointer to the parameters of the function
 @end table
 @end deftp
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 Here is an example where 
+=======
+Here is an example where
+>>>>>>> config
 @c{$f(x) = \exp(2x)$}
 @math{f(x) = 2\exp(2x)}:
 
@@ -307,8 +374,13 @@ my_df (double x, void * params)
 @}
 
 void
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 my_fdf (double x, void * params, 
         double * f, double * df)
+=======
+my_fdf (double x, void * params,
+	double * f, double * df)
+>>>>>>> config
 @{
    double t = exp (2 * x);
 
@@ -328,7 +400,11 @@ FDF.params = 0;
 The function @math{f(x)} can be evaluated using the following macro,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 #define GSL_FN_FDF_EVAL_F(FDF,x) 
+=======
+#define GSL_FN_FDF_EVAL_F(FDF,x)
+>>>>>>> config
      (*((FDF)->f))(x,(FDF)->params)
 @end example
 
@@ -336,7 +412,11 @@ The function @math{f(x)} can be evaluated using the following macro,
 The derivative @math{f'(x)} can be evaluated using the following macro,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 #define GSL_FN_FDF_EVAL_DF(FDF,x) 
+=======
+#define GSL_FN_FDF_EVAL_DF(FDF,x)
+>>>>>>> config
      (*((FDF)->df))(x,(FDF)->params)
 @end example
 
@@ -345,7 +425,11 @@ and both the function @math{y = f(x)} and its derivative @math{dy = f'(x)}
 can be evaluated at the same time using the following macro,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 #define GSL_FN_FDF_EVAL_F_DF(FDF,x,y,dy) 
+=======
+#define GSL_FN_FDF_EVAL_F_DF(FDF,x,y,dy)
+>>>>>>> config
      (*((FDF)->fdf))(x,(FDF)->params,(y),(dy))
 @end example
 
@@ -451,7 +535,11 @@ $$
 @ifinfo
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 |a - b| < epsabs + epsrel min(|a|,|b|) 
+=======
+|a - b| < epsabs + epsrel min(|a|,|b|)
+>>>>>>> config
 @end example
 
 @end ifinfo
@@ -649,7 +737,11 @@ technique and the initial guess must be sufficiently close to the root
 for it to work.  When these conditions are satisfied then convergence is
 quadratic.
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 These algorithms make use of both the function and its derivative. 
+=======
+These algorithms make use of both the function and its derivative.
+>>>>>>> config
 
 @deffn {Derivative Solver} gsl_root_fdfsolver_newton
 @cindex Newton's method for finding roots
@@ -747,7 +839,11 @@ separation of the points becomes too small.
 
 On single roots, the method has a convergence of order @math{(1 + \sqrt
 5)/2} (approximately @math{1.62}).  It converges linearly for multiple
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 roots.  
+=======
+roots.
+>>>>>>> config
 
 @comment eps file "roots-secant-method.eps"
 @comment @iftex
@@ -799,7 +895,11 @@ ordinary Newton estimate.  The Newton iterate is also returned if the
 denominator of the acceleration term ever becomes zero.
 
 As with all acceleration procedures this method can become unstable if
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 the function is not well-behaved. 
+=======
+the function is not well-behaved.
+>>>>>>> config
 @end deffn
 
 @node Root Finding Examples
@@ -850,7 +950,11 @@ with solution @math{x = \sqrt 5 = 2.236068...}
 Here are the results of the iterations,
 
 @smallexample
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 $ ./a.out 
+=======
+$ ./a.out
+>>>>>>> config
 using brent method
  iter [    lower,     upper]      root        err  err(est)
     1 [1.0000000, 5.0000000] 1.0000000 -1.2360680 4.0000000
@@ -858,7 +962,11 @@ using brent method
     3 [2.0000000, 3.0000000] 2.0000000 -0.2360680 1.0000000
     4 [2.2000000, 3.0000000] 2.2000000 -0.0360680 0.8000000
     5 [2.2000000, 2.2366300] 2.2366300 +0.0005621 0.0366300
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 Converged:                            
+=======
+Converged:
+>>>>>>> config
     6 [2.2360634, 2.2366300] 2.2360634 -0.0000046 0.0005666
 @end smallexample
 
@@ -869,7 +977,11 @@ Brent's method, by changing @code{gsl_root_fsolver_brent} to
 Bisection method can be observed,
 
 @smallexample
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 $ ./a.out 
+=======
+$ ./a.out
+>>>>>>> config
 using bisection method
  iter [    lower,     upper]      root        err  err(est)
     1 [0.0000000, 2.5000000] 1.2500000 -0.9860680 2.5000000
@@ -883,7 +995,11 @@ using bisection method
     9 [2.2265625, 2.2363281] 2.2314453 -0.0046227 0.0097656
    10 [2.2314453, 2.2363281] 2.2338867 -0.0021813 0.0048828
    11 [2.2338867, 2.2363281] 2.2351074 -0.0009606 0.0024414
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 Converged:                            
+=======
+Converged:
+>>>>>>> config
    12 [2.2351074, 2.2363281] 2.2357178 -0.0003502 0.0012207
 @end smallexample
 
@@ -898,13 +1014,21 @@ instead.
 Here are the results for Newton's method,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 $ ./a.out 
+=======
+$ ./a.out
+>>>>>>> config
 using newton method
 iter        root        err   err(est)
     1  3.0000000 +0.7639320 -2.0000000
     2  2.3333333 +0.0972654 -0.6666667
     3  2.2380952 +0.0020273 -0.0952381
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 Converged:      
+=======
+Converged:
+>>>>>>> config
     4  2.2360689 +0.0000009 -0.0020263
 @end example
 
@@ -932,4 +1056,7 @@ J. C. P. Bus and T. J. Dekker, ``Two Efficient Algorithms with Guaranteed
 Convergence for Finding a Zero of a Function'', @cite{ACM Transactions of
 Mathematical Software}, Vol.@: 1 No.@: 4 (1975) 330--345
 @end itemize
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

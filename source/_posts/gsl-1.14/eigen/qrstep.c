@@ -1,17 +1,31 @@
 /* eigen/qrstep.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2007, 2010 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 2007, 2010 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -33,14 +47,24 @@ chop_small_elements (const size_t N, const double d[], double sd[])
       double d_ip1 = d[i + 1];
 
       if (fabs (sd_i) < GSL_DBL_EPSILON * (fabs (d_i) + fabs (d_ip1)))
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           sd[i] = 0.0;
         }
+=======
+	{
+	  sd[i] = 0.0;
+	}
+>>>>>>> config
       d_i = d_ip1;
     }
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* Generate a Givens rotation (cos,sin) which takes v=(x,y) to (|v|,0) 
+=======
+/* Generate a Givens rotation (cos,sin) which takes v=(x,y) to (|v|,0)
+>>>>>>> config
 
    From Golub and Van Loan, "Matrix Computations", Section 5.1.8 */
 
@@ -83,7 +107,11 @@ trailing_eigenvalue (const size_t n, const double d[], const double sd[])
     {
       mu = tb - tab * (tab / (dt + hypot (dt, tab)));
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else if (dt == 0) 
+=======
+  else if (dt == 0)
+>>>>>>> config
     {
       mu = tb - fabs(tab);
     }
@@ -105,12 +133,20 @@ qrstep (const size_t n, double d[], double sd[], double gc[], double gs[])
   double mu = trailing_eigenvalue (n, d, sd);
 
   /* If mu is large relative to d_0 and sd_0 then the Givens rotation
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
      will have no effect, leading to an infinite loop.  
+=======
+     will have no effect, leading to an infinite loop.
+>>>>>>> config
 
      We set mu to zero in this case, which at least diagonalises the
      submatrix [d_0, sd_0 ; sd_0, d_0] and allows further progress. */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (GSL_DBL_EPSILON * fabs(mu) > (fabs(d[0]) + fabs(sd[0]))) { 
+=======
+  if (GSL_DBL_EPSILON * fabs(mu) > (fabs(d[0]) + fabs(sd[0]))) {
+>>>>>>> config
     mu = 0;
   }
 
@@ -132,6 +168,7 @@ qrstep (const size_t n, double d[], double sd[], double gc[], double gs[])
       create_givens (x, z, &c, &s);
 
       if (gc != NULL)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gc[0] = c; 
       if (gs != NULL)
         gs[0] = s;
@@ -146,6 +183,22 @@ qrstep (const size_t n, double d[], double sd[], double gc[], double gs[])
         bk = bp1;
 
         ap = aq1;
+=======
+	gc[0] = c;
+      if (gs != NULL)
+	gs[0] = s;
+
+      {
+	double ap1 = c * (c * ap - s * bp) + s * (s * aq - c * bp);
+	double bp1 = c * (s * ap + c * bp) - s * (s * bp + c * aq);
+
+	double aq1 = s * (s * ap + c * bp) + c * (s * bp + c * aq);
+
+	ak = ap1;
+	bk = bp1;
+
+	ap = aq1;
+>>>>>>> config
       }
 
       d[0] = ak;
@@ -164,13 +217,20 @@ qrstep (const size_t n, double d[], double sd[], double gc[], double gs[])
 
       /* store Givens rotation */
       if (gc != NULL)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gc[k] = c; 
       if (gs != NULL)
         gs[k] = s;
+=======
+	gc[k] = c;
+      if (gs != NULL)
+	gs[k] = s;
+>>>>>>> config
 
       /* compute G' T G */
 
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         double bk1 = c * bk - s * zk;
 
         double ap1 = c * (c * ap - s * bp) + s * (s * aq - c * bp);
@@ -202,6 +262,39 @@ qrstep (const size_t n, double d[], double sd[], double gc[], double gs[])
 
         x = bk;
         z = zk;
+=======
+	double bk1 = c * bk - s * zk;
+
+	double ap1 = c * (c * ap - s * bp) + s * (s * aq - c * bp);
+	double bp1 = c * (s * ap + c * bp) - s * (s * bp + c * aq);
+	double zp1 = -s * bq;
+
+	double aq1 = s * (s * ap + c * bp) + c * (s * bp + c * aq);
+	double bq1 = c * bq;
+
+	ak = ap1;
+	bk = bp1;
+	zk = zp1;
+
+	ap = aq1;
+	bp = bq1;
+
+	if (k < n - 2)
+	  aq = d[k + 2];
+	if (k < n - 3)
+	  bq = sd[k + 2];
+
+	d[k] = ak;
+
+	if (k > 0)
+	  sd[k - 1] = bk1;
+
+	if (k < n - 2)
+	  sd[k + 1] = bp;
+
+	x = bk;
+	z = zk;
+>>>>>>> config
       }
     }
 

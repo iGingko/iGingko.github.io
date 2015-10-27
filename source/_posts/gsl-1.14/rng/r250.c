@@ -1,17 +1,31 @@
 /* rng/r250.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -39,6 +53,7 @@
    the following operations,
 
    x[3]   &= 11111111111111111111111111111111
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    x[3]   |= 10000000000000000000000000000000 
    x[10]  &= 01111111111111111111111111111111
    x[10]  |= 01000000000000000000000000000000 
@@ -51,6 +66,20 @@
    x[213] |= 00000000000000000000000000000010 
    x[220] &= 00000000000000000000000000000001
    x[220] |= 00000000000000000000000000000001 
+=======
+   x[3]   |= 10000000000000000000000000000000
+   x[10]  &= 01111111111111111111111111111111
+   x[10]  |= 01000000000000000000000000000000
+   x[17]  &= 00111111111111111111111111111111
+   x[17]  |= 00100000000000000000000000000000
+   ....      ...
+   x[206] &= 00000000000000000000000000000111
+   x[206] |= 00000000000000000000000000000100
+   x[213] &= 00000000000000000000000000000011
+   x[213] |= 00000000000000000000000000000010
+   x[220] &= 00000000000000000000000000000001
+   x[220] |= 00000000000000000000000000000001
+>>>>>>> config
 
    i.e. if we consider the bits of the 32 elements as forming a 32x32
    array then we are setting the diagonal bits of the array to one and
@@ -114,7 +143,11 @@ r250_get (void *vstate)
   return k;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static double 
+=======
+static double
+>>>>>>> config
 r250_get_double (void *vstate)
 {
   return r250_get (vstate) /  4294967296.0 ;
@@ -149,11 +182,19 @@ r250_set (void *vstate, unsigned long int s)
 
     for (i = 0; i < 32; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         int k = 7 * i + 3;      /* Select a word to operate on        */
         state->x[k] &= mask;    /* Turn off bits left of the diagonal */
         state->x[k] |= msb;     /* Turn on the diagonal bit           */
         mask >>= 1;
         msb >>= 1;
+=======
+	int k = 7 * i + 3;      /* Select a word to operate on        */
+	state->x[k] &= mask;    /* Turn off bits left of the diagonal */
+	state->x[k] |= msb;     /* Turn on the diagonal bit           */
+	mask >>= 1;
+	msb >>= 1;
+>>>>>>> config
       }
   }
 

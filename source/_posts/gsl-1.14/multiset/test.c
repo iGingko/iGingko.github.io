@@ -30,6 +30,7 @@
 
 size_t c63[56][3] = {
   { 0,0,0 },  { 0,0,1 },  { 0,0,2 },  { 0,0,3 }, { 0,0,4 },  { 0,0,5 },
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
               { 0,1,1 },  { 0,1,2 },  { 0,1,3 }, { 0,1,4 },  { 0,1,5 },
                           { 0,2,2 },  { 0,2,3 }, { 0,2,4 },  { 0,2,5 },
                                       { 0,3,3 }, { 0,3,4 },  { 0,3,5 },
@@ -50,6 +51,28 @@ size_t c63[56][3] = {
                                                  { 4,4,4 },  { 4,4,5 },
                                                              { 4,5,5 },
                                                              { 5,5,5 }
+=======
+	      { 0,1,1 },  { 0,1,2 },  { 0,1,3 }, { 0,1,4 },  { 0,1,5 },
+			  { 0,2,2 },  { 0,2,3 }, { 0,2,4 },  { 0,2,5 },
+				      { 0,3,3 }, { 0,3,4 },  { 0,3,5 },
+						 { 0,4,4 },  { 0,4,5 },
+							     { 0,5,5 },
+	      { 1,1,1 },  { 1,1,2 },  { 1,1,3 }, { 1,1,4 },  { 1,1,5 },
+			  { 1,2,2 },  { 1,2,3 }, { 1,2,4 },  { 1,2,5 },
+				      { 1,3,3 }, { 1,3,4 },  { 1,3,5 },
+						 { 1,4,4 },  { 1,4,5 },
+							     { 1,5,5 },
+			  { 2,2,2 },  { 2,2,3 }, { 2,2,4 },  { 2,2,5 },
+				      { 2,3,3 }, { 2,3,4 },  { 2,3,5 },
+						 { 2,4,4 },  { 2,4,5 },
+							     { 2,5,5 },
+				      { 3,3,3 }, { 3,3,4 },  { 3,3,5 },
+						 { 3,4,4 },  { 3,4,5 },
+							     { 3,5,5 },
+						 { 4,4,4 },  { 4,4,5 },
+							     { 4,5,5 },
+							     { 5,5,5 }
+>>>>>>> config
 } ;
 
 void my_error_handler (const char *reason, const char *file, int line, int err);
@@ -74,6 +97,7 @@ main (void)
   do
     {
       if ( i >= 56 )
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           status = 1;
           break;
@@ -86,6 +110,20 @@ main (void)
       {
         int s1 = gsl_multiset_valid (c);
         gsl_test (s1, "gsl_multiset_valid (%u)", i);
+=======
+	{
+	  status = 1;
+	  break;
+	}
+      for (j = 0; j < 3; j++)
+	{
+	  status |= (c->data[j] != c63[i][j]);
+	}
+
+      {
+	int s1 = gsl_multiset_valid (c);
+	gsl_test (s1, "gsl_multiset_valid (%u)", i);
+>>>>>>> config
       }
 
       i++;
@@ -116,7 +154,11 @@ main (void)
 
     for (j = 0; j < 3; j++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         status |= (d->data[j] != c->data[j]);
+=======
+	status |= (d->data[j] != c->data[j]);
+>>>>>>> config
       }
 
     gsl_test (status, "gsl_multiset_memcpy, 6 choose 3 multiset");
@@ -132,14 +174,22 @@ main (void)
   do
     {
       if ( i == 0 )
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           status = 1;
           break;
         }
+=======
+	{
+	  status = 1;
+	  break;
+	}
+>>>>>>> config
 
       i--;
 
       for (j = 0; j < 3; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           status |= (c->data[j] != c63[i][j]);
         }
@@ -147,6 +197,15 @@ main (void)
       {
         int s1 = gsl_multiset_valid (c);
         gsl_test (s1, "gsl_multiset_valid (%u)", i);
+=======
+	{
+	  status |= (c->data[j] != c63[i][j]);
+	}
+
+      {
+	int s1 = gsl_multiset_valid (c);
+	gsl_test (s1, "gsl_multiset_valid (%u)", i);
+>>>>>>> config
       }
     }
   while (gsl_multiset_prev(c) == GSL_SUCCESS);
@@ -175,7 +234,11 @@ main (void)
 
     for (j = 0; j < 3; j++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         status |= (d->data[j] != c->data[j]);
+=======
+	status |= (d->data[j] != c->data[j]);
+>>>>>>> config
       }
 
     gsl_test (status, "gsl_multiset_memcpy, 6 choose 3 multiset");

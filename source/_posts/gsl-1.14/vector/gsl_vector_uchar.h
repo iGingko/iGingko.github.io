@@ -1,17 +1,31 @@
 /* vector/gsl_vector_uchar.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -39,14 +53,22 @@
 
 __BEGIN_DECLS
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 typedef struct 
+=======
+typedef struct
+>>>>>>> config
 {
   size_t size;
   size_t stride;
   unsigned char *data;
   gsl_block_uchar *block;
   int owner;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 } 
+=======
+}
+>>>>>>> config
 gsl_vector_uchar;
 
 typedef struct
@@ -70,6 +92,7 @@ gsl_vector_uchar *gsl_vector_uchar_alloc (const size_t n);
 gsl_vector_uchar *gsl_vector_uchar_calloc (const size_t n);
 
 gsl_vector_uchar *gsl_vector_uchar_alloc_from_block (gsl_block_uchar * b,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                                      const size_t offset, 
                                                      const size_t n, 
                                                      const size_t stride);
@@ -78,11 +101,22 @@ gsl_vector_uchar *gsl_vector_uchar_alloc_from_vector (gsl_vector_uchar * v,
                                                       const size_t offset, 
                                                       const size_t n, 
                                                       const size_t stride);
+=======
+						     const size_t offset,
+						     const size_t n,
+						     const size_t stride);
+
+gsl_vector_uchar *gsl_vector_uchar_alloc_from_vector (gsl_vector_uchar * v,
+						      const size_t offset,
+						      const size_t n,
+						      const size_t stride);
+>>>>>>> config
 
 void gsl_vector_uchar_free (gsl_vector_uchar * v);
 
 /* Views */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 _gsl_vector_uchar_view 
 gsl_vector_uchar_view_array (unsigned char *v, size_t n);
 
@@ -120,6 +154,45 @@ gsl_vector_uchar_const_subvector_with_stride (const gsl_vector_uchar *v,
                                               size_t i, 
                                               size_t stride,
                                               size_t n);
+=======
+_gsl_vector_uchar_view
+gsl_vector_uchar_view_array (unsigned char *v, size_t n);
+
+_gsl_vector_uchar_view
+gsl_vector_uchar_view_array_with_stride (unsigned char *base,
+					 size_t stride,
+					 size_t n);
+
+_gsl_vector_uchar_const_view
+gsl_vector_uchar_const_view_array (const unsigned char *v, size_t n);
+
+_gsl_vector_uchar_const_view
+gsl_vector_uchar_const_view_array_with_stride (const unsigned char *base,
+					       size_t stride,
+					       size_t n);
+
+_gsl_vector_uchar_view
+gsl_vector_uchar_subvector (gsl_vector_uchar *v,
+			    size_t i,
+			    size_t n);
+
+_gsl_vector_uchar_view
+gsl_vector_uchar_subvector_with_stride (gsl_vector_uchar *v,
+					size_t i,
+					size_t stride,
+					size_t n);
+
+_gsl_vector_uchar_const_view
+gsl_vector_uchar_const_subvector (const gsl_vector_uchar *v,
+				  size_t i,
+				  size_t n);
+
+_gsl_vector_uchar_const_view
+gsl_vector_uchar_const_subvector_with_stride (const gsl_vector_uchar *v,
+					      size_t i,
+					      size_t stride,
+					      size_t n);
+>>>>>>> config
 
 /* Operations */
 
@@ -131,7 +204,11 @@ int gsl_vector_uchar_fread (FILE * stream, gsl_vector_uchar * v);
 int gsl_vector_uchar_fwrite (FILE * stream, const gsl_vector_uchar * v);
 int gsl_vector_uchar_fscanf (FILE * stream, gsl_vector_uchar * v);
 int gsl_vector_uchar_fprintf (FILE * stream, const gsl_vector_uchar * v,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                               const char *format);
+=======
+			      const char *format);
+>>>>>>> config
 
 int gsl_vector_uchar_memcpy (gsl_vector_uchar * dest, const gsl_vector_uchar * src);
 
@@ -223,5 +300,8 @@ gsl_vector_uchar_const_ptr (const gsl_vector_uchar * v, const size_t i)
 __END_DECLS
 
 #endif /* __GSL_VECTOR_UCHAR_H__ */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
+=======
+>>>>>>> config

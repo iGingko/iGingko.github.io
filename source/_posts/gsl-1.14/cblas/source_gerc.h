@@ -1,17 +1,31 @@
 /* blas/source_gerc.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -32,11 +46,19 @@
       const BASE tmp_imag = alpha_imag * X_real + alpha_real * X_imag;
       INDEX jy = OFFSET(N, incY);
       for (j = 0; j < N; j++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         const BASE Y_real = CONST_REAL(Y, jy);
         const BASE Y_imag = -CONST_IMAG(Y, jy);
         REAL(A, lda * i + j) += Y_real * tmp_real - Y_imag * tmp_imag;
         IMAG(A, lda * i + j) += Y_imag * tmp_real + Y_real * tmp_imag;
         jy += incY;
+=======
+	const BASE Y_real = CONST_REAL(Y, jy);
+	const BASE Y_imag = -CONST_IMAG(Y, jy);
+	REAL(A, lda * i + j) += Y_real * tmp_real - Y_imag * tmp_imag;
+	IMAG(A, lda * i + j) += Y_imag * tmp_real + Y_real * tmp_imag;
+	jy += incY;
+>>>>>>> config
       }
       ix += incX;
     }
@@ -49,11 +71,19 @@
       const BASE tmp_imag = alpha_imag * Y_real + alpha_real * Y_imag;
       INDEX ix = OFFSET(M, incX);
       for (i = 0; i < M; i++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         const BASE X_real = CONST_REAL(X, ix);
         const BASE X_imag = CONST_IMAG(X, ix);
         REAL(A, i + lda * j) += X_real * tmp_real - X_imag * tmp_imag;
         IMAG(A, i + lda * j) += X_imag * tmp_real + X_real * tmp_imag;
         ix += incX;
+=======
+	const BASE X_real = CONST_REAL(X, ix);
+	const BASE X_imag = CONST_IMAG(X, ix);
+	REAL(A, i + lda * j) += X_real * tmp_real - X_imag * tmp_imag;
+	IMAG(A, i + lda * j) += X_imag * tmp_real + X_real * tmp_imag;
+	ix += incX;
+>>>>>>> config
       }
       jy += incY;
     }

@@ -1,17 +1,31 @@
 /* histogram/test_trap.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -28,7 +42,11 @@
 #define N 397
 
 static void my_error_handler (const char *reason, const char *file,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                               int line, int err);
+=======
+			      int line, int err);
+>>>>>>> config
 static int status = 0;
 
 void
@@ -46,28 +64,48 @@ test1d_trap (void)
   h = gsl_histogram_calloc (0);
   gsl_test (!status, "gsl_histogram_calloc traps zero-length histogram");
   gsl_test (h != 0,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             "gsl_histogram_calloc returns NULL for zero-length histogram");
+=======
+	    "gsl_histogram_calloc returns NULL for zero-length histogram");
+>>>>>>> config
 
   status = 0;
   h = gsl_histogram_calloc_uniform (0, 0.0, 1.0);
   gsl_test (!status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             "gsl_histogram_calloc_uniform traps zero-length histogram");
+=======
+	    "gsl_histogram_calloc_uniform traps zero-length histogram");
+>>>>>>> config
   gsl_test (h != 0,
      "gsl_histogram_calloc_uniform returns NULL for zero-length histogram");
 
   status = 0;
   h = gsl_histogram_calloc_uniform (10, 1.0, 1.0);
   gsl_test (!status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             "gsl_histogram_calloc_uniform traps equal endpoints");
   gsl_test (h != 0,
             "gsl_histogram_calloc_uniform returns NULL for equal endpoints");
+=======
+	    "gsl_histogram_calloc_uniform traps equal endpoints");
+  gsl_test (h != 0,
+	    "gsl_histogram_calloc_uniform returns NULL for equal endpoints");
+>>>>>>> config
 
   status = 0;
   h = gsl_histogram_calloc_uniform (10, 2.0, 1.0);
   gsl_test (!status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             "gsl_histogram_calloc_uniform traps invalid range");
   gsl_test (h != 0,
             "gsl_histogram_calloc_uniform returns NULL for invalid range");
+=======
+	    "gsl_histogram_calloc_uniform traps invalid range");
+  gsl_test (h != 0,
+	    "gsl_histogram_calloc_uniform returns NULL for invalid range");
+>>>>>>> config
 
   h = gsl_histogram_calloc_uniform (N, 0.0, 1.0);
 
@@ -98,11 +136,19 @@ test1d_trap (void)
 
   status = gsl_histogram_get_range (h, N, &lower, &upper);
   gsl_test (status != GSL_EDOM,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             "gsl_histogram_get_range traps index at n");
 
   status = gsl_histogram_get_range (h, N + 1, &lower, &upper);
   gsl_test (status != GSL_EDOM,
             "gsl_histogram_get_range traps index above n");
+=======
+	    "gsl_histogram_get_range traps index at n");
+
+  status = gsl_histogram_get_range (h, N + 1, &lower, &upper);
+  gsl_test (status != GSL_EDOM,
+	    "gsl_histogram_get_range traps index above n");
+>>>>>>> config
 
 
   status = 0;

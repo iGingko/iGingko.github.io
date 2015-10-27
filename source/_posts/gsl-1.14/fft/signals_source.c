@@ -1,17 +1,31 @@
 /* fft/signals_source.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -21,12 +35,21 @@
 
 int
 FUNCTION(fft_signal,complex_pulse) (const size_t k,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                     const size_t n,
                                     const size_t stride,
                                     const BASE z_real,
                                     const BASE z_imag,
                                     BASE data[],
                                     BASE fft[])
+=======
+				    const size_t n,
+				    const size_t stride,
+				    const BASE z_real,
+				    const BASE z_imag,
+				    BASE data[],
+				    BASE fft[])
+>>>>>>> config
 {
   size_t j;
 
@@ -64,11 +87,19 @@ FUNCTION(fft_signal,complex_pulse) (const size_t k,
 
 int
 FUNCTION(fft_signal,complex_constant) (const size_t n,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                        const size_t stride,
                                        const BASE z_real,
                                        const BASE z_imag,
                                        BASE data[],
                                        BASE fft[])
+=======
+				       const size_t stride,
+				       const BASE z_real,
+				       const BASE z_imag,
+				       BASE data[],
+				       BASE fft[])
+>>>>>>> config
 {
   size_t j;
 
@@ -103,12 +134,21 @@ FUNCTION(fft_signal,complex_constant) (const size_t n,
 
 int
 FUNCTION(fft_signal,complex_exp) (const int k,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                   const size_t n,
                                   const size_t stride,
                                   const BASE z_real,
                                   const BASE z_imag,
                                   BASE data[],
                                   BASE fft[])
+=======
+				  const size_t n,
+				  const size_t stride,
+				  const BASE z_real,
+				  const BASE z_imag,
+				  BASE data[],
+				  BASE fft[])
+>>>>>>> config
 {
   size_t j;
 
@@ -141,11 +181,19 @@ FUNCTION(fft_signal,complex_exp) (const int k,
 
     if (k <= 0)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         freq = (n-k) % n ;
       }
     else
       {
         freq = (k % n);
+=======
+	freq = (n-k) % n ;
+      }
+    else
+      {
+	freq = (k % n);
+>>>>>>> config
       };
 
     REAL(fft,stride,freq) = ((BASE) n) * z_real;
@@ -159,6 +207,7 @@ FUNCTION(fft_signal,complex_exp) (const int k,
 
 int
 FUNCTION(fft_signal,complex_exppair) (const int k1,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                       const int k2,
                                       const size_t n,
                                       const size_t stride,
@@ -168,6 +217,17 @@ FUNCTION(fft_signal,complex_exppair) (const int k1,
                                       const BASE z2_imag,
                                       BASE data[],
                                       BASE fft[])
+=======
+				      const int k2,
+				      const size_t n,
+				      const size_t stride,
+				      const BASE z1_real,
+				      const BASE z1_imag,
+				      const BASE z2_real,
+				      const BASE z2_imag,
+				      BASE data[],
+				      BASE fft[])
+>>>>>>> config
 {
   size_t j;
 
@@ -206,20 +266,36 @@ FUNCTION(fft_signal,complex_exppair) (const int k1,
 
     if (k1 <= 0)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         freq1 = (n - k1) % n;
       }
     else
       {
         freq1 = (k1 % n);
+=======
+	freq1 = (n - k1) % n;
+      }
+    else
+      {
+	freq1 = (k1 % n);
+>>>>>>> config
       };
 
     if (k2 <= 0)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         freq2 = (n - k2) % n;
       }
     else
       {
         freq2 = (k2 % n);
+=======
+	freq2 = (n - k2) % n;
+      }
+    else
+      {
+	freq2 = (k2 % n);
+>>>>>>> config
       };
 
     REAL(fft,stride,freq1) += ((BASE) n) * z1_real;
@@ -235,9 +311,15 @@ FUNCTION(fft_signal,complex_exppair) (const int k1,
 
 int
 FUNCTION(fft_signal,complex_noise) (const size_t n,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                     const size_t stride,
                                     BASE data[],
                                     BASE fft[])
+=======
+				    const size_t stride,
+				    BASE data[],
+				    BASE fft[])
+>>>>>>> config
 {
   size_t i;
   int status;
@@ -262,9 +344,15 @@ FUNCTION(fft_signal,complex_noise) (const size_t n,
 
 int
 FUNCTION(fft_signal,real_noise) (const size_t n,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                  const size_t stride,
                                  BASE data[],
                                  BASE fft[])
+=======
+				 const size_t stride,
+				 BASE data[],
+				 BASE fft[])
+>>>>>>> config
 {
   size_t i;
   int status;
@@ -285,4 +373,7 @@ FUNCTION(fft_signal,real_noise) (const size_t n,
 
   return status;
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

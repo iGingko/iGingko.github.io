@@ -1,18 +1,32 @@
 /* combination/test.c
  * based on permutation/test.c by Brian Gough
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2001 Szymon Jaroszewicz
  * 
+=======
+ *
+ * Copyright (C) 2001 Szymon Jaroszewicz
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -37,7 +51,11 @@ size_t c63[20][3] = {
 void my_error_handler (const char *reason, const char *file, int line, int err);
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int 
+=======
+int
+>>>>>>> config
 main (void)
 {
   size_t i, j;
@@ -51,6 +69,7 @@ main (void)
   /* Test combinations in forward order */
 
   gsl_combination_init_first (c);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   i = 0;
 
@@ -69,6 +88,26 @@ main (void)
       {
         int s1 = gsl_combination_valid (c);
         gsl_test (s1, "gsl_combination_valid (%u)", i);
+=======
+
+  i = 0;
+
+  do
+    {
+      if ( i >= 20 )
+	{
+	  status = 1;
+	  break;
+	}
+      for (j = 0; j < 3; j++)
+	{
+	  status |= (c->data[j] != c63[i][j]);
+	}
+
+      {
+	int s1 = gsl_combination_valid (c);
+	gsl_test (s1, "gsl_combination_valid (%u)", i);
+>>>>>>> config
       }
 
       i++;
@@ -99,7 +138,11 @@ main (void)
 
     for (j = 0; j < 3; j++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         status |= (d->data[j] != c->data[j]);
+=======
+	status |= (d->data[j] != c->data[j]);
+>>>>>>> config
       }
 
     gsl_test (status, "gsl_combination_memcpy, 6 choose 3 combination");
@@ -112,6 +155,7 @@ main (void)
   gsl_combination_init_last (c);
 
   i = 20;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   do 
     {
       if ( i == 0 )
@@ -119,10 +163,20 @@ main (void)
           status = 1;
           break;
         }
+=======
+  do
+    {
+      if ( i == 0 )
+	{
+	  status = 1;
+	  break;
+	}
+>>>>>>> config
 
       i--;
 
       for (j = 0; j < 3; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           status |= (c->data[j] != c63[i][j]);
         }
@@ -130,6 +184,15 @@ main (void)
       {
         int s1 = gsl_combination_valid (c);
         gsl_test (s1, "gsl_combination_valid (%u)", i);
+=======
+	{
+	  status |= (c->data[j] != c63[i][j]);
+	}
+
+      {
+	int s1 = gsl_combination_valid (c);
+	gsl_test (s1, "gsl_combination_valid (%u)", i);
+>>>>>>> config
       }
     }
   while (gsl_combination_prev(c) == GSL_SUCCESS);
@@ -158,7 +221,11 @@ main (void)
 
     for (j = 0; j < 3; j++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         status |= (d->data[j] != c->data[j]);
+=======
+	status |= (d->data[j] != c->data[j]);
+>>>>>>> config
       }
 
     gsl_test (status, "gsl_combination_memcpy, 6 choose 3 combination");

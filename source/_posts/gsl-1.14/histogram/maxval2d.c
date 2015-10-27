@@ -18,8 +18,13 @@
  */
 /***************************************************************
  *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * File gsl_histogram2d_maxval.c: 
  * Routine to find maximum and minumum content of a 2D hisogram. 
+=======
+ * File gsl_histogram2d_maxval.c:
+ * Routine to find maximum and minumum content of a 2D hisogram.
+>>>>>>> config
  * Need GSL library and header.
  * Contains the routines:
  * gsl_histogram2d_max_val find max content values
@@ -48,9 +53,15 @@ gsl_histogram2d_max_val (const gsl_histogram2d * h)
   for (i = 0; i < nx * ny; i++)
     {
       if (h->bin[i] > max)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           max = h->bin[i];
         }
+=======
+	{
+	  max = h->bin[i];
+	}
+>>>>>>> config
     }
   return max;
 }
@@ -70,6 +81,7 @@ gsl_histogram2d_max_bin (const gsl_histogram2d * h, size_t * imax_out, size_t * 
   for (i = 0; i < nx; i++)
     {
       for (j = 0; j < ny; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double x = h->bin[i * ny + j];
 
@@ -80,6 +92,18 @@ gsl_histogram2d_max_bin (const gsl_histogram2d * h, size_t * imax_out, size_t * 
               jmax = j;
             }
         }
+=======
+	{
+	  double x = h->bin[i * ny + j];
+
+	  if (x > max)
+	    {
+	      max = x;
+	      imax = i;
+	      jmax = j;
+	    }
+	}
+>>>>>>> config
     }
 
   *imax_out = imax;
@@ -101,9 +125,15 @@ gsl_histogram2d_min_val (const gsl_histogram2d * h)
   for (i = 0; i < nx * ny; i++)
     {
       if (h->bin[i] < min)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           min = h->bin[i];
         }
+=======
+	{
+	  min = h->bin[i];
+	}
+>>>>>>> config
     }
 
   return min;
@@ -122,6 +152,7 @@ gsl_histogram2d_min_bin (const gsl_histogram2d * h, size_t * imin_out, size_t * 
   for (i = 0; i < nx; i++)
     {
       for (j = 0; j < ny; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double x = h->bin[i * ny + j];
 
@@ -132,9 +163,24 @@ gsl_histogram2d_min_bin (const gsl_histogram2d * h, size_t * imin_out, size_t * 
               jmin = j;
             }
         }
+=======
+	{
+	  double x = h->bin[i * ny + j];
+
+	  if (x < min)
+	    {
+	      min = x;
+	      imin = i;
+	      jmin = j;
+	    }
+	}
+>>>>>>> config
     }
 
   *imin_out = imin;
   *jmin_out = jmin;
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

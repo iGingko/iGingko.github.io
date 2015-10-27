@@ -1,17 +1,31 @@
 /* blas/source_gbmv_c.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -81,6 +95,7 @@
       const INDEX j_max = GSL_MIN(lenX, i + U + 1);
       INDEX ix = OFFSET(lenX, incX) + j_min * incX;
       for (j = j_min; j < j_max; j++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         const BASE x_real = CONST_REAL(X, ix);
         const BASE x_imag = CONST_IMAG(X, ix);
         const BASE A_real = CONST_REAL(A, lda * i + (L + j - i));
@@ -89,6 +104,16 @@
         dotR += A_real * x_real - A_imag * x_imag;
         dotI += A_real * x_imag + A_imag * x_real;
         ix += incX;
+=======
+	const BASE x_real = CONST_REAL(X, ix);
+	const BASE x_imag = CONST_IMAG(X, ix);
+	const BASE A_real = CONST_REAL(A, lda * i + (L + j - i));
+	const BASE A_imag = CONST_IMAG(A, lda * i + (L + j - i));
+
+	dotR += A_real * x_real - A_imag * x_imag;
+	dotI += A_real * x_imag + A_imag * x_real;
+	ix += incX;
+>>>>>>> config
       }
 
       REAL(Y, iy) += alpha_real * dotR - alpha_imag * dotI;
@@ -96,7 +121,11 @@
       iy += incY;
     }
   } else if ((order == CblasRowMajor && TransA == CblasTrans)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              || (order == CblasColMajor && TransA == CblasNoTrans)) {
+=======
+	     || (order == CblasColMajor && TransA == CblasNoTrans)) {
+>>>>>>> config
     /* form  y := alpha*A'*x + y */
     INDEX ix = OFFSET(lenX, incX);
     for (j = 0; j < lenX; j++) {
@@ -105,6 +134,7 @@
       BASE tmpR = alpha_real * x_real - alpha_imag * x_imag;
       BASE tmpI = alpha_real * x_imag + alpha_imag * x_real;
       if (!(tmpR == 0.0 && tmpI == 0.0)) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         const INDEX i_min = (j > U ? j - U : 0);
         const INDEX i_max = GSL_MIN(lenY, j + L + 1);
         INDEX iy = OFFSET(lenY, incY) + i_min * incY;
@@ -115,6 +145,18 @@
           IMAG(Y, iy) += A_real * tmpI + A_imag * tmpR;
           iy += incY;
         }
+=======
+	const INDEX i_min = (j > U ? j - U : 0);
+	const INDEX i_max = GSL_MIN(lenY, j + L + 1);
+	INDEX iy = OFFSET(lenY, incY) + i_min * incY;
+	for (i = i_min; i < i_max; i++) {
+	  const BASE A_real = CONST_REAL(A, lda * j + (U + i - j));
+	  const BASE A_imag = CONST_IMAG(A, lda * j + (U + i - j));
+	  REAL(Y, iy) += A_real * tmpR - A_imag * tmpI;
+	  IMAG(Y, iy) += A_real * tmpI + A_imag * tmpR;
+	  iy += incY;
+	}
+>>>>>>> config
       }
       ix += incX;
     }
@@ -127,6 +169,7 @@
       BASE tmpR = alpha_real * x_real - alpha_imag * x_imag;
       BASE tmpI = alpha_real * x_imag + alpha_imag * x_real;
       if (!(tmpR == 0.0 && tmpI == 0.0)) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         const INDEX i_min = (j > U ? j - U : 0);
         const INDEX i_max = GSL_MIN(lenY, j + L + 1);
         INDEX iy = OFFSET(lenY, incY) + i_min * incY;
@@ -137,6 +180,18 @@
           IMAG(Y, iy) += A_real * tmpI + (-A_imag) * tmpR;
           iy += incY;
         }
+=======
+	const INDEX i_min = (j > U ? j - U : 0);
+	const INDEX i_max = GSL_MIN(lenY, j + L + 1);
+	INDEX iy = OFFSET(lenY, incY) + i_min * incY;
+	for (i = i_min; i < i_max; i++) {
+	  const BASE A_real = CONST_REAL(A, lda * j + (U + i - j));
+	  const BASE A_imag = CONST_IMAG(A, lda * j + (U + i - j));
+	  REAL(Y, iy) += A_real * tmpR - (-A_imag) * tmpI;
+	  IMAG(Y, iy) += A_real * tmpI + (-A_imag) * tmpR;
+	  iy += incY;
+	}
+>>>>>>> config
       }
       ix += incX;
     }
@@ -150,6 +205,7 @@
       const INDEX j_max = GSL_MIN(lenX, i + U + 1);
       INDEX ix = OFFSET(lenX, incX) + j_min * incX;
       for (j = j_min; j < j_max; j++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         const BASE x_real = CONST_REAL(X, ix);
         const BASE x_imag = CONST_IMAG(X, ix);
         const BASE A_real = CONST_REAL(A, lda * i + (L + j - i));
@@ -158,6 +214,16 @@
         dotR += A_real * x_real - (-A_imag) * x_imag;
         dotI += A_real * x_imag + (-A_imag) * x_real;
         ix += incX;
+=======
+	const BASE x_real = CONST_REAL(X, ix);
+	const BASE x_imag = CONST_IMAG(X, ix);
+	const BASE A_real = CONST_REAL(A, lda * i + (L + j - i));
+	const BASE A_imag = CONST_IMAG(A, lda * i + (L + j - i));
+
+	dotR += A_real * x_real - (-A_imag) * x_imag;
+	dotI += A_real * x_imag + (-A_imag) * x_real;
+	ix += incX;
+>>>>>>> config
       }
 
       REAL(Y, iy) += alpha_real * dotR - alpha_imag * dotI;

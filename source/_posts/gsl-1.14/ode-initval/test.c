@@ -1,17 +1,31 @@
 /* ode-initval/test_odeiv.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2004, 2009 Tuomo Keskitalo
  * 
+=======
+ *
+ * Copyright (C) 2004, 2009 Tuomo Keskitalo
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -49,7 +63,11 @@ rhs_linear (double t, const double y[], double f[], void *params)
 
 int
 jac_linear (double t, const double y[], double *dfdy, double dfdt[],
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             void *params)
+=======
+	    void *params)
+>>>>>>> config
 {
   dfdy[0] = 0.0;
   dfdt[0] = 0.0;
@@ -76,7 +94,11 @@ rhs_exp (double t, const double y[], double f[], void *params)
 
 int
 jac_exp (double t, const double y[], double *dfdy, double dfdt[],
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          void *params)
+=======
+	 void *params)
+>>>>>>> config
 {
   dfdy[0] = y[0];
   dfdt[0] = 0.0;
@@ -106,7 +128,11 @@ rhs_sin (double t, const double y[], double f[], void *params)
 
 int
 jac_sin (double t, const double y[], double *dfdy, double dfdt[],
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          void *params)
+=======
+	 void *params)
+>>>>>>> config
 {
   dfdy[0] = 0.0;
   dfdy[1] = -1.0;
@@ -135,6 +161,7 @@ int
 rhs_xsin (double t, const double y[], double f[], void *params)
 {
   static int n = 0, m = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   if (rhs_xsin_reset) { rhs_xsin_reset = 0; n = 0; m = 1;}
   n++;
@@ -142,6 +169,15 @@ rhs_xsin (double t, const double y[], double f[], void *params)
   if (n >= m) { 
     m = n * 1.3;
     return GSL_EFAILED; 
+=======
+
+  if (rhs_xsin_reset) { rhs_xsin_reset = 0; n = 0; m = 1;}
+  n++;
+
+  if (n >= m) {
+    m = n * 1.3;
+    return GSL_EFAILED;
+>>>>>>> config
   } ;
 
   if (n > 40 && n < 65) {
@@ -158,20 +194,32 @@ rhs_xsin (double t, const double y[], double f[], void *params)
 
 int
 jac_xsin (double t, const double y[], double *dfdy, double dfdt[],
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          void *params)
+=======
+	 void *params)
+>>>>>>> config
 {
   static int n = 0;
 
   if (jac_xsin_reset) { jac_xsin_reset = 0; n = 0; }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   n++; 
+=======
+  n++;
+>>>>>>> config
 
   if (n > 50 && n < 55) {
     dfdy[0] = GSL_NAN;
     dfdy[1] = GSL_NAN;
     dfdy[2] = GSL_NAN;
     dfdy[3] = GSL_NAN;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     dfdt[0] = GSL_NAN;
     dfdt[1] = GSL_NAN;
     return GSL_EFAILED;
@@ -216,7 +264,11 @@ rhs_stiff (double t, const double y[], double f[], void *params)
 
 int
 jac_stiff (double t, const double y[], double *dfdy, double dfdt[],
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
            void *params)
+=======
+	   void *params)
+>>>>>>> config
 {
   dfdy[0] = 998.0;
   dfdy[1] = 1998.0;
@@ -247,7 +299,11 @@ rhs_vanderpol (double t, const double y[], double f[], void *params)
   const double mu = 10.0;
 
   f[0] = y[1];
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   f[1] = -y[0] + mu * y[1] * (1.0 - y[0]*y[0]); 
+=======
+  f[1] = -y[0] + mu * y[1] * (1.0 - y[0]*y[0]);
+>>>>>>> config
 
   return GSL_SUCCESS;
 }
@@ -276,7 +332,11 @@ gsl_odeiv_system rhs_func_vanderpol = {
   0
 };
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* The Oregonator - chemical Belusov-Zhabotinskii reaction 
+=======
+/* The Oregonator - chemical Belusov-Zhabotinskii reaction
+>>>>>>> config
    y0(0) = 1.0, y1(0) = 2.0, y2(0) = 3.0
 */
 
@@ -341,7 +401,11 @@ rhs_vl (double t, const double y[], double f[], void *params)
   const double b = 1.0;
   const double c = 1.0;
   const double d = 1.0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
   f[0] = (a - b * y[1]) * y[0];
   f[1] = (-c + d * y[0]) * y[1];
 
@@ -350,7 +414,11 @@ rhs_vl (double t, const double y[], double f[], void *params)
 
 int
 jac_vl (double t, const double y[], double *dfdy, double dfdt[],
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             void *params)
+=======
+	    void *params)
+>>>>>>> config
 {
   const double a = 1.0;
   const double b = 1.0;
@@ -375,7 +443,11 @@ gsl_odeiv_system rhs_func_vl = {
   0
 };
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* Stiff trigonometric example 
+=======
+/* Stiff trigonometric example
+>>>>>>> config
 
    f0 = -50 * (y0 - cos(t))    y0(0) = 0.0
  */
@@ -390,7 +462,11 @@ rhs_stifftrig (double t, const double y[], double f[], void *params)
 
 int
 jac_stifftrig (double t, const double y[], double *dfdy, double dfdt[],
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             void *params)
+=======
+	    void *params)
+>>>>>>> config
 {
   dfdy[0] = -50;
 
@@ -434,7 +510,11 @@ rhs_e5 (double t, const double y[], double f[], void *params)
 
 int
 jac_e5 (double t, const double y[], double *dfdy, double dfdt[],
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             void *params)
+=======
+	    void *params)
+>>>>>>> config
 {
   const double a = 7.89e-10;
   const double b = 1.1e7;
@@ -465,7 +545,11 @@ jac_e5 (double t, const double y[], double *dfdy, double dfdt[],
   dfdt[1] = 0.0;
   dfdt[2] = 0.0;
   dfdt[3] = 0.0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   return GSL_SUCCESS;
 }
 
@@ -479,7 +563,11 @@ gsl_odeiv_system rhs_func_e5 = {
 void
 test_odeiv_stepper (const gsl_odeiv_step_type *T, const gsl_odeiv_system *sys,
 		    const double h, const double t, const char desc[],
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 		    const double ystart[], const double yfin[], 
+=======
+		    const double ystart[], const double yfin[],
+>>>>>>> config
 		    const double relerr)
 {
   /* tests stepper T with one fixed length step advance of system sys
@@ -502,10 +590,17 @@ test_odeiv_stepper (const gsl_odeiv_step_type *T, const gsl_odeiv_system *sys,
 	gsl_test(s, "test_odeiv_stepper: %s step_apply returned %d", desc, s);
       }
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   for (i = 0; i < ne; i++)
     { 
       gsl_test_rel (y[i], yfin[i], relerr, 
+=======
+
+  for (i = 0; i < ne; i++)
+    {
+      gsl_test_rel (y[i], yfin[i], relerr,
+>>>>>>> config
 		    "%s %s step(%d)",
 		    gsl_odeiv_step_name (step), desc,i);
     }
@@ -514,7 +609,11 @@ test_odeiv_stepper (const gsl_odeiv_step_type *T, const gsl_odeiv_system *sys,
 }
 
 void
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 test_stepper (const gsl_odeiv_step_type *T) 
+=======
+test_stepper (const gsl_odeiv_step_type *T)
+>>>>>>> config
 {
   /* Tests stepper T with a step of selected systems */
 
@@ -534,7 +633,11 @@ test_stepper (const gsl_odeiv_step_type *T)
   yfin[0] = y[0] + 2 * h;
   test_odeiv_stepper (T, &rhs_func_lin, h, 0.0, "linear",
 		      y, yfin, err_target);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   /* exponential */
   h = 1e-4;
   err_target = 1e-8;
@@ -566,11 +669,16 @@ test_stepper (const gsl_odeiv_step_type *T)
   }
 
   test_odeiv_stepper (T, &rhs_func_stiff, h, 0.0, "classic_stiff",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 		      y, yfin, err_target);  
+=======
+		      y, yfin, err_target);
+>>>>>>> config
 }
 
 void
 test_evolve_system (const gsl_odeiv_step_type * T,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                     const gsl_odeiv_system * sys,
                     double t0, double t1, double hstart,
                     double y[], double yfin[],
@@ -580,6 +688,17 @@ test_evolve_system (const gsl_odeiv_step_type * T,
      error estimation from the stepper.
   */     
   
+=======
+		    const gsl_odeiv_system * sys,
+		    double t0, double t1, double hstart,
+		    double y[], double yfin[],
+		    double err_target, const char *desc)
+{
+  /* Tests system sys with stepper T. Step length is controlled by
+     error estimation from the stepper.
+  */
+
+>>>>>>> config
   int steps = 0;
   size_t i;
 
@@ -607,6 +726,7 @@ test_evolve_system (const gsl_odeiv_step_type * T,
 
       if (s != GSL_SUCCESS)
 	{
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           /* check that t and y are unchanged */
           gsl_test_abs(t, t_orig, 0.0, "%s, t must be restored on failure",
                        gsl_odeiv_step_name (step));
@@ -624,11 +744,34 @@ test_evolve_system (const gsl_odeiv_step_type * T,
                      gsl_odeiv_step_name (step), s);
             break;
           }
+=======
+	  /* check that t and y are unchanged */
+	  gsl_test_abs(t, t_orig, 0.0, "%s, t must be restored on failure",
+		       gsl_odeiv_step_name (step));
+
+	  for (i = 0; i < sys->dimension; i++)
+	    {
+	      gsl_test_abs (y[i], y_orig[i], 0.0,
+			    "%s, y must be restored on failure",
+			    gsl_odeiv_step_name (step), desc, i);
+	    }
+
+	  if (sys != &rhs_func_xsin) {
+	    /* apart from xsin, other functions should not return errors */
+	    gsl_test(s, "%s evolve_apply returned %d",
+		     gsl_odeiv_step_name (step), s);
+	    break;
+	  }
+>>>>>>> config
 	}
 
       if (steps > 100000)
 	{
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	  gsl_test(GSL_EFAILED, 
+=======
+	  gsl_test(GSL_EFAILED,
+>>>>>>> config
 		   "%s evolve_apply reached maxiter",
 		   gsl_odeiv_step_name (step));
 	  break;
@@ -665,7 +808,11 @@ sys_driver (const gsl_odeiv_step_type * T,
      Step length is varied via error control with possibly different
      absolute and relative error tolerances.
   */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   int s = 0;
   int steps = 0;
 
@@ -682,7 +829,11 @@ sys_driver (const gsl_odeiv_step_type * T,
     {
       s = gsl_odeiv_evolve_apply (e, c, step, sys, &t, t1, &h, y);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       if (s != GSL_SUCCESS) 
+=======
+      if (s != GSL_SUCCESS)
+>>>>>>> config
 	{
 	  gsl_test(s, "sys_driver: %s evolve_apply returned %d",
 		   gsl_odeiv_step_name (step), s);
@@ -691,7 +842,11 @@ sys_driver (const gsl_odeiv_step_type * T,
 
       if (steps > 1e7)
 	{
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	  gsl_test(GSL_EMAXITER, 
+=======
+	  gsl_test(GSL_EMAXITER,
+>>>>>>> config
 		   "sys_driver: %s evolve_apply reached maxiter at t=%g",
 		   gsl_odeiv_step_name (step), t);
 	  s = GSL_EMAXITER;
@@ -701,7 +856,11 @@ sys_driver (const gsl_odeiv_step_type * T,
       steps++;
     }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   gsl_test(s, "%s %s [%g,%g], %d steps completed", 
+=======
+  gsl_test(s, "%s %s [%g,%g], %d steps completed",
+>>>>>>> config
 	   gsl_odeiv_step_name (step), desc, t0, t1, steps);
 
   gsl_odeiv_evolve_free (e);
@@ -715,10 +874,17 @@ void
 test_compare_vanderpol (void)
 {
   /* Compares output of van Der Pol oscillator with several steppers */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   /* system dimension */
   const size_t sd = 2;
   
+=======
+
+  /* system dimension */
+  const size_t sd = 2;
+
+>>>>>>> config
   const gsl_odeiv_step_type *steppers[20];
   const gsl_odeiv_step_type **T;
 
@@ -770,12 +936,20 @@ test_compare_vanderpol (void)
 
   T = steppers;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   for (i = 0; i < ns; i++) 
+=======
+  for (i = 0; i < ns; i++)
+>>>>>>> config
     {
       y[i][0] = 1.0;
       y[i][1] = 0.0;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   /* Call each solver for the problem */
 
   i = 0;
@@ -783,14 +957,22 @@ test_compare_vanderpol (void)
     {
       {
 	int s = sys_driver (*T, &rhs_func_vanderpol,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 			    start, end, initstepsize, &yp[i], 
+=======
+			    start, end, initstepsize, &yp[i],
+>>>>>>> config
 			    epsabs, epsrel, "vanderpol");
 	if (s != GSL_SUCCESS)
 	  {
 	    status++;
 	  }
       }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
       T++;
       i += sd;
     }
@@ -801,7 +983,11 @@ test_compare_vanderpol (void)
     }
 
   /* Compare results */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
   T = steppers;
 
   for (i = 0; i < ns; i++)
@@ -810,7 +996,11 @@ test_compare_vanderpol (void)
 	{
 	  const double val1 = yp[sd * i + k];
 	  const double val2 = yp[sd * j + k];
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	  gsl_test_abs (val1, val2, 
+=======
+	  gsl_test_abs (val1, val2,
+>>>>>>> config
 			( GSL_MAX(err_target[i], err_target[j]) ),
 			"%s/%s vanderpol",
 			T[i]->name, T[j]->name);
@@ -822,10 +1012,17 @@ void
 test_compare_oregonator (void)
 {
   /* Compares output of the Oregonator with several steppers */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   /* system dimension */
   const size_t sd = 3;
   
+=======
+
+  /* system dimension */
+  const size_t sd = 3;
+
+>>>>>>> config
   const gsl_odeiv_step_type *steppers[20];
   const gsl_odeiv_step_type **T;
 
@@ -841,7 +1038,11 @@ test_compare_oregonator (void)
 
   size_t i, j, k;
   int status = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   /* Parameters for the problem and stepper  */
   const double start = 0.0;
   const double end = 360.0;
@@ -859,13 +1060,21 @@ test_compare_oregonator (void)
 
   T = steppers;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   for (i = 0; i < ns; i++) 
+=======
+  for (i = 0; i < ns; i++)
+>>>>>>> config
     {
       y[i][0] = 1.0;
       y[i][1] = 2.0;
       y[i][2] = 3.0;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   /* Call each solver for the problem */
 
   i = 0;
@@ -873,7 +1082,11 @@ test_compare_oregonator (void)
     {
       {
 	int s = sys_driver (*T, &rhs_func_oregonator,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 			    start, end, initstepsize, &yp[i], 
+=======
+			    start, end, initstepsize, &yp[i],
+>>>>>>> config
 			    epsabs, epsrel, "oregonator");
 
 	if (s != GSL_SUCCESS)
@@ -890,9 +1103,15 @@ test_compare_oregonator (void)
     {
       return;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
   /* Compare results */
   
+=======
+
+  /* Compare results */
+
+>>>>>>> config
   T = steppers;
 
   for (i = 0; i < ns; i++)
@@ -901,7 +1120,11 @@ test_compare_oregonator (void)
 	{
 	  const double val1 = yp[sd * i + k];
 	  const double val2 = yp[sd * j + k];
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	  gsl_test_rel (val1, val2, 
+=======
+	  gsl_test_rel (val1, val2,
+>>>>>>> config
 			( GSL_MAX(err_target[i], err_target[j]) ),
 			"%s/%s oregonator",
 			T[i]->name, T[j]->name);
@@ -959,7 +1182,11 @@ test_evolve_xsin (const gsl_odeiv_step_type * T, double h, double err)
   rhs_xsin_reset = 1;
   jac_xsin_reset = 1;
   test_evolve_system (T, &rhs_func_xsin, 0.0, 2.0, h, y, yfin, err,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       "sine[0,2] w/errors");
+=======
+		      "sine[0,2] w/errors");
+>>>>>>> config
 }
 
 
@@ -979,7 +1206,11 @@ test_evolve_stiff1 (const gsl_odeiv_step_type * T, double h, double err)
     yfin[1] = -e1 + e2;
   }
   test_evolve_system (T, &rhs_func_stiff, 0.0, 1.0, h, y, yfin, err,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       "stiff[0,1]");
+=======
+		      "stiff[0,1]");
+>>>>>>> config
 }
 
 void
@@ -998,7 +1229,11 @@ test_evolve_stiff5 (const gsl_odeiv_step_type * T, double h, double err)
     yfin[1] = -e1 + e2;
   }
   test_evolve_system (T, &rhs_func_stiff, 0.0, 5.0, h, y, yfin, err,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       "stiff[0,5]");
+=======
+		      "stiff[0,5]");
+>>>>>>> config
 }
 
 /* Test cases from Frank Reininghaus <frank78ac@googlemail.com> */
@@ -1022,7 +1257,11 @@ void test_stepfn (void) {
   gsl_odeiv_control * c = gsl_odeiv_control_y_new (epsabs, epsrel);
   gsl_odeiv_evolve * e = gsl_odeiv_evolve_alloc (1);
   gsl_odeiv_system sys = {rhs_stepfn, 0, 1, 0};
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
      
+=======
+
+>>>>>>> config
   double t = 0.0;
   double h = 1e-6;
   double y = 0.0;
@@ -1036,13 +1275,21 @@ void test_stepfn (void) {
 #endif
     if (status != GSL_SUCCESS)
       break;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     i++;
   }
 
   gsl_test_abs(t, 2.0, 1e-16, "evolve step function, t (stepfn/rk2)");
   gsl_test_rel(y, 1.0, epsrel, "evolve step function, y (stepfn/rk2)");
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
        
+=======
+
+>>>>>>> config
   gsl_odeiv_evolve_free (e);
   gsl_odeiv_control_free (c);
   gsl_odeiv_step_free (s);
@@ -1067,7 +1314,11 @@ void test_stepfn2 (void) {
   gsl_odeiv_control * c = gsl_odeiv_control_y_new (epsabs, epsrel);
   gsl_odeiv_evolve * e = gsl_odeiv_evolve_alloc (1);
   gsl_odeiv_system sys = {rhs_stepfn2, 0, 1, 0};
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
      
+=======
+
+>>>>>>> config
   double t = -1.0;
   double h = 1e-6;
   double y = 0.0;
@@ -1088,7 +1339,11 @@ void test_stepfn2 (void) {
 
   gsl_test_abs(t, 1.0, 1e-16, "evolve big step function, t (stepfn2/rk2)");
   gsl_test_rel(y, 1e300, epsrel, "evolve big step function, y (stepfn2/rk2)");
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
      
+=======
+
+>>>>>>> config
   gsl_odeiv_evolve_free (e);
   gsl_odeiv_control_free (c);
   gsl_odeiv_step_free (s);
@@ -1119,7 +1374,11 @@ void test_stepfn3 (void) {
   gsl_odeiv_control * c = gsl_odeiv_control_y_new (epsabs, epsrel);
   gsl_odeiv_evolve * e = gsl_odeiv_evolve_alloc (1);
   gsl_odeiv_system sys = {rhs_stepfn3, 0, 1, 0};
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
      
+=======
+
+>>>>>>> config
   double t = -1.0;
   double h = 1e-6;
   double y = 0.0;
@@ -1140,7 +1399,11 @@ void test_stepfn3 (void) {
 
   gsl_test_abs(t, 1.0, 1e-16, "evolve big step function, t (stepfn3/rkf45)");
   gsl_test_rel(y, 1e300, epsrel, "evolve big step function, y (stepfn3/rkf45)");
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
      
+=======
+
+>>>>>>> config
   gsl_odeiv_evolve_free (e);
   gsl_odeiv_control_free (c);
   gsl_odeiv_step_free (s);
@@ -1152,7 +1415,11 @@ int rhs_cos (double t, const double * y, double * dydt, void * params) {
 }
 
 int jac_cos (double t, const double y[], double *dfdy, double dfdt[],
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              void *params)
+=======
+	     void *params)
+>>>>>>> config
 {
   dfdy[0] = 0.0;
   dfdt[0] = -sin(t);
@@ -1164,7 +1431,11 @@ int jac_cos (double t, const double y[], double *dfdy, double dfdt[],
 
 void
 test_evolve_negative_h (const gsl_odeiv_step_type * T, double h, double err)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 { 
+=======
+{
+>>>>>>> config
   /* Tolerance factor in testing errors */
   const double factor = 10;
 
@@ -1184,8 +1455,13 @@ test_evolve_negative_h (const gsl_odeiv_step_type * T, double h, double err)
 
   while (t > t1) {
     int status = gsl_odeiv_evolve_apply (e, c, step, &sys, &t, t1, &h, &y);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     if (status != GSL_SUCCESS) 
+=======
+
+    if (status != GSL_SUCCESS)
+>>>>>>> config
       {
 	gsl_test(status, "%s evolve_apply returned %d for negative h",
 		 gsl_odeiv_step_name (step), status);
@@ -1194,8 +1470,13 @@ test_evolve_negative_h (const gsl_odeiv_step_type * T, double h, double err)
   }
 
   gsl_test_abs (y, yfin, factor * e->count * err,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 		"evolution with negative h (using %s)", 
                 gsl_odeiv_step_name (step));
+=======
+		"evolution with negative h (using %s)",
+		gsl_odeiv_step_name (step));
+>>>>>>> config
 
   gsl_odeiv_evolve_free (e);
   gsl_odeiv_control_free (c);
@@ -1259,10 +1540,18 @@ main (void)
 
   test_compare_vanderpol();
   test_compare_oregonator();
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   test_stepfn();
   test_stepfn2();
   test_stepfn3();
  
+=======
+
+  test_stepfn();
+  test_stepfn2();
+  test_stepfn3();
+
+>>>>>>> config
   exit (gsl_test_summary ());
 }

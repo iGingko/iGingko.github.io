@@ -22,17 +22,28 @@ main (void)
   printf ("#m=1,S=0\n");
 
   {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     gsl_interp_accel *acc 
       = gsl_interp_accel_alloc ();
     gsl_spline *spline 
+=======
+    gsl_interp_accel *acc
+      = gsl_interp_accel_alloc ();
+    gsl_spline *spline
+>>>>>>> config
       = gsl_spline_alloc (gsl_interp_cspline, 10);
 
     gsl_spline_init (spline, x, y, 10);
 
     for (xi = x[0]; xi < x[9]; xi += 0.01)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         yi = gsl_spline_eval (spline, xi, acc);
         printf ("%g %g\n", xi, yi);
+=======
+	yi = gsl_spline_eval (spline, xi, acc);
+	printf ("%g %g\n", xi, yi);
+>>>>>>> config
       }
     gsl_spline_free (spline);
     gsl_interp_accel_free (acc);

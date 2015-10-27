@@ -1,17 +1,31 @@
 /* ode-initval/gsl_odeiv.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -52,10 +66,17 @@ __BEGIN_DECLS
  * values, in row-order.
  *
  * As with GSL function objects, user-supplied parameter
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * data is also present. 
  */
 
 typedef struct  
+=======
+ * data is also present.
+ */
+
+typedef struct
+>>>>>>> config
 {
   int (* function) (double t, const double y[], double dydt[], void * params);
   int (* jacobian) (double t, const double y[], double * dfdy, double dfdt[], void * params);
@@ -75,7 +96,11 @@ gsl_odeiv_system;
  * iterating the stepping operation.
  */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 typedef struct 
+=======
+typedef struct
+>>>>>>> config
 {
   const char * name;
   int can_use_dydt_in;
@@ -144,7 +169,11 @@ int  gsl_odeiv_step_apply(gsl_odeiv_step * s, double t, double h, double y[], do
  * to store state and control their heuristics.
  */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 typedef struct 
+=======
+typedef struct
+>>>>>>> config
 {
   const char * name;
   void * (*alloc) (void);
@@ -154,7 +183,11 @@ typedef struct
 }
 gsl_odeiv_control_type;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 typedef struct 
+=======
+typedef struct
+>>>>>>> config
 {
   const gsl_odeiv_control_type * type;
   void * state;

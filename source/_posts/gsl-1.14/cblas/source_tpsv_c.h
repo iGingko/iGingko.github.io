@@ -1,17 +1,31 @@
 /* blas/source_tpsv_c.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -52,6 +66,7 @@
       BASE tmp_imag = IMAG(X, ix);
       INDEX jx = ix + incX;
       for (j = i + 1; j < N; j++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         const BASE Aij_real = CONST_REAL(Ap, TPUP(N, i, j));
         const BASE Aij_imag = conj * CONST_IMAG(Ap, TPUP(N, i, j));
         const BASE x_real = REAL(X, jx);
@@ -72,12 +87,38 @@
       } else {
         REAL(X, ix) = tmp_real;
         IMAG(X, ix) = tmp_imag;
+=======
+	const BASE Aij_real = CONST_REAL(Ap, TPUP(N, i, j));
+	const BASE Aij_imag = conj * CONST_IMAG(Ap, TPUP(N, i, j));
+	const BASE x_real = REAL(X, jx);
+	const BASE x_imag = IMAG(X, jx);
+	tmp_real -= Aij_real * x_real - Aij_imag * x_imag;
+	tmp_imag -= Aij_real * x_imag + Aij_imag * x_real;
+	jx += incX;
+      }
+
+      if (nonunit) {
+	const BASE a_real = CONST_REAL(Ap, TPUP(N, i, i));
+	const BASE a_imag = conj * CONST_IMAG(Ap, TPUP(N, i, i));
+	const BASE s = xhypot(a_real, a_imag);
+	const BASE b_real = a_real / s;
+	const BASE b_imag = a_imag / s;
+	REAL(X, ix) = (tmp_real * b_real + tmp_imag * b_imag) / s;
+	IMAG(X, ix) = (tmp_imag * b_real - tmp_real * b_imag) / s;
+      } else {
+	REAL(X, ix) = tmp_real;
+	IMAG(X, ix) = tmp_imag;
+>>>>>>> config
       }
       ix -= incX;
     }
 
   } else if ((order == CblasRowMajor && Trans == CblasNoTrans && Uplo == CblasLower)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              || (order == CblasColMajor && Trans == CblasTrans && Uplo == CblasUpper)) {
+=======
+	     || (order == CblasColMajor && Trans == CblasTrans && Uplo == CblasUpper)) {
+>>>>>>> config
     /* forward substitution */
 
     INDEX ix = OFFSET(N, incX);
@@ -101,6 +142,7 @@
       BASE tmp_imag = IMAG(X, ix);
       INDEX jx = OFFSET(N, incX);
       for (j = 0; j < i; j++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         const BASE Aij_real = CONST_REAL(Ap, TPLO(N, i, j));
         const BASE Aij_imag = conj * CONST_IMAG(Ap, TPLO(N, i, j));
         const BASE x_real = REAL(X, jx);
@@ -120,11 +162,36 @@
       } else {
         REAL(X, ix) = tmp_real;
         IMAG(X, ix) = tmp_imag;
+=======
+	const BASE Aij_real = CONST_REAL(Ap, TPLO(N, i, j));
+	const BASE Aij_imag = conj * CONST_IMAG(Ap, TPLO(N, i, j));
+	const BASE x_real = REAL(X, jx);
+	const BASE x_imag = IMAG(X, jx);
+	tmp_real -= Aij_real * x_real - Aij_imag * x_imag;
+	tmp_imag -= Aij_real * x_imag + Aij_imag * x_real;
+	jx += incX;
+      }
+      if (nonunit) {
+	const BASE a_real = CONST_REAL(Ap, TPLO(N, i, i));
+	const BASE a_imag = conj * CONST_IMAG(Ap, TPLO(N, i, i));
+	const BASE s = xhypot(a_real, a_imag);
+	const BASE b_real = a_real / s;
+	const BASE b_imag = a_imag / s;
+	REAL(X, ix) = (tmp_real * b_real + tmp_imag * b_imag) / s;
+	IMAG(X, ix) = (tmp_imag * b_real - tmp_real * b_imag) / s;
+      } else {
+	REAL(X, ix) = tmp_real;
+	IMAG(X, ix) = tmp_imag;
+>>>>>>> config
       }
       ix += incX;
     }
   } else if ((order == CblasRowMajor && Trans == CblasTrans && Uplo == CblasUpper)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              || (order == CblasColMajor && Trans == CblasNoTrans && Uplo == CblasLower)) {
+=======
+	     || (order == CblasColMajor && Trans == CblasNoTrans && Uplo == CblasLower)) {
+>>>>>>> config
     /* form  x := inv( A' )*x */
 
     /* forward substitution */
@@ -150,6 +217,7 @@
       BASE tmp_imag = IMAG(X, ix);
       INDEX jx = OFFSET(N, incX);
       for (j = 0; j < i; j++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         const BASE Aij_real = CONST_REAL(Ap, TPUP(N, j, i));
         const BASE Aij_imag = conj * CONST_IMAG(Ap, TPUP(N, j, i));
         const BASE x_real = REAL(X, jx);
@@ -169,11 +237,36 @@
       } else {
         REAL(X, ix) = tmp_real;
         IMAG(X, ix) = tmp_imag;
+=======
+	const BASE Aij_real = CONST_REAL(Ap, TPUP(N, j, i));
+	const BASE Aij_imag = conj * CONST_IMAG(Ap, TPUP(N, j, i));
+	const BASE x_real = REAL(X, jx);
+	const BASE x_imag = IMAG(X, jx);
+	tmp_real -= Aij_real * x_real - Aij_imag * x_imag;
+	tmp_imag -= Aij_real * x_imag + Aij_imag * x_real;
+	jx += incX;
+      }
+      if (nonunit) {
+	const BASE a_real = CONST_REAL(Ap, TPUP(N, i, i));
+	const BASE a_imag = conj * CONST_IMAG(Ap, TPUP(N, i, i));
+	const BASE s = xhypot(a_real, a_imag);
+	const BASE b_real = a_real / s;
+	const BASE b_imag = a_imag / s;
+	REAL(X, ix) = (tmp_real * b_real + tmp_imag * b_imag) / s;
+	IMAG(X, ix) = (tmp_imag * b_real - tmp_real * b_imag) / s;
+      } else {
+	REAL(X, ix) = tmp_real;
+	IMAG(X, ix) = tmp_imag;
+>>>>>>> config
       }
       ix += incX;
     }
   } else if ((order == CblasRowMajor && Trans == CblasTrans && Uplo == CblasLower)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              || (order == CblasColMajor && Trans == CblasNoTrans && Uplo == CblasUpper)) {
+=======
+	     || (order == CblasColMajor && Trans == CblasNoTrans && Uplo == CblasUpper)) {
+>>>>>>> config
 
     /* backsubstitution */
 
@@ -198,6 +291,7 @@
       BASE tmp_imag = IMAG(X, ix);
       INDEX jx = ix + incX;
       for (j = i + 1; j < N; j++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         const BASE Aij_real = CONST_REAL(Ap, TPLO(N, j, i));
         const BASE Aij_imag = conj * CONST_IMAG(Ap, TPLO(N, j, i));
         const BASE x_real = REAL(X, jx);
@@ -218,6 +312,28 @@
       } else {
         REAL(X, ix) = tmp_real;
         IMAG(X, ix) = tmp_imag;
+=======
+	const BASE Aij_real = CONST_REAL(Ap, TPLO(N, j, i));
+	const BASE Aij_imag = conj * CONST_IMAG(Ap, TPLO(N, j, i));
+	const BASE x_real = REAL(X, jx);
+	const BASE x_imag = IMAG(X, jx);
+	tmp_real -= Aij_real * x_real - Aij_imag * x_imag;
+	tmp_imag -= Aij_real * x_imag + Aij_imag * x_real;
+	jx += incX;
+      }
+
+      if (nonunit) {
+	const BASE a_real = CONST_REAL(Ap, TPLO(N, i, i));
+	const BASE a_imag = conj * CONST_IMAG(Ap, TPLO(N, i, i));
+	const BASE s = xhypot(a_real, a_imag);
+	const BASE b_real = a_real / s;
+	const BASE b_imag = a_imag / s;
+	REAL(X, ix) = (tmp_real * b_real + tmp_imag * b_imag) / s;
+	IMAG(X, ix) = (tmp_imag * b_real - tmp_real * b_imag) / s;
+      } else {
+	REAL(X, ix) = tmp_real;
+	IMAG(X, ix) = tmp_imag;
+>>>>>>> config
       }
       ix -= incX;
     }

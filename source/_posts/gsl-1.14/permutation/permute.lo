@@ -9,4 +9,7 @@ pic_object='.libs/permute.o'
 
 # Name of the non-PIC object
 non_pic_object='permute.o'
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

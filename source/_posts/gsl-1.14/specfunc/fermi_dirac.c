@@ -1,17 +1,31 @@
 /* specfunc/fermi_dirac.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -141,7 +155,11 @@ static cheb_series fd_1_c_cs = {
 
 
 /* Chebyshev fit for F_{1}(x) / x^2
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 10 < x < 30 
+=======
+ * 10 < x < 30
+>>>>>>> config
  * -1 < t < 1
  * t = 1/10 (x-10) - 1 = x/10 - 2
  * x = 10(t+2)
@@ -312,7 +330,11 @@ static cheb_series fd_2_c_cs = {
 
 
 /* Chebyshev fit for F_{1}(x) / x^3
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 10 < x < 30 
+=======
+ * 10 < x < 30
+>>>>>>> config
  * -1 < t < 1
  * t = 1/10 (x-10) - 1 = x/10 - 2
  * x = 10(t+2)
@@ -479,7 +501,11 @@ static cheb_series fd_mhalf_c_cs = {
 
 
 /* Chebyshev fit for F_{-1/2}(x) / x^(1/2)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 10 < x < 30 
+=======
+ * 10 < x < 30
+>>>>>>> config
  * -1 < t < 1
  * t = 1/10 (x-10) - 1 = x/10 - 2
  */
@@ -626,7 +652,11 @@ static cheb_series fd_half_c_cs = {
 
 
 /* Chebyshev fit for F_{1/2}(x) / x^(3/2)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 10 < x < 30 
+=======
+ * 10 < x < 30
+>>>>>>> config
  * -1 < t < 1
  * t = 1/10 (x-10) - 1 = x/10 - 2
  */
@@ -771,7 +801,11 @@ static cheb_series fd_3half_c_cs = {
 
 
 /* Chebyshev fit for F_{3/2}(x) / x^(5/2)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 10 < x < 30 
+=======
+ * 10 < x < 30
+>>>>>>> config
  * -1 < t < 1
  * t = 1/10 (x-10) - 1 = x/10 - 2
  */
@@ -817,8 +851,13 @@ static cheb_series fd_3half_d_cs = {
 static
 int
 fd_whiz(const double term, const int iterm,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         double * qnum, double * qden,
         double * result, double * s)
+=======
+	double * qnum, double * qden,
+	double * result, double * s)
+>>>>>>> config
 {
   if(iterm == 0) *s = 0.0;
 
@@ -876,7 +915,11 @@ fd_nint(const int j, const double x, gsl_sf_result * result)
     for(k=2; k<=n; k++) {
       qcoeff[k] = -qcoeff[k-1];
       for(i=k-1; i>=2; i--) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         qcoeff[i] = i*qcoeff[i] - (k-(i-1))*qcoeff[i-1];
+=======
+	qcoeff[i] = i*qcoeff[i] - (k-(i-1))*qcoeff[i-1];
+>>>>>>> config
       }
     }
 
@@ -884,14 +927,22 @@ fd_nint(const int j, const double x, gsl_sf_result * result)
       a = exp(-x);
       f = qcoeff[1];
       for(i=2; i<=n; i++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         f = f*a + qcoeff[i];
+=======
+	f = f*a + qcoeff[i];
+>>>>>>> config
       }
     }
     else {
       a = exp(x);
       f = qcoeff[n];
       for(i=n-1; i>=1; i--) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         f = f*a + qcoeff[i];
+=======
+	f = f*a + qcoeff[i];
+>>>>>>> config
       }
     }
 
@@ -1200,9 +1251,15 @@ fd_UMseries_int(const int j, const double x, gsl_sf_result * result)
 
   stat_sum = ( n >= nmax ? GSL_EMAXITER : GSL_SUCCESS );
   stat_e   = gsl_sf_exp_mult_err_e(lnpre_val, lnpre_err,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                       pre*(sum_even_val + sum_odd_val),
                                       pre*(sum_even_err + sum_odd_err),
                                       result);
+=======
+				      pre*(sum_even_val + sum_odd_val),
+				      pre*(sum_even_err + sum_odd_err),
+				      result);
+>>>>>>> config
   result->err += 2.0 * GSL_DBL_EPSILON * fabs(result->val);
 
   return GSL_ERROR_SELECT_3(stat_e, stat_h, stat_sum);

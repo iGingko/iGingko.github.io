@@ -1,17 +1,31 @@
 /* deriv/test.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2000 David Morrison
  * 
+=======
+ *
+ * Copyright (C) 2000 David Morrison
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -130,7 +144,11 @@ df6 (double x, void *params)
 typedef int (deriv_fn) (const gsl_function * f, double x, double h, double * res, double *abserr);
 
 void
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 test (deriv_fn * deriv, gsl_function * f, gsl_function * df, double x, 
+=======
+test (deriv_fn * deriv, gsl_function * f, gsl_function * df, double x,
+>>>>>>> config
       const char * desc)
 {
   double result, abserr;
@@ -139,7 +157,11 @@ test (deriv_fn * deriv, gsl_function * f, gsl_function * df, double x,
 
   gsl_test_abs (result, expected, GSL_MIN(1e-4,fabs(expected)) + GSL_DBL_EPSILON, desc);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (abserr < fabs(result-expected)) 
+=======
+  if (abserr < fabs(result-expected))
+>>>>>>> config
     {
       gsl_test_factor (abserr, fabs(result-expected), 2, "%s error estimate", desc);
     }
@@ -178,7 +200,11 @@ main ()
 
   F6.function = &f6;
   DF6.function = &df6;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   test (&gsl_deriv_central, &F1, &DF1, 1.0, "exp(x), x=1, central deriv");
   test (&gsl_deriv_forward, &F1, &DF1, 1.0, "exp(x), x=1, forward deriv");
   test (&gsl_deriv_backward, &F1, &DF1, 1.0, "exp(x), x=1, backward deriv");
@@ -205,5 +231,8 @@ main ()
 
   exit (gsl_test_summary ());
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
+=======
+>>>>>>> config

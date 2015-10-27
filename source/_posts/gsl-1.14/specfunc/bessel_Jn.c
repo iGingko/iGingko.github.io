@@ -1,17 +1,31 @@
 /* specfunc/bessel_Jn.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -41,7 +55,11 @@ int gsl_sf_bessel_Jn_e(int n, double x, gsl_sf_result * result)
     /* reduce to case n >= 0 */
     n = -n;
     if(GSL_IS_ODD(n)) sign = -sign;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   }  
+=======
+  }
+>>>>>>> config
 
   if(x < 0.0) {
     /* reduce to case x >= 0. */
@@ -96,7 +114,11 @@ int gsl_sf_bessel_Jn_e(int n, double x, gsl_sf_result * result)
        */
       int status = gsl_sf_bessel_Jnu_asympx_e((double)n, x, result);
       result->val *= sign;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       return status;      
+=======
+      return status;
+>>>>>>> config
     }
     else {
       double ans;
@@ -113,6 +135,7 @@ int gsl_sf_bessel_Jn_e(int n, double x, gsl_sf_result * result)
       int k;
 
       for(k=n; k>0; k--) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         Jkm1 = 2.0*k/x * Jk - Jkp1;
         Jkp1 = Jk;
         Jk   = Jkm1;
@@ -129,6 +152,24 @@ int gsl_sf_bessel_Jn_e(int n, double x, gsl_sf_result * result)
         stat_b = gsl_sf_bessel_J0_e(x, &b0);
         ans = b0.val/Jk * GSL_SQRT_DBL_MIN;
         err = b0.err/Jk * GSL_SQRT_DBL_MIN;
+=======
+	Jkm1 = 2.0*k/x * Jk - Jkp1;
+	Jkp1 = Jk;
+	Jk   = Jkm1;
+      }
+
+      if(fabs(Jkp1) > fabs(Jk)) {
+	gsl_sf_result b1;
+	stat_b = gsl_sf_bessel_J1_e(x, &b1);
+	ans = b1.val/Jkp1 * GSL_SQRT_DBL_MIN;
+	err = b1.err/Jkp1 * GSL_SQRT_DBL_MIN;
+      }
+      else {
+	gsl_sf_result b0;
+	stat_b = gsl_sf_bessel_J0_e(x, &b0);
+	ans = b0.val/Jk * GSL_SQRT_DBL_MIN;
+	err = b0.err/Jk * GSL_SQRT_DBL_MIN;
+>>>>>>> config
       }
 
       result->val = sign * ans;
@@ -173,15 +214,26 @@ gsl_sf_bessel_Jn_array(int nmin, int nmax, double x, double * result_array)
 
     if(stat == GSL_SUCCESS) {
       for(n=nmax; n>=nmin; n--) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         result_array[n-nmin] = Jn;
         Jnm1 = -Jnp1 + 2.0*n/x * Jn;
         Jnp1 = Jn;
         Jn   = Jnm1;
+=======
+	result_array[n-nmin] = Jn;
+	Jnm1 = -Jnp1 + 2.0*n/x * Jn;
+	Jnp1 = Jn;
+	Jn   = Jnm1;
+>>>>>>> config
       }
     }
     else {
       for(n=nmax; n>=nmin; n--) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         result_array[n-nmin] = 0.0;
+=======
+	result_array[n-nmin] = 0.0;
+>>>>>>> config
       }
     }
 

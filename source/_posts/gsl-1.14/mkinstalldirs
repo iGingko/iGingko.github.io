@@ -98,7 +98,11 @@ case $dirmode in
       # Clean up after NextStep and OpenStep mkdir.
       for d in ./-m ./-p ./--version "./$dirmode";
       do
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         test -d $d && rmdir $d
+=======
+	test -d $d && rmdir $d
+>>>>>>> config
       done
     fi
     ;;

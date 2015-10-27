@@ -1,17 +1,31 @@
 /* fft/hc_pass_4.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -19,6 +33,7 @@
 
 static void
 FUNCTION(fft_halfcomplex,pass_4) (const BASE in[],
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                   const size_t istride,
                                   BASE out[],
                                   const size_t ostride,
@@ -27,6 +42,16 @@ FUNCTION(fft_halfcomplex,pass_4) (const BASE in[],
                                   const TYPE(gsl_complex) twiddle1[],
                                   const TYPE(gsl_complex) twiddle2[],
                                   const TYPE(gsl_complex) twiddle3[])
+=======
+				  const size_t istride,
+				  BASE out[],
+				  const size_t ostride,
+				  const size_t product,
+				  const size_t n,
+				  const TYPE(gsl_complex) twiddle1[],
+				  const TYPE(gsl_complex) twiddle2[],
+				  const TYPE(gsl_complex) twiddle3[])
+>>>>>>> config
 {
   size_t i, j, k, k1, jump;
   size_t factor, q, m, product_1;
@@ -80,6 +105,7 @@ FUNCTION(fft_halfcomplex,pass_4) (const BASE in[],
       const ATOMIC w3_imag = GSL_IMAG(twiddle3[k - 1]);
 
       for (k1 = 0; k1 < product_1; k1++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           const size_t from0 = 4 * k1 * q + 2 * k - 1;
           const size_t from1 = from0 + 2 * q;
@@ -151,6 +177,79 @@ FUNCTION(fft_halfcomplex,pass_4) (const BASE in[],
           VECTOR(out,ostride,to3 + 1) = w3_real * x3_imag + w3_imag * x3_real;
 
         }
+=======
+	{
+	  const size_t from0 = 4 * k1 * q + 2 * k - 1;
+	  const size_t from1 = from0 + 2 * q;
+	  const size_t from2 = 4 * k1 * q - 2 * k + 2 * q - 1;
+	  const size_t from3 = from2 + 2 * q;
+
+	  const ATOMIC z0_real = VECTOR(in,istride,from0);
+	  const ATOMIC z0_imag = VECTOR(in,istride,from0 + 1);
+
+	  const ATOMIC z1_real = VECTOR(in,istride,from1);
+	  const ATOMIC z1_imag = VECTOR(in,istride,from1 + 1);
+
+	  const ATOMIC z2_real = VECTOR(in,istride,from3);
+	  const ATOMIC z2_imag = -VECTOR(in,istride,from3 + 1);
+
+	  const ATOMIC z3_real = VECTOR(in,istride,from2);
+	  const ATOMIC z3_imag = -VECTOR(in,istride,from2 + 1);
+
+	  /* compute x = W(4) z */
+
+	  /* t1 = z0 + z2 */
+	  const ATOMIC t1_real = z0_real + z2_real;
+	  const ATOMIC t1_imag = z0_imag + z2_imag;
+
+	  /* t2 = z1 + z3 */
+	  const ATOMIC t2_real = z1_real + z3_real;
+	  const ATOMIC t2_imag = z1_imag + z3_imag;
+
+	  /* t3 = z0 - z2 */
+	  const ATOMIC t3_real = z0_real - z2_real;
+	  const ATOMIC t3_imag = z0_imag - z2_imag;
+
+	  /* t4 = (z1 - z3) */
+	  const ATOMIC t4_real = (z1_real - z3_real);
+	  const ATOMIC t4_imag = (z1_imag - z3_imag);
+
+	  /* x0 = t1 + t2 */
+	  const ATOMIC x0_real = t1_real + t2_real;
+	  const ATOMIC x0_imag = t1_imag + t2_imag;
+
+	  /* x1 = t3 + i t4 */
+	  const ATOMIC x1_real = t3_real - t4_imag;
+	  const ATOMIC x1_imag = t3_imag + t4_real;
+
+	  /* x2 = t1 - t2 */
+	  const ATOMIC x2_real = t1_real - t2_real;
+	  const ATOMIC x2_imag = t1_imag - t2_imag;
+
+	  /* x3 = t3 - i t4 */
+	  const ATOMIC x3_real = t3_real + t4_imag;
+	  const ATOMIC x3_imag = t3_imag - t4_real;
+
+	  const size_t to0 = k1 * q + 2 * k - 1;
+	  const size_t to1 = to0 + m;
+	  const size_t to2 = to1 + m;
+	  const size_t to3 = to2 + m;
+
+	  VECTOR(out,ostride,to0) = x0_real;
+	  VECTOR(out,ostride,to0 + 1) = x0_imag;
+
+	  VECTOR(out,ostride,to1) = w1_real * x1_real - w1_imag * x1_imag;
+	  VECTOR(out,ostride,to1 + 1) = w1_imag * x1_real + w1_real * x1_imag;
+
+	  VECTOR(out,ostride,to2) = w2_real * x2_real - w2_imag * x2_imag;
+	  VECTOR(out,ostride,to2 + 1) = w2_imag * x2_real + w2_real * x2_imag;
+
+	  /* to3 = w3 * x3 */
+	  VECTOR(out,ostride,to3) = w3_real * x3_real - w3_imag * x3_imag;
+	  VECTOR(out,ostride,to3 + 1) = w3_real * x3_imag + w3_imag * x3_real;
+
+	}
+>>>>>>> config
     }
 
   if (q % 2 == 1)

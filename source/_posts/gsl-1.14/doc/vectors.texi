@@ -12,11 +12,19 @@ are compatible with the vector and matrix formats used by @sc{blas}
 routines.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Data types::                  
 * Blocks::                      
 * Vectors::                     
 * Matrices::                    
 * Vector and Matrix References and Further Reading::  
+=======
+* Data types::
+* Blocks::
+* Vectors::
+* Matrices::
+* Vector and Matrix References and Further Reading::
+>>>>>>> config
 @end menu
 
 @node Data types
@@ -31,6 +39,7 @@ single-precision @code{float} arrays have the prefix
 below,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_block                       double         
 gsl_block_float                 float         
 gsl_block_long_double           long double   
@@ -45,6 +54,22 @@ gsl_block_uchar                 unsigned char
 gsl_block_complex               complex double        
 gsl_block_complex_float         complex float         
 gsl_block_complex_long_double   complex long double   
+=======
+gsl_block                       double
+gsl_block_float                 float
+gsl_block_long_double           long double
+gsl_block_int                   int
+gsl_block_uint                  unsigned int
+gsl_block_long                  long
+gsl_block_ulong                 unsigned long
+gsl_block_short                 short
+gsl_block_ushort                unsigned short
+gsl_block_char                  char
+gsl_block_uchar                 unsigned char
+gsl_block_complex               complex double
+gsl_block_complex_float         complex float
+gsl_block_complex_long_double   complex long double
+>>>>>>> config
 @end example
 
 @noindent
@@ -81,9 +106,15 @@ The functions for allocating and deallocating blocks are defined in
 @file{gsl_block.h}
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Block allocation::            
 * Reading and writing blocks::  
 * Example programs for blocks::  
+=======
+* Block allocation::
+* Reading and writing blocks::
+* Example programs for blocks::
+>>>>>>> config
 @end menu
 
 @node Block allocation
@@ -95,7 +126,11 @@ error checking.  If there is insufficient memory available to allocate a
 block then the functions call the GSL error handler (with an error
 number of @code{GSL_ENOMEM}) in addition to returning a null
 pointer.  Thus if you use the library error handler to abort your program
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 then it isn't necessary to check every @code{alloc}.  
+=======
+then it isn't necessary to check every @code{alloc}.
+>>>>>>> config
 
 @deftypefun {gsl_block *} gsl_block_alloc (size_t @var{n})
 This function allocates memory for a block of @var{n} double-precision
@@ -226,6 +261,7 @@ The functions for allocating and accessing vectors are defined in
 @file{gsl_vector.h}
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Vector allocation::           
 * Accessing vector elements::   
 * Initializing vector elements::  
@@ -237,6 +273,19 @@ The functions for allocating and accessing vectors are defined in
 * Finding maximum and minimum elements of vectors::  
 * Vector properties::           
 * Example programs for vectors::  
+=======
+* Vector allocation::
+* Accessing vector elements::
+* Initializing vector elements::
+* Reading and writing vectors::
+* Vector views::
+* Copying vectors::
+* Exchanging elements::
+* Vector operations::
+* Finding maximum and minimum elements of vectors::
+* Vector properties::
+* Example programs for vectors::
+>>>>>>> config
 @end menu
 
 @node Vector allocation
@@ -424,12 +473,20 @@ that preserve constness.  A vector view has the type
 can be accessed as a @code{gsl_vector} using the @code{vector} component
 of the view object.  A pointer to a vector of type @code{gsl_vector *}
 or @code{const gsl_vector *} can be obtained by taking the address of
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 this component with the @code{&} operator.  
+=======
+this component with the @code{&} operator.
+>>>>>>> config
 
 When using this pointer it is important to ensure that the view itself
 remains in scope---the simplest way to do so is by always writing the
 pointer as @code{&}@var{view}@code{.vector}, and never storing this value
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 in another variable.  
+=======
+in another variable.
+>>>>>>> config
 
 @deftypefun gsl_vector_view gsl_vector_subvector (gsl_vector * @var{v}, size_t @var{offset}, size_t @var{n})
 @deftypefunx {gsl_vector_const_view} gsl_vector_const_subvector (const gsl_vector * @var{v}, size_t @var{offset}, size_t @var{n})
@@ -486,7 +543,11 @@ even elements of the vector @code{v} of length @code{n}, while leaving the
 odd elements untouched,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_vector_view v_even 
+=======
+gsl_vector_view v_even
+>>>>>>> config
   = gsl_vector_subvector_with_stride (v, 0, 2, n/2);
 gsl_vector_set_zero (&v_even.vector);
 @end example
@@ -499,7 +560,11 @@ computes the norm of the odd elements of @code{v} using the @sc{blas}
 routine @sc{dnrm2},
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_vector_view v_odd 
+=======
+gsl_vector_view v_odd
+>>>>>>> config
   = gsl_vector_subvector_with_stride (v, 1, 2, n/2);
 double r = gsl_blas_dnrm2 (&v_odd.vector);
 @end example
@@ -529,7 +594,11 @@ The function @code{gsl_vector_complex_const_imag} is equivalent to
 declared @code{const}.
 @end deftypefun
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @deftypefun gsl_vector_view gsl_vector_view_array (double * @var{base}, size_t @var{n}) 
+=======
+@deftypefun gsl_vector_view gsl_vector_view_array (double * @var{base}, size_t @var{n})
+>>>>>>> config
 @deftypefunx {gsl_vector_const_view} gsl_vector_const_view_array (const double * @var{base}, size_t @var{n})
 These functions return a vector view of an array.  The start of the new
 vector is given by @var{base} and has @var{n} elements.  Mathematically,
@@ -582,14 +651,22 @@ for arrays which are declared @code{const}.
 
 @comment @node Modifying subvector views
 @comment @subsection Modifying subvector views
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment 
+=======
+@comment
+>>>>>>> config
 @comment @deftypefun int gsl_vector_view_from_vector (gsl_vector * @var{v}, gsl_vector * @var{base}, size_t @var{offset}, size_t @var{n}, size_t @var{stride})
 @comment This function modifies and existing vector view @var{v} to form a new
 @comment view of a vector @var{base}, starting from element @var{offset}.  The
 @comment vector has @var{n} elements separated by stride @var{stride}.  Any
 @comment existing view in @var{v} will be lost as a result of this function.
 @comment @end deftypefun
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment 
+=======
+@comment
+>>>>>>> config
 @comment @deftypefun int gsl_vector_view_from_array (gsl_vector * @var{v}, double * @var{base}, size_t @var{offset}, size_t @var{n}, size_t @var{stride})
 @comment This function modifies and existing vector view @var{v} to form a new
 @comment view of an array @var{base}, starting from element @var{offset}.  The
@@ -604,24 +681,40 @@ for arrays which are declared @code{const}.
 @comment block.  The vector has @var{n} elements, with a step-size of @var{stride}
 @comment from one element to the next.  Mathematically, the @var{i}-th element of
 @comment the vector is given by,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment 
+=======
+@comment
+>>>>>>> config
 @comment @example
 @comment v(i) = b->data[offset + i*stride]
 @comment @end example
 @comment @noindent
 @comment where the index @var{i} runs from 0 to @code{n-1}.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment 
 @comment A null pointer is returned if the combined parameters
 @comment (@var{offset},@var{n},@var{stride}) overrun the end of the block or if
 @comment insufficient memory is available to store the vector.
 @comment 
+=======
+@comment
+@comment A null pointer is returned if the combined parameters
+@comment (@var{offset},@var{n},@var{stride}) overrun the end of the block or if
+@comment insufficient memory is available to store the vector.
+@comment
+>>>>>>> config
 @comment The vector is only a view of the block @var{b}, and the block is not
 @comment owned by the vector.  When the vector is deallocated the block @var{b}
 @comment will continue to exist.  This memory can only be deallocated by freeing
 @comment the block itself.  Of course, this block should not be deallocated while
 @comment the vector is still in use.
 @comment @end deftypefun
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment 
+=======
+@comment
+>>>>>>> config
 @comment @deftypefun {gsl_vector *} gsl_vector_alloc_from_vector (gsl_vector * @var{v}, size_t @var{offset}, size_t @var{n}, size_t @var{stride})
 @comment This function creates a vector as a slice of another vector @var{v},
 @comment returning a pointer to a newly initialized vector struct.  The start of
@@ -630,17 +723,29 @@ for arrays which are declared @code{const}.
 @comment of @var{stride} from one element to the next in the original vector.
 @comment Mathematically, the @var{i}-th element of the new vector @var{v'} is
 @comment given by,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment 
+=======
+@comment
+>>>>>>> config
 @comment @example
 @comment v'(i) = v->data[(offset + i*stride)*v->stride]
 @comment @end example
 @comment @noindent
 @comment where the index @var{i} runs from 0 to @code{n-1}.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment 
 @comment A null pointer is returned if the combined parameters
 @comment (@var{offset},@var{n},@var{stride}) overrun the end of the original
 @comment vector or if insufficient memory is available store the new vector.
 @comment 
+=======
+@comment
+@comment A null pointer is returned if the combined parameters
+@comment (@var{offset},@var{n},@var{stride}) overrun the end of the original
+@comment vector or if insufficient memory is available store the new vector.
+@comment
+>>>>>>> config
 @comment The new vector is only a view of the block underlying the original
 @comment vector, @var{v}.  The block is not owned by the new vector.  When the new
 @comment vector is deallocated the original vector @var{v} and its block will
@@ -895,6 +1000,7 @@ The functions for allocating and accessing matrices are defined in
 @file{gsl_matrix.h}
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Matrix allocation::           
 * Accessing matrix elements::   
 * Initializing matrix elements::  
@@ -908,6 +1014,21 @@ The functions for allocating and accessing matrices are defined in
 * Finding maximum and minimum elements of matrices::  
 * Matrix properties::           
 * Example programs for matrices::  
+=======
+* Matrix allocation::
+* Accessing matrix elements::
+* Initializing matrix elements::
+* Reading and writing matrices::
+* Matrix views::
+* Creating row and column views::
+* Copying matrices::
+* Copying rows and columns::
+* Exchanging rows and columns::
+* Matrix operations::
+* Finding maximum and minimum elements of matrices::
+* Matrix properties::
+* Example programs for matrices::
+>>>>>>> config
 @end menu
 
 @node Matrix allocation
@@ -956,12 +1077,20 @@ your program with the preprocessor definition
 The elements of the matrix are stored in ``C-order'', where the second
 index moves continuously through memory.  More precisely, the element
 accessed by the function @code{gsl_matrix_get(m,i,j)} and
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @code{gsl_matrix_set(m,i,j,x)} is 
+=======
+@code{gsl_matrix_set(m,i,j,x)} is
+>>>>>>> config
 
 @example
 m->data[i * m->tda + j]
 @end example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment 
+=======
+@comment
+>>>>>>> config
 
 @noindent
 where @var{tda} is the physical row-length of the matrix.
@@ -1222,28 +1351,44 @@ which are declared @code{const}.
 
 @comment @node Modifying matrix views
 @comment @subsection Modifying matrix views
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment 
+=======
+@comment
+>>>>>>> config
 @comment @deftypefun int gsl_matrix_view_from_matrix (gsl_matrix * @var{m}, gsl_matrix * @var{mm}, const size_t @var{k1}, const size_t @var{k2}, const size_t @var{n1}, const size_t @var{n2})
 @comment This function modifies and existing matrix view @var{m} to form a new
 @comment view of a matrix @var{mm}, starting from element (@var{k1},@var{k2}).
 @comment The matrix view has @var{n1} rows and @var{n2} columns.  Any existing
 @comment view in @var{m} will be lost as a result of this function.
 @comment @end deftypefun
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment 
+=======
+@comment
+>>>>>>> config
 @comment @deftypefun int gsl_matrix_view_from_vector (gsl_matrix * @var{m}, gsl_vector * @var{v}, const size_t @var{offset}, const size_t @var{n1}, const size_t @var{n2})
 @comment This function modifies and existing matrix view @var{m} to form a new
 @comment view of a vector @var{v}, starting from element @var{offset}.  The
 @comment vector has @var{n1} rows and @var{n2} columns.  Any
 @comment existing view in @var{m} will be lost as a result of this function.
 @comment @end deftypefun
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment 
+=======
+@comment
+>>>>>>> config
 @comment @deftypefun int gsl_matrix_view_from_array (gsl_matrix * @var{m}, double * @var{base}, const size_t @var{offset}, const size_t @var{n1}, const size_t @var{n2})
 @comment This function modifies and existing matrix view @var{m} to form a new
 @comment view of an array @var{base}, starting from element @var{offset}.  The
 @comment matrix has @var{n1} rows and @var{n2} columns.  Any
 @comment existing view in @var{m} will be lost as a result of this function.
 @comment @end deftypefun
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment 
+=======
+@comment
+>>>>>>> config
 @comment @deftypefun {gsl_matrix *} gsl_matrix_alloc_from_block (gsl_block * @var{b}, size_t @var{offset}, size_t @var{n1}, size_t @var{n2}, size_t @var{tda})
 @comment This function creates a matrix as a slice of the block @var{b},
 @comment returning a pointer to a newly initialized matrix struct.  The start of
@@ -1251,27 +1396,45 @@ which are declared @code{const}.
 @comment block.  The matrix has @var{n1} rows and @var{n2} columns, with the
 @comment physical number of columns in memory given by @var{tda}.
 @comment Mathematically, the (@var{i},@var{j})-th element of the matrix is given by,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment 
+=======
+@comment
+>>>>>>> config
 @comment @example
 @comment m(i,j) = b->data[offset + i*tda + j]
 @comment @end example
 @comment @noindent
 @comment where the index @var{i} runs from 0 to @code{n1-1} and the index @var{j}
 @comment runs from 0 to @code{n2-1}.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment 
 @comment A null pointer is returned if the combined parameters
 @comment (@var{offset},@var{n1},@var{n2},@var{tda}) overrun the end of the block
 @comment or if insufficient memory is available to store the matrix.
 @comment 
+=======
+@comment
+@comment A null pointer is returned if the combined parameters
+@comment (@var{offset},@var{n1},@var{n2},@var{tda}) overrun the end of the block
+@comment or if insufficient memory is available to store the matrix.
+@comment
+>>>>>>> config
 @comment The matrix is only a view of the block @var{b}, and the block is not
 @comment owned by the matrix.  When the matrix is deallocated the block @var{b}
 @comment will continue to exist.  This memory can only be deallocated by freeing
 @comment the block itself.  Of course, this block should not be deallocated while
 @comment the matrix is still in use.
 @comment @end deftypefun
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment 
 @comment @deftypefun {gsl_matrix *} gsl_matrix_alloc_from_matrix (gsl_matrix * @var{m}, size_t @var{k1}, size_t @var{k2}, size_t @var{n1}, size_t @var{n2})
 @comment 
+=======
+@comment
+@comment @deftypefun {gsl_matrix *} gsl_matrix_alloc_from_matrix (gsl_matrix * @var{m}, size_t @var{k1}, size_t @var{k2}, size_t @var{n1}, size_t @var{n2})
+@comment
+>>>>>>> config
 @comment This function creates a matrix as a submatrix of the matrix @var{m},
 @comment returning a pointer to a newly initialized matrix struct.  The upper-left
 @comment element of the submatrix is the element (@var{k1},@var{k2}) of the
@@ -1279,18 +1442,30 @@ which are declared @code{const}.
 @comment The physical number of columns in memory given by @var{tda} is
 @comment unchanged.  Mathematically, the (@var{i},@var{j})-th element of the
 @comment new matrix is given by,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment 
+=======
+@comment
+>>>>>>> config
 @comment @example
 @comment m'(i,j) = m->data[(k1*m->tda + k2) + i*m->tda + j]
 @comment @end example
 @comment @noindent
 @comment where the index @var{i} runs from 0 to @code{n1-1} and the index @var{j}
 @comment runs from 0 to @code{n2-1}.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment 
 @comment A null pointer is returned if the combined parameters
 @comment (@var{k1},@var{k2},@var{n1},@var{n2},@var{tda}) overrun the end of the
 @comment original matrix or if insufficient memory is available to store the matrix.
 @comment 
+=======
+@comment
+@comment A null pointer is returned if the combined parameters
+@comment (@var{k1},@var{k2},@var{n1},@var{n2},@var{tda}) overrun the end of the
+@comment original matrix or if insufficient memory is available to store the matrix.
+@comment
+>>>>>>> config
 @comment The new matrix is only a view of the block underlying the existing
 @comment matrix, @var{m}.  The block is not owned by the new matrix.  When the new
 @comment matrix is deallocated the original matrix @var{m} and its block will
@@ -1371,7 +1546,11 @@ declared @code{const}.
 
 @cindex matrix subdiagonal
 @cindex subdiagonal, of a matrix
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @deftypefun gsl_vector_view gsl_matrix_subdiagonal (gsl_matrix * @var{m}, size_t @var{k}) 
+=======
+@deftypefun gsl_vector_view gsl_matrix_subdiagonal (gsl_matrix * @var{m}, size_t @var{k})
+>>>>>>> config
 @deftypefunx {gsl_vector_const_view} gsl_matrix_const_subdiagonal (const gsl_matrix * @var{m}, size_t @var{k})
 These functions return a vector view of the @var{k}-th subdiagonal of
 the matrix @var{m}. The matrix @var{m} is not required to be square.
@@ -1384,7 +1563,11 @@ declared @code{const}.
 
 @cindex matrix superdiagonal
 @cindex superdiagonal, matrix
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @deftypefun gsl_vector_view gsl_matrix_superdiagonal (gsl_matrix * @var{m}, size_t @var{k}) 
+=======
+@deftypefun gsl_vector_view gsl_matrix_superdiagonal (gsl_matrix * @var{m}, size_t @var{k})
+>>>>>>> config
 @deftypefunx {gsl_vector_const_view} gsl_matrix_const_superdiagonal (const gsl_matrix * @var{m}, size_t @var{k})
 These functions return a vector view of the @var{k}-th superdiagonal of
 the matrix @var{m}. The matrix @var{m} is not required to be square. The
@@ -1399,7 +1582,11 @@ declared @code{const}.
 @comment This function allocates a new @code{gsl_vector} struct which points to
 @comment the @var{i}-th row of the matrix @var{m}.
 @comment @end deftypefun
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment 
+=======
+@comment
+>>>>>>> config
 @comment @deftypefun {gsl_vector *} gsl_vector_alloc_col_from_matrix (gsl_matrix * @var{m}, size_t @var{j})
 @comment This function allocates a new @code{gsl_vector} struct which points to
 @comment the @var{j}-th column of the matrix @var{m}.
@@ -1639,7 +1826,11 @@ computes the column norms of a matrix.
 @end example
 
 @noindent
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 Here is the output of the program, 
+=======
+Here is the output of the program,
+>>>>>>> config
 
 @example
 $ ./a.out
@@ -1652,8 +1843,13 @@ The results can be confirmed using @sc{gnu octave},
 @example
 $ octave
 GNU Octave, version 2.0.16.92
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 octave> m = sin(0:9)' * ones(1,10) 
                + ones(10,1) * cos(0:9); 
+=======
+octave> m = sin(0:9)' * ones(1,10)
+	       + ones(10,1) * cos(0:9);
+>>>>>>> config
 octave> sqrt(sum(m.^2))
 ans =
   4.3146  3.1205  2.1932  3.2611  2.5342  2.5728
@@ -1671,7 +1867,11 @@ reference,
 @itemize @w{}
 @item
 B. Stroustrup,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @cite{The C++ Programming Language} (3rd Ed), 
+=======
+@cite{The C++ Programming Language} (3rd Ed),
+>>>>>>> config
 Section 22.4 Vector Arithmetic.
 Addison-Wesley 1997, ISBN 0-201-88954-4.
 @end itemize

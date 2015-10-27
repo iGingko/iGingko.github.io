@@ -1,17 +1,31 @@
 /* ode-initval/gear2.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -127,11 +141,19 @@ gear2_alloc (size_t dim)
 
 static int
 gear2_step (double *y, gear2_state_t * state,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             const double h, const double t,
             const size_t dim, const gsl_odeiv_system * sys)
 {
   /* Makes a Gear2 advance with step size h.
      y0 is the initial values of variables y. 
+=======
+	    const double h, const double t,
+	    const size_t dim, const gsl_odeiv_system * sys)
+{
+  /* Makes a Gear2 advance with step size h.
+     y0 is the initial values of variables y.
+>>>>>>> config
      The implicit matrix equations to solve are:
      k = y0 + h * f(t + h, k)
      y = y0 + h * f(t + h, k)
@@ -146,7 +168,11 @@ gear2_step (double *y, gear2_state_t * state,
 
   /* Iterative solution of k = y0 + h * f(t + h, k)
      Note: This method does not check for convergence of the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
      iterative solution! 
+=======
+     iterative solution!
+>>>>>>> config
    */
 
   for (nu = 0; nu < iter_steps; nu++)
@@ -154,6 +180,7 @@ gear2_step (double *y, gear2_state_t * state,
       int s = GSL_ODEIV_FN_EVAL (sys, t + h, y, k);
 
       if (s != GSL_SUCCESS)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           return s;
         }
@@ -162,6 +189,16 @@ gear2_step (double *y, gear2_state_t * state,
         {
           y[i] = ((4.0 * y0[i] - yim1[i]) + 2.0 * h * k[i]) / 3.0;
         }
+=======
+	{
+	  return s;
+	}
+
+      for (i = 0; i < dim; i++)
+	{
+	  y[i] = ((4.0 * y0[i] - yim1[i]) + 2.0 * h * k[i]) / 3.0;
+	}
+>>>>>>> config
     }
 
   return GSL_SUCCESS;
@@ -169,6 +206,7 @@ gear2_step (double *y, gear2_state_t * state,
 
 static int
 gear2_apply (void *vstate,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              size_t dim,
              double t,
              double h,
@@ -176,6 +214,15 @@ gear2_apply (void *vstate,
              double yerr[],
              const double dydt_in[],
              double dydt_out[], const gsl_odeiv_system * sys)
+=======
+	     size_t dim,
+	     double t,
+	     double h,
+	     double y[],
+	     double yerr[],
+	     const double dydt_in[],
+	     double dydt_out[], const gsl_odeiv_system * sys)
+>>>>>>> config
 {
   gear2_state_t *state = (gear2_state_t *) vstate;
 
@@ -185,8 +232,13 @@ gear2_apply (void *vstate,
     {
       /* Execute a single-step method to prime the process.  Note that
        * we do this if the step size changes, so frequent step size
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
        * changes will cause the method to stutter. 
        * 
+=======
+       * changes will cause the method to stutter.
+       *
+>>>>>>> config
        * Note that we reuse this method if the time has not changed,
        * which can occur when the adaptive driver is attempting to find
        * an appropriate step-size on its first iteration */
@@ -195,8 +247,13 @@ gear2_apply (void *vstate,
       DBL_MEMCPY (state->yim1, y, dim);
 
       status =
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gsl_odeiv_step_apply (state->primer, t, h, y, yerr, dydt_in, dydt_out,
                               sys);
+=======
+	gsl_odeiv_step_apply (state->primer, t, h, y, yerr, dydt_in, dydt_out,
+			      sys);
+>>>>>>> config
 
       /* Make note of step size and indicate readiness for a Gear step. */
 
@@ -231,9 +288,15 @@ gear2_apply (void *vstate,
       /* iterative solution */
 
       if (dydt_out != NULL)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           DBL_MEMCPY (k, dydt_out, dim);
         }
+=======
+	{
+	  DBL_MEMCPY (k, dydt_out, dim);
+	}
+>>>>>>> config
 
       /* First traverse h with one step (save to y_onestep) */
 
@@ -242,35 +305,58 @@ gear2_apply (void *vstate,
       s = gear2_step (y_onestep, state, h, t, dim, sys);
 
       if (s != GSL_SUCCESS)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           return s;
         }
+=======
+	{
+	  return s;
+	}
+>>>>>>> config
 
       /* Then with two steps with half step length (save to y) */
 
       s = gear2_step (y, state, h / 2.0, t, dim, sys);
 
       if (s != GSL_SUCCESS)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           /* Restore original y vector */
           DBL_MEMCPY (y, y0_orig, dim);
           return s;
         }
+=======
+	{
+	  /* Restore original y vector */
+	  DBL_MEMCPY (y, y0_orig, dim);
+	  return s;
+	}
+>>>>>>> config
 
       DBL_MEMCPY (y0, y, dim);
 
       s = gear2_step (y, state, h / 2.0, t + h / 2.0, dim, sys);
 
       if (s != GSL_SUCCESS)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           /* Restore original y vector */
           DBL_MEMCPY (y, y0_orig, dim);
           return s;
         }
+=======
+	{
+	  /* Restore original y vector */
+	  DBL_MEMCPY (y, y0_orig, dim);
+	  return s;
+	}
+>>>>>>> config
 
       /* Cleanup update */
 
       if (dydt_out != NULL)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           s = GSL_ODEIV_FN_EVAL (sys, t + h, y, dydt_out);
 
@@ -281,14 +367,33 @@ gear2_apply (void *vstate,
               return s;
             }
         }
+=======
+	{
+	  s = GSL_ODEIV_FN_EVAL (sys, t + h, y, dydt_out);
+
+	  if (s != GSL_SUCCESS)
+	    {
+	      /* Restore original y vector */
+	      DBL_MEMCPY (y, y0_orig, dim);
+	      return s;
+	    }
+	}
+>>>>>>> config
 
       /* Estimate error and update the state buffer. */
 
       for (i = 0; i < dim; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           yerr[i] = 4.0 * (y[i] - y_onestep[i]);
           yim1[i] = y0[i];
         }
+=======
+	{
+	  yerr[i] = 4.0 * (y[i] - y_onestep[i]);
+	  yim1[i] = y0[i];
+	}
+>>>>>>> config
 
       /* Make note of step size. */
       state->last_h = h;

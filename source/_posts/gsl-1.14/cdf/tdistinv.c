@@ -83,6 +83,7 @@ gsl_cdf_tdist_Pinv (const double P, const double nu)
       double beta = gsl_sf_beta (0.5, nu / 2);
 
       if (P < 0.5)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           x = -sqrt (nu) * pow (beta * nu * P, -1.0 / nu);
         }
@@ -95,6 +96,20 @@ gsl_cdf_tdist_Pinv (const double P, const double nu)
          for higher order terms. This avoids overestimating x, which
          makes the iteration unstable due to the rapidly decreasing
          tails of the distribution. */
+=======
+	{
+	  x = -sqrt (nu) * pow (beta * nu * P, -1.0 / nu);
+	}
+      else
+	{
+	  x = sqrt (nu) * pow (beta * nu * (1 - P), -1.0 / nu);
+	}
+
+      /* Correct nu -> nu/(1+nu/x^2) in the leading term to account
+	 for higher order terms. This avoids overestimating x, which
+	 makes the iteration unstable due to the rapidly decreasing
+	 tails of the distribution. */
+>>>>>>> config
 
       x /= sqrt (1 + nu / (x * x));
     }
@@ -118,6 +133,7 @@ gsl_cdf_tdist_Pinv (const double P, const double nu)
       double step = step0;
 
       if (fabs (step1) < fabs (step0))
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           step += step1;
         }
@@ -139,6 +155,29 @@ gsl_cdf_tdist_Pinv (const double P, const double nu)
         GSL_ERROR_VAL("inverse failed to converge", GSL_EFAILED, GSL_NAN);
       }
     
+=======
+	{
+	  step += step1;
+	}
+
+      if (P > 0.5 && x + step < 0)
+	x /= 2;
+      else if (P < 0.5 && x + step > 0)
+	x /= 2;
+      else
+	x += step;
+
+      if (fabs (step) > 1e-10 * fabs (x))
+	goto start;
+    }
+
+  end:
+    if (fabs(dP) > GSL_SQRT_DBL_EPSILON * P)
+      {
+	GSL_ERROR_VAL("inverse failed to converge", GSL_EFAILED, GSL_NAN);
+      }
+
+>>>>>>> config
     return x;
   }
 }
@@ -182,6 +221,7 @@ gsl_cdf_tdist_Qinv (const double Q, const double nu)
       double beta = gsl_sf_beta (0.5, nu / 2);
 
       if (Q < 0.5)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           x = sqrt (nu) * pow (beta * nu * Q, -1.0 / nu);
         }
@@ -194,6 +234,20 @@ gsl_cdf_tdist_Qinv (const double Q, const double nu)
          for higher order terms. This avoids overestimating x, which
          makes the iteration unstable due to the rapidly decreasing
          tails of the distribution. */
+=======
+	{
+	  x = sqrt (nu) * pow (beta * nu * Q, -1.0 / nu);
+	}
+      else
+	{
+	  x = -sqrt (nu) * pow (beta * nu * (1 - Q), -1.0 / nu);
+	}
+
+      /* Correct nu -> nu/(1+nu/x^2) in the leading term to account
+	 for higher order terms. This avoids overestimating x, which
+	 makes the iteration unstable due to the rapidly decreasing
+	 tails of the distribution. */
+>>>>>>> config
 
       x /= sqrt (1 + nu / (x * x));
     }
@@ -217,6 +271,7 @@ gsl_cdf_tdist_Qinv (const double Q, const double nu)
       double step = step0;
 
       if (fabs (step1) < fabs (step0))
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           step += step1;
         }
@@ -230,6 +285,21 @@ gsl_cdf_tdist_Qinv (const double Q, const double nu)
 
       if (fabs (step) > 1e-10 * fabs (x))
         goto start;
+=======
+	{
+	  step += step1;
+	}
+
+      if (Q < 0.5 && x + step < 0)
+	x /= 2;
+      else if (Q > 0.5 && x + step > 0)
+	x /= 2;
+      else
+	x += step;
+
+      if (fabs (step) > 1e-10 * fabs (x))
+	goto start;
+>>>>>>> config
     }
   }
 

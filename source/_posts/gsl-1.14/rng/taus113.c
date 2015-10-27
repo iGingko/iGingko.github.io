@@ -2,26 +2,45 @@
  * Copyright (C) 2002 Atakan Gurkan
  * Based on the file taus.c which has the notice
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* This is a maximally equidistributed combined, collision free 
    Tausworthe generator, with a period ~2^{113}. The sequence is,
 
    x_n = (z1_n ^ z2_n ^ z3_n ^ z4_n)  
+=======
+/* This is a maximally equidistributed combined, collision free
+   Tausworthe generator, with a period ~2^{113}. The sequence is,
+
+   x_n = (z1_n ^ z2_n ^ z3_n ^ z4_n)
+>>>>>>> config
 
    b = (((z1_n <<  6) ^ z1_n) >> 13)
    z1_{n+1} = (((z1_n & 4294967294) << 18) ^ b)
@@ -32,6 +51,7 @@
    b = (((z4_n <<  3)  ^ z4_n) >> 12)
    z4_{n+1} = (((z4_n & 4294967168) << 13) ^ b)
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    computed modulo 2^32. In the formulas above '^' means exclusive-or 
    (C-notation), not exponentiation. 
    The algorithm is for 32-bit integers, hence a bitmask is used to clear 
@@ -41,6 +61,17 @@
    The generator is initialized with 
    zi = (69069 * z{i+1}) MOD 2^32 where z0 is the seed provided
    During initialization a check is done to make sure that the initial seeds 
+=======
+   computed modulo 2^32. In the formulas above '^' means exclusive-or
+   (C-notation), not exponentiation.
+   The algorithm is for 32-bit integers, hence a bitmask is used to clear
+   all but least significant 32 bits, after left shifts, to make the code
+   work on architectures where integers are 64-bit.
+
+   The generator is initialized with
+   zi = (69069 * z{i+1}) MOD 2^32 where z0 is the seed provided
+   During initialization a check is done to make sure that the initial seeds
+>>>>>>> config
    have a required number of their most significant bits set.
    After this, the state is passed through the RNG 10 times to ensure the
    state satisfies a recurrence relation.
@@ -49,7 +80,11 @@
    P. L'Ecuyer, "Tables of Maximally-Equidistributed Combined LFSR Generators",
    Mathematics of Computation, 68, 225 (1999), 261--269.
      http://www.iro.umontreal.ca/~lecuyer/myftp/papers/tausme2.ps
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    P. L'Ecuyer, "Maximally Equidistributed Combined Tausworthe Generators", 
+=======
+   P. L'Ecuyer, "Maximally Equidistributed Combined Tausworthe Generators",
+>>>>>>> config
    Mathematics of Computation, 65, 213 (1996), 203--213.
      http://www.iro.umontreal.ca/~lecuyer/myftp/papers/tausme.ps
    the online version of the latter contains corrections to the print version.
@@ -153,7 +188,11 @@ const gsl_rng_type *gsl_rng_taus113 = &taus113_type;
     (used to find the values for the test program)
 
   [ LCG(n) := n * 69069 mod (2^32) ]
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   [ b1(x) := rsh(xor(lsh(x, 6), x), 13),
   q1(x) := xor(lsh(and(x, 4294967294), 18), b1(x)),
   b2(x) := rsh(xor(lsh(x, 2), x), 27),
@@ -163,6 +202,10 @@ const gsl_rng_type *gsl_rng_taus113 = &taus113_type;
   b4(x) := rsh(xor(lsh(x, 3), x), 12),
   q4(x) := xor(lsh(and(x, 4294967168), 13), b4(x))
   ]
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   [ S([z1,z2,z3,z4]) := [q1(z1), q2(z2), q3(z3), q4(z4)] ]
 */

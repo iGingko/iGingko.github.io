@@ -46,5 +46,9 @@
 #elif HAVE_DECL_FEENABLEEXCEPT || HAVE_DECL_FESETTRAPENABLE
 #include "fp-gnuc99.c"
 #else
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 #include "fp-unknown.c" 
+=======
+#include "fp-unknown.c"
+>>>>>>> config
 #endif

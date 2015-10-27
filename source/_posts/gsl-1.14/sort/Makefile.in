@@ -240,7 +240,11 @@ noinst_LTLIBRARIES = libgslsort.la
 pkginclude_HEADERS = gsl_heapsort.h gsl_sort.h gsl_sort_char.h gsl_sort_double.h gsl_sort_float.h gsl_sort_int.h gsl_sort_long.h gsl_sort_long_double.h gsl_sort_short.h gsl_sort_uchar.h gsl_sort_uint.h gsl_sort_ulong.h gsl_sort_ushort.h gsl_sort_vector.h gsl_sort_vector_char.h gsl_sort_vector_double.h gsl_sort_vector_float.h gsl_sort_vector_int.h gsl_sort_vector_long.h gsl_sort_vector_long_double.h gsl_sort_vector_short.h gsl_sort_vector_uchar.h gsl_sort_vector_uint.h gsl_sort_vector_ulong.h gsl_sort_vector_ushort.h
 INCLUDES = -I$(top_srcdir)
 libgslsort_la_SOURCES = sort.c sortind.c sortvec.c sortvecind.c subset.c subsetind.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 noinst_HEADERS = sortvec_source.c sortvecind_source.c subset_source.c subsetind_source.c test_source.c test_heapsort.c 
+=======
+noinst_HEADERS = sortvec_source.c sortvecind_source.c subset_source.c subsetind_source.c test_source.c test_heapsort.c
+>>>>>>> config
 TESTS = $(check_PROGRAMS)
 test_SOURCES = test.c
 test_LDADD = libgslsort.la ../permutation/libgslpermutation.la ../vector/libgslvector.la ../block/libgslblock.la ../ieee-utils/libgslieeeutils.la ../err/libgslerr.la ../test/libgsltest.la ../sys/libgslsys.la
@@ -253,7 +257,11 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__confi
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
 	      ( cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh ) \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	        && { if test -f $@; then exit 0; else break; fi; }; \
+=======
+		&& { if test -f $@; then exit 0; else break; fi; }; \
+>>>>>>> config
 	      exit 1;; \
 	  esac; \
 	done; \
@@ -287,7 +295,11 @@ clean-noinstLTLIBRARIES:
 	  echo "rm -f \"$${dir}/so_locations\""; \
 	  rm -f "$${dir}/so_locations"; \
 	done
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 libgslsort.la: $(libgslsort_la_OBJECTS) $(libgslsort_la_DEPENDENCIES) 
+=======
+libgslsort.la: $(libgslsort_la_OBJECTS) $(libgslsort_la_DEPENDENCIES)
+>>>>>>> config
 	$(LINK)  $(libgslsort_la_OBJECTS) $(libgslsort_la_LIBADD) $(LIBS)
 
 clean-checkPROGRAMS:
@@ -298,7 +310,11 @@ clean-checkPROGRAMS:
 	list=`for p in $$list; do echo "$$p"; done | sed 's/$(EXEEXT)$$//'`; \
 	echo " rm -f" $$list; \
 	rm -f $$list
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 test$(EXEEXT): $(test_OBJECTS) $(test_DEPENDENCIES) 
+=======
+test$(EXEEXT): $(test_OBJECTS) $(test_DEPENDENCIES)
+>>>>>>> config
 	@rm -f test$(EXEEXT)
 	$(LINK) $(test_OBJECTS) $(test_LDADD) $(LIBS)
 

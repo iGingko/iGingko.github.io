@@ -2,11 +2,19 @@ This chapter describes some tips and tricks for debugging numerical
 programs which use GSL.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Using gdb::                   
 * Examining floating point registers::  
 * Handling floating point exceptions::  
 * GCC warning options for numerical programs::  
 * Debugging References::        
+=======
+* Using gdb::
+* Examining floating point registers::
+* Handling floating point exceptions::
+* GCC warning options for numerical programs::
+* Debugging References::
+>>>>>>> config
 @end menu
 
 @node Using gdb
@@ -22,11 +30,19 @@ errors.  You can add a breakpoint for every session by putting
 @example
 break gsl_error
 @end example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment 
 
 @noindent
 into your @file{.gdbinit} file in the directory where your program is
 started.  
+=======
+@comment
+
+@noindent
+into your @file{.gdbinit} file in the directory where your program is
+started.
+>>>>>>> config
 
 If the breakpoint catches an error then you can use a backtrace
 (@code{bt}) to see the call-tree, and the arguments which possibly
@@ -53,7 +69,11 @@ $ gdb test_trap
 GDB is free software and you are welcome to distribute copies
 of it under certain conditions; type "show copying" to see
 the conditions.  There is absolutely no warranty for GDB;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 type "show warranty" for details.  GDB 4.16 (i586-debian-linux), 
+=======
+type "show warranty" for details.  GDB 4.16 (i586-debian-linux),
+>>>>>>> config
 Copyright 1996 Free Software Foundation, Inc.
 
 Breakpoint 1 at 0x8050b1e: file error.c, line 14.
@@ -61,6 +81,7 @@ Breakpoint 1 at 0x8050b1e: file error.c, line 14.
 
 @noindent
 When we run the program this breakpoint catches the error and shows the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 reason for it. 
 
 @smallexample
@@ -74,6 +95,21 @@ Breakpoint 1, gsl_error (reason=0x8052b0d
 14        if (gsl_error_handler) 
 @end smallexample
 @comment 
+=======
+reason for it.
+
+@smallexample
+(gdb) run
+Starting program: test_trap
+
+Breakpoint 1, gsl_error (reason=0x8052b0d
+    "length n must be positive integer",
+    file=0x8052b04 "c_init.c", line=108, gsl_errno=1)
+    at error.c:14
+14        if (gsl_error_handler)
+@end smallexample
+@comment
+>>>>>>> config
 
 @noindent
 The first argument of @code{gsl_error} is always a string describing the
@@ -81,17 +117,30 @@ error.  Now we can look at the backtrace to see what caused the problem,
 
 @smallexample
 (gdb) bt
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 #0  gsl_error (reason=0x8052b0d 
     "length n must be positive integer", 
+=======
+#0  gsl_error (reason=0x8052b0d
+    "length n must be positive integer",
+>>>>>>> config
     file=0x8052b04 "c_init.c", line=108, gsl_errno=1)
     at error.c:14
 #1  0x8049376 in gsl_fft_complex_wavetable_alloc (n=0,
     wavetable=0xbffff778) at c_init.c:108
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 #2  0x8048a00 in main (argc=1, argv=0xbffff9bc) 
     at test_trap.c:94
 #3  0x80488be in ___crt_dummy__ ()
 @end smallexample
 @comment 
+=======
+#2  0x8048a00 in main (argc=1, argv=0xbffff9bc)
+    at test_trap.c:94
+#3  0x80488be in ___crt_dummy__ ()
+@end smallexample
+@comment
+>>>>>>> config
 
 @noindent
 We can see that the error was generated in the function
@@ -108,12 +157,21 @@ caused the error,
     wavetable=0xbffff778) at c_init.c:108
 108   GSL_ERROR ("length n must be positive integer", GSL_EDOM);
 (gdb) up
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 #2  0x8048a00 in main (argc=1, argv=0xbffff9bc) 
     at test_trap.c:94
 94    status = gsl_fft_complex_wavetable_alloc (0,
         &complex_wavetable);
 @end smallexample
 @comment 
+=======
+#2  0x8048a00 in main (argc=1, argv=0xbffff9bc)
+    at test_trap.c:94
+94    status = gsl_fft_complex_wavetable_alloc (0,
+	&complex_wavetable);
+@end smallexample
+@comment
+>>>>>>> config
 
 @noindent
 Thus we have found the line that caused the problem.  From this point we
@@ -151,7 +209,11 @@ Individual registers can be examined using the variables @var{$reg},
 where @var{reg} is the register name.
 
 @smallexample
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 (gdb) p $st1 
+=======
+(gdb) p $st1
+>>>>>>> config
 $1 = 0.02859464454261210347719
 @end smallexample
 
@@ -207,7 +269,11 @@ programs:
 @comment signed to unsigned integers can all cause hard-to-find problems.  For
 @comment many non-numerical programs compiling with @code{gcc}'s warning option
 @comment @code{-Wall} provides a good check against common errors.  However, for
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment numerical programs @code{-Wall} is not enough. 
+=======
+@comment numerical programs @code{-Wall} is not enough.
+>>>>>>> config
 
 @comment If you are unconvinced take a look at this program which contains an
 @comment error that can occur in numerical code,
@@ -222,7 +288,11 @@ programs:
 @comment @{
 @comment   double a = 1.5;
 @comment   double y = f(a);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment   printf("a = %g, sqrt(a) = %g\n", a, y);  
+=======
+@comment   printf("a = %g, sqrt(a) = %g\n", a, y);
+>>>>>>> config
 @comment   return 0;
 @comment @}
 
@@ -237,7 +307,11 @@ programs:
 
 @comment @example
 @comment bash$ gcc -Wall tmp.c -lm
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment bash$ ./a.out 
+=======
+@comment bash$ ./a.out
+>>>>>>> config
 @comment a = 1.5, sqrt(a) = 1
 @comment @end example
 
@@ -250,18 +324,30 @@ programs:
 @comment integer.  This is valid C, but in a numerical program it also likely to
 @comment be a programming error so we would like to be warned about it. (If we
 @comment genuinely wanted to convert @code{y} to an integer then we could use an
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment explicit cast, @code{(int)y}).  
+=======
+@comment explicit cast, @code{(int)y}).
+>>>>>>> config
 
 @comment Fortunately GCC provides many additional warnings which can alert you to
 @comment problems such as this.  You just have to remember to use them.  Here is a
 @comment set of recommended warning options for numerical programs.
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gcc -ansi -pedantic -Werror -Wall -W 
   -Wmissing-prototypes -Wstrict-prototypes 
   -Wconversion -Wshadow -Wpointer-arith 
   -Wcast-qual -Wcast-align 
   -Wwrite-strings -Wnested-externs 
+=======
+gcc -ansi -pedantic -Werror -Wall -W
+  -Wmissing-prototypes -Wstrict-prototypes
+  -Wconversion -Wshadow -Wpointer-arith
+  -Wcast-qual -Wcast-align
+  -Wwrite-strings -Wnested-externs
+>>>>>>> config
   -fshort-enums -fno-common -Dinline= -g -O2
 @end example
 
@@ -271,21 +357,33 @@ GCC}.  The following table gives a brief explanation of what types of
 errors these options catch.
 
 @table @code
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @item -ansi -pedantic 
 Use ANSI C, and reject any non-ANSI extensions.  These flags help in
 writing portable programs that will compile on other systems.
 @item -Werror 
+=======
+@item -ansi -pedantic
+Use ANSI C, and reject any non-ANSI extensions.  These flags help in
+writing portable programs that will compile on other systems.
+@item -Werror
+>>>>>>> config
 Consider warnings to be errors, so that compilation stops.  This prevents
 warnings from scrolling off the top of the screen and being lost.  You
 won't be able to compile the program until it is completely
 warning-free.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @item -Wall 
+=======
+@item -Wall
+>>>>>>> config
 This turns on a set of warnings for common programming problems.  You
 need @code{-Wall}, but it is not enough on its own.
 @item -O2
 Turn on optimization.  The warnings for uninitialized variables in
 @code{-Wall} rely on the optimizer to analyze the code.  If there is no
 optimization then these warnings aren't generated.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @item -W 
 This turns on some extra warnings not included in @code{-Wall}, such as
 missing return values and comparisons between signed and unsigned
@@ -294,6 +392,16 @@ integers.
 Warn if there are any missing or inconsistent prototypes.  Without
 prototypes it is harder to detect problems with incorrect arguments. 
 @item -Wconversion 
+=======
+@item -W
+This turns on some extra warnings not included in @code{-Wall}, such as
+missing return values and comparisons between signed and unsigned
+integers.
+@item -Wmissing-prototypes -Wstrict-prototypes
+Warn if there are any missing or inconsistent prototypes.  Without
+prototypes it is harder to detect problems with incorrect arguments.
+@item -Wconversion
+>>>>>>> config
 The main use of this option is to warn about conversions from signed to
 unsigned integers.  For example, @code{unsigned int x = -1}.  If you need
 to perform such a conversion you can use an explicit cast.
@@ -301,7 +409,11 @@ to perform such a conversion you can use an explicit cast.
 This warns whenever a local variable shadows another local variable.  If
 two variables have the same name then it is a potential source of
 confusion.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @item -Wpointer-arith -Wcast-qual -Wcast-align 
+=======
+@item -Wpointer-arith -Wcast-qual -Wcast-align
+>>>>>>> config
 These options warn if you try to do pointer arithmetic for types which
 don't have a size, such as @code{void}, if you remove a @code{const}
 cast from a pointer, or if you cast a pointer to a type which has a
@@ -309,7 +421,11 @@ different size, causing an invalid alignment.
 @item -Wwrite-strings
 This option gives string constants a @code{const} qualifier so that it
 will be a compile-time error to attempt to overwrite them.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @item -fshort-enums 
+=======
+@item -fshort-enums
+>>>>>>> config
 This option makes the type of @code{enum} as short as possible.  Normally
 this makes an @code{enum} different from an @code{int}.  Consequently any
 attempts to assign a pointer-to-int to a pointer-to-enum will generate a
@@ -319,6 +435,7 @@ This option prevents global variables being simultaneously defined in
 different object files (you get an error at link time).  Such a variable
 should be defined in one file and referred to in other files with an
 @code{extern} declaration.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @item -Wnested-externs 
 This warns if an @code{extern} declaration is encountered within a
 function.
@@ -327,6 +444,16 @@ The @code{inline} keyword is not part of ANSI C. Thus if you want to use
 @code{-ansi} with a program which uses inline functions you can use this
 preprocessor definition to remove the @code{inline} keywords.
 @item -g 
+=======
+@item -Wnested-externs
+This warns if an @code{extern} declaration is encountered within a
+function.
+@item -Dinline=
+The @code{inline} keyword is not part of ANSI C. Thus if you want to use
+@code{-ansi} with a program which uses inline functions you can use this
+preprocessor definition to remove the @code{inline} keywords.
+@item -g
+>>>>>>> config
 It always makes sense to put debugging symbols in the executable so that
 you can debug it using @code{gdb}.  The only effect of debugging symbols
 is to increase the size of the file, and you can use the @code{strip}
@@ -337,6 +464,7 @@ command to remove them later if necessary.
 @comment compiled with these options.
 
 @comment @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment bash$ gcc -ansi -pedantic -Werror -W -Wall -Wtraditional 
 @comment -Wconversion -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align 
 @comment -Wwrite-strings -Waggregate-return -Wstrict-prototypes -fshort-enums 
@@ -350,6 +478,21 @@ command to remove them later if necessary.
 @comment tmp.c: In function `f':
 @comment tmp.c:14: warning: type of `x' defaults to `int'
 @comment tmp.c:15: warning: passing arg 1 of `sqrt' as floating rather than integer 
+=======
+@comment bash$ gcc -ansi -pedantic -Werror -W -Wall -Wtraditional
+@comment -Wconversion -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align
+@comment -Wwrite-strings -Waggregate-return -Wstrict-prototypes -fshort-enums
+@comment -fno-common -Wmissing-prototypes -Wnested-externs -Dinline=
+@comment -g -O4 tmp.c
+@comment cc1: warnings being treated as errors
+@comment tmp.c:7: warning: function declaration isn't a prototype
+@comment tmp.c: In function `main':
+@comment tmp.c:9: warning: passing arg 1 of `f' as integer rather than floating
+@comment due to prototype
+@comment tmp.c: In function `f':
+@comment tmp.c:14: warning: type of `x' defaults to `int'
+@comment tmp.c:15: warning: passing arg 1 of `sqrt' as floating rather than integer
+>>>>>>> config
 @comment due to prototype
 @comment make: *** [tmp] Error 1
 @comment @end example
@@ -377,12 +520,19 @@ Source-Level Debugger}, Free Software Foundation, ISBN 1882114779
 
 @noindent
 For a tutorial introduction to the GNU C Compiler and related programs,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 see 
+=======
+see
+>>>>>>> config
 
 @itemize @w{}
 @item
 B.J. Gough, @cite{An Introduction to GCC}, Network Theory Ltd, ISBN
 0954161793
 @end itemize
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
+=======
+>>>>>>> config

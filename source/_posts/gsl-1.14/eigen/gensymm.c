@@ -1,17 +1,31 @@
 /* eigen/gensymm.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2007 Patrick Alken
  * 
+=======
+ *
+ * Copyright (C) 2007 Patrick Alken
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -52,7 +66,11 @@ gsl_eigen_gensymm_alloc(const size_t n)
   if (n == 0)
     {
       GSL_ERROR_NULL ("matrix dimension must be positive integer",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       GSL_EINVAL);
+=======
+		      GSL_EINVAL);
+>>>>>>> config
     }
 
   w = (gsl_eigen_gensymm_workspace *) calloc (1, sizeof (gsl_eigen_gensymm_workspace));
@@ -100,16 +118,26 @@ A x = \lambda B x
 for the eigenvalues \lambda.
 
 Inputs: A    - real symmetric matrix
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         B    - real symmetric and positive definite matrix
         eval - where to store eigenvalues
         w    - workspace
+=======
+	B    - real symmetric and positive definite matrix
+	eval - where to store eigenvalues
+	w    - workspace
+>>>>>>> config
 
 Return: success or error
 */
 
 int
 gsl_eigen_gensymm (gsl_matrix * A, gsl_matrix * B, gsl_vector * eval,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                    gsl_eigen_gensymm_workspace * w)
+=======
+		   gsl_eigen_gensymm_workspace * w)
+>>>>>>> config
 {
   const size_t N = A->size1;
 
@@ -138,7 +166,11 @@ gsl_eigen_gensymm (gsl_matrix * A, gsl_matrix * B, gsl_vector * eval,
       /* compute Cholesky factorization of B */
       s = gsl_linalg_cholesky_decomp(B);
       if (s != GSL_SUCCESS)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         return s; /* B is not positive definite */
+=======
+	return s; /* B is not positive definite */
+>>>>>>> config
 
       /* transform to standard symmetric eigenvalue problem */
       gsl_eigen_gensymm_standardize(A, B);
@@ -159,7 +191,11 @@ C = L^{-1} A L^{-t}
 where L L^t is the Cholesky decomposition of B
 
 Inputs: A - (input/output) real symmetric matrix
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         B - real symmetric, positive definite matrix in Cholesky form
+=======
+	B - real symmetric, positive definite matrix in Cholesky form
+>>>>>>> config
 
 Return: success
 
@@ -183,6 +219,7 @@ gsl_eigen_gensymm_standardize(gsl_matrix *A, const gsl_matrix *B)
       gsl_matrix_set(A, i, i, a);
 
       if (i < N - 1)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           gsl_vector_view ai = gsl_matrix_subcolumn(A, i, i + 1, N - i - 1);
           gsl_matrix_view ma =
@@ -207,6 +244,32 @@ gsl_eigen_gensymm_standardize(gsl_matrix *A, const gsl_matrix *B)
                          &mb.matrix,
                          &ai.vector);
         }
+=======
+	{
+	  gsl_vector_view ai = gsl_matrix_subcolumn(A, i, i + 1, N - i - 1);
+	  gsl_matrix_view ma =
+	    gsl_matrix_submatrix(A, i + 1, i + 1, N - i - 1, N - i - 1);
+	  gsl_vector_const_view bi =
+	    gsl_matrix_const_subcolumn(B, i, i + 1, N - i - 1);
+	  gsl_matrix_const_view mb =
+	    gsl_matrix_const_submatrix(B, i + 1, i + 1, N - i - 1, N - i - 1);
+
+	  gsl_blas_dscal(1.0 / b, &ai.vector);
+
+	  c = -0.5 * a;
+	  gsl_blas_daxpy(c, &bi.vector, &ai.vector);
+
+	  gsl_blas_dsyr2(CblasLower, -1.0, &ai.vector, &bi.vector, &ma.matrix);
+
+	  gsl_blas_daxpy(c, &bi.vector, &ai.vector);
+
+	  gsl_blas_dtrsv(CblasLower,
+			 CblasNoTrans,
+			 CblasNonUnit,
+			 &mb.matrix,
+			 &ai.vector);
+	}
+>>>>>>> config
     }
 
   return GSL_SUCCESS;

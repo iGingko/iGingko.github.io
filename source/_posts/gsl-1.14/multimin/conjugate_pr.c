@@ -1,17 +1,31 @@
 /* multimin/conjugate_pr.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Fabrice Rossi
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Fabrice Rossi
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -98,8 +112,13 @@ conjugate_pr_alloc (void *vstate, size_t n)
 
 static int
 conjugate_pr_set (void *vstate, gsl_multimin_function_fdf * fdf,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   const gsl_vector * x, double *f, gsl_vector * gradient,
                   double step_size, double tol)
+=======
+		  const gsl_vector * x, double *f, gsl_vector * gradient,
+		  double step_size, double tol)
+>>>>>>> config
 {
   conjugate_pr_state_t *state = (conjugate_pr_state_t *) vstate;
 
@@ -148,8 +167,13 @@ conjugate_pr_restart (void *vstate)
 
 static int
 conjugate_pr_iterate (void *vstate, gsl_multimin_function_fdf * fdf,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       gsl_vector * x, double *f,
                       gsl_vector * gradient, gsl_vector * dx)
+=======
+		      gsl_vector * x, double *f,
+		      gsl_vector * gradient, gsl_vector * dx)
+>>>>>>> config
 {
   conjugate_pr_state_t *state = (conjugate_pr_state_t *) vstate;
 
@@ -209,7 +233,11 @@ conjugate_pr_iterate (void *vstate, gsl_multimin_function_fdf * fdf,
      xb based on parabolic interpolation */
 
   intermediate_point (fdf, x, p, dir / pnorm, pg,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       stepa, stepc, fa, fc, x1, dx1, gradient, &stepb, &fb);
+=======
+		      stepa, stepc, fa, fc, x1, dx1, gradient, &stepb, &fb);
+>>>>>>> config
 
   if (stepb == 0.0)
     {
@@ -217,8 +245,13 @@ conjugate_pr_iterate (void *vstate, gsl_multimin_function_fdf * fdf,
     }
 
   minimize (fdf, x, p, dir / pnorm,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             stepa, stepb, stepc, fa, fb, fc, tol,
             x1, dx1, x2, dx, gradient, &(state->step), f, &g1norm);
+=======
+	    stepa, stepb, stepc, fa, fb, fc, tol,
+	    x1, dx1, x2, dx, gradient, &(state->step), f, &g1norm);
+>>>>>>> config
 
   gsl_vector_memcpy (x, x2);
 

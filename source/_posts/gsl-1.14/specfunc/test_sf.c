@@ -1,18 +1,33 @@
 /* specfunc/test_sf.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2007 Brian Gough
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2004 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 2007 Brian Gough
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2004 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -57,6 +72,7 @@ test_sf_check_result(char * message_buff, gsl_sf_result r, double val, double to
   int    s = 0;
   double f = 0, d = 0;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (gsl_isnan(r.val) || gsl_isnan(val)) 
     {
       s = (gsl_isnan(r.val) != gsl_isnan(val)) ? TEST_SF_INCONS : s; 
@@ -64,6 +80,15 @@ test_sf_check_result(char * message_buff, gsl_sf_result r, double val, double to
   else if (gsl_isinf(r.val) || gsl_isinf(val)) 
     {
       s = (gsl_isinf(r.val) != gsl_isinf(val)) ? TEST_SF_INCONS : s; 
+=======
+  if (gsl_isnan(r.val) || gsl_isnan(val))
+    {
+      s = (gsl_isnan(r.val) != gsl_isnan(val)) ? TEST_SF_INCONS : s;
+    }
+  else if (gsl_isinf(r.val) || gsl_isinf(val))
+    {
+      s = (gsl_isinf(r.val) != gsl_isinf(val)) ? TEST_SF_INCONS : s;
+>>>>>>> config
     }
   else
     {
@@ -117,7 +142,11 @@ test_sf_check_e10(char * message_buff, int e10, int e10_in)
 {
   int    s = 0;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (e10 != e10_in) 
+=======
+  if (e10 != e10_in)
+>>>>>>> config
     {
       s = TEST_SF_EXPBAD;
     }
@@ -223,7 +252,11 @@ test_sf_check_return(char * message_buff, int val_return, int expected_return)
 
 int
 test_sf (gsl_sf_result r, double val_in, double tol, int status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          int expect_return, const char * desc)
+=======
+	 int expect_return, const char * desc)
+>>>>>>> config
 {
   char message_buff[4096];
   int local_s = 0;
@@ -244,7 +277,11 @@ test_sf (gsl_sf_result r, double val_in, double tol, int status,
 
 int
 test_sf_e10 (gsl_sf_result_e10 re, double val_in, int e10_in, double tol, int status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              int expect_return, const char * desc)
+=======
+	     int expect_return, const char * desc)
+>>>>>>> config
 {
   char message_buff[4096];
   int local_s = 0;
@@ -289,7 +326,11 @@ test_sf_val (double val, double val_in, double tol, const char * desc)
 
 int
 test_sf_rlx (gsl_sf_result r, double val_in, double tol, int status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              int expect_return, const char * desc)
+=======
+	     int expect_return, const char * desc)
+>>>>>>> config
 {
   char message_buff[4096];
   int local_s = 0;
@@ -310,9 +351,15 @@ test_sf_rlx (gsl_sf_result r, double val_in, double tol, int status,
 
 
 int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 test_sf_2 (gsl_sf_result r1, double val1, double tol1, 
            gsl_sf_result r2, double val2, double tol2,
            int status, int expect_return, const char * desc)
+=======
+test_sf_2 (gsl_sf_result r1, double val1, double tol1,
+	   gsl_sf_result r2, double val2, double tol2,
+	   int status, int expect_return, const char * desc)
+>>>>>>> config
 {
   char message_buff[4096];
   int local_s = 0;
@@ -335,7 +382,11 @@ test_sf_2 (gsl_sf_result r1, double val1, double tol1,
 
 int
 test_sf_sgn (gsl_sf_result r, double sgn, double val_in, double tol, double expect_sgn, int status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              int expect_return, const char * desc)
+=======
+	     int expect_return, const char * desc)
+>>>>>>> config
 {
   char message_buff[4096];
   gsl_sf_result local_r;
@@ -471,7 +522,11 @@ int test_dawson(void)
   TEST_SF(s, gsl_sf_dawson_e, (0.5, &r), 0.4244363835020222959, TEST_TOL0, GSL_SUCCESS);
   TEST_SF(s, gsl_sf_dawson_e, (2.0, &r), 0.30134038892379196603, TEST_TOL0, GSL_SUCCESS);
   TEST_SF(s, gsl_sf_dawson_e, (1000.0, &r), 0.0005000002500003750009, TEST_TOL0, GSL_SUCCESS);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   return s;
 }
 
@@ -531,7 +586,11 @@ int test_ellint(void)
   gsl_sf_result r;
   gsl_mode_t mode = GSL_MODE_DEFAULT;
   int s = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   TEST_SF(s,  gsl_sf_ellint_Kcomp_e, ( 0.99, mode, &r), 3.3566005233611923760, TEST_TOL0, GSL_SUCCESS);
   TEST_SF(s,  gsl_sf_ellint_Kcomp_e, ( 0.50, mode, &r), 1.6857503548125960429, TEST_TOL0, GSL_SUCCESS);
   TEST_SF(s,  gsl_sf_ellint_Kcomp_e, (0.010, mode, &r), 1.5708355989121522360, TEST_TOL0, GSL_SUCCESS);
@@ -1579,7 +1638,11 @@ int test_jac(void)
     double C2 = sqrt(mc);
 
     double eps = 1e-10;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     sa = 0;
     stat_ej = gsl_sf_elljac_e(0.0, m, &sn, &cn, &dn);
     sa += test_sf_val(sn, 0.0, TEST_TOL0, "gsl_sf_elljac_e(0|0.1) sn");
@@ -1595,7 +1658,11 @@ int test_jac(void)
     sa += test_sf_val(dn, 1.0, TEST_TOL0, "gsl_sf_elljac_e(-1e-10|0.1) dn");
     gsl_test(sa, "  gsl_sf_elljac_e(-1e-10|0.1)");
     s += sa;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     sa = 0;
     stat_ej = gsl_sf_elljac_e(eps, m, &sn, &cn, &dn);
     sa += test_sf_val(sn, eps, TEST_TOL0, "gsl_sf_elljac_e(1e-10|0.1) sn");
@@ -1764,7 +1831,11 @@ int test_jac(void)
     sa += test_sf_val(dn, C, TEST_TOL2, "gsl_sf_elljac_e(-K/2|0.1) dn");
     gsl_test(sa, "  gsl_sf_elljac_e(-K/2|0.1)");
     s += sa;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     sa = 0;
     stat_ej = gsl_sf_elljac_e(-K, m, &sn, &cn, &dn);
     sa += test_sf_val(sn, -1.0, TEST_TOL1, "gsl_sf_elljac_e(-K|0.1) sn");
@@ -1821,7 +1892,11 @@ int test_jac(void)
     gsl_test(sa, "  gsl_sf_elljac_e(-4K|0.1)");
     s += sa;
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
 
   return s;
 }
@@ -1884,7 +1959,11 @@ int test_laguerre(void)
   TEST_SF(s, gsl_sf_laguerre_n_e, (3, -2.0, 1.0, &r),   1.0/3.0, TEST_TOL0, GSL_SUCCESS);
   TEST_SF(s, gsl_sf_laguerre_n_e, (10, -2.0, 1.0, &r), -0.04654954805996472663,   TEST_TOL2, GSL_SUCCESS);
   TEST_SF(s, gsl_sf_laguerre_n_e, (10, -5.0, 1.0, &r), -0.0031385030864197530864, TEST_TOL2, GSL_SUCCESS);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   TEST_SF(s, gsl_sf_laguerre_n_e, (10, -9.0, 1.0, &r), -2.480158730158730159e-06, TEST_TOL5, GSL_SUCCESS);  
+=======
+  TEST_SF(s, gsl_sf_laguerre_n_e, (10, -9.0, 1.0, &r), -2.480158730158730159e-06, TEST_TOL5, GSL_SUCCESS);
+>>>>>>> config
   TEST_SF(s, gsl_sf_laguerre_n_e, (10, -11.0,  1.0, &r), 2.7182818011463844797,    TEST_TOL2, GSL_SUCCESS);
   TEST_SF(s, gsl_sf_laguerre_n_e, (10, -11.0, -1.0, &r), 0.3678794642857142857,    TEST_TOL2, GSL_SUCCESS);
   TEST_SF(s, gsl_sf_laguerre_n_e, (100, -2.0,  1.0, &r),  -0.0027339992019526273866,  TEST_SQRT_TOL0, GSL_SUCCESS);
@@ -1979,6 +2058,7 @@ int test_log(void)
   TEST_SF(s, gsl_sf_log_abs_e, (1000.0, &r), 6.907755278982137052, TEST_TOL0, GSL_SUCCESS);
 
   TEST_SF_2(s, gsl_sf_complex_log_e, (1.0, 1.0, &r1, &r2),
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             0.3465735902799726547, TEST_TOL0,
             0.7853981633974483096, TEST_TOL0,
             GSL_SUCCESS);
@@ -2002,6 +2082,31 @@ int test_log(void)
              0.0, TEST_TOL0,
              3.1415926535897932385, TEST_TOL0,
              GSL_SUCCESS);
+=======
+	    0.3465735902799726547, TEST_TOL0,
+	    0.7853981633974483096, TEST_TOL0,
+	    GSL_SUCCESS);
+
+  TEST_SF_2(s, gsl_sf_complex_log_e, (1.0, -1.0, &r1, &r2),
+	     0.3465735902799726547, TEST_TOL0,
+	    -0.7853981633974483096, TEST_TOL0,
+	    GSL_SUCCESS);
+
+  TEST_SF_2(s, gsl_sf_complex_log_e, (1.0, 100.0, &r1, &r2),
+	    4.605220183488258022, TEST_TOL0,
+	    1.560796660108231381, TEST_TOL0,
+	    GSL_SUCCESS);
+
+  TEST_SF_2(s, gsl_sf_complex_log_e, (-1000.0, -1.0, &r1, &r2),
+	     6.907755778981887052, TEST_TOL0,
+	    -3.1405926539231263718, TEST_TOL0,
+	    GSL_SUCCESS);
+
+  TEST_SF_2(s, gsl_sf_complex_log_e, (-1.0, 0.0, &r1, &r2),
+	     0.0, TEST_TOL0,
+	     3.1415926535897932385, TEST_TOL0,
+	     GSL_SUCCESS);
+>>>>>>> config
 
 
   TEST_SF(s,  gsl_sf_log_1plusx_e, (1.0e-10, &r), 9.999999999500000000e-11, TEST_TOL0, GSL_SUCCESS);
@@ -2009,7 +2114,11 @@ int test_log(void)
   TEST_SF(s,  gsl_sf_log_1plusx_e, (1.0e-4, &r), 0.00009999500033330833533, TEST_TOL0, GSL_SUCCESS);
   TEST_SF(s,  gsl_sf_log_1plusx_e, (0.1, &r), 0.09531017980432486004, TEST_TOL0, GSL_SUCCESS);
   TEST_SF(s,  gsl_sf_log_1plusx_e, (0.49, &r), 0.3987761199573677730, TEST_TOL0, GSL_SUCCESS);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   TEST_SF(s,  gsl_sf_log_1plusx_e, (-0.49, &r), -0.6733445532637655964, TEST_TOL0, GSL_SUCCESS);
   TEST_SF(s,  gsl_sf_log_1plusx_e, (1.0, &r), M_LN2, TEST_TOL0, GSL_SUCCESS);
   TEST_SF(s,  gsl_sf_log_1plusx_e, (-0.99, &r), -4.605170185988091368, TEST_TOL0, GSL_SUCCESS);
@@ -2019,7 +2128,11 @@ int test_log(void)
   TEST_SF(s,  gsl_sf_log_1plusx_mx_e, (1.0e-4, &r), -4.999666691664666833e-09, TEST_TOL0, GSL_SUCCESS);
   TEST_SF(s,  gsl_sf_log_1plusx_mx_e, (0.1, &r), -0.004689820195675139956, TEST_TOL0, GSL_SUCCESS);
   TEST_SF(s,  gsl_sf_log_1plusx_mx_e, (0.49, &r), -0.09122388004263222704, TEST_TOL0, GSL_SUCCESS);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   TEST_SF(s,  gsl_sf_log_1plusx_mx_e, (-0.49, &r), -0.18334455326376559639, TEST_TOL0, GSL_SUCCESS);
   TEST_SF(s,  gsl_sf_log_1plusx_mx_e, (1.0, &r), M_LN2-1.0, TEST_TOL0, GSL_SUCCESS);
   TEST_SF(s,  gsl_sf_log_1plusx_mx_e, (-0.99, &r), -3.615170185988091368, TEST_TOL0, GSL_SUCCESS);
@@ -2033,7 +2146,11 @@ int test_pow_int(void)
   gsl_sf_result r;
   int status = 0;
   int s = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   TEST_SF(s,  gsl_sf_pow_int_e, (2.0, 3, &r), 8.0, TEST_TOL0, GSL_SUCCESS);
   TEST_SF(s,  gsl_sf_pow_int_e, (-2.0, 3, &r), -8.0, TEST_TOL0, GSL_SUCCESS);
   TEST_SF(s,  gsl_sf_pow_int_e, (2.0, -3, &r), 1.0/8.0, TEST_TOL0, GSL_SUCCESS);
@@ -2065,10 +2182,17 @@ int test_psi(void)
 
   /* Test values taken 1-4 from gp-pari */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   TEST_SF(s, gsl_sf_psi_int_e, (1, &r), -0.57721566490153286060, TEST_TOL0, GSL_SUCCESS);  
   TEST_SF(s, gsl_sf_psi_int_e, (2, &r), 0.42278433509846713939, TEST_TOL0, GSL_SUCCESS);  
   TEST_SF(s, gsl_sf_psi_int_e, (3, &r), 0.92278433509846713939, TEST_TOL0, GSL_SUCCESS);  
   TEST_SF(s, gsl_sf_psi_int_e, (4, &r), 1.2561176684318004727, TEST_TOL0, GSL_SUCCESS);  
+=======
+  TEST_SF(s, gsl_sf_psi_int_e, (1, &r), -0.57721566490153286060, TEST_TOL0, GSL_SUCCESS);
+  TEST_SF(s, gsl_sf_psi_int_e, (2, &r), 0.42278433509846713939, TEST_TOL0, GSL_SUCCESS);
+  TEST_SF(s, gsl_sf_psi_int_e, (3, &r), 0.92278433509846713939, TEST_TOL0, GSL_SUCCESS);
+  TEST_SF(s, gsl_sf_psi_int_e, (4, &r), 1.2561176684318004727, TEST_TOL0, GSL_SUCCESS);
+>>>>>>> config
 
   TEST_SF(s, gsl_sf_psi_int_e, (5, &r), 1.5061176684318004727, TEST_TOL0, GSL_SUCCESS);
   TEST_SF(s, gsl_sf_psi_int_e, (100, &r), 4.600161852738087400, TEST_TOL0, GSL_SUCCESS);
@@ -2151,6 +2275,7 @@ int test_psi_complex(void)
   int s = 0;
 
   TEST_SF_2(s, gsl_sf_complex_psi_e, (1.0e+07, 1.0e+06, &r1, &r2),
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             16.1230707668799525, TEST_TOL0,
             0.09966865744165720, TEST_TOL0,
             GSL_SUCCESS);
@@ -2184,6 +2309,41 @@ int test_psi_complex(void)
             3.37919358657933066, TEST_TOL0,
            -2.36829046481731091, TEST_TOL0,
             GSL_SUCCESS);
+=======
+	    16.1230707668799525, TEST_TOL0,
+	    0.09966865744165720, TEST_TOL0,
+	    GSL_SUCCESS);
+
+  TEST_SF_2(s, gsl_sf_complex_psi_e, (10.0, 50.0, &r1, &r2),
+	    3.92973987174863660, TEST_TOL0,
+	    1.38302847985210276, TEST_TOL0,
+	    GSL_SUCCESS);
+
+  TEST_SF_2(s, gsl_sf_complex_psi_e, (2.0, 21.0, &r1, &r2),
+	    3.04697388853248195, TEST_TOL0,
+	    1.49947549076817824, TEST_TOL0,
+	    GSL_SUCCESS);
+
+  TEST_SF_2(s, gsl_sf_complex_psi_e, (1.5, 0.0, &r1, &r2),
+	    0.0364899739785765206, TEST_TOL2,
+	    0.0, TEST_TOL1,
+	    GSL_SUCCESS);
+
+  TEST_SF_2(s, gsl_sf_complex_psi_e, (1.0, 5.0, &r1, &r2),
+	    1.612784844615747, TEST_TOL1,
+	    1.470796326794968, TEST_TOL1,
+	    GSL_SUCCESS);
+
+  TEST_SF_2(s, gsl_sf_complex_psi_e, (-1.5, 5.0, &r1, &r2),
+	    1.68260717336484070, TEST_TOL0,
+	    1.95230236730713338, TEST_TOL0,
+	    GSL_SUCCESS);
+
+  TEST_SF_2(s, gsl_sf_complex_psi_e, (-20.5, -20.5, &r1, &r2),
+	    3.37919358657933066, TEST_TOL0,
+	   -2.36829046481731091, TEST_TOL0,
+	    GSL_SUCCESS);
+>>>>>>> config
 
   return s;
 }
@@ -2203,7 +2363,11 @@ int test_synch(void)
 
   TEST_SF(s, gsl_sf_synchrotron_2_e, (0.01, &r),  0.23098077342226277732, TEST_TOL2, GSL_SUCCESS);
   TEST_SF(s, gsl_sf_synchrotron_2_e, (1.0, &r),   0.4944750621042082670,  TEST_TOL1, GSL_SUCCESS);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   TEST_SF(s, gsl_sf_synchrotron_2_e, (10.0, &r),  0.00018161187569530204281,  TEST_TOL1, GSL_SUCCESS);  
+=======
+  TEST_SF(s, gsl_sf_synchrotron_2_e, (10.0, &r),  0.00018161187569530204281,  TEST_TOL1, GSL_SUCCESS);
+>>>>>>> config
   TEST_SF(s, gsl_sf_synchrotron_2_e, (256.0, &r), 1.3272635474353774058e-110, TEST_TOL4, GSL_SUCCESS);  /* exp()... not my fault */
 
   return s;
@@ -2290,7 +2454,11 @@ int test_trig(void)
   TEST_SF(s, gsl_sf_cos_e, (1099511627776.0, &r), -0.9140040719915570023, 128.0*TEST_SQRT_TOL0, GSL_SUCCESS);
   */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   TEST_SF(s, gsl_sf_sinc_e, (1.0/1024.0, &r), 0.9999984312693665404, TEST_TOL0, GSL_SUCCESS);  
+=======
+  TEST_SF(s, gsl_sf_sinc_e, (1.0/1024.0, &r), 0.9999984312693665404, TEST_TOL0, GSL_SUCCESS);
+>>>>>>> config
   TEST_SF(s, gsl_sf_sinc_e, (1.0/2.0,    &r), 2.0/M_PI,              TEST_TOL0, GSL_SUCCESS);
   TEST_SF(s, gsl_sf_sinc_e, (80.5,       &r), 0.0039541600768172754, TEST_TOL0, GSL_SUCCESS);
   TEST_SF(s, gsl_sf_sinc_e, (100.5,      &r), 0.0031672625490924445, TEST_TOL0, GSL_SUCCESS);
@@ -2303,6 +2471,7 @@ int test_trig(void)
   */
 
   TEST_SF_2(s, gsl_sf_complex_sin_e, (1.0, 5.0, &r1, &r2),
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             62.44551846769653403, TEST_TOL0,
             40.09216577799840254, TEST_TOL0,
             GSL_SUCCESS);
@@ -2326,6 +2495,31 @@ int test_trig(void)
             4.3068909128079757420, TEST_TOL0,
             2.8540063315538773952, TEST_TOL0,
             GSL_SUCCESS);
+=======
+	    62.44551846769653403, TEST_TOL0,
+	    40.09216577799840254, TEST_TOL0,
+	    GSL_SUCCESS);
+
+  TEST_SF_2(s, gsl_sf_complex_cos_e, (1.0, 5.0, &r1, &r2),
+	     40.09580630629882573, TEST_TOL0,
+	    -62.43984868079963017, TEST_TOL0,
+	    GSL_SUCCESS);
+
+  TEST_SF_2(s, gsl_sf_complex_logsin_e, (1.0, 100.0, &r1, &r2),
+	    99.3068528194400546900, TEST_TOL0,
+	    0.5707963267948966192, TEST_TOL0,
+	    GSL_SUCCESS);
+
+  TEST_SF_2(s, gsl_sf_complex_logsin_e, (1.0, -100.0, &r1, &r2),
+	     99.3068528194400546900, TEST_TOL1,
+	    -0.5707963267948966192, TEST_TOL1,
+	    GSL_SUCCESS);
+
+  TEST_SF_2(s, gsl_sf_complex_logsin_e, (5.0, 5.0, &r1, &r2),
+	    4.3068909128079757420, TEST_TOL0,
+	    2.8540063315538773952, TEST_TOL0,
+	    GSL_SUCCESS);
+>>>>>>> config
 
   TEST_SF(s,  gsl_sf_lnsinh_e, (0.1, &r),  -2.3009189815304652235,  TEST_TOL0, GSL_SUCCESS);
   TEST_SF(s,  gsl_sf_lnsinh_e, (1.0, &r),   0.16143936157119563361, TEST_TOL0, GSL_SUCCESS);
@@ -2338,6 +2532,7 @@ int test_trig(void)
   TEST_SF(s,  gsl_sf_lncosh_e, (100.0, &r), 99.30685281944005469, TEST_TOL0, GSL_SUCCESS);
 
   TEST_SF_2(s, gsl_sf_polar_to_rect, (10.0, M_PI/6.0, &r1, &r2),
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             (10.0 * sqrt(3) / 2.0), TEST_TOL0,
             (10.0 * 0.5), TEST_TOL0,
             GSL_SUCCESS);
@@ -2346,19 +2541,37 @@ int test_trig(void)
             (10.0 * (-0.5)), TEST_TOL1,
             (10.0 * (-sqrt(3.0)/2.0)), TEST_TOL1,
             GSL_SUCCESS);
+=======
+	    (10.0 * sqrt(3) / 2.0), TEST_TOL0,
+	    (10.0 * 0.5), TEST_TOL0,
+	    GSL_SUCCESS);
+
+  TEST_SF_2(s, gsl_sf_polar_to_rect, (10.0, -2.0/3.0*M_PI, &r1, &r2),
+	    (10.0 * (-0.5)), TEST_TOL1,
+	    (10.0 * (-sqrt(3.0)/2.0)), TEST_TOL1,
+	    GSL_SUCCESS);
+>>>>>>> config
 
   /* In double precision M_PI = \pi - 1.2246467991473531772e-16,
      i.e. the nearest machine number is slightly below the exact value
      of \pi.  The true value of \pi satisfies
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          M_PI < \pi < nextafter(M_PI,+Inf)
+=======
+	 M_PI < \pi < nextafter(M_PI,+Inf)
+>>>>>>> config
 
      where nextafter(M_PI,+Inf) = M_PI + 2*DBL_EPSILON
 
      This also means that 2*M_PI is less than \pi by 2.449e-16. The
      true value of 2\pi satisfies
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          2*M_PI < 2\pi < nextafter(2*M_PI,+Inf)
+=======
+	 2*M_PI < 2\pi < nextafter(2*M_PI,+Inf)
+>>>>>>> config
 
      where nextafter(2*M_PI,+Inf) = 2*M_PI + 4*DBL_EPSILON
 
@@ -2522,18 +2735,32 @@ int test_trig(void)
 /* I computed the values of zeta for s = -1e-10, 0, 1e-10 using the
    Jensen formula,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    zeta(s) = -1/2 + 1/(1-s) 
      + integ(sin(s arctan(t))/((1+t^2)^(s/2)(exp(2pi*t)-1)), t, 0, inf)
      
    transforming the integral from a semi-infinite range to the range 
+=======
+   zeta(s) = -1/2 + 1/(1-s)
+     + integ(sin(s arctan(t))/((1+t^2)^(s/2)(exp(2pi*t)-1)), t, 0, inf)
+
+   transforming the integral from a semi-infinite range to the range
+>>>>>>> config
    [0,pi/2] using the substitution t = tan(u).  After Taylor expansion
    in s and numerical evaluation of the integrals this gave,
 
    zeta(s) = 1/2 + 1/(1-s)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              + (0.0810614667944862 +/- 2e-16) s
              + (-3.17822795429232e-3 +/- 2e-17) s^2 
              + ....
              
+=======
+	     + (0.0810614667944862 +/- 2e-16) s
+	     + (-3.17822795429232e-3 +/- 2e-17) s^2
+	     + ....
+
+>>>>>>> config
    for an expansion about s = 0  [BJG 7/01]
 */
 

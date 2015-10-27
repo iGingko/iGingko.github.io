@@ -1,17 +1,31 @@
 /* linalg/lu.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007, 2009 Gerard Jungman, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007, 2009 Gerard Jungman, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -44,13 +58,22 @@ static int singular (const gsl_matrix * LU);
  * matrix. The diagonal elements of L are unity and are not stored.
  *
  * U is stored in the diagonal and upper triangular part of the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * input matrix.  
  * 
+=======
+ * input matrix.
+ *
+>>>>>>> config
  * P is stored in the permutation p. Column j of P is column k of the
  * identity matrix, where k = permutation->data[j]
  *
  * signum gives the sign of the permutation, (-1)^n, where n is the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * number of interchanges in the permutation. 
+=======
+ * number of interchanges in the permutation.
+>>>>>>> config
  *
  * See Golub & Van Loan, Matrix Computations, Algorithm 3.4.1 (Gauss
  * Elimination with Partial Pivoting).
@@ -76,6 +99,7 @@ gsl_linalg_LU_decomp (gsl_matrix * A, gsl_permutation * p, int *signum)
       gsl_permutation_init (p);
 
       for (j = 0; j < N - 1; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           /* Find maximum in the j-th column */
 
@@ -119,6 +143,51 @@ gsl_linalg_LU_decomp (gsl_matrix * A, gsl_permutation * p, int *signum)
             }
         }
       
+=======
+	{
+	  /* Find maximum in the j-th column */
+
+	  REAL ajj, max = fabs (gsl_matrix_get (A, j, j));
+	  size_t i_pivot = j;
+
+	  for (i = j + 1; i < N; i++)
+	    {
+	      REAL aij = fabs (gsl_matrix_get (A, i, j));
+
+	      if (aij > max)
+		{
+		  max = aij;
+		  i_pivot = i;
+		}
+	    }
+
+	  if (i_pivot != j)
+	    {
+	      gsl_matrix_swap_rows (A, j, i_pivot);
+	      gsl_permutation_swap (p, j, i_pivot);
+	      *signum = -(*signum);
+	    }
+
+	  ajj = gsl_matrix_get (A, j, j);
+
+	  if (ajj != 0.0)
+	    {
+	      for (i = j + 1; i < N; i++)
+		{
+		  REAL aij = gsl_matrix_get (A, i, j) / ajj;
+		  gsl_matrix_set (A, i, j, aij);
+
+		  for (k = j + 1; k < N; k++)
+		    {
+		      REAL aik = gsl_matrix_get (A, i, k);
+		      REAL ajk = gsl_matrix_get (A, j, k);
+		      gsl_matrix_set (A, i, k, aik - aij * ajk);
+		    }
+		}
+	    }
+	}
+
+>>>>>>> config
       return GSL_SUCCESS;
     }
 }
@@ -142,7 +211,11 @@ gsl_linalg_LU_solve (const gsl_matrix * LU, const gsl_permutation * p, const gsl
     {
       GSL_ERROR ("matrix size must match solution size", GSL_EBADLEN);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else if (singular (LU)) 
+=======
+  else if (singular (LU))
+>>>>>>> config
     {
       GSL_ERROR ("matrix is singular", GSL_EDOM);
     }
@@ -178,7 +251,11 @@ gsl_linalg_LU_svx (const gsl_matrix * LU, const gsl_permutation * p, gsl_vector 
     {
       GSL_ERROR ("matrix size must match solution/rhs size", GSL_EBADLEN);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else if (singular (LU)) 
+=======
+  else if (singular (LU))
+>>>>>>> config
     {
       GSL_ERROR ("matrix is singular", GSL_EDOM);
     }
@@ -228,7 +305,11 @@ gsl_linalg_LU_refine (const gsl_matrix * A, const gsl_matrix * LU, const gsl_per
     {
       GSL_ERROR ("matrix size must match solution size", GSL_EBADLEN);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else if (singular (LU)) 
+=======
+  else if (singular (LU))
+>>>>>>> config
     {
       GSL_ERROR ("matrix is singular", GSL_EDOM);
     }
@@ -257,7 +338,11 @@ gsl_linalg_LU_invert (const gsl_matrix * LU, const gsl_permutation * p, gsl_matr
 
   int status = GSL_SUCCESS;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (singular (LU)) 
+=======
+  if (singular (LU))
+>>>>>>> config
     {
       GSL_ERROR ("matrix is singular", GSL_EDOM);
     }
@@ -270,7 +355,11 @@ gsl_linalg_LU_invert (const gsl_matrix * LU, const gsl_permutation * p, gsl_matr
       int status_i = gsl_linalg_LU_svx (LU, p, &(c.vector));
 
       if (status_i)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         status = status_i;
+=======
+	status = status_i;
+>>>>>>> config
     }
 
   return status;
@@ -319,6 +408,7 @@ gsl_linalg_LU_sgndet (gsl_matrix * LU, int signum)
       double u = gsl_matrix_get (LU, i, i);
 
       if (u < 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           s *= -1;
         }
@@ -327,6 +417,16 @@ gsl_linalg_LU_sgndet (gsl_matrix * LU, int signum)
           s = 0;
           break;
         }
+=======
+	{
+	  s *= -1;
+	}
+      else if (u == 0)
+	{
+	  s = 0;
+	  break;
+	}
+>>>>>>> config
     }
 
   return s;
@@ -342,7 +442,13 @@ singular (const gsl_matrix * LU)
       double u = gsl_matrix_get (LU, i, i);
       if (u == 0) return 1;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  
  return 0;
 }
 
+=======
+
+ return 0;
+}
+>>>>>>> config

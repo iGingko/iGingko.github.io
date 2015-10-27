@@ -1,17 +1,31 @@
 /* linalg/test.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2004, 2005, 2006, 2007, 2010 Gerard Jungman, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2004, 2005, 2006, 2007, 2010 Gerard Jungman, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -104,14 +118,22 @@ int test_TDS_solve(void);
 int test_TDN_solve_dim(unsigned long dim, double d, double a, double b, const double * actual, double eps);
 int test_TDN_solve(void);
 int test_TDS_cyc_solve_one(const unsigned long dim, const double * d, const double * od, const double * r,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                           const double * actual, double eps);
+=======
+			  const double * actual, double eps);
+>>>>>>> config
 int test_TDS_cyc_solve(void);
 int test_TDN_cyc_solve_dim(unsigned long dim, double d, double a, double b, const double * actual, double eps);
 int test_TDN_cyc_solve(void);
 int test_bidiag_decomp_dim(const gsl_matrix * m, double eps);
 int test_bidiag_decomp(void);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int 
+=======
+int
+>>>>>>> config
 check (double x, double actual, double eps)
 {
   if (x == actual)
@@ -129,7 +151,11 @@ check (double x, double actual, double eps)
 }
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_vector * 
+=======
+gsl_vector *
+>>>>>>> config
 vector_alloc (size_t n)
 {
   size_t p[5] = {3, 5, 7, 11, 13};
@@ -281,7 +307,11 @@ double rand_double() {
 gsl_matrix *
 create_sparse_matrix(unsigned long m, unsigned long n) {
   gsl_matrix* A = gsl_matrix_calloc(m, n);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   unsigned long int i, j;
 
   for (i = 0; i < m; i++) {
@@ -340,6 +370,7 @@ gsl_matrix * nan5;
 gsl_matrix * dblmin3, * dblmin5, * dblsubnorm5;
 gsl_matrix * bigsparse;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 double m53_lssolution[] = {52.5992295702070, -337.7263113752073, 
                            351.8823436427604};
 double hilb2_solution[] = {-8.0, 18.0} ;
@@ -357,18 +388,46 @@ double c7_solution[] = { 2.40717272023734e+01, -9.84612797621247e+00,
                          5.57693879019068e+04, -1.61540963210502e+04,
                          -7.88941207561151e+04, 1.95053812987858e+04,
                          3.95548551241728e+04, -7.76593696255317e+03 };
+=======
+double m53_lssolution[] = {52.5992295702070, -337.7263113752073,
+			   351.8823436427604};
+double hilb2_solution[] = {-8.0, 18.0} ;
+double hilb3_solution[] = {27.0, -192.0, 210.0};
+double hilb4_solution[] = {-64.0, 900.0, -2520.0, 1820.0};
+double hilb12_solution[] = {-1728.0, 245388.0, -8528520.0,
+			    127026900.0, -1009008000.0, 4768571808.0,
+			    -14202796608.0, 27336497760.0, -33921201600.0,
+			    26189163000.0, -11437874448.0, 2157916488.0 };
+
+double c7_solution[] = { 2.40717272023734e+01, -9.84612797621247e+00,
+			 -2.69338853034031e+02, 8.75455232472528e+01,
+			 2.96661356736296e+03, -1.02624473923993e+03,
+			 -1.82073812124749e+04, 5.67384473042410e+03,
+			 5.57693879019068e+04, -1.61540963210502e+04,
+			 -7.88941207561151e+04, 1.95053812987858e+04,
+			 3.95548551241728e+04, -7.76593696255317e+03 };
+>>>>>>> config
 
 gsl_matrix * vander2;
 gsl_matrix * vander3;
 gsl_matrix * vander4;
 gsl_matrix * vander12;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 double vander2_solution[] = {1.0, 0.0}; 
 double vander3_solution[] = {0.0, 1.0, 0.0}; 
 double vander4_solution[] = {0.0, 0.0, 1.0, 0.0}; 
 double vander12_solution[] = {0.0, 0.0, 0.0, 0.0,
                             0.0, 0.0, 0.0, 0.0, 
                             0.0, 0.0, 1.0, 0.0}; 
+=======
+double vander2_solution[] = {1.0, 0.0};
+double vander3_solution[] = {0.0, 1.0, 0.0};
+double vander4_solution[] = {0.0, 0.0, 1.0, 0.0};
+double vander12_solution[] = {0.0, 0.0, 0.0, 0.0,
+			    0.0, 0.0, 0.0, 0.0,
+			    0.0, 0.0, 1.0, 0.0};
+>>>>>>> config
 
 gsl_matrix * moler10;
 
@@ -632,7 +691,11 @@ test_LUc_solve_dim(const gsl_matrix_complex * m, const double * actual, double e
   gsl_vector_complex * x = gsl_vector_complex_alloc(dim);
   gsl_vector_complex * residual = gsl_vector_complex_alloc(dim);
   gsl_matrix_complex_memcpy(lu,m);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   for(i=0; i<dim; i++) 
+=======
+  for(i=0; i<dim; i++)
+>>>>>>> config
     {
       gsl_complex z = gsl_complex_rect (2.0*i+1.0, 2.0*i+2.0);
       gsl_vector_complex_set(rhs, i, z);
@@ -948,7 +1011,11 @@ test_QR_decomp_dim(const gsl_matrix * m, double eps)
 
   s += gsl_linalg_QR_decomp(qr, d);
   s += gsl_linalg_QR_unpack(qr, d, q, r);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   /* compute a = q r */
   gsl_blas_dgemm (CblasNoTrans, CblasNoTrans, 1.0, q, r, 0.0, a);
 
@@ -958,7 +1025,11 @@ test_QR_decomp_dim(const gsl_matrix * m, double eps)
       double mij = gsl_matrix_get(m, i, j);
       int foo = check(aij, mij, eps);
       if(foo) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", M, N, i,j, aij, mij);
+=======
+	printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", M, N, i,j, aij, mij);
+>>>>>>> config
       }
       s += foo;
     }
@@ -1214,7 +1285,11 @@ test_QRPT_decomp_dim(const gsl_matrix * m, double eps)
       double mij = gsl_matrix_get(m, i, j);
       int foo = check(aij, mij, eps);
       if(foo) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", M, N, i,j, aij, mij);
+=======
+	printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", M, N, i,j, aij, mij);
+>>>>>>> config
       }
       s += foo;
     }
@@ -1313,6 +1388,7 @@ test_QR_update_dim(const gsl_matrix * m, double eps)
   for(i=0; i<M; i++) gsl_vector_set(u, i, sin(i+1.0));
   for(i=0; i<N; i++) gsl_vector_set(v, i, cos(i+2.0) + sin(i*i+3.0));
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   for(i=0; i<M; i++) 
     {
       double ui = gsl_vector_get(u, i);
@@ -1322,18 +1398,37 @@ test_QR_update_dim(const gsl_matrix * m, double eps)
           double qij = gsl_matrix_get(qr1, i, j);
           gsl_matrix_set(qr1, i, j, qij + ui * vj);
         }
+=======
+  for(i=0; i<M; i++)
+    {
+      double ui = gsl_vector_get(u, i);
+      for(j=0; j<N; j++)
+	{
+	  double vj = gsl_vector_get(v, j);
+	  double qij = gsl_matrix_get(qr1, i, j);
+	  gsl_matrix_set(qr1, i, j, qij + ui * vj);
+	}
+>>>>>>> config
     }
 
   s += gsl_linalg_QR_decomp(qr2, d);
   s += gsl_linalg_QR_unpack(qr2, d, q2, r2);
 
   /* compute w = Q^T u */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
   for (j = 0; j < M; j++)
     {
       double sum = 0;
       for (i = 0; i < M; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           sum += gsl_matrix_get (q2, i, j) * gsl_vector_get (u, i);
+=======
+	  sum += gsl_matrix_get (q2, i, j) * gsl_vector_get (u, i);
+>>>>>>> config
       gsl_vector_set (w, j, sum);
     }
 
@@ -1344,6 +1439,7 @@ test_QR_update_dim(const gsl_matrix * m, double eps)
   for (i = 0; i < M; i++)
     {
       for (j = 0; j< N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double sum = 0;
           for (k = 0; k <= GSL_MIN(j,M-1); k++)
@@ -1354,16 +1450,35 @@ test_QR_update_dim(const gsl_matrix * m, double eps)
             }
           gsl_matrix_set (qr2, i, j, sum);
         }
+=======
+	{
+	  double sum = 0;
+	  for (k = 0; k <= GSL_MIN(j,M-1); k++)
+	    {
+	      double qik = gsl_matrix_get(q2, i, k);
+	      double rkj = gsl_matrix_get(r2, k, j);
+	      sum += qik * rkj ;
+	    }
+	  gsl_matrix_set (qr2, i, j, sum);
+	}
+>>>>>>> config
     }
 
   for(i=0; i<M; i++) {
     for(j=0; j<N; j++) {
       double s1 = gsl_matrix_get(qr1, i, j);
       double s2 = gsl_matrix_get(qr2, i, j);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
       int foo = check(s1, s2, eps);
       if(foo) {
         printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", M, N, i,j, s1, s2);
+=======
+
+      int foo = check(s1, s2, eps);
+      if(foo) {
+	printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", M, N, i,j, s1, s2);
+>>>>>>> config
       }
       s += foo;
     }
@@ -1459,6 +1574,7 @@ test_QRPT_update_dim(const gsl_matrix * m, double eps)
   for(i=0; i<M; i++) gsl_vector_set(u, i, sin(i+1.0));
   for(i=0; i<N; i++) gsl_vector_set(v, i, cos(i+2.0) + sin(i*i+3.0));
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   for(i=0; i<M; i++) 
     {
       double ui = gsl_vector_get(u, i);
@@ -1468,18 +1584,37 @@ test_QRPT_update_dim(const gsl_matrix * m, double eps)
           double qij = gsl_matrix_get(qr1, i, j);
           gsl_matrix_set(qr1, i, j, qij + ui * vj);
         }
+=======
+  for(i=0; i<M; i++)
+    {
+      double ui = gsl_vector_get(u, i);
+      for(j=0; j<N; j++)
+	{
+	  double vj = gsl_vector_get(v, j);
+	  double qij = gsl_matrix_get(qr1, i, j);
+	  gsl_matrix_set(qr1, i, j, qij + ui * vj);
+	}
+>>>>>>> config
     }
 
   s += gsl_linalg_QRPT_decomp(qr2, d, perm, &signum, norm);
   s += gsl_linalg_QR_unpack(qr2, d, q2, r2);
 
   /* compute w = Q^T u */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
   for (j = 0; j < M; j++)
     {
       double sum = 0;
       for (i = 0; i < M; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           sum += gsl_matrix_get (q2, i, j) * gsl_vector_get (u, i);
+=======
+	  sum += gsl_matrix_get (q2, i, j) * gsl_vector_get (u, i);
+>>>>>>> config
       gsl_vector_set (w, j, sum);
     }
 
@@ -1492,6 +1627,7 @@ test_QRPT_update_dim(const gsl_matrix * m, double eps)
   for (i = 0; i < M; i++)
     {
       for (j = 0; j< N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double sum = 0;
           for (k = 0; k <= GSL_MIN(j,M-1); k++)
@@ -1502,6 +1638,18 @@ test_QRPT_update_dim(const gsl_matrix * m, double eps)
             }
           gsl_matrix_set (qr2, i, j, sum);
         }
+=======
+	{
+	  double sum = 0;
+	  for (k = 0; k <= GSL_MIN(j,M-1); k++)
+	    {
+	      double qik = gsl_matrix_get(q2, i, k);
+	      double rkj = gsl_matrix_get(r2, k, j);
+	      sum += qik * rkj ;
+	    }
+	  gsl_matrix_set (qr2, i, j, sum);
+	}
+>>>>>>> config
     }
 
   /* now apply permutation to get qr2 = q2 * r2 * p^T */
@@ -1517,10 +1665,17 @@ test_QRPT_update_dim(const gsl_matrix * m, double eps)
     for(j=0; j<N; j++) {
       double s1 = gsl_matrix_get(qr1, i, j);
       double s2 = gsl_matrix_get(qr2, i, j);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
       int foo = check(s1, s2, eps);
       if(foo) {
         printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", M, N, i,j, s1, s2);
+=======
+
+      int foo = check(s1, s2, eps);
+      if(foo) {
+	printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", M, N, i,j, s1, s2);
+>>>>>>> config
       }
       s += foo;
     }
@@ -1861,7 +2016,11 @@ test_LQ_decomp_dim(const gsl_matrix * m, double eps)
 
   s += gsl_linalg_LQ_decomp(lq, d);
   s += gsl_linalg_LQ_unpack(lq, d, q, l);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
    /* compute a = q r */
   gsl_blas_dgemm (CblasNoTrans, CblasNoTrans, 1.0, l, q, 0.0, a);
 
@@ -1871,7 +2030,11 @@ test_LQ_decomp_dim(const gsl_matrix * m, double eps)
       double mij = gsl_matrix_get(m, i, j);
       int foo = check(aij, mij, eps);
       if(foo) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", M, N, i,j, aij, mij);
+=======
+	printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", M, N, i,j, aij, mij);
+>>>>>>> config
       }
       s += foo;
     }
@@ -2130,7 +2293,11 @@ test_PTLQ_decomp_dim(const gsl_matrix * m, double eps)
       double mij = gsl_matrix_get(m, i, j);
       int foo = check(aij, mij, eps);
       if(foo) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", M, N, i,j, aij, mij);
+=======
+	printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", M, N, i,j, aij, mij);
+>>>>>>> config
       }
       s += foo;
     }
@@ -2253,7 +2420,11 @@ test_LQ_update_dim(const gsl_matrix * m, double eps)
     for(j=0; j<M; j++) {
       double s1 = gsl_matrix_get(lq1, i, j);
       double s2 = gsl_matrix_get(lq2, i, j);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
       int foo = check(s1, s2, eps);
 #if 0
       if(foo) {
@@ -2422,13 +2593,21 @@ test_SV_decomp_dim(const gsl_matrix * m, double eps)
     }
   }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   s = gsl_linalg_SV_decomp(v, q, d, w); 
+=======
+  s = gsl_linalg_SV_decomp(v, q, d, w);
+>>>>>>> config
 
   if (s) printf("returned error code %d = %s\n", s, gsl_strerror(s));
 
   /* Check that singular values are non-negative and in non-decreasing
      order */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   di1 = 0.0;
 
   for (i = 0; i < N; i++)
@@ -2436,6 +2615,7 @@ test_SV_decomp_dim(const gsl_matrix * m, double eps)
       double di = gsl_vector_get (d, i);
 
       if (gsl_isnan (di))
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           if (input_nans > 0) 
             continue;  /* skip NaNs if present in input */
@@ -2461,17 +2641,53 @@ test_SV_decomp_dim(const gsl_matrix * m, double eps)
   
   /* Scale dqt = D Q^T */
   
+=======
+	{
+	  if (input_nans > 0)
+	    continue;  /* skip NaNs if present in input */
+	  else
+	    {
+	      s++;
+	      printf("bad singular value %lu = %22.18g\n", i, di);
+	    }
+	}
+
+      if (di < 0) {
+	s++;
+	printf("singular value %lu = %22.18g < 0\n", i, di);
+      }
+
+      if(i > 0 && di > di1) {
+	s++;
+	printf("singular value %lu = %22.18g vs previous %22.18g\n", i, di, di1);
+      }
+
+      di1 = di;
+    }
+
+  /* Scale dqt = D Q^T */
+
+>>>>>>> config
   for (i = 0; i < N ; i++)
     {
       double di = gsl_vector_get (d, i);
 
       for (j = 0; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double qji = gsl_matrix_get(q, j, i);
           gsl_matrix_set (dqt, i, j, qji * di);
         }
     }
             
+=======
+	{
+	  double qji = gsl_matrix_get(q, j, i);
+	  gsl_matrix_set (dqt, i, j, qji * di);
+	}
+    }
+
+>>>>>>> config
   /* compute a = v dqt */
   gsl_blas_dgemm (CblasNoTrans, CblasNoTrans, 1.0, v, dqt, 0.0, a);
 
@@ -2481,7 +2697,11 @@ test_SV_decomp_dim(const gsl_matrix * m, double eps)
       double mij = gsl_matrix_get(m, i, j);
       int foo = check(aij, mij, eps);
       if(foo) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", M, N, i,j, aij, mij);
+=======
+	printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", M, N, i,j, aij, mij);
+>>>>>>> config
       }
       s += foo;
     }
@@ -2598,6 +2818,7 @@ int test_SV_decomp(void)
 
     for (i1 = lower; i1 <= upper; i1++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         for (i2 = lower; i2 <= upper; i2++)
           {
             for (i3 = lower; i3 <= upper; i3++)
@@ -2615,6 +2836,25 @@ int test_SV_decomp(void)
                   }
               }
           }
+=======
+	for (i2 = lower; i2 <= upper; i2++)
+	  {
+	    for (i3 = lower; i3 <= upper; i3++)
+	      {
+		for (i4 = lower; i4 <= upper; i4++)
+		  {
+		    gsl_matrix_set (A22, 0,0, i1);
+		    gsl_matrix_set (A22, 0,1, i2);
+		    gsl_matrix_set (A22, 1,0, i3);
+		    gsl_matrix_set (A22, 1,1, i4);
+
+		    f = test_SV_decomp_dim(A22, 16 * GSL_DBL_EPSILON);
+		    gsl_test(f, "  SV_decomp (2x2) A=[%g, %g; %g, %g]", i1,i2,i3,i4);
+		    s += f;
+		  }
+	      }
+	  }
+>>>>>>> config
       }
   }
 
@@ -2626,6 +2866,7 @@ int test_SV_decomp(void)
     for (i=0; i<9; i++) {
       a[i] = lower;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     while (carry == 0.0) {
       f = test_SV_decomp_dim(A33, 64 * GSL_DBL_EPSILON);
@@ -2640,6 +2881,22 @@ int test_SV_decomp(void)
           carry = (v>upper) ? 1.0 : 0.0;
           a[i] = (v>upper) ? lower : v;
         }
+=======
+
+    while (carry == 0.0) {
+      f = test_SV_decomp_dim(A33, 64 * GSL_DBL_EPSILON);
+      gsl_test(f, "  SV_decomp (3x3) A=[ %g, %g, %g; %g, %g, %g; %g, %g, %g]",
+	       a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8]);
+
+      /* increment */
+      carry=1.0;
+      for (i=9; carry > 0.0 && i>0 && i--;)
+	{
+	  double v=a[i]+carry;
+	  carry = (v>upper) ? 1.0 : 0.0;
+	  a[i] = (v>upper) ? lower : v;
+	}
+>>>>>>> config
     }
   }
 
@@ -2652,6 +2909,7 @@ int test_SV_decomp(void)
     for (i=0; i<16; i++) {
       a[i] = lower;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     while (carry == 0.0) {
       f = test_SV_decomp_dim(A44, 64 * GSL_DBL_EPSILON);
@@ -2667,6 +2925,23 @@ int test_SV_decomp(void)
           carry = (v>upper) ? 1.0 : 0.0;
           a[i] = (v>upper) ? lower : v;
         }
+=======
+
+    while (carry == 0.0) {
+      f = test_SV_decomp_dim(A44, 64 * GSL_DBL_EPSILON);
+      gsl_test(f, "  SV_decomp (4x4) A=[ %g, %g, %g, %g; %g, %g, %g, %g; %g, %g, %g, %g; %g, %g, %g, %g]",
+	       a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8], a[9],
+	       a[10], a[11], a[12], a[13], a[14], a[15]);
+
+      /* increment */
+      carry=1.0;
+      for (i=16; carry > 0.0 && i>0 && i--;)
+	{
+	  double v=a[i]+carry;
+	  carry = (v>upper) ? 1.0 : 0.0;
+	  a[i] = (v>upper) ? lower : v;
+	}
+>>>>>>> config
     }
   }
 #endif
@@ -2692,11 +2967,19 @@ test_SV_decomp_mod_dim(const gsl_matrix * m, double eps)
 
   gsl_matrix_memcpy(v,m);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   s += gsl_linalg_SV_decomp_mod(v, x, q, d, w); 
 
   /* Check that singular values are non-negative and in non-decreasing
      order */
   
+=======
+  s += gsl_linalg_SV_decomp_mod(v, x, q, d, w);
+
+  /* Check that singular values are non-negative and in non-decreasing
+     order */
+
+>>>>>>> config
   di1 = 0.0;
 
   for (i = 0; i < N; i++)
@@ -2704,6 +2987,7 @@ test_SV_decomp_mod_dim(const gsl_matrix * m, double eps)
       double di = gsl_vector_get (d, i);
 
       if (gsl_isnan (di))
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           continue;  /* skip NaNs */
         }
@@ -2723,17 +3007,47 @@ test_SV_decomp_mod_dim(const gsl_matrix * m, double eps)
   
   /* Scale dqt = D Q^T */
   
+=======
+	{
+	  continue;  /* skip NaNs */
+	}
+
+      if (di < 0) {
+	s++;
+	printf("singular value %lu = %22.18g < 0\n", i, di);
+      }
+
+      if(i > 0 && di > di1) {
+	s++;
+	printf("singular value %lu = %22.18g vs previous %22.18g\n", i, di, di1);
+      }
+
+      di1 = di;
+    }
+
+  /* Scale dqt = D Q^T */
+
+>>>>>>> config
   for (i = 0; i < N ; i++)
     {
       double di = gsl_vector_get (d, i);
 
       for (j = 0; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double qji = gsl_matrix_get(q, j, i);
           gsl_matrix_set (dqt, i, j, qji * di);
         }
     }
             
+=======
+	{
+	  double qji = gsl_matrix_get(q, j, i);
+	  gsl_matrix_set (dqt, i, j, qji * di);
+	}
+    }
+
+>>>>>>> config
   /* compute a = v dqt */
   gsl_blas_dgemm (CblasNoTrans, CblasNoTrans, 1.0, v, dqt, 0.0, a);
 
@@ -2743,7 +3057,11 @@ test_SV_decomp_mod_dim(const gsl_matrix * m, double eps)
       double mij = gsl_matrix_get(m, i, j);
       int foo = check(aij, mij, eps);
       if(foo) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", M, N, i,j, aij, mij);
+=======
+	printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", M, N, i,j, aij, mij);
+>>>>>>> config
       }
       s += foo;
     }
@@ -2845,6 +3163,7 @@ int test_SV_decomp_mod(void)
 
     for (i1 = lower; i1 <= upper; i1++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         for (i2 = lower; i2 <= upper; i2++)
           {
             for (i3 = lower; i3 <= upper; i3++)
@@ -2862,6 +3181,25 @@ int test_SV_decomp_mod(void)
                   }
               }
           }
+=======
+	for (i2 = lower; i2 <= upper; i2++)
+	  {
+	    for (i3 = lower; i3 <= upper; i3++)
+	      {
+		for (i4 = lower; i4 <= upper; i4++)
+		  {
+		    gsl_matrix_set (A22, 0,0, i1);
+		    gsl_matrix_set (A22, 0,1, i2);
+		    gsl_matrix_set (A22, 1,0, i3);
+		    gsl_matrix_set (A22, 1,1, i4);
+
+		    f = test_SV_decomp_mod_dim(A22, 16 * GSL_DBL_EPSILON);
+		    gsl_test(f, "  SV_decomp_mod (2x2) A=[%g, %g; %g, %g]", i1,i2,i3,i4);
+		    s += f;
+		  }
+	      }
+	  }
+>>>>>>> config
       }
   }
 
@@ -2873,6 +3211,7 @@ int test_SV_decomp_mod(void)
     for (i=0; i<9; i++) {
       a[i] = lower;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     while (carry == 0.0) {
       f = test_SV_decomp_mod_dim(A33, 64 * GSL_DBL_EPSILON);
@@ -2887,6 +3226,22 @@ int test_SV_decomp_mod(void)
           carry = (v>upper) ? 1.0 : 0.0;
           a[i] = (v>upper) ? lower : v;
         }
+=======
+
+    while (carry == 0.0) {
+      f = test_SV_decomp_mod_dim(A33, 64 * GSL_DBL_EPSILON);
+      gsl_test(f, "  SV_decomp_mod (3x3) A=[ %g, %g, %g; %g, %g, %g; %g, %g, %g]",
+	       a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8]);
+
+      /* increment */
+      carry=1.0;
+      for (i=9; carry > 0.0 && i>0 && i--;)
+	{
+	  double v=a[i]+carry;
+	  carry = (v>upper) ? 1.0 : 0.0;
+	  a[i] = (v>upper) ? lower : v;
+	}
+>>>>>>> config
     }
   }
 
@@ -2899,6 +3254,7 @@ int test_SV_decomp_mod(void)
     for (i=0; i<16; i++) {
       a[i] = lower;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     while (carry == 0.0) {
       f = test_SV_decomp_mod_dim(A44, 64 * GSL_DBL_EPSILON);
@@ -2914,6 +3270,23 @@ int test_SV_decomp_mod(void)
           carry = (v>upper) ? 1.0 : 0.0;
           a[i] = (v>upper) ? lower : v;
         }
+=======
+
+    while (carry == 0.0) {
+      f = test_SV_decomp_mod_dim(A44, 64 * GSL_DBL_EPSILON);
+      gsl_test(f, "  SV_decomp_mod (4x4) A=[ %g, %g, %g, %g; %g, %g, %g, %g; %g, %g, %g, %g; %g, %g, %g, %g]",
+	       a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8], a[9],
+	       a[10], a[11], a[12], a[13], a[14], a[15]);
+
+      /* increment */
+      carry=1.0;
+      for (i=16; carry>0.0 && i>0 && i--;)
+	{
+	  double v=a[i]+carry;
+	  carry = (v>upper) ? 1.0 : 0.0;
+	  a[i] = (v>upper) ? lower : v;
+	}
+>>>>>>> config
     }
   }
 #endif
@@ -2937,13 +3310,21 @@ test_SV_decomp_jacobi_dim(const gsl_matrix * m, double eps)
 
   gsl_matrix_memcpy(v,m);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   s += gsl_linalg_SV_decomp_jacobi(v, q, d); 
+=======
+  s += gsl_linalg_SV_decomp_jacobi(v, q, d);
+>>>>>>> config
   if (s)
     printf("call returned status = %d\n", s);
 
   /* Check that singular values are non-negative and in non-decreasing
      order */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   di1 = 0.0;
 
   for (i = 0; i < N; i++)
@@ -2951,6 +3332,7 @@ test_SV_decomp_jacobi_dim(const gsl_matrix * m, double eps)
       double di = gsl_vector_get (d, i);
 
       if (gsl_isnan (di))
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           continue;  /* skip NaNs */
         }
@@ -2970,17 +3352,47 @@ test_SV_decomp_jacobi_dim(const gsl_matrix * m, double eps)
   
   /* Scale dqt = D Q^T */
   
+=======
+	{
+	  continue;  /* skip NaNs */
+	}
+
+      if (di < 0) {
+	s++;
+	printf("singular value %lu = %22.18g < 0\n", i, di);
+      }
+
+      if(i > 0 && di > di1) {
+	s++;
+	printf("singular value %lu = %22.18g vs previous %22.18g\n", i, di, di1);
+      }
+
+      di1 = di;
+    }
+
+  /* Scale dqt = D Q^T */
+
+>>>>>>> config
   for (i = 0; i < N ; i++)
     {
       double di = gsl_vector_get (d, i);
 
       for (j = 0; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double qji = gsl_matrix_get(q, j, i);
           gsl_matrix_set (dqt, i, j, qji * di);
         }
     }
             
+=======
+	{
+	  double qji = gsl_matrix_get(q, j, i);
+	  gsl_matrix_set (dqt, i, j, qji * di);
+	}
+    }
+
+>>>>>>> config
   /* compute a = v dqt */
   gsl_blas_dgemm (CblasNoTrans, CblasNoTrans, 1.0, v, dqt, 0.0, a);
 
@@ -2990,7 +3402,11 @@ test_SV_decomp_jacobi_dim(const gsl_matrix * m, double eps)
       double mij = gsl_matrix_get(m, i, j);
       int foo = check(aij, mij, eps);
       if(foo) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", M, N, i,j, aij, mij);
+=======
+	printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", M, N, i,j, aij, mij);
+>>>>>>> config
       }
       s += foo;
     }
@@ -3092,6 +3508,7 @@ int test_SV_decomp_jacobi(void)
 
     for (i1 = lower; i1 <= upper; i1++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         for (i2 = lower; i2 <= upper; i2++)
           {
             for (i3 = lower; i3 <= upper; i3++)
@@ -3109,6 +3526,25 @@ int test_SV_decomp_jacobi(void)
                   }
               }
           }
+=======
+	for (i2 = lower; i2 <= upper; i2++)
+	  {
+	    for (i3 = lower; i3 <= upper; i3++)
+	      {
+		for (i4 = lower; i4 <= upper; i4++)
+		  {
+		    gsl_matrix_set (A22, 0,0, i1);
+		    gsl_matrix_set (A22, 0,1, i2);
+		    gsl_matrix_set (A22, 1,0, i3);
+		    gsl_matrix_set (A22, 1,1, i4);
+
+		    f = test_SV_decomp_jacobi_dim(A22, 16 * GSL_DBL_EPSILON);
+		    gsl_test(f, "  SV_decomp_jacobi (2x2) A=[%g, %g; %g, %g]", i1,i2,i3,i4);
+		    s += f;
+		  }
+	      }
+	  }
+>>>>>>> config
       }
   }
 
@@ -3120,6 +3556,7 @@ int test_SV_decomp_jacobi(void)
     for (i=0; i<9; i++) {
       a[i] = lower;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     while (carry == 0.0) {
       f = test_SV_decomp_jacobi_dim(A33, 64 * GSL_DBL_EPSILON);
@@ -3134,6 +3571,22 @@ int test_SV_decomp_jacobi(void)
           carry = (v>upper) ? 1.0 : 0.0;
           a[i] = (v>upper) ? lower : v;
         }
+=======
+
+    while (carry == 0.0) {
+      f = test_SV_decomp_jacobi_dim(A33, 64 * GSL_DBL_EPSILON);
+      gsl_test(f, "  SV_decomp_jacobi (3x3) A=[ %g, %g, %g; %g, %g, %g; %g, %g, %g]",
+	       a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8]);
+
+      /* increment */
+      carry=1.0;
+      for (i=9; carry > 0.0 && i>0 && i--;)
+	{
+	  double v=a[i]+carry;
+	  carry = (v>upper) ? 1.0 : 0.0;
+	  a[i] = (v>upper) ? lower : v;
+	}
+>>>>>>> config
     }
   }
 
@@ -3147,11 +3600,16 @@ int test_SV_decomp_jacobi(void)
     for (i=0; i<16; i++) {
       a[i] = lower;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     while (carry == 0.0) {
       k++;
       f = test_SV_decomp_jacobi_dim(A44, 64 * GSL_DBL_EPSILON);
       gsl_test(f, "  SV_decomp_jacobi (4x4) A=[ %g, %g, %g, %g; %g, %g, %g, %g; %g, %g, %g, %g; %g, %g, %g, %g] %lu",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8], a[9],
                a[10], a[11], a[12], a[13], a[14], a[15], k);
       /* increment */
@@ -3162,6 +3620,18 @@ int test_SV_decomp_jacobi(void)
           carry = (v>upper) ? 1.0 : 0.0;
           a[i] = (v>upper) ? lower : v;
         }
+=======
+	       a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8], a[9],
+	       a[10], a[11], a[12], a[13], a[14], a[15], k);
+      /* increment */
+      carry=1.0;
+      for (i=16; carry > 0.0 && i>0 && i--;)
+	{
+	  double v=a[i]+carry;
+	  carry = (v>upper) ? 1.0 : 0.0;
+	  a[i] = (v>upper) ? lower : v;
+	}
+>>>>>>> config
     }
   }
 #endif
@@ -3175,11 +3645,16 @@ int test_SV_decomp_jacobi(void)
     for (i=0; i<25; i++) {
       a[i] = lower;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     while (carry == 0.0) {
       k++;
 
       if (k % 1001 == 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           f = test_SV_decomp_jacobi_dim(A55, 64 * GSL_DBL_EPSILON);
           gsl_test(f, "  SV_decomp_jacobi (5x5) case=%lu",k);
@@ -3193,6 +3668,21 @@ int test_SV_decomp_jacobi(void)
           carry = (v>upper) ? 1.0 : 0.0;
           a[i] = (v>upper) ? lower : v;
         }
+=======
+	{
+	  f = test_SV_decomp_jacobi_dim(A55, 64 * GSL_DBL_EPSILON);
+	  gsl_test(f, "  SV_decomp_jacobi (5x5) case=%lu",k);
+	}
+
+      /* increment */
+      carry=1.0;
+      for (i=25; carry >0.0 && i>0 && i--;)
+	{
+	  double v=a[i]+carry;
+	  carry = (v>upper) ? 1.0 : 0.0;
+	  a[i] = (v>upper) ? lower : v;
+	}
+>>>>>>> config
     }
   }
 
@@ -3267,6 +3757,7 @@ test_cholesky_decomp_dim(const gsl_matrix * m, double eps)
   gsl_matrix_memcpy(v,m);
 
   s += gsl_linalg_cholesky_decomp(v);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   /* Compute L LT */
   
@@ -3280,6 +3771,21 @@ test_cholesky_decomp_dim(const gsl_matrix * m, double eps)
         }
     }
             
+=======
+
+  /* Compute L LT */
+
+  for (i = 0; i < N ; i++)
+    {
+      for (j = 0; j < N; j++)
+	{
+	  double vij = gsl_matrix_get(v, i, j);
+	  gsl_matrix_set (l, i, j, i>=j ? vij : 0);
+	  gsl_matrix_set (lt, i, j, i<=j ? vij : 0);
+	}
+    }
+
+>>>>>>> config
   /* compute a = l lt */
   gsl_blas_dgemm (CblasNoTrans, CblasNoTrans, 1.0, l, lt, 0.0, a);
 
@@ -3289,7 +3795,11 @@ test_cholesky_decomp_dim(const gsl_matrix * m, double eps)
       double mij = gsl_matrix_get(m, i, j);
       int foo = check(aij, mij, eps);
       if(foo) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", M, N, i,j, aij, mij);
+=======
+	printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", M, N, i,j, aij, mij);
+>>>>>>> config
       }
       s += foo;
     }
@@ -3348,6 +3858,7 @@ test_cholesky_invert_dim(const gsl_matrix * m, double eps)
   for (i = 0; i < N; ++i)
     {
       for (j = 0; j < N; ++j)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           int foo;
           double cij = gsl_matrix_get(c, i, j);
@@ -3365,6 +3876,25 @@ test_cholesky_invert_dim(const gsl_matrix * m, double eps)
 
           s += foo;
         }
+=======
+	{
+	  int foo;
+	  double cij = gsl_matrix_get(c, i, j);
+	  double expected;
+
+	  if (i == j)
+	    expected = 1.0;
+	  else
+	    expected = 0.0;
+
+	  foo = check(cij, expected, eps);
+
+	  if (foo)
+	    printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", N, N, i,j, cij, expected);
+
+	  s += foo;
+	}
+>>>>>>> config
     }
 
   gsl_matrix_free(v);
@@ -3461,7 +3991,11 @@ test_cholesky_decomp_unit_dim(const gsl_matrix * m, double eps)
       int foo = check(aij, mij, eps);
       if(foo)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", M, N, i,j, aij, mij);
+=======
+	printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", M, N, i,j, aij, mij);
+>>>>>>> config
       }
       s += foo;
     }
@@ -3541,6 +4075,7 @@ int
 test_choleskyc_solve(void)
 {
   double data7[] = { 66,0, 0,64, 126,63, 124,-62, 61,-61, 60,60, 0,-59,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                      0,-64, 65,0, 62,-124, -61,-122, -60,-60, 59,-59, -58,0,
                      126,-63, 62,124, 308,0, 180,-240, 59,-177, 174,58, -57,-114,
                      124,62, -61,122, 180,240, 299,0, 174,-58, 57,171, 56,-112,
@@ -3554,6 +4089,21 @@ test_choleskyc_solve(void)
                          0.815931919642858,-0.265820312500000,
                          0.777929687500000,0.119484747023810,
                          1.058733258928571,-0.132087053571429 };
+=======
+		     0,-64, 65,0, 62,-124, -61,-122, -60,-60, 59,-59, -58,0,
+		     126,-63, 62,124, 308,0, 180,-240, 59,-177, 174,58, -57,-114,
+		     124,62, -61,122, 180,240, 299,0, 174,-58, 57,171, 56,-112,
+		     61,61, -60,60, 59,177, 174,58, 119,0, 0,112, 55,-55,
+		     60,-60, 59,59, 174,-58, 57,-171, 0,-112, 116,0, -54,-54,
+		     0,59, -58,0, -57,114, 56,112, 55,55, -54,54, 60,0 };
+  double data7_sol[] = { -0.524944196428570,0.209123883928571,
+			 1.052873883928572,0.712444196428571,
+			 0.117568824404762,0.443191964285714,
+			 0.412862723214286,-0.356696428571429,
+			 0.815931919642858,-0.265820312500000,
+			 0.777929687500000,0.119484747023810,
+			 1.058733258928571,-0.132087053571429 };
+>>>>>>> config
   gsl_matrix_complex_view cp7 = gsl_matrix_complex_view_array(data7, 7, 7);
   gsl_vector_complex_view cp7_sol = gsl_vector_complex_view_array(data7_sol, 7);
   int f;
@@ -3584,6 +4134,7 @@ test_choleskyc_decomp_dim(const gsl_matrix_complex * m, double eps)
   s += gsl_linalg_complex_cholesky_decomp(v);
 
   /* Compute L L^H */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   for (i = 0; i < N ; i++)
     {
@@ -3603,6 +4154,27 @@ test_choleskyc_decomp_dim(const gsl_matrix_complex * m, double eps)
                   lh,
                   GSL_COMPLEX_ZERO,
                   a);
+=======
+
+  for (i = 0; i < N ; i++)
+    {
+      for (j = 0; j <= i; j++)
+	{
+	  gsl_complex vij = gsl_matrix_complex_get(v, i, j);
+	  gsl_matrix_complex_set (l, i, j, vij);
+	  gsl_matrix_complex_set (lh, j, i, gsl_complex_conjugate(vij));
+	}
+    }
+
+  /* compute a = l lh */
+  gsl_blas_zgemm (CblasNoTrans,
+		  CblasNoTrans,
+		  GSL_COMPLEX_ONE,
+		  l,
+		  lh,
+		  GSL_COMPLEX_ZERO,
+		  a);
+>>>>>>> config
 
   for(i=0; i<M; i++) {
     for(j=0; j<N; j++) {
@@ -3611,8 +4183,13 @@ test_choleskyc_decomp_dim(const gsl_matrix_complex * m, double eps)
       int foo_r = check(GSL_REAL(aij), GSL_REAL(mij), eps);
       int foo_i = check(GSL_IMAG(aij), GSL_IMAG(mij), eps);
       if(foo_r || foo_i) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", M, N, i,j, GSL_REAL(aij), GSL_REAL(mij));
         printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", M, N, i,j, GSL_IMAG(aij), GSL_IMAG(mij));
+=======
+	printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", M, N, i,j, GSL_REAL(aij), GSL_REAL(mij));
+	printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", M, N, i,j, GSL_IMAG(aij), GSL_IMAG(mij));
+>>>>>>> config
       }
       s += foo_r + foo_i;
     }
@@ -3632,8 +4209,13 @@ test_choleskyc_decomp(void)
   int f;
   int s = 0;
   double dat3[] = { 59.75,0,       49.25,172.25, 66.75,-162.75,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                     49.25,-172.25, 555.5,0,      -429,-333.5,
                     66.75,162.75,  -429,333.5,   536.5,0 };
+=======
+		    49.25,-172.25, 555.5,0,      -429,-333.5,
+		    66.75,162.75,  -429,333.5,   536.5,0 };
+>>>>>>> config
   gsl_matrix_complex_view p3 = gsl_matrix_complex_view_array(dat3, 3, 3);
 
   f = test_choleskyc_decomp_dim(&p3.matrix, 2 * 8.0 * GSL_DBL_EPSILON);
@@ -3756,7 +4338,11 @@ int test_TDS_solve(void)
 {
   int f;
   int s = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   {
     double actual[] =  {0.0, 2.0};
     f = test_TDS_solve_dim(2, 1.0, 0.5, actual, 8.0 * GSL_DBL_EPSILON);
@@ -3783,8 +4369,13 @@ int test_TDS_solve(void)
 
 int
 test_TDS_cyc_solve_one(const unsigned long dim,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                        const double * d, const double * od,
                        const double * r, const double * actual, double eps)
+=======
+		       const double * d, const double * od,
+		       const double * r, const double * actual, double eps)
+>>>>>>> config
 {
   int s = 0;
   unsigned long i;
@@ -3832,7 +4423,11 @@ int test_TDS_cyc_solve(void)
     double offdiag[] = { 3 };
     double rhs[] = { 7 };
     double actual[] = { 3.5 };
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     f = test_TDS_cyc_solve_one(dim, diag, offdiag, rhs, actual, 28.0 * GSL_DBL_EPSILON);
     gsl_test(f, "  solve_TDS_cyc dim=%lu A", dim);
     s += f;
@@ -3844,7 +4439,11 @@ int test_TDS_cyc_solve(void)
     double offdiag[] = { 3, 4 };
     double rhs[] = { 7, -7 };
     double actual[] = { -5, 4 };
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     f = test_TDS_cyc_solve_one(dim, diag, offdiag, rhs, actual, 28.0 * GSL_DBL_EPSILON);
     gsl_test(f, "  solve_TDS_cyc dim=%lu A", dim);
     s += f;
@@ -3857,7 +4456,11 @@ int test_TDS_cyc_solve(void)
     double offdiag[] = { 3, 3, 3 };
     double rhs[] = { 7, -7, 7 };
     double actual[] = { -2, 5, -2 };
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     f = test_TDS_cyc_solve_one(dim, diag, offdiag, rhs, actual, 28.0 * GSL_DBL_EPSILON);
     gsl_test(f, "  solve_TDS_cyc dim=%lu A", dim);
     s += f;
@@ -3871,7 +4474,11 @@ int test_TDS_cyc_solve(void)
     double actual[] = { 12, 3, -42, 42, -21 };
 
     /*  f = test_TDS_cyc_solve_one(dim, diag, offdiag, rhs, actual, 7.0 * GSL_DBL_EPSILON);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         FIXME: bad accuracy */
+=======
+	FIXME: bad accuracy */
+>>>>>>> config
     f = test_TDS_cyc_solve_one(dim, diag, offdiag, rhs, actual, 40.0 * GSL_DBL_EPSILON);
     gsl_test(f, "  solve_TDS_cyc dim=%lu B", dim);
     s += f;
@@ -4051,6 +4658,7 @@ test_bidiag_decomp_dim(const gsl_matrix * m, double eps)
   gsl_matrix_set_zero(b);
   for (i = 0; i < N; i++) gsl_matrix_set(b, i,i, gsl_vector_get(d,i));
   for (i = 0; i < N-1; i++) gsl_matrix_set(b, i,i+1, gsl_vector_get(sd,i));
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   /* Compute A = U B V^T */
   
@@ -4070,6 +4678,27 @@ test_bidiag_decomp_dim(const gsl_matrix * m, double eps)
             }
           gsl_matrix_set (a, i, j, sum);
         }
+=======
+
+  /* Compute A = U B V^T */
+
+  for (i = 0; i < M ; i++)
+    {
+      for (j = 0; j < N; j++)
+	{
+	  double sum = 0;
+
+	  for (k = 0; k < N; k++)
+	    {
+	      for (r = 0; r < N; r++)
+		{
+		  sum += gsl_matrix_get(u, i, k) * gsl_matrix_get (b, k, r)
+		    * gsl_matrix_get(v, j, r);
+		}
+	    }
+	  gsl_matrix_set (a, i, j, sum);
+	}
+>>>>>>> config
     }
 
   for(i=0; i<M; i++) {
@@ -4078,7 +4707,11 @@ test_bidiag_decomp_dim(const gsl_matrix * m, double eps)
       double mij = gsl_matrix_get(m, i, j);
       int foo = check(aij, mij, eps);
       if(foo) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", M, N, i,j, aij, mij);
+=======
+	printf("(%3lu,%3lu)[%lu,%lu]: %22.18g   %22.18g\n", M, N, i,j, aij, mij);
+>>>>>>> config
       }
       s += foo;
     }
@@ -4193,8 +4826,13 @@ int main(void)
 
   /* Matmult now obsolete */
 #ifdef MATMULT
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   gsl_test(test_matmult(),               "Matrix Multiply"); 
   gsl_test(test_matmult_mod(),           "Matrix Multiply with Modification"); 
+=======
+  gsl_test(test_matmult(),               "Matrix Multiply");
+  gsl_test(test_matmult_mod(),           "Matrix Multiply with Modification");
+>>>>>>> config
 #endif
   gsl_test(test_bidiag_decomp(),         "Bidiagonal Decomposition");
   gsl_test(test_LU_solve(),              "LU Decomposition and Solve");

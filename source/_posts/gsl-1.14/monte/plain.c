@@ -1,17 +1,31 @@
 /* monte/plain.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2009 Michael Booth
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2009 Michael Booth
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -29,12 +43,21 @@
 
 int
 gsl_monte_plain_integrate (const gsl_monte_function * f,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                            const double xl[], const double xu[],
                            const size_t dim,
                            const size_t calls,
                            gsl_rng * r,
                            gsl_monte_plain_state * state,
                            double *result, double *abserr)
+=======
+			   const double xl[], const double xu[],
+			   const size_t dim,
+			   const size_t calls,
+			   gsl_rng * r,
+			   gsl_monte_plain_state * state,
+			   double *result, double *abserr)
+>>>>>>> config
 {
   double vol, m = 0, q = 0;
   double *x = state->x;
@@ -48,6 +71,7 @@ gsl_monte_plain_integrate (const gsl_monte_function * f,
   for (i = 0; i < dim; i++)
     {
       if (xu[i] <= xl[i])
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           GSL_ERROR ("xu must be greater than xl", GSL_EINVAL);
         }
@@ -57,6 +81,17 @@ gsl_monte_plain_integrate (const gsl_monte_function * f,
           GSL_ERROR ("Range of integration is too large, please rescale",
                      GSL_EINVAL);
         }
+=======
+	{
+	  GSL_ERROR ("xu must be greater than xl", GSL_EINVAL);
+	}
+
+      if (xu[i] - xl[i] > GSL_DBL_MAX)
+	{
+	  GSL_ERROR ("Range of integration is too large, please rescale",
+		     GSL_EINVAL);
+	}
+>>>>>>> config
     }
 
   /* Compute the volume of the region */
@@ -73,6 +108,7 @@ gsl_monte_plain_integrate (const gsl_monte_function * f,
       /* Choose a random point in the integration region */
 
       for (i = 0; i < dim; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           x[i] = xl[i] + gsl_rng_uniform_pos (r) * (xu[i] - xl[i]);
         }
@@ -85,6 +121,20 @@ gsl_monte_plain_integrate (const gsl_monte_function * f,
         double d = fval - m;
         m += d / (n + 1.0);
         q += d * d * (n / (n + 1.0));
+=======
+	{
+	  x[i] = xl[i] + gsl_rng_uniform_pos (r) * (xu[i] - xl[i]);
+	}
+
+      {
+	double fval = GSL_MONTE_FN_EVAL (f, x);
+
+	/* recurrence for mean and variance */
+
+	double d = fval - m;
+	m += d / (n + 1.0);
+	q += d * d * (n / (n + 1.0));
+>>>>>>> config
       }
     }
 
@@ -111,7 +161,11 @@ gsl_monte_plain_alloc (size_t dim)
   if (s == 0)
     {
       GSL_ERROR_VAL ("failed to allocate space for state struct",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                      GSL_ENOMEM, 0);
+=======
+		     GSL_ENOMEM, 0);
+>>>>>>> config
     }
 
   s->x = (double *) malloc (dim * sizeof (double));
@@ -120,7 +174,11 @@ gsl_monte_plain_alloc (size_t dim)
     {
       free (s);
       GSL_ERROR_VAL ("failed to allocate space for working vector",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                      GSL_ENOMEM, 0);
+=======
+		     GSL_ENOMEM, 0);
+>>>>>>> config
     }
 
   s->dim = dim;

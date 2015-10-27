@@ -50,12 +50,20 @@ Sun Dec  2 22:02:31 2001  Brian Gough  <bjg@network-theory.co.uk>
 Wed Oct 31 18:42:10 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* qr.c (qr_companion): increased maximum number of iterations from
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	30 to 60
+=======
+	30 to 60
+>>>>>>> config
 
 Thu Jun 28 11:24:51 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* test.c (main): fixed a subtle bug in the test where the array
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	for the complex results was too small by a factor of two
+=======
+	for the complex results was too small by a factor of two
+>>>>>>> config
 
 Mon Apr 30 12:36:08 2001  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -74,6 +82,7 @@ Tue Aug 24 12:02:47 1999  Brian Gough  <bjg@network-theory.co.uk>
 Tue Aug 17 14:23:47 1999  Brian Gough  <bjg@network-theory.co.uk>
 
 	* zsolve_cubic.c (gsl_poly_complex_solve_cubic): compute the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	discriminant without division so that it is exact for exact inputs
 
 	* solve_cubic.c (gsl_poly_solve_cubic): compute the discriminant
@@ -88,16 +97,40 @@ Tue Aug 17 14:23:47 1999  Brian Gough  <bjg@network-theory.co.uk>
  	case of a multiple root set all the returned values r0 = r1 =
  	root, rather than just setting one and leaving the others
  	potentially unset.
+=======
+	discriminant without division so that it is exact for exact inputs
+
+	* solve_cubic.c (gsl_poly_solve_cubic): compute the discriminant
+	without division so that it is exact for exact inputs
+
+	* changed the way roots are counted to make all the routines
+	consistent. Conincident roots are no longer a special case, now
+	they are made up of separate roots which happen to have the same
+	values.
+
+	* zsolve_quadratic.c (gsl_poly_complex_solve_quadratic): in the
+	case of a multiple root set all the returned values r0 = r1 =
+	root, rather than just setting one and leaving the others
+	potentially unset.
+>>>>>>> config
 
 	* solve_quadratic.c (gsl_poly_solve_quadratic):  ditto
 
 Tue Aug  3 19:36:26 1999  Brian Gough  <bjg@network-theory.co.uk>
 
 	* gsl_poly.h: changed all functions to take separate variables for
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	roots (z0, z1, z2) of variable-length arrays
+=======
+	roots (z0, z1, z2) of variable-length arrays
+>>>>>>> config
 
 Sat Feb 20 12:13:46 1999  Brian Gough  <bjg@netsci.freeserve.co.uk>
 
 	* split out polynomial root finding algorithms into a new poly/
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	directory
 
+=======
+	directory
+>>>>>>> config

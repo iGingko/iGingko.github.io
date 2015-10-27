@@ -1,18 +1,33 @@
 /* randist/exppow.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2006, 2007 James Theiler, Brian Gough
  * Copyright (C) 2006 Giulio Bottazzi
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2006, 2007 James Theiler, Brian Gough
+ * Copyright (C) 2006 Giulio Bottazzi
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -25,12 +40,20 @@
 #include <gsl/gsl_rng.h>
 #include <gsl/gsl_randist.h>
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* The exponential power probability distribution is  
+=======
+/* The exponential power probability distribution is
+>>>>>>> config
 
    p(x) dx = (1/(2 a Gamma(1+1/b))) * exp(-|x/a|^b) dx
 
    for -infty < x < infty. For b = 1 it reduces to the Laplace
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    distribution. 
+=======
+   distribution.
+>>>>>>> config
 
    The exponential power distribution is related to the gamma
    distribution by E = a * pow(G(1/b),1/b), where E is an exponential
@@ -43,7 +66,11 @@
    See P. R. Tadikamalla, "Random Sampling from the Exponential Power
    Distribution", Journal of the American Statistical Association,
    September 1980, Volume 75, Number 371, pages 683-686.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    
+=======
+
+>>>>>>> config
 */
 
 double
@@ -56,6 +83,7 @@ gsl_ran_exppow (const gsl_rng * r, const double a, const double b)
       double z = a * pow (v, 1 / b);
 
       if (u > 0.5)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           return z;
         }
@@ -63,6 +91,15 @@ gsl_ran_exppow (const gsl_rng * r, const double a, const double b)
         {
           return -z;
         }
+=======
+	{
+	  return z;
+	}
+      else
+	{
+	  return -z;
+	}
+>>>>>>> config
     }
   else if (b == 1)
     {
@@ -78,11 +115,19 @@ gsl_ran_exppow (const gsl_rng * r, const double a, const double b)
       double B = pow (1 / b, 1 / b);
 
       do
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           x = gsl_ran_laplace (r, B);
           u = gsl_rng_uniform_pos (r);
           h = -pow (fabs (x), b) + fabs (x) / B - 1 + (1 / b);
         }
+=======
+	{
+	  x = gsl_ran_laplace (r, B);
+	  u = gsl_rng_uniform_pos (r);
+	  h = -pow (fabs (x), b) + fabs (x) / B - 1 + (1 / b);
+	}
+>>>>>>> config
       while (log (u) > h);
 
       return a * x;
@@ -101,11 +146,19 @@ gsl_ran_exppow (const gsl_rng * r, const double a, const double b)
       double B = pow (1 / b, 1 / b);
 
       do
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           x = gsl_ran_gaussian (r, B);
           u = gsl_rng_uniform_pos (r);
           h = -pow (fabs (x), b) + (x * x) / (2 * B * B) + (1 / b) - 0.5;
         }
+=======
+	{
+	  x = gsl_ran_gaussian (r, B);
+	  u = gsl_rng_uniform_pos (r);
+	  h = -pow (fabs (x), b) + (x * x) / (2 * B * B) + (1 / b) - 0.5;
+	}
+>>>>>>> config
       while (log (u) > h);
 
       return a * x;

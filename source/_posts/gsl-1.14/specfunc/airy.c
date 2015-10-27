@@ -1,17 +1,31 @@
 /* specfunc/airy.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -38,6 +52,7 @@
    based on SLATEC r9aimp()
 
  Series for AM21       on the interval -1.25000D-01 to  0.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                         with weighted error   2.89E-17
                                          log weighted error  16.54
                                significant figures required  14.15
@@ -60,6 +75,30 @@
                                          log weighted error  16.59
                                significant figures required  15.07
                                     decimal places required  17.34
+=======
+					with weighted error   2.89E-17
+					 log weighted error  16.54
+			       significant figures required  14.15
+				    decimal places required  17.34
+
+ Series for ATH1       on the interval -1.25000D-01 to  0.
+					with weighted error   2.53E-17
+					 log weighted error  16.60
+			       significant figures required  15.15
+				    decimal places required  17.38
+
+ Series for AM22       on the interval -1.00000D+00 to -1.25000D-01
+					with weighted error   2.99E-17
+					 log weighted error  16.52
+			       significant figures required  14.57
+				    decimal places required  17.28
+
+ Series for ATH2       on the interval -1.00000D+00 to -1.25000D-01
+					with weighted error   2.57E-17
+					 log weighted error  16.59
+			       significant figures required  15.07
+				    decimal places required  17.34
+>>>>>>> config
 */
 
 static double am21_data[37] = {
@@ -284,6 +323,7 @@ airy_mod_phase(const double x, gsl_mode_t mode, gsl_sf_result * mod, gsl_sf_resu
    based on SLATEC ai(x)
 
  series for aif        on the interval -1.00000d+00 to  1.00000d+00
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                    with weighted error   1.09e-19
                                     log weighted error  18.96
                           significant figures required  17.76
@@ -294,6 +334,18 @@ airy_mod_phase(const double x, gsl_mode_t mode, gsl_sf_result * mod, gsl_sf_resu
                                     log weighted error  16.82
                           significant figures required  15.19
                                decimal places required  17.27
+=======
+				   with weighted error   1.09e-19
+				    log weighted error  18.96
+			  significant figures required  17.76
+			       decimal places required  19.44
+
+ series for aig        on the interval -1.00000d+00 to  1.00000d+00
+				   with weighted error   1.51e-17
+				    log weighted error  16.82
+			  significant figures required  15.19
+			       decimal places required  17.27
+>>>>>>> config
  */
 static double ai_data_f[9] = {
   -0.03797135849666999750,
@@ -335,6 +387,7 @@ static cheb_series aig_cs = {
    based on SLATEC bi(x)
 
  series for bif        on the interval -1.00000d+00 to  1.00000d+00
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                         with weighted error   1.88e-19
                                          log weighted error  18.72
                                significant figures required  17.74
@@ -345,6 +398,18 @@ static cheb_series aig_cs = {
                                          log weighted error  16.58
                                significant figures required  15.17
                                     decimal places required  17.03
+=======
+					with weighted error   1.88e-19
+					 log weighted error  18.72
+			       significant figures required  17.74
+				    decimal places required  19.20
+
+ series for big        on the interval -1.00000d+00 to  1.00000d+00
+					with weighted error   2.61e-17
+					 log weighted error  16.58
+			       significant figures required  15.17
+				    decimal places required  17.03
+>>>>>>> config
  */
 static double data_bif[9] = {
   -0.01673021647198664948,
@@ -424,6 +489,7 @@ static cheb_series big2_cs = {
 };
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* chebyshev for Ai(x) asymptotic factor 
    based on SLATEC aie()
 
@@ -433,6 +499,17 @@ static cheb_series big2_cs = {
           significant figures required  14.41
                decimal places required  17.06
                
+=======
+/* chebyshev for Ai(x) asymptotic factor
+   based on SLATEC aie()
+
+ Series for AIP        on the interval  0.          to  1.00000D+00
+		   with weighted error   5.10E-17
+		    log weighted error  16.29
+	  significant figures required  14.41
+	       decimal places required  17.06
+
+>>>>>>> config
  [GJ] Sun Apr 19 18:14:31 EDT 1998
  There was something wrong with these coefficients. I was getting
  errors after 3 or 4 digits. So I recomputed this table. Now I get
@@ -523,6 +600,7 @@ static cheb_series aip_cs = {
 };
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* chebyshev for Bi(x) asymptotic factor 
    based on SLATEC bie()
 
@@ -537,6 +615,22 @@ static cheb_series aip_cs = {
                     log weighted error  17.98
           significant figures required  16.74
                decimal places required  18.71
+=======
+/* chebyshev for Bi(x) asymptotic factor
+   based on SLATEC bie()
+
+ Series for BIP        on the interval  1.25000D-01 to  3.53553D-01
+		   with weighted error   1.91E-17
+		    log weighted error  16.72
+	  significant figures required  15.35
+	       decimal places required  17.41
+
+ Series for BIP2       on the interval  0.          to  1.25000D-01
+		   with weighted error   1.05E-18
+		    log weighted error  17.98
+	  significant figures required  16.74
+	       decimal places required  18.71
+>>>>>>> config
 */
 static double data_bip[24] = {
   -0.08322047477943447,
@@ -571,7 +665,11 @@ static cheb_series bip_cs = {
   14
 };
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static double data_bip2[29] = {    
+=======
+static double data_bip2[29] = {
+>>>>>>> config
   -0.113596737585988679,
    0.0041381473947881595,
    0.0001353470622119332,
@@ -611,7 +709,11 @@ static cheb_series bip2_cs = {
 
 
 /* assumes x >= 1.0 */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 inline static int 
+=======
+inline static int
+>>>>>>> config
 airy_aie(const double x, gsl_mode_t mode, gsl_sf_result * result)
 {
   double sqx = sqrt(x);
@@ -865,5 +967,8 @@ double gsl_sf_airy_Bi_scaled(const double x, gsl_mode_t mode)
 {
   EVAL_RESULT(gsl_sf_airy_Bi_scaled_e(x, mode, &result));
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
+=======
+>>>>>>> config

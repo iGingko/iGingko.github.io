@@ -1,18 +1,33 @@
 /* linalg/lq.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
  * Copyright (C) 2004 Joerg Wensch, modifications for LQ.
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
+ * Copyright (C) 2004 Joerg Wensch, modifications for LQ.
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -55,7 +70,11 @@
  * time.  */
 
 /* Factorise a general N x M matrix A into
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  *  
+=======
+ *
+>>>>>>> config
  *   A = L Q
  *
  * where Q is orthogonal (M x M) and L is lower triangular (N x M).
@@ -94,6 +113,7 @@ gsl_linalg_LQ_decomp (gsl_matrix * A, gsl_vector * tau)
       size_t i;
 
       for (i = 0; i < GSL_MIN (M, N); i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           /* Compute the Householder transformation to reduce the j-th
              column of the matrix to a multiple of the j-th unit vector */
@@ -114,6 +134,28 @@ gsl_linalg_LQ_decomp (gsl_matrix * A, gsl_vector * tau)
               gsl_linalg_householder_mh (tau_i, &(c.vector), &(m.matrix));
             }
         }
+=======
+	{
+	  /* Compute the Householder transformation to reduce the j-th
+	     column of the matrix to a multiple of the j-th unit vector */
+
+	  gsl_vector_view c_full = gsl_matrix_row (A, i);
+	  gsl_vector_view c = gsl_vector_subvector (&(c_full.vector), i, M-i);
+
+	  double tau_i = gsl_linalg_householder_transform (&(c.vector));
+
+	  gsl_vector_set (tau, i, tau_i);
+
+	  /* Apply the transformation to the remaining columns and
+	     update the norms */
+
+	  if (i + 1 < N)
+	    {
+	      gsl_matrix_view m = gsl_matrix_submatrix (A, i + 1, i, N - (i + 1), M - i );
+	      gsl_linalg_householder_mh (tau_i, &(c.vector), &(m.matrix));
+	    }
+	}
+>>>>>>> config
 
       return GSL_SUCCESS;
     }
@@ -123,7 +165,11 @@ gsl_linalg_LQ_decomp (gsl_matrix * A, gsl_vector * tau)
 
  *  x^T L = b^T Q^T
  *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * to obtain x. Based on SLATEC code. 
+=======
+ * to obtain x. Based on SLATEC code.
+>>>>>>> config
  */
 
 
@@ -237,7 +283,11 @@ gsl_linalg_LQ_lssolve_T (const gsl_matrix * LQ, const gsl_vector * tau, const gs
       gsl_blas_dtrsv (CblasLower, CblasTrans, CblasNonUnit, &(L.matrix), x);
 
       /* Compute residual = b^T - x^T A = (b^T Q^T - x^T L) Q */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
       gsl_vector_set_zero(&(c.vector));
 
       gsl_linalg_LQ_vecQ(LQ, tau, residual);
@@ -351,6 +401,7 @@ gsl_linalg_LQ_vecQT (const gsl_matrix * LQ, const gsl_vector * tau, gsl_vector *
       /* compute v Q^T  */
 
       for (i = 0; i < GSL_MIN (M, N); i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           gsl_vector_const_view c = gsl_matrix_const_row (LQ, i);
           gsl_vector_const_view h = gsl_vector_const_subvector (&(c.vector),
@@ -359,6 +410,16 @@ gsl_linalg_LQ_vecQT (const gsl_matrix * LQ, const gsl_vector * tau, gsl_vector *
           double ti = gsl_vector_get (tau, i);
           gsl_linalg_householder_hv (ti, &(h.vector), &(w.vector));
         }
+=======
+	{
+	  gsl_vector_const_view c = gsl_matrix_const_row (LQ, i);
+	  gsl_vector_const_view h = gsl_vector_const_subvector (&(c.vector),
+								i, M - i);
+	  gsl_vector_view w = gsl_vector_subvector (v, i, M - i);
+	  double ti = gsl_vector_get (tau, i);
+	  gsl_linalg_householder_hv (ti, &(h.vector), &(w.vector));
+	}
+>>>>>>> config
       return GSL_SUCCESS;
     }
 }
@@ -382,6 +443,7 @@ gsl_linalg_LQ_vecQ (const gsl_matrix * LQ, const gsl_vector * tau, gsl_vector * 
       size_t i;
 
       /* compute v Q^T  */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
       for (i =  GSL_MIN (M, N); i-- > 0;) 
         {
@@ -392,6 +454,18 @@ gsl_linalg_LQ_vecQ (const gsl_matrix * LQ, const gsl_vector * tau, gsl_vector * 
           double ti = gsl_vector_get (tau, i);
           gsl_linalg_householder_hv (ti, &(h.vector), &(w.vector));
         }
+=======
+
+      for (i =  GSL_MIN (M, N); i-- > 0;)
+	{
+	  gsl_vector_const_view c = gsl_matrix_const_row (LQ, i);
+	  gsl_vector_const_view h = gsl_vector_const_subvector (&(c.vector),
+								i, M - i);
+	  gsl_vector_view w = gsl_vector_subvector (v, i, M - i);
+	  double ti = gsl_vector_get (tau, i);
+	  gsl_linalg_householder_hv (ti, &(h.vector), &(w.vector));
+	}
+>>>>>>> config
       return GSL_SUCCESS;
     }
 }
@@ -426,6 +500,7 @@ gsl_linalg_LQ_unpack (const gsl_matrix * LQ, const gsl_vector * tau, gsl_matrix 
       gsl_matrix_set_identity (Q);
 
       for (i = GSL_MIN (M, N); i-- > 0;)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           gsl_vector_const_view c = gsl_matrix_const_row (LQ, i);
           gsl_vector_const_view h = gsl_vector_const_subvector (&c.vector,
@@ -434,18 +509,36 @@ gsl_linalg_LQ_unpack (const gsl_matrix * LQ, const gsl_vector * tau, gsl_matrix 
           double ti = gsl_vector_get (tau, i);
           gsl_linalg_householder_mh (ti, &h.vector, &m.matrix);
         }
+=======
+	{
+	  gsl_vector_const_view c = gsl_matrix_const_row (LQ, i);
+	  gsl_vector_const_view h = gsl_vector_const_subvector (&c.vector,
+								i, M - i);
+	  gsl_matrix_view m = gsl_matrix_submatrix (Q, i, i, M - i, M - i);
+	  double ti = gsl_vector_get (tau, i);
+	  gsl_linalg_householder_mh (ti, &h.vector, &m.matrix);
+	}
+>>>>>>> config
 
       /*  Form the lower triangular matrix L from a packed LQ matrix */
 
       for (i = 0; i < N; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
+=======
+	{
+>>>>>>> config
 	    l_border=GSL_MIN(i,M-1);
 		for (j = 0; j <= l_border ; j++)
 		    gsl_matrix_set (L, i, j, gsl_matrix_get (LQ, i, j));
 
 	    for (j = l_border+1; j < M; j++)
 		gsl_matrix_set (L, i, j, 0.0);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         }
+=======
+	}
+>>>>>>> config
 
       return GSL_SUCCESS;
     }
@@ -466,7 +559,11 @@ gsl_linalg_LQ_unpack (const gsl_matrix * LQ, const gsl_vector * tau, gsl_matrix 
 
 int
 gsl_linalg_LQ_update (gsl_matrix * Q, gsl_matrix * L,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       const gsl_vector * v, gsl_vector * w)
+=======
+		      const gsl_vector * v, gsl_vector * w)
+>>>>>>> config
 {
   const size_t N = L->size1;
   const size_t M = L->size2;
@@ -490,6 +587,7 @@ gsl_linalg_LQ_update (gsl_matrix * Q, gsl_matrix * L,
 
       /* Apply Given's rotations to reduce w to (|w|, 0, 0, ... , 0)
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          J_1^T .... J_(n-1)^T w = +/- |w| e_1
 
          simultaneously applied to L,  H = J_1^T ... J^T_(n-1) L
@@ -504,6 +602,22 @@ gsl_linalg_LQ_update (gsl_matrix * Q, gsl_matrix * L,
           create_givens (wkm1, wk, &c, &s);
           apply_givens_vec (w, k - 1, k, c, s);
           apply_givens_lq (M, N, Q, L, k - 1, k, c, s);
+=======
+	 J_1^T .... J_(n-1)^T w = +/- |w| e_1
+
+	 simultaneously applied to L,  H = J_1^T ... J^T_(n-1) L
+	 so that H is upper Hessenberg.  (12.5.2) */
+
+      for (k = M - 1; k > 0; k--)  /* loop from k = M-1 to 1 */
+	{
+	  double c, s;
+	  double wk = gsl_vector_get (w, k);
+	  double wkm1 = gsl_vector_get (w, k - 1);
+
+	  create_givens (wkm1, wk, &c, &s);
+	  apply_givens_vec (w, k - 1, k, c, s);
+	  apply_givens_lq (M, N, Q, L, k - 1, k, c, s);
+>>>>>>> config
        }
 
       w0 = gsl_vector_get (w, 0);
@@ -511,6 +625,7 @@ gsl_linalg_LQ_update (gsl_matrix * Q, gsl_matrix * L,
       /* Add in v w^T  (Equation 12.5.3) */
 
       for (j = 0; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double lj0 = gsl_matrix_get (L, j, 0);
           double vj = gsl_vector_get (v, j);
@@ -531,6 +646,28 @@ gsl_linalg_LQ_update (gsl_matrix * Q, gsl_matrix * L,
 
           gsl_matrix_set (L, k - 1, k, 0.0);    /* exact zero of G^T */
         }
+=======
+	{
+	  double lj0 = gsl_matrix_get (L, j, 0);
+	  double vj = gsl_vector_get (v, j);
+	  gsl_matrix_set (L, j, 0, lj0 + w0 * vj);
+	}
+
+      /* Apply Givens transformations L' = G_(n-1)^T ... G_1^T H
+	 Equation 12.5.4 */
+
+      for (k = 1; k < GSL_MIN(M,N+1); k++)
+	{
+	  double c, s;
+	  double diag = gsl_matrix_get (L, k - 1, k - 1);
+	  double offdiag = gsl_matrix_get (L, k - 1 , k);
+
+	  create_givens (diag, offdiag, &c, &s);
+	  apply_givens_lq (M, N, Q, L, k - 1, k, c, s);
+
+	  gsl_matrix_set (L, k - 1, k, 0.0);    /* exact zero of G^T */
+	}
+>>>>>>> config
 
       return GSL_SUCCESS;
     }

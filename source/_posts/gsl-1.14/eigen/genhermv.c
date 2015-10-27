@@ -1,17 +1,31 @@
 /* eigen/genhermv.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2007 Patrick Alken
  * 
+=======
+ *
+ * Copyright (C) 2007 Patrick Alken
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -56,7 +70,11 @@ gsl_eigen_genhermv_alloc(const size_t n)
   if (n == 0)
     {
       GSL_ERROR_NULL ("matrix dimension must be positive integer",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       GSL_EINVAL);
+=======
+		      GSL_EINVAL);
+>>>>>>> config
     }
 
   w = (gsl_eigen_genhermv_workspace *) calloc (1, sizeof (gsl_eigen_genhermv_workspace));
@@ -104,18 +122,30 @@ A x = \lambda B x
 for the eigenvalues \lambda and eigenvectors x.
 
 Inputs: A    - complex hermitian matrix
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         B    - complex hermitian and positive definite matrix
         eval - where to store eigenvalues
         evec - where to store eigenvectors
         w    - workspace
+=======
+	B    - complex hermitian and positive definite matrix
+	eval - where to store eigenvalues
+	evec - where to store eigenvectors
+	w    - workspace
+>>>>>>> config
 
 Return: success or error
 */
 
 int
 gsl_eigen_genhermv (gsl_matrix_complex * A, gsl_matrix_complex * B,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                     gsl_vector * eval, gsl_matrix_complex * evec,
                     gsl_eigen_genhermv_workspace * w)
+=======
+		    gsl_vector * eval, gsl_matrix_complex * evec,
+		    gsl_eigen_genhermv_workspace * w)
+>>>>>>> config
 {
   const size_t N = A->size1;
 
@@ -152,7 +182,11 @@ gsl_eigen_genhermv (gsl_matrix_complex * A, gsl_matrix_complex * B,
       /* compute Cholesky factorization of B */
       s = gsl_linalg_complex_cholesky_decomp(B);
       if (s != GSL_SUCCESS)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         return s; /* B is not positive definite */
+=======
+	return s; /* B is not positive definite */
+>>>>>>> config
 
       /* transform to standard hermitian eigenvalue problem */
       gsl_eigen_genherm_standardize(A, B);
@@ -160,6 +194,7 @@ gsl_eigen_genhermv (gsl_matrix_complex * A, gsl_matrix_complex * B,
       /* compute eigenvalues and eigenvectors */
       s = gsl_eigen_hermv(A, eval, evec, w->hermv_workspace_p);
       if (s != GSL_SUCCESS)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         return s;
 
       /* backtransform eigenvectors: evec -> L^{-H} evec */
@@ -170,6 +205,18 @@ gsl_eigen_genhermv (gsl_matrix_complex * A, gsl_matrix_complex * B,
                      GSL_COMPLEX_ONE,
                      B,
                      evec);
+=======
+	return s;
+
+      /* backtransform eigenvectors: evec -> L^{-H} evec */
+      gsl_blas_ztrsm(CblasLeft,
+		     CblasLower,
+		     CblasConjTrans,
+		     CblasNonUnit,
+		     GSL_COMPLEX_ONE,
+		     B,
+		     evec);
+>>>>>>> config
 
       /* the blas call destroyed the normalization - renormalize */
       genhermv_normalize_eigenvectors(evec);

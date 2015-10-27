@@ -1,17 +1,31 @@
 /* randist/sphere.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2004, 2007 James Theiler, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2004, 2007 James Theiler, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -44,7 +58,11 @@ gsl_ran_dir_2d (const gsl_rng * r, double *x, double *y)
   *x = (u * u - v * v) / s;
   *y = 2 * u * v / s;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   /* Here is the more straightforward approach, 
+=======
+  /* Here is the more straightforward approach,
+>>>>>>> config
    *     s = sqrt (s);  *x = u / s;  *y = v / s;
    * It has fewer total operations, but one of them is a sqrt */
 }
@@ -85,7 +103,11 @@ gsl_ran_dir_3d (const gsl_rng * r, double *x, double *y, double *z)
 
   *z = -1 + 2 * s;              /* z uniformly distributed from -1 to 1 */
   a = 2 * sqrt (1 - s);         /* factor to adjust x,y so that x^2+y^2
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                  * is equal to 1-z^2 */
+=======
+				 * is equal to 1-z^2 */
+>>>>>>> config
   *x *= a;
   *y *= a;
 }
@@ -105,10 +127,17 @@ gsl_ran_dir_nd (const gsl_rng * r, size_t n, double *x)
   do
     {
       for (i = 0; i < n; ++i)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           x[i] = gsl_ran_gaussian (r, 1.0);
           d += x[i] * x[i];
         }
+=======
+	{
+	  x[i] = gsl_ran_gaussian (r, 1.0);
+	  d += x[i] * x[i];
+	}
+>>>>>>> config
     }
   while (d == 0);
   d = sqrt (d);

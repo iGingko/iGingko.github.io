@@ -18,11 +18,19 @@
 
 @c How to use the math macros
 @c ==========================
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @c 
 @c For simple expressions, simply use the @math{} command, e.g.
 @c
 @c     @math{\exp(x)/(1+x^2)}
 @c 
+=======
+@c
+@c For simple expressions, simply use the @math{} command, e.g.
+@c
+@c     @math{\exp(x)/(1+x^2)}
+@c
+>>>>>>> config
 @c but if the expression includes characters that need to be 'escaped'
 @c in texinfo, like '{' or '}', or needs different output for TeX and info,
 @c then use the following form,
@@ -146,33 +154,57 @@ GNU Manual.''
 @subtitle Edition @value{EDITION}, for GSL Version @value{VERSION}
 @subtitle @value{UPDATED}
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @author Mark Galassi 
+=======
+@author Mark Galassi
+>>>>>>> config
 Los Alamos National Laboratory
 @comment @email{rosalia@@lanl.gov}
 @sp 1
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @author Jim Davies 
+=======
+@author Jim Davies
+>>>>>>> config
 Department of Computer Science, Georgia Institute of Technology
 @comment @email{jimmyd@@nis.lanl.gov}
 @sp 1
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @author James Theiler 
+=======
+@author James Theiler
+>>>>>>> config
 Astrophysics and Radiation Measurements Group, Los Alamos National Laboratory
 @comment @email{jt@@nis.lanl.gov}
 @sp 1
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @author Brian Gough 
+=======
+@author Brian Gough
+>>>>>>> config
 Network Theory Limited
 @comment @email{bjg@@network-theory.co.uk}
 @sp 1
 
 @comment Asked to be moved to 'contributors' appendix
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment @author Reid Priedhorsky 
+=======
+@comment @author Reid Priedhorsky
+>>>>>>> config
 @comment Mathematical Modeling and Analysis Group, Los Alamos National Laboratory
 @comment @email{rp@@lanl.gov}
 @comment @sp 1
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @author Gerard Jungman 
+=======
+@author Gerard Jungman
+>>>>>>> config
 Theoretical Astrophysics Group, Los Alamos National Laboratory
 @comment @email{jungman@@lanl.gov}
 @sp 1
@@ -232,6 +264,7 @@ project homepage thanks to Daisuke Tominaga.
 @end ifnottex
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Introduction::                
 * Using the library::           
 * Error Handling::              
@@ -284,6 +317,60 @@ project homepage thanks to Daisuke Tominaga.
 * Variable Index::              
 * Type Index::                  
 * Concept Index::               
+=======
+* Introduction::
+* Using the library::
+* Error Handling::
+* Mathematical Functions::
+* Complex Numbers::
+* Polynomials::
+* Special Functions::
+* Vectors and Matrices::
+* Permutations::
+* Combinations::
+* Multisets::
+* Sorting::
+* BLAS Support::
+* Linear Algebra::
+* Eigensystems::
+* Fast Fourier Transforms::
+* Numerical Integration::
+* Random Number Generation::
+* Quasi-Random Sequences::
+* Random Number Distributions::
+* Statistics::
+* Histograms::
+* N-tuples::
+* Monte Carlo Integration::
+* Simulated Annealing::
+* Ordinary Differential Equations::
+* Interpolation::
+* Numerical Differentiation::
+* Chebyshev Approximations::
+* Series Acceleration::
+* Wavelet Transforms::
+* Discrete Hankel Transforms::
+* One dimensional Root-Finding::
+* One dimensional Minimization::
+* Multidimensional Root-Finding::
+* Multidimensional Minimization::
+* Least-Squares Fitting::
+* Nonlinear Least-Squares Fitting::
+* Basis Splines::
+* Physical Constants::
+* IEEE floating-point arithmetic::
+* Debugging Numerical Programs::
+* Contributors to GSL::
+* Autoconf Macros::
+* GSL CBLAS Library::
+* Free Software Needs Free Documentation::
+* GNU General Public License::
+* GNU Free Documentation License::
+* Function Index::
+* Variable Index::
+* Type Index::
+* Concept Index::
+>>>>>>> config
 @end menu
 
 @node  Introduction, Using the library, Top, Top
@@ -482,10 +569,17 @@ histograms, statistics, ieee-utils, revised @sc{cblas} Level 2 & 3,
 matrix decompositions, eigensystems, cumulative distribution functions,
 testing, documentation and releases.
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @item Reid Priedhorsky 
 Wrote and documented the initial version of the root finding routines
 while at Los Alamos National Laboratory, Mathematical Modeling and
 Analysis Group.  
+=======
+@item Reid Priedhorsky
+Wrote and documented the initial version of the root finding routines
+while at Los Alamos National Laboratory, Mathematical Modeling and
+Analysis Group.
+>>>>>>> config
 @comment email: reid@reidster.net
 
 @item Gerard Jungman
@@ -495,10 +589,17 @@ Eigensystems, Hankel Transforms.
 @item Mike Booth
 Wrote the Monte Carlo library.
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @item Jorma Olavi T@"ahtinen 
 Wrote the initial complex arithmetic functions.
 
 @item  Thomas Walter 
+=======
+@item Jorma Olavi T@"ahtinen
+Wrote the initial complex arithmetic functions.
+
+@item  Thomas Walter
+>>>>>>> config
 Wrote the initial heapsort routines and cholesky decomposition.
 
 @item  Fabrice Rossi
@@ -508,16 +609,28 @@ Multidimensional minimization.
 Implementation of the random number generators in Knuth's
 @cite{Seminumerical Algorithms}, 3rd Ed.
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @item Szymon Jaroszewicz 
+=======
+@item Szymon Jaroszewicz
+>>>>>>> config
 @comment <sj@cs.umb.edu>
 Wrote the routines for generating combinations.
 
 @item Nicolas Darnis
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 Wrote the cyclic functions and the initial functions for canonical 
 permutations.
 
 @item Jason H. Stover
 @comment (jason@sakla.net) 
+=======
+Wrote the cyclic functions and the initial functions for canonical
+permutations.
+
+@item Jason H. Stover
+@comment (jason@sakla.net)
+>>>>>>> config
 Wrote the major cumulative distribution functions.
 
 @item Ivo Alxneit
@@ -552,12 +665,18 @@ modification, are permitted provided that the following conditions are
 met:
 
 @bullet{} Redistributions of source code must retain the above copyright
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 notice, this list of conditions and the following disclaimer. 
   
+=======
+notice, this list of conditions and the following disclaimer.
+
+>>>>>>> config
 @bullet{} Redistributions in binary form must reproduce the above copyright
 notice, this list of conditions and the following disclaimer listed
 in this license in the documentation and/or other materials
 provided with the distribution.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
 @bullet{} Neither the name of the copyright holders nor the names of its
 contributors may be used to endorse or promote products derived from
@@ -567,13 +686,30 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT  
 LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
 A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT 
+=======
+
+@bullet{} Neither the name of the copyright holders nor the names of its
+contributors may be used to endorse or promote products derived from
+this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+>>>>>>> config
 OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
 SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
 LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
 DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT  
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+=======
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+>>>>>>> config
 @end quotation
 
 @iftex
@@ -637,8 +773,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 @printindex cp
 
 @ifclear frontcontents
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment Use @setchapternewpage odd to ensure that the contents starts 
 @comment on an odd page so that it can always be moved to the front when 
+=======
+@comment Use @setchapternewpage odd to ensure that the contents starts
+@comment on an odd page so that it can always be moved to the front when
+>>>>>>> config
 @comment printing two-up.
 @setchapternewpage odd
 @contents

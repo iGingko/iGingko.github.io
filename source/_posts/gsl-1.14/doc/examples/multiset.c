@@ -12,11 +12,19 @@ main (void)
     {
       c = gsl_multiset_calloc (4, i);
       do
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           printf ("{");
           gsl_multiset_fprintf (stdout, c, " %u");
           printf (" }\n");
         }
+=======
+	{
+	  printf ("{");
+	  gsl_multiset_fprintf (stdout, c, " %u");
+	  printf (" }\n");
+	}
+>>>>>>> config
       while (gsl_multiset_next (c) == GSL_SUCCESS);
       gsl_multiset_free (c);
     }

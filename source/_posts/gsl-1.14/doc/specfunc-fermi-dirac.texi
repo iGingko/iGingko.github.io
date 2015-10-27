@@ -4,8 +4,13 @@ The functions described in this section are declared in the header file
 @file{gsl_sf_fermi_dirac.h}.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Complete Fermi-Dirac Integrals::  
 * Incomplete Fermi-Dirac Integrals::  
+=======
+* Complete Fermi-Dirac Integrals::
+* Incomplete Fermi-Dirac Integrals::
+>>>>>>> config
 @end menu
 
 @node Complete Fermi-Dirac Integrals
@@ -32,8 +37,13 @@ normalisation factor in other texts.
 
 @deftypefun double gsl_sf_fermi_dirac_m1 (double @var{x})
 @deftypefunx int gsl_sf_fermi_dirac_m1_e (double @var{x}, gsl_sf_result * @var{result})
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 These routines compute the complete Fermi-Dirac integral with an index of @math{-1}. 
 This integral is given by 
+=======
+These routines compute the complete Fermi-Dirac integral with an index of @math{-1}.
+This integral is given by
+>>>>>>> config
 @c{$F_{-1}(x) = e^x / (1 + e^x)$}
 @math{F_@{-1@}(x) = e^x / (1 + e^x)}.
 @comment Exceptional Return Values: GSL_EUNDRFLW
@@ -41,7 +51,11 @@ This integral is given by
 
 @deftypefun double gsl_sf_fermi_dirac_0 (double @var{x})
 @deftypefunx int gsl_sf_fermi_dirac_0_e (double @var{x}, gsl_sf_result * @var{result})
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 These routines compute the complete Fermi-Dirac integral with an index of @math{0}. 
+=======
+These routines compute the complete Fermi-Dirac integral with an index of @math{0}.
+>>>>>>> config
 This integral is given by @math{F_0(x) = \ln(1 + e^x)}.
 @comment Exceptional Return Values: GSL_EUNDRFLW
 @end deftypefun
@@ -72,7 +86,11 @@ index of @math{j},
 
 @deftypefun double gsl_sf_fermi_dirac_mhalf (double @var{x})
 @deftypefunx int gsl_sf_fermi_dirac_mhalf_e (double @var{x}, gsl_sf_result * @var{result})
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 These routines compute the complete Fermi-Dirac integral 
+=======
+These routines compute the complete Fermi-Dirac integral
+>>>>>>> config
 @c{$F_{-1/2}(x)$}
 @math{F_@{-1/2@}(x)}.
 @comment Exceptional Return Values: GSL_EUNDRFLW, GSL_EOVRFLW
@@ -80,7 +98,11 @@ These routines compute the complete Fermi-Dirac integral
 
 @deftypefun double gsl_sf_fermi_dirac_half (double @var{x})
 @deftypefunx int gsl_sf_fermi_dirac_half_e (double @var{x}, gsl_sf_result * @var{result})
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 These routines compute the complete Fermi-Dirac integral 
+=======
+These routines compute the complete Fermi-Dirac integral
+>>>>>>> config
 @c{$F_{1/2}(x)$}
 @math{F_@{1/2@}(x)}.
 @comment Exceptional Return Values: GSL_EUNDRFLW, GSL_EOVRFLW
@@ -88,7 +110,11 @@ These routines compute the complete Fermi-Dirac integral
 
 @deftypefun double gsl_sf_fermi_dirac_3half (double @var{x})
 @deftypefunx int gsl_sf_fermi_dirac_3half_e (double @var{x}, gsl_sf_result * @var{result})
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 These routines compute the complete Fermi-Dirac integral 
+=======
+These routines compute the complete Fermi-Dirac integral
+>>>>>>> config
 @c{$F_{3/2}(x)$}
 @math{F_@{3/2@}(x)}.
 @comment Exceptional Return Values: GSL_EUNDRFLW, GSL_EOVRFLW
@@ -122,4 +148,7 @@ of zero,
 @math{F_0(x,b) = \ln(1 + e^@{b-x@}) - (b-x)}.
 @comment Exceptional Return Values: GSL_EUNDRFLW, GSL_EDOM
 @end deftypefun
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

@@ -1,17 +1,31 @@
 /* specfunc/mathieu_charv.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2002, 2009 Lowell Johnson
  * 
+=======
+ *
+ * Copyright (C) 2002, 2009 Lowell Johnson
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
@@ -38,16 +52,25 @@ static double ceer(int order, double qq, double aa, int nterms)
 
   double term, term1;
   int ii, n1;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
 
   if (order == 0)
       term = 0.0;
   else
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   {      
+=======
+  {
+>>>>>>> config
       term = 2.0*qq*qq/aa;
 
       if (order != 2)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           n1 = order/2 - 1;
 
           for (ii=0; ii<n1; ii++)
@@ -55,17 +78,34 @@ static double ceer(int order, double qq, double aa, int nterms)
       }
   }
   
+=======
+	  n1 = order/2 - 1;
+
+	  for (ii=0; ii<n1; ii++)
+	      term = qq*qq/(aa - 4.0*(ii+1)*(ii+1) - term);
+      }
+  }
+
+>>>>>>> config
   term += order*order;
 
   term1 = 0.0;
 
   for (ii=0; ii<nterms; ii++)
       term1 = qq*qq/
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         (aa - (order + 2.0*(nterms - ii))*(order + 2.0*(nterms - ii)) - term1);
 
   if (order == 0)
       term1 *= 2.0;
   
+=======
+	(aa - (order + 2.0*(nterms - ii))*(order + 2.0*(nterms - ii)) - term1);
+
+  if (order == 0)
+      term1 *= 2.0;
+
+>>>>>>> config
   return (term + term1 - aa);
 }
 
@@ -85,7 +125,11 @@ static double ceor(int order, double qq, double aa, int nterms)
   term1 = 0.0;
   for (ii=0; ii<nterms; ii++)
       term1 = qq*qq/
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         (aa - (order + 2.0*(nterms - ii))*(order + 2.0*(nterms - ii)) - term1);
+=======
+	(aa - (order + 2.0*(nterms - ii))*(order + 2.0*(nterms - ii)) - term1);
+>>>>>>> config
 
   return (term + term1 - aa);
 }
@@ -106,7 +150,11 @@ static double seer(int order, double qq, double aa, int nterms)
   term1 = 0.0;
   for (ii=0; ii<nterms; ii++)
       term1 = qq*qq/
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         (aa - (order + 2.0*(nterms - ii))*(order + 2.0*(nterms - ii)) - term1);
+=======
+	(aa - (order + 2.0*(nterms - ii))*(order + 2.0*(nterms - ii)) - term1);
+>>>>>>> config
 
   return (term + term1 - aa);
 }
@@ -127,7 +175,11 @@ static double seor(int order, double qq, double aa, int nterms)
   term1 = 0.0;
   for (ii=0; ii<nterms; ii++)
       term1 = qq*qq/
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         (aa - (order + 2.0*(nterms - ii))*(order + 2.0*(nterms - ii)) - term1);
+=======
+	(aa - (order + 2.0*(nterms - ii))*(order + 2.0*(nterms - ii)) - term1);
+>>>>>>> config
 
   return (term + term1 - aa);
 }
@@ -153,7 +205,11 @@ static double asymptotic(int order, double qq)
   n2 = nn*nn;
   n4 = n2*n2;
   n6 = n4*n2;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   hh = 2*sqrt(qq);
   ah = 16*hh;
   ah2 = ah*ah;
@@ -178,11 +234,19 @@ static double solve_cubic(double c2, double c1, double c0)
 {
   double qq, rr, ww, ss, tt;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   qq = (3*c1 - c2*c2)/9;
   rr = (9*c2*c1 - 27*c0 - 2*c2*c2*c2)/54;
   ww = qq*qq*qq + rr*rr;
   
+=======
+
+  qq = (3*c1 - c2*c2)/9;
+  rr = (9*c2*c1 - 27*c0 - 2*c2*c2*c2)/54;
+  ww = qq*qq*qq + rr*rr;
+
+>>>>>>> config
   if (ww >= 0)
   {
       double t1 = rr + sqrt(ww);
@@ -196,7 +260,11 @@ static double solve_cubic(double c2, double c1, double c0)
       ss = 2*sqrt(-qq)*cos((theta + 4*M_PI)/3.);
       tt = 0.0;
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   return (ss + tt - c2/3);
 }
 
@@ -212,6 +280,7 @@ static double approx_c(int order, double qq)
   {
     GSL_ERROR_VAL("Undefined order for Mathieu function", GSL_EINVAL, 0.0);
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   switch (order)
   {
@@ -278,28 +347,109 @@ static double approx_c(int order, double qq)
           }
           else
               return order*order;
+=======
+
+  switch (order)
+  {
+      case 0:
+	  if (qq <= 4)
+	      return (2 - sqrt(4 + 2*qq*qq)); /* Eqn. 31 */
+	  else
+	      return asymptotic(order, qq);
+	  break;
+
+      case 1:
+	  if (qq <= 4)
+	      return (5 + 0.5*(qq - sqrt(5*qq*qq - 16*qq + 64))); /* Eqn. 32 */
+	  else
+	      return asymptotic(order, qq);
+	  break;
+
+      case 2:
+	  if (qq <= 3)
+	  {
+	      c2 = -8.0;  /* Eqn. 33 */
+	      c1 = -48 - 3*qq*qq;
+	      c0 = 20*qq*qq;
+	  }
+	  else
+	      return asymptotic(order, qq);
+	  break;
+
+      case 3:
+	  if (qq <= 6.25)
+	  {
+	      c2 = -qq - 8;  /* Eqn. 34 */
+	      c1 = 16*qq - 128 - 2*qq*qq;
+	      c0 = qq*qq*(qq + 8);
+	  }
+	  else
+	      return asymptotic(order, qq);
+	  break;
+
+      default:
+	  if (order < 70)
+	  {
+	      if (1.7*order > 2*sqrt(qq))
+	      {
+		  /* Eqn. 30 */
+		  double n2 = (double)(order*order);
+		  double n22 = (double)((n2 - 1)*(n2 - 1));
+		  double q2 = qq*qq;
+		  double q4 = q2*q2;
+		  approx = n2 + 0.5*q2/(n2 - 1);
+		  approx += (5*n2 + 7)*q4/(32*n22*(n2 - 1)*(n2 - 4));
+		  approx += (9*n2*n2 + 58*n2 + 29)*q4*q2/
+		      (64*n22*n22*(n2 - 1)*(n2 - 4)*(n2 - 9));
+		  if (1.4*order < 2*sqrt(qq))
+		  {
+		      approx += asymptotic(order, qq);
+		      approx *= 0.5;
+		  }
+	      }
+	      else
+		  approx = asymptotic(order, qq);
+
+	      return approx;
+	  }
+	  else
+	      return order*order;
+>>>>>>> config
   }
 
   /* Solve the cubic x^3 + c2*x^2 + c1*x + c0 = 0 */
   approx = solve_cubic(c2, c1, c0);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
   if ( approx < 0 && sqrt(qq) > 0.1*order )
       return asymptotic(order-1, qq);
   else
       return (order*order + fabs(approx));
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
 static double approx_s(int order, double qq)
 {
   double approx;
   double c0, c1, c2;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   if (order < 1)
   {
     GSL_ERROR_VAL("Undefined order for Mathieu function", GSL_EINVAL, 0.0);
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   switch (order)
   {
@@ -355,11 +505,72 @@ static double approx_s(int order, double qq)
           }
           else
               return order*order;
+=======
+
+  switch (order)
+  {
+      case 1:
+	  if (qq <= 4)
+	      return (5 - 0.5*(qq + sqrt(5*qq*qq + 16*qq + 64))); /* Eqn. 35 */
+	  else
+	      return asymptotic(order-1, qq);
+	  break;
+
+      case 2:
+	  if (qq <= 5)
+	      return (10 - sqrt(36 + qq*qq)); /* Eqn. 36 */
+	  else
+	      return asymptotic(order-1, qq);
+	  break;
+
+      case 3:
+	  if (qq <= 6.25)
+	  {
+	      c2 = qq - 8; /* Eqn. 37 */
+	      c1 = -128 - 16*qq - 2*qq*qq;
+	      c0 = qq*qq*(8 - qq);
+	  }
+	  else
+	      return asymptotic(order-1, qq);
+	  break;
+
+      default:
+	  if (order < 70)
+	  {
+	      if (1.7*order > 2*sqrt(qq))
+	      {
+		  /* Eqn. 30 */
+		  double n2 = (double)(order*order);
+		  double n22 = (double)((n2 - 1)*(n2 - 1));
+		  double q2 = qq*qq;
+		  double q4 = q2*q2;
+		  approx = n2 + 0.5*q2/(n2 - 1);
+		  approx += (5*n2 + 7)*q4/(32*n22*(n2 - 1)*(n2 - 4));
+		  approx += (9*n2*n2 + 58*n2 + 29)*q4*q2/
+		      (64*n22*n22*(n2 - 1)*(n2 - 4)*(n2 - 9));
+		  if (1.4*order < 2*sqrt(qq))
+		  {
+		      approx += asymptotic(order-1, qq);
+		      approx *= 0.5;
+		  }
+	      }
+	      else
+		  approx = asymptotic(order-1, qq);
+
+	      return approx;
+	  }
+	  else
+	      return order*order;
+>>>>>>> config
   }
 
   /* Solve the cubic x^3 + c2*x^2 + c1*x + c0 = 0 */
   approx = solve_cubic(c2, c1, c0);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
   if ( approx < 0 && sqrt(qq) > 0.1*order )
       return asymptotic(order-1, qq);
   else
@@ -395,17 +606,29 @@ int gsl_sf_mathieu_a(int order, double qq, gsl_sf_result *result)
   if (qq < 0.0)
   {
       if (even_odd == 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           return gsl_sf_mathieu_a(order, -qq, result);
       else
           return gsl_sf_mathieu_b(order, -qq, result);
   }
   
+=======
+	  return gsl_sf_mathieu_a(order, -qq, result);
+      else
+	  return gsl_sf_mathieu_b(order, -qq, result);
+  }
+
+>>>>>>> config
   /* Compute an initial approximation for the characteristic value. */
   aa_approx = approx_c(order, qq);
 
   /* Save the original approximation for later comparison. */
   aa_orig = aa = aa_approx;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   /* Loop as long as the final value is not near the approximate value
      (with a max limit to avoid potential infinite loop). */
   while (counter < maxcount)
@@ -413,6 +636,7 @@ int gsl_sf_mathieu_a(int order, double qq, gsl_sf_result *result)
       a1 = aa + 0.001;
       ii = 0;
       if (even_odd == 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           fa1 = ceer(order, qq, a1, nterms);
       else
           fa1 = ceor(order, qq, a1, nterms);
@@ -482,13 +706,88 @@ int gsl_sf_mathieu_a(int order, double qq, gsl_sf_result *result)
 
   result->val = aa;
       
+=======
+	  fa1 = ceer(order, qq, a1, nterms);
+      else
+	  fa1 = ceor(order, qq, a1, nterms);
+
+      for (;;)
+      {
+	  if (even_odd == 0)
+	      fa = ceer(order, qq, aa, nterms);
+	  else
+	      fa = ceor(order, qq, aa, nterms);
+
+	  a2 = a1;
+	  a1 = aa;
+
+	  if (fa == fa1)
+	  {
+	      result->err = GSL_DBL_EPSILON;
+	      break;
+	  }
+	  aa -= (aa - a2)/(fa - fa1)*fa;
+	  dela = fabs(aa - a2);
+	  if (dela < GSL_DBL_EPSILON)
+	  {
+	      result->err = GSL_DBL_EPSILON;
+	      break;
+	  }
+	  if (ii > 40)
+	  {
+	      result->err = dela;
+	      break;
+	  }
+	  fa1 = fa;
+	  ii++;
+      }
+
+      /* If the solution found is not near the original approximation,
+	 tweak the approximate value, and try again. */
+      if (fabs(aa - aa_orig) > (3 + 0.01*order*fabs(aa_orig)) ||
+	  (order > 10 && fabs(aa - aa_orig) > 1.5*order))
+      {
+	  counter++;
+	  if (counter == maxcount)
+	  {
+	      result->err = fabs(aa - aa_orig);
+	      break;
+	  }
+	  if (aa > aa_orig)
+	  {
+	      if (dir == 1)
+		  da /= 2;
+	      dir = -1;
+	  }
+	  else
+	  {
+	      if (dir == -1)
+		  da /= 2;
+	      dir = 1;
+	  }
+	  aa_approx += dir*da*counter;
+	  aa = aa_approx;
+
+	  continue;
+      }
+      else
+	  break;
+  }
+
+  result->val = aa;
+
+>>>>>>> config
   /* If we went through the maximum number of retries and still didn't
      find the solution, let us know. */
   if (counter == maxcount)
   {
       GSL_ERROR("Wrong characteristic Mathieu value", GSL_EFAILED);
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   return GSL_SUCCESS;
 }
 
@@ -527,6 +826,7 @@ int gsl_sf_mathieu_b(int order, double qq, gsl_sf_result *result)
   if (qq < 0.0)
   {
       if (even_odd == 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           return gsl_sf_mathieu_b(order, -qq, result);
       else
           return gsl_sf_mathieu_a(order, -qq, result);
@@ -538,6 +838,19 @@ int gsl_sf_mathieu_b(int order, double qq, gsl_sf_result *result)
   /* Save the original approximation for later comparison. */
   aa_orig = aa = aa_approx;
   
+=======
+	  return gsl_sf_mathieu_b(order, -qq, result);
+      else
+	  return gsl_sf_mathieu_a(order, -qq, result);
+  }
+
+  /* Compute an initial approximation for the characteristic value. */
+  aa_approx = approx_s(order, qq);
+
+  /* Save the original approximation for later comparison. */
+  aa_orig = aa = aa_approx;
+
+>>>>>>> config
   /* Loop as long as the final value is not near the approximate value
      (with a max limit to avoid potential infinite loop). */
   while (counter < maxcount)
@@ -545,6 +858,7 @@ int gsl_sf_mathieu_b(int order, double qq, gsl_sf_result *result)
       a1 = aa + 0.001;
       ii = 0;
       if (even_odd == 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           fa1 = seer(order, qq, a1, nterms);
       else
           fa1 = seor(order, qq, a1, nterms);
@@ -614,13 +928,88 @@ int gsl_sf_mathieu_b(int order, double qq, gsl_sf_result *result)
   
   result->val = aa;
       
+=======
+	  fa1 = seer(order, qq, a1, nterms);
+      else
+	  fa1 = seor(order, qq, a1, nterms);
+
+      for (;;)
+      {
+	  if (even_odd == 0)
+	      fa = seer(order, qq, aa, nterms);
+	  else
+	      fa = seor(order, qq, aa, nterms);
+
+	  a2 = a1;
+	  a1 = aa;
+
+	  if (fa == fa1)
+	  {
+	      result->err = GSL_DBL_EPSILON;
+	      break;
+	  }
+	  aa -= (aa - a2)/(fa - fa1)*fa;
+	  dela = fabs(aa - a2);
+	  if (dela < 1e-18)
+	  {
+	      result->err = GSL_DBL_EPSILON;
+	      break;
+	  }
+	  if (ii > 40)
+	  {
+	      result->err = dela;
+	      break;
+	  }
+	  fa1 = fa;
+	  ii++;
+      }
+
+      /* If the solution found is not near the original approximation,
+	 tweak the approximate value, and try again. */
+      if (fabs(aa - aa_orig) > (3 + 0.01*order*fabs(aa_orig)) ||
+	  (order > 10 && fabs(aa - aa_orig) > 1.5*order))
+      {
+	  counter++;
+	  if (counter == maxcount)
+	  {
+	      result->err = fabs(aa - aa_orig);
+	      break;
+	  }
+	  if (aa > aa_orig)
+	  {
+	      if (dir == 1)
+		  da /= 2;
+	      dir = -1;
+	  }
+	  else
+	  {
+	      if (dir == -1)
+		  da /= 2;
+	      dir = 1;
+	  }
+	  aa_approx += dir*da*counter;
+	  aa = aa_approx;
+
+	  continue;
+      }
+      else
+	  break;
+  }
+
+  result->val = aa;
+
+>>>>>>> config
   /* If we went through the maximum number of retries and still didn't
      find the solution, let us know. */
   if (counter == maxcount)
   {
       GSL_ERROR("Wrong characteristic Mathieu value", GSL_EFAILED);
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   return GSL_SUCCESS;
 }
 
@@ -673,7 +1062,11 @@ int gsl_sf_mathieu_b(int order, double qq, gsl_sf_result *result)
  *    this version dated august 1983.
  */
 static int figi(int nn, double *tt, double *dd, double *ee,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                 double *e2)
+=======
+		double *e2)
+>>>>>>> config
 {
   int ii;
 
@@ -681,6 +1074,7 @@ static int figi(int nn, double *tt, double *dd, double *ee,
   {
       if (ii != 0)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           e2[ii] = tt[3*ii]*tt[3*(ii-1)+2];
 
           if (e2[ii] < 0.0)
@@ -698,6 +1092,25 @@ static int figi(int nn, double *tt, double *dd, double *ee,
           }
 
           ee[ii] = sqrt(e2[ii]);
+=======
+	  e2[ii] = tt[3*ii]*tt[3*(ii-1)+2];
+
+	  if (e2[ii] < 0.0)
+	  {
+	      /* set error -- product of some pair of off-diagonal
+		 elements is negative */
+	      return (nn + ii);
+	  }
+
+	  if (e2[ii] == 0.0 && (tt[3*ii] != 0.0 || tt[3*(ii-1)+2] != 0.0))
+	  {
+	      /* set error -- product of some pair of off-diagonal
+		 elements is zero with one member non-zero */
+	      return (-1*(3*nn + ii));
+	  }
+
+	  ee[ii] = sqrt(e2[ii]);
+>>>>>>> config
       }
 
       dd[ii] = tt[3*ii+1];
@@ -713,16 +1126,28 @@ int gsl_sf_mathieu_a_array(int order_min, int order_max, double qq, gsl_sf_mathi
       extra_values = work->extra_values, ii, jj;
   int status;
   double *tt = work->tt, *dd = work->dd, *ee = work->ee, *e2 = work->e2,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          *zz = work->zz, *aa = work->aa;
   gsl_matrix_view mat, evec;
   gsl_vector_view eval;
   gsl_eigen_symmv_workspace *wmat = work->wmat;
   
+=======
+	 *zz = work->zz, *aa = work->aa;
+  gsl_matrix_view mat, evec;
+  gsl_vector_view eval;
+  gsl_eigen_symmv_workspace *wmat = work->wmat;
+
+>>>>>>> config
   if (order_max > work->size || order_max <= order_min || order_min < 0)
     {
       GSL_ERROR ("invalid range [order_min,order_max]", GSL_EINVAL);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   /* Convert the nonsymmetric tridiagonal matrix to a symmetric tridiagonal
      form. */
 
@@ -740,10 +1165,17 @@ int gsl_sf_mathieu_a_array(int order_min, int order_max, double qq, gsl_sf_mathi
   tt[3*even_order-1] = 0.0;
 
   tt[3] *= 2;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   status = figi((signed int)even_order, tt, dd, ee, e2);
 
   if (status) 
+=======
+
+  status = figi((signed int)even_order, tt, dd, ee, e2);
+
+  if (status)
+>>>>>>> config
     {
       GSL_ERROR("Internal error in tridiagonal Mathieu matrix", GSL_EFAILED);
     }
@@ -762,27 +1194,45 @@ int gsl_sf_mathieu_a_array(int order_min, int order_max, double qq, gsl_sf_mathi
   }
   zz[even_order*(even_order-1)+even_order-2] = ee[even_order-1];
   zz[even_order*even_order-1] = dd[even_order-1];
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   /* Compute (and sort) the eigenvalues of the matrix. */
   mat = gsl_matrix_view_array(zz, even_order, even_order);
   eval = gsl_vector_subvector(work->eval, 0, even_order);
   evec = gsl_matrix_submatrix(work->evec, 0, 0, even_order, even_order);
   gsl_eigen_symmv(&mat.matrix, &eval.vector, &evec.matrix, wmat);
   gsl_eigen_symmv_sort(&eval.vector, &evec.matrix, GSL_EIGEN_SORT_VAL_ASC);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   for (ii=0; ii<even_order-extra_values; ii++)
       aa[2*ii] = gsl_vector_get(&eval.vector, ii);
   
+=======
+
+  for (ii=0; ii<even_order-extra_values; ii++)
+      aa[2*ii] = gsl_vector_get(&eval.vector, ii);
+
+>>>>>>> config
   /* Fill the period 2\pi matrix. */
   for (ii=0; ii<odd_order*odd_order; ii++)
       zz[ii] = 0.0;
   for (ii=0; ii<odd_order; ii++)
       for (jj=0; jj<odd_order; jj++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           if (ii == jj)
               zz[ii*odd_order+jj] = (2*ii + 1)*(2*ii + 1);
           else if (ii == jj + 1 || ii + 1 == jj)
               zz[ii*odd_order+jj] = qq;
+=======
+	  if (ii == jj)
+	      zz[ii*odd_order+jj] = (2*ii + 1)*(2*ii + 1);
+	  else if (ii == jj + 1 || ii + 1 == jj)
+	      zz[ii*odd_order+jj] = qq;
+>>>>>>> config
       }
   zz[0] += qq;
 
@@ -800,7 +1250,11 @@ int gsl_sf_mathieu_a_array(int order_min, int order_max, double qq, gsl_sf_mathi
     {
       result_array[ii - order_min] = aa[ii];
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   return GSL_SUCCESS;
 }
 
@@ -825,10 +1279,17 @@ int gsl_sf_mathieu_b_array(int order_min, int order_max, double qq, gsl_sf_mathi
   for (ii=0; ii<even_order; ii++)
       for (jj=0; jj<even_order; jj++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           if (ii == jj)
               zz[ii*even_order+jj] = 4*(ii + 1)*(ii + 1);
           else if (ii == jj + 1 || ii + 1 == jj)
               zz[ii*even_order+jj] = qq;
+=======
+	  if (ii == jj)
+	      zz[ii*even_order+jj] = 4*(ii + 1)*(ii + 1);
+	  else if (ii == jj + 1 || ii + 1 == jj)
+	      zz[ii*even_order+jj] = qq;
+>>>>>>> config
       }
 
   /* Compute (and sort) the eigenvalues of the matrix. */
@@ -841,17 +1302,28 @@ int gsl_sf_mathieu_b_array(int order_min, int order_max, double qq, gsl_sf_mathi
   bb[0] = 0.0;
   for (ii=0; ii<even_order-extra_values; ii++)
       bb[2*(ii+1)] = gsl_vector_get(&eval.vector, ii);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   /* Fill the period 2\pi matrix. */
   for (ii=0; ii<odd_order*odd_order; ii++)
       zz[ii] = 0.0;
   for (ii=0; ii<odd_order; ii++)
       for (jj=0; jj<odd_order; jj++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           if (ii == jj)
               zz[ii*odd_order+jj] = (2*ii + 1)*(2*ii + 1);
           else if (ii == jj + 1 || ii + 1 == jj)
               zz[ii*odd_order+jj] = qq;
+=======
+	  if (ii == jj)
+	      zz[ii*odd_order+jj] = (2*ii + 1)*(2*ii + 1);
+	  else if (ii == jj + 1 || ii + 1 == jj)
+	      zz[ii*odd_order+jj] = qq;
+>>>>>>> config
       }
 
   zz[0] -= qq;
@@ -862,9 +1334,15 @@ int gsl_sf_mathieu_b_array(int order_min, int order_max, double qq, gsl_sf_mathi
   evec = gsl_matrix_submatrix(work->evec, 0, 0, odd_order, odd_order);
   gsl_eigen_symmv(&mat.matrix, &eval.vector, &evec.matrix, wmat);
   gsl_eigen_symmv_sort(&eval.vector, &evec.matrix, GSL_EIGEN_SORT_VAL_ASC);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   for (ii=0; ii<odd_order-extra_values; ii++)
       bb[2*ii+1] = gsl_vector_get(&eval.vector, ii);  
+=======
+
+  for (ii=0; ii<odd_order-extra_values; ii++)
+      bb[2*ii+1] = gsl_vector_get(&eval.vector, ii);
+>>>>>>> config
 
   for (ii = order_min ; ii <= order_max ; ii++)
     {

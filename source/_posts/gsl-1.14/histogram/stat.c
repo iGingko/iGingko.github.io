@@ -18,8 +18,13 @@
  */
 /***************************************************************
  *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * File gsl_histogram_stat.c: 
  * Routines for statisticalcomputations on histograms. 
+=======
+ * File gsl_histogram_stat.c:
+ * Routines for statisticalcomputations on histograms.
+>>>>>>> config
  * Need GSL library and header.
  * Contains the routines:
  * gsl_histogram_mean    compute histogram mean
@@ -47,7 +52,11 @@ gsl_histogram_mean (const gsl_histogram * h)
   /* Compute the bin-weighted arithmetic mean M of a histogram using the
      recurrence relation
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
      M(n) = M(n-1) + (x[n] - M(n-1)) (w(n)/(W(n-1) + w(n))) 
+=======
+     M(n) = M(n-1) + (x[n] - M(n-1)) (w(n)/(W(n-1) + w(n)))
+>>>>>>> config
      W(n) = W(n-1) + w(n)
 
    */
@@ -61,10 +70,17 @@ gsl_histogram_mean (const gsl_histogram * h)
       double wi = h->bin[i];
 
       if (wi > 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           W += wi;
           wmean += (xi - wmean) * (wi / W);
         }
+=======
+	{
+	  W += wi;
+	  wmean += (xi - wmean) * (wi / W);
+	}
+>>>>>>> config
     }
 
   return wmean;
@@ -92,10 +108,17 @@ gsl_histogram_sigma (const gsl_histogram * h)
       double wi = h->bin[i];
 
       if (wi > 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           W += wi;
           wmean += (xi - wmean) * (wi / W);
         }
+=======
+	{
+	  W += wi;
+	  wmean += (xi - wmean) * (wi / W);
+	}
+>>>>>>> config
     }
 
   /* Compute the variance */
@@ -108,9 +131,15 @@ gsl_histogram_sigma (const gsl_histogram * h)
       double wi = h->bin[i];
 
       if (wi > 0) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         const long double delta = (xi - wmean);
         W += wi ;
         wvariance += (delta * delta - wvariance) * (wi / W);
+=======
+	const long double delta = (xi - wmean);
+	W += wi ;
+	wvariance += (delta * delta - wvariance) * (wi / W);
+>>>>>>> config
       }
     }
 
@@ -125,7 +154,11 @@ gsl_histogram_sigma (const gsl_histogram * h)
   sum up all bins of histogram
  */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 double 
+=======
+double
+>>>>>>> config
 gsl_histogram_sum(const gsl_histogram * h)
 {
   double sum=0;
@@ -138,4 +171,7 @@ gsl_histogram_sum(const gsl_histogram * h)
 
   return sum;
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

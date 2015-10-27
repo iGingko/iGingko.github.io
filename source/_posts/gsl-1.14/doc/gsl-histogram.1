@@ -6,7 +6,11 @@ gsl-histogram - compute histogram of data on stdin
 .SH SYNOPSYS
 .B gsl-histogram xmin xmax [n]
 .SH DESCRIPTION
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 .B gsl-histogram 
+=======
+.B gsl-histogram
+>>>>>>> config
 is a demonstration program for the GNU Scientific Library.
 It takes three arguments, specifying the upper and lower bounds of the
 histogram and the number of bins.  It then reads numbers from `stdin',
@@ -18,9 +22,15 @@ are used.
 Here is an example.  We generate 10000 random samples from a Cauchy
 distribution with a width of 30 and histogram them over the range -100 to
 100, using 200 bins.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  
      gsl-randist 0 10000 cauchy 30 | gsl-histogram -100 100 200 > histogram.dat
  
+=======
+
+     gsl-randist 0 10000 cauchy 30 | gsl-histogram -100 100 200 > histogram.dat
+
+>>>>>>> config
 A plot of the resulting histogram will show the familiar shape of the
 Cauchy distribution with fluctuations caused by the finite sample
 size.
@@ -32,10 +42,17 @@ size.
 .BR gsl-randist(1) .
 
 .SH AUTHOR
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 .B gsl-histogram 
 was written by Brian Gough.
 Copyright 1996-2000; for copying conditions see the GNU General
 Public Licence. 
+=======
+.B gsl-histogram
+was written by Brian Gough.
+Copyright 1996-2000; for copying conditions see the GNU General
+Public Licence.
+>>>>>>> config
 
 This manual page was added by the Dirk Eddelbuettel
 <edd@debian.org>, the Debian GNU/Linux maintainer for

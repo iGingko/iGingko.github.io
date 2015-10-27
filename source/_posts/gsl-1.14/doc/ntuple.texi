@@ -20,6 +20,7 @@ All the ntuple functions are defined in the header file
 @file{gsl_ntuple.h}
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * The ntuple struct::           
 * Creating ntuples::            
 * Opening an existing ntuple file::  
@@ -29,6 +30,17 @@ All the ntuple functions are defined in the header file
 * Histogramming ntuple values::  
 * Example ntuple programs::     
 * Ntuple References and Further Reading::  
+=======
+* The ntuple struct::
+* Creating ntuples::
+* Opening an existing ntuple file::
+* Writing ntuples::
+* Reading ntuples ::
+* Closing an ntuple file::
+* Histogramming ntuple values::
+* Example ntuple programs::
+* Ntuple References and Further Reading::
+>>>>>>> config
 @end menu
 
 @node The ntuple struct
@@ -82,7 +94,11 @@ size @var{ntuple->size} to the corresponding file.
 This function is a synonym for @code{gsl_ntuple_write}.
 @end deftypefun
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @node Reading ntuples 
+=======
+@node Reading ntuples
+>>>>>>> config
 @section Reading ntuples
 
 @deftypefun int gsl_ntuple_read (gsl_ntuple * @var{ntuple})
@@ -138,7 +154,11 @@ typedef struct @{
 
 @noindent
 In this case the struct component @var{function} should return the value
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 to be added to the histogram for the ntuple row.  
+=======
+to be added to the histogram for the ntuple row.
+>>>>>>> config
 
 @cindex histogram, from ntuple
 @cindex projection of ntuples
@@ -194,5 +214,8 @@ Note the cut-off at the lower bound.
 Further information on the use of ntuples can be found in the
 documentation for the @sc{cern} packages @sc{paw} and @sc{hbook}
 (available online).
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
+=======
+>>>>>>> config

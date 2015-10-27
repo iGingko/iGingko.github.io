@@ -1,17 +1,31 @@
 /* histogram/ntuple.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2000 Simone Piccardi
  * 
+=======
+ *
+ * Copyright (C) 2000 Simone Piccardi
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -24,7 +38,11 @@
 #include <gsl/gsl_errno.h>
 #include <gsl/gsl_ntuple.h>
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* 
+=======
+/*
+>>>>>>> config
  * gsl_ntuple_open:
  * Initialize an ntuple structure and create the related file
  */
@@ -37,7 +55,11 @@ gsl_ntuple_create (char *filename, void *ntuple_data, size_t size)
   if (ntuple == 0)
     {
       GSL_ERROR_VAL ("failed to allocate space for ntuple struct",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                      GSL_ENOMEM, 0);
+=======
+		     GSL_ENOMEM, 0);
+>>>>>>> config
     }
 
   ntuple->ntuple_data = ntuple_data;
@@ -54,7 +76,11 @@ gsl_ntuple_create (char *filename, void *ntuple_data, size_t size)
   return ntuple;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* 
+=======
+/*
+>>>>>>> config
  * gsl_ntuple_open:
  * Initialize an ntuple structure and open the related file
  */
@@ -67,7 +93,11 @@ gsl_ntuple_open (char *filename, void *ntuple_data, size_t size)
   if (ntuple == 0)
     {
       GSL_ERROR_VAL ("failed to allocate space for ntuple struct",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                      GSL_ENOMEM, 0);
+=======
+		     GSL_ENOMEM, 0);
+>>>>>>> config
     }
 
   ntuple->ntuple_data = ntuple_data;
@@ -78,14 +108,23 @@ gsl_ntuple_open (char *filename, void *ntuple_data, size_t size)
   if (ntuple->file == 0)
     {
       free (ntuple);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       GSL_ERROR_VAL ("unable to open ntuple file for reading", 
                      GSL_EFAILED, 0);
+=======
+      GSL_ERROR_VAL ("unable to open ntuple file for reading",
+		     GSL_EFAILED, 0);
+>>>>>>> config
     }
 
   return ntuple;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* 
+=======
+/*
+>>>>>>> config
  * gsl_ntuple_write:
  * write to file a data row, must be used in a loop!
  */
@@ -96,7 +135,11 @@ gsl_ntuple_write (gsl_ntuple * ntuple)
   size_t nwrite;
 
   nwrite = fwrite (ntuple->ntuple_data, ntuple->size,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                    1, ntuple->file);
+=======
+		   1, ntuple->file);
+>>>>>>> config
 
   if (nwrite != 1)
     {
@@ -114,7 +157,11 @@ gsl_ntuple_bookdata (gsl_ntuple * ntuple)
   return gsl_ntuple_write (ntuple);
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* 
+=======
+/*
+>>>>>>> config
  * gsl_ntuple_read:
  * read form file a data row, must be used in a loop!
  */
@@ -139,10 +186,17 @@ gsl_ntuple_read (gsl_ntuple * ntuple)
   return GSL_SUCCESS;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* 
  * gsl_ntuple_project:
  * fill an histogram with an ntuple file contents, use
  * SelVal and SelFunc user defined functions to get 
+=======
+/*
+ * gsl_ntuple_project:
+ * fill an histogram with an ntuple file contents, use
+ * SelVal and SelFunc user defined functions to get
+>>>>>>> config
  * the value to book and the selection funtion
  */
 
@@ -150,14 +204,20 @@ gsl_ntuple_read (gsl_ntuple * ntuple)
 
 int
 gsl_ntuple_project (gsl_histogram * h, gsl_ntuple * ntuple,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                     gsl_ntuple_value_fn * value_func, 
                     gsl_ntuple_select_fn * select_func)
+=======
+		    gsl_ntuple_value_fn * value_func,
+		    gsl_ntuple_select_fn * select_func)
+>>>>>>> config
 {
   size_t nread;
 
   do
     {
       nread = fread (ntuple->ntuple_data, ntuple->size,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                      1, ntuple->file);
 
       if (nread == 0 && feof(ntuple->file))
@@ -174,6 +234,24 @@ gsl_ntuple_project (gsl_histogram * h, gsl_ntuple * ntuple,
         {
           gsl_histogram_increment (h, EVAL(value_func, ntuple->ntuple_data));
         }
+=======
+		     1, ntuple->file);
+
+      if (nread == 0 && feof(ntuple->file))
+	{
+	  break ;
+	}
+
+      if (nread != 1)
+	{
+	  GSL_ERROR ("failed to read ntuple for projection", GSL_EFAILED);
+	}
+
+      if (EVAL(select_func, ntuple->ntuple_data))
+	{
+	  gsl_histogram_increment (h, EVAL(value_func, ntuple->ntuple_data));
+	}
+>>>>>>> config
     }
   while (1);
 
@@ -181,7 +259,11 @@ gsl_ntuple_project (gsl_histogram * h, gsl_ntuple * ntuple,
 }
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* 
+=======
+/*
+>>>>>>> config
  * gsl_ntuple_close:
  * close the ntuple file and free the memory
  */
@@ -190,7 +272,11 @@ int
 gsl_ntuple_close (gsl_ntuple * ntuple)
 {
   int status = fclose (ntuple->file);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   if (status)
     {
       GSL_ERROR ("failed to close ntuple file", GSL_EFAILED);

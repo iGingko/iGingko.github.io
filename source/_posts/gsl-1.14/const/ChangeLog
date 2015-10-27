@@ -23,7 +23,11 @@
 
 	* const.el: added CGS and MKS systems back in, with CGSM electrical
 	units excluded from CGS, for backwards compatibility
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	
+=======
+
+>>>>>>> config
 2003-11-27  Brian Gough  <bjg@network-theory.co.uk>
 
 	* const.el (gsl-constants): added stefan-boltzmann constant and
@@ -43,14 +47,24 @@
 Sat Jul 20 21:25:56 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* calc-units-update.el (math-additional-units): changed setvar to
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	setq, otherwise the new values do not override the original values
+=======
+	setq, otherwise the new values do not override the original values
+>>>>>>> config
 
 Wed May 29 22:41:31 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* calc-units-update.el (math-additional-units): updated unit
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	values, in a backwards compatible way.  Made mue an absolute
  	value, and put Ryd in energy units.
 	
+=======
+	values, in a backwards compatible way.  Made mue an absolute
+	value, and put Ryd in energy units.
+
+>>>>>>> config
 2002-05-18  Jochen Küpper  <jochen@unc.edu>
 
 	* calc-units-update.el (math-additional-units): Add this file to
@@ -60,22 +74,38 @@ Wed May 29 22:41:31 2002  Brian Gough  <bjg@network-theory.co.uk>
 Mon Apr  1 19:27:57 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* const.el (gsl-constants): Added newton, dyne, joule, erg and
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	power-of-ten prefixes, Mega, Giga, Tera, etc.
+=======
+	power-of-ten prefixes, Mega, Giga, Tera, etc.
+>>>>>>> config
 
 Tue Jan  8 21:48:56 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* const.el (gsl-constants): added bohr_radius and
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	vacuum_permittivity
+=======
+	vacuum_permittivity
+>>>>>>> config
 
 Tue Sep 25 15:15:33 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* const.el (fn): make all output double precision to avoid
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	possibility of unexpected integer division.
+=======
+	possibility of unexpected integer division.
+>>>>>>> config
 	(gsl-constants): fix definition of barn and btu
 	(gsl-constants): added solar mass
 
 Tue Jan 23 16:19:50 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* const.el (gsl-constants): fixed definition of POINT (from pt to
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	point, was previously measuring 'pints')
 
+=======
+	point, was previously measuring 'pints')
+>>>>>>> config

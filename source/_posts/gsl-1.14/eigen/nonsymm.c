@@ -1,17 +1,31 @@
 /* eigen/nonsymm.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2006 Patrick Alken
  * 
+=======
+ *
+ * Copyright (C) 2006 Patrick Alken
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -58,7 +72,11 @@ gsl_eigen_nonsymm_alloc(const size_t n)
   if (n == 0)
     {
       GSL_ERROR_NULL ("matrix dimension must be positive integer",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       GSL_EINVAL);
+=======
+		      GSL_EINVAL);
+>>>>>>> config
     }
 
   w = (gsl_eigen_nonsymm_workspace *)
@@ -128,13 +146,22 @@ gsl_eigen_nonsymm_params()
 problem.
 
 Inputs: compute_t - 1 if we want to compute T, 0 if not
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         balance   - 1 if we want to balance the matrix, 0 if not
         w         - nonsymm workspace
+=======
+	balance   - 1 if we want to balance the matrix, 0 if not
+	w         - nonsymm workspace
+>>>>>>> config
 */
 
 void
 gsl_eigen_nonsymm_params (const int compute_t, const int balance,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                           gsl_eigen_nonsymm_workspace *w)
+=======
+			  gsl_eigen_nonsymm_workspace *w)
+>>>>>>> config
 {
   gsl_eigen_francis_T(compute_t, w->francis_workspace_p);
   w->do_balance = balance;
@@ -158,8 +185,13 @@ Z is a matrix of Schur vectors which is not computed by
 this algorithm. See gsl_eigen_nonsymm_Z().
 
 Inputs: A    - general real matrix
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         eval - where to store eigenvalues
         w    - workspace
+=======
+	eval - where to store eigenvalues
+	w    - workspace
+>>>>>>> config
 
 Return: success or error
 
@@ -170,7 +202,11 @@ Notes: If T is computed, it is stored in A on output. Otherwise
 
 int
 gsl_eigen_nonsymm (gsl_matrix * A, gsl_vector_complex * eval,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                    gsl_eigen_nonsymm_workspace * w)
+=======
+		   gsl_eigen_nonsymm_workspace * w)
+>>>>>>> config
 {
   const size_t N = A->size1;
 
@@ -189,15 +225,23 @@ gsl_eigen_nonsymm (gsl_matrix * A, gsl_vector_complex * eval,
       int s;
 
       if (w->do_balance)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           /* balance the matrix */
           gsl_linalg_balance_matrix(A, w->diag);
         }
+=======
+	{
+	  /* balance the matrix */
+	  gsl_linalg_balance_matrix(A, w->diag);
+	}
+>>>>>>> config
 
       /* compute the Hessenberg reduction of A */
       gsl_linalg_hessenberg_decomp(A, w->tau);
 
       if (w->Z)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           /*
            * initialize the matrix Z to U, which is the matrix used
@@ -225,6 +269,35 @@ gsl_eigen_nonsymm (gsl_matrix * A, gsl_vector_complex * eval,
           /* find the eigenvalues only */
           s = gsl_eigen_francis(A, eval, w->francis_workspace_p);
         }
+=======
+	{
+	  /*
+	   * initialize the matrix Z to U, which is the matrix used
+	   * to construct the Hessenberg reduction.
+	   */
+
+	  /* compute U and store it in Z */
+	  gsl_linalg_hessenberg_unpack(A, w->tau, w->Z);
+
+	  /* find the eigenvalues and Schur vectors */
+	  s = gsl_eigen_francis_Z(A, eval, w->Z, w->francis_workspace_p);
+
+	  if (w->do_balance)
+	    {
+	      /*
+	       * The Schur vectors in Z are the vectors for the balanced
+	       * matrix. We now must undo the balancing to get the
+	       * vectors for the original matrix A.
+	       */
+	      gsl_linalg_balance_accum(w->Z, w->diag);
+	    }
+	}
+      else
+	{
+	  /* find the eigenvalues only */
+	  s = gsl_eigen_francis(A, eval, w->francis_workspace_p);
+	}
+>>>>>>> config
 
       w->n_evals = w->francis_workspace_p->n_evals;
 
@@ -249,9 +322,15 @@ with the diagonal blocks of T giving us the eigenvalues.
 Z is the matrix of Schur vectors.
 
 Inputs: A    - general real matrix
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         eval - where to store eigenvalues
         Z    - where to store Schur vectors
         w    - workspace
+=======
+	eval - where to store eigenvalues
+	Z    - where to store Schur vectors
+	w    - workspace
+>>>>>>> config
 
 Return: success or error
 
@@ -262,7 +341,11 @@ Notes: If T is computed, it is stored in A on output. Otherwise
 
 int
 gsl_eigen_nonsymm_Z (gsl_matrix * A, gsl_vector_complex * eval,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                      gsl_matrix * Z, gsl_eigen_nonsymm_workspace * w)
+=======
+		     gsl_matrix * Z, gsl_eigen_nonsymm_workspace * w)
+>>>>>>> config
 {
   /* check matrix and vector sizes */
 

@@ -1,4 +1,8 @@
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 noinst_LTLIBRARIES = libgslrng.la 
+=======
+noinst_LTLIBRARIES = libgslrng.la
+>>>>>>> config
 
 pkginclude_HEADERS = gsl_rng.h
 
@@ -16,7 +20,13 @@ test_LDADD = libgslrng.la ../ieee-utils/libgslieeeutils.la ../err/libgslerr.la .
 TESTS = $(check_PROGRAMS)
 check_PROGRAMS = test
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 # benchmark_SOURCES = benchmark.c 
 # benchmark_LDADD = libgslrng.la ../err/libgslerr.la ../utils/libutils.la
 # rng_dump_SOURCES = rng-dump.c 
+=======
+# benchmark_SOURCES = benchmark.c
+# benchmark_LDADD = libgslrng.la ../err/libgslerr.la ../utils/libutils.la
+# rng_dump_SOURCES = rng-dump.c
+>>>>>>> config
 # rng_dump_LDADD = libgslrng.la ../err/libgslerr.la ../utils/libutils.la

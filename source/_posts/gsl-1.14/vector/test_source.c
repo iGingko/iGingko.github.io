@@ -1,17 +1,31 @@
 /* vector/test_source.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -45,15 +59,23 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
   size_t i, j;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (stride == 1) 
     {
       v = FUNCTION (gsl_vector, calloc) (N);
       
+=======
+  if (stride == 1)
+    {
+      v = FUNCTION (gsl_vector, calloc) (N);
+
+>>>>>>> config
       TEST(v->data == 0, "_calloc pointer");
       TEST(v->size != N, "_calloc size");
       TEST(v->stride != 1, "_calloc stride");
 
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         int status = (FUNCTION(gsl_vector,isnull)(v) != 1);
         TEST (status, "_isnull" DESC " on calloc vector");
         
@@ -65,16 +87,36 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
         status = (FUNCTION(gsl_vector,isnonneg)(v) != 1);
         TEST (status, "_isnonneg" DESC " on calloc vector");
+=======
+	int status = (FUNCTION(gsl_vector,isnull)(v) != 1);
+	TEST (status, "_isnull" DESC " on calloc vector");
+
+	status = (FUNCTION(gsl_vector,ispos)(v) != 0);
+	TEST (status, "_ispos" DESC " on calloc vector");
+
+	status = (FUNCTION(gsl_vector,isneg)(v) != 0);
+	TEST (status, "_isneg" DESC " on calloc vector");
+
+	status = (FUNCTION(gsl_vector,isnonneg)(v) != 1);
+	TEST (status, "_isnonneg" DESC " on calloc vector");
+>>>>>>> config
 
       }
 
       FUNCTION (gsl_vector, free) (v);      /* free whatever is in v */
     }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (stride == 1) 
     {
       v = FUNCTION (gsl_vector, alloc) (N);
       
+=======
+  if (stride == 1)
+    {
+      v = FUNCTION (gsl_vector, alloc) (N);
+
+>>>>>>> config
       TEST(v->data == 0, "_alloc pointer");
       TEST(v->size != N, "_alloc size");
       TEST(v->stride != 1, "_alloc stride");
@@ -93,6 +135,7 @@ FUNCTION (test, func) (size_t stride, size_t N)
       v0 = FUNCTION (gsl_vector, alloc) (N * stride);
 
       for (i = 0; i < N*stride; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           v0->data[i] = i;
         }
@@ -101,20 +144,41 @@ FUNCTION (test, func) (size_t stride, size_t N)
       v = &view.vector;
     }
       
+=======
+	{
+	  v0->data[i] = i;
+	}
+
+      view = FUNCTION (gsl_vector, subvector_with_stride) (v0, 0, stride, N);
+      v = &view.vector;
+    }
+
+>>>>>>> config
   {
     int status = 0;
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         FUNCTION (gsl_vector, set) (v, i, (ATOMIC) i);
+=======
+	FUNCTION (gsl_vector, set) (v, i, (ATOMIC) i);
+>>>>>>> config
       }
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         if (v->data[i*stride] != (ATOMIC) (i))
           status = 1;
       };
   
+=======
+	if (v->data[i*stride] != (ATOMIC) (i))
+	  status = 1;
+      };
+
+>>>>>>> config
     TEST(status,"_set" DESC " writes into array");
   }
 
@@ -124,20 +188,34 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         if (FUNCTION (gsl_vector, get) (v, i) != (ATOMIC) (i))
           status = 1;
+=======
+	if (FUNCTION (gsl_vector, get) (v, i) != (ATOMIC) (i))
+	  status = 1;
+>>>>>>> config
       };
 
     TEST (status, "_get" DESC " reads from array");
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   {
     int status = 0;
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         if (FUNCTION (gsl_vector, ptr) (v, i) != v->data + i*stride)
           status = 1;
+=======
+	if (FUNCTION (gsl_vector, ptr) (v, i) != v->data + i*stride)
+	  status = 1;
+>>>>>>> config
       };
 
     TEST (status, "_ptr" DESC " access to array");
@@ -146,6 +224,7 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
   {
     int status = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     for (i = 0; i < N; i++)
       {
@@ -153,6 +232,15 @@ FUNCTION (test, func) (size_t stride, size_t N)
           status = 1;
       };
     
+=======
+
+    for (i = 0; i < N; i++)
+      {
+	if (FUNCTION (gsl_vector, const_ptr) (v, i) != v->data + i*stride)
+	  status = 1;
+      };
+
+>>>>>>> config
     TEST (status, "_const_ptr" DESC " access to array");
   }
 
@@ -162,9 +250,15 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         FUNCTION (gsl_vector, set) (v, i, (ATOMIC) 0);
       }
     
+=======
+	FUNCTION (gsl_vector, set) (v, i, (ATOMIC) 0);
+      }
+
+>>>>>>> config
     status = (FUNCTION(gsl_vector,isnull)(v) != 1);
     TEST (status, "_isnull" DESC " on null vector") ;
 
@@ -184,9 +278,15 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         FUNCTION (gsl_vector, set) (v, i, (ATOMIC) (i % 10));
       }
     
+=======
+	FUNCTION (gsl_vector, set) (v, i, (ATOMIC) (i % 10));
+      }
+
+>>>>>>> config
     status = (FUNCTION(gsl_vector,isnull)(v) != 0);
     TEST (status, "_isnull" DESC " on non-negative vector") ;
 
@@ -207,10 +307,17 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ATOMIC vi = (i % 10) - (ATOMIC) 5;
         FUNCTION (gsl_vector, set) (v, i, vi);
       }
     
+=======
+	ATOMIC vi = (i % 10) - (ATOMIC) 5;
+	FUNCTION (gsl_vector, set) (v, i, vi);
+      }
+
+>>>>>>> config
     status = (FUNCTION(gsl_vector,isnull)(v) != 0);
     TEST (status, "_isnull" DESC " on mixed vector") ;
 
@@ -229,9 +336,15 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         FUNCTION (gsl_vector, set) (v, i, -(ATOMIC) (i % 10));
       }
     
+=======
+	FUNCTION (gsl_vector, set) (v, i, -(ATOMIC) (i % 10));
+      }
+
+>>>>>>> config
     status = (FUNCTION(gsl_vector,isnull)(v) != 0);
     TEST (status, "_isnull" DESC " on non-positive vector") ;
 
@@ -251,9 +364,15 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         FUNCTION (gsl_vector, set) (v, i, (ATOMIC) (i % 10 + 1));
       }
     
+=======
+	FUNCTION (gsl_vector, set) (v, i, (ATOMIC) (i % 10 + 1));
+      }
+
+>>>>>>> config
     status = (FUNCTION(gsl_vector,isnull)(v) != 0);
     TEST (status, "_isnull" DESC " on positive vector") ;
 
@@ -274,9 +393,15 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         FUNCTION (gsl_vector, set) (v, i, -(ATOMIC) (i % 10 + 1));
       }
     
+=======
+	FUNCTION (gsl_vector, set) (v, i, -(ATOMIC) (i % 10 + 1));
+      }
+
+>>>>>>> config
     status = (FUNCTION(gsl_vector,isnull)(v) != 0);
     TEST (status, "_isnull" DESC " on negative vector") ;
 
@@ -293,13 +418,22 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
   {
     int status = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     FUNCTION (gsl_vector, set_zero) (v);
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         if (FUNCTION (gsl_vector, get) (v, i) != (ATOMIC)0)
           status = 1;
+=======
+	if (FUNCTION (gsl_vector, get) (v, i) != (ATOMIC)0)
+	  status = 1;
+>>>>>>> config
       };
 
     TEST (status, "_setzero" DESC " on non-null vector") ;
@@ -307,13 +441,22 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
   {
     int status = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     FUNCTION (gsl_vector, set_all) (v, (ATOMIC)27);
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         if (FUNCTION (gsl_vector, get) (v, i) != (ATOMIC) (27))
           status = 1;
+=======
+	if (FUNCTION (gsl_vector, get) (v, i) != (ATOMIC) (27))
+	  status = 1;
+>>>>>>> config
       };
 
     TEST (status, "_setall" DESC " to non-zero value") ;
@@ -325,6 +468,7 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         FUNCTION (gsl_vector, set_basis) (v, i);
 
         for (j = 0; j < N; j++)
@@ -340,6 +484,23 @@ FUNCTION (test, func) (size_t stride, size_t N)
                   status = 1;
               }
           };
+=======
+	FUNCTION (gsl_vector, set_basis) (v, i);
+
+	for (j = 0; j < N; j++)
+	  {
+	    if (i == j)
+	      {
+		if (FUNCTION (gsl_vector, get) (v, j) != (ATOMIC)1)
+		  status = 1 ;
+	      }
+	    else
+	      {
+		if (FUNCTION (gsl_vector, get) (v, j) != (ATOMIC)(0))
+		  status = 1;
+	      }
+	  };
+>>>>>>> config
       }
 
     TEST (status, "_setbasis" DESC " over range") ;
@@ -350,15 +511,24 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         FUNCTION (gsl_vector, set) (v, i, (ATOMIC) i);
+=======
+	FUNCTION (gsl_vector, set) (v, i, (ATOMIC) i);
+>>>>>>> config
       }
 
     FUNCTION (gsl_vector, scale) (v, 2.0);
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         if (FUNCTION (gsl_vector, get) (v, i) != (ATOMIC) (i*2.0))
           status = 1;
+=======
+	if (FUNCTION (gsl_vector, get) (v, i) != (ATOMIC) (i*2.0))
+	  status = 1;
+>>>>>>> config
       };
 
     TEST (status, "_scale" DESC " by 2") ;
@@ -371,18 +541,28 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         if (FUNCTION (gsl_vector, get) (v, i) != (ATOMIC) (i*2.0 + 7))
           status = 1;
+=======
+	if (FUNCTION (gsl_vector, get) (v, i) != (ATOMIC) (i*2.0 + 7))
+	  status = 1;
+>>>>>>> config
       };
 
     TEST (status, "_add_constant" DESC) ;
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
   {
     int status = 0;
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         FUNCTION (gsl_vector, set) (v, i, (ATOMIC) i);
       }
 
@@ -396,6 +576,21 @@ FUNCTION (test, func) (size_t stride, size_t N)
     status |= (FUNCTION(gsl_vector,get)(v,2) != 2) ;
     status |= (FUNCTION(gsl_vector,get)(v,5) != 5) ;
     
+=======
+	FUNCTION (gsl_vector, set) (v, i, (ATOMIC) i);
+      }
+
+    FUNCTION (gsl_vector,swap_elements) (v, 2, 5) ;
+
+    status = (FUNCTION(gsl_vector,get)(v,2) != 5) ;
+    status |= (FUNCTION(gsl_vector,get)(v,5) != 2) ;
+
+    FUNCTION (gsl_vector,swap_elements) (v, 2, 5) ;
+
+    status |= (FUNCTION(gsl_vector,get)(v,2) != 2) ;
+    status |= (FUNCTION(gsl_vector,get)(v,5) != 5) ;
+
+>>>>>>> config
     TEST (status, "_swap_elements" DESC " (2,5)") ;
   }
 
@@ -403,18 +598,28 @@ FUNCTION (test, func) (size_t stride, size_t N)
     int status = 0;
 
     FUNCTION (gsl_vector,reverse) (v) ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     for (i = 0; i < N; i++)
       {
         status |= (FUNCTION (gsl_vector, get) (v, i) !=  (ATOMIC) (N - i - 1));
       }
     
+=======
+
+    for (i = 0; i < N; i++)
+      {
+	status |= (FUNCTION (gsl_vector, get) (v, i) !=  (ATOMIC) (N - i - 1));
+      }
+
+>>>>>>> config
     TEST (status, "_reverse" DESC " reverses elements") ;
   }
 
 
   {
     int status = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     QUALIFIED_VIEW(gsl_vector,view) v1 = FUNCTION(gsl_vector, view_array) (v->data, N*stride);
     
@@ -422,6 +627,15 @@ FUNCTION (test, func) (size_t stride, size_t N)
       {
         if (FUNCTION (gsl_vector, get) (&v1.vector, i*stride) != FUNCTION (gsl_vector, get) (v, i)) 
           status = 1;
+=======
+
+    QUALIFIED_VIEW(gsl_vector,view) v1 = FUNCTION(gsl_vector, view_array) (v->data, N*stride);
+
+    for (i = 0; i < N; i++)
+      {
+	if (FUNCTION (gsl_vector, get) (&v1.vector, i*stride) != FUNCTION (gsl_vector, get) (v, i))
+	  status = 1;
+>>>>>>> config
       };
 
     TEST (status, "_view_array" DESC);
@@ -429,6 +643,7 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
   {
     int status = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     QUALIFIED_VIEW(gsl_vector,view) v1 = FUNCTION(gsl_vector, view_array_with_stride) (v->data, stride, N*stride);
     
@@ -436,6 +651,15 @@ FUNCTION (test, func) (size_t stride, size_t N)
       {
         if (FUNCTION (gsl_vector, get) (&v1.vector, i) != FUNCTION (gsl_vector, get) (v, i)) 
           status = 1;
+=======
+
+    QUALIFIED_VIEW(gsl_vector,view) v1 = FUNCTION(gsl_vector, view_array_with_stride) (v->data, stride, N*stride);
+
+    for (i = 0; i < N; i++)
+      {
+	if (FUNCTION (gsl_vector, get) (&v1.vector, i) != FUNCTION (gsl_vector, get) (v, i))
+	  status = 1;
+>>>>>>> config
       };
 
     TEST (status, "_view_array_with_stride" DESC);
@@ -444,6 +668,7 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
   {
     int status = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     QUALIFIED_VIEW(gsl_vector,view) v1 = FUNCTION(gsl_vector, subvector) (v, N/3, N/2);
     
@@ -451,6 +676,15 @@ FUNCTION (test, func) (size_t stride, size_t N)
       {
         if (FUNCTION (gsl_vector, get) (&v1.vector, i) != FUNCTION (gsl_vector, get) (v, (N/3) + i)) 
           status = 1;
+=======
+
+    QUALIFIED_VIEW(gsl_vector,view) v1 = FUNCTION(gsl_vector, subvector) (v, N/3, N/2);
+
+    for (i = 0; i < N/2; i++)
+      {
+	if (FUNCTION (gsl_vector, get) (&v1.vector, i) != FUNCTION (gsl_vector, get) (v, (N/3) + i))
+	  status = 1;
+>>>>>>> config
       };
 
     TEST (status, "_view_subvector" DESC);
@@ -458,6 +692,7 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
   {
     int status = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     QUALIFIED_VIEW(gsl_vector,view) v1 = FUNCTION(gsl_vector, subvector_with_stride) (v, N/5, 3, N/4);
     
@@ -465,6 +700,15 @@ FUNCTION (test, func) (size_t stride, size_t N)
       {
         if (FUNCTION (gsl_vector, get) (&v1.vector, i) != FUNCTION (gsl_vector, get) (v, (N/5) + 3*i)) 
           status = 1;
+=======
+
+    QUALIFIED_VIEW(gsl_vector,view) v1 = FUNCTION(gsl_vector, subvector_with_stride) (v, N/5, 3, N/4);
+
+    for (i = 0; i < N/4; i++)
+      {
+	if (FUNCTION (gsl_vector, get) (&v1.vector, i) != FUNCTION (gsl_vector, get) (v, (N/5) + 3*i))
+	  status = 1;
+>>>>>>> config
       };
 
     TEST (status, "_view_subvector_with_stride" DESC);
@@ -478,20 +722,36 @@ FUNCTION (test, func) (size_t stride, size_t N)
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         BASE k = FUNCTION(gsl_vector, get) (v, i) ;
         if (k < exp_min) {
           exp_min = FUNCTION(gsl_vector, get) (v, i);
           exp_imin = i;
         }
+=======
+	BASE k = FUNCTION(gsl_vector, get) (v, i) ;
+	if (k < exp_min) {
+	  exp_min = FUNCTION(gsl_vector, get) (v, i);
+	  exp_imin = i;
+	}
+>>>>>>> config
       }
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         BASE k = FUNCTION(gsl_vector, get) (v, i) ;
         if (k > exp_max) {
           exp_max = FUNCTION(gsl_vector, get) (v, i) ;
           exp_imax = i;
         } 
+=======
+	BASE k = FUNCTION(gsl_vector, get) (v, i) ;
+	if (k > exp_max) {
+	  exp_max = FUNCTION(gsl_vector, get) (v, i) ;
+	  exp_imax = i;
+	}
+>>>>>>> config
       }
 
     {
@@ -531,7 +791,11 @@ FUNCTION (test, func) (size_t stride, size_t N)
       TEST (imax != exp_imax, "_minmax_index returns correct maximum i");
       TEST (imin != exp_imin, "_minmax_index returns correct minimum i");
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
 #if FP
     i = N/2;
     FUNCTION(gsl_vector, set) (v, i, GSL_NAN);
@@ -590,12 +854,17 @@ FUNCTION (test, ops) (size_t stride1, size_t stride2, size_t N)
   TYPE (gsl_vector) * a = FUNCTION (create, vector) (stride1, N);
   TYPE (gsl_vector) * b = FUNCTION (create, vector) (stride2, N);
   TYPE (gsl_vector) * v = FUNCTION (create, vector) (stride1, N);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   for (i = 0; i < N; i++)
     {
       FUNCTION (gsl_vector, set) (a, i, (BASE)(3 + i));
       FUNCTION (gsl_vector, set) (b, i, (BASE)(3 + 2 * i));
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   FUNCTION(gsl_vector, memcpy) (v, a);
   FUNCTION(gsl_vector, add) (v, b);
@@ -611,31 +880,63 @@ FUNCTION (test, ops) (size_t stride1, size_t stride2, size_t N)
         BASE z = x + y;
         if (r != z)
           status = 1;
+=======
+
+  FUNCTION(gsl_vector, memcpy) (v, a);
+  FUNCTION(gsl_vector, add) (v, b);
+
+  {
+    int status = 0;
+
+    for (i = 0; i < N; i++)
+      {
+	BASE r = FUNCTION(gsl_vector,get) (v,i);
+	BASE x = FUNCTION(gsl_vector,get) (a,i);
+	BASE y = FUNCTION(gsl_vector,get) (b,i);
+	BASE z = x + y;
+	if (r != z)
+	  status = 1;
+>>>>>>> config
       }
     TEST2 (status, "_add vector addition");
   }
 
   {
     int status = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     FUNCTION(gsl_vector, swap) (a, b);
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         status |= (FUNCTION (gsl_vector, get) (a, i) != (BASE)(3 + 2 * i));
         status |= (FUNCTION (gsl_vector, get) (b, i) != (BASE)(3 + i));
+=======
+	status |= (FUNCTION (gsl_vector, get) (a, i) != (BASE)(3 + 2 * i));
+	status |= (FUNCTION (gsl_vector, get) (b, i) != (BASE)(3 + i));
+>>>>>>> config
       }
 
     FUNCTION(gsl_vector, swap) (a, b);
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         status |= (FUNCTION (gsl_vector, get) (a, i) != (BASE)(3 + i));
         status |= (FUNCTION (gsl_vector, get) (b, i) != (BASE)(3 + 2 * i));
+=======
+	status |= (FUNCTION (gsl_vector, get) (a, i) != (BASE)(3 + i));
+	status |= (FUNCTION (gsl_vector, get) (b, i) != (BASE)(3 + 2 * i));
+>>>>>>> config
       }
 
     TEST2 (status, "_swap exchange vectors");
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   FUNCTION(gsl_vector, memcpy) (v, a);
   FUNCTION(gsl_vector, sub) (v, b);
@@ -651,10 +952,28 @@ FUNCTION (test, ops) (size_t stride1, size_t stride2, size_t N)
         BASE z = x - y;
         if (r != z)
           status = 1;
+=======
+
+  FUNCTION(gsl_vector, memcpy) (v, a);
+  FUNCTION(gsl_vector, sub) (v, b);
+
+  {
+    int status = 0;
+
+    for (i = 0; i < N; i++)
+      {
+	BASE r = FUNCTION(gsl_vector,get) (v,i);
+	BASE x = FUNCTION(gsl_vector,get) (a,i);
+	BASE y = FUNCTION(gsl_vector,get) (b,i);
+	BASE z = x - y;
+	if (r != z)
+	  status = 1;
+>>>>>>> config
       }
 
     TEST2 (status, "_sub vector subtraction");
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   FUNCTION(gsl_vector, memcpy) (v, a);
   FUNCTION(gsl_vector, mul) (v, b);
@@ -670,10 +989,28 @@ FUNCTION (test, ops) (size_t stride1, size_t stride2, size_t N)
         BASE z = x * y;
         if (r != z)
           status = 1;
+=======
+
+  FUNCTION(gsl_vector, memcpy) (v, a);
+  FUNCTION(gsl_vector, mul) (v, b);
+
+  {
+    int status = 0;
+
+    for (i = 0; i < N; i++)
+      {
+	BASE r = FUNCTION(gsl_vector,get) (v,i);
+	BASE x = FUNCTION(gsl_vector,get) (a,i);
+	BASE y = FUNCTION(gsl_vector,get) (b,i);
+	BASE z = x * y;
+	if (r != z)
+	  status = 1;
+>>>>>>> config
       }
 
     TEST2 (status, "_mul multiplication");
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   FUNCTION(gsl_vector, memcpy) (v, a);
   FUNCTION(gsl_vector, div) (v, b);
@@ -689,6 +1026,23 @@ FUNCTION (test, ops) (size_t stride1, size_t stride2, size_t N)
         BASE z = x / y;
         if (fabs(r - z) > 2 * GSL_FLT_EPSILON * fabs(z))
           status = 1;
+=======
+
+  FUNCTION(gsl_vector, memcpy) (v, a);
+  FUNCTION(gsl_vector, div) (v, b);
+
+  {
+    int status = 0;
+
+    for (i = 0; i < N; i++)
+      {
+	BASE r = FUNCTION(gsl_vector,get) (v,i);
+	BASE x = FUNCTION(gsl_vector,get) (a,i);
+	BASE y = FUNCTION(gsl_vector,get) (b,i);
+	BASE z = x / y;
+	if (fabs(r - z) > 2 * GSL_FLT_EPSILON * fabs(z))
+	  status = 1;
+>>>>>>> config
       }
     TEST2 (status, "_div division");
   }
@@ -712,7 +1066,11 @@ FUNCTION (test, file) (size_t stride, size_t N)
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         FUNCTION (gsl_vector, set) (v, i, (ATOMIC) (N - i));
+=======
+	FUNCTION (gsl_vector, set) (v, i, (ATOMIC) (N - i));
+>>>>>>> config
       };
 
     FUNCTION (gsl_vector, fwrite) (f, v);
@@ -728,8 +1086,13 @@ FUNCTION (test, file) (size_t stride, size_t N)
     status = 0;
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         if (w->data[i*stride] != (ATOMIC) (N - i))
           status = 1;
+=======
+	if (w->data[i*stride] != (ATOMIC) (N - i))
+	  status = 1;
+>>>>>>> config
       };
 
     TEST (status, "_write and read");
@@ -757,7 +1120,11 @@ FUNCTION (test, text) (size_t stride, size_t N)
 
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         FUNCTION (gsl_vector, set) (v, i, (ATOMIC) i);
+=======
+	FUNCTION (gsl_vector, set) (v, i, (ATOMIC) i);
+>>>>>>> config
       };
 
     FUNCTION (gsl_vector, fprintf) (f, v, OUT_FORMAT);
@@ -773,8 +1140,13 @@ FUNCTION (test, text) (size_t stride, size_t N)
     status = 0;
     for (i = 0; i < N; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         if (w->data[i*stride] != (ATOMIC) i)
           status = 1;
+=======
+	if (w->data[i*stride] != (ATOMIC) i)
+	  status = 1;
+>>>>>>> config
       };
 
     gsl_test (status, NAME (gsl_vector) "_fprintf and fscanf");
@@ -825,8 +1197,11 @@ FUNCTION (test, trap) (size_t stride, size_t N)
 
   FUNCTION (gsl_vector, free) (v);      /* free whatever is in v */
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
 
 
 
+=======
+>>>>>>> config

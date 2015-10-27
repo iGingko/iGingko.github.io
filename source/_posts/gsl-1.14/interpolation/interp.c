@@ -1,18 +1,33 @@
 /* interpolation/interp.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2007 Brian Gough
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 2007 Brian Gough
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -35,6 +50,7 @@ gsl_interp_alloc (const gsl_interp_type * T, size_t size)
   if (size < T->min_size)
     {
       GSL_ERROR_NULL ("insufficient number of points for interpolation type",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       GSL_EINVAL);
     }
 
@@ -46,6 +62,19 @@ gsl_interp_alloc (const gsl_interp_type * T, size_t size)
                       GSL_ENOMEM);
     }
   
+=======
+		      GSL_EINVAL);
+    }
+
+  interp = (gsl_interp *) malloc (sizeof(gsl_interp));
+
+  if (interp == NULL)
+    {
+      GSL_ERROR_NULL ("failed to allocate space for interp struct",
+		      GSL_ENOMEM);
+    }
+
+>>>>>>> config
   interp->type = T;
   interp->size = size;
 
@@ -56,6 +85,7 @@ gsl_interp_alloc (const gsl_interp_type * T, size_t size)
     }
 
   interp->state = interp->type->alloc(size);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   if (interp->state == NULL)
     {
@@ -63,6 +93,15 @@ gsl_interp_alloc (const gsl_interp_type * T, size_t size)
       GSL_ERROR_NULL ("failed to allocate space for interp state", GSL_ENOMEM);
     };
     
+=======
+
+  if (interp->state == NULL)
+    {
+      free (interp);
+      GSL_ERROR_NULL ("failed to allocate space for interp state", GSL_ENOMEM);
+    };
+
+>>>>>>> config
   return interp;
 }
 
@@ -76,12 +115,21 @@ gsl_interp_init (gsl_interp * interp, const double x_array[], const double y_arr
       GSL_ERROR ("data must match size of interpolation object", GSL_EINVAL);
     }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   for (i = 1; i < size; i++) 
     {
       if (!(x_array[i-1] < x_array[i])) 
         {
           GSL_ERROR ("x values must be monotonically increasing", GSL_EINVAL);
         }
+=======
+  for (i = 1; i < size; i++)
+    {
+      if (!(x_array[i-1] < x_array[i]))
+	{
+	  GSL_ERROR ("x values must be monotonically increasing", GSL_EINVAL);
+	}
+>>>>>>> config
     }
 
   interp->xmin = x_array[0];
@@ -119,8 +167,13 @@ gsl_interp_free (gsl_interp * interp)
 
 int
 gsl_interp_eval_e (const gsl_interp * interp,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                    const double xa[], const double ya[], double x,
                    gsl_interp_accel * a, double *y)
+=======
+		   const double xa[], const double ya[], double x,
+		   gsl_interp_accel * a, double *y)
+>>>>>>> config
 {
   if (x < interp->xmin)
     {
@@ -138,8 +191,13 @@ gsl_interp_eval_e (const gsl_interp * interp,
 
 double
 gsl_interp_eval (const gsl_interp * interp,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  const double xa[], const double ya[], double x,
                  gsl_interp_accel * a)
+=======
+		 const double xa[], const double ya[], double x,
+		 gsl_interp_accel * a)
+>>>>>>> config
 {
   double y;
   int status = interp->type->eval (interp->state, xa, ya, interp->size, x, a, &y);
@@ -152,9 +210,15 @@ gsl_interp_eval (const gsl_interp * interp,
 
 int
 gsl_interp_eval_deriv_e (const gsl_interp * interp,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                          const double xa[], const double ya[], double x,
                          gsl_interp_accel * a,
                          double *dydx)
+=======
+			 const double xa[], const double ya[], double x,
+			 gsl_interp_accel * a,
+			 double *dydx)
+>>>>>>> config
 {
   if (x < interp->xmin)
     {
@@ -172,8 +236,13 @@ gsl_interp_eval_deriv_e (const gsl_interp * interp,
 
 double
 gsl_interp_eval_deriv (const gsl_interp * interp,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                        const double xa[], const double ya[], double x,
                        gsl_interp_accel * a)
+=======
+		       const double xa[], const double ya[], double x,
+		       gsl_interp_accel * a)
+>>>>>>> config
 {
   double dydx;
   int status = interp->type->eval_deriv (interp->state, xa, ya, interp->size, x, a, &dydx);
@@ -186,9 +255,15 @@ gsl_interp_eval_deriv (const gsl_interp * interp,
 
 int
 gsl_interp_eval_deriv2_e (const gsl_interp * interp,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                           const double xa[], const double ya[], double x,
                           gsl_interp_accel * a,
                           double * d2)
+=======
+			  const double xa[], const double ya[], double x,
+			  gsl_interp_accel * a,
+			  double * d2)
+>>>>>>> config
 {
   if (x < interp->xmin)
     {
@@ -206,8 +281,13 @@ gsl_interp_eval_deriv2_e (const gsl_interp * interp,
 
 double
 gsl_interp_eval_deriv2 (const gsl_interp * interp,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         const double xa[], const double ya[], double x,
                         gsl_interp_accel * a)
+=======
+			const double xa[], const double ya[], double x,
+			gsl_interp_accel * a)
+>>>>>>> config
 {
   double d2;
   int status = interp->type->eval_deriv2 (interp->state, xa, ya, interp->size, x, a, &d2);
@@ -220,10 +300,17 @@ gsl_interp_eval_deriv2 (const gsl_interp * interp,
 
 int
 gsl_interp_eval_integ_e (const gsl_interp * interp,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                          const double xa[], const double ya[],
                          double a, double b,
                          gsl_interp_accel * acc,
                          double * result)
+=======
+			 const double xa[], const double ya[],
+			 double a, double b,
+			 gsl_interp_accel * acc,
+			 double * result)
+>>>>>>> config
 {
   if (a > b || a < interp->xmin || b > interp->xmax)
     {
@@ -242,9 +329,15 @@ gsl_interp_eval_integ_e (const gsl_interp * interp,
 
 double
 gsl_interp_eval_integ (const gsl_interp * interp,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                        const double xa[], const double ya[],
                        double a, double b,
                        gsl_interp_accel * acc)
+=======
+		       const double xa[], const double ya[],
+		       double a, double b,
+		       gsl_interp_accel * acc)
+>>>>>>> config
 {
   double result;
   int status = interp->type->eval_integ (interp->state, xa, ya, interp->size, acc, a, b, &result);
@@ -253,5 +346,8 @@ gsl_interp_eval_integ (const gsl_interp * interp,
 
   return result;
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
+=======
+>>>>>>> config

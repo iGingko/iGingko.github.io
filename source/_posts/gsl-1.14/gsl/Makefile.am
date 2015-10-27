@@ -6,7 +6,11 @@ header-links: remove-links
 	  test -r $$BASENAME || $(LN_S) $$h $$BASENAME; \
 	done
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 remove-links: 
+=======
+remove-links:
+>>>>>>> config
 	rm -f gsl*.h
 
 

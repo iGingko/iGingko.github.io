@@ -33,8 +33,13 @@ main (void)
   work = gsl_fft_real_workspace_alloc (n);
   real = gsl_fft_real_wavetable_alloc (n);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   gsl_fft_real_transform (data, 1, n, 
                           real, work);
+=======
+  gsl_fft_real_transform (data, 1, n,
+			  real, work);
+>>>>>>> config
 
   gsl_fft_real_wavetable_free (real);
 
@@ -45,8 +50,13 @@ main (void)
 
   hc = gsl_fft_halfcomplex_wavetable_alloc (n);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   gsl_fft_halfcomplex_inverse (data, 1, n, 
                                hc, work);
+=======
+  gsl_fft_halfcomplex_inverse (data, 1, n,
+			       hc, work);
+>>>>>>> config
   gsl_fft_halfcomplex_wavetable_free (hc);
 
   for (i = 0; i < n; i++)

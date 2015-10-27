@@ -1,17 +1,31 @@
 /* cheb/eval.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -71,7 +85,11 @@ gsl_cheb_eval_n (const gsl_cheb_series * cs, const size_t n, const double x)
 
 int
 gsl_cheb_eval_err (const gsl_cheb_series * cs, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                    double *result, double *abserr)
+=======
+		   double *result, double *abserr)
+>>>>>>> config
 {
   size_t i;
   double d1 = 0.0;
@@ -107,8 +125,13 @@ gsl_cheb_eval_err (const gsl_cheb_series * cs, const double x,
 
 int
 gsl_cheb_eval_n_err (const gsl_cheb_series * cs,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                      const size_t n, const double x,
                      double *result, double *abserr)
+=======
+		     const size_t n, const double x,
+		     double *result, double *abserr)
+>>>>>>> config
 {
   size_t i;
   double d1 = 0.0;
@@ -146,8 +169,13 @@ gsl_cheb_eval_n_err (const gsl_cheb_series * cs,
 
 int
 gsl_cheb_eval_mode_e (const gsl_cheb_series * cs,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       const double x, gsl_mode_t mode,
                       double *result, double *abserr)
+=======
+		      const double x, gsl_mode_t mode,
+		      double *result, double *abserr)
+>>>>>>> config
 {
   size_t i;
   double d1 = 0.0;
@@ -190,17 +218,28 @@ gsl_cheb_eval_mode_e (const gsl_cheb_series * cs,
 
 double
 gsl_cheb_eval_mode (const gsl_cheb_series * cs,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                     const double x, gsl_mode_t mode)
+=======
+		    const double x, gsl_mode_t mode)
+>>>>>>> config
 {
   double result, abserr;
   int status = gsl_cheb_eval_mode_e (cs, x, mode, &result, &abserr);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (status != GSL_SUCCESS) 
+=======
+  if (status != GSL_SUCCESS)
+>>>>>>> config
     {
       GSL_ERROR_VAL("gsl_cheb_eval_mode", status, result);
     };
 
   return result;
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
+=======
+>>>>>>> config

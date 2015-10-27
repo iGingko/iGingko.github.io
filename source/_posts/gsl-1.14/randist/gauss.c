@@ -1,18 +1,33 @@
 /* randist/gauss.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2006, 2007 James Theiler, Brian Gough
  * Copyright (C) 2006 Charles Karney
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2006, 2007 James Theiler, Brian Gough
+ * Copyright (C) 2006 Charles Karney
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -85,12 +100,17 @@ gsl_ran_gaussian_ratio_method (const gsl_rng * r, const double sigma)
   do                            /* This loop is executed 1.369 times on average  */
     {
       /* Generate a point P = (u, v) uniform in a rectangle enclosing
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          the K+M region v^2 <= - 4 u^2 log(u). */
+=======
+	 the K+M region v^2 <= - 4 u^2 log(u). */
+>>>>>>> config
 
       /* u in (0, 1] to avoid singularity at u = 0 */
       u = 1 - gsl_rng_uniform (r);
 
       /* v is in the asymmetric interval [-0.5, 0.5).  However v = -0.5
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          is rejected in the last part of the while clause.  The
          resulting normal deviate is strictly symmetric about 0
          (provided that v is symmetric once v = -0.5 is excluded). */
@@ -98,6 +118,15 @@ gsl_ran_gaussian_ratio_method (const gsl_rng * r, const double sigma)
 
       /* Constant 1.7156 > sqrt(8/e) (for accuracy); but not by too
          much (for efficiency). */
+=======
+	 is rejected in the last part of the while clause.  The
+	 resulting normal deviate is strictly symmetric about 0
+	 (provided that v is symmetric once v = -0.5 is excluded). */
+      v = gsl_rng_uniform (r) - 0.5;
+
+      /* Constant 1.7156 > sqrt(8/e) (for accuracy); but not by too
+	 much (for efficiency). */
+>>>>>>> config
       v *= 1.7156;
 
       /* Compute Leva's quadratic form Q */
@@ -140,4 +169,7 @@ gsl_ran_ugaussian_pdf (const double x)
 {
   return gsl_ran_gaussian_pdf (x, 1.0);
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

@@ -1,17 +1,31 @@
 /* wavelet/gsl_wavelet.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2004 Ivo Alxneit
  * 
+=======
+ *
+ * Copyright (C) 2004 Ivo Alxneit
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -39,12 +53,20 @@ __BEGIN_DECLS
 typedef enum {
   forward = 1, backward = -1,
   gsl_wavelet_forward = 1, gsl_wavelet_backward = -1
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 } 
+=======
+}
+>>>>>>> config
 gsl_wavelet_direction;
 #else
 typedef enum {
   gsl_wavelet_forward = 1, gsl_wavelet_backward = -1
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 } 
+=======
+}
+>>>>>>> config
 gsl_wavelet_direction;
 #endif
 
@@ -52,8 +74,13 @@ typedef struct
 {
   const char *name;
   int (*init) (const double **h1, const double **g1,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                const double **h2, const double **g2, size_t * nc,
                size_t * offset, size_t member);
+=======
+	       const double **h2, const double **g2, size_t * nc,
+	       size_t * offset, size_t member);
+>>>>>>> config
 }
 gsl_wavelet_type;
 
@@ -90,6 +117,7 @@ const char *gsl_wavelet_name (const gsl_wavelet * w);
 gsl_wavelet_workspace *gsl_wavelet_workspace_alloc (size_t n);
 void gsl_wavelet_workspace_free (gsl_wavelet_workspace * work);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int gsl_wavelet_transform (const gsl_wavelet * w, 
                            double *data, size_t stride, size_t n,
                            gsl_wavelet_direction dir, 
@@ -102,6 +130,20 @@ int gsl_wavelet_transform_forward (const gsl_wavelet * w,
 int gsl_wavelet_transform_inverse (const gsl_wavelet * w, 
                                     double *data, size_t stride, size_t n, 
                                     gsl_wavelet_workspace * work);
+=======
+int gsl_wavelet_transform (const gsl_wavelet * w,
+			   double *data, size_t stride, size_t n,
+			   gsl_wavelet_direction dir,
+			   gsl_wavelet_workspace * work);
+
+int gsl_wavelet_transform_forward (const gsl_wavelet * w,
+				   double *data, size_t stride, size_t n,
+				   gsl_wavelet_workspace * work);
+
+int gsl_wavelet_transform_inverse (const gsl_wavelet * w,
+				    double *data, size_t stride, size_t n,
+				    gsl_wavelet_workspace * work);
+>>>>>>> config
 
 __END_DECLS
 

@@ -1,17 +1,31 @@
 /* ode-initval/gear1.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -98,12 +112,21 @@ gear1_alloc (size_t dim)
 }
 
 static int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gear1_step (double *y, gear1_state_t *state, 
 	    const double h, const double t, 
 	    const size_t dim, const gsl_odeiv_system *sys)
 {
   /* Makes an implicit Euler advance with step size h.
      y0 is the initial values of variables y. 
+=======
+gear1_step (double *y, gear1_state_t *state,
+	    const double h, const double t,
+	    const size_t dim, const gsl_odeiv_system *sys)
+{
+  /* Makes an implicit Euler advance with step size h.
+     y0 is the initial values of variables y.
+>>>>>>> config
 
      The implicit matrix equations to solve are:
 
@@ -121,29 +144,47 @@ gear1_step (double *y, gear1_state_t *state,
   /* Iterative solution of k = y0 + h * f(t + h, k)
 
      Note: This method does not check for convergence of the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
      iterative solution! 
   */
 
   for (nu = 0; nu < iter_steps; nu++) 
+=======
+     iterative solution!
+  */
+
+  for (nu = 0; nu < iter_steps; nu++)
+>>>>>>> config
     {
       int s = GSL_ODEIV_FN_EVAL(sys, t + h, y, k);
 
       if (s != GSL_SUCCESS)
 	{
 	  return s;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	}     
 
       for (i=0; i<dim; i++) 
+=======
+	}
+
+      for (i=0; i<dim; i++)
+>>>>>>> config
 	{
 	  y[i] = y0[i] + h * k[i];
 	}
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   return GSL_SUCCESS;
 }
 
 static int
 gear1_apply(void * vstate,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             size_t dim,
             double t,
             double h,
@@ -152,6 +193,16 @@ gear1_apply(void * vstate,
             const double dydt_in[],
             double dydt_out[],
             const gsl_odeiv_system * sys)
+=======
+	    size_t dim,
+	    double t,
+	    double h,
+	    double y[],
+	    double yerr[],
+	    const double dydt_in[],
+	    double dydt_out[],
+	    const gsl_odeiv_system * sys)
+>>>>>>> config
 {
   gear1_state_t *state = (gear1_state_t *) vstate;
 
@@ -173,6 +224,7 @@ gear1_apply(void * vstate,
   {
     int s = gear1_step (y_onestep, state, h, t, dim, sys);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     if (s != GSL_SUCCESS) 
       {
         return s;
@@ -188,6 +240,23 @@ gear1_apply(void * vstate,
         /* Restore original y vector */
         DBL_MEMCPY (y, y0_orig, dim);
         return s;
+=======
+    if (s != GSL_SUCCESS)
+      {
+	return s;
+      }
+  }
+
+ /* Then with two steps with half step length (save to y) */
+  {
+    int s = gear1_step (y, state, h / 2.0, t, dim, sys);
+
+    if (s != GSL_SUCCESS)
+      {
+	/* Restore original y vector */
+	DBL_MEMCPY (y, y0_orig, dim);
+	return s;
+>>>>>>> config
       }
   }
 
@@ -196,6 +265,7 @@ gear1_apply(void * vstate,
   {
     int s = gear1_step (y, state, h / 2.0, t + h / 2.0, dim, sys);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     if (s != GSL_SUCCESS) 
       {
         /* Restore original y vector */
@@ -221,6 +291,33 @@ gear1_apply(void * vstate,
   /* Error estimation */
 
   for (i = 0; i < dim; i++) 
+=======
+    if (s != GSL_SUCCESS)
+      {
+	/* Restore original y vector */
+	DBL_MEMCPY (y, y0_orig, dim);
+	return s;
+      }
+  }
+
+  /* Cleanup update */
+
+  if (dydt_out != NULL)
+    {
+      int s = GSL_ODEIV_FN_EVAL (sys, t + h, y, dydt_out);
+
+      if (s != GSL_SUCCESS)
+	{
+	  /* Restore original y vector */
+	  DBL_MEMCPY (y, y0_orig, dim);
+	  return s;
+	}
+    }
+
+  /* Error estimation */
+
+  for (i = 0; i < dim; i++)
+>>>>>>> config
     {
       yerr[i] = 4.0 * (y[i] - y_onestep[i]);
     }

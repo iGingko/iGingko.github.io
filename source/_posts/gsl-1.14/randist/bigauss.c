@@ -1,17 +1,31 @@
 /* randist/bigauss.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -23,18 +37,31 @@
 #include <gsl/gsl_rng.h>
 #include <gsl/gsl_randist.h>
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* The Bivariate Gaussian probability distribution is 
 
    p(x,y) dxdy = (1/(2 pi sigma_x sigma_y sqrt(c))) 
     exp(-((x/sigma_x)^2 + (y/sigma_y)^2 - 2 r (x/sigma_x)(y/sigma_y))/2c) dxdy 
+=======
+/* The Bivariate Gaussian probability distribution is
+
+   p(x,y) dxdy = (1/(2 pi sigma_x sigma_y sqrt(c)))
+    exp(-((x/sigma_x)^2 + (y/sigma_y)^2 - 2 r (x/sigma_x)(y/sigma_y))/2c) dxdy
+>>>>>>> config
 
    where c = 1-r^2
 */
 
 void
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_ran_bivariate_gaussian (const gsl_rng * r, 
                             double sigma_x, double sigma_y, double rho,
                             double *x, double *y)
+=======
+gsl_ran_bivariate_gaussian (const gsl_rng * r,
+			    double sigma_x, double sigma_y, double rho,
+			    double *x, double *y)
+>>>>>>> config
 {
   double u, v, r2, scale;
 
@@ -57,14 +84,24 @@ gsl_ran_bivariate_gaussian (const gsl_rng * r,
 }
 
 double
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_ran_bivariate_gaussian_pdf (const double x, const double y, 
                                 const double sigma_x, const double sigma_y,
                                 const double rho)
+=======
+gsl_ran_bivariate_gaussian_pdf (const double x, const double y,
+				const double sigma_x, const double sigma_y,
+				const double rho)
+>>>>>>> config
 {
   double u = x / sigma_x ;
   double v = y / sigma_y ;
   double c = 1 - rho*rho ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   double p = (1 / (2 * M_PI * sigma_x * sigma_y * sqrt(c))) 
+=======
+  double p = (1 / (2 * M_PI * sigma_x * sigma_y * sqrt(c)))
+>>>>>>> config
     * exp (-(u * u - 2 * rho * u * v + v * v) / (2 * c));
   return p;
 }

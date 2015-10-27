@@ -1,17 +1,31 @@
 /* multifit/multilinear.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2000, 2007, 2010 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 2000, 2007, 2010 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -33,6 +47,7 @@
 
 static int
 multifit_linear_svd (const gsl_matrix * X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                      const gsl_vector * y,
                      double tol,
                      int balance,
@@ -41,17 +56,36 @@ multifit_linear_svd (const gsl_matrix * X,
                      gsl_matrix * cov,
                      double *chisq, 
                      gsl_multifit_linear_workspace * work)
+=======
+		     const gsl_vector * y,
+		     double tol,
+		     int balance,
+		     size_t * rank,
+		     gsl_vector * c,
+		     gsl_matrix * cov,
+		     double *chisq,
+		     gsl_multifit_linear_workspace * work)
+>>>>>>> config
 {
   if (X->size1 != y->size)
     {
       GSL_ERROR
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ("number of observations in y does not match rows of matrix X",
          GSL_EBADLEN);
+=======
+	("number of observations in y does not match rows of matrix X",
+	 GSL_EBADLEN);
+>>>>>>> config
     }
   else if (X->size2 != c->size)
     {
       GSL_ERROR ("number of parameters c does not match columns of matrix X",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_EBADLEN);
+=======
+		 GSL_EBADLEN);
+>>>>>>> config
     }
   else if (cov->size1 != cov->size2)
     {
@@ -60,14 +94,24 @@ multifit_linear_svd (const gsl_matrix * X,
   else if (c->size != cov->size1)
     {
       GSL_ERROR
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ("number of parameters does not match size of covariance matrix",
          GSL_EBADLEN);
+=======
+	("number of parameters does not match size of covariance matrix",
+	 GSL_EBADLEN);
+>>>>>>> config
     }
   else if (X->size1 != work->n || X->size2 != work->p)
     {
       GSL_ERROR
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ("size of workspace does not match size of observation matrix",
          GSL_EBADLEN);
+=======
+	("size of workspace does not match size of observation matrix",
+	 GSL_EBADLEN);
+>>>>>>> config
     }
   else if (tol <= 0)
     {
@@ -93,6 +137,7 @@ multifit_linear_svd (const gsl_matrix * X,
 
       /* Balance the columns of the matrix A if requested */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       if (balance) 
         {
           gsl_linalg_balance_columns (A, D);
@@ -101,6 +146,16 @@ multifit_linear_svd (const gsl_matrix * X,
         {
           gsl_vector_set_all (D, 1.0);
         }
+=======
+      if (balance)
+	{
+	  gsl_linalg_balance_columns (A, D);
+	}
+      else
+	{
+	  gsl_vector_set_all (D, 1.0);
+	}
+>>>>>>> config
 
       /* Decompose A into U S Q^T */
 
@@ -115,6 +170,7 @@ multifit_linear_svd (const gsl_matrix * X,
       gsl_matrix_memcpy (QSI, Q);
 
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         double alpha0 = gsl_vector_get (S, 0);
         p_eff = 0;
 
@@ -134,6 +190,27 @@ multifit_linear_svd (const gsl_matrix * X,
           }
 
         *rank = p_eff;
+=======
+	double alpha0 = gsl_vector_get (S, 0);
+	p_eff = 0;
+
+	for (j = 0; j < p; j++)
+	  {
+	    gsl_vector_view column = gsl_matrix_column (QSI, j);
+	    double alpha = gsl_vector_get (S, j);
+
+	    if (alpha <= tol * alpha0) {
+	      alpha = 0.0;
+	    } else {
+	      alpha = 1.0 / alpha;
+	      p_eff++;
+	    }
+
+	    gsl_vector_scale (&column.vector, alpha);
+	  }
+
+	*rank = p_eff;
+>>>>>>> config
       }
 
       gsl_vector_set_zero (c);
@@ -147,6 +224,7 @@ multifit_linear_svd (const gsl_matrix * X,
       /* Compute chisq, from residual r = y - X c */
 
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         double s2 = 0, r2 = 0;
 
         for (i = 0; i < n; i++)
@@ -182,6 +260,43 @@ multifit_linear_svd (const gsl_matrix * X,
                 gsl_matrix_set (cov, j, i, s * s2 / (d_i * d_j));
               }
           }
+=======
+	double s2 = 0, r2 = 0;
+
+	for (i = 0; i < n; i++)
+	  {
+	    double yi = gsl_vector_get (y, i);
+	    gsl_vector_const_view row = gsl_matrix_const_row (X, i);
+	    double y_est, ri;
+	    gsl_blas_ddot (&row.vector, c, &y_est);
+	    ri = yi - y_est;
+	    r2 += ri * ri;
+	  }
+
+	s2 = r2 / (n - p_eff);   /* p_eff == rank */
+
+	*chisq = r2;
+
+	/* Form variance-covariance matrix cov = s2 * (Q S^-1) (Q S^-1)^T */
+
+	for (i = 0; i < p; i++)
+	  {
+	    gsl_vector_view row_i = gsl_matrix_row (QSI, i);
+	    double d_i = gsl_vector_get (D, i);
+
+	    for (j = i; j < p; j++)
+	      {
+		gsl_vector_view row_j = gsl_matrix_row (QSI, j);
+		double d_j = gsl_vector_get (D, j);
+		double s;
+
+		gsl_blas_ddot (&row_i.vector, &row_j.vector, &s);
+
+		gsl_matrix_set (cov, i, j, s * s2 / (d_i * d_j));
+		gsl_matrix_set (cov, j, i, s * s2 / (d_i * d_j));
+	      }
+	  }
+>>>>>>> config
       }
 
       return GSL_SUCCESS;
@@ -190,6 +305,7 @@ multifit_linear_svd (const gsl_matrix * X,
 
 int
 gsl_multifit_linear (const gsl_matrix * X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                      const gsl_vector * y,
                      gsl_vector * c,
                      gsl_matrix * cov,
@@ -198,6 +314,16 @@ gsl_multifit_linear (const gsl_matrix * X,
   size_t rank;
   int status  = multifit_linear_svd (X, y, GSL_DBL_EPSILON, 1, &rank, c,
                                      cov, chisq, work);
+=======
+		     const gsl_vector * y,
+		     gsl_vector * c,
+		     gsl_matrix * cov,
+		     double *chisq, gsl_multifit_linear_workspace * work)
+{
+  size_t rank;
+  int status  = multifit_linear_svd (X, y, GSL_DBL_EPSILON, 1, &rank, c,
+				     cov, chisq, work);
+>>>>>>> config
   return status;
 }
 
@@ -205,12 +331,21 @@ gsl_multifit_linear (const gsl_matrix * X,
 
 int
 gsl_multifit_linear_svd (const gsl_matrix * X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                          const gsl_vector * y,
                          double tol,
                          size_t * rank,
                          gsl_vector * c,
                          gsl_matrix * cov,
                          double *chisq, gsl_multifit_linear_workspace * work)
+=======
+			 const gsl_vector * y,
+			 double tol,
+			 size_t * rank,
+			 gsl_vector * c,
+			 gsl_matrix * cov,
+			 double *chisq, gsl_multifit_linear_workspace * work)
+>>>>>>> config
 {
   int status = multifit_linear_svd (X, y, tol, 1, rank, c, cov, chisq, work);
   return status;
@@ -218,17 +353,27 @@ gsl_multifit_linear_svd (const gsl_matrix * X,
 
 int
 gsl_multifit_linear_usvd (const gsl_matrix * X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                           const gsl_vector * y,
                           double tol,
                           size_t * rank,
                           gsl_vector * c,
                           gsl_matrix * cov,
                           double *chisq, gsl_multifit_linear_workspace * work)
+=======
+			  const gsl_vector * y,
+			  double tol,
+			  size_t * rank,
+			  gsl_vector * c,
+			  gsl_matrix * cov,
+			  double *chisq, gsl_multifit_linear_workspace * work)
+>>>>>>> config
 {
   int status = multifit_linear_svd (X, y, tol, 0, rank, c, cov, chisq, work);
   return status;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* General weighted case */ 
 
 static int
@@ -241,22 +386,49 @@ multifit_wlinear_svd (const gsl_matrix * X,
                       gsl_vector * c,
                       gsl_matrix * cov,
                       double *chisq, gsl_multifit_linear_workspace * work)
+=======
+/* General weighted case */
+
+static int
+multifit_wlinear_svd (const gsl_matrix * X,
+		      const gsl_vector * w,
+		      const gsl_vector * y,
+		      double tol,
+		      int balance,
+		      size_t * rank,
+		      gsl_vector * c,
+		      gsl_matrix * cov,
+		      double *chisq, gsl_multifit_linear_workspace * work)
+>>>>>>> config
 {
   if (X->size1 != y->size)
     {
       GSL_ERROR
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ("number of observations in y does not match rows of matrix X",
          GSL_EBADLEN);
+=======
+	("number of observations in y does not match rows of matrix X",
+	 GSL_EBADLEN);
+>>>>>>> config
     }
   else if (X->size2 != c->size)
     {
       GSL_ERROR ("number of parameters c does not match columns of matrix X",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_EBADLEN);
+=======
+		 GSL_EBADLEN);
+>>>>>>> config
     }
   else if (w->size != y->size)
     {
       GSL_ERROR ("number of weights does not match number of observations",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_EBADLEN);
+=======
+		 GSL_EBADLEN);
+>>>>>>> config
     }
   else if (cov->size1 != cov->size2)
     {
@@ -265,14 +437,24 @@ multifit_wlinear_svd (const gsl_matrix * X,
   else if (c->size != cov->size1)
     {
       GSL_ERROR
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ("number of parameters does not match size of covariance matrix",
          GSL_EBADLEN);
+=======
+	("number of parameters does not match size of covariance matrix",
+	 GSL_EBADLEN);
+>>>>>>> config
     }
   else if (X->size1 != work->n || X->size2 != work->p)
     {
       GSL_ERROR
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ("size of workspace does not match size of observation matrix",
          GSL_EBADLEN);
+=======
+	("size of workspace does not match size of observation matrix",
+	 GSL_EBADLEN);
+>>>>>>> config
     }
   else
     {
@@ -294,6 +476,7 @@ multifit_wlinear_svd (const gsl_matrix * X,
       gsl_matrix_memcpy (A, X);
 
       for (i = 0; i < n; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double wi = gsl_vector_get (w, i);
 
@@ -316,6 +499,30 @@ multifit_wlinear_svd (const gsl_matrix * X,
         {
           gsl_vector_set_all (D, 1.0);
         }
+=======
+	{
+	  double wi = gsl_vector_get (w, i);
+
+	  if (wi < 0)
+	    wi = 0;
+
+	  {
+	    gsl_vector_view row = gsl_matrix_row (A, i);
+	    gsl_vector_scale (&row.vector, sqrt (wi));
+	  }
+	}
+
+      /* Balance the columns of the matrix A if requested */
+
+      if (balance)
+	{
+	  gsl_linalg_balance_columns (A, D);
+	}
+      else
+	{
+	  gsl_vector_set_all (D, 1.0);
+	}
+>>>>>>> config
 
       /* Decompose A into U S Q^T */
 
@@ -324,6 +531,7 @@ multifit_wlinear_svd (const gsl_matrix * X,
       /* Solve sqrt(w) y = A c for c, by first computing t = sqrt(w) y */
 
       for (i = 0; i < n; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double wi = gsl_vector_get (w, i);
           double yi = gsl_vector_get (y, i);
@@ -331,6 +539,15 @@ multifit_wlinear_svd (const gsl_matrix * X,
             wi = 0;
           gsl_vector_set (t, i, sqrt (wi) * yi);
         }
+=======
+	{
+	  double wi = gsl_vector_get (w, i);
+	  double yi = gsl_vector_get (y, i);
+	  if (wi < 0)
+	    wi = 0;
+	  gsl_vector_set (t, i, sqrt (wi) * yi);
+	}
+>>>>>>> config
 
       gsl_blas_dgemv (CblasTrans, 1.0, A, t, 0.0, xt);
 
@@ -339,6 +556,7 @@ multifit_wlinear_svd (const gsl_matrix * X,
       gsl_matrix_memcpy (QSI, Q);
 
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         double alpha0 = gsl_vector_get (S, 0);
         p_eff = 0;
         
@@ -358,6 +576,27 @@ multifit_wlinear_svd (const gsl_matrix * X,
           }
 
         *rank = p_eff;
+=======
+	double alpha0 = gsl_vector_get (S, 0);
+	p_eff = 0;
+
+	for (j = 0; j < p; j++)
+	  {
+	    gsl_vector_view column = gsl_matrix_column (QSI, j);
+	    double alpha = gsl_vector_get (S, j);
+
+	    if (alpha <= tol * alpha0) {
+	      alpha = 0.0;
+	    } else {
+	      alpha = 1.0 / alpha;
+	      p_eff++;
+	    }
+
+	    gsl_vector_scale (&column.vector, alpha);
+	  }
+
+	*rank = p_eff;
+>>>>>>> config
       }
 
       gsl_vector_set_zero (c);
@@ -373,6 +612,7 @@ multifit_wlinear_svd (const gsl_matrix * X,
       /* Form covariance matrix cov = (Q S^-1) (Q S^-1)^T */
 
       for (i = 0; i < p; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           gsl_vector_view row_i = gsl_matrix_row (QSI, i);
           double d_i = gsl_vector_get (D, i);
@@ -389,10 +629,29 @@ multifit_wlinear_svd (const gsl_matrix * X,
               gsl_matrix_set (cov, j, i, s / (d_i * d_j));
             }
         }
+=======
+	{
+	  gsl_vector_view row_i = gsl_matrix_row (QSI, i);
+	  double d_i = gsl_vector_get (D, i);
+
+	  for (j = i; j < p; j++)
+	    {
+	      gsl_vector_view row_j = gsl_matrix_row (QSI, j);
+	      double d_j = gsl_vector_get (D, j);
+	      double s;
+
+	      gsl_blas_ddot (&row_i.vector, &row_j.vector, &s);
+
+	      gsl_matrix_set (cov, i, j, s / (d_i * d_j));
+	      gsl_matrix_set (cov, j, i, s / (d_i * d_j));
+	    }
+	}
+>>>>>>> config
 
       /* Compute chisq, from residual r = y - X c */
 
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         double r2 = 0;
 
         for (i = 0; i < n; i++)
@@ -407,6 +666,22 @@ multifit_wlinear_svd (const gsl_matrix * X,
           }
 
         *chisq = r2;
+=======
+	double r2 = 0;
+
+	for (i = 0; i < n; i++)
+	  {
+	    double yi = gsl_vector_get (y, i);
+	    double wi = gsl_vector_get (w, i);
+	    gsl_vector_const_view row = gsl_matrix_const_row (X, i);
+	    double y_est, ri;
+	    gsl_blas_ddot (&row.vector, c, &y_est);
+	    ri = yi - y_est;
+	    r2 += wi * ri * ri;
+	  }
+
+	*chisq = r2;
+>>>>>>> config
       }
 
       return GSL_SUCCESS;
@@ -416,6 +691,7 @@ multifit_wlinear_svd (const gsl_matrix * X,
 
 int
 gsl_multifit_wlinear (const gsl_matrix * X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       const gsl_vector * w,
                       const gsl_vector * y,
                       gsl_vector * c,
@@ -425,11 +701,23 @@ gsl_multifit_wlinear (const gsl_matrix * X,
   size_t rank;
   int status  = multifit_wlinear_svd (X, w, y, GSL_DBL_EPSILON, 1,  &rank, c,
                                       cov, chisq, work);
+=======
+		      const gsl_vector * w,
+		      const gsl_vector * y,
+		      gsl_vector * c,
+		      gsl_matrix * cov,
+		      double *chisq, gsl_multifit_linear_workspace * work)
+{
+  size_t rank;
+  int status  = multifit_wlinear_svd (X, w, y, GSL_DBL_EPSILON, 1,  &rank, c,
+				      cov, chisq, work);
+>>>>>>> config
   return status;
 }
 
 int
 gsl_multifit_wlinear_svd (const gsl_matrix * X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                           const gsl_vector * w,
                           const gsl_vector * y,
                           double tol,
@@ -440,12 +728,25 @@ gsl_multifit_wlinear_svd (const gsl_matrix * X,
 {
   int status  = multifit_wlinear_svd (X, w, y, tol, 1, rank, c,
                                       cov, chisq, work);
+=======
+			  const gsl_vector * w,
+			  const gsl_vector * y,
+			  double tol,
+			  size_t * rank,
+			  gsl_vector * c,
+			  gsl_matrix * cov,
+			  double *chisq, gsl_multifit_linear_workspace * work)
+{
+  int status  = multifit_wlinear_svd (X, w, y, tol, 1, rank, c,
+				      cov, chisq, work);
+>>>>>>> config
   return status;
 
 }
 
 int
 gsl_multifit_wlinear_usvd (const gsl_matrix * X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                            const gsl_vector * w,
                            const gsl_vector * y,
                            double tol,
@@ -456,6 +757,18 @@ gsl_multifit_wlinear_usvd (const gsl_matrix * X,
 {
   int status  = multifit_wlinear_svd (X, w, y, tol, 0, rank, c,
                                       cov, chisq, work);
+=======
+			   const gsl_vector * w,
+			   const gsl_vector * y,
+			   double tol,
+			   size_t * rank,
+			   gsl_vector * c,
+			   gsl_matrix * cov,
+			   double *chisq, gsl_multifit_linear_workspace * work)
+{
+  int status  = multifit_wlinear_svd (X, w, y, tol, 0, rank, c,
+				      cov, chisq, work);
+>>>>>>> config
   return status;
 
 }
@@ -464,14 +777,23 @@ gsl_multifit_wlinear_usvd (const gsl_matrix * X,
 
 int
 gsl_multifit_linear_est (const gsl_vector * x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                          const gsl_vector * c,
                          const gsl_matrix * cov, double *y, double *y_err)
+=======
+			 const gsl_vector * c,
+			 const gsl_matrix * cov, double *y, double *y_err)
+>>>>>>> config
 {
 
   if (x->size != c->size)
     {
       GSL_ERROR ("number of parameters c does not match number of observations x",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          GSL_EBADLEN);
+=======
+	 GSL_EBADLEN);
+>>>>>>> config
     }
   else if (cov->size1 != cov->size2)
     {
@@ -480,18 +802,27 @@ gsl_multifit_linear_est (const gsl_vector * x,
   else if (c->size != cov->size1)
     {
       GSL_ERROR ("number of parameters c does not match size of covariance matrix cov",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          GSL_EBADLEN);
+=======
+	 GSL_EBADLEN);
+>>>>>>> config
     }
   else
     {
       size_t i, j;
       double var = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
       gsl_blas_ddot(x, c, y);       /* y = x.c */
 
       /* var = x' cov x */
 
       for (i = 0; i < x->size; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           const double xi = gsl_vector_get (x, i);
           var += xi * xi * gsl_matrix_get (cov, i, i);
@@ -502,6 +833,18 @@ gsl_multifit_linear_est (const gsl_vector * x,
               var += 2 * xi * xj * gsl_matrix_get (cov, i, j);
             }
         }
+=======
+	{
+	  const double xi = gsl_vector_get (x, i);
+	  var += xi * xi * gsl_matrix_get (cov, i, i);
+
+	  for (j = 0; j < i; j++)
+	    {
+	      const double xj = gsl_vector_get (x, j);
+	      var += 2 * xi * xj * gsl_matrix_get (cov, i, j);
+	    }
+	}
+>>>>>>> config
 
       *y_err = sqrt (var);
 
@@ -514,36 +857,60 @@ gsl_multifit_linear_residuals()
   Compute vector of residuals from fit
 
 Inputs: X - design matrix
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         y - rhs vector
         c - fit coefficients
         r - (output) where to store residuals
+=======
+	y - rhs vector
+	c - fit coefficients
+	r - (output) where to store residuals
+>>>>>>> config
 */
 
 int
 gsl_multifit_linear_residuals (const gsl_matrix *X, const gsl_vector *y,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                const gsl_vector *c, gsl_vector *r)
+=======
+			       const gsl_vector *c, gsl_vector *r)
+>>>>>>> config
 {
   if (X->size1 != y->size)
     {
       GSL_ERROR
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ("number of observations in y does not match rows of matrix X",
          GSL_EBADLEN);
+=======
+	("number of observations in y does not match rows of matrix X",
+	 GSL_EBADLEN);
+>>>>>>> config
     }
   else if (X->size2 != c->size)
     {
       GSL_ERROR ("number of parameters c does not match columns of matrix X",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_EBADLEN);
+=======
+		 GSL_EBADLEN);
+>>>>>>> config
     }
   else if (y->size != r->size)
     {
       GSL_ERROR ("number of observations in y does not match number of residuals",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_EBADLEN);
+=======
+		 GSL_EBADLEN);
+>>>>>>> config
     }
   else
     {
       size_t i;
 
       for (i = 0; i < y->size; ++i)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double yi = gsl_vector_get(y, i);
           gsl_vector_const_view row = gsl_matrix_const_row(X, i);
@@ -554,6 +921,18 @@ gsl_multifit_linear_residuals (const gsl_matrix *X, const gsl_vector *y,
 
           gsl_vector_set(r, i, ri);
         }
+=======
+	{
+	  double yi = gsl_vector_get(y, i);
+	  gsl_vector_const_view row = gsl_matrix_const_row(X, i);
+	  double y_est, ri;
+
+	  gsl_blas_ddot(&row.vector, c, &y_est);
+	  ri = yi - y_est;
+
+	  gsl_vector_set(r, i, ri);
+	}
+>>>>>>> config
 
       return GSL_SUCCESS;
     }

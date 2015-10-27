@@ -419,6 +419,7 @@ Usage: $0 [OPTION]... [TAG]...
   -V, --version    print version number and configuration settings, then exit
       --config     print configuration, then exit
   -q, --quiet, --silent
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                    do not print progress messages
   -d, --debug      don't remove temporary files
       --recheck    update $as_me by reconfiguring in the same conditions
@@ -426,6 +427,15 @@ Usage: $0 [OPTION]... [TAG]...
                    instantiate the configuration file FILE
       --header=FILE[:TEMPLATE]
                    instantiate the configuration header FILE
+=======
+		   do not print progress messages
+  -d, --debug      don't remove temporary files
+      --recheck    update $as_me by reconfiguring in the same conditions
+      --file=FILE[:TEMPLATE]
+		   instantiate the configuration file FILE
+      --header=FILE[:TEMPLATE]
+		   instantiate the configuration header FILE
+>>>>>>> config
 
 Configuration files:
 $config_files
@@ -2041,9 +2051,15 @@ func_stripname ()
 {
   case ${2} in
     .*) func_stripname_result=`$ECHO "X${3}" \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
            | $Xsed -e "s%^${1}%%" -e "s%\\\\${2}\$%%"`;;
     *)  func_stripname_result=`$ECHO "X${3}" \
            | $Xsed -e "s%^${1}%%" -e "s%${2}\$%%"`;;
+=======
+	   | $Xsed -e "s%^${1}%%" -e "s%\\\\${2}\$%%"`;;
+    *)  func_stripname_result=`$ECHO "X${3}" \
+	   | $Xsed -e "s%^${1}%%" -e "s%${2}\$%%"`;;
+>>>>>>> config
   esac
 }
 

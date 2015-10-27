@@ -1,17 +1,31 @@
 /* sort/test_source.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Thomas Walter, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Thomas Walter, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -25,9 +39,15 @@ int FUNCTION (my, pcheck) (gsl_permutation * p, TYPE (gsl_vector) * data, TYPE (
 int FUNCTION (my, scheck) (BASE * x, size_t k, TYPE (gsl_vector) * data);
 int FUNCTION (my, lcheck) (BASE * x, size_t k, TYPE (gsl_vector) * data);
 int FUNCTION (my, sicheck) (size_t * p, size_t k, gsl_permutation * perm,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                             TYPE (gsl_vector) * data);
 int FUNCTION (my, licheck) (size_t * p, size_t k, gsl_permutation * perm,
                             TYPE (gsl_vector) * data);
+=======
+			    TYPE (gsl_vector) * data);
+int FUNCTION (my, licheck) (size_t * p, size_t k, gsl_permutation * perm,
+			    TYPE (gsl_vector) * data);
+>>>>>>> config
 
 void
 TYPE (test_sort_vector) (size_t N, size_t stride)
@@ -194,6 +214,7 @@ FUNCTION (my, check) (TYPE (gsl_vector) * data, TYPE (gsl_vector) * orig)
   for (i = 0; i < data->size; i++)
     {
       if (FUNCTION (gsl_vector, get) (data, i) != FUNCTION (gsl_vector, get) (orig, i))
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
 #if DUMP_ERROR
           size_t j;
@@ -207,6 +228,21 @@ FUNCTION (my, check) (TYPE (gsl_vector) * data, TYPE (gsl_vector) * orig)
 
           return GSL_FAILURE;
         }
+=======
+	{
+#if DUMP_ERROR
+	  size_t j;
+	  for (j = 0 ; j < data->size; j++) {
+	    printf("%u: " OUT_FORMAT " " OUT_FORMAT " %c\n", j,
+		   FUNCTION (gsl_vector, get) (data, j),
+		   FUNCTION (gsl_vector, get) (orig, j),
+		   (i == j) ? '*' : ' ');
+	  }
+#endif
+
+	  return GSL_FAILURE;
+	}
+>>>>>>> config
     }
 
   return GSL_SUCCESS;
@@ -220,9 +256,15 @@ FUNCTION (my, pcheck) (gsl_permutation * p, TYPE (gsl_vector) * data, TYPE (gsl_
   for (i = 0; i < p->size; i++)
     {
       if (FUNCTION (gsl_vector, get) (data, p->data[i]) != FUNCTION (gsl_vector, get) (orig, i))
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           return GSL_FAILURE;
         }
+=======
+	{
+	  return GSL_FAILURE;
+	}
+>>>>>>> config
     }
 
   return GSL_SUCCESS;
@@ -236,9 +278,15 @@ FUNCTION (my, scheck) (BASE * x, size_t k, TYPE (gsl_vector) * data)
   for (i = 0; i < k; i++)
     {
       if (x[i] != FUNCTION (gsl_vector, get) (data, i))
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           return GSL_FAILURE;
         }
+=======
+	{
+	  return GSL_FAILURE;
+	}
+>>>>>>> config
     }
 
   return GSL_SUCCESS;
@@ -254,9 +302,15 @@ FUNCTION (my, lcheck) (BASE * x, size_t k, TYPE (gsl_vector) * data)
   for (i = 0; i < k; i++)
     {
       if (x[i] != FUNCTION (gsl_vector, get) (data, data->size - i - 1))
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           return GSL_FAILURE;
         }
+=======
+	{
+	  return GSL_FAILURE;
+	}
+>>>>>>> config
     }
 
   return GSL_SUCCESS;
@@ -265,17 +319,29 @@ FUNCTION (my, lcheck) (BASE * x, size_t k, TYPE (gsl_vector) * data)
 
 int
 FUNCTION (my, sicheck) (size_t * p1, size_t k, gsl_permutation * p,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         TYPE (gsl_vector) * data)
+=======
+			TYPE (gsl_vector) * data)
+>>>>>>> config
 {
   size_t i;
 
   for (i = 0; i < k; i++)
     {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       if (FUNCTION(gsl_vector,get)(data,p1[i]) 
           != FUNCTION(gsl_vector,get)(data, p->data[i]))
         {
           return GSL_FAILURE;
         }
+=======
+      if (FUNCTION(gsl_vector,get)(data,p1[i])
+	  != FUNCTION(gsl_vector,get)(data, p->data[i]))
+	{
+	  return GSL_FAILURE;
+	}
+>>>>>>> config
     }
 
   return GSL_SUCCESS;
@@ -283,21 +349,36 @@ FUNCTION (my, sicheck) (size_t * p1, size_t k, gsl_permutation * p,
 
 int
 FUNCTION (my, licheck) (size_t * p1, size_t k, gsl_permutation * p,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         TYPE (gsl_vector) * data)
+=======
+			TYPE (gsl_vector) * data)
+>>>>>>> config
 {
   size_t i;
 
   for (i = 0; i < k; i++)
     {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       if (FUNCTION(gsl_vector,get)(data,p1[i]) 
           != FUNCTION(gsl_vector,get)(data, p->data[p->size - i - 1]))
         {
           return GSL_FAILURE;
         }
+=======
+      if (FUNCTION(gsl_vector,get)(data,p1[i])
+	  != FUNCTION(gsl_vector,get)(data, p->data[p->size - i - 1]))
+	{
+	  return GSL_FAILURE;
+	}
+>>>>>>> config
     }
 
   return GSL_SUCCESS;
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
 
+=======
+>>>>>>> config

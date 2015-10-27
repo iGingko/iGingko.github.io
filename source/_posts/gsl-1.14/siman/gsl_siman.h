@@ -1,17 +1,31 @@
 /* siman/gsl_siman.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Mark Galassi
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Mark Galassi
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -58,6 +72,7 @@ typedef struct {
 
 /* prototype for the workhorse function */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 void gsl_siman_solve(const gsl_rng * r, 
                      void *x0_p, gsl_siman_Efunc_t Ef,
                      gsl_siman_step_t take_step,
@@ -76,6 +91,26 @@ gsl_siman_solve_many (const gsl_rng * r, void *x0_p, gsl_siman_Efunc_t Ef,
                       gsl_siman_print_t print_position,
                       size_t element_size,
                       gsl_siman_params_t params);
+=======
+void gsl_siman_solve(const gsl_rng * r,
+		     void *x0_p, gsl_siman_Efunc_t Ef,
+		     gsl_siman_step_t take_step,
+		     gsl_siman_metric_t distance,
+		     gsl_siman_print_t print_position,
+		     gsl_siman_copy_t copyfunc,
+		     gsl_siman_copy_construct_t copy_constructor,
+		     gsl_siman_destroy_t destructor,
+		     size_t element_size,
+		     gsl_siman_params_t params);
+
+void
+gsl_siman_solve_many (const gsl_rng * r, void *x0_p, gsl_siman_Efunc_t Ef,
+		      gsl_siman_step_t take_step,
+		      gsl_siman_metric_t distance,
+		      gsl_siman_print_t print_position,
+		      size_t element_size,
+		      gsl_siman_params_t params);
+>>>>>>> config
 
 __END_DECLS
 

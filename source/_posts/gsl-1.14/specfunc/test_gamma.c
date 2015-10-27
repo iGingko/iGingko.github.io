@@ -1,18 +1,33 @@
 /* specfunc/test_gamma.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2007 Brian Gough
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 2007 Brian Gough
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -96,6 +111,7 @@ int test_gamma(void)
   TEST_SF(s,  gsl_sf_gammainv_e, (-1.0+1.0/65536.0, &r), -1.0/65536.42280587818970 , TEST_TOL1, GSL_SUCCESS);
 
   TEST_SF_2(s, gsl_sf_lngamma_complex_e, (5.0, 2.0, &r1, &r2),
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             2.7487017561338026749, TEST_TOL0,
             3.0738434100497007915, TEST_TOL0,
             GSL_SUCCESS);
@@ -114,6 +130,26 @@ int test_gamma(void)
             -365.0362469529239516000, TEST_TOL1,
             -3.0393820262864361140, TEST_TOL1,
             GSL_SUCCESS);
+=======
+	    2.7487017561338026749, TEST_TOL0,
+	    3.0738434100497007915, TEST_TOL0,
+	    GSL_SUCCESS);
+
+  TEST_SF_2(s, gsl_sf_lngamma_complex_e, (100.0, 100.0, &r1, &r2),
+	    315.07804459949331323, TEST_TOL1,
+	    2.0821801804113110099, TEST_TOL3,
+	    GSL_SUCCESS);
+
+  TEST_SF_2(s, gsl_sf_lngamma_complex_e, (100.0, -1000.0, &r1, &r2),
+	    -882.3920483010362817000, TEST_TOL1,
+	    -2.1169293725678813270, TEST_TOL3,
+	    GSL_SUCCESS);
+
+  TEST_SF_2(s, gsl_sf_lngamma_complex_e, (-100.0, -1.0, &r1, &r2),
+	    -365.0362469529239516000, TEST_TOL1,
+	    -3.0393820262864361140, TEST_TOL1,
+	    GSL_SUCCESS);
+>>>>>>> config
 
   TEST_SF(s,  gsl_sf_taylorcoeff_e, (10,   1.0/1048576.0, &r), 1.7148961854776073928e-67  , TEST_TOL0, GSL_SUCCESS);
   TEST_SF(s,  gsl_sf_taylorcoeff_e, (10,   1.0/1024.0, &r), 2.1738891788497900281e-37  , TEST_TOL0, GSL_SUCCESS);
@@ -342,7 +378,11 @@ int test_gamma(void)
   TEST_SF(s,  gsl_sf_beta_e, (100.1, -1.2, &r), 1203.895236907821059270698160, TEST_TOL2, GSL_SUCCESS);
   TEST_SF(s,  gsl_sf_beta_e, (-100.1, -1.2, &r), -3236.073671884748847700283841, TEST_TOL2, GSL_SUCCESS);
   TEST_SF(s,  gsl_sf_beta_e, (-100.001, 0.0099, &r), -853.946649365611147996495177, TEST_TOL4, GSL_SUCCESS);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
 
   /* Other test cases */
   TEST_SF(s,  gsl_sf_beta_e, (1e-32, 1.5, &r), 1e32, TEST_TOL2, GSL_SUCCESS);

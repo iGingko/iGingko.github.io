@@ -1,17 +1,31 @@
 /* multifit/lmpar.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -35,9 +49,15 @@ count_nsing (const gsl_matrix * r)
       double rii = gsl_matrix_get (r, i, i);
 
       if (rii == 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           break;
         }
+=======
+	{
+	  break;
+	}
+>>>>>>> config
     }
 
   return i;
@@ -46,7 +66,11 @@ count_nsing (const gsl_matrix * r)
 
 static void
 compute_newton_direction (const gsl_matrix * r, const gsl_permutation * perm,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                           const gsl_vector * qtf, gsl_vector * x)
+=======
+			  const gsl_vector * qtf, gsl_vector * x)
+>>>>>>> config
 {
 
   /* Compute and store in x the Gauss-Newton direction. If the
@@ -78,6 +102,7 @@ compute_newton_direction (const gsl_matrix * r, const gsl_permutation * perm,
   if (nsing > 0)
     {
       for (j = nsing; j > 0 && j--;)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double rjj = gsl_matrix_get (r, j, j);
           double temp = gsl_vector_get (x, j) / rjj;
@@ -91,6 +116,21 @@ compute_newton_direction (const gsl_matrix * r, const gsl_permutation * perm,
               gsl_vector_set (x, i, xi - rij * temp);
             }
         }
+=======
+	{
+	  double rjj = gsl_matrix_get (r, j, j);
+	  double temp = gsl_vector_get (x, j) / rjj;
+
+	  gsl_vector_set (x, j, temp);
+
+	  for (i = 0; i < j; i++)
+	    {
+	      double rij = gsl_matrix_get (r, i, j);
+	      double xi = gsl_vector_get (x, i);
+	      gsl_vector_set (x, i, xi - rij * temp);
+	    }
+	}
+>>>>>>> config
     }
 
   gsl_permute_vector_inverse (perm, x);
@@ -98,9 +138,15 @@ compute_newton_direction (const gsl_matrix * r, const gsl_permutation * perm,
 
 static void
 compute_newton_correction (const gsl_matrix * r, const gsl_vector * sdiag,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                            const gsl_permutation * p, gsl_vector * x,
                            double dxnorm,
                            const gsl_vector * diag, gsl_vector * w)
+=======
+			   const gsl_permutation * p, gsl_vector * x,
+			   double dxnorm,
+			   const gsl_vector * diag, gsl_vector * w)
+>>>>>>> config
 {
   size_t n = r->size2;
   size_t i, j;
@@ -125,19 +171,34 @@ compute_newton_correction (const gsl_matrix * r, const gsl_vector * sdiag,
       gsl_vector_set (w, j, tj);
 
       for (i = j + 1; i < n; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double rij = gsl_matrix_get (r, i, j);
           double wi = gsl_vector_get (w, i);
 
           gsl_vector_set (w, i, wi - rij * tj);
         }
+=======
+	{
+	  double rij = gsl_matrix_get (r, i, j);
+	  double wi = gsl_vector_get (w, i);
+
+	  gsl_vector_set (w, i, wi - rij * tj);
+	}
+>>>>>>> config
     }
 }
 
 static void
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 compute_newton_bound (const gsl_matrix * r, const gsl_vector * x, 
                       double dxnorm,  const gsl_permutation * perm, 
                       const gsl_vector * diag, gsl_vector * w)
+=======
+compute_newton_bound (const gsl_matrix * r, const gsl_vector * x,
+		      double dxnorm,  const gsl_permutation * perm,
+		      const gsl_vector * diag, gsl_vector * w)
+>>>>>>> config
 {
   /* If the jacobian is not rank-deficient then the Newton step
      provides a lower bound for the zero of the function. Otherwise
@@ -170,6 +231,7 @@ compute_newton_bound (const gsl_matrix * r, const gsl_vector * x,
       double sum = 0;
 
       for (i = 0; i < j; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           sum += gsl_matrix_get (r, i, j) * gsl_vector_get (w, i);
         }
@@ -179,14 +241,30 @@ compute_newton_bound (const gsl_matrix * r, const gsl_vector * x,
         double wj = gsl_vector_get (w, j);
 
         gsl_vector_set (w, j, (wj - sum) / rjj);
+=======
+	{
+	  sum += gsl_matrix_get (r, i, j) * gsl_vector_get (w, i);
+	}
+
+      {
+	double rjj = gsl_matrix_get (r, j, j);
+	double wj = gsl_vector_get (w, j);
+
+	gsl_vector_set (w, j, (wj - sum) / rjj);
+>>>>>>> config
       }
     }
 }
 
 static void
 compute_gradient_direction (const gsl_matrix * r, const gsl_permutation * p,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                             const gsl_vector * qtf, const gsl_vector * diag,
                             gsl_vector * g)
+=======
+			    const gsl_vector * qtf, const gsl_vector * diag,
+			    gsl_vector * g)
+>>>>>>> config
 {
   const size_t n = r->size2;
 
@@ -197,6 +275,7 @@ compute_gradient_direction (const gsl_matrix * r, const gsl_permutation * p,
       double sum = 0;
 
       for (i = 0; i <= j; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           sum += gsl_matrix_get (r, i, j) * gsl_vector_get (qtf, i);
         }
@@ -206,6 +285,17 @@ compute_gradient_direction (const gsl_matrix * r, const gsl_permutation * p,
         double dpj = gsl_vector_get (diag, pj);
 
         gsl_vector_set (g, j, sum / dpj);
+=======
+	{
+	  sum += gsl_matrix_get (r, i, j) * gsl_vector_get (qtf, i);
+	}
+
+      {
+	size_t pj = gsl_permutation_get (p, j);
+	double dpj = gsl_vector_get (diag, pj);
+
+	gsl_vector_set (g, j, sum / dpj);
+>>>>>>> config
       }
     }
 }
@@ -213,7 +303,11 @@ compute_gradient_direction (const gsl_matrix * r, const gsl_permutation * p,
 static int
 lmpar (gsl_matrix * r, const gsl_permutation * perm, const gsl_vector * qtf,
        const gsl_vector * diag, double delta, double * par_inout,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
        gsl_vector * newton, gsl_vector * gradient, gsl_vector * sdiag, 
+=======
+       gsl_vector * newton, gsl_vector * gradient, gsl_vector * sdiag,
+>>>>>>> config
        gsl_vector * x, gsl_vector * w)
 {
   double dxnorm, gnorm, fp, fp_old, par_lower, par_upper, par_c;
@@ -294,8 +388,13 @@ lmpar (gsl_matrix * r, const gsl_permutation * perm, const gsl_vector * qtf,
     double wnorm = enorm (w);
     double phider = wnorm * wnorm;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     /* w == zero if r rank-deficient, 
        then set lower bound to zero form MINPACK, lmder.f 
+=======
+    /* w == zero if r rank-deficient,
+       then set lower bound to zero form MINPACK, lmder.f
+>>>>>>> config
        Hans E. Plesser 2002-02-25 (hans.plesser@itf.nlh.no) */
     if ( wnorm > 0 )
       par_lower = fp / (delta * phider);
@@ -367,7 +466,11 @@ iteration:
 #ifdef BRIANSFIX
   /* Seems like this is described in the paper but not in the MINPACK code */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (par < par_lower || par > par_upper) 
+=======
+  if (par < par_lower || par > par_upper)
+>>>>>>> config
     {
       par = GSL_MAX_DBL (0.001 * par_upper, sqrt(par_lower * par_upper));
     }
@@ -450,23 +553,41 @@ iteration:
   if (fp > 0)
     {
       if (par > par_lower)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           par_lower = par;
+=======
+	{
+	  par_lower = par;
+>>>>>>> config
 #ifdef DEBUG
       printf("fp > 0: set par_lower = par = %g\n", par);
 #endif
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         }
+=======
+	}
+>>>>>>> config
     }
   else if (fp < 0)
     {
       if (par < par_upper)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
 #ifdef DEBUG
       printf("fp < 0: set par_upper = par = %g\n", par);
 #endif
           par_upper = par;
         }
+=======
+	{
+#ifdef DEBUG
+      printf("fp < 0: set par_upper = par = %g\n", par);
+#endif
+	  par_upper = par;
+	}
+>>>>>>> config
     }
 
   /* Compute an improved estimate for par */
@@ -494,6 +615,9 @@ line220:
 
   return GSL_SUCCESS;
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
 
+=======
+>>>>>>> config

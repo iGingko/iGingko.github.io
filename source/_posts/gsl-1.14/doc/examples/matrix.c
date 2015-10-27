@@ -4,6 +4,7 @@
 int
 main (void)
 {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   int i, j; 
   gsl_matrix * m = gsl_matrix_alloc (10, 3);
   
@@ -15,6 +16,19 @@ main (void)
     for (j = 0; j < 3; j++)
       printf ("m(%d,%d) = %g\n", i, j, 
               gsl_matrix_get (m, i, j));
+=======
+  int i, j;
+  gsl_matrix * m = gsl_matrix_alloc (10, 3);
+
+  for (i = 0; i < 10; i++)
+    for (j = 0; j < 3; j++)
+      gsl_matrix_set (m, i, j, 0.23 + 100*i + j);
+
+  for (i = 0; i < 100; i++)  /* OUT OF RANGE ERROR */
+    for (j = 0; j < 3; j++)
+      printf ("m(%d,%d) = %g\n", i, j,
+	      gsl_matrix_get (m, i, j));
+>>>>>>> config
 
   gsl_matrix_free (m);
 

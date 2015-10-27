@@ -1,17 +1,31 @@
 /* specfunc/bessel.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996,1997,1998,1999,2000,2001,2002,2003 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996,1997,1998,1999,2000,2001,2002,2003 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -41,13 +55,21 @@
 
 /* Debye functions [Abramowitz+Stegun, 9.3.9-10] */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 inline static double 
+=======
+inline static double
+>>>>>>> config
 debye_u1(const double * tpow)
 {
   return (3.0*tpow[1] - 5.0*tpow[3])/24.0;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 inline static double 
+=======
+inline static double
+>>>>>>> config
 debye_u2(const double * tpow)
 {
   return (81.0*tpow[2] - 462.0*tpow[4] + 385.0*tpow[6])/1152.0;
@@ -62,26 +84,44 @@ static double debye_u3(const double * tpow)
 inline
 static double debye_u4(const double * tpow)
 {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   return (4465125.0*tpow[4] - 94121676.0*tpow[6] + 349922430.0*tpow[8] - 
           446185740.0*tpow[10] + 185910725.0*tpow[12])/39813120.0;
+=======
+  return (4465125.0*tpow[4] - 94121676.0*tpow[6] + 349922430.0*tpow[8] -
+	  446185740.0*tpow[10] + 185910725.0*tpow[12])/39813120.0;
+>>>>>>> config
 }
 
 inline
 static double debye_u5(const double * tpow)
 {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   return (1519035525.0*tpow[5]     - 49286948607.0*tpow[7] + 
           284499769554.0*tpow[9]   - 614135872350.0*tpow[11] + 
           566098157625.0*tpow[13]  - 188699385875.0*tpow[15])/6688604160.0;
+=======
+  return (1519035525.0*tpow[5]     - 49286948607.0*tpow[7] +
+	  284499769554.0*tpow[9]   - 614135872350.0*tpow[11] +
+	  566098157625.0*tpow[13]  - 188699385875.0*tpow[15])/6688604160.0;
+>>>>>>> config
 }
 
 #if 0
 inline
 static double debye_u6(const double * tpow)
 {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   return (2757049477875.0*tpow[6] - 127577298354750.0*tpow[8] + 
           1050760774457901.0*tpow[10] - 3369032068261860.0*tpow[12] + 
           5104696716244125.0*tpow[14] - 3685299006138750.0*tpow[16] + 
           1023694168371875.0*tpow[18])/4815794995200.0;
+=======
+  return (2757049477875.0*tpow[6] - 127577298354750.0*tpow[8] +
+	  1050760774457901.0*tpow[10] - 3369032068261860.0*tpow[12] +
+	  5104696716244125.0*tpow[14] - 3685299006138750.0*tpow[16] +
+	  1023694168371875.0*tpow[18])/4815794995200.0;
+>>>>>>> config
 }
 #endif
 
@@ -90,11 +130,19 @@ static double debye_u6(const double * tpow)
 
 int
 gsl_sf_bessel_IJ_taylor_e(const double nu, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                              const int sign,
                              const int kmax,
                              const double threshold,
                              gsl_sf_result * result
                              )
+=======
+			     const int sign,
+			     const int kmax,
+			     const double threshold,
+			     gsl_sf_result * result
+			     )
+>>>>>>> config
 {
   /* CHECK_POINTER(result) */
 
@@ -165,9 +213,15 @@ gsl_sf_bessel_IJ_taylor_e(const double nu, const double x,
       int k;
 
       for(k=1; k<=kmax; k++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         term *= y/((nu+k)*k);
         sumk += term;
         if(fabs(term/sumk) < threshold) break;
+=======
+	term *= y/((nu+k)*k);
+	sumk += term;
+	if(fabs(term/sumk) < threshold) break;
+>>>>>>> config
       }
 
       sum.val = sumk;
@@ -177,8 +231,13 @@ gsl_sf_bessel_IJ_taylor_e(const double nu, const double x,
     }
 
     stat_mul = gsl_sf_multiply_err_e(prefactor.val, prefactor.err,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                         sum.val, sum.err,
                                         result);
+=======
+					sum.val, sum.err,
+					result);
+>>>>>>> config
 
     return GSL_ERROR_SELECT_3(stat_mul, stat_pre, stat_sum);
   }
@@ -186,7 +245,11 @@ gsl_sf_bessel_IJ_taylor_e(const double nu, const double x,
 
 
 /* Hankel's Asymptotic Expansion - A&S 9.2.5
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  *  
+=======
+ *
+>>>>>>> config
  * x >> nu*nu+1
  * error ~ O( ((nu*nu+1)/x)^4 )
  *
@@ -217,9 +280,15 @@ gsl_sf_bessel_Jnu_asympx_e(const double nu, const double x, gsl_sf_result * resu
   double mu  = 4.0*nu*nu;
   double chi = x - (0.5*nu + 0.25)*M_PI;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   double P   = 0.0; 
   double Q   = 0.0;
   
+=======
+  double P   = 0.0;
+  double Q   = 0.0;
+
+>>>>>>> config
   double k = 0, t = 1;
   int convP, convQ;
 
@@ -228,7 +297,11 @@ gsl_sf_bessel_Jnu_asympx_e(const double nu, const double x, gsl_sf_result * resu
       t *= (k == 0) ? 1 : -(mu - (2*k-1)*(2*k-1)) / (k * (8 * x));
       convP = fabs(t) < GSL_DBL_EPSILON * fabs(P);
       P += t;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
       k++;
 
       t *= (mu - (2*k-1)*(2*k-1)) / (k * (8 * x));
@@ -236,10 +309,17 @@ gsl_sf_bessel_Jnu_asympx_e(const double nu, const double x, gsl_sf_result * resu
       Q += t;
 
       /* To preserve the consistency of the series we need to exit
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          when P and Q have the same number of terms */
 
       if (convP && convQ && k > (nu / 2)) 
         break;
+=======
+	 when P and Q have the same number of terms */
+
+      if (convP && convQ && k > (nu / 2))
+	break;
+>>>>>>> config
 
       k++;
     }
@@ -249,7 +329,11 @@ gsl_sf_bessel_Jnu_asympx_e(const double nu, const double x, gsl_sf_result * resu
     double pre = sqrt(2.0/(M_PI*x));
     double c   = cos(chi);
     double s   = sin(chi);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     result->val  = pre * (c*P - s*Q);
     result->err  = pre * GSL_DBL_EPSILON * (fabs(c*P) + fabs(s*Q) + fabs(t)) * (1 + fabs(x));
     /* NB: final term accounts for phase error with large x */
@@ -329,7 +413,11 @@ gsl_sf_bessel_Knu_scaled_asympx_e(const double nu, const double x, gsl_sf_result
  *   It is not hard to show that |u_N(t)| is small for such t.
  *   We have N=6 here, and |u_6(t)| < 0.025, so the error is clearly
  *   bounded by 0.025/nu^6. This gives the asymptotic bound on nu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  *   seen below as nu ~ 100. For general MACH_EPS it will be 
+=======
+ *   seen below as nu ~ 100. For general MACH_EPS it will be
+>>>>>>> config
  *                     nu > 0.5 / MACH_EPS^(1/6)
  *   When t is small, the bound is even better because |u_N(t)| vanishes
  *   as t->0. In fact u_N(t) ~ C t^N as t->0, with C ~= 0.1.
@@ -370,7 +458,11 @@ gsl_sf_bessel_Inu_scaled_asymp_unif_e(const double nu, const double x, gsl_sf_re
     tpow[0] = 1.0;
     for(i=1; i<16; i++) tpow[i] = t * tpow[i-1];
     sum = 1.0 + debye_u1(tpow)/nu + debye_u2(tpow)/(nu*nu) + debye_u3(tpow)/(nu*nu*nu)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           + debye_u4(tpow)/(nu*nu*nu*nu) + debye_u5(tpow)/(nu*nu*nu*nu*nu);
+=======
+	  + debye_u4(tpow)/(nu*nu*nu*nu) + debye_u5(tpow)/(nu*nu*nu*nu*nu);
+>>>>>>> config
     result->val  = pre * ex_result.val * sum;
     result->err  = pre * ex_result.val / (nu*nu*nu*nu*nu*nu);
     result->err += pre * ex_result.err * fabs(sum);
@@ -408,7 +500,11 @@ gsl_sf_bessel_Knu_scaled_asymp_unif_e(const double nu, const double x, gsl_sf_re
     tpow[0] = 1.0;
     for(i=1; i<16; i++) tpow[i] = t * tpow[i-1];
     sum = 1.0 - debye_u1(tpow)/nu + debye_u2(tpow)/(nu*nu) - debye_u3(tpow)/(nu*nu*nu)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           + debye_u4(tpow)/(nu*nu*nu*nu) - debye_u5(tpow)/(nu*nu*nu*nu*nu);
+=======
+	  + debye_u4(tpow)/(nu*nu*nu*nu) - debye_u5(tpow)/(nu*nu*nu*nu*nu);
+>>>>>>> config
     result->val  = pre * ex_result.val * sum;
     result->err  = pre * ex_result.err * fabs(sum);
     result->err += pre * ex_result.val / (nu*nu*nu*nu*nu*nu);
@@ -427,8 +523,13 @@ gsl_sf_bessel_Knu_scaled_asymp_unif_e(const double nu, const double x, gsl_sf_re
  */
 int
 gsl_sf_bessel_JY_mu_restricted(const double mu, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                gsl_sf_result * Jmu, gsl_sf_result * Jmup1,
                                gsl_sf_result * Ymu, gsl_sf_result * Ymup1)
+=======
+			       gsl_sf_result * Jmu, gsl_sf_result * Jmup1,
+			       gsl_sf_result * Ymu, gsl_sf_result * Ymup1)
+>>>>>>> config
 {
   /* CHECK_POINTER(Jmu) */
   /* CHECK_POINTER(Jmup1) */
@@ -519,7 +620,11 @@ gsl_sf_bessel_JY_mu_restricted(const double mu, const double x,
 
 int
 gsl_sf_bessel_J_CF1(const double nu, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                     double * ratio, double * sgn)
+=======
+		    double * ratio, double * sgn)
+>>>>>>> config
 {
   const double RECUR_BIG = GSL_SQRT_DBL_MAX;
   const double RECUR_SMALL = GSL_SQRT_DBL_MIN;
@@ -597,7 +702,11 @@ gsl_sf_bessel_J_CF1(const double nu, const double x,
 #if 0
 int
 gsl_sf_bessel_J_CF1_ser(const double nu, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         double * ratio, double * sgn)
+=======
+			double * ratio, double * sgn)
+>>>>>>> config
 {
   const int maxk = 20000;
   double tk   = 1.0;
@@ -661,7 +770,11 @@ gsl_sf_bessel_I_CF1_ser(const double nu, const double x, double * ratio)
 
 int
 gsl_sf_bessel_JY_steed_CF2(const double nu, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                            double * P, double * Q)
+=======
+			   double * P, double * Q)
+>>>>>>> config
 {
   const int max_iter = 10000;
   const double SMALL = 1.0e-100;
@@ -724,8 +837,13 @@ gsl_sf_bessel_JY_steed_CF2(const double nu, const double x,
  */
 int
 gsl_sf_bessel_K_scaled_steed_temme_CF2(const double nu, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                        double * K_nu, double * K_nup1,
                                        double * Kp_nu)
+=======
+				       double * K_nu, double * K_nup1,
+				       double * Kp_nu)
+>>>>>>> config
 {
   const int maxiter = 10000;
 
@@ -762,9 +880,15 @@ gsl_sf_bessel_K_scaled_steed_temme_CF2(const double nu, const double x,
     s += dels;
     if(fabs(dels/s) < GSL_DBL_EPSILON) break;
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   hi *= -a1;
   
+=======
+
+  hi *= -a1;
+
+>>>>>>> config
   *K_nu   = sqrt(M_PI/(2.0*x)) / s;
   *K_nup1 = *K_nu * (nu + x + 0.5 - hi)/x;
   *Kp_nu  = - *K_nup1 + nu/x * *K_nu;
@@ -880,7 +1004,11 @@ double besselJ_meissel(double nu, double x)
       int k;
       double xo2 = 0.5 * x;
       double gamfactor = pow(nu,nu) * exp(-nu) * sqrt(nu * 2. * M_PI)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         * (1. + 1./(12.*nu) + 1./(288.*nu*nu));
+=======
+	* (1. + 1./(12.*nu) + 1./(288.*nu*nu));
+>>>>>>> config
       double prefactor = pow(xo2, nu) / gamfactor;
       double C[5];
 
@@ -889,10 +1017,17 @@ double besselJ_meissel(double nu, double x)
       C[2] = -C[1] / (2.*(nu+2.));
       C[3] = -C[2] / (3.*(nu+3.));
       C[4] = -C[3] / (4.*(nu+4.));
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
       result = 0.;
       for(k=0; k<5; k++)
         result += C[k] * pow(xo2, 2.*k);
+=======
+
+      result = 0.;
+      for(k=0; k<5; k++)
+	result += C[k] * pow(xo2, 2.*k);
+>>>>>>> config
 
       result *= prefactor;
     }
@@ -908,7 +1043,11 @@ double besselJ_meissel(double nu, double x)
       double term1 = 1./(24.*nu) * ((2.+3.*z2)/((1.-z2)*rtomz2) -2.);
       double term2 = - z2*(4. + z2)/(16.*nu2*(1.-z2)*omz2_2);
       double V_nu = term1 + term2;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
       /* Calculate the harmless prefactor. */
       double sterlingsum = 1. + 1./(12.*nu) + 1./(288*nu2);
       double harmless = 1. / (sqrt(rtomz2*2.*M_PI*nu) * sterlingsum);
@@ -917,9 +1056,15 @@ double besselJ_meissel(double nu, double x)
       double ln_nupre = rtomz2 + log(z) - log(1. + rtomz2);
 
       result = harmless * exp(nu*ln_nupre - V_nu);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     } 
   else if(x < nu + ulimit)
     {         
+=======
+    }
+  else if(x < nu + ulimit)
+    {
+>>>>>>> config
       /* Intermediate region 1: x near nu. */
       double eps = 1.-nu/x;
       double eps_x = eps * x;
@@ -928,7 +1073,11 @@ double besselJ_meissel(double nu, double x)
       double B[6];
       static double gam[6] = {2.67894, 1.35412, 1., 0.89298, 0.902745, 1.};
       static double sf[6] = {0.866025, 0.866025, 0., -0.866025, -0.866025, 0.};
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
       /* Some terms are identically zero, because sf[] can be zero.
        * Some terms do not appear in the result.
        */
@@ -946,19 +1095,31 @@ double besselJ_meissel(double nu, double x)
 
       result /= (3.*M_PI);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else 
+=======
+  else
+>>>>>>> config
     {
       /* Region of very large argument. Use expansion
        * for x>>l, and we need not be very exacting.
        */
       double secb = x/nu;
       double sec2b= secb*secb;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
       double cotb = 1./sqrt(sec2b-1.);      /* cotb=cot(beta) */
 
       double beta = acos(nu/x);
       double trigarg = nu/cotb - nu*beta - 0.25 * M_PI;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
       double cot3b = cotb * cotb * cotb;
       double cot6b = cot3b * cot3b;
 
@@ -974,7 +1135,11 @@ double besselJ_meissel(double nu, double x)
 
       expterm = exp(-expterm);
       prefactor = sqrt(2. * cotb / (nu * M_PI));
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
       result = prefactor * expterm * trigcos;
     }
 

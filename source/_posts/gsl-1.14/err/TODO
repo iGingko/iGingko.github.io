@@ -1,3 +1,6 @@
 * Add a GSL_ERROR_MODE environment variable for choosing error
 behavior at runtime (???).
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

@@ -1,17 +1,31 @@
 /* integration/qmomo.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007, 2009 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007, 2009 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -24,9 +38,15 @@
 
 static void
 initialise (double * ri, double * rj, double * rg, double * rh,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             double alpha, double beta);
 
 gsl_integration_qaws_table * 
+=======
+	    double alpha, double beta);
+
+gsl_integration_qaws_table *
+>>>>>>> config
 gsl_integration_qaws_table_alloc (double alpha, double beta, int mu, int nu)
 {
   gsl_integration_qaws_table * t;
@@ -51,29 +71,47 @@ gsl_integration_qaws_table_alloc (double alpha, double beta, int mu, int nu)
       GSL_ERROR_VAL ("nu must be 0 or 1", GSL_EINVAL, 0);
     }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   t = (gsl_integration_qaws_table *) 
+=======
+  t = (gsl_integration_qaws_table *)
+>>>>>>> config
     malloc(sizeof(gsl_integration_qaws_table));
 
   if (t == 0)
     {
       GSL_ERROR_VAL ("failed to allocate space for qaws_table struct",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_ENOMEM, 0);
+=======
+			GSL_ENOMEM, 0);
+>>>>>>> config
     }
 
   t->alpha = alpha;
   t->beta = beta;
   t->mu = mu;
   t->nu = nu;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   initialise (t->ri, t->rj, t->rg, t->rh, alpha, beta);
   
+=======
+
+  initialise (t->ri, t->rj, t->rg, t->rh, alpha, beta);
+
+>>>>>>> config
   return t;
 }
 
 
 int
 gsl_integration_qaws_table_set (gsl_integration_qaws_table * t,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                 double alpha, double beta, int mu, int nu)
+=======
+				double alpha, double beta, int mu, int nu)
+>>>>>>> config
 {
   if (alpha < -1.0)
     {
@@ -99,7 +137,11 @@ gsl_integration_qaws_table_set (gsl_integration_qaws_table * t,
   t->beta = beta;
   t->mu = mu;
   t->nu = nu;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   initialise (t->ri, t->rj, t->rg, t->rh, alpha, beta);
 
   return GSL_SUCCESS;
@@ -115,7 +157,11 @@ gsl_integration_qaws_table_free (gsl_integration_qaws_table * t)
 
 static void
 initialise (double * ri, double * rj, double * rg, double * rh,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             double alpha, double beta)
+=======
+	    double alpha, double beta)
+>>>>>>> config
 {
   const double alpha_p1 = alpha + 1.0;
   const double beta_p1 = beta + 1.0;
@@ -127,7 +173,11 @@ initialise (double * ri, double * rj, double * rg, double * rh,
   const double r_beta = pow (2.0, beta_p1);
 
   size_t i;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   double an, anm1;
 
   ri[0] = r_alpha / alpha_p1;
@@ -139,7 +189,11 @@ initialise (double * ri, double * rj, double * rg, double * rh,
   for (i = 2; i < 25; i++)
     {
       ri[i] = -(r_alpha + an * (an - alpha_p2) * ri[i - 1])
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         / (anm1 * (an + alpha_p1));
+=======
+	/ (anm1 * (an + alpha_p1));
+>>>>>>> config
       anm1 = an;
       an = an + 1.0;
     }
@@ -153,7 +207,11 @@ initialise (double * ri, double * rj, double * rg, double * rh,
   for (i = 2; i < 25; i++)
     {
       rj[i] = -(r_beta + an * (an - beta_p2) * rj[i - 1])
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         / (anm1 * (an + beta_p1));
+=======
+	/ (anm1 * (an + beta_p1));
+>>>>>>> config
       anm1 = an;
       an = an + 1.0;
     }
@@ -167,7 +225,11 @@ initialise (double * ri, double * rj, double * rg, double * rh,
   for (i = 2; i < 25; i++)
     {
       rg[i] = -(an * (an - alpha_p2) * rg[i - 1] - an * ri[i - 1]
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                 + anm1 * ri[i]) / (anm1 * (an + alpha_p1));
+=======
+		+ anm1 * ri[i]) / (anm1 * (an + alpha_p1));
+>>>>>>> config
       anm1 = an;
       an = an + 1.0;
     }
@@ -181,7 +243,11 @@ initialise (double * ri, double * rj, double * rg, double * rh,
   for (i = 2; i < 25; i++)
     {
       rh[i] = -(an * (an - beta_p2) * rh[i - 1] - an * rj[i - 1]
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                 + anm1 * rj[i]) / (anm1 * (an + beta_p1));
+=======
+		+ anm1 * rj[i]) / (anm1 * (an + beta_p1));
+>>>>>>> config
       anm1 = an;
       an = an + 1.0;
     }

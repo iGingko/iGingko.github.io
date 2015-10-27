@@ -1,17 +1,31 @@
 /* ode-initval/rk2imp.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -55,7 +69,11 @@ rk2imp_alloc (size_t dim)
   if (state == 0)
     {
       GSL_ERROR_NULL ("failed to allocate space for rk2imp_state",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       GSL_ENOMEM);
+=======
+		      GSL_ENOMEM);
+>>>>>>> config
     }
 
   state->Y1 = (double *) malloc (dim * sizeof (double));
@@ -112,12 +130,21 @@ rk2imp_alloc (size_t dim)
 }
 
 static int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 rk2imp_step (double *y, rk2imp_state_t *state, 
 	     const double h, const double t, 
 	     const size_t dim, const gsl_odeiv_system *sys)
 {
   /* Makes a Runge-Kutta 2nd order implicit advance with step size h.
      y0 is initial values of variables y. 
+=======
+rk2imp_step (double *y, rk2imp_state_t *state,
+	     const double h, const double t,
+	     const size_t dim, const gsl_odeiv_system *sys)
+{
+  /* Makes a Runge-Kutta 2nd order implicit advance with step size h.
+     y0 is initial values of variables y.
+>>>>>>> config
 
      The implicit matrix equations to solve are:
 
@@ -133,16 +160,25 @@ rk2imp_step (double *y, rk2imp_state_t *state,
   int nu;
   size_t i;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   /* iterative solution of Y1 = y0 + h/2 * f(t + h/2, Y1) 
      Y1 should include initial values at call.
 
      Note: This method does not check for convergence of the
      iterative solution! 
+=======
+  /* iterative solution of Y1 = y0 + h/2 * f(t + h/2, Y1)
+     Y1 should include initial values at call.
+
+     Note: This method does not check for convergence of the
+     iterative solution!
+>>>>>>> config
   */
 
   for (nu = 0; nu < max_iter; nu++)
     {
       for (i = 0; i < dim; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           ytmp[i] = y0[i] + 0.5 * h * Y1[i];
         }
@@ -157,6 +193,22 @@ rk2imp_step (double *y, rk2imp_state_t *state,
       }
     }
   
+=======
+	{
+	  ytmp[i] = y0[i] + 0.5 * h * Y1[i];
+	}
+
+      {
+	int s = GSL_ODEIV_FN_EVAL (sys, t + 0.5 * h, ytmp, Y1);
+
+	if (s != GSL_SUCCESS)
+	  {
+	    return s;
+	  }
+      }
+    }
+
+>>>>>>> config
   /* assignment */
 
   for (i = 0; i < dim; i++)
@@ -169,6 +221,7 @@ rk2imp_step (double *y, rk2imp_state_t *state,
 
 static int
 rk2imp_apply (void *vstate,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
               size_t dim,
               double t,
               double h,
@@ -176,6 +229,15 @@ rk2imp_apply (void *vstate,
               double yerr[],
               const double dydt_in[],
               double dydt_out[], const gsl_odeiv_system * sys)
+=======
+	      size_t dim,
+	      double t,
+	      double h,
+	      double y[],
+	      double yerr[],
+	      const double dydt_in[],
+	      double dydt_out[], const gsl_odeiv_system * sys)
+>>>>>>> config
 {
   rk2imp_state_t *state = (rk2imp_state_t *) vstate;
 
@@ -203,7 +265,11 @@ rk2imp_apply (void *vstate,
   else
     {
       int s = GSL_ODEIV_FN_EVAL (sys, t, y, Y1);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
       if (s != GSL_SUCCESS)
 	{
 	  return s;
@@ -217,15 +283,25 @@ rk2imp_apply (void *vstate,
   {
     int s = rk2imp_step (y_onestep, state, h, t, dim, sys);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     if (s != GSL_SUCCESS) 
+=======
+    if (s != GSL_SUCCESS)
+>>>>>>> config
       {
 	return s;
       }
   }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  /* Then with two steps with half step length (save to y) */ 
 
   {  
+=======
+ /* Then with two steps with half step length (save to y) */
+
+  {
+>>>>>>> config
     int s = rk2imp_step (y, state, h / 2.0, t, dim, sys);
 
     if (s != GSL_SUCCESS)
@@ -241,7 +317,11 @@ rk2imp_apply (void *vstate,
 
   {
     int s = GSL_ODEIV_FN_EVAL (sys, t + h / 2.0, y, Y1);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
     if (s != GSL_SUCCESS)
       {
 	/* Restore original y vector */
@@ -265,14 +345,22 @@ rk2imp_apply (void *vstate,
 
   /* Derivatives at output */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (dydt_out != NULL) 
     {
       int s = GSL_ODEIV_FN_EVAL (sys, t + h, y, dydt_out);
       
+=======
+  if (dydt_out != NULL)
+    {
+      int s = GSL_ODEIV_FN_EVAL (sys, t + h, y, dydt_out);
+
+>>>>>>> config
       if (s != GSL_SUCCESS)
 	{
 	  /* Restore original y vector */
 	  DBL_MEMCPY (y, y0_orig, dim);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	  
 	  return s;
 	}
@@ -281,6 +369,16 @@ rk2imp_apply (void *vstate,
   /* Error estimation */
 
   for (i = 0; i < dim; i++) 
+=======
+
+	  return s;
+	}
+    }
+
+  /* Error estimation */
+
+  for (i = 0; i < dim; i++)
+>>>>>>> config
     {
       yerr[i] = 4.0 * (y[i] - y_onestep[i]) / 3.0;
     }
@@ -298,7 +396,11 @@ rk2imp_reset (void *vstate, size_t dim)
   DBL_ZERO_MEMSET (state->y0, dim);
   DBL_ZERO_MEMSET (state->y_onestep, dim);
   DBL_ZERO_MEMSET (state->y0_orig, dim);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   return GSL_SUCCESS;
 }
 

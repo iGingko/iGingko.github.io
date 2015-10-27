@@ -18,6 +18,7 @@ main (void)
   struct data ntuple_row;
   int i;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   gsl_ntuple *ntuple 
     = gsl_ntuple_create ("test.dat", &ntuple_row, 
                          sizeof (ntuple_row));
@@ -25,6 +26,15 @@ main (void)
   gsl_rng_env_setup ();
 
   T = gsl_rng_default; 
+=======
+  gsl_ntuple *ntuple
+    = gsl_ntuple_create ("test.dat", &ntuple_row,
+			 sizeof (ntuple_row));
+
+  gsl_rng_env_setup ();
+
+  T = gsl_rng_default;
+>>>>>>> config
   r = gsl_rng_alloc (T);
 
   for (i = 0; i < 10000; i++)
@@ -32,10 +42,17 @@ main (void)
       ntuple_row.x = gsl_ran_ugaussian (r);
       ntuple_row.y = gsl_ran_ugaussian (r);
       ntuple_row.z = gsl_ran_ugaussian (r);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
       gsl_ntuple_write (ntuple);
     }
   
+=======
+
+      gsl_ntuple_write (ntuple);
+    }
+
+>>>>>>> config
   gsl_ntuple_close (ntuple);
   gsl_rng_free (r);
 

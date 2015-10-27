@@ -1,17 +1,31 @@
 /* randist/gsl-randist.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -44,7 +58,11 @@ main (int argc, char *argv[])
   const char * name ;
   gsl_rng * r ;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (argc < 4) 
+=======
+  if (argc < 4)
+>>>>>>> config
     {
       printf (
 "Usage: gsl-randist seed n DIST param1 param2 ...\n"
@@ -99,11 +117,19 @@ main (int argc, char *argv[])
   gsl_rng_env_setup() ;
 
   if (gsl_rng_default_seed != 0) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     fprintf(stderr, 
             "overriding GSL_RNG_SEED with command line value, seed = %ld\n", 
             seed) ;
   }
   
+=======
+    fprintf(stderr,
+	    "overriding GSL_RNG_SEED with command line value, seed = %ld\n",
+	    seed) ;
+  }
+
+>>>>>>> config
   gsl_rng_default_seed = seed ;
 
   r = gsl_rng_alloc(gsl_rng_default) ;
@@ -222,8 +248,13 @@ main (int argc, char *argv[])
       DBL_ARG(sigmax) ;
       DBL_ARG(sigmay) ;
       DBL_ARG(rho) ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       OUTPUT2(gsl_ran_bivariate_gaussian (r, sigmax, sigmay, rho, &x, &y), 
               x, y);
+=======
+      OUTPUT2(gsl_ran_bivariate_gaussian (r, sigmax, sigmay, rho, &x, &y),
+	      x, y);
+>>>>>>> config
     }
   else if (NAME("dir-2d"))
     {
@@ -235,6 +266,7 @@ main (int argc, char *argv[])
     }
   else if (NAME("dir-nd"))
     {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       double *xarr;  
       ARGS(1, "n1 = number of dimensions of hypersphere"); 
       INT_ARG(n1) ;
@@ -251,6 +283,24 @@ main (int argc, char *argv[])
 
       free(xarr);
     }  
+=======
+      double *xarr;
+      ARGS(1, "n1 = number of dimensions of hypersphere");
+      INT_ARG(n1) ;
+      xarr = (double *)malloc(n1*sizeof(double));
+
+      for(i = 0; i < n; i++) {
+	gsl_ran_dir_nd (r, n1, xarr) ;
+	for (j = 0; j < n1; j++) {
+	  if (j) putchar(' ');
+	  printf("%g", xarr[j]) ;
+	}
+	putchar('\n');
+      } ;
+
+      free(xarr);
+    }
+>>>>>>> config
   else if (NAME("geometric"))
     {
       ARGS(1, "p = bernoulli trial probability of success");

@@ -1,18 +1,33 @@
 /* monte/test.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Michael Booth
  * Copyright (C) 2009 Michael Booth
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Michael Booth
+ * Copyright (C) 2009 Michael Booth
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -58,7 +73,11 @@ double f2 (double x[], size_t d, void *params);
 double f3 (double x[], size_t d, void *params);
 
 void my_error_handler (const char *reason, const char *file,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                        int line, int err);
+=======
+		       int line, int err);
+>>>>>>> config
 
 struct problem {
   gsl_monte_function * f;
@@ -71,10 +90,17 @@ struct problem {
   char * description;
 } ;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_monte_function 
 make_function (double (*f)(double *, size_t, void *), size_t d, void * p);
 
 gsl_monte_function 
+=======
+gsl_monte_function
+make_function (double (*f)(double *, size_t, void *), size_t d, void * p);
+
+gsl_monte_function
+>>>>>>> config
 make_function (double (*f)(double *, size_t, void *), size_t d, void * p)
 {
   gsl_monte_function f_new;
@@ -87,6 +113,7 @@ make_function (double (*f)(double *, size_t, void *), size_t d, void * p)
 }
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 void 
 add (struct problem * problems, int * n, 
      gsl_monte_function * f, double xl[], double xu[], size_t dim, size_t calls,
@@ -94,6 +121,15 @@ add (struct problem * problems, int * n,
 
 void 
 add (struct problem * problems, int * n, 
+=======
+void
+add (struct problem * problems, int * n,
+     gsl_monte_function * f, double xl[], double xu[], size_t dim, size_t calls,
+     double result, double err, char * description);
+
+void
+add (struct problem * problems, int * n,
+>>>>>>> config
      gsl_monte_function * f, double xl[], double xu[], size_t dim, size_t calls,
      double result, double err, char * description)
 {
@@ -381,7 +417,11 @@ main (void)
 #undef MONTE_SPEEDUP
 #endif
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
   exit (gsl_test_summary ());
 }
 
@@ -430,7 +470,11 @@ f1 (double x[], size_t num_dim, void *params)
       sum += dx * dx;
     }
   return (pow (M_2_SQRTPI / (2. * a), (double) num_dim) *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           exp (-sum / (a * a)));
+=======
+	  exp (-sum / (a * a)));
+>>>>>>> config
 }
 
 /* double gaussian */
@@ -449,7 +493,11 @@ f2 (double x[], size_t num_dim, void *params)
       sum1 += dx1 * dx1;
       sum2 += dx2 * dx2;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   return 0.5 * pow (M_2_SQRTPI / (2. * a), num_dim) 
+=======
+  return 0.5 * pow (M_2_SQRTPI / (2. * a), num_dim)
+>>>>>>> config
     * (exp (-sum1 / (a * a)) + exp (-sum2 / (a * a)));
 }
 

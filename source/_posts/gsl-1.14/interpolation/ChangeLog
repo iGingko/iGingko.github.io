@@ -17,8 +17,13 @@
 
 	* accel.c: moved gsl_interp_accel_find to inline.c
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         * bsearch.h bsearch.c: removed, moved to inline.c
 	
+=======
+	* bsearch.h bsearch.c: removed, moved to inline.c
+
+>>>>>>> config
 	* Makefile.am (INCLUDES): use top_srcdir instead of top_builddir
 
 2007-03-14  Brian Gough  <bjg@network-theory.co.uk>
@@ -61,12 +66,20 @@ Sat Apr 27 20:57:22 2002  Brian Gough  <bjg@network-theory.co.uk>
 Sun Dec  2 22:48:23 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* poly.c: added polynomial interpolation based on divided
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	differences from Dan, Ho-Jin.
+=======
+	differences from Dan, Ho-Jin.
+>>>>>>> config
 
 Tue Jul  3 12:10:53 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* interp.c (DISCARD_STATUS): discard error status values using a
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	macro for configurability
+=======
+	macro for configurability
+>>>>>>> config
 
 Sun Jul  1 21:41:27 2001  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -79,7 +92,11 @@ Tue Jun 26 11:57:55 2001  Brian Gough  <bjg@network-theory.co.uk>
 Mon Jun 25 19:58:45 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* standardized to gsl conventions, added high-level 'spline'
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	interface
+=======
+	interface
+>>>>>>> config
 
 Mon Apr 30 13:29:34 2001  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -88,25 +105,43 @@ Mon Apr 30 13:29:34 2001  Brian Gough  <bjg@network-theory.co.uk>
 Mon Apr 23 10:29:51 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* unified error handling conventions to _e for error handling
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	functions and no suffix for plain functions, so _impl functions
  	are no longer needed.
 
 	* removed tests for EFAULT, since EFAULT should only apply to
  	invalid non-null pointers.
+=======
+	functions and no suffix for plain functions, so _impl functions
+	are no longer needed.
+
+	* removed tests for EFAULT, since EFAULT should only apply to
+	invalid non-null pointers.
+>>>>>>> config
 
 
 Tue Apr 11 19:56:25 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* cspline.c (cspline_calc_periodic): changed occurrence of gsl_la
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	name to new gsl_linalg prefix, gsl_linalg_solve_symm_cyc_tridiag
+=======
+	name to new gsl_linalg prefix, gsl_linalg_solve_symm_cyc_tridiag
+>>>>>>> config
 	(cspline_calc_natural): ditto
 
 Mon Aug 30 11:31:00 1999  Brian Gough  <bjg@network-theory.co.uk>
 
 	* bsearch.c: made gsl_interp_bsearch (formerly interp_bsearch) an
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	exported function, since it is needed by the inline version of
  	gsl_interp_accel_find in gsl_interp.h
  
+=======
+	exported function, since it is needed by the inline version of
+	gsl_interp_accel_find in gsl_interp.h
+
+>>>>>>> config
 Tue Nov 17 16:52:00 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* added #include <config.h> to all top-level source files
@@ -122,5 +157,8 @@ Fri Nov 13 16:50:05 1998  Brian Gough  <bjg@vvv.lanl.gov>
 1998-11-06    <bjg@ancho.lanl.gov>
 
 	* added const to several declarations where needed.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	
 
+=======
+>>>>>>> config

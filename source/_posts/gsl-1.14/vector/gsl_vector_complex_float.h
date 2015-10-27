@@ -1,17 +1,31 @@
 /* vector/gsl_vector_complex_float.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -41,7 +55,11 @@
 
 __BEGIN_DECLS
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 typedef struct 
+=======
+typedef struct
+>>>>>>> config
 {
   size_t size;
   size_t stride;
@@ -70,6 +88,7 @@ gsl_vector_complex_float *gsl_vector_complex_float_alloc (const size_t n);
 gsl_vector_complex_float *gsl_vector_complex_float_calloc (const size_t n);
 
 gsl_vector_complex_float *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_vector_complex_float_alloc_from_block (gsl_block_complex_float * b, 
                                            const size_t offset, 
                                            const size_t n, 
@@ -80,6 +99,18 @@ gsl_vector_complex_float_alloc_from_vector (gsl_vector_complex_float * v,
                                              const size_t offset, 
                                              const size_t n, 
                                              const size_t stride);
+=======
+gsl_vector_complex_float_alloc_from_block (gsl_block_complex_float * b,
+					   const size_t offset,
+					   const size_t n,
+					   const size_t stride);
+
+gsl_vector_complex_float *
+gsl_vector_complex_float_alloc_from_vector (gsl_vector_complex_float * v,
+					     const size_t offset,
+					     const size_t n,
+					     const size_t stride);
+>>>>>>> config
 
 void gsl_vector_complex_float_free (gsl_vector_complex_float * v);
 
@@ -87,6 +118,7 @@ void gsl_vector_complex_float_free (gsl_vector_complex_float * v);
 
 _gsl_vector_complex_float_view
 gsl_vector_complex_float_view_array (float *base,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                      size_t n);
 
 _gsl_vector_complex_float_view
@@ -126,17 +158,66 @@ gsl_vector_complex_float_const_subvector_with_stride (const gsl_vector_complex_f
                                                       size_t i, 
                                                       size_t stride, 
                                                       size_t n);
+=======
+				     size_t n);
+
+_gsl_vector_complex_float_view
+gsl_vector_complex_float_view_array_with_stride (float *base,
+						 size_t stride,
+						 size_t n);
+
+_gsl_vector_complex_float_const_view
+gsl_vector_complex_float_const_view_array (const float *base,
+					   size_t n);
+
+_gsl_vector_complex_float_const_view
+gsl_vector_complex_float_const_view_array_with_stride (const float *base,
+						       size_t stride,
+						       size_t n);
+
+_gsl_vector_complex_float_view
+gsl_vector_complex_float_subvector (gsl_vector_complex_float *base,
+					 size_t i,
+					 size_t n);
+
+
+_gsl_vector_complex_float_view
+gsl_vector_complex_float_subvector_with_stride (gsl_vector_complex_float *v,
+						size_t i,
+						size_t stride,
+						size_t n);
+
+_gsl_vector_complex_float_const_view
+gsl_vector_complex_float_const_subvector (const gsl_vector_complex_float *base,
+					       size_t i,
+					       size_t n);
+
+
+_gsl_vector_complex_float_const_view
+gsl_vector_complex_float_const_subvector_with_stride (const gsl_vector_complex_float *v,
+						      size_t i,
+						      size_t stride,
+						      size_t n);
+>>>>>>> config
 
 _gsl_vector_float_view
 gsl_vector_complex_float_real (gsl_vector_complex_float *v);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 _gsl_vector_float_view 
+=======
+_gsl_vector_float_view
+>>>>>>> config
 gsl_vector_complex_float_imag (gsl_vector_complex_float *v);
 
 _gsl_vector_float_const_view
 gsl_vector_complex_float_const_real (const gsl_vector_complex_float *v);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 _gsl_vector_float_const_view 
+=======
+_gsl_vector_float_const_view
+>>>>>>> config
 gsl_vector_complex_float_const_imag (const gsl_vector_complex_float *v);
 
 
@@ -144,6 +225,7 @@ gsl_vector_complex_float_const_imag (const gsl_vector_complex_float *v);
 
 void gsl_vector_complex_float_set_zero (gsl_vector_complex_float * v);
 void gsl_vector_complex_float_set_all (gsl_vector_complex_float * v,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                        gsl_complex_float z);
 int gsl_vector_complex_float_set_basis (gsl_vector_complex_float * v, size_t i);
 
@@ -156,6 +238,20 @@ int gsl_vector_complex_float_fscanf (FILE * stream,
 int gsl_vector_complex_float_fprintf (FILE * stream,
                                       const gsl_vector_complex_float * v,
                                       const char *format);
+=======
+				       gsl_complex_float z);
+int gsl_vector_complex_float_set_basis (gsl_vector_complex_float * v, size_t i);
+
+int gsl_vector_complex_float_fread (FILE * stream,
+				    gsl_vector_complex_float * v);
+int gsl_vector_complex_float_fwrite (FILE * stream,
+				     const gsl_vector_complex_float * v);
+int gsl_vector_complex_float_fscanf (FILE * stream,
+				     gsl_vector_complex_float * v);
+int gsl_vector_complex_float_fprintf (FILE * stream,
+				      const gsl_vector_complex_float * v,
+				      const char *format);
+>>>>>>> config
 
 int gsl_vector_complex_float_memcpy (gsl_vector_complex_float * dest, const gsl_vector_complex_float * src);
 
@@ -186,7 +282,11 @@ INLINE_DECL const gsl_complex_float *gsl_vector_complex_float_const_ptr (const g
 INLINE_FUN
 gsl_complex_float
 gsl_vector_complex_float_get (const gsl_vector_complex_float * v,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                               const size_t i)
+=======
+			      const size_t i)
+>>>>>>> config
 {
 #if GSL_RANGE_CHECK
   if (GSL_RANGE_COND(i >= v->size))
@@ -201,7 +301,11 @@ gsl_vector_complex_float_get (const gsl_vector_complex_float * v,
 INLINE_FUN
 void
 gsl_vector_complex_float_set (gsl_vector_complex_float * v,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                               const size_t i, gsl_complex_float z)
+=======
+			      const size_t i, gsl_complex_float z)
+>>>>>>> config
 {
 #if GSL_RANGE_CHECK
   if (GSL_RANGE_COND(i >= v->size))
@@ -215,7 +319,11 @@ gsl_vector_complex_float_set (gsl_vector_complex_float * v,
 INLINE_FUN
 gsl_complex_float *
 gsl_vector_complex_float_ptr (gsl_vector_complex_float * v,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                               const size_t i)
+=======
+			      const size_t i)
+>>>>>>> config
 {
 #if GSL_RANGE_CHECK
   if (GSL_RANGE_COND(i >= v->size))
@@ -229,7 +337,11 @@ gsl_vector_complex_float_ptr (gsl_vector_complex_float * v,
 INLINE_FUN
 const gsl_complex_float *
 gsl_vector_complex_float_const_ptr (const gsl_vector_complex_float * v,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                     const size_t i)
+=======
+				    const size_t i)
+>>>>>>> config
 {
 #if GSL_RANGE_CHECK
   if (GSL_RANGE_COND(i >= v->size))

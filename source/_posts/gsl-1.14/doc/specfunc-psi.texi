@@ -22,9 +22,15 @@ where @math{\psi(x) = \Gamma'(x)/\Gamma(x)} is known as the digamma function.
 These functions are declared in the header file @file{gsl_sf_psi.h}.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Digamma Function::            
 * Trigamma Function::           
 * Polygamma Function::          
+=======
+* Digamma Function::
+* Trigamma Function::
+* Polygamma Function::
+>>>>>>> config
 @end menu
 
 @node Digamma Function
@@ -64,7 +70,11 @@ These routines compute the real part of the digamma function on the line
 @deftypefunx int gsl_sf_psi_1_int_e (int @var{n}, gsl_sf_result * @var{result})
 These routines compute the Trigamma function @math{\psi'(n)} for
 positive integer @math{n}.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment Domain: n integer, n > 0 
+=======
+@comment Domain: n integer, n > 0
+>>>>>>> config
 @comment Exceptional Return Values: GSL_EDOM
 @end deftypefun
 
@@ -84,7 +94,11 @@ general @math{x}.
 These routines compute the polygamma function @c{$\psi^{(n)}(x)$}
 @math{\psi^@{(n)@}(x)} for
 @c{$n \ge 0$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{n >= 0}, @math{x > 0}.  
+=======
+@math{n >= 0}, @math{x > 0}.
+>>>>>>> config
 @comment Domain: n >= 0, x > 0.0
 @comment Exceptional Return Values: GSL_EDOM
 @end deftypefun

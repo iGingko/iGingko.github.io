@@ -1,17 +1,31 @@
 /* specfunc/airy_der.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -34,6 +48,7 @@
 
 
 /* based on SLATEC aide.f, bide.f, aid.f, bid.f, r9admp.f */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  
 /* 
  series for aif on the interval -1.00000e+00 to  1.00000e+00
@@ -41,6 +56,15 @@
                                          log weighted error  17.28
                                significant figures required  16.01
                                     decimal places required  17.73
+=======
+
+/*
+ series for aif on the interval -1.00000e+00 to  1.00000e+00
+					with weighted error   5.22e-18
+					 log weighted error  17.28
+			       significant figures required  16.01
+				    decimal places required  17.73
+>>>>>>> config
 */
 static double aif_data[8] = {
    0.10527461226531408809,
@@ -61,10 +85,17 @@ static cheb_series aif_cs = {
 
 /*
  series for aig on the interval -1.00000e+00 to  1.00000e+00
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                         with weighted error   3.14e-19
                                          log weighted error  18.50
                                significant figures required  17.44
                                     decimal places required  18.98
+=======
+					with weighted error   3.14e-19
+					 log weighted error  18.50
+			       significant figures required  17.44
+				    decimal places required  18.98
+>>>>>>> config
 */
 static double aig_data[9] = {
    0.021233878150918666852,
@@ -86,10 +117,17 @@ static cheb_series aig_cs = {
 
 /*
  series for aip2 on the interval  0.00000e+00 to  1.25000e-01
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                         with weighted error   2.15e-17
                                          log weighted error  16.67
                                significant figures required  14.27
                                     decimal places required  17.26
+=======
+					with weighted error   2.15e-17
+					 log weighted error  16.67
+			       significant figures required  14.27
+				    decimal places required  17.26
+>>>>>>> config
 */
 static double aip2_data[15] = {
     0.0065457691989713757,
@@ -117,10 +155,17 @@ static cheb_series aip2_cs = {
 
 /*
  series for aip1 on the interval  1.25000e-01 to  1.00000e+00
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                         with weighted error   2.60e-17
                                          log weighted error  16.58
                                significant figures required  14.91
                                     decimal places required  17.28
+=======
+					with weighted error   2.60e-17
+					 log weighted error  16.58
+			       significant figures required  14.91
+				    decimal places required  17.28
+>>>>>>> config
 */
 static double aip1_data[25] = {
     0.0358865097808301538,
@@ -159,10 +204,17 @@ static cheb_series aip1_cs = {
 
 /*
  series for bif on the interval -1.00000e+00 to  1.00000e+00
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                         with weighted error   9.05e-18
                                          log weighted error  17.04
                                significant figures required  15.83
                                     decimal places required  17.49
+=======
+					with weighted error   9.05e-18
+					 log weighted error  17.04
+			       significant figures required  15.83
+				    decimal places required  17.49
+>>>>>>> config
 */
 static double bif_data[8] = {
    0.1153536790828570243,
@@ -183,10 +235,17 @@ static cheb_series bif_cs = {
 
 /*
  series for big on the interval -1.00000e+00 to  1.00000e+00
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                         with weighted error   5.44e-19
                                          log weighted error  18.26
                                significant figures required  17.46
                                     decimal places required  18.74
+=======
+					with weighted error   5.44e-19
+					 log weighted error  18.26
+			       significant figures required  17.46
+				    decimal places required  18.74
+>>>>>>> config
 */
 static double big_data[9] = {
    -0.097196440416443537390,
@@ -208,10 +267,17 @@ static cheb_series big_cs = {
 
 /*
  series for bif2 on the interval  1.00000e+00 to  8.00000e+00
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                         with weighted error   3.82e-19
                                          log weighted error  18.42
                                significant figures required  17.68
                                     decimal places required  18.92
+=======
+					with weighted error   3.82e-19
+					 log weighted error  18.42
+			       significant figures required  17.68
+				    decimal places required  18.92
+>>>>>>> config
 */
 static double bif2_data[10] = {
    0.323493987603522033521,
@@ -234,10 +300,17 @@ static cheb_series bif2_cs = {
 
 /*
  series for big2 on the interval  1.00000e+00 to  8.00000e+00
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                         with weighted error   3.35e-17
                                          log weighted error  16.48
                                significant figures required  16.52
                                     decimal places required  16.98
+=======
+					with weighted error   3.35e-17
+					 log weighted error  16.48
+			       significant figures required  16.52
+				    decimal places required  16.98
+>>>>>>> config
 */
 static double big2_data[10] = {
    1.6062999463621294578,
@@ -260,10 +333,17 @@ static cheb_series big2_cs = {
 
 /*
  series for bip2 on the interval  0.00000e+00 to  1.25000e-01
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                         with weighted error   2.07e-18
                                          log weighted error  17.69
                                significant figures required  16.51
                                     decimal places required  18.42
+=======
+					with weighted error   2.07e-18
+					 log weighted error  17.69
+			       significant figures required  16.51
+				    decimal places required  18.42
+>>>>>>> config
 */
 static double bip2_data[29] = {
     -0.13269705443526630495,
@@ -305,10 +385,17 @@ static cheb_series bip2_cs = {
 
 /*
  series for bip1 on the interval  1.25000e-01 to  3.53553e-01
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                         with weighted error   1.86e-17
                                          log weighted error  16.73
                                significant figures required  15.67
                                     decimal places required  17.42
+=======
+					with weighted error   1.86e-17
+					 log weighted error  16.73
+			       significant figures required  15.67
+				    decimal places required  17.42
+>>>>>>> config
 */
 static double bip1_data[24] = {
    -0.1729187351079553719,
@@ -345,10 +432,17 @@ static cheb_series bip1_cs = {
 
 /*
  series for an22 on the interval -1.00000e+00 to -1.25000e-01
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                         with weighted error   3.30e-17
                                          log weighted error  16.48
                                significant figures required  14.95
                                     decimal places required  17.24
+=======
+					with weighted error   3.30e-17
+					 log weighted error  16.48
+			       significant figures required  14.95
+				    decimal places required  17.24
+>>>>>>> config
 */
 static double an22_data[33] = {
     0.0537418629629794329,
@@ -394,10 +488,17 @@ static cheb_series an22_cs = {
 
 /*
  series for an21 on the interval -1.25000e-01 to -1.56250e-02
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                         with weighted error   3.43e-17
                                          log weighted error  16.47
                                significant figures required  14.48
                                     decimal places required  17.16
+=======
+					with weighted error   3.43e-17
+					 log weighted error  16.47
+			       significant figures required  14.48
+				    decimal places required  17.16
+>>>>>>> config
 */
 static double an21_data[24] = {
     0.0198313155263169394,
@@ -434,10 +535,17 @@ static cheb_series an21_cs = {
 
 /*
  series for an20 on the interval -1.56250e-02 to  0.00000e+00
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                         with weighted error   4.41e-17
                                          log weighted error  16.36
                                significant figures required  14.16
                                     decimal places required  16.96
+=======
+					with weighted error   4.41e-17
+					 log weighted error  16.36
+			       significant figures required  14.16
+				    decimal places required  16.96
+>>>>>>> config
 */
 static double an20_data[16] = {
     0.0126732217145738027,
@@ -466,10 +574,17 @@ static cheb_series an20_cs = {
 
 /*
  series for aph2 on the interval -1.00000e+00 to -1.25000e-01
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                         with weighted error   2.94e-17
                                          log weighted error  16.53
                                significant figures required  15.58
                                     decimal places required  17.28
+=======
+					with weighted error   2.94e-17
+					 log weighted error  16.53
+			       significant figures required  15.58
+				    decimal places required  17.28
+>>>>>>> config
 */
 static double aph2_data[32] = {
    -0.2057088719781465107,
@@ -514,10 +629,17 @@ static cheb_series aph2_cs = {
 
 /*
  series for aph1 on the interval -1.25000e-01 to -1.56250e-02
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                         with weighted error   6.38e-17
                                          log weighted error  16.20
                                significant figures required  14.91
                                     decimal places required  16.87
+=======
+					with weighted error   6.38e-17
+					 log weighted error  16.20
+			       significant figures required  14.91
+				    decimal places required  16.87
+>>>>>>> config
 */
 static double aph1_data[22] = {
   -0.1024172908077571694,
@@ -552,10 +674,17 @@ static cheb_series aph1_cs = {
 
 /*
  series for aph0 on the interval -1.56250e-02 to  0.00000e+00
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                         with weighted error   2.29e-17
                                          log weighted error  16.64
                                significant figures required  15.27
                                     decimal places required  17.23
+=======
+					with weighted error   2.29e-17
+					 log weighted error  16.64
+			       significant figures required  15.27
+				    decimal places required  17.23
+>>>>>>> config
 */
 static double aph0_data[15] = {
  -0.0855849241130933257,
@@ -585,7 +714,11 @@ static cheb_series aph0_cs = {
 static
 int
 airy_deriv_mod_phase(const double x, gsl_mode_t mode,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                      gsl_sf_result * ampl, gsl_sf_result * phi)
+=======
+		     gsl_sf_result * ampl, gsl_sf_result * phi)
+>>>>>>> config
 {
   const double pi34 = 2.356194490192344928847;
   gsl_sf_result result_a;
@@ -619,7 +752,11 @@ airy_deriv_mod_phase(const double x, gsl_mode_t mode,
 
   a =  0.3125 + result_a.val;
   p = -0.625  + result_p.val;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  
+=======
+
+>>>>>>> config
   sqx = sqrt(-x);
   x32   = x*sqx;
 
@@ -726,8 +863,13 @@ gsl_sf_airy_Ai_deriv_e(const double x, gsl_mode_t mode, gsl_sf_result * result)
     const double arg = -2.0*x*sqrt(x)/3.0;
     const int stat_a = gsl_sf_airy_Ai_deriv_scaled_e(x, mode, &result_aps);
     const int stat_e = gsl_sf_exp_mult_err_e(arg, 1.5*fabs(arg*GSL_DBL_EPSILON),
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                                 result_aps.val, result_aps.err,
                                                 result);
+=======
+						result_aps.val, result_aps.err,
+						result);
+>>>>>>> config
     return GSL_ERROR_SELECT_2(stat_e, stat_a);
   }
   else {
@@ -854,8 +996,13 @@ gsl_sf_airy_Bi_deriv_e(const double x, gsl_mode_t mode, gsl_sf_result * result)
     const double arg = 2.0*(x*sqrt(x)/3.0);
     int stat_b = gsl_sf_airy_Bi_deriv_scaled_e(x, mode, &result_bps);
     int stat_e = gsl_sf_exp_mult_err_e(arg, 1.5*fabs(arg*GSL_DBL_EPSILON),
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                           result_bps.val, result_bps.err,
                                           result);
+=======
+					  result_bps.val, result_bps.err,
+					  result);
+>>>>>>> config
     return GSL_ERROR_SELECT_2(stat_e, stat_b);
   }
   else {

@@ -6,13 +6,21 @@ hypergeometric functions as
 @c{$L^a_n(x) = ((a+1)_n / n!) {}_1F_1(-n,a+1,x)$}
 @math{L^a_n(x) = ((a+1)_n / n!) 1F1(-n,a+1,x)}, and are sometimes referred to as the
 associated Laguerre polynomials.  They are related to the plain
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 Laguerre polynomials @math{L_n(x)} by @math{L^0_n(x) = L_n(x)} and 
+=======
+Laguerre polynomials @math{L_n(x)} by @math{L^0_n(x) = L_n(x)} and
+>>>>>>> config
 @c{$L^k_n(x) = (-1)^k (d^k/dx^k) L_{(n+k)}(x)$}
 @math{L^k_n(x) = (-1)^k (d^k/dx^k) L_(n+k)(x)}.  For
 more information see Abramowitz & Stegun, Chapter 22.
 
 The functions described in this section are
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 declared in the header file @file{gsl_sf_laguerre.h}.  
+=======
+declared in the header file @file{gsl_sf_laguerre.h}.
+>>>>>>> config
 
 @deftypefun double gsl_sf_laguerre_1 (double @var{a}, double @var{x})
 @deftypefunx double gsl_sf_laguerre_2 (double @var{a}, double @var{x})
@@ -30,7 +38,11 @@ representations.
 @deftypefun double gsl_sf_laguerre_n (const int @var{n}, const double @var{a}, const double @var{x})
 @deftypefunx int gsl_sf_laguerre_n_e (int @var{n}, double @var{a}, double @var{x}, gsl_sf_result * @var{result})
 These routines evaluate the generalized Laguerre polynomials
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{L^a_n(x)} for @math{a > -1}, 
+=======
+@math{L^a_n(x)} for @math{a > -1},
+>>>>>>> config
 @c{$n \ge 0$}
 @math{n >= 0}.
 

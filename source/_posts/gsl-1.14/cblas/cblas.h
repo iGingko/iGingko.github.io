@@ -1,6 +1,10 @@
 #define INDEX int
 #define OFFSET(N, incX) ((incX) > 0 ?  0 : ((N) - 1) * (-(incX)))
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 #define BLAS_ERROR(x)  cblas_xerbla(0, __FILE__, x); 
+=======
+#define BLAS_ERROR(x)  cblas_xerbla(0, __FILE__, x);
+>>>>>>> config
 
 #define CONJUGATE(x) ((x) == CblasConjTrans)
 #define TRANSPOSE(x) ((x) == CblasTrans || (x) == CblasConjTrans)
@@ -31,4 +35,7 @@
 
 #define TPUP(N,i,j) (TRCOUNT(N,(i)-1)+(j)-(i))
 #define TPLO(N,i,j) (((i)*((i)+1))/2 + (j))
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

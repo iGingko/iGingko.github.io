@@ -1,17 +1,31 @@
 /* specfunc/coulomb.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -162,7 +176,11 @@ gsl_sf_coulomb_CL_array(double lam_min, int kmax, double eta, double * cl)
 static
 int
 coulomb_Phi_series(const double lam, const double eta, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                    double * result, double * result_star)
+=======
+		   double * result, double * result_star)
+>>>>>>> config
 {
   int kmin =   5;
   int kmax = 200;
@@ -228,13 +246,21 @@ coulomb_Phi_series(const double lam, const double eta, const double x,
 /* Determine the connection phase, phi_lambda.
  * See coulomb_FG_series() below. We have
  * to be careful about sin(phi)->0. Note that
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * there is an underflow condition for large 
+=======
+ * there is an underflow condition for large
+>>>>>>> config
  * positive eta in any case.
  */
 static
 int
 coulomb_connection(const double lam, const double eta,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                    double * cos_phi, double * sin_phi)
+=======
+		   double * cos_phi, double * sin_phi)
+>>>>>>> config
 {
   if(eta > -GSL_LOG_DBL_MIN/2.0*M_PI-1.0) {
     *cos_phi = 1.0;
@@ -275,7 +301,11 @@ coulomb_connection(const double lam, const double eta,
 static
 int
 coulomb_FG_series(const double lam, const double eta, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   gsl_sf_result * F, gsl_sf_result * G)
+=======
+		  gsl_sf_result * F, gsl_sf_result * G)
+>>>>>>> config
 {
   const int max_iter = 800;
   gsl_sf_result ClamA;
@@ -329,8 +359,13 @@ coulomb_FG_series(const double lam, const double eta, const double x,
       double abs_A = fabs(A_sum);
       double abs_B = fabs(B_sum);
       if(   max_abs_dA/(max_abs_dA + abs_A) < 4.0*GSL_DBL_EPSILON
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          && max_abs_dB/(max_abs_dB + abs_B) < 4.0*GSL_DBL_EPSILON
          ) break;
+=======
+	 && max_abs_dB/(max_abs_dB + abs_B) < 4.0*GSL_DBL_EPSILON
+	 ) break;
+>>>>>>> config
     }
     A_abs_del_prev = abs_dA;
     B_abs_del_prev = abs_dB;
@@ -366,7 +401,11 @@ coulomb_FG_series(const double lam, const double eta, const double x,
 static
 int
 coulomb_FG0_series(const double eta, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                    gsl_sf_result * F, gsl_sf_result * G)
+=======
+		   gsl_sf_result * F, gsl_sf_result * G)
+>>>>>>> config
 {
   const int max_iter = 800;
   const double x2  = x*x;
@@ -414,8 +453,13 @@ coulomb_FG0_series(const double eta, const double x,
       double abs_u = fabs(u_sum);
       double abs_v = fabs(v_sum);
       if(   max_abs_du/(max_abs_du + abs_u) < 40.0*GSL_DBL_EPSILON
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          && max_abs_dv/(max_abs_dv + abs_v) < 40.0*GSL_DBL_EPSILON
          ) break;
+=======
+	 && max_abs_dv/(max_abs_dv + abs_v) < 40.0*GSL_DBL_EPSILON
+	 ) break;
+>>>>>>> config
     }
     u_abs_del_prev = abs_du;
     v_abs_del_prev = abs_dv;
@@ -449,7 +493,11 @@ coulomb_FG0_series(const double eta, const double x,
 static
 int
 coulomb_FGmhalf_series(const double eta, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                        gsl_sf_result * F, gsl_sf_result * G)
+=======
+		       gsl_sf_result * F, gsl_sf_result * G)
+>>>>>>> config
 {
   const int max_iter = 800;
   const double rx  = sqrt(x);
@@ -491,7 +539,11 @@ coulomb_FGmhalf_series(const double eta, const double x,
     v_mm1 = v_m;
     m++;
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   F->val = Cmhalf.val * rx * f_sum;
   F->err = Cmhalf.err * fabs(rx * f_sum) + 2.0*GSL_DBL_EPSILON*fabs(F->val);
 
@@ -518,10 +570,17 @@ coulomb_FGmhalf_series(const double eta, const double x,
 static
 int
 coulomb_F_recur(double lam_min, int kmax,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                 double eta, double x,
                 double F_lam_max, double Fp_lam_max,
                 double * F_lam_min, double * Fp_lam_min
                 )
+=======
+		double eta, double x,
+		double F_lam_max, double Fp_lam_max,
+		double * F_lam_min, double * Fp_lam_min
+		)
+>>>>>>> config
 {
   double x_inv = 1.0/x;
   double fcl = F_lam_max;
@@ -542,7 +601,11 @@ coulomb_F_recur(double lam_min, int kmax,
   }
 
   *F_lam_min  = fcl;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   *Fp_lam_min = fpl;  
+=======
+  *Fp_lam_min = fpl;
+>>>>>>> config
   return GSL_SUCCESS;
 }
 
@@ -557,10 +620,17 @@ coulomb_F_recur(double lam_min, int kmax,
 static
 int
 coulomb_G_recur(const double lam_min, const int kmax,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                 const double eta, const double x,
                 const double G_lam_min, const double Gp_lam_min,
                 double * G_lam_max, double * Gp_lam_max
                 )
+=======
+		const double eta, const double x,
+		const double G_lam_min, const double Gp_lam_min,
+		double * G_lam_max, double * Gp_lam_max
+		)
+>>>>>>> config
 {
   double x_inv = 1.0/x;
   double gcl = G_lam_min;
@@ -577,7 +647,11 @@ coulomb_G_recur(const double lam_min, const int kmax,
     gcl   = gcl1;
     lam += 1.0;
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   *G_lam_max  = gcl;
   *Gp_lam_max = gpl;
   return GSL_SUCCESS;
@@ -593,11 +667,19 @@ coulomb_G_recur(const double lam_min, const int kmax,
 static
 int
 coulomb_CF1(double lambda,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             double eta, double x,
             double * fcl_sign,
             double * result,
             int * count
             )
+=======
+	    double eta, double x,
+	    double * fcl_sign,
+	    double * result,
+	    int * count
+	    )
+>>>>>>> config
 {
   const double CF1_small = 1.e-30;
   const double CF1_abort = 1.0e+05;
@@ -641,7 +723,11 @@ coulomb_CF1(double lambda,
     ++(*count);
   }
   while(fabs(df-1.0) > CF1_acc);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   *result = F;
   return GSL_SUCCESS;
 }
@@ -651,18 +737,31 @@ coulomb_CF1(double lambda,
 static
 int
 old_coulomb_CF1(const double lambda,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                 double eta, double x,
                 double * fcl_sign,
                 double * result
                 )
+=======
+		double eta, double x,
+		double * fcl_sign,
+		double * result
+		)
+>>>>>>> config
 {
   const double CF1_abort = 1.e5;
   const double CF1_acc   = 10.0*GSL_DBL_EPSILON;
   const double x_inv     = 1.0/x;
   const double px        = lambda + 1.0 + CF1_abort;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   double pk = lambda + 1.0;
   
+=======
+
+  double pk = lambda + 1.0;
+
+>>>>>>> config
   double D;
   double df;
 
@@ -670,7 +769,11 @@ old_coulomb_CF1(const double lambda,
   double p;
   double pk1;
   double ek;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   double fcl = 1.0;
 
   double tk;
@@ -686,10 +789,17 @@ old_coulomb_CF1(const double lambda,
 
   D  = 1.0/((pk + pk1)*(x_inv + ek/pk1));
   df = -fcl*(1.0 + ek*ek)*D;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   if(fcl != 1.0) fcl = -1.0;
   if(D    < 0.0) fcl = -fcl;
   
+=======
+
+  if(fcl != 1.0) fcl = -1.0;
+  if(D    < 0.0) fcl = -fcl;
+
+>>>>>>> config
   F = F + df;
 
   p = 1.0;
@@ -702,7 +812,11 @@ old_coulomb_CF1(const double lambda,
     if(fabs(D) < sqrt(CF1_acc)) {
       p += 1.0;
       if(p > 2.0) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         printf("HELP............\n");
+=======
+	printf("HELP............\n");
+>>>>>>> config
       }
     }
     D = 1.0/D;
@@ -717,7 +831,11 @@ old_coulomb_CF1(const double lambda,
     }
   }
   while(fabs(df) > fabs(F)*CF1_acc);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   *fcl_sign = fcl;
   *result = F;
   return GSL_SUCCESS;
@@ -725,7 +843,11 @@ old_coulomb_CF1(const double lambda,
 #endif /* 0 */
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* Evaluate the second continued fraction to 
+=======
+/* Evaluate the second continued fraction to
+>>>>>>> config
  * obtain the ratio
  *    (G' + i F')/(G + i F) := P + i Q
  * at the specified lambda value.
@@ -733,8 +855,13 @@ old_coulomb_CF1(const double lambda,
 static
 int
 coulomb_CF2(const double lambda, const double eta, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             double * result_P, double * result_Q, int * count
             )
+=======
+	    double * result_P, double * result_Q, int * count
+	    )
+>>>>>>> config
 {
   int status = GSL_SUCCESS;
 
@@ -744,7 +871,11 @@ coulomb_CF2(const double lambda, const double eta, const double x,
   const double wi    = 2.0*eta;
   const double x_inv = 1.0/x;
   const double e2mm1 = eta*eta + lambda*(lambda + 1.0);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   double ar = -e2mm1;
   double ai =  eta;
 
@@ -764,7 +895,11 @@ coulomb_CF2(const double lambda, const double eta, const double x,
   double Q  =  1.0 - eta*x_inv;
 
   *count = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  
+=======
+
+>>>>>>> config
   do {
     P += dp;
     Q += dq;
@@ -820,8 +955,13 @@ coulomb_CF2(const double lambda, const double eta, const double x,
 static
 int
 coulomb_jwkb(const double lam, const double eta, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              gsl_sf_result * fjwkb, gsl_sf_result * gjwkb,
              double * exponent)
+=======
+	     gsl_sf_result * fjwkb, gsl_sf_result * gjwkb,
+	     double * exponent)
+>>>>>>> config
 {
   const double llp1      = lam*(lam+1.0) + 6.0/35.0;
   const double llp1_eff  = GSL_MAX(llp1, 0.0);
@@ -833,12 +973,20 @@ coulomb_jwkb(const double lam, const double eta, const double x,
 
   const double zeta_half = pow(3.0*phi/2.0, 1.0/3.0);
   const double prefactor = sqrt(M_PI*phi*x/(6.0 * rho_ghalf));
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   double F = prefactor * 3.0/zeta_half;
   double G = prefactor * 3.0/zeta_half; /* Note the sqrt(3) from Bi normalization */
   double F_exp;
   double G_exp;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   const double airy_scale_exp = phi;
   gsl_sf_result ai;
   gsl_sf_result bi;
@@ -881,8 +1029,13 @@ coulomb_jwkb(const double lam, const double eta, const double x,
 static
 int
 coulomb_AS_xlt2eta(const double lam, const double eta, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                    gsl_sf_result * f_AS, gsl_sf_result * g_AS,
                    double * exponent)
+=======
+		   gsl_sf_result * f_AS, gsl_sf_result * g_AS,
+		   double * exponent)
+>>>>>>> config
 {
   /* no time to do this now... */
 }
@@ -894,11 +1047,19 @@ coulomb_AS_xlt2eta(const double lam, const double eta, const double x,
 
 int
 gsl_sf_coulomb_wave_FG_e(const double eta, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                             const double lam_F,
                             const int  k_lam_G,      /* lam_G = lam_F - k_lam_G */
                             gsl_sf_result * F, gsl_sf_result * Fp,
                             gsl_sf_result * G, gsl_sf_result * Gp,
                             double * exp_F, double * exp_G)
+=======
+			    const double lam_F,
+			    const int  k_lam_G,      /* lam_G = lam_F - k_lam_G */
+			    gsl_sf_result * F, gsl_sf_result * Fp,
+			    gsl_sf_result * G, gsl_sf_result * Gp,
+			    double * exp_F, double * exp_G)
+>>>>>>> config
 {
   const double lam_G = lam_F - k_lam_G;
 
@@ -933,7 +1094,11 @@ gsl_sf_coulomb_wave_FG_e(const double eta, const double x,
     /* Reduce to a small lambda value and use the series
      * representations for F and G. We cannot allow eta to
      * be large and positive because the connection formula
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
      * for G_lam is badly behaved due to an underflow in sin(phi_lam) 
+=======
+     * for G_lam is badly behaved due to an underflow in sin(phi_lam)
+>>>>>>> config
      * [see coulomb_FG_series() and coulomb_connection() above].
      * Note that large negative eta is ok however.
      */
@@ -968,9 +1133,15 @@ gsl_sf_coulomb_wave_FG_e(const double eta, const double x,
     Fp_lam_F = Fp_over_F_lam_F * F_lam_F;
     if(span != 0) {
       stat_Fr = coulomb_F_recur(lam_min, span, eta, x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                 F_lam_F, Fp_lam_F,
                                 &F_lam_min_unnorm, &Fp_lam_min_unnorm
                                 );
+=======
+				F_lam_F, Fp_lam_F,
+				&F_lam_min_unnorm, &Fp_lam_min_unnorm
+				);
+>>>>>>> config
     }
     else {
       F_lam_min_unnorm  =  F_lam_F;
@@ -1020,9 +1191,15 @@ gsl_sf_coulomb_wave_FG_e(const double eta, const double x,
 
     /* Recurse up to get the required G,G' values. */
     stat_Gr = coulomb_G_recur(lam_min, GSL_MAX(N-k_lam_G,0), eta, x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                               G_lam_min.val, Gp_lam_min.val,
                               &G_lam_G, &Gp_lam_G
                               );
+=======
+			      G_lam_min.val, Gp_lam_min.val,
+			      &G_lam_G, &Gp_lam_G
+			      );
+>>>>>>> config
 
     F->val  = F_lam_F;
     F->err  = F_lam_F_err;
@@ -1156,9 +1333,15 @@ gsl_sf_coulomb_wave_FG_e(const double eta, const double x,
     /* Backward recurrence to get F,Fp at lam_min */
     F_recur_count = GSL_MAX(k_lam_G, N);
     stat_Fr = coulomb_F_recur(lam_min, F_recur_count, eta, x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                               F_lam_F, Fp_lam_F,
                               &F_lam_min_unnorm, &Fp_lam_min_unnorm
                               );
+=======
+			      F_lam_F, Fp_lam_F,
+			      &F_lam_min_unnorm, &Fp_lam_min_unnorm
+			      );
+>>>>>>> config
     Fp_over_F_lam_min = Fp_lam_min_unnorm / F_lam_min_unnorm;
 
     /* Steed evaluation to complete evaluation of F,Fp,G,Gp at lam_min */
@@ -1174,16 +1357,26 @@ gsl_sf_coulomb_wave_FG_e(const double eta, const double x,
     Gp_lam_min = (P_lam_min * gamma - Q_lam_min) * F_lam_min;
 
     /* Apply scale to values of F,Fp at lam_F (the top). */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     F_scale = F_lam_min / F_lam_min_unnorm;    
+=======
+    F_scale = F_lam_min / F_lam_min_unnorm;
+>>>>>>> config
     F_lam_F  *= F_scale;
     Fp_lam_F *= F_scale;
 
     /* Forward recurrence to get G,Gp at lam_G (the top). */
     G_recur_count = GSL_MAX(N-k_lam_G,0);
     stat_Gr = coulomb_G_recur(lam_min, G_recur_count, eta, x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                               G_lam_min, Gp_lam_min,
                               &G_lam_G, &Gp_lam_G
                               );
+=======
+			      G_lam_min, Gp_lam_min,
+			      &G_lam_G, &Gp_lam_G
+			      );
+>>>>>>> config
 
     err_amplify = CF1_count + CF2_count + F_recur_count + G_recur_count + 1;
 
@@ -1209,9 +1402,15 @@ gsl_sf_coulomb_wave_FG_e(const double eta, const double x,
 
 int
 gsl_sf_coulomb_wave_F_array(double lam_min, int kmax,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                  double eta, double x, 
                                  double * fc_array,
                                  double * F_exp)
+=======
+				 double eta, double x,
+				 double * fc_array,
+				 double * F_exp)
+>>>>>>> config
 {
   if(x == 0.0) {
     int k;
@@ -1234,7 +1433,11 @@ gsl_sf_coulomb_wave_F_array(double lam_min, int kmax,
     double G_exp;
 
     int stat_FG = gsl_sf_coulomb_wave_FG_e(eta, x, lam_max, 0,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                               &F, &Fp, &G, &Gp, F_exp, &G_exp);
+=======
+					      &F, &Fp, &G, &Gp, F_exp, &G_exp);
+>>>>>>> config
 
     double fcl  = F.val;
     double fpl = Fp.val;
@@ -1261,9 +1464,15 @@ gsl_sf_coulomb_wave_F_array(double lam_min, int kmax,
 
 int
 gsl_sf_coulomb_wave_FG_array(double lam_min, int kmax,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                   double eta, double x,
                                   double * fc_array, double * gc_array,
                                   double * F_exp, double * G_exp)
+=======
+				  double eta, double x,
+				  double * fc_array, double * gc_array,
+				  double * F_exp, double * G_exp)
+>>>>>>> config
 {
   const double x_inv = 1.0/x;
   const double lam_max = lam_min + kmax;
@@ -1271,7 +1480,11 @@ gsl_sf_coulomb_wave_FG_array(double lam_min, int kmax,
   gsl_sf_result G, Gp;
 
   int stat_FG = gsl_sf_coulomb_wave_FG_e(eta, x, lam_max, kmax,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                             &F, &Fp, &G, &Gp, F_exp, G_exp);
+=======
+					    &F, &Fp, &G, &Gp, F_exp, G_exp);
+>>>>>>> config
 
   double fcl  = F.val;
   double fpl = Fp.val;
@@ -1317,10 +1530,17 @@ gsl_sf_coulomb_wave_FG_array(double lam_min, int kmax,
 
 int
 gsl_sf_coulomb_wave_FGp_array(double lam_min, int kmax,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                    double eta, double x,
                                    double * fc_array, double * fcp_array,
                                    double * gc_array, double * gcp_array,
                                    double * F_exp, double * G_exp)
+=======
+				   double eta, double x,
+				   double * fc_array, double * fcp_array,
+				   double * gc_array, double * gcp_array,
+				   double * F_exp, double * G_exp)
+>>>>>>> config
 
 {
   const double x_inv = 1.0/x;
@@ -1329,7 +1549,11 @@ gsl_sf_coulomb_wave_FGp_array(double lam_min, int kmax,
   gsl_sf_result G, Gp;
 
   int stat_FG = gsl_sf_coulomb_wave_FG_e(eta, x, lam_max, kmax,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                             &F, &Fp, &G, &Gp, F_exp, G_exp);
+=======
+					    &F, &Fp, &G, &Gp, F_exp, G_exp);
+>>>>>>> config
 
   double fcl  = F.val;
   double fpl = Fp.val;
@@ -1379,9 +1603,15 @@ gsl_sf_coulomb_wave_FGp_array(double lam_min, int kmax,
 
 int
 gsl_sf_coulomb_wave_sphF_array(double lam_min, int kmax,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                     double eta, double x,
                                     double * fc_array,
                                     double * F_exp)
+=======
+				    double eta, double x,
+				    double * fc_array,
+				    double * F_exp)
+>>>>>>> config
 {
   if(x < 0.0 || lam_min < -0.5) {
     GSL_ERROR ("domain error", GSL_EDOM);
@@ -1403,9 +1633,15 @@ gsl_sf_coulomb_wave_sphF_array(double lam_min, int kmax,
   else {
     int k;
     int stat_F = gsl_sf_coulomb_wave_F_array(lam_min, kmax,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                                   eta, x, 
                                                   fc_array,
                                                   F_exp);
+=======
+						  eta, x,
+						  fc_array,
+						  F_exp);
+>>>>>>> config
 
     for(k=0; k<=kmax; k++) {
       fc_array[k] = fc_array[k] / x;
@@ -1413,5 +1649,8 @@ gsl_sf_coulomb_wave_sphF_array(double lam_min, int kmax,
     return stat_F;
   }
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
+=======
+>>>>>>> config

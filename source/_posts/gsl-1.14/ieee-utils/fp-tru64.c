@@ -1,17 +1,31 @@
 /* ieee-utils/fp-tru64.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Tim Mooney
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Tim Mooney
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -40,7 +54,11 @@
  * Problem have been reported with the "fixed" float.h installed with
  * gcc-2.95 lacking some of the definitions in the system float.h (the
  * symptoms are errors like: `FP_RND_RN' undeclared). To work around
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * this we can include the system float.h before the gcc version, e.g. 
+=======
+ * this we can include the system float.h before the gcc version, e.g.
+>>>>>>> config
  *
  *  #include "/usr/include/float.h"
  *  #include <float.h>
@@ -75,6 +93,7 @@ gsl_ieee_set_mode (int precision, int rounding, int exception_mask)
     {
     case GSL_IEEE_SINGLE_PRECISION:
       GSL_ERROR ("Tru64 Unix on the alpha only supports default precision rounding",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_EUNSUP) ;
       break ;
     case GSL_IEEE_DOUBLE_PRECISION:
@@ -84,6 +103,17 @@ gsl_ieee_set_mode (int precision, int rounding, int exception_mask)
     case GSL_IEEE_EXTENDED_PRECISION:
       GSL_ERROR ("Tru64 Unix on the alpha only supports default precision rounding",
                  GSL_EUNSUP) ;
+=======
+		 GSL_EUNSUP) ;
+      break ;
+    case GSL_IEEE_DOUBLE_PRECISION:
+      GSL_ERROR ("Tru64 Unix on the alpha only supports default precision rounding",
+		 GSL_EUNSUP) ;
+      break ;
+    case GSL_IEEE_EXTENDED_PRECISION:
+      GSL_ERROR ("Tru64 Unix on the alpha only supports default precision rounding",
+		 GSL_EUNSUP) ;
+>>>>>>> config
       break ;
     }
 
@@ -128,7 +158,11 @@ gsl_ieee_set_mode (int precision, int rounding, int exception_mask)
    */
 
   mode = IEEE_TRAP_ENABLE_INV | IEEE_TRAP_ENABLE_DZE | IEEE_TRAP_ENABLE_OVF
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                 | IEEE_TRAP_ENABLE_UNF ;
+=======
+		| IEEE_TRAP_ENABLE_UNF ;
+>>>>>>> config
 
   if (exception_mask & GSL_IEEE_MASK_INVALID)
     mode &= ~ IEEE_TRAP_ENABLE_INV ;
@@ -158,9 +192,15 @@ gsl_ieee_set_mode (int precision, int rounding, int exception_mask)
 
       GSL_ERROR ("Sorry, GSL does not implement trap-inexact for Tru64 Unix on the alpha - see fp-tru64.c for details", GSL_EUNSUP) ;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       /* In case you need to add it, the appropriate line would be 
        *  
        *  mode |= IEEE_TRAP_ENABLE_INE ; 
+=======
+      /* In case you need to add it, the appropriate line would be
+       *
+       *  mode |= IEEE_TRAP_ENABLE_INE ;
+>>>>>>> config
        *
        */
 

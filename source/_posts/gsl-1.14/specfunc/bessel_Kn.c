@@ -1,17 +1,31 @@
 /* specfunc/bessel_Kn.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -138,9 +152,15 @@ int gsl_sf_bessel_Kn_scaled_e(int n, const double x, gsl_sf_result * result)
     for(j=1; j<n; j++) {
       b_jp1 = b_jm1 + j * two_over_x * b_j;
       b_jm1 = b_j;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       b_j   = b_jp1; 
     } 
     
+=======
+      b_j   = b_jp1;
+    }
+
+>>>>>>> config
     result->val  = b_j;
     result->err  = n * (fabs(b_j) * (fabs(r_b_jm1.err/r_b_jm1.val) + fabs(r_b_j.err/r_b_j.val)));
     result->err += 2.0 * GSL_DBL_EPSILON * fabs(result->val);
@@ -190,6 +210,7 @@ int gsl_sf_bessel_Kn_scaled_array(const int nmin, const int nmax, const double x
 
     for(n=nmin+1; n<=nmax+1; n++) {
       if(Knm1 < GSL_DBL_MAX) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         result_array[n-1-nmin] = Knm1;
         Knp1 = Knm1 + n * two_over_x * Kn;
         Knm1 = Kn;
@@ -206,6 +227,24 @@ int gsl_sf_bessel_Kn_scaled_array(const int nmin, const int nmax, const double x
         int j;
         for(j=n; j<=nmax+1; j++) result_array[j-1-nmin] = 0.0;
         GSL_ERROR ("overflow", GSL_EOVRFLW);
+=======
+	result_array[n-1-nmin] = Knm1;
+	Knp1 = Knm1 + n * two_over_x * Kn;
+	Knm1 = Kn;
+	Kn   = Knp1;
+      }
+      else {
+	/* Overflow. Set the rest of the elements to
+	 * zero and bug out.
+	 * FIXME: Note: this relies on the convention
+	 * that the test x < DBL_MIN fails for x not
+	 * a number. This may be only an IEEE convention,
+	 * so the portability is unclear.
+	 */
+	int j;
+	for(j=n; j<=nmax+1; j++) result_array[j-1-nmin] = 0.0;
+	GSL_ERROR ("overflow", GSL_EOVRFLW);
+>>>>>>> config
       }
     }
 

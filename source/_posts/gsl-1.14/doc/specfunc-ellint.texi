@@ -5,11 +5,19 @@ file @file{gsl_sf_ellint.h}.  Further information about the elliptic
 integrals can be found in Abramowitz & Stegun, Chapter 17.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Definition of Legendre Forms::  
 * Definition of Carlson Forms::  
 * Legendre Form of Complete Elliptic Integrals::  
 * Legendre Form of Incomplete Elliptic Integrals::  
 * Carlson Forms::               
+=======
+* Definition of Legendre Forms::
+* Definition of Carlson Forms::
+* Legendre Form of Complete Elliptic Integrals::
+* Legendre Form of Incomplete Elliptic Integrals::
+* Carlson Forms::
+>>>>>>> config
 @end menu
 
 @node Definition of Legendre Forms
@@ -41,7 +49,11 @@ Pi(\phi,k,n) = \int_0^\phi dt 1/((1 + n \sin^2(t))\sqrt(1 - k^2 \sin^2(t)))
 @end ifinfo
 @noindent
 The complete Legendre forms are denoted by @math{K(k) = F(\pi/2, k)} and
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{E(k) = E(\pi/2, k)}.  
+=======
+@math{E(k) = E(\pi/2, k)}.
+>>>>>>> config
 
 The notation used here is based on Carlson, @cite{Numerische
 Mathematik} 33 (1979) 1 and differs slightly from that used by
@@ -75,8 +87,13 @@ $$
 
   RF(x,y,z) = 1/2 \int_0^\infty dt (t+x)^(-1/2) (t+y)^(-1/2) (t+z)^(-1/2)
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 RJ(x,y,z,p) = 3/2 \int_0^\infty dt 
                  (t+x)^(-1/2) (t+y)^(-1/2) (t+z)^(-1/2) (t+p)^(-1)
+=======
+RJ(x,y,z,p) = 3/2 \int_0^\infty dt
+		 (t+x)^(-1/2) (t+y)^(-1/2) (t+z)^(-1/2) (t+p)^(-1)
+>>>>>>> config
 @end example
 @end ifinfo
 
@@ -86,7 +103,11 @@ RJ(x,y,z,p) = 3/2 \int_0^\infty dt
 @deftypefun double gsl_sf_ellint_Kcomp (double @var{k}, gsl_mode_t @var{mode})
 @deftypefunx int gsl_sf_ellint_Kcomp_e (double @var{k}, gsl_mode_t @var{mode}, gsl_sf_result * @var{result})
 These routines compute the complete elliptic integral @math{K(k)} to
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 the accuracy specified by the mode variable @var{mode}.  
+=======
+the accuracy specified by the mode variable @var{mode}.
+>>>>>>> config
 Note that Abramowitz & Stegun define this function in terms of the
 parameter @math{m = k^2}.
 @comment Exceptional Return Values:  GSL_EDOM
@@ -146,7 +167,11 @@ change of sign @math{n \to -n}.
 @deftypefunx int gsl_sf_ellint_D_e (double @var{phi}, double @var{k}, double @var{n}, gsl_mode_t @var{mode}, gsl_sf_result * @var{result})
 These functions compute the incomplete elliptic integral
 @math{D(\phi,k)} which is defined through the Carlson form @math{RD(x,y,z)}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 by the following relation, 
+=======
+by the following relation,
+>>>>>>> config
 @tex
 \beforedisplay
 $$

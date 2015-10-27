@@ -5,9 +5,15 @@ The functions described in this section are declared in the header file
 @file{gsl_sf_exp.h}.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Exponential Function::        
 * Relative Exponential Functions::  
 * Exponentiation With Error Estimate::  
+=======
+* Exponential Function::
+* Relative Exponential Functions::
+* Exponentiation With Error Estimate::
+>>>>>>> config
 @end menu
 
 @node Exponential Function
@@ -67,7 +73,11 @@ x^2/(2*3) + x^3/(2*3*4) + \dots}.
 @deftypefunx int gsl_sf_exprel_2_e (double @var{x}, gsl_sf_result * @var{result})
 These routines compute the quantity @math{2(\exp(x)-1-x)/x^2} using an
 algorithm that is accurate for small @math{x}.  For small @math{x} the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 algorithm is based on the expansion @math{2(\exp(x)-1-x)/x^2 = 
+=======
+algorithm is based on the expansion @math{2(\exp(x)-1-x)/x^2 =
+>>>>>>> config
 1 + x/3 + x^2/(3*4) + x^3/(3*4*5) + \dots}.
 @comment Exceptional Return Values:  GSL_EOVRFLW
 @end deftypefun
@@ -82,9 +92,15 @@ These routines compute the @math{N}-relative exponential, which is the
 $$
 \eqalign{
 \hbox{exprel}_N(x)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             &= N!/x^N \left(\exp(x) - \sum_{k=0}^{N-1} x^k/k!\right)\cr
             &= 1 + x/(N+1) + x^2/((N+1)(N+2)) + \dots\cr
             &= {}_1F_1(1,1+N,x)\cr
+=======
+	    &= N!/x^N \left(\exp(x) - \sum_{k=0}^{N-1} x^k/k!\right)\cr
+	    &= 1 + x/(N+1) + x^2/((N+1)(N+2)) + \dots\cr
+	    &= {}_1F_1(1,1+N,x)\cr
+>>>>>>> config
 }
 $$
 \afterdisplay
@@ -93,11 +109,19 @@ $$
 
 @example
 exprel_N(x) = N!/x^N (\exp(x) - \sum_@{k=0@}^@{N-1@} x^k/k!)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             = 1 + x/(N+1) + x^2/((N+1)(N+2)) + ...
             = 1F1 (1,1+N,x)
 @end example
 @end ifinfo
 @comment Exceptional Return Values: 
+=======
+	    = 1 + x/(N+1) + x^2/((N+1)(N+2)) + ...
+	    = 1F1 (1,1+N,x)
+@end example
+@end ifinfo
+@comment Exceptional Return Values:
+>>>>>>> config
 @end deftypefun
 
 
@@ -109,6 +133,7 @@ exprel_N(x) = N!/x^N (\exp(x) - \sum_@{k=0@}^@{N-1@} x^k/k!)
 @deftypefun int gsl_sf_exp_err_e (double @var{x}, double @var{dx}, gsl_sf_result * @var{result})
 This function exponentiates @var{x} with an associated absolute error
 @var{dx}.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment Exceptional Return Values: 
 @end deftypefun
 
@@ -117,6 +142,16 @@ This function exponentiates a quantity @var{x} with an associated absolute
 error @var{dx} using the @code{gsl_sf_result_e10} type to return a result with
 extended range.
 @comment Exceptional Return Values: 
+=======
+@comment Exceptional Return Values:
+@end deftypefun
+
+@deftypefun int gsl_sf_exp_err_e10_e (double @var{x}, double @var{dx}, gsl_sf_result_e10 * @var{result})
+This function exponentiates a quantity @var{x} with an associated absolute
+error @var{dx} using the @code{gsl_sf_result_e10} type to return a result with
+extended range.
+@comment Exceptional Return Values:
+>>>>>>> config
 @end deftypefun
 
 @deftypefun int gsl_sf_exp_mult_err_e (double @var{x}, double @var{dx}, double @var{y}, double @var{dy}, gsl_sf_result * @var{result})
@@ -132,4 +167,7 @@ This routine computes the product @math{y \exp(x)} for the quantities
 @code{gsl_sf_result_e10} type to return a result with extended range.
 @comment Exceptional Return Values: GSL_EOVRFLW, GSL_EUNDRFLW
 @end deftypefun
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

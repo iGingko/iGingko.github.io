@@ -1,17 +1,31 @@
 /* multiroots/test.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -31,7 +45,11 @@ int test_fdf (const char * desc, gsl_multiroot_function_fdf * function, initpt_f
 int test_f (const char * desc, gsl_multiroot_function_fdf * fdf, initpt_function initpt, double factor, const gsl_multiroot_fsolver_type * T);
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int 
+=======
+int
+>>>>>>> config
 main (void)
 {
   const gsl_multiroot_fsolver_type * fsolvers[5] ;
@@ -58,10 +76,17 @@ main (void)
 
 
   f = 1.0 ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   T1 = fsolvers ;
   
   while (*T1 != 0) 
+=======
+
+  T1 = fsolvers ;
+
+  while (*T1 != 0)
+>>>>>>> config
     {
       test_f ("Rosenbrock", &rosenbrock, rosenbrock_initpt, f, *T1);
       test_f ("Roth", &roth, roth_initpt, f, *T1);
@@ -74,10 +99,17 @@ main (void)
       test_f ("Trig", &trig, trig_initpt, f, *T1);
       T1++;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   T2 = fdfsolvers ;
   
   while (*T2 != 0) 
+=======
+
+  T2 = fdfsolvers ;
+
+  while (*T2 != 0)
+>>>>>>> config
     {
       test_fdf ("Rosenbrock", &rosenbrock, rosenbrock_initpt, f, *T2);
       test_fdf ("Roth", &roth, roth_initpt, f, *T2);
@@ -104,13 +136,20 @@ scale (gsl_vector * x, double factor)
   if (gsl_vector_isnull(x))
     {
       for (i = 0; i < n; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           gsl_vector_set (x, i, factor);
         }
+=======
+	{
+	  gsl_vector_set (x, i, factor);
+	}
+>>>>>>> config
     }
   else
     {
       for (i = 0; i < n; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double xi = gsl_vector_get(x, i);
           gsl_vector_set(x, i, factor * xi);
@@ -122,11 +161,28 @@ int
 test_fdf (const char * desc, gsl_multiroot_function_fdf * function, 
           initpt_function initpt, double factor,
           const gsl_multiroot_fdfsolver_type * T)
+=======
+	{
+	  double xi = gsl_vector_get(x, i);
+	  gsl_vector_set(x, i, factor * xi);
+	}
+    }
+}
+
+int
+test_fdf (const char * desc, gsl_multiroot_function_fdf * function,
+	  initpt_function initpt, double factor,
+	  const gsl_multiroot_fdfsolver_type * T)
+>>>>>>> config
 {
   int status;
   double residual = 0;
   size_t i, n = function->n, iter = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   gsl_vector *x = gsl_vector_alloc (n);
   gsl_matrix *J = gsl_matrix_alloc (n, n);
 
@@ -138,14 +194,24 @@ test_fdf (const char * desc, gsl_multiroot_function_fdf * function,
 
   s = gsl_multiroot_fdfsolver_alloc (T, n);
   gsl_multiroot_fdfsolver_set (s, function, x);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  
+=======
+
+>>>>>>> config
   do
     {
       iter++;
       status = gsl_multiroot_fdfsolver_iterate (s);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
       if (status)
         break ;
+=======
+
+      if (status)
+	break ;
+>>>>>>> config
 
       status = gsl_multiroot_test_residual (s->f, 0.0000001);
     }
@@ -165,6 +231,7 @@ test_fdf (const char * desc, gsl_multiroot_function_fdf * function,
     f1.f = function->f ;
     f1.n = function->n ;
     f1.params = function->params ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     gsl_multiroot_fdjacobian (&f1, s->x, s->f, GSL_SQRT_DBL_EPSILON, J);
   
@@ -180,6 +247,23 @@ test_fdf (const char * desc, gsl_multiroot_function_fdf * function,
           if (fabs(u - su) > 1e-6 + 1e-6 * fabs(u))
             printf("broken jacobian %g\n", r);
         }
+=======
+
+    gsl_multiroot_fdjacobian (&f1, s->x, s->f, GSL_SQRT_DBL_EPSILON, J);
+
+    /* compare J and s->J */
+
+    r=0;sum=0;
+    for (i = 0; i < n; i++)
+      for (j = 0; j< n ; j++)
+	{
+	  double u = gsl_matrix_get(J,i,j);
+	  double su = gsl_matrix_get(s->J, i, j);
+	  r = fabs(u - su)/(1e-6 + 1e-6 * fabs(u)); sum+=r;
+	  if (fabs(u - su) > 1e-6 + 1e-6 * fabs(u))
+	    printf("broken jacobian %g\n", r);
+	}
+>>>>>>> config
     printf("avg r = %g\n", sum/(n*n));
   }
 #endif
@@ -200,9 +284,15 @@ test_fdf (const char * desc, gsl_multiroot_function_fdf * function,
 
 
 int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 test_f (const char * desc, gsl_multiroot_function_fdf * fdf, 
         initpt_function initpt, double factor,
         const gsl_multiroot_fsolver_type * T)
+=======
+test_f (const char * desc, gsl_multiroot_function_fdf * fdf,
+	initpt_function initpt, double factor,
+	const gsl_multiroot_fsolver_type * T)
+>>>>>>> config
 {
   int status;
   size_t i, n = fdf->n, iter = 0;
@@ -233,9 +323,15 @@ test_f (const char * desc, gsl_multiroot_function_fdf * fdf,
     {
       iter++;
       status = gsl_multiroot_fsolver_iterate (s);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
       if (status)
         break ;
+=======
+
+      if (status)
+	break ;
+>>>>>>> config
 
       status = gsl_multiroot_test_residual (s->f, 0.0000001);
     }

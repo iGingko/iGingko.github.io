@@ -1,9 +1,18 @@
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 %% 
 %% This is file `calc.sty',
 %% generated with the docstrip utility.
 %% 
 %% The original source files were:
 %% 
+=======
+%%
+%% This is file `calc.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+>>>>>>> config
 %% calc.dtx  (with options: `package')
 
 %% File `calc.dtx'.
@@ -64,8 +73,13 @@
      \ifx#1-\let\calc@next\calc@subtract \else
       \ifx#1*\let\calc@next\calc@multiplyx \else
        \ifx#1/\let\calc@next\calc@dividex \else
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         \ifx#1)\let\calc@next\calc@close \else \calc@error#1%
         \fi
+=======
+	\ifx#1)\let\calc@next\calc@close \else \calc@error#1%
+	\fi
+>>>>>>> config
        \fi
       \fi
      \fi
@@ -82,14 +96,22 @@
 \def\calc@multiplyx#1{\def\calc@tmp{#1}%
    \ifx\calc@tmp\calc@ratio@x \let\calc@next\calc@ratio@multiply \else
       \ifx\calc@tmp\calc@real@x \let\calc@next\calc@real@multiply \else
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          \let\calc@next\calc@multiply
+=======
+	 \let\calc@next\calc@multiply
+>>>>>>> config
       \fi
    \fi
    \calc@next#1}
 \def\calc@dividex#1{\def\calc@tmp{#1}%
    \ifx\calc@tmp\calc@ratio@x \let\calc@next\calc@ratio@divide \else
       \ifx\calc@tmp\calc@real@x \let\calc@next\calc@real@divide \else
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          \let\calc@next\calc@divide
+=======
+	 \let\calc@next\calc@divide
+>>>>>>> config
       \fi
    \fi
    \calc@next#1}
@@ -116,10 +138,17 @@
       \calc@assign@dimen\calc@denominator{#2}%
       \gdef\calc@the@ratio{}%
       \ifnum\calc@numerator<0 \calc@numerator-\calc@numerator
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          \gdef\calc@the@ratio{-}%
       \fi
       \ifnum\calc@denominator<0 \calc@denominator-\calc@denominator
          \xdef\calc@the@ratio{\calc@the@ratio-}%
+=======
+	 \gdef\calc@the@ratio{-}%
+      \fi
+      \ifnum\calc@denominator<0 \calc@denominator-\calc@denominator
+	 \xdef\calc@the@ratio{\calc@the@ratio-}%
+>>>>>>> config
       \fi
       \calc@Acount\calc@numerator
       \divide\calc@Acount\calc@denominator
@@ -146,5 +175,9 @@
    \errhelp{Calc error: I expected to see one of: + - * / )}%
    \errmessage{Invalid character `#1' in arithmetic expression}}
 \endinput
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 %% 
+=======
+%%
+>>>>>>> config
 %% End of file `calc.sty'.

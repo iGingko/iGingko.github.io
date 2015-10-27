@@ -1,17 +1,31 @@
 /* multiroots/dogleg.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -92,12 +106,21 @@ compute_diag (const gsl_matrix * J, gsl_vector * diag)
     {
       double sum = 0;
       for (i = 0; i < n; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double Jij = gsl_matrix_get (J, i, j);
           sum += Jij * Jij;
         }
       if (sum == 0)
         sum = 1.0;
+=======
+	{
+	  double Jij = gsl_matrix_get (J, i, j);
+	  sum += Jij * Jij;
+	}
+      if (sum == 0)
+	sum = 1.0;
+>>>>>>> config
 
       gsl_vector_set (diag, j, sqrt (sum));
     }
@@ -112,18 +135,31 @@ update_diag (const gsl_matrix * J, gsl_vector * diag)
     {
       double cnorm, diagj, sum = 0;
       for (i = 0; i < n; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double Jij = gsl_matrix_get (J, i, j);
           sum += Jij * Jij;
         }
       if (sum == 0)
         sum = 1.0;
+=======
+	{
+	  double Jij = gsl_matrix_get (J, i, j);
+	  sum += Jij * Jij;
+	}
+      if (sum == 0)
+	sum = 1.0;
+>>>>>>> config
 
       cnorm = sqrt (sum);
       diagj = gsl_vector_get (diag, j);
 
       if (cnorm > diagj)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gsl_vector_set (diag, j, cnorm);
+=======
+	gsl_vector_set (diag, j, cnorm);
+>>>>>>> config
     }
 }
 
@@ -172,7 +208,11 @@ compute_predicted_reduction (double fnorm, double fnorm1)
   return prered;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static void 
+=======
+static void
+>>>>>>> config
 compute_qtf (const gsl_matrix * q, const gsl_vector * f, gsl_vector * qtf)
 {
   size_t i, j, N = f->size ;
@@ -181,13 +221,21 @@ compute_qtf (const gsl_matrix * q, const gsl_vector * f, gsl_vector * qtf)
     {
       double sum = 0;
       for (i = 0; i < N; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         sum += gsl_matrix_get (q, i, j) * gsl_vector_get (f, i);
+=======
+	sum += gsl_matrix_get (q, i, j) * gsl_vector_get (f, i);
+>>>>>>> config
 
       gsl_vector_set (qtf, j, sum);
     }
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static void 
+=======
+static void
+>>>>>>> config
 compute_rdx (const gsl_matrix * r, const gsl_vector * dx, gsl_vector * rdx)
 {
   size_t i, j, N = dx->size ;
@@ -197,9 +245,15 @@ compute_rdx (const gsl_matrix * r, const gsl_vector * dx, gsl_vector * rdx)
       double sum = 0;
 
       for (j = i; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           sum += gsl_matrix_get (r, i, j) * gsl_vector_get (dx, j);
         }
+=======
+	{
+	  sum += gsl_matrix_get (r, i, j) * gsl_vector_get (dx, j);
+	}
+>>>>>>> config
 
       gsl_vector_set (rdx, i, sum);
     }
@@ -243,7 +297,11 @@ newton_direction (const gsl_matrix * r, const gsl_vector * qtf, gsl_vector * p)
 
 static void
 gradient_direction (const gsl_matrix * r, const gsl_vector * qtf,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                     const gsl_vector * diag, gsl_vector * g)
+=======
+		    const gsl_vector * diag, gsl_vector * g)
+>>>>>>> config
 {
   const size_t M = r->size1;
   const size_t N = r->size2;
@@ -256,9 +314,15 @@ gradient_direction (const gsl_matrix * r, const gsl_vector * qtf,
       double dj;
 
       for (i = 0; i < N; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           sum += gsl_matrix_get (r, i, j) * gsl_vector_get (qtf, i);
         }
+=======
+	{
+	  sum += gsl_matrix_get (r, i, j) * gsl_vector_get (qtf, i);
+	}
+>>>>>>> config
 
       dj = gsl_vector_get (diag, j);
       gsl_vector_set (g, j, -sum / dj);
@@ -290,11 +354,19 @@ compute_Rg (const gsl_matrix * r, const gsl_vector * gradient, gsl_vector * Rg)
       double sum = 0;
 
       for (j = i; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double gj = gsl_vector_get (gradient, j);
           double rij = gsl_matrix_get (r, i, j);
           sum += rij * gj;
         }
+=======
+	{
+	  double gj = gsl_vector_get (gradient, j);
+	  double rij = gsl_matrix_get (r, i, j);
+	  sum += rij * gj;
+	}
+>>>>>>> config
 
       gsl_vector_set (Rg, i, sum);
     }
@@ -316,8 +388,13 @@ scaled_addition (double alpha, gsl_vector * newton, double beta, gsl_vector * gr
 
 static int
 dogleg (const gsl_matrix * r, const gsl_vector * qtf,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         const gsl_vector * diag, double delta,
         gsl_vector * newton, gsl_vector * gradient, gsl_vector * p)
+=======
+	const gsl_vector * diag, double delta,
+	gsl_vector * newton, gsl_vector * gradient, gsl_vector * p)
+>>>>>>> config
 {
   double qnorm, gnorm, sgnorm, bnorm, temp;
 

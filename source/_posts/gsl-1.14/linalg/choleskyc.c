@@ -1,17 +1,31 @@
 /* linalg/choleskyc.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2007 Patrick Alken
  * 
+=======
+ *
+ * Copyright (C) 2007 Patrick Alken
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -51,7 +65,11 @@ int
 gsl_linalg_complex_cholesky_decomp(gsl_matrix_complex *A)
 {
   const size_t N = A->size1;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   if (N != A->size2)
     {
       GSL_ERROR("cholesky decomposition requires square matrix", GSL_ENOTSQR);
@@ -63,6 +81,7 @@ gsl_linalg_complex_cholesky_decomp(gsl_matrix_complex *A)
       double ajj;
 
       for (j = 0; j < N; ++j)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           z = gsl_matrix_complex_get(A, j, j);
           ajj = GSL_REAL(z);
@@ -122,6 +141,67 @@ gsl_linalg_complex_cholesky_decomp(gsl_matrix_complex *A)
               gsl_matrix_complex_set(A, j, i, gsl_complex_conjugate(z));
             }
         }
+=======
+	{
+	  z = gsl_matrix_complex_get(A, j, j);
+	  ajj = GSL_REAL(z);
+
+	  if (j > 0)
+	    {
+	      gsl_vector_complex_const_view aj =
+		gsl_matrix_complex_const_subrow(A, j, 0, j);
+
+	      gsl_blas_zdotc(&aj.vector, &aj.vector, &z);
+	      ajj -= GSL_REAL(z);
+	    }
+
+	  if (ajj <= 0.0)
+	    {
+	      GSL_ERROR("matrix is not positive definite", GSL_EDOM);
+	    }
+
+	  ajj = sqrt(ajj);
+	  GSL_SET_COMPLEX(&z, ajj, 0.0);
+	  gsl_matrix_complex_set(A, j, j, z);
+
+	  if (j < N - 1)
+	    {
+	      gsl_vector_complex_view av =
+		gsl_matrix_complex_subcolumn(A, j, j + 1, N - j - 1);
+
+	      if (j > 0)
+		{
+		  gsl_vector_complex_view aj =
+		    gsl_matrix_complex_subrow(A, j, 0, j);
+		  gsl_matrix_complex_view am =
+		    gsl_matrix_complex_submatrix(A, j + 1, 0, N - j - 1, j);
+
+		  cholesky_complex_conj_vector(&aj.vector);
+
+		  gsl_blas_zgemv(CblasNoTrans,
+				 GSL_COMPLEX_NEGONE,
+				 &am.matrix,
+				 &aj.vector,
+				 GSL_COMPLEX_ONE,
+				 &av.vector);
+
+		  cholesky_complex_conj_vector(&aj.vector);
+		}
+
+	      gsl_blas_zdscal(1.0 / ajj, &av.vector);
+	    }
+	}
+
+      /* Now store L^H in upper triangle */
+      for (i = 1; i < N; ++i)
+	{
+	  for (j = 0; j < i; ++j)
+	    {
+	      z = gsl_matrix_complex_get(A, i, j);
+	      gsl_matrix_complex_set(A, j, i, gsl_complex_conjugate(z));
+	    }
+	}
+>>>>>>> config
 
       return GSL_SUCCESS;
     }
@@ -134,8 +214,13 @@ gsl_linalg_complex_cholesky_solve()
 
 int
 gsl_linalg_complex_cholesky_solve (const gsl_matrix_complex * cholesky,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                    const gsl_vector_complex * b,
                                    gsl_vector_complex * x)
+=======
+				   const gsl_vector_complex * b,
+				   gsl_vector_complex * x)
+>>>>>>> config
 {
   if (cholesky->size1 != cholesky->size2)
     {
@@ -172,7 +257,11 @@ gsl_linalg_complex_cholesky_svx()
 
 int
 gsl_linalg_complex_cholesky_svx (const gsl_matrix_complex * cholesky,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                  gsl_vector_complex * x)
+=======
+				 gsl_vector_complex * x)
+>>>>>>> config
 {
   if (cholesky->size1 != cholesky->size2)
     {

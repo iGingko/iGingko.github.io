@@ -1,17 +1,31 @@
 /* specfunc/hyperg_0F1.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -45,7 +59,11 @@ hyperg_0F1_bessel_I(const double nu, const double x, gsl_sf_result * result)
     OVERFLOW_ERROR(result);
   }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if(nu < 0.0) { 
+=======
+  if(nu < 0.0) {
+>>>>>>> config
     const double anu = -nu;
     const double s   = 2.0/M_PI * sin(anu*M_PI);
     const double ex  = exp(x);
@@ -78,7 +96,11 @@ static
 int
 hyperg_0F1_bessel_J(const double nu, const double x, gsl_sf_result * result)
 {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if(nu < 0.0) { 
+=======
+  if(nu < 0.0) {
+>>>>>>> config
     const double anu = -nu;
     const double s   = sin(anu*M_PI);
     const double c   = cos(anu*M_PI);
@@ -131,8 +153,13 @@ gsl_sf_hyperg_0F1_e(double c, double x, gsl_sf_result * result)
       double ln_pre_val = lg_c.val + tl;
       double ln_pre_err = lg_c.err + 2.0 * GSL_DBL_EPSILON * fabs(tl);
       return gsl_sf_exp_mult_err_e(ln_pre_val, ln_pre_err,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                       sgn*Jcm1.val, Jcm1.err,
                                       result);
+=======
+				      sgn*Jcm1.val, Jcm1.err,
+				      result);
+>>>>>>> config
     }
   }
   else if(x == 0.0) {
@@ -161,8 +188,13 @@ gsl_sf_hyperg_0F1_e(double c, double x, gsl_sf_result * result)
       const double ln_pre_val = lg_c.val + tl;
       const double ln_pre_err = lg_c.err + 2.0 * GSL_DBL_EPSILON * fabs(tl);
       return gsl_sf_exp_mult_err_e(ln_pre_val, ln_pre_err,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                       sgn*Icm1.val, Icm1.err,
                                       result);
+=======
+				      sgn*Icm1.val, Icm1.err,
+				      result);
+>>>>>>> config
     }
   }
 }

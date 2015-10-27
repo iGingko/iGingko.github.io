@@ -1,18 +1,33 @@
 /* specfunc/laguerre.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2007 Brian Gough
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 2007 Brian Gough
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -46,7 +61,11 @@
 static
 int
 laguerre_large_n(const int n, const double alpha, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  gsl_sf_result * result)
+=======
+		 gsl_sf_result * result)
+>>>>>>> config
 {
   const double a = -n;
   const double b = alpha + 1.0;
@@ -118,8 +137,13 @@ laguerre_n_cp(const int n, const double a, const double x, gsl_sf_result * resul
   }
 
   stat_e = gsl_sf_exp_mult_err_e(lnpre_val, lnpre_err,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                     poly_1F1_val, poly_1F1_err,
                                     result);
+=======
+				    poly_1F1_val, poly_1F1_err,
+				    result);
+>>>>>>> config
 
   return GSL_ERROR_SELECT_4(stat_e, stat_f, stat_g1, stat_g2);
 }
@@ -236,7 +260,11 @@ gsl_sf_laguerre_3_e(const double a, const double x, gsl_sf_result * result)
 
 
 int gsl_sf_laguerre_n_e(const int n, const double a, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                            gsl_sf_result * result)
+=======
+			   gsl_sf_result * result)
+>>>>>>> config
 {
   /* CHECK_POINTER(result) */
 

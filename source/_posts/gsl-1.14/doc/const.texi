@@ -16,6 +16,7 @@ structure constant, which are pure numbers are defined in
 @file{gsl_const_num.h}.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Fundamental Constants::       
 * Astronomy and Astrophysics::  
 * Atomic and Nuclear Physics::  
@@ -34,6 +35,26 @@ structure constant, which are pure numbers are defined in
 * Prefixes::                    
 * Physical Constant Examples::  
 * Physical Constant References and Further Reading::  
+=======
+* Fundamental Constants::
+* Astronomy and Astrophysics::
+* Atomic and Nuclear Physics::
+* Measurement of Time::
+* Imperial Units ::
+* Speed and Nautical Units::
+* Printers Units::
+* Volume Area and Length::
+* Mass and Weight ::
+* Thermal Energy and Power::
+* Pressure::
+* Viscosity::
+* Light and Illumination::
+* Radioactivity::
+* Force and Energy::
+* Prefixes::
+* Physical Constant Examples::
+* Physical Constant References and Further Reading::
+>>>>>>> config
 @end menu
 
 The full list of constants is described briefly below.  Consult the
@@ -188,7 +209,11 @@ The number of seconds in 1 week.
 @end table
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @node Imperial Units 
+=======
+@node Imperial Units
+>>>>>>> config
 @section Imperial Units
 @cindex imperial units
 @cindex units, imperial
@@ -298,7 +323,11 @@ The volume of 1 pint.
 @comment @end table
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @node Mass and Weight 
+=======
+@node Mass and Weight
+>>>>>>> config
 @section Mass and Weight
 @cindex mass, units of
 @cindex weight, units of
@@ -454,8 +483,13 @@ The force of 1 Dyne = @c{$10^{-5}$}
 @item GSL_CONST_MKSA_JOULE
 The SI unit of energy, 1 Joule.
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @item GSL_CONST_MKSA_ERG 
 The energy 1 erg = @c{$10^{-7}$} 
+=======
+@item GSL_CONST_MKSA_ERG
+The energy 1 erg = @c{$10^{-7}$}
+>>>>>>> config
 @math{10^-7} Joule.
 @end table
 
@@ -573,4 +607,7 @@ Modern Physics, 80(2), pp. 633--730 (2008).
 @item @uref{http://www.physics.nist.gov/cuu/Constants/index.html}
 @item @uref{http://physics.nist.gov/Pubs/SP811/appenB9.html}
 @end itemize
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

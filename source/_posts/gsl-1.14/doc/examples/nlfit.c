@@ -48,8 +48,13 @@ main (void)
   for (i = 0; i < n; i++)
     {
       double t = i;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       y[i] = 1.0 + 5 * exp (-0.1 * t) 
                  + gsl_ran_gaussian (r, 0.1);
+=======
+      y[i] = 1.0 + 5 * exp (-0.1 * t)
+		 + gsl_ran_gaussian (r, 0.1);
+>>>>>>> config
       sigma[i] = 0.1;
       printf ("data: %u %g %g\n", i, y[i], sigma[i]);
     };
@@ -70,10 +75,17 @@ main (void)
       print_state (iter, s);
 
       if (status)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         break;
 
       status = gsl_multifit_test_delta (s->dx, s->x,
                                         1e-4, 1e-4);
+=======
+	break;
+
+      status = gsl_multifit_test_delta (s->dx, s->x,
+					1e-4, 1e-4);
+>>>>>>> config
     }
   while (status == GSL_CONTINUE && iter < 500);
 
@@ -82,10 +94,17 @@ main (void)
 #define FIT(i) gsl_vector_get(s->x, i)
 #define ERR(i) sqrt(gsl_matrix_get(covar,i,i))
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   { 
     double chi = gsl_blas_dnrm2(s->f);
     double dof = n - p;
     double c = GSL_MAX_DBL(1, chi / sqrt(dof)); 
+=======
+  {
+    double chi = gsl_blas_dnrm2(s->f);
+    double dof = n - p;
+    double c = GSL_MAX_DBL(1, chi / sqrt(dof));
+>>>>>>> config
 
     printf("chisq/dof = %g\n",  pow(chi, 2.0) / dof);
 
@@ -106,10 +125,19 @@ void
 print_state (size_t iter, gsl_multifit_fdfsolver * s)
 {
   printf ("iter: %3u x = % 15.8f % 15.8f % 15.8f "
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           "|f(x)| = %g\n",
           iter,
           gsl_vector_get (s->x, 0), 
           gsl_vector_get (s->x, 1),
           gsl_vector_get (s->x, 2), 
           gsl_blas_dnrm2 (s->f));
+=======
+	  "|f(x)| = %g\n",
+	  iter,
+	  gsl_vector_get (s->x, 0),
+	  gsl_vector_get (s->x, 1),
+	  gsl_vector_get (s->x, 2),
+	  gsl_blas_dnrm2 (s->f));
+>>>>>>> config
 }

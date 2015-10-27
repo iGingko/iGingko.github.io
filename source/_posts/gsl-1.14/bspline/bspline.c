@@ -45,7 +45,11 @@ gsl_bspline_alloc()
 workspace is O(5k + nbreak)
 
 Inputs: k      - spline order (cubic = 4)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         nbreak - number of breakpoints
+=======
+	nbreak - number of breakpoints
+>>>>>>> config
 
 Return: pointer to workspace
 */
@@ -287,7 +291,11 @@ correspond to the continuity condition there. See pg. 119
 of [1].
 
 Inputs: breakpts - breakpoints
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         w        - bspline workspace
+=======
+	w        - bspline workspace
+>>>>>>> config
 
 Return: success or error
 */
@@ -327,12 +335,18 @@ of the first breakpoint and 'b' is the position of the last
 breakpoint.
 
 Inputs: a - left side of interval
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         b - right side of interval
         w - bspline workspace
+=======
+	b - right side of interval
+	w - bspline workspace
+>>>>>>> config
 
 Return: success or error
 
 Notes: 1) w->knots is modified to contain the uniformly spaced
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           knots
 
        2) The knots vector is set up as follows (using octave syntax):
@@ -340,6 +354,15 @@ Notes: 1) w->knots is modified to contain the uniformly spaced
           knots(1:k) = a
           knots(k+1:k+l-1) = a + i*delta, i = 1 .. l - 1
           knots(n+1:n+k) = b
+=======
+	  knots
+
+       2) The knots vector is set up as follows (using octave syntax):
+
+	  knots(1:k) = a
+	  knots(k+1:k+l-1) = a + i*delta, i = 1 .. l - 1
+	  knots(n+1:n+k) = b
+>>>>>>> config
 */
 
 int
@@ -375,10 +398,17 @@ a wrapper function for gsl_bspline_eval_nonzero() which
 formats the output in a nice way.
 
 Inputs: x - point for evaluation
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         B - (output) where to store B_i(x) values
             the length of this vector is
             n = nbreak + k - 2 = l + k - 1 = w->n
         w - bspline workspace
+=======
+	B - (output) where to store B_i(x) values
+	    the length of this vector is
+	    n = nbreak + k - 2 = l + k - 1 = w->n
+	w - bspline workspace
+>>>>>>> config
 
 Return: success or error
 
@@ -428,6 +458,7 @@ These are the B_i(x) for i in [istart, iend].
 Always B_i(x) = 0 for i < istart and for i > iend.
 
 Inputs: x      - point at which to evaluate splines
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         Bk     - (output) where to store B-spline values (length k)
         istart - (output) B-spline function index of
                  first non-zero basis for given x
@@ -435,10 +466,20 @@ Inputs: x      - point at which to evaluate splines
                  last non-zero basis for given x.
                  This is also the knot index corresponding to x.
         w      - bspline workspace
+=======
+	Bk     - (output) where to store B-spline values (length k)
+	istart - (output) B-spline function index of
+		 first non-zero basis for given x
+	iend   - (output) B-spline function index of
+		 last non-zero basis for given x.
+		 This is also the knot index corresponding to x.
+	w      - bspline workspace
+>>>>>>> config
 
 Return: success or error
 
 Notes: 1) the w->knots vector must be initialized before calling
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           this function
 
        2) On output, B contains
@@ -447,6 +488,16 @@ Notes: 1) the w->knots vector must be initialized before calling
              ..., B_{iend-1,k}, B_{iend,k}]
 
           evaluated at the given x.
+=======
+	  this function
+
+       2) On output, B contains
+
+	     [B_{istart,k}, B_{istart+1,k},
+	     ..., B_{iend-1,k}, B_{iend,k}]
+
+	  evaluated at the given x.
+>>>>>>> config
 */
 
 int
@@ -488,17 +539,30 @@ This is a wrapper function for gsl_bspline_deriv_eval_nonzero()
 which formats the output in a nice way.
 
 Inputs: x      - point for evaluation
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         nderiv - number of derivatives to compute, inclusive.
         dB     - (output) where to store d^j/dx^j B_i(x)
                  values. the size of this matrix is
                  (n = nbreak + k - 2 = l + k - 1 = w->n)
                  by (nderiv + 1)
         w      - bspline derivative workspace
+=======
+	nderiv - number of derivatives to compute, inclusive.
+	dB     - (output) where to store d^j/dx^j B_i(x)
+		 values. the size of this matrix is
+		 (n = nbreak + k - 2 = l + k - 1 = w->n)
+		 by (nderiv + 1)
+	w      - bspline derivative workspace
+>>>>>>> config
 
 Return: success or error
 
 Notes: 1) The w->knots vector must be initialized prior to calling
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           this function (see gsl_bspline_knots())
+=======
+	  this function (see gsl_bspline_knots())
+>>>>>>> config
 
        2) based on PPPACK's bsplvd
 */
@@ -518,7 +582,11 @@ gsl_bspline_deriv_eval (const double x, const size_t nderiv, gsl_matrix * dB,
 	("dB matrix second dimension must be at least length nderiv+1",
 	 GSL_EBADLEN);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else if (dw->k < w->k) 
+=======
+  else if (dw->k < w->k)
+>>>>>>> config
     {
       GSL_ERROR ("derivative workspace is too small", GSL_EBADLEN);
     }
@@ -564,6 +632,7 @@ d^j/dx^j B_i(x) with i in [istart, iend] and j in [0, nderiv].
 Always d^j/dx^j B_i(x) = 0 for i < istart and for i > iend.
 
 Inputs: x      - point at which to evaluate splines
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         nderiv - number of derivatives to request, inclusive
         dB     - (output) where to store dB-spline derivatives
                  (size k by nderiv + 1)
@@ -573,10 +642,22 @@ Inputs: x      - point at which to evaluate splines
                  last non-zero basis for given x.
                  This is also the knot index corresponding to x.
         w      - bspline derivative workspace
+=======
+	nderiv - number of derivatives to request, inclusive
+	dB     - (output) where to store dB-spline derivatives
+		 (size k by nderiv + 1)
+	istart - (output) B-spline function index of
+		 first non-zero basis for given x
+	iend   - (output) B-spline function index of
+		 last non-zero basis for given x.
+		 This is also the knot index corresponding to x.
+	w      - bspline derivative workspace
+>>>>>>> config
 
 Return: success or error
 
 Notes: 1) the w->knots vector must be initialized before calling
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           this function
 
        2) On output, dB contains
@@ -592,6 +673,23 @@ Notes: 1) the w->knots vector must be initialized before calling
 
        3) Note that the zero-th column of the result contains the
           0th derivative, which is simply a function evaluation.
+=======
+	  this function
+
+       2) On output, dB contains
+
+	    [[B_{istart,  k}, ..., d^nderiv/dx^nderiv B_{istart  ,k}],
+	     [B_{istart+1,k}, ..., d^nderiv/dx^nderiv B_{istart+1,k}],
+	     ...
+	     [B_{iend-1,  k}, ..., d^nderiv/dx^nderiv B_{iend-1,  k}],
+	     [B_{iend,    k}, ..., d^nderiv/dx^nderiv B_{iend,    k}]]
+
+	  evaluated at x.  B_{istart, k} is stored in dB(0,0).
+	  Each additional column contains an additional derivative.
+
+       3) Note that the zero-th column of the result contains the
+	  0th derivative, which is simply a function evaluation.
+>>>>>>> config
 
        4) based on PPPACK's bsplvd
 */
@@ -612,7 +710,11 @@ gsl_bspline_deriv_eval_nonzero (const double x, const size_t nderiv,
 	("dB matrix second dimension must be at least length nderiv+1",
 	 GSL_EBADLEN);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else if (dw->k < w->k) 
+=======
+  else if (dw->k < w->k)
+>>>>>>> config
     {
       GSL_ERROR ("derivative workspace is too small", GSL_EBADLEN);
     }
@@ -638,7 +740,11 @@ gsl_bspline_deriv_eval_nonzero (const double x, const size_t nderiv,
 			     w->deltal, w->deltar, dw->A, dB, nderiv);
 
       /* An order k b-spline has at most k-1 nonzero derivatives
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          so we need to zero all requested higher order derivatives */
+=======
+	 so we need to zero all requested higher order derivatives */
+>>>>>>> config
       min_nderivk = GSL_MIN_INT (nderiv, w->k - 1);
       for (j = min_nderivk + 1; j <= nderiv; j++)
 	{
@@ -662,8 +768,13 @@ bspline_find_interval()
 where the t_i are knot values.
 
 Inputs: x    - x value
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         flag - (output) error flag
         w    - bspline workspace
+=======
+	flag - (output) error flag
+	w    - bspline workspace
+>>>>>>> config
 
 Return: i (index in w->knots corresponding to left limit of interval)
 
@@ -767,6 +878,7 @@ jout = max( jhigh , (j+1)*(index-1) ) with knot sequence t.
 
 Parameters:
    t      - knot sequence, of length left + jout , assumed to be
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             nondecreasing.  assumption t(left).lt.t(left + 1).
             division by zero  will result if t(left) = t(left+1)
    jhigh  -
@@ -794,20 +906,61 @@ Parameters:
    x      - the point at which the b-splines are to be evaluated.
    left   - an integer chosen (usually) so that
             t(left) .le. x .le. t(left+1).
+=======
+	    nondecreasing.  assumption t(left).lt.t(left + 1).
+	    division by zero  will result if t(left) = t(left+1)
+   jhigh  -
+   index  - integers which determine the order jout = max(jhigh,
+	    (j+1)*(index-1))  of the b-splines whose values at x
+	    are to be returned.  index  is used to avoid
+	    recalculations when several columns of the triangular
+	    array of b-spline values are needed (e.g., in  bsplpp
+	    or in  bsplvd ).  precisely,
+
+	    if  index = 1 ,
+	       the calculation starts from scratch and the entire
+	       triangular array of b-spline values of orders
+	       1,2,...,jhigh  is generated order by order , i.e.,
+	       column by column .
+
+	    if  index = 2 ,
+	       only the b-spline values of order j+1, j+2, ..., jout
+	       are generated, the assumption being that biatx, j,
+	       deltal, deltar are, on entry, as they were on exit
+	       at the previous call.
+
+	    in particular, if jhigh = 0, then jout = j+1, i.e.,
+	    just the next column of b-spline values is generated.
+   x      - the point at which the b-splines are to be evaluated.
+   left   - an integer chosen (usually) so that
+	    t(left) .le. x .le. t(left+1).
+>>>>>>> config
    j      - (output) a working scalar for indexing
    deltal - (output) a working area which must be of length at least jout
    deltar - (output) a working area which must be of length at least jout
    biatx  - (output) array of length jout, with  biatx(i)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             containing the value at  x  of the polynomial of order
             jout which agrees with the b-spline b(left-jout+i,jout,t)
             on the interval (t(left), t(left+1)) .
+=======
+	    containing the value at  x  of the polynomial of order
+	    jout which agrees with the b-spline b(left-jout+i,jout,t)
+	    on the interval (t(left), t(left+1)) .
+>>>>>>> config
 
 Method:
    the recurrence relation
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       x - t(i)              t(i+j+1) - x
       b(i,j+1)(x) = -----------b(i,j)(x) + ---------------b(i+1,j)(x)
                     t(i+j)-t(i)            t(i+j+1)-t(i+1)
+=======
+		      x - t(i)              t(i+j+1) - x
+      b(i,j+1)(x) = -----------b(i,j)(x) + ---------------b(i+1,j)(x)
+		    t(i+j)-t(i)            t(i+j+1)-t(i+1)
+>>>>>>> config
 
    is used (repeatedly) to generate the (j+1)-vector  b(left-j,j+1)(x),
    ...,b(left,j+1)(x)  from the j-vector  b(left-j+1,j)(x),...,
@@ -887,6 +1040,7 @@ Parameters:
    k      - the order of the b-splines to be evaluated
    x      - the point at which these values are sought
    left   - an integer indicating the left endpoint of the interval
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             of interest. the k b-splines whose support contains the
             interval (t(left), t(left+1)) are to be considered.
             it is assumed that t(left) .lt. t(left+1)
@@ -905,6 +1059,26 @@ Parameters:
             their derivatives up to AND INCLUDING the nderiv-th
             are asked for. (nderiv is replaced internally by the
             integer mhigh in (1,k) closest to it.)
+=======
+	    of interest. the k b-splines whose support contains the
+	    interval (t(left), t(left+1)) are to be considered.
+	    it is assumed that t(left) .lt. t(left+1)
+	    division by zero will result otherwise (in  bsplvb).
+	    also, the output is as advertised only if
+	    t(left) .le. x .le. t(left+1) .
+   deltal - a working area which must be of length at least k
+   deltar - a working area which must be of length at least k
+   a      - an array of order (k,k), to contain b-coeffs of the
+	    derivatives of a certain order of the k b-splines
+	    of interest.
+   dbiatx - an array of order (k,nderiv). its entry (i,m) contains
+	    value of (m)th derivative of (left-k+i)-th b-spline
+	    of order k for knot sequence  t, i=1,...,k, m=0,...,nderiv.
+   nderiv - an integer indicating that values of b-splines and
+	    their derivatives up to AND INCLUDING the nderiv-th
+	    are asked for. (nderiv is replaced internally by the
+	    integer mhigh in (1,k) closest to it.)
+>>>>>>> config
 
 Method:
    values at x of all the relevant b-splines of order k,k-1,..., k+1-nderiv
@@ -945,9 +1119,15 @@ bspline_pppack_bsplvd (const gsl_vector * t,
   if (mhigh > 0)
     {
       /* the first column of dbiatx always contains the b-spline
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          values for the current order. these are stored in column
          k-current order before bsplvb is called to put values
          for the next higher order on top of it.  */
+=======
+	 values for the current order. these are stored in column
+	 k-current order before bsplvb is called to put values
+	 for the next higher order on top of it.  */
+>>>>>>> config
       ideriv = mhigh;
       for (m = 1; m <= mhigh; m++)
 	{
@@ -962,10 +1142,17 @@ bspline_pppack_bsplvd (const gsl_vector * t,
 	}
 
       /* at this point,  b(left-k+i, k+1-j)(x) is in  dbiatx(i,j)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          for i=j,...,k-1 and j=0,...,mhigh. in particular, the
          first column of dbiatx is already in final form. to obtain
          corresponding derivatives of b-splines in subsequent columns,
          generate their b-repr. by differencing, then evaluate at x. */
+=======
+	 for i=j,...,k-1 and j=0,...,mhigh. in particular, the
+	 first column of dbiatx is already in final form. to obtain
+	 corresponding derivatives of b-splines in subsequent columns,
+	 generate their b-repr. by differencing, then evaluate at x. */
+>>>>>>> config
       jlow = 0;
       for (i = 0; i < (int) k; i++)
 	{
@@ -978,7 +1165,11 @@ bspline_pppack_bsplvd (const gsl_vector * t,
 	}
 
       /* at this point, a(.,j) contains the b-coeffs for the j-th of the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          k b-splines of interest here. */
+=======
+	 k b-splines of interest here. */
+>>>>>>> config
       for (m = 1; m <= mhigh; m++)
 	{
 	  kmm = k - m;
@@ -996,7 +1187,11 @@ bspline_pppack_bsplvd (const gsl_vector * t,
 		fkmm / (gsl_vector_get (t, il + kmm) -
 			gsl_vector_get (t, il));
 	      /* the assumption that t(left).lt.t(left+1) makes
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	         denominator in factor nonzero. */
+=======
+		 denominator in factor nonzero. */
+>>>>>>> config
 	      for (j = 0; j <= i; j++)
 		{
 		  gsl_matrix_set (a, i, j, factor * (gsl_matrix_get (a, i, j)

@@ -1,17 +1,31 @@
 /* multifit/gsl_multifit.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2000, 2007, 2010 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 2000, 2007, 2010 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -37,7 +51,11 @@
 
 __BEGIN_DECLS
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 typedef struct 
+=======
+typedef struct
+>>>>>>> config
 {
   size_t n; /* number of observations */
   size_t p; /* number of parameters */
@@ -48,7 +66,11 @@ typedef struct
   gsl_vector * t;
   gsl_vector * xt;
   gsl_vector * D;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 } 
+=======
+}
+>>>>>>> config
 gsl_multifit_linear_workspace;
 
 gsl_multifit_linear_workspace *
@@ -59,6 +81,7 @@ gsl_multifit_linear_free (gsl_multifit_linear_workspace * work);
 
 int
 gsl_multifit_linear (const gsl_matrix * X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                      const gsl_vector * y,
                      gsl_vector * c,
                      gsl_matrix * cov,
@@ -124,6 +147,73 @@ gsl_multifit_linear_est (const gsl_vector * x,
 int
 gsl_multifit_linear_residuals (const gsl_matrix *X, const gsl_vector *y,
                                const gsl_vector *c, gsl_vector *r);
+=======
+		     const gsl_vector * y,
+		     gsl_vector * c,
+		     gsl_matrix * cov,
+		     double * chisq,
+		     gsl_multifit_linear_workspace * work);
+
+int
+gsl_multifit_linear_svd (const gsl_matrix * X,
+			 const gsl_vector * y,
+			 double tol,
+			 size_t * rank,
+			 gsl_vector * c,
+			 gsl_matrix * cov,
+			 double *chisq,
+			 gsl_multifit_linear_workspace * work);
+
+int
+gsl_multifit_linear_usvd (const gsl_matrix * X,
+			  const gsl_vector * y,
+			  double tol,
+			  size_t * rank,
+			  gsl_vector * c,
+			  gsl_matrix * cov,
+			  double *chisq,
+			  gsl_multifit_linear_workspace * work);
+
+int
+gsl_multifit_wlinear (const gsl_matrix * X,
+		      const gsl_vector * w,
+		      const gsl_vector * y,
+		      gsl_vector * c,
+		      gsl_matrix * cov,
+		      double * chisq,
+		      gsl_multifit_linear_workspace * work);
+
+int
+gsl_multifit_wlinear_svd (const gsl_matrix * X,
+			  const gsl_vector * w,
+			  const gsl_vector * y,
+			  double tol,
+			  size_t * rank,
+			  gsl_vector * c,
+			  gsl_matrix * cov,
+			  double *chisq,
+			  gsl_multifit_linear_workspace * work);
+
+int
+gsl_multifit_wlinear_usvd (const gsl_matrix * X,
+			   const gsl_vector * w,
+			   const gsl_vector * y,
+			   double tol,
+			   size_t * rank,
+			   gsl_vector * c,
+			   gsl_matrix * cov,
+			   double *chisq,
+			   gsl_multifit_linear_workspace * work);
+
+int
+gsl_multifit_linear_est (const gsl_vector * x,
+			 const gsl_vector * c,
+			 const gsl_matrix * cov, double *y, double *y_err);
+
+int
+gsl_multifit_linear_residuals (const gsl_matrix *X, const gsl_vector *y,
+			       const gsl_vector *c, gsl_vector *r);
+>>>>>>> config
 
 __END_DECLS
 

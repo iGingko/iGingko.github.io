@@ -238,7 +238,11 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__confi
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
 	      ( cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh ) \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	        && { if test -f $@; then exit 0; else break; fi; }; \
+=======
+		&& { if test -f $@; then exit 0; else break; fi; }; \
+>>>>>>> config
 	      exit 1;; \
 	  esac; \
 	done; \
@@ -272,7 +276,11 @@ clean-noinstLTLIBRARIES:
 	  echo "rm -f \"$${dir}/so_locations\""; \
 	  rm -f "$${dir}/so_locations"; \
 	done
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 libgsltest.la: $(libgsltest_la_OBJECTS) $(libgsltest_la_DEPENDENCIES) 
+=======
+libgsltest.la: $(libgsltest_la_OBJECTS) $(libgsltest_la_DEPENDENCIES)
+>>>>>>> config
 	$(LINK)  $(libgsltest_la_OBJECTS) $(libgsltest_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:

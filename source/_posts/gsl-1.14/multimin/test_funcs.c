@@ -1,17 +1,31 @@
 /* multimin/test_funcs.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Fabrice Rossi
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Fabrice Rossi
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -57,11 +71,19 @@ void rosenbrock_df (const gsl_vector * x, void *params, gsl_vector * df)
   double b = u * u - v;
   gcount++;
   gsl_vector_set(df,0,2 * (u - 1) + 40 * u * b);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   gsl_vector_set(df,1,-20 * b);  
 }
 
 void rosenbrock_fdf (const gsl_vector * x, void *params, double * f,
                      gsl_vector * df) 
+=======
+  gsl_vector_set(df,1,-20 * b);
+}
+
+void rosenbrock_fdf (const gsl_vector * x, void *params, double * f,
+		     gsl_vector * df)
+>>>>>>> config
 {
   double u = gsl_vector_get(x,0);
   double v = gsl_vector_get(x,1);
@@ -70,7 +92,11 @@ void rosenbrock_fdf (const gsl_vector * x, void *params, double * f,
   gcount++;
   *f = a * a + 10 * b * b;
   gsl_vector_set(df,0,2 * (u - 1) + 40 * u * b);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   gsl_vector_set(df,1,-20 * b);  
+=======
+  gsl_vector_set(df,1,-20 * b);
+>>>>>>> config
 }
 
 gsl_multimin_function_fdf roth =
@@ -113,7 +139,11 @@ void roth_df (const gsl_vector * x, void *params, gsl_vector * df)
 }
 
 void roth_fdf (const gsl_vector * x, void *params, double * f,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                gsl_vector * df) 
+=======
+	       gsl_vector * df)
+>>>>>>> config
 {
   *f = roth_f (x,params);
   roth_df(x,params,df);
@@ -168,7 +198,11 @@ void wood_df (const gsl_vector * x, void *params, gsl_vector * df)
   gsl_vector_set(df,1, -200 * t1 - 20.2 * (1 - u2) - 19.8 * (1 - u4) );
   gsl_vector_set(df,2, 360 * u3 * t2 - 2 * (1 - u3) );
   gsl_vector_set(df,3, -180 * t2 - 20.2 * (1 - u4) - 19.8 * (1 - u2) );
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
 }
 
 void wood_fdf (const gsl_vector * x, void *params, double * f, gsl_vector * df)
@@ -193,7 +227,11 @@ void Nrosenbrock_df (const gsl_vector * x, void *params, gsl_vector * df)
 }
 
 void Nrosenbrock_fdf (const gsl_vector * x, void *params, double * f,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                      gsl_vector * df) 
+=======
+		     gsl_vector * df)
+>>>>>>> config
 {
   *f = rosenbrock_f (x, params);
   Nrosenbrock_df (x, params, df);
@@ -215,7 +253,11 @@ void Nroth_df (const gsl_vector * x, void *params, gsl_vector * df)
 }
 
 void Nroth_fdf (const gsl_vector * x, void *params, double * f,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                      gsl_vector * df) 
+=======
+		     gsl_vector * df)
+>>>>>>> config
 {
   *f = roth_f (x, params);
   Nroth_df (x, params, df);
@@ -238,7 +280,11 @@ void Nwood_df (const gsl_vector * x, void *params, gsl_vector * df)
 }
 
 void Nwood_fdf (const gsl_vector * x, void *params, double * f,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                      gsl_vector * df) 
+=======
+		     gsl_vector * df)
+>>>>>>> config
 {
   *f = wood_f (x, params);
   Nwood_df (x, params, df);
@@ -278,5 +324,8 @@ spring_f (const gsl_vector * x, void *params)
     return ret;
   }
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
+=======
+>>>>>>> config

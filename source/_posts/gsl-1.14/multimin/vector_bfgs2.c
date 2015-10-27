@@ -1,17 +1,31 @@
 /* multimin/vector_bfgs2.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2007, 2009 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 2007, 2009 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
@@ -141,8 +155,13 @@ vector_bfgs2_alloc (void *vstate, size_t n)
 
 static int
 vector_bfgs2_set (void *vstate, gsl_multimin_function_fdf * fdf,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   const gsl_vector * x, double *f, gsl_vector * gradient,
                   double step_size, double tol)
+=======
+		  const gsl_vector * x, double *f, gsl_vector * gradient,
+		  double step_size, double tol)
+>>>>>>> config
 {
   vector_bfgs2_state_t *state = (vector_bfgs2_state_t *) vstate;
 
@@ -166,8 +185,13 @@ vector_bfgs2_set (void *vstate, gsl_multimin_function_fdf * fdf,
   /* Prepare the wrapper */
 
   prepare_wrapper (&state->wrap, fdf,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                    state->x0, *f, state->g0,
                    state->p, state->x_alpha, state->g_alpha);
+=======
+		   state->x0, *f, state->g0,
+		   state->p, state->x_alpha, state->g_alpha);
+>>>>>>> config
 
   /* Prepare 1d minimisation parameters */
 
@@ -206,8 +230,13 @@ vector_bfgs2_restart (void *vstate)
 
 static int
 vector_bfgs2_iterate (void *vstate, gsl_multimin_function_fdf * fdf,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       gsl_vector * x, double *f,
                       gsl_vector * gradient, gsl_vector * dx)
+=======
+		      gsl_vector * x, double *f,
+		      gsl_vector * gradient, gsl_vector * dx)
+>>>>>>> config
 {
   vector_bfgs2_state_t *state = (vector_bfgs2_state_t *) vstate;
   double alpha = 0.0, alpha1;
@@ -241,9 +270,15 @@ vector_bfgs2_iterate (void *vstate, gsl_multimin_function_fdf * fdf,
 
   /* line minimisation, with cubic interpolation (order = 3) */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   status = minimize (&state->wrap.fdf_linear, state->rho, state->sigma, 
                      state->tau1, state->tau2, state->tau3, state->order,
                      alpha1,  &alpha);
+=======
+  status = minimize (&state->wrap.fdf_linear, state->rho, state->sigma,
+		     state->tau1, state->tau2, state->tau3, state->order,
+		     alpha1,  &alpha);
+>>>>>>> config
 
   if (status != GSL_SUCCESS)
     {
@@ -251,7 +286,11 @@ vector_bfgs2_iterate (void *vstate, gsl_multimin_function_fdf * fdf,
     }
 
   update_position (&(state->wrap), alpha, x, f, gradient);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   state->delta_f = *f - f0;
 
   /* Choose a new direction for the next step */
@@ -285,6 +324,7 @@ vector_bfgs2_iterate (void *vstate, gsl_multimin_function_fdf * fdf,
 
     if (dxdg != 0)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         B = dxg / dxdg;
         A = -(1.0 + dgnorm * dgnorm / dxdg) * B + dgg / dxdg;
       }
@@ -292,6 +332,15 @@ vector_bfgs2_iterate (void *vstate, gsl_multimin_function_fdf * fdf,
       {
         B = 0;
         A = 0;
+=======
+	B = dxg / dxdg;
+	A = -(1.0 + dgnorm * dgnorm / dxdg) * B + dgg / dxdg;
+      }
+    else
+      {
+	B = 0;
+	A = 0;
+>>>>>>> config
       }
 
     gsl_vector_memcpy (p, gradient);

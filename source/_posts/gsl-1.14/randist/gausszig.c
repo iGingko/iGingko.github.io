@@ -29,7 +29,11 @@
  * The modifications are:
  *
  * 1) use 128 steps instead of 256 to decrease the amount of static
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * data necessary.  
+=======
+ * data necessary.
+>>>>>>> config
  *
  * 2) use an acceptance sampling from an exponential wedge
  * exp(-R*(x-R/2)) for the tail of the base strip to simplify the
@@ -176,6 +180,7 @@ gsl_ran_gaussian_ziggurat (const gsl_rng * r, const double sigma)
   while (1)
     {
       if (range >= 0xFFFFFFFF)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           unsigned long int k = gsl_rng_get(r) - offset;
           i = (k & 0xFF);
@@ -193,6 +198,25 @@ gsl_ran_gaussian_ziggurat (const gsl_rng * r, const double sigma)
           i = gsl_rng_uniform_int (r, 256); /*  choose the step */
           j = gsl_rng_uniform_int (r, 16777216);  /* sample from 2^24 */
         }
+=======
+	{
+	  unsigned long int k = gsl_rng_get(r) - offset;
+	  i = (k & 0xFF);
+	  j = (k >> 8) & 0xFFFFFF;
+	}
+      else if (range >= 0x00FFFFFF)
+	{
+	  unsigned long int k1 = gsl_rng_get(r) - offset;
+	  unsigned long int k2 = gsl_rng_get(r) - offset;
+	  i = (k1 & 0xFF);
+	  j = (k2 & 0x00FFFFFF);
+	}
+      else
+	{
+	  i = gsl_rng_uniform_int (r, 256); /*  choose the step */
+	  j = gsl_rng_uniform_int (r, 16777216);  /* sample from 2^24 */
+	}
+>>>>>>> config
 
       sign = (i & 0x80) ? +1 : -1;
       i &= 0x7f;
@@ -200,6 +224,7 @@ gsl_ran_gaussian_ziggurat (const gsl_rng * r, const double sigma)
       x = j * wtab[i];
 
       if (j < ktab[i])
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         break;
 
       if (i < 127)
@@ -221,6 +246,29 @@ gsl_ran_gaussian_ziggurat (const gsl_rng * r, const double sigma)
 
       if (y < exp (-0.5 * x * x))
         break;
+=======
+	break;
+
+      if (i < 127)
+	{
+	  double y0, y1, U1;
+	  y0 = ytab[i];
+	  y1 = ytab[i + 1];
+	  U1 = gsl_rng_uniform (r);
+	  y = y1 + (y0 - y1) * U1;
+	}
+      else
+	{
+	  double U1, U2;
+	  U1 = 1.0 - gsl_rng_uniform (r);
+	  U2 = gsl_rng_uniform (r);
+	  x = PARAM_R - log (U1) / PARAM_R;
+	  y = exp (-PARAM_R * (x - 0.5 * PARAM_R)) * U2;
+	}
+
+      if (y < exp (-0.5 * x * x))
+	break;
+>>>>>>> config
     }
 
   return sign * sigma * x;

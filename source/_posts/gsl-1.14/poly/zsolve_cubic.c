@@ -1,17 +1,31 @@
 /* poly/zsolve_cubic.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007, 2009 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007, 2009 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -28,9 +42,15 @@
 #define SWAP(a,b) do { double tmp = b ; b = a ; a = tmp ; } while(0)
 
 int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_poly_complex_solve_cubic (double a, double b, double c, 
                               gsl_complex *z0, gsl_complex *z1, 
                               gsl_complex *z2)
+=======
+gsl_poly_complex_solve_cubic (double a, double b, double c,
+			      gsl_complex *z0, gsl_complex *z1,
+			      gsl_complex *z2)
+>>>>>>> config
 {
   double q = (a * a - 3 * b);
   double r = (2 * a * a * a - 9 * a * b + 27 * c);
@@ -54,6 +74,7 @@ gsl_poly_complex_solve_cubic (double a, double b, double c,
       GSL_IMAG (*z2) = 0;
       return 3;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else if (CR2 == CQ3) 
     {
       /* this test is actually R2 == Q3, written in a form suitable
@@ -62,10 +83,21 @@ gsl_poly_complex_solve_cubic (double a, double b, double c,
       /* Due to finite precision some double roots may be missed, and
          will be considered to be a pair of complex roots z = x +/-
          epsilon i close to the real axis. */
+=======
+  else if (CR2 == CQ3)
+    {
+      /* this test is actually R2 == Q3, written in a form suitable
+	 for exact computation with integers */
+
+      /* Due to finite precision some double roots may be missed, and
+	 will be considered to be a pair of complex roots z = x +/-
+	 epsilon i close to the real axis. */
+>>>>>>> config
 
       double sqrtQ = sqrt (Q);
 
       if (R > 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           GSL_REAL (*z0) = -2 * sqrtQ - a / 3;
           GSL_IMAG (*z0) = 0;
@@ -83,6 +115,25 @@ gsl_poly_complex_solve_cubic (double a, double b, double c,
           GSL_REAL (*z2) = 2 * sqrtQ - a / 3;
           GSL_IMAG (*z2) = 0;
         }
+=======
+	{
+	  GSL_REAL (*z0) = -2 * sqrtQ - a / 3;
+	  GSL_IMAG (*z0) = 0;
+	  GSL_REAL (*z1) = sqrtQ - a / 3;
+	  GSL_IMAG (*z1) = 0;
+	  GSL_REAL (*z2) = sqrtQ - a / 3;
+	  GSL_IMAG (*z2) = 0;
+	}
+      else
+	{
+	  GSL_REAL (*z0) = -sqrtQ - a / 3;
+	  GSL_IMAG (*z0) = 0;
+	  GSL_REAL (*z1) = -sqrtQ - a / 3;
+	  GSL_IMAG (*z1) = 0;
+	  GSL_REAL (*z2) = 2 * sqrtQ - a / 3;
+	  GSL_IMAG (*z2) = 0;
+	}
+>>>>>>> config
       return 3;
     }
   else if (R2 < Q3)
@@ -98,6 +149,7 @@ gsl_poly_complex_solve_cubic (double a, double b, double c,
       /* Sort r0, r1, r2 into increasing order */
 
       if (r0 > r1)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         SWAP (r0, r1);
 
       if (r1 > r2)
@@ -107,6 +159,17 @@ gsl_poly_complex_solve_cubic (double a, double b, double c,
           if (r0 > r1)
             SWAP (r0, r1);
         }
+=======
+	SWAP (r0, r1);
+
+      if (r1 > r2)
+	{
+	  SWAP (r1, r2);
+
+	  if (r0 > r1)
+	    SWAP (r0, r1);
+	}
+>>>>>>> config
 
       GSL_REAL (*z0) = r0;
       GSL_IMAG (*z0) = 0;
@@ -126,6 +189,7 @@ gsl_poly_complex_solve_cubic (double a, double b, double c,
       double B = Q / A;
 
       if (A + B < 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           GSL_REAL (*z0) = A + B - a / 3;
           GSL_IMAG (*z0) = 0;
@@ -147,6 +211,29 @@ gsl_poly_complex_solve_cubic (double a, double b, double c,
           GSL_REAL (*z2) = A + B - a / 3;
           GSL_IMAG (*z2) = 0;
         }
+=======
+	{
+	  GSL_REAL (*z0) = A + B - a / 3;
+	  GSL_IMAG (*z0) = 0;
+
+	  GSL_REAL (*z1) = -0.5 * (A + B) - a / 3;
+	  GSL_IMAG (*z1) = -(sqrt (3.0) / 2.0) * fabs(A - B);
+
+	  GSL_REAL (*z2) = -0.5 * (A + B) - a / 3;
+	  GSL_IMAG (*z2) = (sqrt (3.0) / 2.0) * fabs(A - B);
+	}
+      else
+	{
+	  GSL_REAL (*z0) = -0.5 * (A + B) - a / 3;
+	  GSL_IMAG (*z0) = -(sqrt (3.0) / 2.0) * fabs(A - B);
+
+	  GSL_REAL (*z1) = -0.5 * (A + B) - a / 3;
+	  GSL_IMAG (*z1) = (sqrt (3.0) / 2.0) * fabs(A - B);
+
+	  GSL_REAL (*z2) = A + B - a / 3;
+	  GSL_IMAG (*z2) = 0;
+	}
+>>>>>>> config
 
       return 3;
     }

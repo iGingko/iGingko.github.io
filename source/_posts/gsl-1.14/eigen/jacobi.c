@@ -1,17 +1,31 @@
 /* eigen/jacobi.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2004, 2007 Brian Gough, Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 2004, 2007 Brian Gough, Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -39,6 +53,7 @@ symschur2 (gsl_matrix * A, size_t p, size_t q, double *c, double *s)
       double t, c1;
 
       if (tau >= 0.0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           t = 1.0 / (tau + hypot (1.0, tau));
         }
@@ -46,6 +61,15 @@ symschur2 (gsl_matrix * A, size_t p, size_t q, double *c, double *s)
         {
           t = -1.0 / (-tau + hypot (1.0, tau));
         }
+=======
+	{
+	  t = 1.0 / (tau + hypot (1.0, tau));
+	}
+      else
+	{
+	  t = -1.0 / (-tau + hypot (1.0, tau));
+	}
+>>>>>>> config
 
       c1 = 1.0 / hypot (1.0, t);
 
@@ -106,6 +130,7 @@ norm (gsl_matrix * A)
   for (i = 0; i < M; i++)
     {
       for (j = 0; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double Aij = gsl_matrix_get (A, i, j);
 
@@ -125,6 +150,27 @@ norm (gsl_matrix * A)
             }
 
         }
+=======
+	{
+	  double Aij = gsl_matrix_get (A, i, j);
+
+	  if (Aij != 0.0)
+	    {
+	      double ax = fabs (Aij);
+
+	      if (scale < ax)
+		{
+		  ssq = 1.0 + ssq * (scale / ax) * (scale / ax);
+		  scale = ax;
+		}
+	      else
+		{
+		  ssq += (ax / scale) * (ax / scale);
+		}
+	    }
+
+	}
+>>>>>>> config
     }
 
   sum = scale * sqrt (ssq);
@@ -134,8 +180,13 @@ norm (gsl_matrix * A)
 
 int
 gsl_eigen_jacobi (gsl_matrix * a,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   gsl_vector * eval,
                   gsl_matrix * evec, unsigned int max_rot, unsigned int *nrot)
+=======
+		  gsl_vector * eval,
+		  gsl_matrix * evec, unsigned int max_rot, unsigned int *nrot)
+>>>>>>> config
 {
   size_t i, p, q;
   const size_t M = a->size1, N = a->size2;
@@ -162,6 +213,7 @@ gsl_eigen_jacobi (gsl_matrix * a,
       double nrm = norm (a);
 
       if (nrm == 0.0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         break;
 
       for (p = 0; p < N; p++)
@@ -181,6 +233,27 @@ gsl_eigen_jacobi (gsl_matrix * a,
               apply_jacobi_R (evec, p, q, c, s);
             }
         }
+=======
+	break;
+
+      for (p = 0; p < N; p++)
+	{
+	  for (q = p + 1; q < N; q++)
+	    {
+	      double c, s;
+
+	      red = symschur2 (a, p, q, &c, &s);
+	      redsum += red;
+
+	      /* Compute A <- J^T A J */
+	      apply_jacobi_L (a, p, q, c, s);
+	      apply_jacobi_R (a, p, q, c, s);
+
+	      /* Compute V <- V J */
+	      apply_jacobi_R (evec, p, q, c, s);
+	    }
+	}
+>>>>>>> config
     }
 
   *nrot = i;
@@ -201,7 +274,11 @@ gsl_eigen_jacobi (gsl_matrix * a,
 
 int
 gsl_eigen_invert_jacobi (const gsl_matrix * a,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                          gsl_matrix * ainv, unsigned int max_rot)
+=======
+			 gsl_matrix * ainv, unsigned int max_rot)
+>>>>>>> config
 {
   if (a->size1 != a->size2 || ainv->size1 != ainv->size2)
     {
@@ -211,7 +288,11 @@ gsl_eigen_invert_jacobi (const gsl_matrix * a,
     {
      GSL_ERROR ("inverse matrix must match input matrix", GSL_EBADLEN);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   {
     const size_t n = a->size2;
     size_t i,j,k;
@@ -225,6 +306,7 @@ gsl_eigen_invert_jacobi (const gsl_matrix * a,
     gsl_matrix_memcpy (tmp, a);
 
     status = gsl_eigen_jacobi(tmp, eval, evec, max_rot, &nrot);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
     for(i=0; i<n; i++) 
       {
@@ -241,6 +323,24 @@ gsl_eigen_invert_jacobi (const gsl_matrix * a,
               }
             gsl_matrix_set (ainv, i, j, ainv_ij);
           }
+=======
+
+    for(i=0; i<n; i++)
+      {
+	for(j=0; j<n; j++)
+	  {
+	    double ainv_ij = 0.0;
+
+	    for(k = 0; k<n; k++)
+	      {
+		double f = 1.0 / gsl_vector_get(eval, k);
+		double vik = gsl_matrix_get (evec, i, k);
+		double vjk = gsl_matrix_get (evec, j, k);
+		ainv_ij += vik * vjk * f;
+	      }
+	    gsl_matrix_set (ainv, i, j, ainv_ij);
+	  }
+>>>>>>> config
       }
 
     gsl_vector_free(eval);
@@ -249,11 +349,19 @@ gsl_eigen_invert_jacobi (const gsl_matrix * a,
 
     if (status)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         return status;
       }
     else
       {
         return GSL_SUCCESS;
+=======
+	return status;
+      }
+    else
+      {
+	return GSL_SUCCESS;
+>>>>>>> config
       }
   }
 }

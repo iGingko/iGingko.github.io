@@ -1,17 +1,31 @@
 /* matrix/gsl_matrix_complex_double.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -39,7 +53,11 @@
 
 __BEGIN_DECLS
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 typedef struct 
+=======
+typedef struct
+>>>>>>> config
 {
   size_t size1;
   size_t size2;
@@ -66,6 +84,7 @@ typedef const _gsl_matrix_complex_const_view gsl_matrix_complex_const_view;
 
 /* Allocation */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_matrix_complex * 
 gsl_matrix_complex_alloc (const size_t n1, const size_t n2);
 
@@ -89,11 +108,37 @@ gsl_vector_complex_alloc_row_from_matrix (gsl_matrix_complex * m,
 gsl_vector_complex * 
 gsl_vector_complex_alloc_col_from_matrix (gsl_matrix_complex * m,
                                                 const size_t j);
+=======
+gsl_matrix_complex *
+gsl_matrix_complex_alloc (const size_t n1, const size_t n2);
+
+gsl_matrix_complex *
+gsl_matrix_complex_calloc (const size_t n1, const size_t n2);
+
+gsl_matrix_complex *
+gsl_matrix_complex_alloc_from_block (gsl_block_complex * b,
+					   const size_t offset,
+					   const size_t n1, const size_t n2, const size_t d2);
+
+gsl_matrix_complex *
+gsl_matrix_complex_alloc_from_matrix (gsl_matrix_complex * b,
+					    const size_t k1, const size_t k2,
+					    const size_t n1, const size_t n2);
+
+gsl_vector_complex *
+gsl_vector_complex_alloc_row_from_matrix (gsl_matrix_complex * m,
+						const size_t i);
+
+gsl_vector_complex *
+gsl_vector_complex_alloc_col_from_matrix (gsl_matrix_complex * m,
+						const size_t j);
+>>>>>>> config
 
 void gsl_matrix_complex_free (gsl_matrix_complex * m);
 
 /* Views */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 _gsl_matrix_complex_view 
 gsl_matrix_complex_submatrix (gsl_matrix_complex * m, 
                             const size_t i, const size_t j, 
@@ -112,10 +157,31 @@ _gsl_vector_complex_view
 gsl_matrix_complex_subdiagonal (gsl_matrix_complex * m, const size_t k);
 
 _gsl_vector_complex_view 
+=======
+_gsl_matrix_complex_view
+gsl_matrix_complex_submatrix (gsl_matrix_complex * m,
+			    const size_t i, const size_t j,
+			    const size_t n1, const size_t n2);
+
+_gsl_vector_complex_view
+gsl_matrix_complex_row (gsl_matrix_complex * m, const size_t i);
+
+_gsl_vector_complex_view
+gsl_matrix_complex_column (gsl_matrix_complex * m, const size_t j);
+
+_gsl_vector_complex_view
+gsl_matrix_complex_diagonal (gsl_matrix_complex * m);
+
+_gsl_vector_complex_view
+gsl_matrix_complex_subdiagonal (gsl_matrix_complex * m, const size_t k);
+
+_gsl_vector_complex_view
+>>>>>>> config
 gsl_matrix_complex_superdiagonal (gsl_matrix_complex * m, const size_t k);
 
 _gsl_vector_complex_view
 gsl_matrix_complex_subrow (gsl_matrix_complex * m,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                  const size_t i, const size_t offset,
                                  const size_t n);
 
@@ -159,10 +225,56 @@ gsl_matrix_complex_const_row (const gsl_matrix_complex * m,
 _gsl_vector_complex_const_view 
 gsl_matrix_complex_const_column (const gsl_matrix_complex * m, 
                                const size_t j);
+=======
+				 const size_t i, const size_t offset,
+				 const size_t n);
+
+_gsl_vector_complex_view
+gsl_matrix_complex_subcolumn (gsl_matrix_complex * m,
+				    const size_t j, const size_t offset,
+				    const size_t n);
+
+_gsl_matrix_complex_view
+gsl_matrix_complex_view_array (double * base,
+			     const size_t n1,
+			     const size_t n2);
+
+_gsl_matrix_complex_view
+gsl_matrix_complex_view_array_with_tda (double * base,
+				      const size_t n1,
+				      const size_t n2,
+				      const size_t tda);
+
+_gsl_matrix_complex_view
+gsl_matrix_complex_view_vector (gsl_vector_complex * v,
+			      const size_t n1,
+			      const size_t n2);
+
+_gsl_matrix_complex_view
+gsl_matrix_complex_view_vector_with_tda (gsl_vector_complex * v,
+				       const size_t n1,
+				       const size_t n2,
+				       const size_t tda);
+
+
+_gsl_matrix_complex_const_view
+gsl_matrix_complex_const_submatrix (const gsl_matrix_complex * m,
+				  const size_t i, const size_t j,
+				  const size_t n1, const size_t n2);
+
+_gsl_vector_complex_const_view
+gsl_matrix_complex_const_row (const gsl_matrix_complex * m,
+			    const size_t i);
+
+_gsl_vector_complex_const_view
+gsl_matrix_complex_const_column (const gsl_matrix_complex * m,
+			       const size_t j);
+>>>>>>> config
 
 _gsl_vector_complex_const_view
 gsl_matrix_complex_const_diagonal (const gsl_matrix_complex * m);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 _gsl_vector_complex_const_view 
 gsl_matrix_complex_const_subdiagonal (const gsl_matrix_complex * m, 
                                     const size_t k);
@@ -202,6 +314,47 @@ gsl_matrix_complex_const_view_vector_with_tda (const gsl_vector_complex * v,
                                              const size_t n1, 
                                              const size_t n2,
                                              const size_t tda);
+=======
+_gsl_vector_complex_const_view
+gsl_matrix_complex_const_subdiagonal (const gsl_matrix_complex * m,
+				    const size_t k);
+
+_gsl_vector_complex_const_view
+gsl_matrix_complex_const_superdiagonal (const gsl_matrix_complex * m,
+				      const size_t k);
+
+_gsl_vector_complex_const_view
+gsl_matrix_complex_const_subrow (const gsl_matrix_complex * m,
+				       const size_t i, const size_t offset,
+				       const size_t n);
+
+_gsl_vector_complex_const_view
+gsl_matrix_complex_const_subcolumn (const gsl_matrix_complex * m,
+					  const size_t j, const size_t offset,
+					  const size_t n);
+
+_gsl_matrix_complex_const_view
+gsl_matrix_complex_const_view_array (const double * base,
+				   const size_t n1,
+				   const size_t n2);
+
+_gsl_matrix_complex_const_view
+gsl_matrix_complex_const_view_array_with_tda (const double * base,
+					    const size_t n1,
+					    const size_t n2,
+					    const size_t tda);
+
+_gsl_matrix_complex_const_view
+gsl_matrix_complex_const_view_vector (const gsl_vector_complex * v,
+				    const size_t n1,
+				    const size_t n2);
+
+_gsl_matrix_complex_const_view
+gsl_matrix_complex_const_view_vector_with_tda (const gsl_vector_complex * v,
+					     const size_t n1,
+					     const size_t n2,
+					     const size_t tda);
+>>>>>>> config
 
 /* Operations */
 
@@ -256,6 +409,7 @@ INLINE_DECL const gsl_complex * gsl_matrix_complex_const_ptr(const gsl_matrix_co
 
 #ifdef HAVE_INLINE
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 INLINE_FUN 
 gsl_complex
 gsl_matrix_complex_get(const gsl_matrix_complex * m, 
@@ -263,10 +417,20 @@ gsl_matrix_complex_get(const gsl_matrix_complex * m,
 {
 #if GSL_RANGE_CHECK
   if (GSL_RANGE_COND(1)) 
+=======
+INLINE_FUN
+gsl_complex
+gsl_matrix_complex_get(const gsl_matrix_complex * m,
+		     const size_t i, const size_t j)
+{
+#if GSL_RANGE_CHECK
+  if (GSL_RANGE_COND(1))
+>>>>>>> config
     {
       gsl_complex zero = {{0,0}};
 
       if (i >= m->size1)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           GSL_ERROR_VAL("first index out of range", GSL_EINVAL, zero) ;
         }
@@ -295,11 +459,42 @@ gsl_matrix_complex_set(gsl_matrix_complex * m,
         {
           GSL_ERROR_VOID("second index out of range", GSL_EINVAL) ;
         }
+=======
+	{
+	  GSL_ERROR_VAL("first index out of range", GSL_EINVAL, zero) ;
+	}
+      else if (j >= m->size2)
+	{
+	  GSL_ERROR_VAL("second index out of range", GSL_EINVAL, zero) ;
+	}
+    }
+#endif
+  return *(gsl_complex *)(m->data + 2*(i * m->tda + j)) ;
+}
+
+INLINE_FUN
+void
+gsl_matrix_complex_set(gsl_matrix_complex * m,
+		     const size_t i, const size_t j, const gsl_complex x)
+{
+#if GSL_RANGE_CHECK
+  if (GSL_RANGE_COND(1))
+    {
+      if (i >= m->size1)
+	{
+	  GSL_ERROR_VOID("first index out of range", GSL_EINVAL) ;
+	}
+      else if (j >= m->size2)
+	{
+	  GSL_ERROR_VOID("second index out of range", GSL_EINVAL) ;
+	}
+>>>>>>> config
     }
 #endif
   *(gsl_complex *)(m->data + 2*(i * m->tda + j)) = x ;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 INLINE_FUN 
 gsl_complex *
 gsl_matrix_complex_ptr(gsl_matrix_complex * m, 
@@ -341,6 +536,49 @@ gsl_matrix_complex_const_ptr(const gsl_matrix_complex * m,
 #endif
   return (const gsl_complex *)(m->data + 2*(i * m->tda + j)) ;
 } 
+=======
+INLINE_FUN
+gsl_complex *
+gsl_matrix_complex_ptr(gsl_matrix_complex * m,
+			     const size_t i, const size_t j)
+{
+#if GSL_RANGE_CHECK
+  if (GSL_RANGE_COND(1))
+    {
+      if (i >= m->size1)
+	{
+	  GSL_ERROR_NULL("first index out of range", GSL_EINVAL) ;
+	}
+      else if (j >= m->size2)
+	{
+	  GSL_ERROR_NULL("second index out of range", GSL_EINVAL) ;
+	}
+    }
+#endif
+  return (gsl_complex *)(m->data + 2*(i * m->tda + j)) ;
+}
+
+INLINE_FUN
+const gsl_complex *
+gsl_matrix_complex_const_ptr(const gsl_matrix_complex * m,
+				   const size_t i, const size_t j)
+{
+#if GSL_RANGE_CHECK
+  if (GSL_RANGE_COND(1))
+    {
+      if (i >= m->size1)
+	{
+	  GSL_ERROR_NULL("first index out of range", GSL_EINVAL) ;
+	}
+      else if (j >= m->size2)
+	{
+	  GSL_ERROR_NULL("second index out of range", GSL_EINVAL) ;
+	}
+    }
+#endif
+  return (const gsl_complex *)(m->data + 2*(i * m->tda + j)) ;
+}
+>>>>>>> config
 
 #endif /* HAVE_INLINE */
 

@@ -1,17 +1,31 @@
 /* specfunc/legendre_poly.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -101,7 +115,11 @@ gsl_sf_legendre_P3_e(double x, gsl_sf_result * result)
 
 int
 gsl_sf_legendre_Pl_e(const int l, const double x, gsl_sf_result * result)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 { 
+=======
+{
+>>>>>>> config
   /* CHECK_POINTER(result) */
 
   if(l < 0 || x < -1.0 || x > 1.0) {
@@ -258,8 +276,13 @@ gsl_sf_legendre_Pl_deriv_array(const int lmax, const double x, double * result_a
       /* x is near 1 */
       for(ell = 2; ell <= lmax; ell++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         const double pre = 0.5 * ell * (ell+1.0);
         result_deriv_array[ell] = pre * (1.0 - 0.25 * (1.0-x) * (ell+2.0)*(ell-1.0));
+=======
+	const double pre = 0.5 * ell * (ell+1.0);
+	result_deriv_array[ell] = pre * (1.0 - 0.25 * (1.0-x) * (ell+2.0)*(ell-1.0));
+>>>>>>> config
       }
     }
     else if(fabs(x + 1.0)*(lmax+1.0)*(lmax+1.0) <  GSL_SQRT_DBL_EPSILON)
@@ -267,9 +290,15 @@ gsl_sf_legendre_Pl_deriv_array(const int lmax, const double x, double * result_a
       /* x is near -1 */
       for(ell = 2; ell <= lmax; ell++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         const double sgn = ( GSL_IS_ODD(ell) ? 1.0 : -1.0 ); /* derivative is odd in x for even ell */
         const double pre = sgn * 0.5 * ell * (ell+1.0);
         result_deriv_array[ell] = pre * (1.0 - 0.25 * (1.0+x) * (ell+2.0)*(ell-1.0));
+=======
+	const double sgn = ( GSL_IS_ODD(ell) ? 1.0 : -1.0 ); /* derivative is odd in x for even ell */
+	const double pre = sgn * 0.5 * ell * (ell+1.0);
+	result_deriv_array[ell] = pre * (1.0 - 0.25 * (1.0+x) * (ell+2.0)*(ell-1.0));
+>>>>>>> config
       }
     }
     else
@@ -278,7 +307,11 @@ gsl_sf_legendre_Pl_deriv_array(const int lmax, const double x, double * result_a
       const double diff_b = 1.0 - x;
       for(ell = 2; ell <= lmax; ell++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         result_deriv_array[ell] = - ell * (x * result_array[ell] - result_array[ell-1]) / (diff_a * diff_b);
+=======
+	result_deriv_array[ell] = - ell * (x * result_array[ell] - result_array[ell-1]) / (diff_a * diff_b);
+>>>>>>> config
       }
     }
 
@@ -344,9 +377,15 @@ gsl_sf_legendre_Plm_e(const int l, const int m, const double x, gsl_sf_result * 
       int ell;
 
       for(ell=m+2; ell <= l; ell++){
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         p_ell = (x*(2*ell-1)*p_ellm1 - (ell+m-1)*p_ellm2) / (ell-m);
         p_ellm2 = p_ellm1;
         p_ellm1 = p_ell;
+=======
+	p_ell = (x*(2*ell-1)*p_ellm1 - (ell+m-1)*p_ellm2) / (ell-m);
+	p_ellm2 = p_ellm1;
+	p_ellm1 = p_ell;
+>>>>>>> config
       }
 
       result->val = p_ell;
@@ -408,10 +447,17 @@ gsl_sf_legendre_Plm_array(const int lmax, const int m, const double x, double * 
       result_array[1] = p_mmp1;
 
       for(ell=m+2; ell <= lmax; ell++){
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         p_ell = (x*(2.0*ell-1.0)*p_ellm1 - (ell+m-1)*p_ellm2) / (ell-m);
         p_ellm2 = p_ellm1;
         p_ellm1 = p_ell;
         result_array[ell-m] = p_ell;
+=======
+	p_ell = (x*(2.0*ell-1.0)*p_ellm1 - (ell+m-1)*p_ellm2) / (ell-m);
+	p_ellm2 = p_ellm1;
+	p_ellm1 = p_ell;
+	result_array[ell-m] = p_ell;
+>>>>>>> config
       }
 
       return GSL_SUCCESS;
@@ -447,6 +493,7 @@ gsl_sf_legendre_Plm_deriv_array(
 
       if(m == 1 && (1.0 - fabs(x) < GSL_DBL_EPSILON))
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         /* This divergence is real and comes from the cusp-like
          * behaviour for m = 1. For example, P[1,1] = - Sqrt[1-x^2].
          */
@@ -489,6 +536,50 @@ gsl_sf_legendre_Plm_deriv_array(
           }
           return GSL_SUCCESS;
         }
+=======
+	/* This divergence is real and comes from the cusp-like
+	 * behaviour for m = 1. For example, P[1,1] = - Sqrt[1-x^2].
+	 */
+	GSL_ERROR("divergence near |x| = 1.0 since m = 1", GSL_EOVRFLW);
+      }
+      else if(m == 2 && (1.0 - fabs(x) < GSL_DBL_EPSILON))
+      {
+	/* m = 2 gives a finite nonzero result for |x| near 1 */
+	if(fabs(x - 1.0) < GSL_DBL_EPSILON)
+	{
+	  for(ell = m; ell <= lmax; ell++) result_deriv_array[ell-m] = -0.25 * x * (ell - 1.0)*ell*(ell+1.0)*(ell+2.0);
+	}
+	else if(fabs(x + 1.0) < GSL_DBL_EPSILON)
+	{
+	  for(ell = m; ell <= lmax; ell++)
+	  {
+	    const double sgn = ( GSL_IS_ODD(ell) ? 1.0 : -1.0 );
+	    result_deriv_array[ell-m] = -0.25 * sgn * x * (ell - 1.0)*ell*(ell+1.0)*(ell+2.0);
+	  }
+	}
+	return GSL_SUCCESS;
+      }
+      else
+      {
+	/* m > 2 is easier to deal with since the endpoints always vanish */
+	if(1.0 - fabs(x) < GSL_DBL_EPSILON)
+	{
+	  for(ell = m; ell <= lmax; ell++) result_deriv_array[ell-m] = 0.0;
+	  return GSL_SUCCESS;
+	}
+	else
+	{
+	  const double diff_a = 1.0 + x;
+	  const double diff_b = 1.0 - x;
+	  result_deriv_array[0] = - m * x / (diff_a * diff_b) * result_array[0];
+	  if(lmax-m >= 1) result_deriv_array[1] = (2.0 * m + 1.0) * (x * result_deriv_array[0] + result_array[0]);
+	  for(ell = m+2; ell <= lmax; ell++)
+	  {
+	    result_deriv_array[ell-m] = - (ell * x * result_array[ell-m] - (ell+m) * result_array[ell-1-m]) / (diff_a * diff_b);
+	  }
+	  return GSL_SUCCESS;
+	}
+>>>>>>> config
       }
     }
     else
@@ -571,6 +662,7 @@ gsl_sf_legendre_sphPlm_e(const int l, int m, const double x, gsl_sf_result * res
 
       /* Compute Y_l^m, l > m+1, upward recursion on l. */
       for(ell=m+2; ell <= l; ell++){
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         const double rat1 = (double)(ell-m)/(double)(ell+m);
         const double rat2 = (ell-m-1.0)/(ell+m-1.0);
         const double factor1 = sqrt(rat1*(2.0*ell+1.0)*(2.0*ell-1.0));
@@ -582,6 +674,19 @@ gsl_sf_legendre_sphPlm_e(const int l, int m, const double x, gsl_sf_result * res
         y_ell_err = 0.5*(fabs(x*factor1)*y_mmp1_err + fabs((ell+m-1.0)*factor2)*y_mm_err) / fabs(ell-m);
         y_mm_err = y_mmp1_err;
         y_mmp1_err = y_ell_err;
+=======
+	const double rat1 = (double)(ell-m)/(double)(ell+m);
+	const double rat2 = (ell-m-1.0)/(ell+m-1.0);
+	const double factor1 = sqrt(rat1*(2.0*ell+1.0)*(2.0*ell-1.0));
+	const double factor2 = sqrt(rat1*rat2*(2.0*ell+1.0)/(2.0*ell-3.0));
+	y_ell = (x*y_mmp1*factor1 - (ell+m-1.0)*y_mm*factor2) / (ell-m);
+	y_mm   = y_mmp1;
+	y_mmp1 = y_ell;
+
+	y_ell_err = 0.5*(fabs(x*factor1)*y_mmp1_err + fabs((ell+m-1.0)*factor2)*y_mm_err) / fabs(ell-m);
+	y_mm_err = y_mmp1_err;
+	y_mmp1_err = y_ell_err;
+>>>>>>> config
       }
 
       result->val  = y_ell;
@@ -646,6 +751,7 @@ gsl_sf_legendre_sphPlm_array(const int lmax, int m, const double x, double * res
 
       /* Compute Y_l^m, l > m+1, upward recursion on l. */
       for(ell=m+2; ell <= lmax; ell++){
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         const double rat1 = (double)(ell-m)/(double)(ell+m);
         const double rat2 = (ell-m-1.0)/(ell+m-1.0);
         const double factor1 = sqrt(rat1*(2*ell+1)*(2*ell-1));
@@ -654,6 +760,16 @@ gsl_sf_legendre_sphPlm_array(const int lmax, int m, const double x, double * res
         y_mm   = y_mmp1;
         y_mmp1 = y_ell;
         result_array[ell-m] = y_ell;
+=======
+	const double rat1 = (double)(ell-m)/(double)(ell+m);
+	const double rat2 = (ell-m-1.0)/(ell+m-1.0);
+	const double factor1 = sqrt(rat1*(2*ell+1)*(2*ell-1));
+	const double factor2 = sqrt(rat1*rat2*(2*ell+1)/(2*ell-3));
+	y_ell = (x*y_mmp1*factor1 - (ell+m-1)*y_mm*factor2) / (ell-m);
+	y_mm   = y_mmp1;
+	y_mmp1 = y_ell;
+	result_array[ell-m] = y_ell;
+>>>>>>> config
       }
     }
 
@@ -713,6 +829,7 @@ gsl_sf_legendre_sphPlm_deriv_array(
 
       if(1.0 - fabs(x) < GSL_DBL_EPSILON)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         for(ell = m; ell <= lmax; ell++) result_deriv_array[ell-m] = 0.0;
         return GSL_SUCCESS;
       }
@@ -728,6 +845,23 @@ gsl_sf_legendre_sphPlm_deriv_array(
           result_deriv_array[ell-m] = - (ell * x * result_array[ell-m] - c1 * (ell+m) * result_array[ell-1-m]) / (diff_a * diff_b);
         }
         return GSL_SUCCESS;
+=======
+	for(ell = m; ell <= lmax; ell++) result_deriv_array[ell-m] = 0.0;
+	return GSL_SUCCESS;
+      }
+      else
+      {
+	const double diff_a = 1.0 + x;
+	const double diff_b = 1.0 - x;
+	result_deriv_array[0] = - m * x / (diff_a * diff_b) * result_array[0];
+	if(lmax-m >= 1) result_deriv_array[1] = sqrt(2.0 * m + 3.0) * (x * result_deriv_array[0] + result_array[0]);
+	for(ell = m+2; ell <= lmax; ell++)
+	{
+	  const double c1 = sqrt(((2.0*ell+1.0)/(2.0*ell-1.0)) * ((double)(ell-m)/(double)(ell+m)));
+	  result_deriv_array[ell-m] = - (ell * x * result_array[ell-m] - c1 * (ell+m) * result_array[ell-1-m]) / (diff_a * diff_b);
+	}
+	return GSL_SUCCESS;
+>>>>>>> config
       }
     }
     else
@@ -776,4 +910,7 @@ double gsl_sf_legendre_sphPlm(const int l, const int m, const double x)
 {
   EVAL_RESULT(gsl_sf_legendre_sphPlm_e(l, m, x, &result));
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

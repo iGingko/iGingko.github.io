@@ -1,17 +1,31 @@
 /* specfunc/beta_inc.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -24,7 +38,11 @@
 
 static double
 beta_cont_frac (const double a, const double b, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                 const double epsabs)
+=======
+		const double epsabs)
+>>>>>>> config
 {
   const unsigned int max_iter = 512;    /* control iterations      */
   const double cutoff = 2.0 * GSL_DBL_MIN;      /* control the zero cutoff */
@@ -52,10 +70,17 @@ beta_cont_frac (const double a, const double b, const double x,
       num_term = 1.0 + coeff / num_term;
 
       if (fabs (den_term) < cutoff)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         den_term = GSL_NAN;
 
       if (fabs (num_term) < cutoff)
         num_term = GSL_NAN;
+=======
+	den_term = GSL_NAN;
+
+      if (fabs (num_term) < cutoff)
+	num_term = GSL_NAN;
+>>>>>>> config
 
       den_term = 1.0 / den_term;
 
@@ -69,10 +94,17 @@ beta_cont_frac (const double a, const double b, const double x,
       num_term = 1.0 + coeff / num_term;
 
       if (fabs (den_term) < cutoff)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         den_term = GSL_NAN;
 
       if (fabs (num_term) < cutoff)
         num_term = GSL_NAN;
+=======
+	den_term = GSL_NAN;
+
+      if (fabs (num_term) < cutoff)
+	num_term = GSL_NAN;
+>>>>>>> config
 
       den_term = 1.0 / den_term;
 
@@ -80,10 +112,17 @@ beta_cont_frac (const double a, const double b, const double x,
       cf *= delta_frac;
 
       if (fabs (delta_frac - 1.0) < 2.0 * GSL_DBL_EPSILON)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         break;
 
       if (cf * fabs (delta_frac - 1.0) < epsabs)
         break;
+=======
+	break;
+
+      if (cf * fabs (delta_frac - 1.0) < epsabs)
+	break;
+>>>>>>> config
 
       ++iter_count;
     }
@@ -106,7 +145,11 @@ beta_cont_frac (const double a, const double b, const double x,
 
 static double
 beta_inc_AXPY (const double A, const double Y,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                const double a, const double b, const double x)
+=======
+	       const double a, const double b, const double x)
+>>>>>>> config
 {
   if (x == 0.0)
     {
@@ -136,6 +179,7 @@ beta_inc_AXPY (const double A, const double Y,
       double prefactor = exp (ln_pre);
 
       if (x < (a + 1.0) / (a + b + 2.0))
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           /* Apply continued fraction directly. */
           double epsabs = fabs (Y / (A * prefactor / a)) * GSL_DBL_EPSILON;
@@ -161,6 +205,33 @@ beta_inc_AXPY (const double A, const double Y,
               return A * (1 - term) + Y;
             }
         }
+=======
+	{
+	  /* Apply continued fraction directly. */
+	  double epsabs = fabs (Y / (A * prefactor / a)) * GSL_DBL_EPSILON;
+
+	  double cf = beta_cont_frac (a, b, x, epsabs);
+
+	  return A * (prefactor * cf / a) + Y;
+	}
+      else
+	{
+	  /* Apply continued fraction after hypergeometric transformation. */
+	  double epsabs =
+	    fabs ((A + Y) / (A * prefactor / b)) * GSL_DBL_EPSILON;
+	  double cf = beta_cont_frac (b, a, 1.0 - x, epsabs);
+	  double term = prefactor * cf / b;
+
+	  if (A == -Y)
+	    {
+	      return -A * term;
+	    }
+	  else
+	    {
+	      return A * (1 - term) + Y;
+	    }
+	}
+>>>>>>> config
     }
 }
 
@@ -169,7 +240,11 @@ beta_inc_AXPY (const double A, const double Y,
 #if 0
 static double
 beta_series (const double a, const double b, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              const double epsabs)
+=======
+	     const double epsabs)
+>>>>>>> config
 {
   double f = x / (1 - x);
   double c = (b - 1) / (a + 1) * f;

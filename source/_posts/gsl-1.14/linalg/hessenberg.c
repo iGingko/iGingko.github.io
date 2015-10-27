@@ -1,17 +1,31 @@
 /* linalg/hessenberg.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2006 Patrick Alken
  * 
+=======
+ *
+ * Copyright (C) 2006 Patrick Alken
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -33,9 +47,15 @@ See Golub & Van Loan, "Matrix Computations" (3rd ed), algorithm
 7.4.2
 
 Inputs: A   - matrix to reduce
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         tau - where to store scalar factors in Householder
               matrices; this vector must be of length N,
               where N is the order of A
+=======
+	tau - where to store scalar factors in Householder
+	      matrices; this vector must be of length N,
+	      where N is the order of A
+>>>>>>> config
 
 Return: GSL_SUCCESS unless error occurs
 
@@ -71,7 +91,11 @@ gsl_linalg_hessenberg_decomp(gsl_matrix *A, gsl_vector *tau)
   if (N != A->size2)
     {
       GSL_ERROR ("Hessenberg reduction requires square matrix",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_ENOTSQR);
+=======
+		 GSL_ENOTSQR);
+>>>>>>> config
     }
   else if (N != tau->size)
     {
@@ -86,11 +110,16 @@ gsl_linalg_hessenberg_decomp(gsl_matrix *A, gsl_vector *tau)
     {
       size_t i;           /* looping */
       gsl_vector_view c,  /* matrix column */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       hv; /* householder vector */
+=======
+		      hv; /* householder vector */
+>>>>>>> config
       gsl_matrix_view m;
       double tau_i;       /* beta in algorithm 7.4.2 */
 
       for (i = 0; i < N - 2; ++i)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           /*
            * make a copy of A(i + 1:n, i) and store it in the section
@@ -125,6 +154,42 @@ gsl_linalg_hessenberg_decomp(gsl_matrix *A, gsl_vector *tau)
           hv = gsl_vector_subvector(&hv.vector, 1, hv.vector.size - 1);
           gsl_vector_memcpy(&c.vector, &hv.vector);
         }
+=======
+	{
+	  /*
+	   * make a copy of A(i + 1:n, i) and store it in the section
+	   * of 'tau' that we haven't stored coefficients in yet
+	   */
+
+	  c = gsl_matrix_subcolumn(A, i, i + 1, N - i - 1);
+
+	  hv = gsl_vector_subvector(tau, i + 1, N - (i + 1));
+	  gsl_vector_memcpy(&hv.vector, &c.vector);
+
+	  /* compute householder transformation of A(i+1:n,i) */
+	  tau_i = gsl_linalg_householder_transform(&hv.vector);
+
+	  /* apply left householder matrix (I - tau_i v v') to A */
+	  m = gsl_matrix_submatrix(A, i + 1, i, N - (i + 1), N - i);
+	  gsl_linalg_householder_hm(tau_i, &hv.vector, &m.matrix);
+
+	  /* apply right householder matrix (I - tau_i v v') to A */
+	  m = gsl_matrix_submatrix(A, 0, i + 1, N, N - (i + 1));
+	  gsl_linalg_householder_mh(tau_i, &hv.vector, &m.matrix);
+
+	  /* save Householder coefficient */
+	  gsl_vector_set(tau, i, tau_i);
+
+	  /*
+	   * store Householder vector below the subdiagonal in column
+	   * i of the matrix. hv(1) does not need to be stored since
+	   * it is always 1.
+	   */
+	  c = gsl_vector_subvector(&c.vector, 1, c.vector.size - 1);
+	  hv = gsl_vector_subvector(&hv.vector, 1, hv.vector.size - 1);
+	  gsl_vector_memcpy(&c.vector, &hv.vector);
+	}
+>>>>>>> config
 
       return GSL_SUCCESS;
     }
@@ -151,16 +216,26 @@ The v(i) are stored in the lower triangular part of H by
 gsl_linalg_hessenberg(). The tau(i) are stored in the vector tau.
 
 Inputs: H       - Hessenberg matrix computed from
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   gsl_linalg_hessenberg()
         tau     - tau vector computed from gsl_linalg_hessenberg()
         U       - (output) where to store similarity matrix
+=======
+		  gsl_linalg_hessenberg()
+	tau     - tau vector computed from gsl_linalg_hessenberg()
+	U       - (output) where to store similarity matrix
+>>>>>>> config
 
 Return: success or error
 */
 
 int
 gsl_linalg_hessenberg_unpack(gsl_matrix * H, gsl_vector * tau,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                              gsl_matrix * U)
+=======
+			     gsl_matrix * U)
+>>>>>>> config
 {
   int s;
 
@@ -184,13 +259,20 @@ instead of:
 U -> U(1) U(2) ... U(n - 2)
 
 Inputs: H       - Hessenberg matrix computed from
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   gsl_linalg_hessenberg()
         tau     - tau vector computed from gsl_linalg_hessenberg()
         V       - (input/output) where to accumulate similarity matrix
+=======
+		  gsl_linalg_hessenberg()
+	tau     - tau vector computed from gsl_linalg_hessenberg()
+	V       - (input/output) where to accumulate similarity matrix
+>>>>>>> config
 
 Return: success or error
 
 Notes: 1) On input, V needs to be initialized. The Householder matrices
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           are accumulated into V, so on output,
 
             V_out = V_in * U(1) * U(2) * ... * U(n - 2)
@@ -201,18 +283,38 @@ Notes: 1) On input, V needs to be initialized. The Householder matrices
 
        2) V does not have to be square, but must have the same
           number of columns as the order of H
+=======
+	  are accumulated into V, so on output,
+
+	    V_out = V_in * U(1) * U(2) * ... * U(n - 2)
+
+	  so if you just want the product of the Householder matrices,
+	  initialize V to the identity matrix before calling this
+	  function.
+
+       2) V does not have to be square, but must have the same
+	  number of columns as the order of H
+>>>>>>> config
 */
 
 int
 gsl_linalg_hessenberg_unpack_accum(gsl_matrix * H, gsl_vector * tau,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                    gsl_matrix * V)
+=======
+				   gsl_matrix * V)
+>>>>>>> config
 {
   const size_t N = H->size1;
 
   if (N != H->size2)
     {
       GSL_ERROR ("Hessenberg reduction requires square matrix",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_ENOTSQR);
+=======
+		 GSL_ENOTSQR);
+>>>>>>> config
     }
   else if (N != tau->size)
     {
@@ -227,6 +329,7 @@ gsl_linalg_hessenberg_unpack_accum(gsl_matrix * H, gsl_vector * tau,
       size_t j;           /* looping */
       double tau_j;       /* householder coefficient */
       gsl_vector_view c,  /* matrix column */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       hv; /* householder vector */
       gsl_matrix_view m;
 
@@ -263,6 +366,44 @@ gsl_linalg_hessenberg_unpack_accum(gsl_matrix * H, gsl_vector * tau,
           /* apply right Householder matrix to V */
           gsl_linalg_householder_mh(tau_j, &hv.vector, &m.matrix);
         }
+=======
+		      hv; /* householder vector */
+      gsl_matrix_view m;
+
+      if (N < 3)
+	{
+	  /* nothing to do */
+	  return GSL_SUCCESS;
+	}
+
+      for (j = 0; j < (N - 2); ++j)
+	{
+	  c = gsl_matrix_column(H, j);
+
+	  tau_j = gsl_vector_get(tau, j);
+
+	  /*
+	   * get a view to the householder vector in column j, but
+	   * make sure hv(2) starts at the element below the
+	   * subdiagonal, since hv(1) was never stored and is always
+	   * 1
+	   */
+	  hv = gsl_vector_subvector(&c.vector, j + 1, N - (j + 1));
+
+	  /*
+	   * Only operate on part of the matrix since the first
+	   * j + 1 entries of the real householder vector are 0
+	   *
+	   * V -> V * U(j)
+	   *
+	   * Note here that V->size1 is not necessarily equal to N
+	   */
+	  m = gsl_matrix_submatrix(V, 0, j + 1, V->size1, N - (j + 1));
+
+	  /* apply right Householder matrix to V */
+	  gsl_linalg_householder_mh(tau_j, &hv.vector, &m.matrix);
+	}
+>>>>>>> config
 
       return GSL_SUCCESS;
     }
@@ -287,9 +428,15 @@ gsl_linalg_hessenberg_set_zero(gsl_matrix * H)
   for (j = 0; j < N - 2; ++j)
     {
       for (i = j + 2; i < N; ++i)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           gsl_matrix_set(H, i, j, 0.0);
         }
+=======
+	{
+	  gsl_matrix_set(H, i, j, 0.0);
+	}
+>>>>>>> config
     }
 
   return GSL_SUCCESS;
@@ -315,11 +462,19 @@ information. So this routine updates M_{12} and M_{23} as A gets
 reduced.
 
 Inputs: M   - total matrix
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         A   - (sub)matrix to reduce
         top - row index of top of A in M
         tau - where to store scalar factors in Householder
               matrices; this vector must be of length N,
               where N is the order of A
+=======
+	A   - (sub)matrix to reduce
+	top - row index of top of A in M
+	tau - where to store scalar factors in Householder
+	      matrices; this vector must be of length N,
+	      where N is the order of A
+>>>>>>> config
 
 Return: GSL_SUCCESS unless error occurs
 
@@ -349,7 +504,11 @@ column i of A beneath the subdiagonal.
 
 int
 gsl_linalg_hessenberg_submatrix(gsl_matrix *M, gsl_matrix *A, size_t top,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                 gsl_vector *tau)
+=======
+				gsl_vector *tau)
+>>>>>>> config
 {
   const size_t N = A->size1;
   const size_t N_M = M->size1;
@@ -357,7 +516,11 @@ gsl_linalg_hessenberg_submatrix(gsl_matrix *M, gsl_matrix *A, size_t top,
   if (N != A->size2)
     {
       GSL_ERROR ("Hessenberg reduction requires square matrix",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_ENOTSQR);
+=======
+		 GSL_ENOTSQR);
+>>>>>>> config
     }
   else if (N != tau->size)
     {
@@ -372,11 +535,16 @@ gsl_linalg_hessenberg_submatrix(gsl_matrix *M, gsl_matrix *A, size_t top,
     {
       size_t i;           /* looping */
       gsl_vector_view c,  /* matrix column */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       hv; /* householder vector */
+=======
+		      hv; /* householder vector */
+>>>>>>> config
       gsl_matrix_view m;
       double tau_i;       /* beta in algorithm 7.4.2 */
 
       for (i = 0; i < N - 2; ++i)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           /*
            * make a copy of A(i + 1:n, i) and store it in the section
@@ -427,6 +595,58 @@ gsl_linalg_hessenberg_submatrix(gsl_matrix *M, gsl_matrix *A, size_t top,
           hv = gsl_vector_subvector(&hv.vector, 1, hv.vector.size - 1);
           gsl_vector_memcpy(&c.vector, &hv.vector);
         }
+=======
+	{
+	  /*
+	   * make a copy of A(i + 1:n, i) and store it in the section
+	   * of 'tau' that we haven't stored coefficients in yet
+	   */
+
+	  c = gsl_matrix_subcolumn(A, i, i + 1, N - i - 1);
+
+	  hv = gsl_vector_subvector(tau, i + 1, N - (i + 1));
+	  gsl_vector_memcpy(&hv.vector, &c.vector);
+
+	  /* compute householder transformation of A(i+1:n,i) */
+	  tau_i = gsl_linalg_householder_transform(&hv.vector);
+
+	  /*
+	   * apply left householder matrix (I - tau_i v v') to
+	   * [ A | M_{23} ]
+	   */
+	  m = gsl_matrix_submatrix(M,
+				   top + i + 1,
+				   top + i,
+				   N - (i + 1),
+				   N_M - top - i);
+	  gsl_linalg_householder_hm(tau_i, &hv.vector, &m.matrix);
+
+	  /*
+	   * apply right householder matrix (I - tau_i v v') to
+	   *
+	   * [ M_{12} ]
+	   * [   A    ]
+	   */
+	  m = gsl_matrix_submatrix(M,
+				   0,
+				   top + i + 1,
+				   top + N,
+				   N - (i + 1));
+	  gsl_linalg_householder_mh(tau_i, &hv.vector, &m.matrix);
+
+	  /* save Householder coefficient */
+	  gsl_vector_set(tau, i, tau_i);
+
+	  /*
+	   * store Householder vector below the subdiagonal in column
+	   * i of the matrix. hv(1) does not need to be stored since
+	   * it is always 1.
+	   */
+	  c = gsl_vector_subvector(&c.vector, 1, c.vector.size - 1);
+	  hv = gsl_vector_subvector(&hv.vector, 1, hv.vector.size - 1);
+	  gsl_vector_memcpy(&c.vector, &hv.vector);
+	}
+>>>>>>> config
 
       return GSL_SUCCESS;
     }
@@ -434,7 +654,11 @@ gsl_linalg_hessenberg_submatrix(gsl_matrix *M, gsl_matrix *A, size_t top,
 
 /* To support gsl-1.9 interface: DEPRECATED */
 int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_linalg_hessenberg(gsl_matrix *A, gsl_vector *tau) 
+=======
+gsl_linalg_hessenberg(gsl_matrix *A, gsl_vector *tau)
+>>>>>>> config
 {
   return gsl_linalg_hessenberg_decomp(A, tau);
 }

@@ -1,6 +1,10 @@
 @cindex transport functions
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 The transport functions @math{J(n,x)} are defined by the integral 
+=======
+The transport functions @math{J(n,x)} are defined by the integral
+>>>>>>> config
 representations
 @c{$J(n,x) := \int_0^x dt \, t^n e^t /(e^t - 1)^2$}
 @math{J(n,x) := \int_0^x dt t^n e^t /(e^t - 1)^2}.

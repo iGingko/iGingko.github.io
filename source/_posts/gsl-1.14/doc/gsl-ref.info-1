@@ -145,6 +145,7 @@ File: gsl-ref.info,  Node: Routines available in GSL,  Next: GSL is Free Softwar
 The library covers a wide range of topics in numerical computing.
 Routines are available for the following areas,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
      Complex Numbers                  Roots of Polynomials             
      Special Functions                Vectors and Matrices             
      Permutations                     Combinations                     
@@ -162,6 +163,25 @@ Routines are available for the following areas,
      Least-Squares Fitting            Minimization                     
      IEEE Floating-Point              Physical Constants               
      Basis Splines                    Wavelets                         
+=======
+     Complex Numbers                  Roots of Polynomials
+     Special Functions                Vectors and Matrices
+     Permutations                     Combinations
+     Sorting                          BLAS Support
+     Linear Algebra                   CBLAS Library
+     Fast Fourier Transforms          Eigensystems
+     Random Numbers                   Quadrature
+     Random Distributions             Quasi-Random Sequences
+     Histograms                       Statistics
+     Monte Carlo Integration          N-Tuples
+     Differential Equations           Simulated Annealing
+     Numerical Differentiation        Interpolation
+     Series Acceleration              Chebyshev Approximations
+     Root-Finding                     Discrete Hankel Transforms
+     Least-Squares Fitting            Minimization
+     IEEE Floating-Point              Physical Constants
+     Basis Splines                    Wavelets
+>>>>>>> config
 
 The use of these routines is described in this manual.  Each chapter
 provides detailed definitions of the functions, followed by example
@@ -954,7 +974,11 @@ function `gsl_strerror'.
      This function returns a pointer to a string describing the error
      code GSL_ERRNO. For example,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           printf ("error: %s\n", gsl_strerror (status));
+=======
+	  printf ("error: %s\n", gsl_strerror (status));
+>>>>>>> config
 
      would print an error message like `error: output range error' for a
      status value of `GSL_ERANGE'.
@@ -992,17 +1016,28 @@ defined in `gsl_errno.h',
      in the preprocessor.  An error handler function returns type
      `void'.  Error handler functions should be defined like this,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           void handler (const char * reason,
                         const char * file,
                         int line,
                         int gsl_errno)
+=======
+	  void handler (const char * reason,
+			const char * file,
+			int line,
+			int gsl_errno)
+>>>>>>> config
 
 To request the use of your own error handler you need to call the
 function `gsl_set_error_handler' which is also declared in
 `gsl_errno.h',
 
  -- Function: gsl_error_handler_t * gsl_set_error_handler
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           (gsl_error_handler_t * NEW_HANDLER)
+=======
+	  (gsl_error_handler_t * NEW_HANDLER)
+>>>>>>> config
      This function sets a new error handler, NEW_HANDLER, for the GSL
      library routines.  The previous handler is returned (so that you
      can restore it later).  Note that the pointer to a user defined
@@ -1012,6 +1047,7 @@ function `gsl_set_error_handler' which is also declared in
      program-wide error handler from a master thread.  The following
      example shows how to set and restore a new error handler,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           /* save original handler, install new handler */
           old_handler = gsl_set_error_handler (&my_handler);
 
@@ -1020,11 +1056,25 @@ function `gsl_set_error_handler' which is also declared in
 
           /* restore original handler */
           gsl_set_error_handler (old_handler);
+=======
+	  /* save original handler, install new handler */
+	  old_handler = gsl_set_error_handler (&my_handler);
+
+	  /* code uses new handler */
+	  .....
+
+	  /* restore original handler */
+	  gsl_set_error_handler (old_handler);
+>>>>>>> config
 
      To use the default behavior (`abort' on error) set the error
      handler to `NULL',
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           old_handler = gsl_set_error_handler (NULL);
+=======
+	  old_handler = gsl_set_error_handler (NULL);
+>>>>>>> config
 
  -- Function: gsl_error_handler_t * gsl_set_error_handler_off ()
      This function turns off the error handler by defining an error
@@ -1058,8 +1108,13 @@ the file `gsl_errno.h' defines two macros which carry out these steps:
      status value of `gsl_errno'.  It expands to the following code
      fragment,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_error (reason, __FILE__, __LINE__, gsl_errno);
           return gsl_errno;
+=======
+	  gsl_error (reason, __FILE__, __LINE__, gsl_errno);
+	  return gsl_errno;
+>>>>>>> config
 
      The macro definition in `gsl_errno.h' actually wraps the code in a
      `do { ... } while (0)' block to prevent possible parsing problems.
@@ -1070,7 +1125,11 @@ routine needs to return the error code `GSL_ETOL'.
 
      if (residual > tolerance)
        {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          GSL_ERROR("residual exceeds tolerance", GSL_ETOL);
+=======
+	 GSL_ERROR("residual exceeds tolerance", GSL_ETOL);
+>>>>>>> config
        }
 
  -- Macro: GSL_ERROR_VAL (REASON, GSL_ERRNO, VALUE)
@@ -1083,8 +1142,13 @@ singularity using the `GSL_ERROR_VAL' macro,
 
      if (x == 0)
        {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          GSL_ERROR_VAL("argument lies on singularity",
                        GSL_ERANGE, GSL_NAN);
+=======
+	 GSL_ERROR_VAL("argument lies on singularity",
+		       GSL_ERANGE, GSL_NAN);
+>>>>>>> config
        }
 
 
@@ -1109,6 +1173,7 @@ function where an error might be reported,
        status = gsl_fft_complex_radix2_forward (data, stride, n);
 
        if (status) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          if (status == GSL_EINVAL) {
             fprintf (stderr, "invalid argument, n=%d\n", n);
          } else {
@@ -1116,6 +1181,15 @@ function where an error might be reported,
                              status);
          }
          exit (-1);
+=======
+	 if (status == GSL_EINVAL) {
+	    fprintf (stderr, "invalid argument, n=%d\n", n);
+	 } else {
+	    fprintf (stderr, "failed, gsl_errno=%d\n",
+			     status);
+	 }
+	 exit (-1);
+>>>>>>> config
        }
      ...
 
@@ -1279,7 +1353,11 @@ be made automatically if you use `autoconf' to compile your application
      function `hypot(x,y)'.
 
  -- Function: double gsl_hypot3 (const double X, const double Y, const
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double Z)
+=======
+	  double Z)
+>>>>>>> config
      This function computes the value of \sqrt{x^2 + y^2 + z^2} in a
      way that avoids overflow.
 
@@ -1407,9 +1485,15 @@ effects (such as a call to a random number generator).
      be automatically substituted.
 
  -- Function: extern inline long double GSL_MAX_LDBL (long double A,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           long double B)
  -- Function: extern inline long double GSL_MIN_LDBL (long double A,
           long double B)
+=======
+	  long double B)
+ -- Function: extern inline long double GSL_MIN_LDBL (long double A,
+	  long double B)
+>>>>>>> config
      These functions return the maximum or minimum of the long doubles A
      and B using an inline function.  On platforms where inline
      functions are not available the macros `GSL_MAX' or `GSL_MIN' will
@@ -1527,7 +1611,11 @@ mapped correctly onto packed complex arrays.
      imaginary parts of the complex number pointed to by ZP.  For
      example,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           GSL_SET_COMPLEX(&z, 3, 4)
+=======
+	  GSL_SET_COMPLEX(&z, 3, 4)
+>>>>>>> config
 
      sets Z to be 3 + 4i.
 
@@ -1664,7 +1752,11 @@ File: gsl-ref.info,  Node: Elementary Complex Functions,  Next: Complex Trigonom
      number Z, \log_10 (z).
 
  -- Function: gsl_complex gsl_complex_log_b (gsl_complex Z, gsl_complex
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           B)
+=======
+	  B)
+>>>>>>> config
      This function returns the complex base-B logarithm of the complex
      number Z, \log_b(z). This quantity is computed as the ratio
      \log(z)/\log(b).
@@ -1896,22 +1988,38 @@ stability. Inline versions of these functions are used when
 `HAVE_INLINE' is defined.
 
  -- Function: double gsl_poly_eval (const double C[], const int LEN,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           const double X)
+=======
+	  const double X)
+>>>>>>> config
      This function evaluates a polynomial with real coefficients for
      the real variable X.
 
  -- Function: gsl_complex gsl_poly_complex_eval (const double C[],
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           const int LEN, const gsl_complex Z)
+=======
+	  const int LEN, const gsl_complex Z)
+>>>>>>> config
      This function evaluates a polynomial with real coefficients for
      the complex variable Z.
 
  -- Function: gsl_complex gsl_complex_poly_complex_eval (const
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_complex C[], const int LEN, const gsl_complex Z)
+=======
+	  gsl_complex C[], const int LEN, const gsl_complex Z)
+>>>>>>> config
      This function evaluates a polynomial with complex coefficients for
      the complex variable Z.
 
  -- Function: int gsl_poly_eval_derivs (const double C[], const size_t
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           LENC, const double X, double RES[], const size_t LENRES)
+=======
+	  LENC, const double X, double RES[], const size_t LENRES)
+>>>>>>> config
      This function evaluates a polynomial and its derivatives storing
      the results in the array RES of size LENRES.  The output array
      contains the values of d^k P/d x^k for the specified value of X
@@ -1928,7 +2036,11 @@ divided-difference representation.  The use of divided-differences is
 described in Abramowitz & Stegun sections 25.1.4 and 25.2.26.
 
  -- Function: int gsl_poly_dd_init (double DD[], const double XA[],
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           const double YA[], size_t SIZE)
+=======
+	  const double YA[], size_t SIZE)
+>>>>>>> config
      This function computes a divided-difference representation of the
      interpolating polynomial for the points (XA, YA) stored in the
      arrays XA and YA of length SIZE.  On output the
@@ -1936,14 +2048,22 @@ described in Abramowitz & Stegun sections 25.1.4 and 25.2.26.
      length SIZE.
 
  -- Function: double gsl_poly_dd_eval (const double DD[], const double
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           XA[], const size_t SIZE, const double X)
+=======
+	  XA[], const size_t SIZE, const double X)
+>>>>>>> config
      This function evaluates the polynomial stored in
      divided-difference form in the arrays DD and XA of length SIZE at
      the point X.  An inline version of this function is used when
      `HAVE_INLINE' is defined.
 
  -- Function: int gsl_poly_dd_taylor (double C[], double XP, const
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double DD[], const double XA[], size_t SIZE, double W[])
+=======
+	  double DD[], const double XA[], size_t SIZE, double W[])
+>>>>>>> config
      This function converts the divided-difference representation of a
      polynomial to a Taylor expansion.  The divided-difference
      representation is supplied in the arrays DD and XA of length SIZE.
@@ -1958,10 +2078,17 @@ File: gsl-ref.info,  Node: Quadratic Equations,  Next: Cubic Equations,  Prev: D
 =======================
 
  -- Function: int gsl_poly_solve_quadratic (double A, double B, double
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           C, double * X0, double * X1)
      This function finds the real roots of the quadratic equation,
 
           a x^2 + b x + c = 0
+=======
+	  C, double * X0, double * X1)
+     This function finds the real roots of the quadratic equation,
+
+	  a x^2 + b x + c = 0
+>>>>>>> config
 
      The number of real roots (either zero, one or two) is returned, and
      their locations are stored in X0 and X1.  If no real roots are
@@ -1982,10 +2109,17 @@ File: gsl-ref.info,  Node: Quadratic Equations,  Next: Cubic Equations,  Prev: D
 
 
  -- Function: int gsl_poly_complex_solve_quadratic (double A, double B,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double C, gsl_complex * Z0, gsl_complex * Z1)
      This function finds the complex roots of the quadratic equation,
 
           a z^2 + b z + c = 0
+=======
+	  double C, gsl_complex * Z0, gsl_complex * Z1)
+     This function finds the complex roots of the quadratic equation,
+
+	  a z^2 + b z + c = 0
+>>>>>>> config
 
      The number of complex roots is returned (either one or two) and the
      locations of the roots are stored in Z0 and Z1.  The roots are
@@ -2001,10 +2135,17 @@ File: gsl-ref.info,  Node: Cubic Equations,  Next: General Polynomial Equations,
 ===================
 
  -- Function: int gsl_poly_solve_cubic (double A, double B, double C,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double * X0, double * X1, double * X2)
      This function finds the real roots of the cubic equation,
 
           x^3 + a x^2 + b x + c = 0
+=======
+	  double * X0, double * X1, double * X2)
+     This function finds the real roots of the cubic equation,
+
+	  x^3 + a x^2 + b x + c = 0
+>>>>>>> config
 
      with a leading coefficient of unity.  The number of real roots
      (either one or three) is returned, and their locations are stored
@@ -2018,11 +2159,19 @@ File: gsl-ref.info,  Node: Cubic Equations,  Next: General Polynomial Equations,
      discrete change in the number of real roots.
 
  -- Function: int gsl_poly_complex_solve_cubic (double A, double B,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double C, gsl_complex * Z0, gsl_complex * Z1, gsl_complex *
           Z2)
      This function finds the complex roots of the cubic equation,
 
           z^3 + a z^2 + b z + c = 0
+=======
+	  double C, gsl_complex * Z0, gsl_complex * Z1, gsl_complex *
+	  Z2)
+     This function finds the complex roots of the cubic equation,
+
+	  z^3 + a z^2 + b z + c = 0
+>>>>>>> config
 
      The number of complex roots is returned (always three) and the
      locations of the roots are stored in Z0, Z1 and Z2.  The roots are
@@ -2052,11 +2201,19 @@ gsl_poly_complex_workspace_alloc (size_t N)
      pointer in the case of error.
 
  -- Function: void gsl_poly_complex_workspace_free
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           (gsl_poly_complex_workspace * W)
      This function frees all the memory associated with the workspace W.
 
  -- Function: int gsl_poly_complex_solve (const double * A, size_t N,
           gsl_poly_complex_workspace * W, gsl_complex_packed_ptr Z)
+=======
+	  (gsl_poly_complex_workspace * W)
+     This function frees all the memory associated with the workspace W.
+
+ -- Function: int gsl_poly_complex_solve (const double * A, size_t N,
+	  gsl_poly_complex_workspace * W, gsl_complex_packed_ptr Z)
+>>>>>>> config
      This function computes the roots of the general polynomial P(x) =
      a_0 + a_1 x + a_2 x^2 + ... + a_{n-1} x^{n-1} using balanced-QR
      reduction of the companion matrix.  The parameter N specifies the
@@ -2101,17 +2258,28 @@ The following program will find these roots.
        double z[10];
 
        gsl_poly_complex_workspace * w
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
            = gsl_poly_complex_workspace_alloc (6);
+=======
+	   = gsl_poly_complex_workspace_alloc (6);
+>>>>>>> config
 
        gsl_poly_complex_solve (a, 6, w, z);
 
        gsl_poly_complex_workspace_free (w);
 
        for (i = 0; i < 5; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          {
            printf ("z%d = %+.18f %+.18f\n",
                    i, z[2*i], z[2*i+1]);
          }
+=======
+	 {
+	   printf ("z%d = %+.18f %+.18f\n",
+		   i, z[2*i], z[2*i+1]);
+	 }
+>>>>>>> config
 
        return 0;
      }
@@ -2333,26 +2501,42 @@ File: gsl-ref.info,  Node: Airy Functions,  Next: Derivatives of Airy Functions,
 
  -- Function: double gsl_sf_airy_Ai (double X, gsl_mode_t MODE)
  -- Function: int gsl_sf_airy_Ai_e (double X, gsl_mode_t MODE,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the Airy function Ai(x) with an accuracy
      specified by MODE.
 
  -- Function: double gsl_sf_airy_Bi (double X, gsl_mode_t MODE)
  -- Function: int gsl_sf_airy_Bi_e (double X, gsl_mode_t MODE,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the Airy function Bi(x) with an accuracy
      specified by MODE.
 
  -- Function: double gsl_sf_airy_Ai_scaled (double X, gsl_mode_t MODE)
  -- Function: int gsl_sf_airy_Ai_scaled_e (double X, gsl_mode_t MODE,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute a scaled version of the Airy function
      S_A(x) Ai(x).  For x>0 the scaling factor S_A(x) is \exp(+(2/3)
      x^(3/2)), and is 1 for x<0.
 
  -- Function: double gsl_sf_airy_Bi_scaled (double X, gsl_mode_t MODE)
  -- Function: int gsl_sf_airy_Bi_scaled_e (double X, gsl_mode_t MODE,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute a scaled version of the Airy function
      S_B(x) Bi(x).  For x>0 the scaling factor S_B(x) is exp(-(2/3)
      x^(3/2)), and is 1 for x<0.
@@ -2365,28 +2549,48 @@ File: gsl-ref.info,  Node: Derivatives of Airy Functions,  Next: Zeros of Airy F
 
  -- Function: double gsl_sf_airy_Ai_deriv (double X, gsl_mode_t MODE)
  -- Function: int gsl_sf_airy_Ai_deriv_e (double X, gsl_mode_t MODE,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the Airy function derivative Ai'(x) with an
      accuracy specified by MODE.
 
  -- Function: double gsl_sf_airy_Bi_deriv (double X, gsl_mode_t MODE)
  -- Function: int gsl_sf_airy_Bi_deriv_e (double X, gsl_mode_t MODE,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the Airy function derivative Bi'(x) with an
      accuracy specified by MODE.
 
  -- Function: double gsl_sf_airy_Ai_deriv_scaled (double X, gsl_mode_t
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           MODE)
  -- Function: int gsl_sf_airy_Ai_deriv_scaled_e (double X, gsl_mode_t
           MODE, gsl_sf_result * RESULT)
+=======
+	  MODE)
+ -- Function: int gsl_sf_airy_Ai_deriv_scaled_e (double X, gsl_mode_t
+	  MODE, gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the scaled Airy function derivative S_A(x)
      Ai'(x).  For x>0 the scaling factor S_A(x) is \exp(+(2/3)
      x^(3/2)), and is 1 for x<0.
 
  -- Function: double gsl_sf_airy_Bi_deriv_scaled (double X, gsl_mode_t
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           MODE)
  -- Function: int gsl_sf_airy_Bi_deriv_scaled_e (double X, gsl_mode_t
           MODE, gsl_sf_result * RESULT)
+=======
+	  MODE)
+ -- Function: int gsl_sf_airy_Bi_deriv_scaled_e (double X, gsl_mode_t
+	  MODE, gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the scaled Airy function derivative S_B(x)
      Bi'(x).  For x>0 the scaling factor S_B(x) is exp(-(2/3) x^(3/2)),
      and is 1 for x<0.
@@ -2399,13 +2603,21 @@ File: gsl-ref.info,  Node: Zeros of Airy Functions,  Next: Zeros of Derivatives 
 
  -- Function: double gsl_sf_airy_zero_Ai (unsigned int S)
  -- Function: int gsl_sf_airy_zero_Ai_e (unsigned int S, gsl_sf_result
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           * RESULT)
+=======
+	  * RESULT)
+>>>>>>> config
      These routines compute the location of the S-th zero of the Airy
      function Ai(x).
 
  -- Function: double gsl_sf_airy_zero_Bi (unsigned int S)
  -- Function: int gsl_sf_airy_zero_Bi_e (unsigned int S, gsl_sf_result
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           * RESULT)
+=======
+	  * RESULT)
+>>>>>>> config
      These routines compute the location of the S-th zero of the Airy
      function Bi(x).
 
@@ -2417,13 +2629,21 @@ File: gsl-ref.info,  Node: Zeros of Derivatives of Airy Functions,  Prev: Zeros 
 
  -- Function: double gsl_sf_airy_zero_Ai_deriv (unsigned int S)
  -- Function: int gsl_sf_airy_zero_Ai_deriv_e (unsigned int S,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the location of the S-th zero of the Airy
      function derivative Ai'(x).
 
  -- Function: double gsl_sf_airy_zero_Bi_deriv (unsigned int S)
  -- Function: int gsl_sf_airy_zero_Bi_deriv_e (unsigned int S,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the location of the S-th zero of the Airy
      function derivative Bi'(x).
 
@@ -2474,12 +2694,20 @@ File: gsl-ref.info,  Node: Regular Cylindrical Bessel Functions,  Next: Irregula
 
  -- Function: double gsl_sf_bessel_Jn (int N, double X)
  -- Function: int gsl_sf_bessel_Jn_e (int N, double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the regular cylindrical Bessel function of
      order N, J_n(x).
 
  -- Function: int gsl_sf_bessel_Jn_array (int NMIN, int NMAX, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double RESULT_ARRAY[])
+=======
+	  double RESULT_ARRAY[])
+>>>>>>> config
      This routine computes the values of the regular cylindrical Bessel
      functions J_n(x) for n from NMIN to NMAX inclusive, storing the
      results in the array RESULT_ARRAY.  The values are computed using
@@ -2504,12 +2732,20 @@ File: gsl-ref.info,  Node: Irregular Cylindrical Bessel Functions,  Next: Regula
 
  -- Function: double gsl_sf_bessel_Yn (int N, double X)
  -- Function: int gsl_sf_bessel_Yn_e (int N, double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the irregular cylindrical Bessel function of
      order N, Y_n(x), for x>0.
 
  -- Function: int gsl_sf_bessel_Yn_array (int NMIN, int NMAX, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double RESULT_ARRAY[])
+=======
+	  double RESULT_ARRAY[])
+>>>>>>> config
      This routine computes the values of the irregular cylindrical
      Bessel functions Y_n(x) for n from NMIN to NMAX inclusive, storing
      the results in the array RESULT_ARRAY.  The domain of the function
@@ -2535,12 +2771,20 @@ File: gsl-ref.info,  Node: Regular Modified Cylindrical Bessel Functions,  Next:
 
  -- Function: double gsl_sf_bessel_In (int N, double X)
  -- Function: int gsl_sf_bessel_In_e (int N, double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the regular modified cylindrical Bessel
      function of order N, I_n(x).
 
  -- Function: int gsl_sf_bessel_In_array (int NMIN, int NMAX, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double RESULT_ARRAY[])
+=======
+	  double RESULT_ARRAY[])
+>>>>>>> config
      This routine computes the values of the regular modified
      cylindrical Bessel functions I_n(x) for n from NMIN to NMAX
      inclusive, storing the results in the array RESULT_ARRAY.  The
@@ -2550,24 +2794,40 @@ File: gsl-ref.info,  Node: Regular Modified Cylindrical Bessel Functions,  Next:
 
  -- Function: double gsl_sf_bessel_I0_scaled (double X)
  -- Function: int gsl_sf_bessel_I0_scaled_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the scaled regular modified cylindrical
      Bessel function of zeroth order \exp(-|x|) I_0(x).
 
  -- Function: double gsl_sf_bessel_I1_scaled (double X)
  -- Function: int gsl_sf_bessel_I1_scaled_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the scaled regular modified cylindrical
      Bessel function of first order \exp(-|x|) I_1(x).
 
  -- Function: double gsl_sf_bessel_In_scaled (int N, double X)
  -- Function: int gsl_sf_bessel_In_scaled_e (int N, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the scaled regular modified cylindrical
      Bessel function of order N, \exp(-|x|) I_n(x)
 
  -- Function: int gsl_sf_bessel_In_scaled_array (int NMIN, int NMAX,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double X, double RESULT_ARRAY[])
+=======
+	  double X, double RESULT_ARRAY[])
+>>>>>>> config
      This routine computes the values of the scaled regular cylindrical
      Bessel functions \exp(-|x|) I_n(x) for n from NMIN to NMAX
      inclusive, storing the results in the array RESULT_ARRAY. The
@@ -2593,12 +2853,20 @@ File: gsl-ref.info,  Node: Irregular Modified Cylindrical Bessel Functions,  Nex
 
  -- Function: double gsl_sf_bessel_Kn (int N, double X)
  -- Function: int gsl_sf_bessel_Kn_e (int N, double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the irregular modified cylindrical Bessel
      function of order N, K_n(x), for x > 0.
 
  -- Function: int gsl_sf_bessel_Kn_array (int NMIN, int NMAX, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double RESULT_ARRAY[])
+=======
+	  double RESULT_ARRAY[])
+>>>>>>> config
      This routine computes the values of the irregular modified
      cylindrical Bessel functions K_n(x) for n from NMIN to NMAX
      inclusive, storing the results in the array RESULT_ARRAY. The
@@ -2609,24 +2877,40 @@ File: gsl-ref.info,  Node: Irregular Modified Cylindrical Bessel Functions,  Nex
 
  -- Function: double gsl_sf_bessel_K0_scaled (double X)
  -- Function: int gsl_sf_bessel_K0_scaled_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the scaled irregular modified cylindrical
      Bessel function of zeroth order \exp(x) K_0(x) for x>0.
 
  -- Function: double gsl_sf_bessel_K1_scaled (double X)
  -- Function: int gsl_sf_bessel_K1_scaled_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the scaled irregular modified cylindrical
      Bessel function of first order \exp(x) K_1(x) for x>0.
 
  -- Function: double gsl_sf_bessel_Kn_scaled (int N, double X)
  -- Function: int gsl_sf_bessel_Kn_scaled_e (int N, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the scaled irregular modified cylindrical
      Bessel function of order N, \exp(x) K_n(x), for x>0.
 
  -- Function: int gsl_sf_bessel_Kn_scaled_array (int NMIN, int NMAX,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double X, double RESULT_ARRAY[])
+=======
+	  double X, double RESULT_ARRAY[])
+>>>>>>> config
      This routine computes the values of the scaled irregular
      cylindrical Bessel functions \exp(x) K_n(x) for n from NMIN to
      NMAX inclusive, storing the results in the array RESULT_ARRAY. The
@@ -2658,12 +2942,20 @@ File: gsl-ref.info,  Node: Regular Spherical Bessel Functions,  Next: Irregular 
 
  -- Function: double gsl_sf_bessel_jl (int L, double X)
  -- Function: int gsl_sf_bessel_jl_e (int L, double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the regular spherical Bessel function of
      order L, j_l(x), for l >= 0 and x >= 0.
 
  -- Function: int gsl_sf_bessel_jl_array (int LMAX, double X, double
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT_ARRAY[])
+=======
+	  RESULT_ARRAY[])
+>>>>>>> config
      This routine computes the values of the regular spherical Bessel
      functions j_l(x) for l from 0 to LMAX inclusive  for lmax >= 0 and
      x >= 0, storing the results in the array RESULT_ARRAY.  The values
@@ -2671,7 +2963,11 @@ File: gsl-ref.info,  Node: Regular Spherical Bessel Functions,  Next: Irregular 
      therefore may differ slightly from the exact values.
 
  -- Function: int gsl_sf_bessel_jl_steed_array (int LMAX, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double * RESULT_ARRAY)
+=======
+	  double * RESULT_ARRAY)
+>>>>>>> config
      This routine uses Steed's method to compute the values of the
      regular spherical Bessel functions j_l(x) for l from 0 to LMAX
      inclusive for lmax >= 0 and x >= 0, storing the results in the
@@ -2702,12 +2998,20 @@ File: gsl-ref.info,  Node: Irregular Spherical Bessel Functions,  Next: Regular 
 
  -- Function: double gsl_sf_bessel_yl (int L, double X)
  -- Function: int gsl_sf_bessel_yl_e (int L, double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the irregular spherical Bessel function of
      order L, y_l(x), for l >= 0.
 
  -- Function: int gsl_sf_bessel_yl_array (int LMAX, double X, double
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT_ARRAY[])
+=======
+	  RESULT_ARRAY[])
+>>>>>>> config
      This routine computes the values of the irregular spherical Bessel
      functions y_l(x) for l from 0 to LMAX inclusive  for lmax >= 0,
      storing the results in the array RESULT_ARRAY.  The values are
@@ -2726,30 +3030,50 @@ the modified Bessel functions of fractional order, i_l(x) =
 
  -- Function: double gsl_sf_bessel_i0_scaled (double X)
  -- Function: int gsl_sf_bessel_i0_scaled_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the scaled regular modified spherical Bessel
      function of zeroth order, \exp(-|x|) i_0(x).
 
  -- Function: double gsl_sf_bessel_i1_scaled (double X)
  -- Function: int gsl_sf_bessel_i1_scaled_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the scaled regular modified spherical Bessel
      function of first order, \exp(-|x|) i_1(x).
 
  -- Function: double gsl_sf_bessel_i2_scaled (double X)
  -- Function: int gsl_sf_bessel_i2_scaled_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the scaled regular modified spherical Bessel
      function of second order,  \exp(-|x|) i_2(x)
 
  -- Function: double gsl_sf_bessel_il_scaled (int L, double X)
  -- Function: int gsl_sf_bessel_il_scaled_e (int L, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the scaled regular modified spherical Bessel
      function of order L,  \exp(-|x|) i_l(x)
 
  -- Function: int gsl_sf_bessel_il_scaled_array (int LMAX, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double RESULT_ARRAY[])
+=======
+	  double RESULT_ARRAY[])
+>>>>>>> config
      This routine computes the values of the scaled regular modified
      cylindrical Bessel functions \exp(-|x|) i_l(x) for l from 0 to
      LMAX inclusive for lmax >= 0, storing the results in the array
@@ -2769,30 +3093,50 @@ the irregular modified Bessel functions of fractional order, k_l(x) =
 
  -- Function: double gsl_sf_bessel_k0_scaled (double X)
  -- Function: int gsl_sf_bessel_k0_scaled_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the scaled irregular modified spherical
      Bessel function of zeroth order, \exp(x) k_0(x), for x>0.
 
  -- Function: double gsl_sf_bessel_k1_scaled (double X)
  -- Function: int gsl_sf_bessel_k1_scaled_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the scaled irregular modified spherical
      Bessel function of first order, \exp(x) k_1(x), for x>0.
 
  -- Function: double gsl_sf_bessel_k2_scaled (double X)
  -- Function: int gsl_sf_bessel_k2_scaled_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the scaled irregular modified spherical
      Bessel function of second order, \exp(x) k_2(x), for x>0.
 
  -- Function: double gsl_sf_bessel_kl_scaled (int L, double X)
  -- Function: int gsl_sf_bessel_kl_scaled_e (int L, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the scaled irregular modified spherical
      Bessel function of order L, \exp(x) k_l(x), for x>0.
 
  -- Function: int gsl_sf_bessel_kl_scaled_array (int LMAX, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double RESULT_ARRAY[])
+=======
+	  double RESULT_ARRAY[])
+>>>>>>> config
      This routine computes the values of the scaled irregular modified
      spherical Bessel functions \exp(x) k_l(x) for l from 0 to LMAX
      inclusive for lmax >= 0 and x>0, storing the results in the array
@@ -2808,12 +3152,20 @@ File: gsl-ref.info,  Node: Regular Bessel Function - Fractional Order,  Next: Ir
 
  -- Function: double gsl_sf_bessel_Jnu (double NU, double X)
  -- Function: int gsl_sf_bessel_Jnu_e (double NU, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the regular cylindrical Bessel function of
      fractional order \nu, J_\nu(x).
 
  -- Function: int gsl_sf_bessel_sequence_Jnu_e (double NU, gsl_mode_t
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           MODE, size_t SIZE, double V[])
+=======
+	  MODE, size_t SIZE, double V[])
+>>>>>>> config
      This function computes the regular cylindrical Bessel function of
      fractional order \nu, J_\nu(x), evaluated at a series of x values.
      The array V of length SIZE contains the x values.  They are
@@ -2828,7 +3180,11 @@ File: gsl-ref.info,  Node: Irregular Bessel Functions - Fractional Order,  Next:
 
  -- Function: double gsl_sf_bessel_Ynu (double NU, double X)
  -- Function: int gsl_sf_bessel_Ynu_e (double NU, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the irregular cylindrical Bessel function of
      fractional order \nu, Y_\nu(x).
 
@@ -2840,13 +3196,21 @@ File: gsl-ref.info,  Node: Regular Modified Bessel Functions - Fractional Order,
 
  -- Function: double gsl_sf_bessel_Inu (double NU, double X)
  -- Function: int gsl_sf_bessel_Inu_e (double NU, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the regular modified Bessel function of
      fractional order \nu, I_\nu(x) for x>0, \nu>0.
 
  -- Function: double gsl_sf_bessel_Inu_scaled (double NU, double X)
  -- Function: int gsl_sf_bessel_Inu_scaled_e (double NU, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the scaled regular modified Bessel function
      of fractional order \nu, \exp(-|x|)I_\nu(x) for x>0, \nu>0.
 
@@ -2858,20 +3222,32 @@ File: gsl-ref.info,  Node: Irregular Modified Bessel Functions - Fractional Orde
 
  -- Function: double gsl_sf_bessel_Knu (double NU, double X)
  -- Function: int gsl_sf_bessel_Knu_e (double NU, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the irregular modified Bessel function of
      fractional order \nu, K_\nu(x) for x>0, \nu>0.
 
  -- Function: double gsl_sf_bessel_lnKnu (double NU, double X)
  -- Function: int gsl_sf_bessel_lnKnu_e (double NU, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the logarithm of the irregular modified
      Bessel function of fractional order \nu, \ln(K_\nu(x)) for x>0,
      \nu>0.
 
  -- Function: double gsl_sf_bessel_Knu_scaled (double NU, double X)
  -- Function: int gsl_sf_bessel_Knu_scaled_e (double NU, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the scaled irregular modified Bessel
      function of fractional order \nu, \exp(+|x|) K_\nu(x) for x>0,
      \nu>0.
@@ -2884,19 +3260,31 @@ File: gsl-ref.info,  Node: Zeros of Regular Bessel Functions,  Prev: Irregular M
 
  -- Function: double gsl_sf_bessel_zero_J0 (unsigned int S)
  -- Function: int gsl_sf_bessel_zero_J0_e (unsigned int S,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the location of the S-th positive zero of
      the Bessel function J_0(x).
 
  -- Function: double gsl_sf_bessel_zero_J1 (unsigned int S)
  -- Function: int gsl_sf_bessel_zero_J1_e (unsigned int S,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the location of the S-th positive zero of
      the Bessel function J_1(x).
 
  -- Function: double gsl_sf_bessel_zero_Jnu (double NU, unsigned int S)
  -- Function: int gsl_sf_bessel_zero_Jnu_e (double NU, unsigned int S,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the location of the S-th positive zero of
      the Bessel function J_\nu(x).  The current implementation does not
      support negative values of NU.
@@ -2943,11 +3331,16 @@ File: gsl-ref.info,  Node: Normalized Hydrogenic Bound States,  Next: Coulomb Wa
 
  -- Function: double gsl_sf_hydrogenicR_1 (double Z, double R)
  -- Function: int gsl_sf_hydrogenicR_1_e (double Z, double R,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the lowest-order normalized hydrogenic bound
      state radial wavefunction R_1 := 2Z \sqrt{Z} \exp(-Z r).
 
  -- Function: double gsl_sf_hydrogenicR (int N, int L, double Z, double
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           R)
  -- Function: int gsl_sf_hydrogenicR_e (int N, int L, double Z, double
           R, gsl_sf_result * RESULT)
@@ -2956,6 +3349,16 @@ File: gsl-ref.info,  Node: Normalized Hydrogenic Bound States,  Next: Coulomb Wa
 
           R_n := 2 (Z^{3/2}/n^2) \sqrt{(n-l-1)!/(n+l)!} \exp(-Z r/n) (2Zr/n)^l
                     L^{2l+1}_{n-l-1}(2Zr/n).
+=======
+	  R)
+ -- Function: int gsl_sf_hydrogenicR_e (int N, int L, double Z, double
+	  R, gsl_sf_result * RESULT)
+     These routines compute the N-th normalized hydrogenic bound state
+     radial wavefunction,
+
+	  R_n := 2 (Z^{3/2}/n^2) \sqrt{(n-l-1)!/(n+l)!} \exp(-Z r/n) (2Zr/n)^l
+		    L^{2l+1}_{n-l-1}(2Zr/n).
+>>>>>>> config
 
      where L^a_b(x) is the generalized Laguerre polynomial (*note
      Laguerre Functions::).  The normalization is chosen such that the
@@ -2982,9 +3385,15 @@ solution can be reconstructed from the following relations,
 
 
  -- Function: int gsl_sf_coulomb_wave_FG_e (double ETA, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double L_F, int K, gsl_sf_result * F, gsl_sf_result * FP,
           gsl_sf_result * G, gsl_sf_result * GP, double * EXP_F, double
           * EXP_G)
+=======
+	  double L_F, int K, gsl_sf_result * F, gsl_sf_result * FP,
+	  gsl_sf_result * G, gsl_sf_result * GP, double * EXP_F, double
+	  * EXP_G)
+>>>>>>> config
      This function computes the Coulomb wave functions F_L(\eta,x),
      G_{L-k}(\eta,x) and their derivatives F'_L(\eta,x),
      G'_{L-k}(\eta,x) with respect to x.  The parameters are restricted
@@ -2996,23 +3405,38 @@ solution can be reconstructed from the following relations,
      parameters EXP_F, EXP_G.
 
  -- Function: int gsl_sf_coulomb_wave_F_array (double L_MIN, int KMAX,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double ETA, double X, double FC_ARRAY[], double * F_EXPONENT)
+=======
+	  double ETA, double X, double FC_ARRAY[], double * F_EXPONENT)
+>>>>>>> config
      This function computes the Coulomb wave function F_L(\eta,x) for L
      = Lmin \dots Lmin + kmax, storing the results in FC_ARRAY.  In the
      case of overflow the exponent is stored in F_EXPONENT.
 
  -- Function: int gsl_sf_coulomb_wave_FG_array (double L_MIN, int KMAX,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double ETA, double X, double FC_ARRAY[], double GC_ARRAY[],
           double * F_EXPONENT, double * G_EXPONENT)
+=======
+	  double ETA, double X, double FC_ARRAY[], double GC_ARRAY[],
+	  double * F_EXPONENT, double * G_EXPONENT)
+>>>>>>> config
      This function computes the functions F_L(\eta,x), G_L(\eta,x) for
      L = Lmin \dots Lmin + kmax storing the results in FC_ARRAY and
      GC_ARRAY.  In the case of overflow the exponents are stored in
      F_EXPONENT and G_EXPONENT.
 
  -- Function: int gsl_sf_coulomb_wave_FGp_array (double L_MIN, int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           KMAX, double ETA, double X, double FC_ARRAY[], double
           FCP_ARRAY[], double GC_ARRAY[], double GCP_ARRAY[], double *
           F_EXPONENT, double * G_EXPONENT)
+=======
+	  KMAX, double ETA, double X, double FC_ARRAY[], double
+	  FCP_ARRAY[], double GC_ARRAY[], double GCP_ARRAY[], double *
+	  F_EXPONENT, double * G_EXPONENT)
+>>>>>>> config
      This function computes the functions F_L(\eta,x), G_L(\eta,x) and
      their derivatives F'_L(\eta,x), G'_L(\eta,x) for L = Lmin \dots
      Lmin + kmax storing the results in FC_ARRAY, GC_ARRAY, FCP_ARRAY
@@ -3020,8 +3444,13 @@ solution can be reconstructed from the following relations,
      in F_EXPONENT and G_EXPONENT.
 
  -- Function: int gsl_sf_coulomb_wave_sphF_array (double L_MIN, int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           KMAX, double ETA, double X, double FC_ARRAY[], double
           F_EXPONENT[])
+=======
+	  KMAX, double ETA, double X, double FC_ARRAY[], double
+	  F_EXPONENT[])
+>>>>>>> config
      This function computes the Coulomb wave function divided by the
      argument F_L(\eta, x)/x for L = Lmin \dots Lmin + kmax, storing the
      results in FC_ARRAY.  In the case of overflow the exponent is
@@ -3038,12 +3467,20 @@ The Coulomb wave function normalization constant is defined in
 Abramowitz 14.1.7.
 
  -- Function: int gsl_sf_coulomb_CL_e (double L, double ETA,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      This function computes the Coulomb wave function normalization
      constant C_L(\eta) for L > -1.
 
  -- Function: int gsl_sf_coulomb_CL_array (double LMIN, int KMAX,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double ETA, double CL[])
+=======
+	  double ETA, double CL[])
+>>>>>>> config
      This function computes the Coulomb wave function normalization
      constant C_L(\eta) for L = Lmin \dots Lmin + kmax, Lmin > -1.
 
@@ -3074,6 +3511,7 @@ File: gsl-ref.info,  Node: 3-j Symbols,  Next: 6-j Symbols,  Up: Coupling Coeffi
 -----------------
 
  -- Function: double gsl_sf_coupling_3j (int TWO_JA, int TWO_JB, int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           TWO_JC, int TWO_MA, int TWO_MB, int TWO_MC)
  -- Function: int gsl_sf_coupling_3j_e (int TWO_JA, int TWO_JB, int
           TWO_JC, int TWO_MA, int TWO_MB, int TWO_MC, gsl_sf_result *
@@ -3082,6 +3520,16 @@ File: gsl-ref.info,  Node: 3-j Symbols,  Next: 6-j Symbols,  Up: Coupling Coeffi
 
           (ja jb jc
            ma mb mc)
+=======
+	  TWO_JC, int TWO_MA, int TWO_MB, int TWO_MC)
+ -- Function: int gsl_sf_coupling_3j_e (int TWO_JA, int TWO_JB, int
+	  TWO_JC, int TWO_MA, int TWO_MB, int TWO_MC, gsl_sf_result *
+	  RESULT)
+     These routines compute the Wigner 3-j coefficient,
+
+	  (ja jb jc
+	   ma mb mc)
+>>>>>>> config
 
      where the arguments are given in half-integer units, ja =
      TWO_JA/2, ma = TWO_MA/2, etc.
@@ -3093,6 +3541,7 @@ File: gsl-ref.info,  Node: 6-j Symbols,  Next: 9-j Symbols,  Prev: 3-j Symbols, 
 -----------------
 
  -- Function: double gsl_sf_coupling_6j (int TWO_JA, int TWO_JB, int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           TWO_JC, int TWO_JD, int TWO_JE, int TWO_JF)
  -- Function: int gsl_sf_coupling_6j_e (int TWO_JA, int TWO_JB, int
           TWO_JC, int TWO_JD, int TWO_JE, int TWO_JF, gsl_sf_result *
@@ -3101,6 +3550,16 @@ File: gsl-ref.info,  Node: 6-j Symbols,  Next: 9-j Symbols,  Prev: 3-j Symbols, 
 
           {ja jb jc
            jd je jf}
+=======
+	  TWO_JC, int TWO_JD, int TWO_JE, int TWO_JF)
+ -- Function: int gsl_sf_coupling_6j_e (int TWO_JA, int TWO_JB, int
+	  TWO_JC, int TWO_JD, int TWO_JE, int TWO_JF, gsl_sf_result *
+	  RESULT)
+     These routines compute the Wigner 6-j coefficient,
+
+	  {ja jb jc
+	   jd je jf}
+>>>>>>> config
 
      where the arguments are given in half-integer units, ja =
      TWO_JA/2, ma = TWO_MA/2, etc.
@@ -3112,6 +3571,7 @@ File: gsl-ref.info,  Node: 9-j Symbols,  Prev: 6-j Symbols,  Up: Coupling Coeffi
 -----------------
 
  -- Function: double gsl_sf_coupling_9j (int TWO_JA, int TWO_JB, int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           TWO_JC, int TWO_JD, int TWO_JE, int TWO_JF, int TWO_JG, int
           TWO_JH, int TWO_JI)
  -- Function: int gsl_sf_coupling_9j_e (int TWO_JA, int TWO_JB, int
@@ -3122,6 +3582,18 @@ File: gsl-ref.info,  Node: 9-j Symbols,  Prev: 6-j Symbols,  Up: Coupling Coeffi
           {ja jb jc
            jd je jf
            jg jh ji}
+=======
+	  TWO_JC, int TWO_JD, int TWO_JE, int TWO_JF, int TWO_JG, int
+	  TWO_JH, int TWO_JI)
+ -- Function: int gsl_sf_coupling_9j_e (int TWO_JA, int TWO_JB, int
+	  TWO_JC, int TWO_JD, int TWO_JE, int TWO_JF, int TWO_JG, int
+	  TWO_JH, int TWO_JI, gsl_sf_result * RESULT)
+     These routines compute the Wigner 9-j coefficient,
+
+	  {ja jb jc
+	   jd je jf
+	   jg jh ji}
+>>>>>>> config
 
      where the arguments are given in half-integer units, ja =
      TWO_JA/2, ma = TWO_MA/2, etc.
@@ -3222,7 +3694,11 @@ File: gsl-ref.info,  Node: Complex Argument,  Prev: Real Argument,  Up: Dilogari
 -----------------------
 
  -- Function: int gsl_sf_complex_dilog_e (double R, double THETA,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT_RE, gsl_sf_result * RESULT_IM)
+=======
+	  gsl_sf_result * RESULT_RE, gsl_sf_result * RESULT_IM)
+>>>>>>> config
      This function computes the full complex-valued dilogarithm for the
      complex argument z = r \exp(i \theta). The real and imaginary
      parts of the result are returned in RESULT_RE, RESULT_IM.
@@ -3238,12 +3714,20 @@ combining quantities by multiplication.  The functions are declared in
 the header file `gsl_sf_elementary.h'.
 
  -- Function: int gsl_sf_multiply_e (double X, double Y, gsl_sf_result
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           * RESULT)
+=======
+	  * RESULT)
+>>>>>>> config
      This function multiplies X and Y storing the product and its
      associated error in RESULT.
 
  -- Function: int gsl_sf_multiply_err_e (double X, double DX, double Y,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double DY, gsl_sf_result * RESULT)
+=======
+	  double DY, gsl_sf_result * RESULT)
+>>>>>>> config
      This function multiplies X and Y with associated absolute errors
      DX and DY.  The product xy +/- xy \sqrt((dx/x)^2 +(dy/y)^2) is
      stored in RESULT.
@@ -3298,14 +3782,22 @@ File: gsl-ref.info,  Node: Definition of Carlson Forms,  Next: Legendre Form of 
 The Carlson symmetric forms of elliptical integrals RC(x,y), RD(x,y,z),
 RF(x,y,z) and RJ(x,y,z,p) are defined by,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          RC(x,y) = 1/2 \int_0^\infty dt (t+x)^(-1/2) (t+y)^(-1)
+=======
+	 RC(x,y) = 1/2 \int_0^\infty dt (t+x)^(-1/2) (t+y)^(-1)
+>>>>>>> config
 
        RD(x,y,z) = 3/2 \int_0^\infty dt (t+x)^(-1/2) (t+y)^(-1/2) (t+z)^(-3/2)
 
        RF(x,y,z) = 1/2 \int_0^\infty dt (t+x)^(-1/2) (t+y)^(-1/2) (t+z)^(-1/2)
 
      RJ(x,y,z,p) = 3/2 \int_0^\infty dt
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       (t+x)^(-1/2) (t+y)^(-1/2) (t+z)^(-1/2) (t+p)^(-1)
+=======
+		      (t+x)^(-1/2) (t+y)^(-1/2) (t+z)^(-1/2) (t+p)^(-1)
+>>>>>>> config
 
 
 File: gsl-ref.info,  Node: Legendre Form of Complete Elliptic Integrals,  Next: Legendre Form of Incomplete Elliptic Integrals,  Prev: Definition of Carlson Forms,  Up: Elliptic Integrals
@@ -3315,7 +3807,11 @@ File: gsl-ref.info,  Node: Legendre Form of Complete Elliptic Integrals,  Next: 
 
  -- Function: double gsl_sf_ellint_Kcomp (double K, gsl_mode_t MODE)
  -- Function: int gsl_sf_ellint_Kcomp_e (double K, gsl_mode_t MODE,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the complete elliptic integral K(k) to the
      accuracy specified by the mode variable MODE.  Note that
      Abramowitz & Stegun define this function in terms of the parameter
@@ -3323,16 +3819,26 @@ File: gsl-ref.info,  Node: Legendre Form of Complete Elliptic Integrals,  Next: 
 
  -- Function: double gsl_sf_ellint_Ecomp (double K, gsl_mode_t MODE)
  -- Function: int gsl_sf_ellint_Ecomp_e (double K, gsl_mode_t MODE,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the complete elliptic integral E(k) to the
      accuracy specified by the mode variable MODE.  Note that
      Abramowitz & Stegun define this function in terms of the parameter
      m = k^2.
 
  -- Function: double gsl_sf_ellint_Pcomp (double K, double N,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_mode_t MODE)
  -- Function: int gsl_sf_ellint_Pcomp_e (double K, double N, gsl_mode_t
           MODE, gsl_sf_result * RESULT)
+=======
+	  gsl_mode_t MODE)
+ -- Function: int gsl_sf_ellint_Pcomp_e (double K, double N, gsl_mode_t
+	  MODE, gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the complete elliptic integral \Pi(k,n) to
      the accuracy specified by the mode variable MODE.  Note that
      Abramowitz & Stegun define this function in terms of the
@@ -3346,27 +3852,45 @@ File: gsl-ref.info,  Node: Legendre Form of Incomplete Elliptic Integrals,  Next
 -----------------------------------------------------
 
  -- Function: double gsl_sf_ellint_F (double PHI, double K, gsl_mode_t
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           MODE)
  -- Function: int gsl_sf_ellint_F_e (double PHI, double K, gsl_mode_t
           MODE, gsl_sf_result * RESULT)
+=======
+	  MODE)
+ -- Function: int gsl_sf_ellint_F_e (double PHI, double K, gsl_mode_t
+	  MODE, gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the incomplete elliptic integral F(\phi,k)
      to the accuracy specified by the mode variable MODE.  Note that
      Abramowitz & Stegun define this function in terms of the parameter
      m = k^2.
 
  -- Function: double gsl_sf_ellint_E (double PHI, double K, gsl_mode_t
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           MODE)
  -- Function: int gsl_sf_ellint_E_e (double PHI, double K, gsl_mode_t
           MODE, gsl_sf_result * RESULT)
+=======
+	  MODE)
+ -- Function: int gsl_sf_ellint_E_e (double PHI, double K, gsl_mode_t
+	  MODE, gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the incomplete elliptic integral E(\phi,k)
      to the accuracy specified by the mode variable MODE.  Note that
      Abramowitz & Stegun define this function in terms of the parameter
      m = k^2.
 
  -- Function: double gsl_sf_ellint_P (double PHI, double K, double N,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_mode_t MODE)
  -- Function: int gsl_sf_ellint_P_e (double PHI, double K, double N,
           gsl_mode_t MODE, gsl_sf_result * RESULT)
+=======
+	  gsl_mode_t MODE)
+ -- Function: int gsl_sf_ellint_P_e (double PHI, double K, double N,
+	  gsl_mode_t MODE, gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the incomplete elliptic integral
      \Pi(\phi,k,n) to the accuracy specified by the mode variable MODE.
      Note that Abramowitz & Stegun define this function in terms of the
@@ -3374,14 +3898,24 @@ File: gsl-ref.info,  Node: Legendre Form of Incomplete Elliptic Integrals,  Next
      sign n \to -n.
 
  -- Function: double gsl_sf_ellint_D (double PHI, double K, double N,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_mode_t MODE)
  -- Function: int gsl_sf_ellint_D_e (double PHI, double K, double N,
           gsl_mode_t MODE, gsl_sf_result * RESULT)
+=======
+	  gsl_mode_t MODE)
+ -- Function: int gsl_sf_ellint_D_e (double PHI, double K, double N,
+	  gsl_mode_t MODE, gsl_sf_result * RESULT)
+>>>>>>> config
      These functions compute the incomplete elliptic integral D(\phi,k)
      which is defined through the Carlson form RD(x,y,z) by the
      following relation,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           D(\phi,k,n) = (1/3)(\sin(\phi))^3 RD (1-\sin^2(\phi), 1-k^2 \sin^2(\phi), 1).
+=======
+	  D(\phi,k,n) = (1/3)(\sin(\phi))^3 RD (1-\sin^2(\phi), 1-k^2 \sin^2(\phi), 1).
+>>>>>>> config
      The argument N is not used and will be removed in a future release.
 
 
@@ -3392,30 +3926,54 @@ File: gsl-ref.info,  Node: Carlson Forms,  Prev: Legendre Form of Incomplete Ell
 --------------------
 
  -- Function: double gsl_sf_ellint_RC (double X, double Y, gsl_mode_t
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           MODE)
  -- Function: int gsl_sf_ellint_RC_e (double X, double Y, gsl_mode_t
           MODE, gsl_sf_result * RESULT)
+=======
+	  MODE)
+ -- Function: int gsl_sf_ellint_RC_e (double X, double Y, gsl_mode_t
+	  MODE, gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the incomplete elliptic integral RC(x,y) to
      the accuracy specified by the mode variable MODE.
 
  -- Function: double gsl_sf_ellint_RD (double X, double Y, double Z,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_mode_t MODE)
  -- Function: int gsl_sf_ellint_RD_e (double X, double Y, double Z,
           gsl_mode_t MODE, gsl_sf_result * RESULT)
+=======
+	  gsl_mode_t MODE)
+ -- Function: int gsl_sf_ellint_RD_e (double X, double Y, double Z,
+	  gsl_mode_t MODE, gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the incomplete elliptic integral RD(x,y,z)
      to the accuracy specified by the mode variable MODE.
 
  -- Function: double gsl_sf_ellint_RF (double X, double Y, double Z,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_mode_t MODE)
  -- Function: int gsl_sf_ellint_RF_e (double X, double Y, double Z,
           gsl_mode_t MODE, gsl_sf_result * RESULT)
+=======
+	  gsl_mode_t MODE)
+ -- Function: int gsl_sf_ellint_RF_e (double X, double Y, double Z,
+	  gsl_mode_t MODE, gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the incomplete elliptic integral RF(x,y,z)
      to the accuracy specified by the mode variable MODE.
 
  -- Function: double gsl_sf_ellint_RJ (double X, double Y, double Z,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double P, gsl_mode_t MODE)
  -- Function: int gsl_sf_ellint_RJ_e (double X, double Y, double Z,
           double P, gsl_mode_t MODE, gsl_sf_result * RESULT)
+=======
+	  double P, gsl_mode_t MODE)
+ -- Function: int gsl_sf_ellint_RJ_e (double X, double Y, double Z,
+	  double P, gsl_mode_t MODE, gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the incomplete elliptic integral RJ(x,y,z,p)
      to the accuracy specified by the mode variable MODE.
 
@@ -3430,7 +3988,11 @@ Chapter 16.  The functions are declared in the header file
 `gsl_sf_elljac.h'.
 
  -- Function: int gsl_sf_elljac_e (double U, double M, double * SN,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double * CN, double * DN)
+=======
+	  double * CN, double * DN)
+>>>>>>> config
      This function computes the Jacobian elliptic functions sn(u|m),
      cn(u|m), dn(u|m) by descending Landen transformations.
 
@@ -3543,7 +4105,11 @@ File: gsl-ref.info,  Node: Exponential Function,  Next: Relative Exponential Fun
      semantics and error checking.
 
  -- Function: int gsl_sf_exp_e10_e (double X, gsl_sf_result_e10 *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      This function computes the exponential \exp(x) using the
      `gsl_sf_result_e10' type to return a result with extended range.
      This function may be useful if the value of \exp(x) would overflow
@@ -3551,12 +4117,20 @@ File: gsl-ref.info,  Node: Exponential Function,  Next: Relative Exponential Fun
 
  -- Function: double gsl_sf_exp_mult (double X, double Y)
  -- Function: int gsl_sf_exp_mult_e (double X, double Y, gsl_sf_result
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           * RESULT)
+=======
+	  * RESULT)
+>>>>>>> config
      These routines exponentiate X and multiply by the factor Y to
      return the product y \exp(x).
 
  -- Function: int gsl_sf_exp_mult_e10_e (const double X, const double
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           Y, gsl_sf_result_e10 * RESULT)
+=======
+	  Y, gsl_sf_result_e10 * RESULT)
+>>>>>>> config
      This function computes the product y \exp(x) using the
      `gsl_sf_result_e10' type to return a result with extended numeric
      range.
@@ -3588,14 +4162,24 @@ File: gsl-ref.info,  Node: Relative Exponential Functions,  Next: Exponentiation
 
  -- Function: double gsl_sf_exprel_n (int N, double X)
  -- Function: int gsl_sf_exprel_n_e (int N, double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the N-relative exponential, which is the
      N-th generalization of the functions `gsl_sf_exprel' and
      `gsl_sf_exprel_2'.  The N-relative exponential is given by,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           exprel_N(x) = N!/x^N (\exp(x) - \sum_{k=0}^{N-1} x^k/k!)
                       = 1 + x/(N+1) + x^2/((N+1)(N+2)) + ...
                       = 1F1 (1,1+N,x)
+=======
+	  exprel_N(x) = N!/x^N (\exp(x) - \sum_{k=0}^{N-1} x^k/k!)
+		      = 1 + x/(N+1) + x^2/((N+1)(N+2)) + ...
+		      = 1F1 (1,1+N,x)
+>>>>>>> config
 
 
 File: gsl-ref.info,  Node: Exponentiation With Error Estimate,  Prev: Relative Exponential Functions,  Up: Exponential Functions
@@ -3604,22 +4188,38 @@ File: gsl-ref.info,  Node: Exponentiation With Error Estimate,  Prev: Relative E
 -----------------------------------------
 
  -- Function: int gsl_sf_exp_err_e (double X, double DX, gsl_sf_result
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           * RESULT)
      This function exponentiates X with an associated absolute error DX.
 
  -- Function: int gsl_sf_exp_err_e10_e (double X, double DX,
           gsl_sf_result_e10 * RESULT)
+=======
+	  * RESULT)
+     This function exponentiates X with an associated absolute error DX.
+
+ -- Function: int gsl_sf_exp_err_e10_e (double X, double DX,
+	  gsl_sf_result_e10 * RESULT)
+>>>>>>> config
      This function exponentiates a quantity X with an associated
      absolute error DX using the `gsl_sf_result_e10' type to return a
      result with extended range.
 
  -- Function: int gsl_sf_exp_mult_err_e (double X, double DX, double Y,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double DY, gsl_sf_result * RESULT)
+=======
+	  double DY, gsl_sf_result * RESULT)
+>>>>>>> config
      This routine computes the product y \exp(x) for the quantities X,
      Y with associated absolute errors DX, DY.
 
  -- Function: int gsl_sf_exp_mult_err_e10_e (double X, double DX,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double Y, double DY, gsl_sf_result_e10 * RESULT)
+=======
+	  double Y, double DY, gsl_sf_result_e10 * RESULT)
+>>>>>>> config
      This routine computes the product y \exp(x) for the quantities X,
      Y with associated absolute errors DX, DY using the
      `gsl_sf_result_e10' type to return a result with extended range.
@@ -3653,7 +4253,11 @@ File: gsl-ref.info,  Node: Exponential Integral,  Next: Ei(x),  Up: Exponential 
  -- Function: int gsl_sf_expint_E1_e (double X, gsl_sf_result * RESULT)
      These routines compute the exponential integral E_1(x),
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           E_1(x) := \Re \int_1^\infty dt \exp(-xt)/t.
+=======
+	  E_1(x) := \Re \int_1^\infty dt \exp(-xt)/t.
+>>>>>>> config
 
 
 
@@ -3662,16 +4266,27 @@ File: gsl-ref.info,  Node: Exponential Integral,  Next: Ei(x),  Up: Exponential 
      These routines compute the second-order exponential integral
      E_2(x),
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           E_2(x) := \Re \int_1^\infty dt \exp(-xt)/t^2.
+=======
+	  E_2(x) := \Re \int_1^\infty dt \exp(-xt)/t^2.
+>>>>>>> config
 
 
 
  -- Function: double gsl_sf_expint_En (int N, double X)
  -- Function: int gsl_sf_expint_En_e (int N, double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
      These routines compute the exponential integral E_n(x) of order n,
 
           E_n(x) := \Re \int_1^\infty dt \exp(-xt)/t^n.
+=======
+	  RESULT)
+     These routines compute the exponential integral E_n(x) of order n,
+
+	  E_n(x) := \Re \int_1^\infty dt \exp(-xt)/t^n.
+>>>>>>> config
 
 
 
@@ -3685,7 +4300,11 @@ File: gsl-ref.info,  Node: Ei(x),  Next: Hyperbolic Integrals,  Prev: Exponentia
  -- Function: int gsl_sf_expint_Ei_e (double X, gsl_sf_result * RESULT)
      These routines compute the exponential integral Ei(x),
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           Ei(x) := - PV(\int_{-x}^\infty dt \exp(-t)/t)
+=======
+	  Ei(x) := - PV(\int_{-x}^\infty dt \exp(-t)/t)
+>>>>>>> config
 
      where PV denotes the principal value of the integral.
 
@@ -3772,51 +4391,83 @@ normalisation factor in other texts.
 
  -- Function: double gsl_sf_fermi_dirac_m1 (double X)
  -- Function: int gsl_sf_fermi_dirac_m1_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the complete Fermi-Dirac integral with an
      index of -1.  This integral is given by F_{-1}(x) = e^x / (1 +
      e^x).
 
  -- Function: double gsl_sf_fermi_dirac_0 (double X)
  -- Function: int gsl_sf_fermi_dirac_0_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the complete Fermi-Dirac integral with an
      index of 0.  This integral is given by F_0(x) = \ln(1 + e^x).
 
  -- Function: double gsl_sf_fermi_dirac_1 (double X)
  -- Function: int gsl_sf_fermi_dirac_1_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the complete Fermi-Dirac integral with an
      index of 1, F_1(x) = \int_0^\infty dt (t /(\exp(t-x)+1)).
 
  -- Function: double gsl_sf_fermi_dirac_2 (double X)
  -- Function: int gsl_sf_fermi_dirac_2_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the complete Fermi-Dirac integral with an
      index of 2, F_2(x) = (1/2) \int_0^\infty dt (t^2 /(\exp(t-x)+1)).
 
  -- Function: double gsl_sf_fermi_dirac_int (int J, double X)
  -- Function: int gsl_sf_fermi_dirac_int_e (int J, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the complete Fermi-Dirac integral with an
      integer index of j, F_j(x) = (1/\Gamma(j+1)) \int_0^\infty dt (t^j
      /(\exp(t-x)+1)).
 
  -- Function: double gsl_sf_fermi_dirac_mhalf (double X)
  -- Function: int gsl_sf_fermi_dirac_mhalf_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the complete Fermi-Dirac integral
      F_{-1/2}(x).
 
  -- Function: double gsl_sf_fermi_dirac_half (double X)
  -- Function: int gsl_sf_fermi_dirac_half_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the complete Fermi-Dirac integral
      F_{1/2}(x).
 
  -- Function: double gsl_sf_fermi_dirac_3half (double X)
  -- Function: int gsl_sf_fermi_dirac_3half_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the complete Fermi-Dirac integral
      F_{3/2}(x).
 
@@ -3832,7 +4483,11 @@ The incomplete Fermi-Dirac integral F_j(x,b) is given by,
 
  -- Function: double gsl_sf_fermi_dirac_inc_0 (double X, double B)
  -- Function: int gsl_sf_fermi_dirac_inc_0_e (double X, double B,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the incomplete Fermi-Dirac integral with an
      index of zero, F_0(x,b) = \ln(1 + e^{b-x}) - (b-x).
 
@@ -3887,7 +4542,11 @@ found in Abramowitz & Stegun, Chapter 6.
      using the real Lanczos method.
 
  -- Function: int gsl_sf_lngamma_sgn_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT_LG, double * SGN)
+=======
+	  RESULT_LG, double * SGN)
+>>>>>>> config
      This routine computes the sign of the gamma function and the
      logarithm of its magnitude, subject to x not being a negative
      integer or zero.  The function is computed using the real Lanczos
@@ -3901,8 +4560,13 @@ found in Abramowitz & Stegun, Chapter 6.
      These routines compute the regulated Gamma Function \Gamma^*(x)
      for x > 0. The regulated gamma function is given by,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           \Gamma^*(x) = \Gamma(x)/(\sqrt{2\pi} x^{(x-1/2)} \exp(-x))
                       = (1 + (1/12x) + ...)  for x \to \infty
+=======
+	  \Gamma^*(x) = \Gamma(x)/(\sqrt{2\pi} x^{(x-1/2)} \exp(-x))
+		      = (1 + (1/12x) + ...)  for x \to \infty
+>>>>>>> config
      and is a useful suggestion of Temme.
 
  -- Function: double gsl_sf_gammainv (double X)
@@ -3911,7 +4575,11 @@ found in Abramowitz & Stegun, Chapter 6.
      1/\Gamma(x) using the real Lanczos method.
 
  -- Function: int gsl_sf_lngamma_complex_e (double ZR, double ZI,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * LNR, gsl_sf_result * ARG)
+=======
+	  gsl_sf_result * LNR, gsl_sf_result * ARG)
+>>>>>>> config
      This routine computes \log(\Gamma(z)) for complex z=z_r+i z_i and
      z not a negative integer or zero, using the complex Lanczos
      method.  The returned parameters are lnr = \log|\Gamma(z)| and arg
@@ -3942,39 +4610,63 @@ tables.
 
  -- Function: double gsl_sf_doublefact (unsigned int N)
  -- Function: int gsl_sf_doublefact_e (unsigned int N, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the double factorial n!! = n(n-2)(n-4)
      \dots.  The maximum value of n such that n!! is not considered an
      overflow is given by the macro `GSL_SF_DOUBLEFACT_NMAX' and is 297.
 
  -- Function: double gsl_sf_lnfact (unsigned int N)
  -- Function: int gsl_sf_lnfact_e (unsigned int N, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the logarithm of the factorial of N,
      \log(n!).  The algorithm is faster than computing \ln(\Gamma(n+1))
      via `gsl_sf_lngamma' for n < 170, but defers for larger N.
 
  -- Function: double gsl_sf_lndoublefact (unsigned int N)
  -- Function: int gsl_sf_lndoublefact_e (unsigned int N, gsl_sf_result
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           * RESULT)
+=======
+	  * RESULT)
+>>>>>>> config
      These routines compute the logarithm of the double factorial of N,
      \log(n!!).
 
  -- Function: double gsl_sf_choose (unsigned int N, unsigned int M)
  -- Function: int gsl_sf_choose_e (unsigned int N, unsigned int M,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the combinatorial factor `n choose m' =
      n!/(m!(n-m)!)
 
  -- Function: double gsl_sf_lnchoose (unsigned int N, unsigned int M)
  -- Function: int gsl_sf_lnchoose_e (unsigned int N, unsigned int M,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the logarithm of `n choose m'.  This is
      equivalent to the sum \log(n!) - \log(m!) - \log((n-m)!).
 
  -- Function: double gsl_sf_taylorcoeff (int N, double X)
  -- Function: int gsl_sf_taylorcoeff_e (int N, double X, gsl_sf_result
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           * RESULT)
+=======
+	  * RESULT)
+>>>>>>> config
      These routines compute the Taylor coefficient x^n / n! for x >= 0,
      n >= 0.
 
@@ -3986,7 +4678,11 @@ File: gsl-ref.info,  Node: Pochhammer Symbol,  Next: Incomplete Gamma Functions,
 
  -- Function: double gsl_sf_poch (double A, double X)
  -- Function: int gsl_sf_poch_e (double A, double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the Pochhammer symbol (a)_x = \Gamma(a +
      x)/\Gamma(a).  The Pochhammer symbol is also known as the Apell
      symbol and sometimes written as (a,x).  When a and a+x are
@@ -3995,12 +4691,20 @@ File: gsl-ref.info,  Node: Pochhammer Symbol,  Next: Incomplete Gamma Functions,
 
  -- Function: double gsl_sf_lnpoch (double A, double X)
  -- Function: int gsl_sf_lnpoch_e (double A, double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the logarithm of the Pochhammer symbol,
      \log((a)_x) = \log(\Gamma(a + x)/\Gamma(a)).
 
  -- Function: int gsl_sf_lnpoch_sgn_e (double A, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT, double * SGN)
+=======
+	  gsl_sf_result * RESULT, double * SGN)
+>>>>>>> config
      These routines compute the sign of the Pochhammer symbol and the
      logarithm of its magnitude.  The computed parameters are result =
      \log(|(a)_x|) with a corresponding error term, and sgn =
@@ -4008,7 +4712,11 @@ File: gsl-ref.info,  Node: Pochhammer Symbol,  Next: Incomplete Gamma Functions,
 
  -- Function: double gsl_sf_pochrel (double A, double X)
  -- Function: int gsl_sf_pochrel_e (double A, double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the relative Pochhammer symbol ((a)_x -
      1)/x where (a)_x = \Gamma(a + x)/\Gamma(a).
 
@@ -4020,21 +4728,33 @@ File: gsl-ref.info,  Node: Incomplete Gamma Functions,  Next: Beta Functions,  P
 
  -- Function: double gsl_sf_gamma_inc (double A, double X)
  -- Function: int gsl_sf_gamma_inc_e (double A, double X, gsl_sf_result
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           * RESULT)
+=======
+	  * RESULT)
+>>>>>>> config
      These functions compute the unnormalized incomplete Gamma Function
      \Gamma(a,x) = \int_x^\infty dt t^{a-1} \exp(-t) for a real and x
      >= 0.
 
  -- Function: double gsl_sf_gamma_inc_Q (double A, double X)
  -- Function: int gsl_sf_gamma_inc_Q_e (double A, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the normalized incomplete Gamma Function
      Q(a,x) = 1/\Gamma(a) \int_x^\infty dt t^{a-1} \exp(-t) for a > 0,
      x >= 0.
 
  -- Function: double gsl_sf_gamma_inc_P (double A, double X)
  -- Function: int gsl_sf_gamma_inc_P_e (double A, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the complementary normalized incomplete
      Gamma Function P(a,x) = 1 - Q(a,x) = 1/\Gamma(a) \int_0^x dt
      t^{a-1} \exp(-t) for a > 0, x >= 0.
@@ -4050,14 +4770,22 @@ File: gsl-ref.info,  Node: Beta Functions,  Next: Incomplete Beta Function,  Pre
 
  -- Function: double gsl_sf_beta (double A, double B)
  -- Function: int gsl_sf_beta_e (double A, double B, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the Beta Function, B(a,b) =
      \Gamma(a)\Gamma(b)/\Gamma(a+b) subject to a and b not being
      negative integers.
 
  -- Function: double gsl_sf_lnbeta (double A, double B)
  -- Function: int gsl_sf_lnbeta_e (double A, double B, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the logarithm of the Beta Function,
      \log(B(a,b)) subject to a and b not being negative integers.
 
@@ -4069,7 +4797,11 @@ File: gsl-ref.info,  Node: Incomplete Beta Function,  Prev: Beta Functions,  Up:
 
  -- Function: double gsl_sf_beta_inc (double A, double B, double X)
  -- Function: int gsl_sf_beta_inc_e (double A, double B, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the normalized incomplete Beta function
      I_x(a,b)=B_x(a,b)/B(a,b) where B_x(a,b) = \int_0^x t^{a-1}
      (1-t)^{b-1} dt for 0 <= x <= 1.   For a > 0, b > 0 the value is
@@ -4092,23 +4824,39 @@ described in this section are declared in the header file
  -- Function: double gsl_sf_gegenpoly_2 (double LAMBDA, double X)
  -- Function: double gsl_sf_gegenpoly_3 (double LAMBDA, double X)
  -- Function: int gsl_sf_gegenpoly_1_e (double LAMBDA, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
  -- Function: int gsl_sf_gegenpoly_2_e (double LAMBDA, double X,
           gsl_sf_result * RESULT)
  -- Function: int gsl_sf_gegenpoly_3_e (double LAMBDA, double X,
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+ -- Function: int gsl_sf_gegenpoly_2_e (double LAMBDA, double X,
+	  gsl_sf_result * RESULT)
+ -- Function: int gsl_sf_gegenpoly_3_e (double LAMBDA, double X,
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These functions evaluate the Gegenbauer polynomials
      C^{(\lambda)}_n(x) using explicit representations for n =1, 2, 3.
 
  -- Function: double gsl_sf_gegenpoly_n (int N, double LAMBDA, double X)
  -- Function: int gsl_sf_gegenpoly_n_e (int N, double LAMBDA, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These functions evaluate the Gegenbauer polynomial
      C^{(\lambda)}_n(x) for a specific value of N, LAMBDA, X subject to
      \lambda > -1/2, n >= 0.
 
  -- Function: int gsl_sf_gegenpoly_array (int NMAX, double LAMBDA,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double X, double RESULT_ARRAY[])
+=======
+	  double X, double RESULT_ARRAY[])
+>>>>>>> config
      This function computes an array of Gegenbauer polynomials
      C^{(\lambda)}_n(x) for n = 0, 1, 2, \dots, nmax, subject to
      \lambda > -1/2, nmax >= 0.
@@ -4125,49 +4873,83 @@ Hypergeometric functions are described in Abramowitz & Stegun, Chapters
 
  -- Function: double gsl_sf_hyperg_0F1 (double C, double X)
  -- Function: int gsl_sf_hyperg_0F1_e (double C, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the hypergeometric function 0F1(c,x).
 
  -- Function: double gsl_sf_hyperg_1F1_int (int M, int N, double X)
  -- Function: int gsl_sf_hyperg_1F1_int_e (int M, int N, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the confluent hypergeometric function
      1F1(m,n,x) = M(m,n,x) for integer parameters M, N.
 
  -- Function: double gsl_sf_hyperg_1F1 (double A, double B, double X)
  -- Function: int gsl_sf_hyperg_1F1_e (double A, double B, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the confluent hypergeometric function
      1F1(a,b,x) = M(a,b,x) for general parameters A, B.
 
  -- Function: double gsl_sf_hyperg_U_int (int M, int N, double X)
  -- Function: int gsl_sf_hyperg_U_int_e (int M, int N, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the confluent hypergeometric function
      U(m,n,x) for integer parameters M, N.
 
  -- Function: int gsl_sf_hyperg_U_int_e10_e (int M, int N, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result_e10 * RESULT)
+=======
+	  gsl_sf_result_e10 * RESULT)
+>>>>>>> config
      This routine computes the confluent hypergeometric function
      U(m,n,x) for integer parameters M, N using the `gsl_sf_result_e10'
      type to return a result with extended range.
 
  -- Function: double gsl_sf_hyperg_U (double A, double B, double X)
  -- Function: int gsl_sf_hyperg_U_e (double A, double B, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the confluent hypergeometric function
      U(a,b,x).
 
  -- Function: int gsl_sf_hyperg_U_e10_e (double A, double B, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result_e10 * RESULT)
+=======
+	  gsl_sf_result_e10 * RESULT)
+>>>>>>> config
      This routine computes the confluent hypergeometric function
      U(a,b,x) using the `gsl_sf_result_e10' type to return a result
      with extended range.
 
  -- Function: double gsl_sf_hyperg_2F1 (double A, double B, double C,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double X)
  -- Function: int gsl_sf_hyperg_2F1_e (double A, double B, double C,
           double X, gsl_sf_result * RESULT)
+=======
+	  double X)
+ -- Function: int gsl_sf_hyperg_2F1_e (double A, double B, double C,
+	  double X, gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the Gauss hypergeometric function
      2F1(a,b,c,x) = F(a,b,c,x) for |x| < 1.
 
@@ -4177,30 +4959,52 @@ Hypergeometric functions are described in Abramowitz & Stegun, Chapters
      x=1, c - a - b = m for integer m.
 
  -- Function: double gsl_sf_hyperg_2F1_conj (double AR, double AI,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double C, double X)
  -- Function: int gsl_sf_hyperg_2F1_conj_e (double AR, double AI,
           double C, double X, gsl_sf_result * RESULT)
+=======
+	  double C, double X)
+ -- Function: int gsl_sf_hyperg_2F1_conj_e (double AR, double AI,
+	  double C, double X, gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the Gauss hypergeometric function 2F1(a_R +
      i a_I, a_R - i a_I, c, x) with complex parameters for |x| < 1.
 
  -- Function: double gsl_sf_hyperg_2F1_renorm (double A, double B,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double C, double X)
  -- Function: int gsl_sf_hyperg_2F1_renorm_e (double A, double B,
           double C, double X, gsl_sf_result * RESULT)
+=======
+	  double C, double X)
+ -- Function: int gsl_sf_hyperg_2F1_renorm_e (double A, double B,
+	  double C, double X, gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the renormalized Gauss hypergeometric
      function 2F1(a,b,c,x) / \Gamma(c) for |x| < 1.
 
  -- Function: double gsl_sf_hyperg_2F1_conj_renorm (double AR, double
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           AI, double C, double X)
  -- Function: int gsl_sf_hyperg_2F1_conj_renorm_e (double AR, double
           AI, double C, double X, gsl_sf_result * RESULT)
+=======
+	  AI, double C, double X)
+ -- Function: int gsl_sf_hyperg_2F1_conj_renorm_e (double AR, double
+	  AI, double C, double X, gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the renormalized Gauss hypergeometric
      function 2F1(a_R + i a_I, a_R - i a_I, c, x) / \Gamma(c) for |x| <
      1.
 
  -- Function: double gsl_sf_hyperg_2F0 (double A, double B, double X)
  -- Function: int gsl_sf_hyperg_2F0_e (double A, double B, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the hypergeometric function 2F0(a,b,x).
      The series representation is a divergent hypergeometric series.
      However, for x < 0 we have 2F0(a,b,x) = (-1/x)^a U(a,1+a-b,-1/x)
@@ -4225,18 +5029,32 @@ file `gsl_sf_laguerre.h'.
  -- Function: double gsl_sf_laguerre_2 (double A, double X)
  -- Function: double gsl_sf_laguerre_3 (double A, double X)
  -- Function: int gsl_sf_laguerre_1_e (double A, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
  -- Function: int gsl_sf_laguerre_2_e (double A, double X,
           gsl_sf_result * RESULT)
  -- Function: int gsl_sf_laguerre_3_e (double A, double X,
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+ -- Function: int gsl_sf_laguerre_2_e (double A, double X,
+	  gsl_sf_result * RESULT)
+ -- Function: int gsl_sf_laguerre_3_e (double A, double X,
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines evaluate the generalized Laguerre polynomials
      L^a_1(x), L^a_2(x), L^a_3(x) using explicit representations.
 
  -- Function: double gsl_sf_laguerre_n (const int N, const double A,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           const double X)
  -- Function: int gsl_sf_laguerre_n_e (int N, double A, double X,
           gsl_sf_result * RESULT)
+=======
+	  const double X)
+ -- Function: int gsl_sf_laguerre_n_e (int N, double A, double X,
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines evaluate the generalized Laguerre polynomials
      L^a_n(x) for a > -1, n >= 0.
 
@@ -4261,7 +5079,11 @@ are declared in the header file `gsl_sf_lambert.h'.
 
  -- Function: double gsl_sf_lambert_Wm1 (double X)
  -- Function: int gsl_sf_lambert_Wm1_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These compute the secondary real-valued branch of the Lambert W
      function, W_{-1}(x).
 
@@ -4292,42 +5114,72 @@ File: gsl-ref.info,  Node: Legendre Polynomials,  Next: Associated Legendre Poly
  -- Function: double gsl_sf_legendre_P2 (double X)
  -- Function: double gsl_sf_legendre_P3 (double X)
  -- Function: int gsl_sf_legendre_P1_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
  -- Function: int gsl_sf_legendre_P2_e (double X, gsl_sf_result *
           RESULT)
  -- Function: int gsl_sf_legendre_P3_e (double X, gsl_sf_result *
           RESULT)
+=======
+	  RESULT)
+ -- Function: int gsl_sf_legendre_P2_e (double X, gsl_sf_result *
+	  RESULT)
+ -- Function: int gsl_sf_legendre_P3_e (double X, gsl_sf_result *
+	  RESULT)
+>>>>>>> config
      These functions evaluate the Legendre polynomials P_l(x) using
      explicit representations for l=1, 2, 3.
 
  -- Function: double gsl_sf_legendre_Pl (int L, double X)
  -- Function: int gsl_sf_legendre_Pl_e (int L, double X, gsl_sf_result
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           * RESULT)
+=======
+	  * RESULT)
+>>>>>>> config
      These functions evaluate the Legendre polynomial P_l(x) for a
      specific value of L, X subject to l >= 0, |x| <= 1
 
  -- Function: int gsl_sf_legendre_Pl_array (int LMAX, double X, double
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT_ARRAY[])
  -- Function: int gsl_sf_legendre_Pl_deriv_array (int LMAX, double X,
           double RESULT_ARRAY[], double RESULT_DERIV_ARRAY[])
+=======
+	  RESULT_ARRAY[])
+ -- Function: int gsl_sf_legendre_Pl_deriv_array (int LMAX, double X,
+	  double RESULT_ARRAY[], double RESULT_DERIV_ARRAY[])
+>>>>>>> config
      These functions compute arrays of Legendre polynomials P_l(x) and
      derivatives dP_l(x)/dx, for l = 0, \dots, lmax, |x| <= 1
 
  -- Function: double gsl_sf_legendre_Q0 (double X)
  -- Function: int gsl_sf_legendre_Q0_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the Legendre function Q_0(x) for x > -1, x
      != 1.
 
  -- Function: double gsl_sf_legendre_Q1 (double X)
  -- Function: int gsl_sf_legendre_Q1_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the Legendre function Q_1(x) for x > -1, x
      != 1.
 
  -- Function: double gsl_sf_legendre_Ql (int L, double X)
  -- Function: int gsl_sf_legendre_Ql_e (int L, double X, gsl_sf_result
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           * RESULT)
+=======
+	  * RESULT)
+>>>>>>> config
      These routines compute the Legendre function Q_l(x) for x > -1, x
      != 1 and l >= 0.
 
@@ -4350,21 +5202,35 @@ uses a similar recursion, but with the normalized functions.
 
  -- Function: double gsl_sf_legendre_Plm (int L, int M, double X)
  -- Function: int gsl_sf_legendre_Plm_e (int L, int M, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the associated Legendre polynomial P_l^m(x)
      for m >= 0, l >= m, |x| <= 1.
 
  -- Function: int gsl_sf_legendre_Plm_array (int LMAX, int M, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double RESULT_ARRAY[])
  -- Function: int gsl_sf_legendre_Plm_deriv_array (int LMAX, int M,
           double X, double RESULT_ARRAY[], double RESULT_DERIV_ARRAY[])
+=======
+	  double RESULT_ARRAY[])
+ -- Function: int gsl_sf_legendre_Plm_deriv_array (int LMAX, int M,
+	  double X, double RESULT_ARRAY[], double RESULT_DERIV_ARRAY[])
+>>>>>>> config
      These functions compute arrays of Legendre polynomials P_l^m(x)
      and derivatives dP_l^m(x)/dx, for m >= 0, l = |m|, ..., lmax, |x|
      <= 1.
 
  -- Function: double gsl_sf_legendre_sphPlm (int L, int M, double X)
  -- Function: int gsl_sf_legendre_sphPlm_e (int L, int M, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the normalized associated Legendre
      polynomial \sqrt{(2l+1)/(4\pi)} \sqrt{(l-m)!/(l+m)!} P_l^m(x)
      suitable for use in spherical harmonics.  The parameters must
@@ -4372,15 +5238,25 @@ uses a similar recursion, but with the normalized functions.
      overflows that occur for the standard normalization of P_l^m(x).
 
  -- Function: int gsl_sf_legendre_sphPlm_array (int LMAX, int M, double
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           X, double RESULT_ARRAY[])
  -- Function: int gsl_sf_legendre_sphPlm_deriv_array (int LMAX, int M,
           double X, double RESULT_ARRAY[], double RESULT_DERIV_ARRAY[])
+=======
+	  X, double RESULT_ARRAY[])
+ -- Function: int gsl_sf_legendre_sphPlm_deriv_array (int LMAX, int M,
+	  double X, double RESULT_ARRAY[], double RESULT_DERIV_ARRAY[])
+>>>>>>> config
      These functions compute arrays of normalized associated Legendre
      functions \sqrt{(2l+1)/(4\pi)} \sqrt{(l-m)!/(l+m)!} P_l^m(x), and
      derivatives, for m >= 0, l = |m|, ..., lmax, |x| <= 1.0
 
  -- Function: int gsl_sf_legendre_array_size (const int LMAX, const int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           M)
+=======
+	  M)
+>>>>>>> config
      This function returns the size of RESULT_ARRAY[] needed for the
      array versions of P_l^m(x), LMAX - M + 1.  An inline version of
      this function is used when `HAVE_INLINE' is defined.
@@ -4397,39 +5273,67 @@ Q^\mu_{-(1/2)+i\lambda} are described in Abramowitz & Stegun, Section
 
  -- Function: double gsl_sf_conicalP_half (double LAMBDA, double X)
  -- Function: int gsl_sf_conicalP_half_e (double LAMBDA, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the irregular Spherical Conical Function
      P^{1/2}_{-1/2 + i \lambda}(x) for x > -1.
 
  -- Function: double gsl_sf_conicalP_mhalf (double LAMBDA, double X)
  -- Function: int gsl_sf_conicalP_mhalf_e (double LAMBDA, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the regular Spherical Conical Function
      P^{-1/2}_{-1/2 + i \lambda}(x) for x > -1.
 
  -- Function: double gsl_sf_conicalP_0 (double LAMBDA, double X)
  -- Function: int gsl_sf_conicalP_0_e (double LAMBDA, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the conical function P^0_{-1/2 + i
      \lambda}(x) for x > -1.
 
  -- Function: double gsl_sf_conicalP_1 (double LAMBDA, double X)
  -- Function: int gsl_sf_conicalP_1_e (double LAMBDA, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the conical function P^1_{-1/2 + i
      \lambda}(x) for x > -1.
 
  -- Function: double gsl_sf_conicalP_sph_reg (int L, double LAMBDA,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double X)
  -- Function: int gsl_sf_conicalP_sph_reg_e (int L, double LAMBDA,
           double X, gsl_sf_result * RESULT)
+=======
+	  double X)
+ -- Function: int gsl_sf_conicalP_sph_reg_e (int L, double LAMBDA,
+	  double X, gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the Regular Spherical Conical Function
      P^{-1/2-l}_{-1/2 + i \lambda}(x) for x > -1, l >= -1.
 
  -- Function: double gsl_sf_conicalP_cyl_reg (int M, double LAMBDA,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double X)
  -- Function: int gsl_sf_conicalP_cyl_reg_e (int M, double LAMBDA,
           double X, gsl_sf_result * RESULT)
+=======
+	  double X)
+ -- Function: int gsl_sf_conicalP_cyl_reg_e (int M, double LAMBDA,
+	  double X, gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the Regular Cylindrical Conical Function
      P^{-m}_{-1/2 + i \lambda}(x) for x > -1, m >= -1.
 
@@ -4446,7 +5350,11 @@ limit, \lambda \to \infty, \eta \to 0, \lambda\eta fixed.
 
  -- Function: double gsl_sf_legendre_H3d_0 (double LAMBDA, double ETA)
  -- Function: int gsl_sf_legendre_H3d_0_e (double LAMBDA, double ETA,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the zeroth radial eigenfunction of the
      Laplacian on the 3-dimensional hyperbolic space,
      L^{H3d}_0(\lambda,\eta) := \sin(\lambda\eta)/(\lambda\sinh(\eta))
@@ -4455,7 +5363,11 @@ limit, \lambda \to \infty, \eta \to 0, \lambda\eta fixed.
 
  -- Function: double gsl_sf_legendre_H3d_1 (double LAMBDA, double ETA)
  -- Function: int gsl_sf_legendre_H3d_1_e (double LAMBDA, double ETA,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the first radial eigenfunction of the
      Laplacian on the 3-dimensional hyperbolic space,
      L^{H3d}_1(\lambda,\eta) := 1/\sqrt{\lambda^2 + 1} \sin(\lambda
@@ -4464,16 +5376,26 @@ limit, \lambda \to \infty, \eta \to 0, \lambda\eta fixed.
      the form L^{H3d}_1(\lambda,\eta) = j_1(\lambda\eta).
 
  -- Function: double gsl_sf_legendre_H3d (int L, double LAMBDA, double
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           ETA)
  -- Function: int gsl_sf_legendre_H3d_e (int L, double LAMBDA, double
           ETA, gsl_sf_result * RESULT)
+=======
+	  ETA)
+ -- Function: int gsl_sf_legendre_H3d_e (int L, double LAMBDA, double
+	  ETA, gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the L-th radial eigenfunction of the
      Laplacian on the 3-dimensional hyperbolic space \eta >= 0, l >= 0.
      In the flat limit this takes the form L^{H3d}_l(\lambda,\eta) =
      j_l(\lambda\eta).
 
  -- Function: int gsl_sf_legendre_H3d_array (int LMAX, double LAMBDA,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double ETA, double RESULT_ARRAY[])
+=======
+	  double ETA, double RESULT_ARRAY[])
+>>>>>>> config
      This function computes an array of radial eigenfunctions
      L^{H3d}_l(\lambda, \eta) for 0 <= l <= lmax.
 
@@ -4497,7 +5419,11 @@ are declared in the header file `gsl_sf_log.h'.
      \log(|x|), for x \ne 0.
 
  -- Function: int gsl_sf_complex_log_e (double ZR, double ZI,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * LNR, gsl_sf_result * THETA)
+=======
+	  gsl_sf_result * LNR, gsl_sf_result * THETA)
+>>>>>>> config
      This routine computes the complex logarithm of z = z_r + i z_i.
      The results are returned as LNR, THETA such that \exp(lnr + i
      \theta) = z_r + i z_i, where \theta lies in the range [-\pi,\pi].
@@ -4509,7 +5435,11 @@ are declared in the header file `gsl_sf_log.h'.
 
  -- Function: double gsl_sf_log_1plusx_mx (double X)
  -- Function: int gsl_sf_log_1plusx_mx_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute \log(1 + x) - x for x > -1 using an
      algorithm that is accurate for small x.
 
@@ -4559,7 +5489,11 @@ multiple orders, using array-based routines.  The array-based routines
 require a preallocated workspace.
 
  -- Function: gsl_sf_mathieu_workspace * gsl_sf_mathieu_alloc (size_t
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           N, double QMAX)
+=======
+	  N, double QMAX)
+>>>>>>> config
      This function returns a workspace for the array versions of the
      Mathieu routines.  The arguments N and QMAX specify the maximum
      order and q-value of Mathieu functions which can be computed with
@@ -4576,18 +5510,32 @@ File: gsl-ref.info,  Node: Mathieu Function Characteristic Values,  Next: Angula
 ---------------------------------------------
 
  -- Function: int gsl_sf_mathieu_a (int N, double Q, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
  -- Function: int gsl_sf_mathieu_b (int N, double Q, gsl_sf_result *
           RESULT)
+=======
+	  RESULT)
+ -- Function: int gsl_sf_mathieu_b (int N, double Q, gsl_sf_result *
+	  RESULT)
+>>>>>>> config
      These routines compute the characteristic values a_n(q), b_n(q) of
      the Mathieu functions ce_n(q,x) and se_n(q,x), respectively.
 
  -- Function: int gsl_sf_mathieu_a_array (int ORDER_MIN, int ORDER_MAX,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double Q, gsl_sf_mathieu_workspace * WORK, double
           RESULT_ARRAY[])
  -- Function: int gsl_sf_mathieu_b_array (int ORDER_MIN, int ORDER_MAX,
           double Q, gsl_sf_mathieu_workspace * WORK, double
           RESULT_ARRAY[])
+=======
+	  double Q, gsl_sf_mathieu_workspace * WORK, double
+	  RESULT_ARRAY[])
+ -- Function: int gsl_sf_mathieu_b_array (int ORDER_MIN, int ORDER_MAX,
+	  double Q, gsl_sf_mathieu_workspace * WORK, double
+	  RESULT_ARRAY[])
+>>>>>>> config
      These routines compute a series of Mathieu characteristic values
      a_n(q), b_n(q) for n from ORDER_MIN to ORDER_MAX inclusive,
      storing the results in the array RESULT_ARRAY.
@@ -4599,18 +5547,32 @@ File: gsl-ref.info,  Node: Angular Mathieu Functions,  Next: Radial Mathieu Func
 --------------------------------
 
  -- Function: int gsl_sf_mathieu_ce (int N, double Q, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
  -- Function: int gsl_sf_mathieu_se (int N, double Q, double X,
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+ -- Function: int gsl_sf_mathieu_se (int N, double Q, double X,
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the angular Mathieu functions ce_n(q,x) and
      se_n(q,x), respectively.
 
  -- Function: int gsl_sf_mathieu_ce_array (int NMIN, int NMAX, double
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           Q, double X, gsl_sf_mathieu_workspace * WORK, double
           RESULT_ARRAY[])
  -- Function: int gsl_sf_mathieu_se_array (int NMIN, int NMAX, double
           Q, double X, gsl_sf_mathieu_workspace * WORK, double
           RESULT_ARRAY[])
+=======
+	  Q, double X, gsl_sf_mathieu_workspace * WORK, double
+	  RESULT_ARRAY[])
+ -- Function: int gsl_sf_mathieu_se_array (int NMIN, int NMAX, double
+	  Q, double X, gsl_sf_mathieu_workspace * WORK, double
+	  RESULT_ARRAY[])
+>>>>>>> config
      These routines compute a series of the angular Mathieu functions
      ce_n(q,x) and se_n(q,x) of order n from NMIN to NMAX inclusive,
      storing the results in the array RESULT_ARRAY.
@@ -4622,9 +5584,15 @@ File: gsl-ref.info,  Node: Radial Mathieu Functions,  Prev: Angular Mathieu Func
 -------------------------------
 
  -- Function: int gsl_sf_mathieu_Mc (int J, int N, double Q, double X,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * RESULT)
  -- Function: int gsl_sf_mathieu_Ms (int J, int N, double Q, double X,
           gsl_sf_result * RESULT)
+=======
+	  gsl_sf_result * RESULT)
+ -- Function: int gsl_sf_mathieu_Ms (int J, int N, double Q, double X,
+	  gsl_sf_result * RESULT)
+>>>>>>> config
      These routines compute the radial J-th kind Mathieu functions
      Mc_n^{(j)}(q,x) and Ms_n^{(j)}(q,x) of order N.
 
@@ -4634,11 +5602,19 @@ File: gsl-ref.info,  Node: Radial Mathieu Functions,  Prev: Angular Mathieu Func
      Ms_n^{(j)}.
 
  -- Function: int gsl_sf_mathieu_Mc_array (int J, int NMIN, int NMAX,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double Q, double X, gsl_sf_mathieu_workspace * WORK, double
           RESULT_ARRAY[])
  -- Function: int gsl_sf_mathieu_Ms_array (int J, int NMIN, int NMAX,
           double Q, double X, gsl_sf_mathieu_workspace * WORK, double
           RESULT_ARRAY[])
+=======
+	  double Q, double X, gsl_sf_mathieu_workspace * WORK, double
+	  RESULT_ARRAY[])
+ -- Function: int gsl_sf_mathieu_Ms_array (int J, int NMIN, int NMAX,
+	  double Q, double X, gsl_sf_mathieu_workspace * WORK, double
+	  RESULT_ARRAY[])
+>>>>>>> config
      These routines compute a series of the radial Mathieu functions of
      kind J, with order from NMIN to NMAX inclusive, storing the
      results in the array RESULT_ARRAY.
@@ -4655,7 +5631,11 @@ are declared in the header file `gsl_sf_pow_int.h'.
 
  -- Function: double gsl_sf_pow_int (double X, int N)
  -- Function: int gsl_sf_pow_int_e (double X, int N, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the power x^n for integer N.  The power is
      computed using the minimum number of multiplications. For example,
      x^8 is computed as ((x^2)^2)^2, requiring only 3 multiplications.
@@ -4730,7 +5710,11 @@ File: gsl-ref.info,  Node: Polygamma Function,  Prev: Trigamma Function,  Up: Ps
 
  -- Function: double gsl_sf_psi_n (int N, double X)
  -- Function: int gsl_sf_psi_n_e (int N, double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the polygamma function \psi^{(n)}(x) for n
      >= 0, x > 0.
 
@@ -4745,13 +5729,21 @@ The functions described in this section are declared in the header file
 
  -- Function: double gsl_sf_synchrotron_1 (double X)
  -- Function: int gsl_sf_synchrotron_1_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the first synchrotron function x
      \int_x^\infty dt K_{5/3}(t) for x >= 0.
 
  -- Function: double gsl_sf_synchrotron_2 (double X)
  -- Function: int gsl_sf_synchrotron_2_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the second synchrotron function x
      K_{2/3}(x) for x >= 0.
 
@@ -4767,22 +5759,38 @@ declared in the header file `gsl_sf_transport.h'.
 
  -- Function: double gsl_sf_transport_2 (double X)
  -- Function: int gsl_sf_transport_2_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the transport function J(2,x).
 
  -- Function: double gsl_sf_transport_3 (double X)
  -- Function: int gsl_sf_transport_3_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the transport function J(3,x).
 
  -- Function: double gsl_sf_transport_4 (double X)
  -- Function: int gsl_sf_transport_4_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the transport function J(4,x).
 
  -- Function: double gsl_sf_transport_5 (double X)
  -- Function: int gsl_sf_transport_5_e (double X, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the transport function J(5,x).
 
 
@@ -4820,7 +5828,11 @@ File: gsl-ref.info,  Node: Circular Trigonometric Functions,  Next: Trigonometri
 
  -- Function: double gsl_sf_hypot (double X, double Y)
  -- Function: int gsl_sf_hypot_e (double X, double Y, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the hypotenuse function \sqrt{x^2 + y^2}
      avoiding overflow and underflow.
 
@@ -4836,17 +5848,29 @@ File: gsl-ref.info,  Node: Trigonometric Functions for Complex Arguments,  Next:
 ----------------------------------------------------
 
  -- Function: int gsl_sf_complex_sin_e (double ZR, double ZI,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * SZR, gsl_sf_result * SZI)
+=======
+	  gsl_sf_result * SZR, gsl_sf_result * SZI)
+>>>>>>> config
      This function computes the complex sine, \sin(z_r + i z_i) storing
      the real and imaginary parts in SZR, SZI.
 
  -- Function: int gsl_sf_complex_cos_e (double ZR, double ZI,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * CZR, gsl_sf_result * CZI)
+=======
+	  gsl_sf_result * CZR, gsl_sf_result * CZI)
+>>>>>>> config
      This function computes the complex cosine, \cos(z_r + i z_i)
      storing the real and imaginary parts in CZR, CZI.
 
  -- Function: int gsl_sf_complex_logsin_e (double ZR, double ZI,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * LSZR, gsl_sf_result * LSZI)
+=======
+	  gsl_sf_result * LSZR, gsl_sf_result * LSZI)
+>>>>>>> config
      This function computes the logarithm of the complex sine,
      \log(\sin(z_r + i z_i)) storing the real and imaginary parts in
      LSZR, LSZI.
@@ -4872,13 +5896,21 @@ File: gsl-ref.info,  Node: Conversion Functions,  Next: Restriction Functions,  
 ---------------------------
 
  -- Function: int gsl_sf_polar_to_rect (double R, double THETA,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * X, gsl_sf_result * Y);
+=======
+	  gsl_sf_result * X, gsl_sf_result * Y);
+>>>>>>> config
      This function converts the polar coordinates (R,THETA) to
      rectilinear coordinates (X,Y), x = r\cos(\theta), y =
      r\sin(\theta).
 
  -- Function: int gsl_sf_rect_to_polar (double X, double Y,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_sf_result * R, gsl_sf_result * THETA)
+=======
+	  gsl_sf_result * R, gsl_sf_result * THETA)
+>>>>>>> config
      This function converts the rectilinear coordinates (X,Y) to polar
      coordinates (R,THETA), such that x = r\cos(\theta), y =
      r\sin(\theta).  The argument THETA lies in the range [-\pi, \pi].
@@ -4913,14 +5945,22 @@ File: gsl-ref.info,  Node: Trigonometric Functions With Error Estimates,  Prev: 
 ---------------------------------------------------
 
  -- Function: int gsl_sf_sin_err_e (double X, double DX, gsl_sf_result
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           * RESULT)
+=======
+	  * RESULT)
+>>>>>>> config
      This routine computes the sine of an angle X with an associated
      absolute error DX, \sin(x \pm dx).  Note that this function is
      provided in the error-handling form only since its purpose is to
      compute the propagated error.
 
  -- Function: int gsl_sf_cos_err_e (double X, double DX, gsl_sf_result
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           * RESULT)
+=======
+	  * RESULT)
+>>>>>>> config
      This routine computes the cosine of an angle X with an associated
      absolute error DX, \cos(x \pm dx).  Note that this function is
      provided in the error-handling form only since its purpose is to
@@ -4991,7 +6031,11 @@ The Hurwitz zeta function is defined by \zeta(s,q) = \sum_0^\infty
 
  -- Function: double gsl_sf_hzeta (double S, double Q)
  -- Function: int gsl_sf_hzeta_e (double S, double Q, gsl_sf_result *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           RESULT)
+=======
+	  RESULT)
+>>>>>>> config
      These routines compute the Hurwitz zeta function \zeta(s,q) for s
      > 1, q > 0.
 
@@ -5037,8 +6081,13 @@ J_0(5.0),
 
        printf ("status  = %s\n", gsl_strerror(status));
        printf ("J0(5.0) = %.18f\n"
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                "      +/- % .18f\n",
                result.val, result.err);
+=======
+	       "      +/- % .18f\n",
+	       result.val, result.err);
+>>>>>>> config
        printf ("exact   = %.18f\n", expected);
        return status;
      }
@@ -5048,7 +6097,11 @@ Here are the results of running the program,
      $ ./a.out
      status  = success
      J0(5.0) = -0.177596771314338292
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
            +/-  0.000000000000000193
+=======
+	   +/-  0.000000000000000193
+>>>>>>> config
      exact   = -0.177596771314338292
 
 The next program computes the same quantity using the natural form of
@@ -5088,7 +6141,11 @@ possible,
      Abramowitz & Stegun (eds.), `Handbook of Mathematical Functions'
 
 The following papers contain information on the algorithms used to
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 compute the special functions, 
+=======
+compute the special functions,
+>>>>>>> config
      Allan J. MacLeod, MISCFUN: A software package to compute uncommon
      special functions.  `ACM Trans. Math. Soft.', vol. 22, 1996,
      288-301
@@ -5254,7 +6311,11 @@ as binary data or formatted text.
      on the same architecture.
 
  -- Function: int gsl_block_fprintf (FILE * STREAM, const gsl_block *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           B, const char * FORMAT)
+=======
+	  B, const char * FORMAT)
+>>>>>>> config
      This function writes the elements of the block B line-by-line to
      the stream STREAM using the format specifier FORMAT, which should
      be one of the `%g', `%e' or `%f' formats for floating point
@@ -5436,7 +6497,11 @@ less benefit in disabling range checking here than for inline functions.
 
  -- Function: double * gsl_vector_ptr (gsl_vector * V, size_t I)
  -- Function: const double * gsl_vector_const_ptr (const gsl_vector *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           V, size_t I)
+=======
+	  V, size_t I)
+>>>>>>> config
      These functions return a pointer to the I-th element of a vector
      V.  If I lies outside the allowed range of 0 to N-1 then the error
      handler is invoked and a null pointer is returned.  Inline
@@ -5476,7 +6541,11 @@ The library provides functions for reading and writing vectors to a file
 as binary data or formatted text.
 
  -- Function: int gsl_vector_fwrite (FILE * STREAM, const gsl_vector *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           V)
+=======
+	  V)
+>>>>>>> config
      This function writes the elements of the vector V to the stream
      STREAM in binary format.  The return value is 0 for success and
      `GSL_EFAILED' if there was a problem writing to the file.  Since
@@ -5493,7 +6562,11 @@ as binary data or formatted text.
      on the same architecture.
 
  -- Function: int gsl_vector_fprintf (FILE * STREAM, const gsl_vector *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           V, const char * FORMAT)
+=======
+	  V, const char * FORMAT)
+>>>>>>> config
      This function writes the elements of the vector V line-by-line to
      the stream STREAM using the format specifier FORMAT, which should
      be one of the `%g', `%e' or `%f' formats for floating point
@@ -5535,16 +6608,26 @@ the pointer as `&'VIEW`.vector', and never storing this value in
 another variable.
 
  -- Function: gsl_vector_view gsl_vector_subvector (gsl_vector * V,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           size_t OFFSET, size_t N)
  -- Function: gsl_vector_const_view gsl_vector_const_subvector (const
           gsl_vector * V, size_t OFFSET, size_t N)
+=======
+	  size_t OFFSET, size_t N)
+ -- Function: gsl_vector_const_view gsl_vector_const_subvector (const
+	  gsl_vector * V, size_t OFFSET, size_t N)
+>>>>>>> config
      These functions return a vector view of a subvector of another
      vector V.  The start of the new vector is offset by OFFSET elements
      from the start of the original vector.  The new vector has N
      elements.  Mathematically, the I-th element of the new vector V'
      is given by,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           v'(i) = v->data[(offset + i)*v->stride]
+=======
+	  v'(i) = v->data[(offset + i)*v->stride]
+>>>>>>> config
 
      where the index I runs from 0 to `n-1'.
 
@@ -5565,10 +6648,17 @@ another variable.
      declared `const'.
 
  -- Function: gsl_vector_view gsl_vector_subvector_with_stride
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           (gsl_vector * V, size_t OFFSET, size_t STRIDE, size_t N)
  -- Function: gsl_vector_const_view
 gsl_vector_const_subvector_with_stride (const gsl_vector * V, size_t
           OFFSET, size_t STRIDE, size_t N)
+=======
+	  (gsl_vector * V, size_t OFFSET, size_t STRIDE, size_t N)
+ -- Function: gsl_vector_const_view
+gsl_vector_const_subvector_with_stride (const gsl_vector * V, size_t
+	  OFFSET, size_t STRIDE, size_t N)
+>>>>>>> config
      These functions return a vector view of a subvector of another
      vector V with an additional stride argument. The subvector is
      formed in the same way as for `gsl_vector_subvector' but the new
@@ -5576,7 +6666,11 @@ gsl_vector_const_subvector_with_stride (const gsl_vector * V, size_t
      to the next in the original vector.  Mathematically, the I-th
      element of the new vector V' is given by,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           v'(i) = v->data[(offset + i*stride)*v->stride]
+=======
+	  v'(i) = v->data[(offset + i*stride)*v->stride]
+>>>>>>> config
 
      where the index I runs from 0 to `n-1'.
 
@@ -5585,27 +6679,45 @@ gsl_vector_const_subvector_with_stride (const gsl_vector * V, size_t
      will zero the even elements of the vector `v' of length `n', while
      leaving the odd elements untouched,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_vector_view v_even
             = gsl_vector_subvector_with_stride (v, 0, 2, n/2);
           gsl_vector_set_zero (&v_even.vector);
+=======
+	  gsl_vector_view v_even
+	    = gsl_vector_subvector_with_stride (v, 0, 2, n/2);
+	  gsl_vector_set_zero (&v_even.vector);
+>>>>>>> config
 
      A vector view can be passed to any subroutine which takes a vector
      argument just as a directly allocated vector would be, using
      `&'VIEW`.vector'.  For example, the following code computes the
      norm of the odd elements of `v' using the BLAS routine DNRM2,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_vector_view v_odd
             = gsl_vector_subvector_with_stride (v, 1, 2, n/2);
           double r = gsl_blas_dnrm2 (&v_odd.vector);
+=======
+	  gsl_vector_view v_odd
+	    = gsl_vector_subvector_with_stride (v, 1, 2, n/2);
+	  double r = gsl_blas_dnrm2 (&v_odd.vector);
+>>>>>>> config
 
      The function `gsl_vector_const_subvector_with_stride' is equivalent
      to `gsl_vector_subvector_with_stride' but can be used for vectors
      which are declared `const'.
 
  -- Function: gsl_vector_view gsl_vector_complex_real
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           (gsl_vector_complex * V)
  -- Function: gsl_vector_const_view gsl_vector_complex_const_real
           (const gsl_vector_complex * V)
+=======
+	  (gsl_vector_complex * V)
+ -- Function: gsl_vector_const_view gsl_vector_complex_const_real
+	  (const gsl_vector_complex * V)
+>>>>>>> config
      These functions return a vector view of the real parts of the
      complex vector V.
 
@@ -5614,9 +6726,15 @@ gsl_vector_const_subvector_with_stride (const gsl_vector * V, size_t
      declared `const'.
 
  -- Function: gsl_vector_view gsl_vector_complex_imag
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           (gsl_vector_complex * V)
  -- Function: gsl_vector_const_view gsl_vector_complex_const_imag
           (const gsl_vector_complex * V)
+=======
+	  (gsl_vector_complex * V)
+ -- Function: gsl_vector_const_view gsl_vector_complex_const_imag
+	  (const gsl_vector_complex * V)
+>>>>>>> config
      These functions return a vector view of the imaginary parts of the
      complex vector V.
 
@@ -5625,14 +6743,24 @@ gsl_vector_const_subvector_with_stride (const gsl_vector * V, size_t
      declared `const'.
 
  -- Function: gsl_vector_view gsl_vector_view_array (double * BASE,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           size_t N)
  -- Function: gsl_vector_const_view gsl_vector_const_view_array (const
           double * BASE, size_t N)
+=======
+	  size_t N)
+ -- Function: gsl_vector_const_view gsl_vector_const_view_array (const
+	  double * BASE, size_t N)
+>>>>>>> config
      These functions return a vector view of an array.  The start of
      the new vector is given by BASE and has N elements.
      Mathematically, the I-th element of the new vector V' is given by,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           v'(i) = base[i]
+=======
+	  v'(i) = base[i]
+>>>>>>> config
 
      where the index I runs from 0 to `n-1'.
 
@@ -5648,10 +6776,17 @@ gsl_vector_const_subvector_with_stride (const gsl_vector * V, size_t
      declared `const'.
 
  -- Function: gsl_vector_view gsl_vector_view_array_with_stride (double
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           * BASE, size_t STRIDE, size_t N)
  -- Function: gsl_vector_const_view
 gsl_vector_const_view_array_with_stride (const double * BASE, size_t
           STRIDE, size_t N)
+=======
+	  * BASE, size_t STRIDE, size_t N)
+ -- Function: gsl_vector_const_view
+gsl_vector_const_view_array_with_stride (const double * BASE, size_t
+	  STRIDE, size_t N)
+>>>>>>> config
      These functions return a vector view of an array BASE with an
      additional stride argument. The subvector is formed in the same
      way as for `gsl_vector_view_array' but the new vector has N
@@ -5659,7 +6794,11 @@ gsl_vector_const_view_array_with_stride (const double * BASE, size_t
      in the original array.  Mathematically, the I-th element of the new
      vector V' is given by,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           v'(i) = base[i*stride]
+=======
+	  v'(i) = base[i*stride]
+>>>>>>> config
 
      where the index I runs from 0 to `n-1'.
 
@@ -5685,7 +6824,11 @@ do not require the full BLAS code.  The following functions fall into
 this category.
 
  -- Function: int gsl_vector_memcpy (gsl_vector * DEST, const
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_vector * SRC)
+=======
+	  gsl_vector * SRC)
+>>>>>>> config
      This function copies the elements of the vector SRC into the
      vector DEST.  The two vectors must have the same length.
 
@@ -5703,7 +6846,11 @@ The following function can be used to exchange, or permute, the elements
 of a vector.
 
  -- Function: int gsl_vector_swap_elements (gsl_vector * V, size_t I,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           size_t J)
+=======
+	  size_t J)
+>>>>>>> config
      This function exchanges the I-th and J-th elements of the vector V
      in-place.
 
@@ -5741,7 +6888,11 @@ File: gsl-ref.info,  Node: Vector operations,  Next: Finding maximum and minimum
      factor X, a'_i = x a_i.
 
  -- Function: int gsl_vector_add_constant (gsl_vector * A, const double
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           X)
+=======
+	  X)
+>>>>>>> config
      This function adds the constant value X to the elements of the
      vector A, a'_i = a_i + x.
 
@@ -5760,7 +6911,11 @@ The following operations are only defined for real vectors.
      This function returns the minimum value in the vector V.
 
  -- Function: void gsl_vector_minmax (const gsl_vector * V, double *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           MIN_OUT, double * MAX_OUT)
+=======
+	  MIN_OUT, double * MAX_OUT)
+>>>>>>> config
      This function returns the minimum and maximum values in the vector
      V, storing them in MIN_OUT and MAX_OUT.
 
@@ -5775,7 +6930,11 @@ The following operations are only defined for real vectors.
      index is returned.
 
  -- Function: void gsl_vector_minmax_index (const gsl_vector * V,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           size_t * IMIN, size_t * IMAX)
+=======
+	  size_t * IMIN, size_t * IMAX)
+>>>>>>> config
      This function returns the indices of the minimum and maximum
      values in the vector V, storing them in IMIN and IMAX. When there
      are several equal minimum or maximum elements then the lowest
@@ -5819,6 +6978,7 @@ using the functions `gsl_vector_alloc', `gsl_vector_set' and
        gsl_vector * v = gsl_vector_alloc (3);
 
        for (i = 0; i < 3; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          {
            gsl_vector_set (v, i, 1.23 + i);
          }
@@ -5827,6 +6987,16 @@ using the functions `gsl_vector_alloc', `gsl_vector_set' and
          {
            printf ("v_%d = %g\n", i, gsl_vector_get (v, i));
          }
+=======
+	 {
+	   gsl_vector_set (v, i, 1.23 + i);
+	 }
+
+       for (i = 0; i < 100; i++) /* OUT OF RANGE ERROR */
+	 {
+	   printf ("v_%d = %g\n", i, gsl_vector_get (v, i));
+	 }
+>>>>>>> config
 
        gsl_vector_free (v);
        return 0;
@@ -5856,6 +7026,7 @@ The next program shows how to write a vector to a file.
        gsl_vector * v = gsl_vector_alloc (100);
 
        for (i = 0; i < 100; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          {
            gsl_vector_set (v, i, 1.23 + i);
          }
@@ -5864,6 +7035,16 @@ The next program shows how to write a vector to a file.
           FILE * f = fopen ("test.dat", "w");
           gsl_vector_fprintf (f, v, "%.5g");
           fclose (f);
+=======
+	 {
+	   gsl_vector_set (v, i, 1.23 + i);
+	 }
+
+       {
+	  FILE * f = fopen ("test.dat", "w");
+	  gsl_vector_fprintf (f, v, "%.5g");
+	  fclose (f);
+>>>>>>> config
        }
 
        gsl_vector_free (v);
@@ -5885,6 +7066,7 @@ v)' as follows:
        gsl_vector * v = gsl_vector_alloc (10);
 
        {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           FILE * f = fopen ("test.dat", "r");
           gsl_vector_fscanf (f, v);
           fclose (f);
@@ -5894,6 +7076,17 @@ v)' as follows:
          {
            printf ("%g\n", gsl_vector_get(v, i));
          }
+=======
+	  FILE * f = fopen ("test.dat", "r");
+	  gsl_vector_fscanf (f, v);
+	  fclose (f);
+       }
+
+       for (i = 0; i < 10; i++)
+	 {
+	   printf ("%g\n", gsl_vector_get(v, i));
+	 }
+>>>>>>> config
 
        gsl_vector_free (v);
        return 0;
@@ -6027,23 +7220,37 @@ accessed by the function `gsl_matrix_get(m,i,j)' and
 where TDA is the physical row-length of the matrix.
 
  -- Function: double gsl_matrix_get (const gsl_matrix * M, size_t I,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           size_t J)
+=======
+	  size_t J)
+>>>>>>> config
      This function returns the (i,j)-th element of a matrix M.  If I or
      J lie outside the allowed range of 0 to N1-1 and 0 to N2-1 then
      the error handler is invoked and 0 is returned.  An inline version
      of this function is used when `HAVE_INLINE' is defined.
 
  -- Function: void gsl_matrix_set (gsl_matrix * M, size_t I, size_t J,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           double X)
+=======
+	  double X)
+>>>>>>> config
      This function sets the value of the (i,j)-th element of a matrix M
      to X.  If I or J lies outside the allowed range of 0 to N1-1 and 0
      to N2-1 then the error handler is invoked.  An inline version of
      this function is used when `HAVE_INLINE' is defined.
 
  -- Function: double * gsl_matrix_ptr (gsl_matrix * M, size_t I, size_t
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           J)
  -- Function: const double * gsl_matrix_const_ptr (const gsl_matrix *
           M, size_t I, size_t J)
+=======
+	  J)
+ -- Function: const double * gsl_matrix_const_ptr (const gsl_matrix *
+	  M, size_t I, size_t J)
+>>>>>>> config
      These functions return a pointer to the (i,j)-th element of a
      matrix M.  If I or J lie outside the allowed range of 0 to N1-1
      and 0 to N2-1 then the error handler is invoked and a null pointer
@@ -6078,7 +7285,11 @@ The library provides functions for reading and writing matrices to a
 file as binary data or formatted text.
 
  -- Function: int gsl_matrix_fwrite (FILE * STREAM, const gsl_matrix *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           M)
+=======
+	  M)
+>>>>>>> config
      This function writes the elements of the matrix M to the stream
      STREAM in binary format.  The return value is 0 for success and
      `GSL_EFAILED' if there was a problem writing to the file.  Since
@@ -6095,7 +7306,11 @@ file as binary data or formatted text.
      binary format on the same architecture.
 
  -- Function: int gsl_matrix_fprintf (FILE * STREAM, const gsl_matrix *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           M, const char * FORMAT)
+=======
+	  M, const char * FORMAT)
+>>>>>>> config
      This function writes the elements of the matrix M line-by-line to
      the stream STREAM using the format specifier FORMAT, which should
      be one of the `%g', `%e' or `%f' formats for floating point
@@ -6128,9 +7343,15 @@ also possible to create vector views of a matrix, such as row or column
 views.
 
  -- Function: gsl_matrix_view gsl_matrix_submatrix (gsl_matrix * M,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           size_t K1, size_t K2, size_t N1, size_t N2)
  -- Function: gsl_matrix_const_view gsl_matrix_const_submatrix (const
           gsl_matrix * M, size_t K1, size_t K2, size_t N1, size_t N2)
+=======
+	  size_t K1, size_t K2, size_t N1, size_t N2)
+ -- Function: gsl_matrix_const_view gsl_matrix_const_submatrix (const
+	  gsl_matrix * M, size_t K1, size_t K2, size_t N1, size_t N2)
+>>>>>>> config
      These functions return a matrix view of a submatrix of the matrix
      M.  The upper-left element of the submatrix is the element (K1,K2)
      of the original matrix.  The submatrix has N1 rows and N2 columns.
@@ -6138,7 +7359,11 @@ views.
      unchanged.  Mathematically, the (i,j)-th element of the new matrix
      is given by,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           m'(i,j) = m->data[(k1*m->tda + k2) + i*m->tda + j]
+=======
+	  m'(i,j) = m->data[(k1*m->tda + k2) + i*m->tda + j]
+>>>>>>> config
 
      where the index I runs from 0 to `n1-1' and the index J runs from
      0 to `n2-1'.
@@ -6160,15 +7385,25 @@ views.
      declared `const'.
 
  -- Function: gsl_matrix_view gsl_matrix_view_array (double * BASE,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           size_t N1, size_t N2)
  -- Function: gsl_matrix_const_view gsl_matrix_const_view_array (const
           double * BASE, size_t N1, size_t N2)
+=======
+	  size_t N1, size_t N2)
+ -- Function: gsl_matrix_const_view gsl_matrix_const_view_array (const
+	  double * BASE, size_t N1, size_t N2)
+>>>>>>> config
      These functions return a matrix view of the array BASE.  The
      matrix has N1 rows and N2 columns.  The physical number of columns
      in memory is also given by N2.  Mathematically, the (i,j)-th
      element of the new matrix is given by,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           m'(i,j) = base[i*n2 + j]
+=======
+	  m'(i,j) = base[i*n2 + j]
+>>>>>>> config
 
      where the index I runs from 0 to `n1-1' and the index J runs from
      0 to `n2-1'.
@@ -6184,10 +7419,17 @@ views.
      declared `const'.
 
  -- Function: gsl_matrix_view gsl_matrix_view_array_with_tda (double *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           BASE, size_t N1, size_t N2, size_t TDA)
  -- Function: gsl_matrix_const_view
           gsl_matrix_const_view_array_with_tda (const double * BASE,
           size_t N1, size_t N2, size_t TDA)
+=======
+	  BASE, size_t N1, size_t N2, size_t TDA)
+ -- Function: gsl_matrix_const_view
+	  gsl_matrix_const_view_array_with_tda (const double * BASE,
+	  size_t N1, size_t N2, size_t TDA)
+>>>>>>> config
      These functions return a matrix view of the array BASE with a
      physical number of columns TDA which may differ from the
      corresponding dimension of the matrix.  The matrix has N1 rows and
@@ -6195,7 +7437,11 @@ views.
      by TDA.  Mathematically, the (i,j)-th element of the new matrix is
      given by,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           m'(i,j) = base[i*tda + j]
+=======
+	  m'(i,j) = base[i*tda + j]
+>>>>>>> config
 
      where the index I runs from 0 to `n1-1' and the index J runs from
      0 to `n2-1'.
@@ -6211,15 +7457,25 @@ views.
      which are declared `const'.
 
  -- Function: gsl_matrix_view gsl_matrix_view_vector (gsl_vector * V,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           size_t N1, size_t N2)
  -- Function: gsl_matrix_const_view gsl_matrix_const_view_vector (const
           gsl_vector * V, size_t N1, size_t N2)
+=======
+	  size_t N1, size_t N2)
+ -- Function: gsl_matrix_const_view gsl_matrix_const_view_vector (const
+	  gsl_vector * V, size_t N1, size_t N2)
+>>>>>>> config
      These functions return a matrix view of the vector V.  The matrix
      has N1 rows and N2 columns. The vector must have unit stride. The
      physical number of columns in memory is also given by N2.
      Mathematically, the (i,j)-th element of the new matrix is given by,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           m'(i,j) = v->data[i*n2 + j]
+=======
+	  m'(i,j) = v->data[i*n2 + j]
+>>>>>>> config
 
      where the index I runs from 0 to `n1-1' and the index J runs from
      0 to `n2-1'.
@@ -6235,10 +7491,17 @@ views.
      declared `const'.
 
  -- Function: gsl_matrix_view gsl_matrix_view_vector_with_tda
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           (gsl_vector * V, size_t N1, size_t N2, size_t TDA)
  -- Function: gsl_matrix_const_view
 gsl_matrix_const_view_vector_with_tda (const gsl_vector * V, size_t N1,
           size_t N2, size_t TDA)
+=======
+	  (gsl_vector * V, size_t N1, size_t N2, size_t TDA)
+ -- Function: gsl_matrix_const_view
+gsl_matrix_const_view_vector_with_tda (const gsl_vector * V, size_t N1,
+	  size_t N2, size_t TDA)
+>>>>>>> config
      These functions return a matrix view of the vector V with a
      physical number of columns TDA which may differ from the
      corresponding matrix dimension.  The vector must have unit stride.
@@ -6246,7 +7509,11 @@ gsl_matrix_const_view_vector_with_tda (const gsl_vector * V, size_t N1,
      columns in memory is given by TDA.  Mathematically, the (i,j)-th
      element of the new matrix is given by,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           m'(i,j) = v->data[i*tda + j]
+=======
+	  m'(i,j) = v->data[i*tda + j]
+>>>>>>> config
 
      where the index I runs from 0 to `n1-1' and the index J runs from
      0 to `n2-1'.
@@ -6276,7 +7543,11 @@ block.
 
  -- Function: gsl_vector_view gsl_matrix_row (gsl_matrix * M, size_t I)
  -- Function: gsl_vector_const_view gsl_matrix_const_row (const
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_matrix * M, size_t I)
+=======
+	  gsl_matrix * M, size_t I)
+>>>>>>> config
      These functions return a vector view of the I-th row of the matrix
      M.  The `data' pointer of the new vector is set to null if I is
      out of range.
@@ -6286,9 +7557,15 @@ block.
      `const'.
 
  -- Function: gsl_vector_view gsl_matrix_column (gsl_matrix * M, size_t
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           J)
  -- Function: gsl_vector_const_view gsl_matrix_const_column (const
           gsl_matrix * M, size_t J)
+=======
+	  J)
+ -- Function: gsl_vector_const_view gsl_matrix_const_column (const
+	  gsl_matrix * M, size_t J)
+>>>>>>> config
      These functions return a vector view of the J-th column of the
      matrix M.  The `data' pointer of the new vector is set to null if
      J is out of range.
@@ -6298,9 +7575,15 @@ block.
      `const'.
 
  -- Function: gsl_vector_view gsl_matrix_subrow (gsl_matrix * M, size_t
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           I, size_t OFFSET, size_t N)
  -- Function: gsl_vector_const_view gsl_matrix_const_subrow (const
           gsl_matrix * M, size_t I, size_t OFFSET, size_t N)
+=======
+	  I, size_t OFFSET, size_t N)
+ -- Function: gsl_vector_const_view gsl_matrix_const_subrow (const
+	  gsl_matrix * M, size_t I, size_t OFFSET, size_t N)
+>>>>>>> config
      These functions return a vector view of the I-th row of the matrix
      M beginning at OFFSET elements past the first column and
      containing N elements. The `data' pointer of the new vector is set
@@ -6311,9 +7594,15 @@ block.
      `const'.
 
  -- Function: gsl_vector_view gsl_matrix_subcolumn (gsl_matrix * M,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           size_t J, size_t OFFSET, size_t N)
  -- Function: gsl_vector_const_view gsl_matrix_const_subcolumn (const
           gsl_matrix * M, size_t J, size_t OFFSET, size_t N)
+=======
+	  size_t J, size_t OFFSET, size_t N)
+ -- Function: gsl_vector_const_view gsl_matrix_const_subcolumn (const
+	  gsl_matrix * M, size_t J, size_t OFFSET, size_t N)
+>>>>>>> config
      These functions return a vector view of the J-th column of the
      matrix M beginning at OFFSET elements past the first row and
      containing N elements. The `data' pointer of the new vector is set
@@ -6325,7 +7614,11 @@ block.
 
  -- Function: gsl_vector_view gsl_matrix_diagonal (gsl_matrix * M)
  -- Function: gsl_vector_const_view gsl_matrix_const_diagonal (const
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_matrix * M)
+=======
+	  gsl_matrix * M)
+>>>>>>> config
      These functions return a vector view of the diagonal of the matrix
      M. The matrix M is not required to be square. For a rectangular
      matrix the length of the diagonal is the same as the smaller
@@ -6336,9 +7629,15 @@ block.
      declared `const'.
 
  -- Function: gsl_vector_view gsl_matrix_subdiagonal (gsl_matrix * M,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           size_t K)
  -- Function: gsl_vector_const_view gsl_matrix_const_subdiagonal (const
           gsl_matrix * M, size_t K)
+=======
+	  size_t K)
+ -- Function: gsl_vector_const_view gsl_matrix_const_subdiagonal (const
+	  gsl_matrix * M, size_t K)
+>>>>>>> config
      These functions return a vector view of the K-th subdiagonal of
      the matrix M. The matrix M is not required to be square.  The
      diagonal of the matrix corresponds to k = 0.
@@ -6348,9 +7647,15 @@ block.
      declared `const'.
 
  -- Function: gsl_vector_view gsl_matrix_superdiagonal (gsl_matrix * M,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           size_t K)
  -- Function: gsl_vector_const_view gsl_matrix_const_superdiagonal
           (const gsl_matrix * M, size_t K)
+=======
+	  size_t K)
+ -- Function: gsl_vector_const_view gsl_matrix_const_superdiagonal
+	  (const gsl_matrix * M, size_t K)
+>>>>>>> config
      These functions return a vector view of the K-th superdiagonal of
      the matrix M. The matrix M is not required to be square. The
      diagonal of the matrix corresponds to k = 0.
@@ -6366,7 +7671,11 @@ File: gsl-ref.info,  Node: Copying matrices,  Next: Copying rows and columns,  P
 ----------------------
 
  -- Function: int gsl_matrix_memcpy (gsl_matrix * DEST, const
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_matrix * SRC)
+=======
+	  gsl_matrix * SRC)
+>>>>>>> config
      This function copies the elements of the matrix SRC into the
      matrix DEST.  The two matrices must have the same size.
 
@@ -6388,25 +7697,41 @@ same effect can be achieved with more generality using
 `gsl_vector_memcpy' with vector views of rows and columns.
 
  -- Function: int gsl_matrix_get_row (gsl_vector * V, const gsl_matrix
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           * M, size_t I)
+=======
+	  * M, size_t I)
+>>>>>>> config
      This function copies the elements of the I-th row of the matrix M
      into the vector V.  The length of the vector must be the same as
      the length of the row.
 
  -- Function: int gsl_matrix_get_col (gsl_vector * V, const gsl_matrix
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           * M, size_t J)
+=======
+	  * M, size_t J)
+>>>>>>> config
      This function copies the elements of the J-th column of the matrix
      M into the vector V.  The length of the vector must be the same as
      the length of the column.
 
  -- Function: int gsl_matrix_set_row (gsl_matrix * M, size_t I, const
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_vector * V)
+=======
+	  gsl_vector * V)
+>>>>>>> config
      This function copies the elements of the vector V into the I-th
      row of the matrix M.  The length of the vector must be the same as
      the length of the row.
 
  -- Function: int gsl_matrix_set_col (gsl_matrix * M, size_t J, const
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_vector * V)
+=======
+	  gsl_vector * V)
+>>>>>>> config
      This function copies the elements of the vector V into the J-th
      column of the matrix M.  The length of the vector must be the same
      as the length of the column.
@@ -6421,23 +7746,39 @@ The following functions can be used to exchange the rows and columns of
 a matrix.
 
  -- Function: int gsl_matrix_swap_rows (gsl_matrix * M, size_t I,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           size_t J)
+=======
+	  size_t J)
+>>>>>>> config
      This function exchanges the I-th and J-th rows of the matrix M
      in-place.
 
  -- Function: int gsl_matrix_swap_columns (gsl_matrix * M, size_t I,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           size_t J)
+=======
+	  size_t J)
+>>>>>>> config
      This function exchanges the I-th and J-th columns of the matrix M
      in-place.
 
  -- Function: int gsl_matrix_swap_rowcol (gsl_matrix * M, size_t I,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           size_t J)
+=======
+	  size_t J)
+>>>>>>> config
      This function exchanges the I-th row and J-th column of the matrix
      M in-place.  The matrix must be square for this operation to be
      possible.
 
  -- Function: int gsl_matrix_transpose_memcpy (gsl_matrix * DEST, const
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_matrix * SRC)
+=======
+	  gsl_matrix * SRC)
+>>>>>>> config
      This function makes the matrix DEST the transpose of the matrix
      SRC by copying the elements of SRC into DEST.  This function works
      for all matrices provided that the dimensions of the matrix DEST
@@ -6467,13 +7808,21 @@ The following operations are defined for real and complex matrices.
      the same dimensions.
 
  -- Function: int gsl_matrix_mul_elements (gsl_matrix * A, const
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_matrix * B)
+=======
+	  gsl_matrix * B)
+>>>>>>> config
      This function multiplies the elements of matrix A by the elements
      of matrix B, a'(i,j) = a(i,j) * b(i,j). The two matrices must have
      the same dimensions.
 
  -- Function: int gsl_matrix_div_elements (gsl_matrix * A, const
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_matrix * B)
+=======
+	  gsl_matrix * B)
+>>>>>>> config
      This function divides the elements of matrix A by the elements of
      matrix B, a'(i,j) = a(i,j) / b(i,j). The two matrices must have the
      same dimensions.
@@ -6483,7 +7832,11 @@ The following operations are defined for real and complex matrices.
      factor X, a'(i,j) = x a(i,j).
 
  -- Function: int gsl_matrix_add_constant (gsl_matrix * A, const double
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           X)
+=======
+	  X)
+>>>>>>> config
      This function adds the constant value X to the elements of the
      matrix A, a'(i,j) = a(i,j) + x.
 
@@ -6502,26 +7855,42 @@ The following operations are only defined for real matrices.
      This function returns the minimum value in the matrix M.
 
  -- Function: void gsl_matrix_minmax (const gsl_matrix * M, double *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           MIN_OUT, double * MAX_OUT)
+=======
+	  MIN_OUT, double * MAX_OUT)
+>>>>>>> config
      This function returns the minimum and maximum values in the matrix
      M, storing them in MIN_OUT and MAX_OUT.
 
  -- Function: void gsl_matrix_max_index (const gsl_matrix * M, size_t *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           IMAX, size_t * JMAX)
+=======
+	  IMAX, size_t * JMAX)
+>>>>>>> config
      This function returns the indices of the maximum value in the
      matrix M, storing them in IMAX and JMAX.  When there are several
      equal maximum elements then the first element found is returned,
      searching in row-major order.
 
  -- Function: void gsl_matrix_min_index (const gsl_matrix * M, size_t *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           IMIN, size_t * JMIN)
+=======
+	  IMIN, size_t * JMIN)
+>>>>>>> config
      This function returns the indices of the minimum value in the
      matrix M, storing them in IMIN and JMIN.  When there are several
      equal minimum elements then the first element found is returned,
      searching in row-major order.
 
  -- Function: void gsl_matrix_minmax_index (const gsl_matrix * M,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           size_t * IMIN, size_t * JMIN, size_t * IMAX, size_t * JMAX)
+=======
+	  size_t * IMIN, size_t * JMIN, size_t * IMAX, size_t * JMAX)
+>>>>>>> config
      This function returns the indices of the minimum and maximum
      values in the matrix M, storing them in (IMIN,JMIN) and
      (IMAX,JMAX). When there are several equal minimum or maximum
@@ -6568,6 +7937,7 @@ matrix using the functions `gsl_matrix_alloc', `gsl_matrix_set' and
        gsl_matrix * m = gsl_matrix_alloc (10, 3);
 
        for (i = 0; i < 10; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          for (j = 0; j < 3; j++)
            gsl_matrix_set (m, i, j, 0.23 + 100*i + j);
 
@@ -6575,6 +7945,15 @@ matrix using the functions `gsl_matrix_alloc', `gsl_matrix_set' and
          for (j = 0; j < 3; j++)
            printf ("m(%d,%d) = %g\n", i, j,
                    gsl_matrix_get (m, i, j));
+=======
+	 for (j = 0; j < 3; j++)
+	   gsl_matrix_set (m, i, j, 0.23 + 100*i + j);
+
+       for (i = 0; i < 100; i++)  /* OUT OF RANGE ERROR */
+	 for (j = 0; j < 3; j++)
+	   printf ("m(%d,%d) = %g\n", i, j,
+		   gsl_matrix_get (m, i, j));
+>>>>>>> config
 
        gsl_matrix_free (m);
 
@@ -6611,6 +7990,7 @@ The next program shows how to write a matrix to a file.
        gsl_matrix * a = gsl_matrix_alloc (100, 100);
 
        for (i = 0; i < 100; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          for (j = 0; j < 100; j++)
            gsl_matrix_set (m, i, j, 0.23 + i + j);
 
@@ -6633,6 +8013,30 @@ The next program shows how to write a matrix to a file.
              double aij = gsl_matrix_get (a, i, j);
              if (mij != aij) k++;
            }
+=======
+	 for (j = 0; j < 100; j++)
+	   gsl_matrix_set (m, i, j, 0.23 + i + j);
+
+       {
+	  FILE * f = fopen ("test.dat", "wb");
+	  gsl_matrix_fwrite (f, m);
+	  fclose (f);
+       }
+
+       {
+	  FILE * f = fopen ("test.dat", "rb");
+	  gsl_matrix_fread (f, a);
+	  fclose (f);
+       }
+
+       for (i = 0; i < 100; i++)
+	 for (j = 0; j < 100; j++)
+	   {
+	     double mij = gsl_matrix_get (m, i, j);
+	     double aij = gsl_matrix_get (a, i, j);
+	     if (mij != aij) k++;
+	   }
+>>>>>>> config
 
        gsl_matrix_free (m);
        gsl_matrix_free (a);
@@ -6662,6 +8066,7 @@ program computes the column norms of a matrix.
        gsl_matrix *m = gsl_matrix_alloc (10, 10);
 
        for (i = 0; i < 10; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          for (j = 0; j < 10; j++)
            gsl_matrix_set (m, i, j, sin (i) + cos (j));
 
@@ -6674,6 +8079,20 @@ program computes the column norms of a matrix.
 
            printf ("matrix column %d, norm = %g\n", j, d);
          }
+=======
+	 for (j = 0; j < 10; j++)
+	   gsl_matrix_set (m, i, j, sin (i) + cos (j));
+
+       for (j = 0; j < 10; j++)
+	 {
+	   gsl_vector_view column = gsl_matrix_column (m, j);
+	   double d;
+
+	   d = gsl_blas_dnrm2 (&column.vector);
+
+	   printf ("matrix column %d, norm = %g\n", j, d);
+	 }
+>>>>>>> config
 
        gsl_matrix_free (m);
 
@@ -6699,7 +8118,11 @@ The results can be confirmed using GNU OCTAVE,
      $ octave
      GNU Octave, version 2.0.16.92
      octave> m = sin(0:9)' * ones(1,10)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                     + ones(10,1) * cos(0:9);
+=======
+		    + ones(10,1) * cos(0:9);
+>>>>>>> config
      octave> sqrt(sum(m.^2))
      ans =
        4.3146  3.1205  2.1932  3.2611  2.5342  2.5728
@@ -6798,7 +8221,11 @@ File: gsl-ref.info,  Node: Permutation allocation,  Next: Accessing permutation 
      This function frees all the memory used by the permutation P.
 
  -- Function: int gsl_permutation_memcpy (gsl_permutation * DEST, const
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_permutation * SRC)
+=======
+	  gsl_permutation * SRC)
+>>>>>>> config
      This function copies the elements of the permutation SRC into the
      permutation DEST.  The two permutations must have the same size.
 
@@ -6812,14 +8239,22 @@ The following functions can be used to access and manipulate
 permutations.
 
  -- Function: size_t gsl_permutation_get (const gsl_permutation * P,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           const size_t I)
+=======
+	  const size_t I)
+>>>>>>> config
      This function returns the value of the I-th element of the
      permutation P.  If I lies outside the allowed range of 0 to N-1
      then the error handler is invoked and 0 is returned.  An inline
      version of this function is used when `HAVE_INLINE' is defined.
 
  -- Function: int gsl_permutation_swap (gsl_permutation * P, const
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           size_t I, const size_t J)
+=======
+	  size_t I, const size_t J)
+>>>>>>> config
      This function exchanges the I-th and J-th elements of the
      permutation P.
 
@@ -6851,7 +8286,11 @@ File: gsl-ref.info,  Node: Permutation functions,  Next: Applying Permutations, 
      This function reverses the elements of the permutation P.
 
  -- Function: int gsl_permutation_inverse (gsl_permutation * INV, const
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_permutation * P)
+=======
+	  gsl_permutation * P)
+>>>>>>> config
      This function computes the inverse of the permutation P, storing
      the result in INV.
 
@@ -6876,17 +8315,29 @@ File: gsl-ref.info,  Node: Applying Permutations,  Next: Reading and writing per
 =========================
 
  -- Function: int gsl_permute (const size_t * P, double * DATA, size_t
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           STRIDE, size_t N)
+=======
+	  STRIDE, size_t N)
+>>>>>>> config
      This function applies the permutation P to the array DATA of size
      N with stride STRIDE.
 
  -- Function: int gsl_permute_inverse (const size_t * P, double * DATA,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           size_t STRIDE, size_t N)
+=======
+	  size_t STRIDE, size_t N)
+>>>>>>> config
      This function applies the inverse of the permutation P to the
      array DATA of size N with stride STRIDE.
 
  -- Function: int gsl_permute_vector (const gsl_permutation * P,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_vector * V)
+=======
+	  gsl_vector * V)
+>>>>>>> config
      This function applies the permutation P to the elements of the
      vector V, considered as a row-vector acted on by a permutation
      matrix from the right, v' = v P.  The j-th column of the
@@ -6895,7 +8346,11 @@ File: gsl-ref.info,  Node: Applying Permutations,  Next: Reading and writing per
      length.
 
  -- Function: int gsl_permute_vector_inverse (const gsl_permutation *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           P, gsl_vector * V)
+=======
+	  P, gsl_vector * V)
+>>>>>>> config
      This function applies the inverse of the permutation P to the
      elements of the vector V, considered as a row-vector acted on by
      an inverse permutation matrix from the right, v' = v P^T.  Note
@@ -6905,7 +8360,11 @@ File: gsl-ref.info,  Node: Applying Permutations,  Next: Reading and writing per
      the vector V must have the same length.
 
  -- Function: int gsl_permutation_mul (gsl_permutation * P, const
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_permutation * PA, const gsl_permutation * PB)
+=======
+	  gsl_permutation * PA, const gsl_permutation * PB)
+>>>>>>> config
      This function combines the two permutations PA and PB into a
      single permutation P, where P = PA * PB.  The permutation P is
      equivalent to applying PB first and then PA.
@@ -6920,7 +8379,11 @@ The library provides functions for reading and writing permutations to a
 file as binary data or formatted text.
 
  -- Function: int gsl_permutation_fwrite (FILE * STREAM, const
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_permutation * P)
+=======
+	  gsl_permutation * P)
+>>>>>>> config
      This function writes the elements of the permutation P to the
      stream STREAM in binary format.  The function returns
      `GSL_EFAILED' if there was a problem writing to the file.  Since
@@ -6928,7 +8391,11 @@ file as binary data or formatted text.
      portable between different architectures.
 
  -- Function: int gsl_permutation_fread (FILE * STREAM, gsl_permutation
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           * P)
+=======
+	  * P)
+>>>>>>> config
      This function reads into the permutation P from the open stream
      STREAM in binary format.  The permutation P must be preallocated
      with the correct length since the function uses the size of P to
@@ -6938,7 +8405,11 @@ file as binary data or formatted text.
      on the same architecture.
 
  -- Function: int gsl_permutation_fprintf (FILE * STREAM, const
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_permutation * P, const char * FORMAT)
+=======
+	  gsl_permutation * P, const char * FORMAT)
+>>>>>>> config
      This function writes the elements of the permutation P
      line-by-line to the stream STREAM using the format specifier
      FORMAT, which should be suitable for a type of SIZE_T.  In ISO C99
@@ -6947,7 +8418,11 @@ file as binary data or formatted text.
      was a problem writing to the file.
 
  -- Function: int gsl_permutation_fscanf (FILE * STREAM,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_permutation * P)
+=======
+	  gsl_permutation * P)
+>>>>>>> config
      This function reads formatted data from the stream STREAM into the
      permutation P.  The permutation P must be preallocated with the
      correct length since the function uses the size of P to determine
@@ -7006,17 +8481,29 @@ the permutation (2 4 3 0 1) would become (1 4 0 2 3).  This mapping has
 many applications in the theory of permutations.
 
  -- Function: int gsl_permutation_linear_to_canonical (gsl_permutation
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           * Q, const gsl_permutation * P)
+=======
+	  * Q, const gsl_permutation * P)
+>>>>>>> config
      This function computes the canonical form of the permutation P and
      stores it in the output argument Q.
 
  -- Function: int gsl_permutation_canonical_to_linear (gsl_permutation
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           * P, const gsl_permutation * Q)
+=======
+	  * P, const gsl_permutation * Q)
+>>>>>>> config
      This function converts a permutation Q in canonical form back into
      linear form storing it in the output argument P.
 
  -- Function: size_t gsl_permutation_inversions (const gsl_permutation
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           * P)
+=======
+	  * P)
+>>>>>>> config
      This function counts the number of inversions in the permutation
      P.  An inversion is any pair of elements that are not in order.
      For example, the permutation 2031 has three inversions,
@@ -7024,12 +8511,20 @@ many applications in the theory of permutations.
      permutation has no inversions.
 
  -- Function: size_t gsl_permutation_linear_cycles (const
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_permutation * P)
+=======
+	  gsl_permutation * P)
+>>>>>>> config
      This function counts the number of cycles in the permutation P,
      given in linear form.
 
  -- Function: size_t gsl_permutation_canonical_cycles (const
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_permutation * Q)
+=======
+	  gsl_permutation * Q)
+>>>>>>> config
      This function counts the number of cycles in the permutation Q,
      given in canonical form.
 
@@ -7108,10 +8603,17 @@ order permutations, starting from the identity,
        gsl_permutation_init (p);
 
        do
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
            gsl_permutation_fprintf (stdout, p, " %u");
            printf ("\n");
         }
+=======
+	{
+	   gsl_permutation_fprintf (stdout, p, " %u");
+	   printf ("\n");
+	}
+>>>>>>> config
        while (gsl_permutation_next(p) == GSL_SUCCESS);
 
        gsl_permutation_free (p);
@@ -7206,7 +8708,11 @@ File: gsl-ref.info,  Node: Combination allocation,  Next: Accessing combination 
 ===========================
 
  -- Function: gsl_combination * gsl_combination_alloc (size_t N, size_t
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           K)
+=======
+	  K)
+>>>>>>> config
      This function allocates memory for a new combination with
      parameters N, K.  The combination is not initialized and its
      elements are undefined.  Use the function `gsl_combination_calloc'
@@ -7215,7 +8721,11 @@ File: gsl-ref.info,  Node: Combination allocation,  Next: Accessing combination 
      insufficient memory is available to create the combination.
 
  -- Function: gsl_combination * gsl_combination_calloc (size_t N,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           size_t K)
+=======
+	  size_t K)
+>>>>>>> config
      This function allocates memory for a new combination with
      parameters N, K and initializes it to the lexicographically first
      combination. A null pointer is returned if insufficient memory is
@@ -7233,7 +8743,11 @@ File: gsl-ref.info,  Node: Combination allocation,  Next: Accessing combination 
      This function frees all the memory used by the combination C.
 
  -- Function: int gsl_combination_memcpy (gsl_combination * DEST, const
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_combination * SRC)
+=======
+	  gsl_combination * SRC)
+>>>>>>> config
      This function copies the elements of the combination SRC into the
      combination DEST.  The two combinations must have the same size.
 
@@ -7247,7 +8761,11 @@ The following function can be used to access the elements of a
 combination.
 
  -- Function: size_t gsl_combination_get (const gsl_combination * C,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           const size_t I)
+=======
+	  const size_t I)
+>>>>>>> config
      This function returns the value of the I-th element of the
      combination C.  If I lies outside the allowed range of 0 to K-1
      then the error handler is invoked and 0 is returned.  An inline
@@ -7305,7 +8823,11 @@ The library provides functions for reading and writing combinations to a
 file as binary data or formatted text.
 
  -- Function: int gsl_combination_fwrite (FILE * STREAM, const
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_combination * C)
+=======
+	  gsl_combination * C)
+>>>>>>> config
      This function writes the elements of the combination C to the
      stream STREAM in binary format.  The function returns
      `GSL_EFAILED' if there was a problem writing to the file.  Since
@@ -7313,7 +8835,11 @@ file as binary data or formatted text.
      portable between different architectures.
 
  -- Function: int gsl_combination_fread (FILE * STREAM, gsl_combination
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           * C)
+=======
+	  * C)
+>>>>>>> config
      This function reads elements from the open stream STREAM into the
      combination C in binary format.  The combination C must be
      preallocated with correct values of n and k since the function
@@ -7323,7 +8849,11 @@ file as binary data or formatted text.
      binary format on the same architecture.
 
  -- Function: int gsl_combination_fprintf (FILE * STREAM, const
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_combination * C, const char * FORMAT)
+=======
+	  gsl_combination * C, const char * FORMAT)
+>>>>>>> config
      This function writes the elements of the combination C
      line-by-line to the stream STREAM using the format specifier
      FORMAT, which should be suitable for a type of SIZE_T.  In ISO C99
@@ -7332,7 +8862,11 @@ file as binary data or formatted text.
      was a problem writing to the file.
 
  -- Function: int gsl_combination_fscanf (FILE * STREAM,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_combination * C)
+=======
+	  gsl_combination * C)
+>>>>>>> config
      This function reads formatted data from the stream STREAM into the
      combination C.  The combination C must be preallocated with
      correct values of n and k since the function uses the size of C to
@@ -7365,6 +8899,7 @@ lexicographically.
 
        printf ("All subsets of {0,1,2,3} by size:\n") ;
        for (i = 0; i <= 4; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          {
            c = gsl_combination_calloc (4, i);
            do
@@ -7376,6 +8911,19 @@ lexicographically.
            while (gsl_combination_next (c) == GSL_SUCCESS);
            gsl_combination_free (c);
          }
+=======
+	 {
+	   c = gsl_combination_calloc (4, i);
+	   do
+	     {
+	       printf ("{");
+	       gsl_combination_fprintf (stdout, c, " %u");
+	       printf (" }\n");
+	     }
+	   while (gsl_combination_next (c) == GSL_SUCCESS);
+	   gsl_combination_free (c);
+	 }
+>>>>>>> config
 
        return 0;
      }
@@ -7415,5 +8963,8 @@ Further information on combinations can be found in,
      Donald L. Kreher, Douglas R. Stinson, `Combinatorial Algorithms:
      Generation, Enumeration and Search', 1998, CRC Press LLC, ISBN
      084933988X
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
+=======
+>>>>>>> config

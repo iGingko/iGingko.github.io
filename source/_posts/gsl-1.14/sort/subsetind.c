@@ -1,4 +1,8 @@
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* sort/subsetind.c  
+=======
+/* sort/subsetind.c
+>>>>>>> config
  *
  * Copyright (C) 2001, 2007 Brian Gough
  *

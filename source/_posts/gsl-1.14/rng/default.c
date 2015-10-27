@@ -1,17 +1,31 @@
 /* rng/default.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -42,6 +56,7 @@ gsl_rng_env_setup (void)
       /* check GSL_RNG_TYPE against the names of all the generators */
 
       for (t = t0; *t != 0; t++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           if (strcmp (p, (*t)->name) == 0)
             {
@@ -71,6 +86,37 @@ gsl_rng_env_setup (void)
 
           GSL_ERROR_VAL ("unknown generator", GSL_EINVAL, 0);
         }
+=======
+	{
+	  if (strcmp (p, (*t)->name) == 0)
+	    {
+	      gsl_rng_default = *t;
+	      break;
+	    }
+	}
+
+      if (gsl_rng_default == 0)
+	{
+	  int i = 0;
+
+	  fprintf (stderr, "GSL_RNG_TYPE=%s not recognized\n", p);
+	  fprintf (stderr, "Valid generator types are:\n");
+
+	  for (t = t0; *t != 0; t++)
+	    {
+	      fprintf (stderr, " %18s", (*t)->name);
+
+	      if ((++i) % 4 == 0)
+		{
+		  fputc ('\n', stderr);
+		}
+	    }
+
+	  fputc ('\n', stderr);
+
+	  GSL_ERROR_VAL ("unknown generator", GSL_EINVAL, 0);
+	}
+>>>>>>> config
 
       fprintf (stderr, "GSL_RNG_TYPE=%s\n", gsl_rng_default->name);
     }

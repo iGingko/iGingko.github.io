@@ -1,17 +1,31 @@
 /* linalg/householder.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2004, 2007, 2010 Gerard Jungman, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2004, 2007, 2010 Gerard Jungman, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -39,6 +53,7 @@ gsl_linalg_householder_transform (gsl_vector * v)
       return 0.0; /* tau = 0 */
     }
   else
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     { 
       double alpha, beta, tau ;
       
@@ -71,6 +86,40 @@ gsl_linalg_householder_transform (gsl_vector * v)
           }
       }
       
+=======
+    {
+      double alpha, beta, tau ;
+
+      gsl_vector_view x = gsl_vector_subvector (v, 1, n - 1) ;
+
+      double xnorm = gsl_blas_dnrm2 (&x.vector);
+
+      if (xnorm == 0)
+	{
+	  return 0.0; /* tau = 0 */
+	}
+
+      alpha = gsl_vector_get (v, 0) ;
+      beta = - (alpha >= 0.0 ? +1.0 : -1.0) * hypot(alpha, xnorm) ;
+      tau = (beta - alpha) / beta ;
+
+      {
+	double s = (alpha - beta);
+
+	if (fabs(s) > GSL_DBL_MIN)
+	  {
+	    gsl_blas_dscal (1.0 / s, &x.vector);
+	    gsl_vector_set (v, 0, beta) ;
+	  }
+	else
+	  {
+	    gsl_blas_dscal (GSL_DBL_EPSILON / s, &x.vector);
+	    gsl_blas_dscal (1.0 / GSL_DBL_EPSILON, &x.vector);
+	    gsl_vector_set (v, 0, beta) ;
+	  }
+      }
+
+>>>>>>> config
       return tau;
     }
 }
@@ -93,6 +142,7 @@ gsl_linalg_householder_hm (double tau, const gsl_vector * v, gsl_matrix * A)
 
     for (j = 0; j < A->size2; j++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         double wj = 0.0;
         gsl_vector_view A1j = gsl_matrix_column(&A1.matrix, j);
         gsl_blas_ddot (&A1j.vector, &v1.vector, &wj);
@@ -104,11 +154,25 @@ gsl_linalg_householder_hm (double tau, const gsl_vector * v, gsl_matrix * A)
         }
 
         gsl_blas_daxpy (-tau * wj, &v1.vector, &A1j.vector);
+=======
+	double wj = 0.0;
+	gsl_vector_view A1j = gsl_matrix_column(&A1.matrix, j);
+	gsl_blas_ddot (&A1j.vector, &v1.vector, &wj);
+	wj += gsl_matrix_get(A,0,j);
+
+	{
+	  double A0j = gsl_matrix_get (A, 0, j);
+	  gsl_matrix_set (A, 0, j, A0j - tau *  wj);
+	}
+
+	gsl_blas_daxpy (-tau * wj, &v1.vector, &A1j.vector);
+>>>>>>> config
       }
   }
 #else
   {
     size_t i, j;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     for (j = 0; j < A->size2; j++)
       {
@@ -141,6 +205,40 @@ gsl_linalg_householder_hm (double tau, const gsl_vector * v, gsl_matrix * A)
   }
 #endif
     
+=======
+
+    for (j = 0; j < A->size2; j++)
+      {
+	/* Compute wj = Akj vk */
+
+	double wj = gsl_matrix_get(A,0,j);
+
+	for (i = 1; i < A->size1; i++)  /* note, computed for v(0) = 1 above */
+	  {
+	    wj += gsl_matrix_get(A,i,j) * gsl_vector_get(v,i);
+	  }
+
+	/* Aij = Aij - tau vi wj */
+
+	/* i = 0 */
+	{
+	  double A0j = gsl_matrix_get (A, 0, j);
+	  gsl_matrix_set (A, 0, j, A0j - tau *  wj);
+	}
+
+	/* i = 1 .. M-1 */
+
+	for (i = 1; i < A->size1; i++)
+	  {
+	    double Aij = gsl_matrix_get (A, i, j);
+	    double vi = gsl_vector_get (v, i);
+	    gsl_matrix_set (A, i, j, Aij - tau * vi * wj);
+	  }
+      }
+  }
+#endif
+
+>>>>>>> config
   return GSL_SUCCESS;
 }
 
@@ -163,6 +261,7 @@ gsl_linalg_householder_mh (double tau, const gsl_vector * v, gsl_matrix * A)
 
     for (i = 0; i < A->size1; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         double wi = 0.0;
         gsl_vector_view A1i = gsl_matrix_row(&A1.matrix, i);
         gsl_blas_ddot (&A1i.vector, &v1.vector, &wi);
@@ -174,11 +273,25 @@ gsl_linalg_householder_mh (double tau, const gsl_vector * v, gsl_matrix * A)
         }
         
         gsl_blas_daxpy(-tau * wi, &v1.vector, &A1i.vector);
+=======
+	double wi = 0.0;
+	gsl_vector_view A1i = gsl_matrix_row(&A1.matrix, i);
+	gsl_blas_ddot (&A1i.vector, &v1.vector, &wi);
+	wi += gsl_matrix_get(A,i,0);
+
+	{
+	  double Ai0 = gsl_matrix_get (A, i, 0);
+	  gsl_matrix_set (A, i, 0, Ai0 - tau *  wi);
+	}
+
+	gsl_blas_daxpy(-tau * wi, &v1.vector, &A1i.vector);
+>>>>>>> config
       }
   }
 #else
   {
     size_t i, j;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     for (i = 0; i < A->size1; i++)
       {
@@ -208,6 +321,37 @@ gsl_linalg_householder_mh (double tau, const gsl_vector * v, gsl_matrix * A)
   }
 #endif
     
+=======
+
+    for (i = 0; i < A->size1; i++)
+      {
+	double wi = gsl_matrix_get(A,i,0);
+
+	for (j = 1; j < A->size2; j++)  /* note, computed for v(0) = 1 above */
+	  {
+	    wi += gsl_matrix_get(A,i,j) * gsl_vector_get(v,j);
+	  }
+
+	/* j = 0 */
+
+	{
+	  double Ai0 = gsl_matrix_get (A, i, 0);
+	  gsl_matrix_set (A, i, 0, Ai0 - tau *  wi);
+	}
+
+	/* j = 1 .. N-1 */
+
+	for (j = 1; j < A->size2; j++)
+	  {
+	    double vj = gsl_vector_get (v, j);
+	    double Aij = gsl_matrix_get (A, i, j);
+	    gsl_matrix_set (A, i, j, Aij - tau * wi * vj);
+	  }
+      }
+  }
+#endif
+
+>>>>>>> config
   return GSL_SUCCESS;
 }
 
@@ -216,7 +360,11 @@ gsl_linalg_householder_hv (double tau, const gsl_vector * v, gsl_vector * w)
 {
   /* applies a householder transformation v to vector w */
   const size_t N = v->size;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  
+=======
+
+>>>>>>> config
   if (tau == 0)
     return GSL_SUCCESS ;
 
@@ -230,19 +378,34 @@ gsl_linalg_householder_hv (double tau, const gsl_vector * v, gsl_vector * w)
     gsl_vector_view w1 = gsl_vector_subvector(w, 1, N-1);
 
     gsl_blas_ddot (&v1.vector, &w1.vector, &d1);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     d = d0 + d1;
 
     /* compute w = w - tau (v) (v'w) */
   
+=======
+
+    d = d0 + d1;
+
+    /* compute w = w - tau (v) (v'w) */
+
+>>>>>>> config
     {
       double w0 = gsl_vector_get (w,0);
       gsl_vector_set (w, 0, w0 - tau * d);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     gsl_blas_daxpy (-tau * d, &v1.vector, &w1.vector);
   }
   
+=======
+
+    gsl_blas_daxpy (-tau * d, &v1.vector, &w1.vector);
+  }
+
+>>>>>>> config
   return GSL_SUCCESS;
 }
 
@@ -259,6 +422,7 @@ gsl_linalg_householder_hm1 (double tau, gsl_matrix * A)
       size_t i,j;
 
       gsl_matrix_set (A, 0, 0, 1.0);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
       for (j = 1; j < A->size2; j++)
         {
@@ -269,6 +433,18 @@ gsl_linalg_householder_hm1 (double tau, gsl_matrix * A)
         {
           gsl_matrix_set (A, i, 0, 0.0);
         }
+=======
+
+      for (j = 1; j < A->size2; j++)
+	{
+	  gsl_matrix_set (A, 0, j, 0.0);
+	}
+
+      for (i = 1; i < A->size1; i++)
+	{
+	  gsl_matrix_set (A, i, 0, 0.0);
+	}
+>>>>>>> config
 
       return GSL_SUCCESS;
     }
@@ -283,6 +459,7 @@ gsl_linalg_householder_hm1 (double tau, gsl_matrix * A)
 
     for (j = 1; j < A->size2; j++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         double wj = 0.0;   /* A0j * v0 */
         
         gsl_vector_view A1j = gsl_matrix_column(&A1.matrix, j);
@@ -297,11 +474,28 @@ gsl_linalg_householder_hm1 (double tau, gsl_matrix * A)
 
     gsl_blas_dscal(-tau, &v1.vector);
     
+=======
+	double wj = 0.0;   /* A0j * v0 */
+
+	gsl_vector_view A1j = gsl_matrix_column(&A1.matrix, j);
+	gsl_blas_ddot (&A1j.vector, &v1.vector, &wj);
+
+	/* A = A - tau v w' */
+
+	gsl_matrix_set (A, 0, j, - tau *  wj);
+
+	gsl_blas_daxpy(-tau*wj, &v1.vector, &A1j.vector);
+      }
+
+    gsl_blas_dscal(-tau, &v1.vector);
+
+>>>>>>> config
     gsl_matrix_set (A, 0, 0, 1.0 - tau);
   }
 #else
   {
     size_t i, j;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     for (j = 1; j < A->size2; j++)
       {
@@ -331,6 +525,37 @@ gsl_linalg_householder_hm1 (double tau, gsl_matrix * A)
         gsl_matrix_set(A, i, 0, -tau * vi);
       }
     
+=======
+
+    for (j = 1; j < A->size2; j++)
+      {
+	double wj = 0.0;   /* A0j * v0 */
+
+	for (i = 1; i < A->size1; i++)
+	  {
+	    double vi = gsl_matrix_get(A, i, 0);
+	    wj += gsl_matrix_get(A,i,j) * vi;
+	  }
+
+	/* A = A - tau v w' */
+
+	gsl_matrix_set (A, 0, j, - tau *  wj);
+
+	for (i = 1; i < A->size1; i++)
+	  {
+	    double vi = gsl_matrix_get (A, i, 0);
+	    double Aij = gsl_matrix_get (A, i, j);
+	    gsl_matrix_set (A, i, j, Aij - tau * vi * wj);
+	  }
+      }
+
+    for (i = 1; i < A->size1; i++)
+      {
+	double vi = gsl_matrix_get(A, i, 0);
+	gsl_matrix_set(A, i, 0, -tau * vi);
+      }
+
+>>>>>>> config
     gsl_matrix_set (A, 0, 0, 1.0 - tau);
   }
 #endif

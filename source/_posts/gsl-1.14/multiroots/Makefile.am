@@ -1,6 +1,10 @@
 # -*-makefile-*-
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 noinst_LTLIBRARIES = libgslmultiroots.la 
+=======
+noinst_LTLIBRARIES = libgslmultiroots.la
+>>>>>>> config
 
 pkginclude_HEADERS = gsl_multiroots.h
 
@@ -16,4 +20,7 @@ TESTS = $(check_PROGRAMS)
 
 test_SOURCES = test.c test_funcs.c test_funcs.h
 test_LDADD = libgslmultiroots.la ../linalg/libgsllinalg.la ../blas/libgslblas.la ../cblas/libgslcblas.la ../permutation/libgslpermutation.la ../matrix/libgslmatrix.la ../vector/libgslvector.la ../block/libgslblock.la ../complex/libgslcomplex.la ../ieee-utils/libgslieeeutils.la  ../err/libgslerr.la ../test/libgsltest.la ../sys/libgslsys.la ../utils/libutils.la
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

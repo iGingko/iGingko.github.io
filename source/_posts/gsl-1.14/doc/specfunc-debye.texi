@@ -22,42 +22,66 @@ file @file{gsl_sf_debye.h}.
 
 @deftypefun double gsl_sf_debye_1 (double @var{x})
 @deftypefunx int gsl_sf_debye_1_e (double @var{x}, gsl_sf_result * @var{result})
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 These routines compute the first-order Debye function 
+=======
+These routines compute the first-order Debye function
+>>>>>>> config
 @math{D_1(x) = (1/x) \int_0^x dt (t/(e^t - 1))}.
 @comment Exceptional Return Values: GSL_EDOM
 @end deftypefun
 
 @deftypefun double gsl_sf_debye_2 (double @var{x})
 @deftypefunx int gsl_sf_debye_2_e (double @var{x}, gsl_sf_result * @var{result})
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 These routines compute the second-order Debye function 
+=======
+These routines compute the second-order Debye function
+>>>>>>> config
 @math{D_2(x) = (2/x^2) \int_0^x dt (t^2/(e^t - 1))}.
 @comment Exceptional Return Values: GSL_EDOM, GSL_EUNDRFLW
 @end deftypefun
 
 @deftypefun double gsl_sf_debye_3 (double @var{x})
 @deftypefunx int gsl_sf_debye_3_e (double @var{x}, gsl_sf_result * @var{result})
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 These routines compute the third-order Debye function 
+=======
+These routines compute the third-order Debye function
+>>>>>>> config
 @math{D_3(x) = (3/x^3) \int_0^x dt (t^3/(e^t - 1))}.
 @comment Exceptional Return Values: GSL_EDOM, GSL_EUNDRFLW
 @end deftypefun
 
 @deftypefun double gsl_sf_debye_4 (double @var{x})
 @deftypefunx int gsl_sf_debye_4_e (double @var{x}, gsl_sf_result * @var{result})
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 These routines compute the fourth-order Debye function 
+=======
+These routines compute the fourth-order Debye function
+>>>>>>> config
 @math{D_4(x) = (4/x^4) \int_0^x dt (t^4/(e^t - 1))}.
 @comment Exceptional Return Values: GSL_EDOM, GSL_EUNDRFLW
 @end deftypefun
 
 @deftypefun double gsl_sf_debye_5 (double @var{x})
 @deftypefunx int gsl_sf_debye_5_e (double @var{x}, gsl_sf_result * @var{result})
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 These routines compute the fifth-order Debye function 
+=======
+These routines compute the fifth-order Debye function
+>>>>>>> config
 @math{D_5(x) = (5/x^5) \int_0^x dt (t^5/(e^t - 1))}.
 @comment Exceptional Return Values: GSL_EDOM, GSL_EUNDRFLW
 @end deftypefun
 
 @deftypefun double gsl_sf_debye_6 (double @var{x})
 @deftypefunx int gsl_sf_debye_6_e (double @var{x}, gsl_sf_result * @var{result})
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 These routines compute the sixth-order Debye function 
+=======
+These routines compute the sixth-order Debye function
+>>>>>>> config
 @math{D_6(x) = (6/x^6) \int_0^x dt (t^6/(e^t - 1))}.
 @comment Exceptional Return Values: GSL_EDOM, GSL_EUNDRFLW
 @end deftypefun

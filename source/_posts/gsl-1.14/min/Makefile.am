@@ -1,4 +1,8 @@
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 noinst_LTLIBRARIES = libgslmin.la 
+=======
+noinst_LTLIBRARIES = libgslmin.la
+>>>>>>> config
 
 pkginclude_HEADERS = gsl_min.h
 

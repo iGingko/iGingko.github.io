@@ -7,8 +7,13 @@ struct data {
 };
 
 int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 expb_f (const gsl_vector * x, void *data, 
         gsl_vector * f)
+=======
+expb_f (const gsl_vector * x, void *data,
+	gsl_vector * f)
+>>>>>>> config
 {
   size_t n = ((struct data *)data)->n;
   double *y = ((struct data *)data)->y;
@@ -32,8 +37,13 @@ expb_f (const gsl_vector * x, void *data,
 }
 
 int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 expb_df (const gsl_vector * x, void *data, 
          gsl_matrix * J)
+=======
+expb_df (const gsl_vector * x, void *data,
+	 gsl_matrix * J)
+>>>>>>> config
 {
   size_t n = ((struct data *)data)->n;
   double *sigma = ((struct data *) data)->sigma;
@@ -52,7 +62,11 @@ expb_df (const gsl_vector * x, void *data,
       double t = i;
       double s = sigma[i];
       double e = exp(-lambda * t);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       gsl_matrix_set (J, i, 0, e/s); 
+=======
+      gsl_matrix_set (J, i, 0, e/s);
+>>>>>>> config
       gsl_matrix_set (J, i, 1, -t * A * e/s);
       gsl_matrix_set (J, i, 2, 1/s);
     }
@@ -61,7 +75,11 @@ expb_df (const gsl_vector * x, void *data,
 
 int
 expb_fdf (const gsl_vector * x, void *data,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           gsl_vector * f, gsl_matrix * J)
+=======
+	  gsl_vector * f, gsl_matrix * J)
+>>>>>>> config
 {
   expb_f (x, data, f);
   expb_df (x, data, J);

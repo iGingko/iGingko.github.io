@@ -13,15 +13,26 @@ The functions described in this chapter are declared in the header file
 @file{gsl_eigen.h}.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Real Symmetric Matrices::     
 * Complex Hermitian Matrices::  
+=======
+* Real Symmetric Matrices::
+* Complex Hermitian Matrices::
+>>>>>>> config
 * Real Nonsymmetric Matrices::
 * Real Generalized Symmetric-Definite Eigensystems::
 * Complex Generalized Hermitian-Definite Eigensystems::
 * Real Generalized Nonsymmetric Eigensystems::
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Sorting Eigenvalues and Eigenvectors::  
 * Eigenvalue and Eigenvector Examples::  
 * Eigenvalue and Eigenvector References::  
+=======
+* Sorting Eigenvalues and Eigenvectors::
+* Eigenvalue and Eigenvector Examples::
+* Eigenvalue and Eigenvector References::
+>>>>>>> config
 @end menu
 
 @node Real Symmetric Matrices
@@ -158,7 +169,11 @@ where @math{Z} is an orthogonal matrix of Schur vectors and @math{T},
 the Schur form, is quasi upper triangular with diagonal
 @math{1}-by-@math{1} blocks which are real eigenvalues of @math{A}, and
 diagonal @math{2}-by-@math{2} blocks whose eigenvalues are complex
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 conjugate eigenvalues of @math{A}. The algorithm used is the double-shift 
+=======
+conjugate eigenvalues of @math{A}. The algorithm used is the double-shift
+>>>>>>> config
 Francis method.
 
 @deftypefun {gsl_eigen_nonsymm_workspace *} gsl_eigen_nonsymm_alloc (const size_t @var{n})
@@ -310,8 +325,13 @@ $$
 @end tex
 @ifinfo
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       A x = \lambda B x
                       A x = \lambda L L^t x
+=======
+		      A x = \lambda B x
+		      A x = \lambda L L^t x
+>>>>>>> config
 ( L^@{-1@} A L^@{-t@} ) L^t x = \lambda L^t x
 @end example
 @end ifinfo
@@ -337,7 +357,11 @@ This function frees the memory associated with the workspace @var{w}.
 
 @deftypefun int gsl_eigen_gensymm (gsl_matrix * @var{A}, gsl_matrix * @var{B}, gsl_vector * @var{eval}, gsl_eigen_gensymm_workspace * @var{w})
 This function computes the eigenvalues of the real generalized
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 symmetric-definite matrix pair (@var{A}, @var{B}), and stores them 
+=======
+symmetric-definite matrix pair (@var{A}, @var{B}), and stores them
+>>>>>>> config
 in @var{eval}, using the method outlined above. On output, @var{B}
 contains its Cholesky decomposition and @var{A} is destroyed.
 @end deftypefun
@@ -405,7 +429,11 @@ This function frees the memory associated with the workspace @var{w}.
 
 @deftypefun int gsl_eigen_genherm (gsl_matrix_complex * @var{A}, gsl_matrix_complex * @var{B}, gsl_vector * @var{eval}, gsl_eigen_genherm_workspace * @var{w})
 This function computes the eigenvalues of the complex generalized
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 hermitian-definite matrix pair (@var{A}, @var{B}), and stores them 
+=======
+hermitian-definite matrix pair (@var{A}, @var{B}), and stores them
+>>>>>>> config
 in @var{eval}, using the method outlined above. On output, @var{B}
 contains its Cholesky decomposition and @var{A} is destroyed.
 @end deftypefun
@@ -699,9 +727,15 @@ The following program computes the eigenvalues and eigenvectors of the 4-th orde
 Here is the beginning of the output from the program,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 $ ./a.out 
 eigenvalue = 9.67023e-05
 eigenvector = 
+=======
+$ ./a.out
+eigenvalue = 9.67023e-05
+eigenvector =
+>>>>>>> config
 -0.0291933
 0.328712
 -0.791411
@@ -714,7 +748,11 @@ This can be compared with the corresponding output from @sc{gnu octave},
 
 @example
 octave> [v,d] = eig(hilb(4));
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 octave> diag(d)  
+=======
+octave> diag(d)
+>>>>>>> config
 ans =
 
    9.6702e-05
@@ -722,7 +760,11 @@ ans =
    1.6914e-01
    1.5002e+00
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 octave> v 
+=======
+octave> v
+>>>>>>> config
 v =
 
    0.029193   0.179186  -0.582076   0.792608
@@ -750,15 +792,25 @@ with @math{x = (-1,-2,3,4)}.
 Here is the beginning of the output from the program,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 $ ./a.out 
 eigenvalue = -6.41391 + 0i
 eigenvector = 
+=======
+$ ./a.out
+eigenvalue = -6.41391 + 0i
+eigenvector =
+>>>>>>> config
 -0.0998822 + 0i
 -0.111251 + 0i
 0.292501 + 0i
 0.944505 + 0i
 eigenvalue = 5.54555 + 3.08545i
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 eigenvector = 
+=======
+eigenvector =
+>>>>>>> config
 -0.043487 + -0.0076308i
 0.0642377 + -0.142127i
 -0.515253 + 0.0405118i
@@ -799,7 +851,11 @@ v =
 @end example
 Note that the eigenvectors corresponding to the eigenvalue
 @math{5.54555 + 3.08545i} differ by the multiplicative constant
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{0.9999984 + 0.0017674i} which is an arbitrary phase factor 
+=======
+@math{0.9999984 + 0.0017674i} which is an arbitrary phase factor
+>>>>>>> config
 of magnitude 1.
 
 @node Eigenvalue and Eigenvector References
@@ -834,7 +890,11 @@ Fortran library @sc{lapack}. The @sc{lapack} library is described in,
 @cite{LAPACK Users' Guide} (Third Edition, 1999), Published by SIAM,
 ISBN 0-89871-447-8.
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @uref{http://www.netlib.org/lapack} 
+=======
+@uref{http://www.netlib.org/lapack}
+>>>>>>> config
 @end itemize
 
 @noindent

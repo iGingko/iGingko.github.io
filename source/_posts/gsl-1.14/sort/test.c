@@ -1,17 +1,31 @@
 /* sort/test.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Thomas Walter, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Thomas Walter, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -113,6 +127,7 @@ main (void)
   for (i = 1; i < 1024; i = (i < 32) ? i + 1 : 2 * i)
     {
       for (s = 1; s < 4; s++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           test_sort_vector (i, s);
           test_sort_vector_float (i, s);
@@ -126,12 +141,31 @@ main (void)
           test_sort_vector_uchar (i, s);
           test_sort_vector_char (i, s);
         }
+=======
+	{
+	  test_sort_vector (i, s);
+	  test_sort_vector_float (i, s);
+	  test_sort_vector_long_double (i, s);
+	  test_sort_vector_ulong (i, s);
+	  test_sort_vector_long (i, s);
+	  test_sort_vector_uint (i, s);
+	  test_sort_vector_int (i, s);
+	  test_sort_vector_ushort (i, s);
+	  test_sort_vector_short (i, s);
+	  test_sort_vector_uchar (i, s);
+	  test_sort_vector_char (i, s);
+	}
+>>>>>>> config
     }
 
   exit (gsl_test_summary ());
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 size_t 
+=======
+size_t
+>>>>>>> config
 urand (size_t N)
 {
   static unsigned long int x = 1;

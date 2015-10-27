@@ -14,6 +14,7 @@ func (double t, const double y[], double f[],
 }
 
 int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 jac (double t, const double y[], double *dfdy, 
      double dfdt[], void *params)
 {
@@ -21,6 +22,15 @@ jac (double t, const double y[], double *dfdy,
   gsl_matrix_view dfdy_mat 
     = gsl_matrix_view_array (dfdy, 2, 2);
   gsl_matrix * m = &dfdy_mat.matrix; 
+=======
+jac (double t, const double y[], double *dfdy,
+     double dfdt[], void *params)
+{
+  double mu = *(double *)params;
+  gsl_matrix_view dfdy_mat
+    = gsl_matrix_view_array (dfdy, 2, 2);
+  gsl_matrix * m = &dfdy_mat.matrix;
+>>>>>>> config
   gsl_matrix_set (m, 0, 0, 0.0);
   gsl_matrix_set (m, 0, 1, 1.0);
   gsl_matrix_set (m, 1, 0, -2.0*mu*y[0]*y[1] - 1.0);
@@ -33,6 +43,7 @@ jac (double t, const double y[], double *dfdy,
 int
 main (void)
 {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   const gsl_odeiv_step_type * T 
     = gsl_odeiv_step_rk8pd;
 
@@ -41,6 +52,16 @@ main (void)
   gsl_odeiv_control * c 
     = gsl_odeiv_control_y_new (1e-6, 0.0);
   gsl_odeiv_evolve * e 
+=======
+  const gsl_odeiv_step_type * T
+    = gsl_odeiv_step_rk8pd;
+
+  gsl_odeiv_step * s
+    = gsl_odeiv_step_alloc (T, 2);
+  gsl_odeiv_control * c
+    = gsl_odeiv_control_y_new (1e-6, 0.0);
+  gsl_odeiv_evolve * e
+>>>>>>> config
     = gsl_odeiv_evolve_alloc (2);
 
   double mu = 10;
@@ -53,12 +74,21 @@ main (void)
   while (t < t1)
     {
       int status = gsl_odeiv_evolve_apply (e, c, s,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                            &sys, 
                                            &t, t1,
                                            &h, y);
 
       if (status != GSL_SUCCESS)
           break;
+=======
+					   &sys,
+					   &t, t1,
+					   &h, y);
+
+      if (status != GSL_SUCCESS)
+	  break;
+>>>>>>> config
 
       printf ("%.5e %.5e %.5e\n", t, y[0], y[1]);
     }

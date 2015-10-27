@@ -4,4 +4,7 @@ The following would also be nice additions to the multifit function suite
 1. Produce the correlation coefficient (r) and other statistics.
 2. Allow fit variable weighting (not observation weighting).
 3. Allow for principal factor computations.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

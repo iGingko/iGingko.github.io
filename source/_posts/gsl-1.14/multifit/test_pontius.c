@@ -20,7 +20,11 @@ test_pontius ()
 {
   size_t i, j;
   {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     gsl_multifit_linear_workspace * work = 
+=======
+    gsl_multifit_linear_workspace * work =
+>>>>>>> config
       gsl_multifit_linear_alloc (pontius_n, pontius_p);
 
     gsl_matrix * X = gsl_matrix_alloc (pontius_n, pontius_p);
@@ -33,6 +37,7 @@ test_pontius ()
     double chisq;
 
     double expected_c[3] = { 0.673565789473684E-03,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                              0.732059160401003E-06,
                             -0.316081871345029E-14};
 
@@ -48,6 +53,23 @@ test_pontius ()
           {
             gsl_matrix_set(X, i, j, pow(pontius_x[i], j));
           }
+=======
+			     0.732059160401003E-06,
+			    -0.316081871345029E-14};
+
+    double expected_sd[3] = { 0.107938612033077E-03,
+			      0.157817399981659E-09,
+			      0.486652849992036E-16 };
+
+    double expected_chisq = 0.155761768796992E-05;
+
+    for (i = 0 ; i < pontius_n; i++)
+      {
+	for (j = 0; j < pontius_p; j++)
+	  {
+	    gsl_matrix_set(X, i, j, pow(pontius_x[i], j));
+	  }
+>>>>>>> config
       }
 
     gsl_multifit_linear (X, &y.vector, c, cov, &chisq, work);
@@ -77,7 +99,11 @@ test_pontius ()
 
 
   {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     gsl_multifit_linear_workspace * work = 
+=======
+    gsl_multifit_linear_workspace * work =
+>>>>>>> config
       gsl_multifit_linear_alloc (pontius_n, pontius_p);
 
     gsl_matrix * X = gsl_matrix_alloc (pontius_n, pontius_p);
@@ -90,23 +116,41 @@ test_pontius ()
     double chisq;
 
     double expected_c[3] = {  0.673565789473684E-03,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                0.732059160401003E-06,
                                -0.316081871345029E-14};
 
     double expected_chisq = 0.155761768796992E-05;
 
     double expected_cov[3][3] ={ 
+=======
+			       0.732059160401003E-06,
+			       -0.316081871345029E-14};
+
+    double expected_chisq = 0.155761768796992E-05;
+
+    double expected_cov[3][3] ={
+>>>>>>> config
       {2.76754385964916e-01 , -3.59649122807024e-07,   9.74658869395731e-14},
       {-3.59649122807024e-07,   5.91630591630603e-13,  -1.77210703526497e-19},
       {9.74658869395731e-14,  -1.77210703526497e-19,   5.62573661988878e-26} };
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     for (i = 0 ; i < pontius_n; i++) 
       {
         for (j = 0; j < pontius_p; j++) 
           {
             gsl_matrix_set(X, i, j, pow(pontius_x[i], j));
           }
+=======
+    for (i = 0 ; i < pontius_n; i++)
+      {
+	for (j = 0; j < pontius_p; j++)
+	  {
+	    gsl_matrix_set(X, i, j, pow(pontius_x[i], j));
+	  }
+>>>>>>> config
       }
 
     gsl_vector_set_all (w, 1.0);
@@ -118,6 +162,7 @@ test_pontius ()
     gsl_test_rel (gsl_vector_get(c,2), expected_c[2], 1e-10, "pontius gsl_fit_multilinear c2") ;
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     for (i = 0; i < pontius_p; i++) 
       {
         for (j = 0; j < pontius_p; j++)
@@ -125,6 +170,15 @@ test_pontius ()
             gsl_test_rel (gsl_matrix_get(cov,i,j), expected_cov[i][j], 1e-10, 
                           "pontius gsl_fit_wmultilinear cov(%d,%d)", i, j) ;
           }
+=======
+    for (i = 0; i < pontius_p; i++)
+      {
+	for (j = 0; j < pontius_p; j++)
+	  {
+	    gsl_test_rel (gsl_matrix_get(cov,i,j), expected_cov[i][j], 1e-10,
+			  "pontius gsl_fit_wmultilinear cov(%d,%d)", i, j) ;
+	  }
+>>>>>>> config
       }
 
     gsl_test_rel (chisq, expected_chisq, 1e-10, "pontius gsl_fit_wmultilinear chisq") ;

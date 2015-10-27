@@ -1,17 +1,31 @@
 /* specfunc/sinint.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -36,10 +50,17 @@
 
 /*
  series for f1   on the interval  2.00000e-02 to  6.25000e-02
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                         with weighted error   2.82e-17
                                          log weighted error  16.55
                                significant figures required  15.36
                                     decimal places required  17.20
+=======
+					with weighted error   2.82e-17
+					 log weighted error  16.55
+			       significant figures required  15.36
+				    decimal places required  17.20
+>>>>>>> config
 */
 static double f1_data[20] = {
    -0.1191081969051363610,
@@ -73,10 +94,17 @@ static cheb_series f1_cs = {
 /*
 
  series for f2   on the interval  0.00000e+00 to  2.00000e-02
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                         with weighted error   4.32e-17
                                          log weighted error  16.36
                                significant figures required  14.75
                                     decimal places required  17.10
+=======
+					with weighted error   4.32e-17
+					 log weighted error  16.36
+			       significant figures required  14.75
+				    decimal places required  17.10
+>>>>>>> config
 */
 static double f2_data[29] = {
    -0.0348409253897013234,
@@ -119,10 +147,17 @@ static cheb_series f2_cs = {
 /*
 
  series for g1   on the interval  2.00000e-02 to  6.25000e-02
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                         with weighted error   5.48e-17
                                          log weighted error  16.26
                                significant figures required  15.47
                                     decimal places required  16.92
+=======
+					with weighted error   5.48e-17
+					 log weighted error  16.26
+			       significant figures required  15.47
+				    decimal places required  16.92
+>>>>>>> config
 */
 static double g1_data[21] = {
    -0.3040578798253495954,
@@ -157,10 +192,17 @@ static cheb_series g1_cs = {
 /*
 
  series for g2   on the interval  0.00000e+00 to  2.00000e-02
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                         with weighted error   5.01e-17
                                          log weighted error  16.30
                                significant figures required  15.12
                                     decimal places required  17.07
+=======
+					with weighted error   5.01e-17
+					 log weighted error  16.30
+			       significant figures required  15.12
+				    decimal places required  17.07
+>>>>>>> config
 */
 static double g2_data[34] = {
    -0.0967329367532432218,
@@ -256,10 +298,17 @@ static void fg_asymp(const double x, gsl_sf_result * f, gsl_sf_result * g)
 /* based on SLATEC si.f, W. Fullerton
 
  series for si   on the interval  0.00000e+00 to  1.60000e+01
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                         with weighted error   1.22e-17
                                          log weighted error  16.91
                                significant figures required  16.37
                                     decimal places required  17.45
+=======
+					with weighted error   1.22e-17
+					 log weighted error  16.91
+			       significant figures required  16.37
+				    decimal places required  17.45
+>>>>>>> config
 */
 
 static double si_data[12] = {
@@ -286,10 +335,17 @@ static cheb_series si_cs = {
 
 /*
  series for ci   on the interval  0.00000e+00 to  1.60000e+01
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                         with weighted error   1.94e-18
                                          log weighted error  17.71
                                significant figures required  17.74
                                     decimal places required  18.27
+=======
+					with weighted error   1.94e-18
+					 log weighted error  17.71
+			       significant figures required  17.74
+				    decimal places required  18.27
+>>>>>>> config
 */
 static double ci_data[13] = {
    -0.34004281856055363156,
@@ -319,7 +375,11 @@ static cheb_series ci_cs = {
 int gsl_sf_Si_e(const double x, gsl_sf_result * result)
 {
   double ax = fabs(x);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   /* CHECK_POINTER(result) */
 
   if(ax < GSL_SQRT_DBL_EPSILON) {

@@ -5,6 +5,7 @@ int
 main (void)
 {
   double a_data[] = { 0.18, 0.60, 0.57, 0.96,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       0.41, 0.24, 0.99, 0.58,
                       0.14, 0.30, 0.97, 0.66,
                       0.51, 0.13, 0.19, 0.85 };
@@ -12,13 +13,26 @@ main (void)
   double b_data[] = { 1.0, 2.0, 3.0, 4.0 };
 
   gsl_matrix_view m 
+=======
+		      0.41, 0.24, 0.99, 0.58,
+		      0.14, 0.30, 0.97, 0.66,
+		      0.51, 0.13, 0.19, 0.85 };
+
+  double b_data[] = { 1.0, 2.0, 3.0, 4.0 };
+
+  gsl_matrix_view m
+>>>>>>> config
     = gsl_matrix_view_array (a_data, 4, 4);
 
   gsl_vector_view b
     = gsl_vector_view_array (b_data, 4);
 
   gsl_vector *x = gsl_vector_alloc (4);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   int s;
 
   gsl_permutation * p = gsl_permutation_alloc (4);

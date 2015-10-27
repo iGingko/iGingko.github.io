@@ -142,7 +142,11 @@ top_distdir = $(distdir)
 am__remove_distdir = \
   { test ! -d "$(distdir)" \
     || { find "$(distdir)" -type d ! -perm -200 -exec chmod u+w {} ';' \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          && rm -fr "$(distdir)"; }; }
+=======
+	 && rm -fr "$(distdir)"; }; }
+>>>>>>> config
 am__relativize = \
   dir0=`pwd`; \
   sed_first='s,^\([^/]*\)/.*$$,\1,'; \
@@ -153,6 +157,7 @@ am__relativize = \
     first=`echo "$$dir1" | sed -e "$$sed_first"`; \
     if test "$$first" != "."; then \
       if test "$$first" = ".."; then \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         dir2=`echo "$$dir0" | sed -e "$$sed_last"`/"$$dir2"; \
         dir0=`echo "$$dir0" | sed -e "$$sed_butlast"`; \
       else \
@@ -163,6 +168,18 @@ am__relativize = \
           dir2="../$$dir2"; \
         fi; \
         dir0="$$dir0"/"$$first"; \
+=======
+	dir2=`echo "$$dir0" | sed -e "$$sed_last"`/"$$dir2"; \
+	dir0=`echo "$$dir0" | sed -e "$$sed_butlast"`; \
+      else \
+	first2=`echo "$$dir2" | sed -e "$$sed_first"`; \
+	if test "$$first2" = "$$first"; then \
+	  dir2=`echo "$$dir2" | sed -e "$$sed_rest"`; \
+	else \
+	  dir2="../$$dir2"; \
+	fi; \
+	dir0="$$dir0"/"$$first"; \
+>>>>>>> config
       fi; \
     fi; \
     dir1=`echo "$$dir1" | sed -e "$$sed_rest"`; \
@@ -183,17 +200,30 @@ CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2
 CPP = gcc -E
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 CPPFLAGS = 
+=======
+CPPFLAGS =
+>>>>>>> config
 CYGPATH_W = echo
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
 DSYMUTIL = dsymutil
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 DUMPBIN = 
 ECHO_C = \c
 ECHO_N = 
 ECHO_T = 
 EGREP = /usr/bin/grep -E
 EXEEXT = 
+=======
+DUMPBIN =
+ECHO_C = \c
+ECHO_N =
+ECHO_T =
+EGREP = /usr/bin/grep -E
+EXEEXT =
+>>>>>>> config
 FGREP = /usr/bin/grep -F
 GREP = /usr/bin/grep
 GSL_CFLAGS = -I${prefix}/include
@@ -202,6 +232,7 @@ GSL_LT_CBLAS_VERSION = 0:0:0
 GSL_LT_VERSION = 15:0:15
 GSL_MAJOR_VERSION = 1
 GSL_MINOR_VERSION = 14
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 HAVE_AIX_IEEE_INTERFACE = 
 HAVE_DARWIN86_IEEE_INTERFACE = 
 HAVE_DARWIN_IEEE_INTERFACE = 
@@ -219,12 +250,32 @@ HAVE_OS2EMX_IEEE_INTERFACE =
 HAVE_SOLARIS_IEEE_INTERFACE = 
 HAVE_SUNOS4_IEEE_INTERFACE = 
 HAVE_TRU64_IEEE_INTERFACE = 
+=======
+HAVE_AIX_IEEE_INTERFACE =
+HAVE_DARWIN86_IEEE_INTERFACE =
+HAVE_DARWIN_IEEE_INTERFACE =
+HAVE_FREEBSD_IEEE_INTERFACE =
+HAVE_GNUM68K_IEEE_INTERFACE =
+HAVE_GNUPPC_IEEE_INTERFACE =
+HAVE_GNUSPARC_IEEE_INTERFACE =
+HAVE_GNUX86_IEEE_INTERFACE =
+HAVE_HPUX11_IEEE_INTERFACE =
+HAVE_HPUX_IEEE_INTERFACE =
+HAVE_IRIX_IEEE_INTERFACE =
+HAVE_NETBSD_IEEE_INTERFACE =
+HAVE_OPENBSD_IEEE_INTERFACE =
+HAVE_OS2EMX_IEEE_INTERFACE =
+HAVE_SOLARIS_IEEE_INTERFACE =
+HAVE_SUNOS4_IEEE_INTERFACE =
+HAVE_TRU64_IEEE_INTERFACE =
+>>>>>>> config
 INSTALL = /usr/local/bin/ginstall -c
 INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 LD = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 LDFLAGS = 
 LIBOBJS = 
 LIBS = -lm 
@@ -232,6 +283,15 @@ LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIPO = lipo
 LN_S = ln -s
 LTLIBOBJS = 
+=======
+LDFLAGS =
+LIBOBJS =
+LIBS = -lm
+LIBTOOL = $(SHELL) $(top_builddir)/libtool
+LIPO = lipo
+LN_S = ln -s
+LTLIBOBJS =
+>>>>>>> config
 MAINT = #
 MAKEINFO = ${SHELL} /Users/connor/Documents/Octopress/source/_posts/gsl-1.14/missing --run makeinfo
 MKDIR_P = /usr/local/bin/gmkdir -p
@@ -242,16 +302,28 @@ OBJEXT = o
 OTOOL = otool
 OTOOL64 = :
 PACKAGE = gsl
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 PACKAGE_BUGREPORT = 
 PACKAGE_NAME = gsl
 PACKAGE_STRING = gsl 1.14
 PACKAGE_TARNAME = gsl
 PACKAGE_URL = 
+=======
+PACKAGE_BUGREPORT =
+PACKAGE_NAME = gsl
+PACKAGE_STRING = gsl 1.14
+PACKAGE_TARNAME = gsl
+PACKAGE_URL =
+>>>>>>> config
 PACKAGE_VERSION = 1.14
 PATH_SEPARATOR = :
 RANLIB = ranlib
 SED = /usr/bin/sed
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 SET_MAKE = 
+=======
+SET_MAKE =
+>>>>>>> config
 SHELL = /bin/sh
 STRIP = strip
 VERSION = 1.14
@@ -260,15 +332,26 @@ abs_srcdir = /Users/connor/Documents/Octopress/source/_posts/gsl-1.14
 abs_top_builddir = /Users/connor/Documents/Octopress/source/_posts/gsl-1.14
 abs_top_srcdir = /Users/connor/Documents/Octopress/source/_posts/gsl-1.14
 ac_ct_CC = gcc
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 ac_ct_DUMPBIN = 
 am__include = include
 am__leading_dot = .
 am__quote = 
+=======
+ac_ct_DUMPBIN =
+am__include = include
+am__leading_dot = .
+am__quote =
+>>>>>>> config
 am__tar = ${AMTAR} chof - "$$tardir"
 am__untar = ${AMTAR} xf -
 bindir = ${exec_prefix}/bin
 build = x86_64-apple-darwin15.0.0
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 build_alias = 
+=======
+build_alias =
+>>>>>>> config
 build_cpu = x86_64
 build_os = darwin15.0.0
 build_vendor = apple
@@ -279,7 +362,11 @@ docdir = ${datarootdir}/doc/${PACKAGE_TARNAME}
 dvidir = ${docdir}
 exec_prefix = ${prefix}
 host = x86_64-apple-darwin15.0.0
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 host_alias = 
+=======
+host_alias =
+>>>>>>> config
 host_cpu = x86_64
 host_os = darwin15.0.0
 host_vendor = apple
@@ -303,8 +390,13 @@ sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 srcdir = .
 sysconfdir = ${prefix}/etc
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 target_alias = 
 top_build_prefix = 
+=======
+target_alias =
+top_build_prefix =
+>>>>>>> config
 top_builddir = .
 top_srcdir = .
 SUBDIRS = gsl utils sys test err const complex cheb block vector matrix permutation combination multiset sort ieee-utils cblas blas linalg eigen specfunc dht qrng rng randist fft poly fit multifit statistics siman sum integration interpolation histogram ode-initval roots multiroots min multimin monte ntuple diff deriv cdf wavelet bspline doc
@@ -412,7 +504,11 @@ config.h: stamp-h1
 stamp-h1: $(srcdir)/config.h.in $(top_builddir)/config.status
 	@rm -f stamp-h1
 	cd $(top_builddir) && $(SHELL) ./config.status config.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 $(srcdir)/config.h.in: # $(am__configure_deps) 
+=======
+$(srcdir)/config.h.in: # $(am__configure_deps)
+>>>>>>> config
 	($(am__cd) $(top_srcdir) && $(AUTOHEADER))
 	rm -f stamp-h1
 	touch $@
@@ -454,7 +550,11 @@ clean-libLTLIBRARIES:
 	  echo "rm -f \"$${dir}/so_locations\""; \
 	  rm -f "$${dir}/so_locations"; \
 	done
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 libgsl.la: $(libgsl_la_OBJECTS) $(libgsl_la_DEPENDENCIES) 
+=======
+libgsl.la: $(libgsl_la_OBJECTS) $(libgsl_la_DEPENDENCIES)
+>>>>>>> config
 	$(libgsl_la_LINK) -rpath $(libdir) $(libgsl_la_OBJECTS) $(libgsl_la_LIBADD) $(LIBS)
 install-binPROGRAMS: $(bin_PROGRAMS)
 	@$(NORMAL_INSTALL)
@@ -499,10 +599,17 @@ clean-binPROGRAMS:
 	list=`for p in $$list; do echo "$$p"; done | sed 's/$(EXEEXT)$$//'`; \
 	echo " rm -f" $$list; \
 	rm -f $$list
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl-histogram$(EXEEXT): $(gsl_histogram_OBJECTS) $(gsl_histogram_DEPENDENCIES) 
 	@rm -f gsl-histogram$(EXEEXT)
 	$(LINK) $(gsl_histogram_OBJECTS) $(gsl_histogram_LDADD) $(LIBS)
 gsl-randist$(EXEEXT): $(gsl_randist_OBJECTS) $(gsl_randist_DEPENDENCIES) 
+=======
+gsl-histogram$(EXEEXT): $(gsl_histogram_OBJECTS) $(gsl_histogram_DEPENDENCIES)
+	@rm -f gsl-histogram$(EXEEXT)
+	$(LINK) $(gsl_histogram_OBJECTS) $(gsl_histogram_LDADD) $(LIBS)
+gsl-randist$(EXEEXT): $(gsl_randist_OBJECTS) $(gsl_randist_DEPENDENCIES)
+>>>>>>> config
 	@rm -f gsl-randist$(EXEEXT)
 	$(LINK) $(gsl_randist_OBJECTS) $(gsl_randist_LDADD) $(LIBS)
 install-binSCRIPTS: $(bin_SCRIPTS)
@@ -918,12 +1025,21 @@ distdir: $(DISTFILES)
 	    echo "     am__remove_distdir=: am__skip_length_check=: am__skip_mode_fix=: distdir)"; \
 	    ($(am__cd) $$subdir && \
 	      $(MAKE) $(AM_MAKEFLAGS) \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	        top_distdir="$$new_top_distdir" \
 	        distdir="$$new_distdir" \
 		am__remove_distdir=: \
 		am__skip_length_check=: \
 		am__skip_mode_fix=: \
 	        distdir) \
+=======
+		top_distdir="$$new_top_distdir" \
+		distdir="$$new_distdir" \
+		am__remove_distdir=: \
+		am__skip_length_check=: \
+		am__skip_mode_fix=: \
+		distdir) \
+>>>>>>> config
 	      || exit 1; \
 	  fi; \
 	done
@@ -1005,14 +1121,22 @@ distcheck: dist
 	  && $(MAKE) $(AM_MAKEFLAGS) installcheck \
 	  && $(MAKE) $(AM_MAKEFLAGS) uninstall \
 	  && $(MAKE) $(AM_MAKEFLAGS) distuninstallcheck_dir="$$dc_install_base" \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	        distuninstallcheck \
+=======
+		distuninstallcheck \
+>>>>>>> config
 	  && chmod -R a-w "$$dc_install_base" \
 	  && ({ \
 	       (cd ../.. && umask 077 && mkdir "$$dc_destdir") \
 	       && $(MAKE) $(AM_MAKEFLAGS) DESTDIR="$$dc_destdir" install \
 	       && $(MAKE) $(AM_MAKEFLAGS) DESTDIR="$$dc_destdir" uninstall \
 	       && $(MAKE) $(AM_MAKEFLAGS) DESTDIR="$$dc_destdir" \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	            distuninstallcheck_dir="$$dc_destdir" distuninstallcheck; \
+=======
+		    distuninstallcheck_dir="$$dc_destdir" distuninstallcheck; \
+>>>>>>> config
 	      } || { rm -rf "$$dc_destdir"; exit 1; }) \
 	  && rm -rf "$$dc_destdir" \
 	  && $(MAKE) $(AM_MAKEFLAGS) dist \
@@ -1028,11 +1152,19 @@ distuninstallcheck:
 	@$(am__cd) '$(distuninstallcheck_dir)' \
 	&& test `$(distuninstallcheck_listfiles) | wc -l` -le 1 \
 	   || { echo "ERROR: files left after uninstall:" ; \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	        if test -n "$(DESTDIR)"; then \
 	          echo "  (check DESTDIR support)"; \
 	        fi ; \
 	        $(distuninstallcheck_listfiles) ; \
 	        exit 1; } >&2
+=======
+		if test -n "$(DESTDIR)"; then \
+		  echo "  (check DESTDIR support)"; \
+		fi ; \
+		$(distuninstallcheck_listfiles) ; \
+		exit 1; } >&2
+>>>>>>> config
 distcleancheck: distclean
 	@if test '$(srcdir)' = . ; then \
 	  echo "ERROR: distcleancheck can only run from a VPATH build" ; \
@@ -1187,7 +1319,11 @@ uninstall-am: uninstall-binPROGRAMS uninstall-binSCRIPTS \
 	uninstall-pkgincludeHEADERS
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl-config gsl.pc: Makefile 
+=======
+gsl-config gsl.pc: Makefile
+>>>>>>> config
 	@rm -f $@ $@.tmp
 	@$(edit) '$(srcdir)/$@.in' >>$@.tmp
 	@chmod a-w $@.tmp

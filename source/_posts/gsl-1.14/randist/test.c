@@ -1,17 +1,31 @@
 /* randist/test.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007, 2010 James Theiler, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007, 2010 James Theiler, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -35,10 +49,17 @@
 
 
 void testMoments (double (*f) (void), const char *name,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   double a, double b, double p);
 void testPDF (double (*f) (void), double (*pdf) (double), const char *name);
 void testDiscretePDF (double (*f) (void), double (*pdf) (unsigned int),
                       const char *name);
+=======
+		  double a, double b, double p);
+void testPDF (double (*f) (void), double (*pdf) (double), const char *name);
+void testDiscretePDF (double (*f) (void), double (*pdf) (unsigned int),
+		      const char *name);
+>>>>>>> config
 
 void test_shuffle (void);
 void test_choose (void);
@@ -275,7 +296,11 @@ main (void)
 
   testMoments (FUNC (discrete2), -0.5,  0.5, 1.0/45.0 );
   testMoments (FUNC (discrete2),  8.5,  9.5, 0 );
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   testMoments (FUNC (discrete3), -0.5, 0.5, 0.05 );
   testMoments (FUNC (discrete3),  0.5, 1.5, 0.05 );
   testMoments (FUNC (discrete3), -0.5, 9.5, 0.5 );
@@ -404,25 +429,40 @@ test_shuffle (void)
   for (i = 0; i < 10; i++)
     {
       for (j = 0; j < 10; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           count[i][j] = 0;
         }
+=======
+	{
+	  count[i][j] = 0;
+	}
+>>>>>>> config
     }
 
   for (i = 0; i < N; i++)
     {
       for (j = 0; j < 10; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         x[j] = j;
+=======
+	x[j] = j;
+>>>>>>> config
 
       gsl_ran_shuffle (r_global, x, 10, sizeof (int));
 
       for (j = 0; j < 10; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         count[x[j]][j]++;
+=======
+	count[x[j]][j]++;
+>>>>>>> config
     }
 
   for (i = 0; i < 10; i++)
     {
       for (j = 0; j < 10; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double expected = N / 10.0;
           double d = fabs (count[i][j] - expected);
@@ -435,6 +475,20 @@ test_shuffle (void)
                         i, j, count[i][j] / N, 0.1);
             }
         }
+=======
+	{
+	  double expected = N / 10.0;
+	  double d = fabs (count[i][j] - expected);
+	  double sigma = d / sqrt (expected);
+	  if (sigma > 5 && d > 1)
+	    {
+	      status = 1;
+	      gsl_test (status,
+			"gsl_ran_shuffle %d,%d (%g observed vs %g expected)",
+			i, j, count[i][j] / N, 0.1);
+	    }
+	}
+>>>>>>> config
     }
 
   gsl_test (status, "gsl_ran_shuffle on {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}");
@@ -457,12 +511,20 @@ test_choose (void)
   for (i = 0; i < N; i++)
     {
       for (j = 0; j < 10; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         x[j] = j;
+=======
+	x[j] = j;
+>>>>>>> config
 
       gsl_ran_choose (r_global, y, 3, x, 10, sizeof (int));
 
       for (j = 0; j < 3; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         count[y[j]]++;
+=======
+	count[y[j]]++;
+>>>>>>> config
     }
 
   for (i = 0; i < 10; i++)
@@ -471,12 +533,21 @@ test_choose (void)
       double d = fabs (count[i] - expected);
       double sigma = d / sqrt (expected);
       if (sigma > 5 && d > 1)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           status = 1;
           gsl_test (status,
                     "gsl_ran_choose %d (%g observed vs %g expected)",
                     i, count[i] / N, 0.1);
         }
+=======
+	{
+	  status = 1;
+	  gsl_test (status,
+		    "gsl_ran_choose %d (%g observed vs %g expected)",
+		    i, count[i] / N, 0.1);
+	}
+>>>>>>> config
     }
 
   gsl_test (status, "gsl_ran_choose (3) on {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}");
@@ -488,7 +559,11 @@ test_choose (void)
 
 void
 testMoments (double (*f) (void), const char *name,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              double a, double b, double p)
+=======
+	     double a, double b, double p)
+>>>>>>> config
 {
   int i;
   double count = 0, expected, sigma;
@@ -498,7 +573,11 @@ testMoments (double (*f) (void), const char *name,
     {
       double r = f ();
       if (r < b && r > a)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         count++;
+=======
+	count++;
+>>>>>>> config
     }
 
   expected = p * N;
@@ -507,7 +586,11 @@ testMoments (double (*f) (void), const char *name,
   status = (sigma > 3);
 
   gsl_test (status, "%s [%g,%g] (%g observed vs %g expected)",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             name, a, b, count / N, p);
+=======
+	    name, a, b, count / N, p);
+>>>>>>> config
 }
 
 #define BINS 100
@@ -518,12 +601,20 @@ typedef double pdf_func(double);
 static int pdf_errors = 0;
 static double pdf_errval = 0.0;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 double 
+=======
+double
+>>>>>>> config
 wrapper_function (double x, void *params)
 {
   pdf_func * pdf = (pdf_func *)params;
   double P = pdf(x);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (!gsl_finite(P)) {  
+=======
+  if (!gsl_finite(P)) {
+>>>>>>> config
     pdf_errors++;
     pdf_errval = P;
     P = 0; /* skip invalid value now, but return pdf_errval at the end */
@@ -536,7 +627,11 @@ integrate (pdf_func * pdf, double a, double b)
 {
   double result, abserr;
   size_t n = 1000;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   gsl_function f;  
+=======
+  gsl_function f;
+>>>>>>> config
   gsl_integration_workspace * w = gsl_integration_workspace_alloc (n);
   f.function = &wrapper_function;
   f.params = (void *)pdf;
@@ -566,7 +661,11 @@ testPDF (double (*f) (void), double (*pdf) (double), const char *name)
       double x = a + i * dx;
 
       if (fabs (x) < 1e-10)     /* hit the origin exactly */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         x = 0.0;
+=======
+	x = 0.0;
+>>>>>>> config
 
       p[i]  = integrate (pdf, x, x+dx);
     }
@@ -587,6 +686,7 @@ testPDF (double (*f) (void), double (*pdf) (double), const char *name)
       total += r;
 
       if (r < b && r > a)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double u = (r - a) / dx;
           double f = modf(u, &bin);
@@ -597,6 +697,18 @@ testPDF (double (*f) (void), double (*pdf) (double), const char *name)
           else 
             count[j]++;
         }
+=======
+	{
+	  double u = (r - a) / dx;
+	  double f = modf(u, &bin);
+	  j = (int)bin;
+
+	  if (f == 0)
+	    edge[j]++;
+	  else
+	    count[j]++;
+	}
+>>>>>>> config
     }
 
   /* Sort out where the hits on the edges should go */
@@ -604,11 +716,19 @@ testPDF (double (*f) (void), double (*pdf) (double), const char *name)
   for (i = 0; i < BINS; i++)
     {
       /* If the bin above is empty, its lower edge hits belong in the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          lower bin */
 
       if (i + 1 < BINS && count[i+1] == 0) {
         count[i] += edge[i+1];
         edge[i+1] = 0;
+=======
+	 lower bin */
+
+      if (i + 1 < BINS && count[i+1] == 0) {
+	count[i] += edge[i+1];
+	edge[i+1] = 0;
+>>>>>>> config
       }
 
       count[i] += edge[i];
@@ -627,6 +747,7 @@ testPDF (double (*f) (void), double (*pdf) (double), const char *name)
     {
       double x = a + i * dx;
       double d = fabs (count[i] - n * p[i]);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       if (!gsl_finite(p[i])) 
         {
           status_i = 1;
@@ -654,16 +775,53 @@ testPDF (double (*f) (void), double (*pdf) (double), const char *name)
       if (status_i)
         gsl_test (status_i, "%s [%g,%g) (%g/%d=%g observed vs %g expected)",
                   name, x, x + dx, count[i], n, count[i] / n, p[i]);
+=======
+      if (!gsl_finite(p[i]))
+	{
+	  status_i = 1;
+	}
+      else if (p[i] != 0)
+	{
+	  double s = d / sqrt (n * p[i]);
+	  status_i = (s > 5) && (d > 2);
+	}
+      else
+	{
+	  status_i = (count[i] != 0);
+	}
+
+      /* Extend the sample if there is an outlier on the first attempt
+	 to avoid spurious failures when running large numbers of tests. */
+      if (status_i && attempts < 50)
+	{
+	  n0 = n;
+	  n = 2.0*n;
+	  goto trial;
+	}
+
+      status |= status_i;
+      if (status_i)
+	gsl_test (status_i, "%s [%g,%g) (%g/%d=%g observed vs %g expected)",
+		  name, x, x + dx, count[i], n, count[i] / n, p[i]);
+>>>>>>> config
     }
 
   if (status == 0)
     gsl_test (status, "%s, sampling against pdf over range [%g,%g) ",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
               name, a, b);
+=======
+	      name, a, b);
+>>>>>>> config
 }
 
 void
 testDiscretePDF (double (*f) (void), double (*pdf) (unsigned int),
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  const char *name)
+=======
+		 const char *name)
+>>>>>>> config
 {
   double count[BINS], p[BINS];
   unsigned int i;
@@ -676,7 +834,11 @@ testDiscretePDF (double (*f) (void), double (*pdf) (unsigned int),
     {
       int r = (int) (f ());
       if (r >= 0 && r < BINS)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         count[r]++;
+=======
+	count[r]++;
+>>>>>>> config
     }
 
   for (i = 0; i < BINS; i++)
@@ -686,6 +848,7 @@ testDiscretePDF (double (*f) (void), double (*pdf) (unsigned int),
     {
       double d = fabs (count[i] - N * p[i]);
       if (p[i] != 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double s = d / sqrt (N * p[i]);
           status_i = (s > 5) && (d > 1);
@@ -698,11 +861,29 @@ testDiscretePDF (double (*f) (void), double (*pdf) (unsigned int),
       if (status_i)
         gsl_test (status_i, "%s i=%d (%g observed vs %g expected)",
                   name, i, count[i] / N, p[i]);
+=======
+	{
+	  double s = d / sqrt (N * p[i]);
+	  status_i = (s > 5) && (d > 1);
+	}
+      else
+	{
+	  status_i = (count[i] != 0);
+	}
+      status |= status_i;
+      if (status_i)
+	gsl_test (status_i, "%s i=%d (%g observed vs %g expected)",
+		  name, i, count[i] / N, p[i]);
+>>>>>>> config
     }
 
   if (status == 0)
     gsl_test (status, "%s, sampling against pdf over range [%d,%d) ",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
               name, 0, BINS);
+=======
+	      name, 0, BINS);
+>>>>>>> config
 }
 
 
@@ -1050,23 +1231,37 @@ test_dirichlet_moments (void)
     {
       gsl_ran_dirichlet (r_global, DIRICHLET_K, alpha, theta);
       for (k = 0; k < DIRICHLET_K; k++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         theta_sum[k] += theta[k];
+=======
+	theta_sum[k] += theta[k];
+>>>>>>> config
     }
 
   for (k = 0; k < DIRICHLET_K; k++)
     {
       mean = alpha[k] / alpha_sum;
       sd =
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         sqrt ((alpha[k] * (1. - alpha[k] / alpha_sum)) /
               (alpha_sum * (alpha_sum + 1.)));
+=======
+	sqrt ((alpha[k] * (1. - alpha[k] / alpha_sum)) /
+	      (alpha_sum * (alpha_sum + 1.)));
+>>>>>>> config
       obs_mean = theta_sum[k] / N;
       sigma = sqrt ((double) N) * fabs (mean - obs_mean) / sd;
 
       status = (sigma > 3.0);
 
       gsl_test (status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                 "test gsl_ran_dirichlet: mean (%g observed vs %g expected)",
                 obs_mean, mean);
+=======
+		"test gsl_ran_dirichlet: mean (%g observed vs %g expected)",
+		obs_mean, mean);
+>>>>>>> config
     }
 }
 
@@ -1080,7 +1275,11 @@ test_multinomial_moments (void)
   const unsigned int sum_n = 100;
 
   const double p[MULTI_DIM] ={ 0.2, 0.20, 0.17, 0.14, 0.12,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                0.07, 0.05, 0.02, 0.02, 0.01 };
+=======
+			       0.07, 0.05, 0.02, 0.02, 0.01 };
+>>>>>>> config
 
   unsigned int  x[MULTI_DIM];
   double x_sum[MULTI_DIM];
@@ -1095,7 +1294,11 @@ test_multinomial_moments (void)
     {
       gsl_ran_multinomial (r_global, MULTI_DIM, sum_n, p, x);
       for (k = 0; k < MULTI_DIM; k++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         x_sum[k] += x[k];
+=======
+	x_sum[k] += x[k];
+>>>>>>> config
     }
 
   for (k = 0; k < MULTI_DIM; k++)
@@ -1109,8 +1312,13 @@ test_multinomial_moments (void)
       status = (sigma > 3.0);
 
       gsl_test (status,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                 "test gsl_ran_multinomial: mean (%g observed vs %g expected)",
                 obs_mean, mean);
+=======
+		"test gsl_ran_multinomial: mean (%g observed vs %g expected)",
+		obs_mean, mean);
+>>>>>>> config
     }
 }
 
@@ -1984,7 +2192,11 @@ test_multinomial_large (void)
   const unsigned int sum_n = BINS;
   unsigned int n[MULTI_DIM];
   const double p[MULTI_DIM] = { 0.2, 0.20, 0.17, 0.14, 0.12,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                 0.07, 0.05, 0.04, 0.01, 0.00  };
+=======
+				0.07, 0.05, 0.04, 0.01, 0.00  };
+>>>>>>> config
 
   gsl_ran_multinomial ( r_global, MULTI_DIM, sum_n, p, n);
 

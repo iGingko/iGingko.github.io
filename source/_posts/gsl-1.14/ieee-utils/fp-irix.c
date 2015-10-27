@@ -1,17 +1,31 @@
 /* ieee-utils/fp-irix.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Tim Mooney
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Tim Mooney
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -32,6 +46,7 @@ gsl_ieee_set_mode (int precision, int rounding, int exception_mask)
     {
     case GSL_IEEE_SINGLE_PRECISION:
       GSL_ERROR ("IRIX only supports default precision rounding",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_EUNSUP) ;
       break ;
     case GSL_IEEE_DOUBLE_PRECISION:
@@ -41,6 +56,17 @@ gsl_ieee_set_mode (int precision, int rounding, int exception_mask)
     case GSL_IEEE_EXTENDED_PRECISION:
       GSL_ERROR ("IRIX only supports default precision rounding",
                  GSL_EUNSUP) ;
+=======
+		 GSL_EUNSUP) ;
+      break ;
+    case GSL_IEEE_DOUBLE_PRECISION:
+      GSL_ERROR ("IRIX only supports default precision rounding",
+		 GSL_EUNSUP) ;
+      break ;
+    case GSL_IEEE_EXTENDED_PRECISION:
+      GSL_ERROR ("IRIX only supports default precision rounding",
+		 GSL_EUNSUP) ;
+>>>>>>> config
       break ;
     }
 
@@ -81,8 +107,13 @@ gsl_ieee_set_mode (int precision, int rounding, int exception_mask)
   else
     {
       GSL_ERROR ("IRIX does not support the denormalized operand exception. "
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  "Use 'mask-denormalized' to work around this.",
                  GSL_EUNSUP) ;
+=======
+		 "Use 'mask-denormalized' to work around this.",
+		 GSL_EUNSUP) ;
+>>>>>>> config
     }
 
   if (exception_mask & GSL_IEEE_MASK_DIVISION_BY_ZERO)

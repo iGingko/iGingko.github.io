@@ -1,17 +1,31 @@
 /* diff/diff.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 David Morrison
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 David Morrison
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -27,7 +41,11 @@
 
 int
 gsl_diff_backward (const gsl_function * f,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                    double x, double *result, double *abserr)
+=======
+		   double x, double *result, double *abserr)
+>>>>>>> config
 {
   /* Construct a divided difference table with a fairly large step
      size to get a very rough estimate of f''.  Use this to estimate
@@ -49,9 +67,15 @@ gsl_diff_backward (const gsl_function * f,
   for (k = 1; k < 4; k++)
     {
       for (i = 0; i < 3 - k; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           d[i] = (d[i + 1] - d[i]) / (a[i + k] - a[i]);
         }
+=======
+	{
+	  d[i] = (d[i + 1] - d[i]) / (a[i + k] - a[i]);
+	}
+>>>>>>> config
     }
 
   /* Adapt procedure described on pg. 282 of CdB to find best value of
@@ -79,7 +103,11 @@ gsl_diff_backward (const gsl_function * f,
 
 int
 gsl_diff_forward (const gsl_function * f,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   double x, double *result, double *abserr)
+=======
+		  double x, double *result, double *abserr)
+>>>>>>> config
 {
   /* Construct a divided difference table with a fairly large step
      size to get a very rough estimate of f''.  Use this to estimate
@@ -101,9 +129,15 @@ gsl_diff_forward (const gsl_function * f,
   for (k = 1; k < 4; k++)
     {
       for (i = 0; i < 3 - k; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           d[i] = (d[i + 1] - d[i]) / (a[i + k] - a[i]);
         }
+=======
+	{
+	  d[i] = (d[i + 1] - d[i]) / (a[i + k] - a[i]);
+	}
+>>>>>>> config
     }
 
   /* Adapt procedure described on pg. 282 of CdB to find best value of
@@ -131,7 +165,11 @@ gsl_diff_forward (const gsl_function * f,
 
 int
 gsl_diff_central (const gsl_function * f,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   double x, double *result, double *abserr)
+=======
+		  double x, double *result, double *abserr)
+>>>>>>> config
 {
   /* Construct a divided difference table with a fairly large step
      size to get a very rough estimate of f'''.  Use this to estimate
@@ -153,9 +191,15 @@ gsl_diff_central (const gsl_function * f,
   for (k = 1; k < 5; k++)
     {
       for (i = 0; i < 4 - k; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           d[i] = (d[i + 1] - d[i]) / (a[i + k] - a[i]);
         }
+=======
+	{
+	  d[i] = (d[i + 1] - d[i]) / (a[i + k] - a[i]);
+	}
+>>>>>>> config
     }
 
   /* Adapt procedure described on pg. 282 of CdB to find best

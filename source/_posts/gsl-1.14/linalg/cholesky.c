@@ -40,9 +40,15 @@
 #include <gsl/gsl_blas.h>
 #include <gsl/gsl_linalg.h>
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static inline 
 double
 quiet_sqrt (double x)  
+=======
+static inline
+double
+quiet_sqrt (double x)
+>>>>>>> config
      /* avoids runtime error, for checking matrix for positive definiteness */
 {
   return (x >= 0) ? sqrt(x) : GSL_NAN;
@@ -64,6 +70,7 @@ gsl_linalg_cholesky_decomp (gsl_matrix * A)
       int status = 0;
 
       /* Do the first 2 rows explicitly.  It is simple, and faster.  And
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
        * one can return if the matrix has only 1 or 2 rows.  
        */
 
@@ -157,6 +164,101 @@ gsl_linalg_cholesky_decomp (gsl_matrix * A)
           GSL_ERROR ("matrix must be positive definite", GSL_EDOM);
         }
       
+=======
+       * one can return if the matrix has only 1 or 2 rows.
+       */
+
+      double A_00 = gsl_matrix_get (A, 0, 0);
+
+      double L_00 = quiet_sqrt(A_00);
+
+      if (A_00 <= 0)
+	{
+	  status = GSL_EDOM ;
+	}
+
+      gsl_matrix_set (A, 0, 0, L_00);
+
+      if (M > 1)
+	{
+	  double A_10 = gsl_matrix_get (A, 1, 0);
+	  double A_11 = gsl_matrix_get (A, 1, 1);
+
+	  double L_10 = A_10 / L_00;
+	  double diag = A_11 - L_10 * L_10;
+	  double L_11 = quiet_sqrt(diag);
+
+	  if (diag <= 0)
+	    {
+	      status = GSL_EDOM;
+	    }
+
+	  gsl_matrix_set (A, 1, 0, L_10);
+	  gsl_matrix_set (A, 1, 1, L_11);
+	}
+
+      for (k = 2; k < M; k++)
+	{
+	  double A_kk = gsl_matrix_get (A, k, k);
+
+	  for (i = 0; i < k; i++)
+	    {
+	      double sum = 0;
+
+	      double A_ki = gsl_matrix_get (A, k, i);
+	      double A_ii = gsl_matrix_get (A, i, i);
+
+	      gsl_vector_view ci = gsl_matrix_row (A, i);
+	      gsl_vector_view ck = gsl_matrix_row (A, k);
+
+	      if (i > 0) {
+		gsl_vector_view di = gsl_vector_subvector(&ci.vector, 0, i);
+		gsl_vector_view dk = gsl_vector_subvector(&ck.vector, 0, i);
+
+		gsl_blas_ddot (&di.vector, &dk.vector, &sum);
+	      }
+
+	      A_ki = (A_ki - sum) / A_ii;
+	      gsl_matrix_set (A, k, i, A_ki);
+	    }
+
+	  {
+	    gsl_vector_view ck = gsl_matrix_row (A, k);
+	    gsl_vector_view dk = gsl_vector_subvector (&ck.vector, 0, k);
+
+	    double sum = gsl_blas_dnrm2 (&dk.vector);
+	    double diag = A_kk - sum * sum;
+
+	    double L_kk = quiet_sqrt(diag);
+
+	    if (diag <= 0)
+	      {
+		status = GSL_EDOM;
+	      }
+
+	    gsl_matrix_set (A, k, k, L_kk);
+	  }
+	}
+
+      /* Now copy the transposed lower triangle to the upper triangle,
+       * the diagonal is common.
+       */
+
+      for (i = 1; i < M; i++)
+	{
+	  for (j = 0; j < i; j++)
+	    {
+	      double A_ij = gsl_matrix_get (A, i, j);
+	      gsl_matrix_set (A, j, i, A_ij);
+	    }
+	}
+
+      if (status == GSL_EDOM)
+	{
+	  GSL_ERROR ("matrix must be positive definite", GSL_EDOM);
+	}
+
+>>>>>>> config
       return GSL_SUCCESS;
     }
 }
@@ -164,8 +266,13 @@ gsl_linalg_cholesky_decomp (gsl_matrix * A)
 
 int
 gsl_linalg_cholesky_solve (const gsl_matrix * LLT,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                            const gsl_vector * b,
                            gsl_vector * x)
+=======
+			   const gsl_vector * b,
+			   gsl_vector * x)
+>>>>>>> config
 {
   if (LLT->size1 != LLT->size2)
     {
@@ -200,7 +307,11 @@ gsl_linalg_cholesky_solve (const gsl_matrix * LLT,
 
 int
 gsl_linalg_cholesky_svx (const gsl_matrix * LLT,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                          gsl_vector * x)
+=======
+			 gsl_vector * x)
+>>>>>>> config
 {
   if (LLT->size1 != LLT->size2)
     {
@@ -230,7 +341,11 @@ gsl_linalg_cholesky_invert()
 Cholesky form.
 
 Inputs: LLT - matrix in cholesky form on input
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
               A^{-1} = L^{-t} L^{-1} on output
+=======
+	      A^{-1} = L^{-t} L^{-1} on output
+>>>>>>> config
 
 Return: success or error
 */
@@ -251,6 +366,7 @@ gsl_linalg_cholesky_invert(gsl_matrix * LLT)
 
       /* invert the lower triangle of LLT */
       for (i = 0; i < N; ++i)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double ajj;
 
@@ -273,6 +389,30 @@ gsl_linalg_cholesky_invert(gsl_matrix * LLT)
               gsl_blas_dscal(ajj, &v1.vector);
             }
         } /* for (i = 0; i < N; ++i) */
+=======
+	{
+	  double ajj;
+
+	  j = N - i - 1;
+
+	  gsl_matrix_set(LLT, j, j, 1.0 / gsl_matrix_get(LLT, j, j));
+	  ajj = -gsl_matrix_get(LLT, j, j);
+
+	  if (j < N - 1)
+	    {
+	      gsl_matrix_view m;
+
+	      m = gsl_matrix_submatrix(LLT, j + 1, j + 1,
+				       N - j - 1, N - j - 1);
+	      v1 = gsl_matrix_subcolumn(LLT, j, j + 1, N - j - 1);
+
+	      gsl_blas_dtrmv(CblasLower, CblasNoTrans, CblasNonUnit,
+			     &m.matrix, &v1.vector);
+
+	      gsl_blas_dscal(ajj, &v1.vector);
+	    }
+	} /* for (i = 0; i < N; ++i) */
+>>>>>>> config
 
       /*
        * The lower triangle of LLT now contains L^{-1}. Now compute
@@ -283,6 +423,7 @@ gsl_linalg_cholesky_invert(gsl_matrix * LLT)
        */
 
       for (i = 0; i < N; ++i)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           for (j = i + 1; j < N; ++j)
             {
@@ -301,10 +442,31 @@ gsl_linalg_cholesky_invert(gsl_matrix * LLT)
           gsl_blas_ddot(&v1.vector, &v1.vector, &sum);
           gsl_matrix_set(LLT, i, i, sum);
         }
+=======
+	{
+	  for (j = i + 1; j < N; ++j)
+	    {
+	      v1 = gsl_matrix_subcolumn(LLT, i, j, N - j);
+	      v2 = gsl_matrix_subcolumn(LLT, j, j, N - j);
+
+	      /* compute Ainv_{ij} = sum_k Linv_{ki} Linv_{kj} */
+	      gsl_blas_ddot(&v1.vector, &v2.vector, &sum);
+
+	      /* store in upper triangle */
+	      gsl_matrix_set(LLT, i, j, sum);
+	    }
+
+	  /* now compute the diagonal element */
+	  v1 = gsl_matrix_subcolumn(LLT, i, i, N - i);
+	  gsl_blas_ddot(&v1.vector, &v1.vector, &sum);
+	  gsl_matrix_set(LLT, i, i, sum);
+	}
+>>>>>>> config
 
       /* copy the transposed upper triangle to the lower triangle */
 
       for (j = 1; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           for (i = 0; i < j; i++)
             {
@@ -312,6 +474,15 @@ gsl_linalg_cholesky_invert(gsl_matrix * LLT)
               gsl_matrix_set (LLT, j, i, A_ij);
             }
         } 
+=======
+	{
+	  for (i = 0; i < j; i++)
+	    {
+	      double A_ij = gsl_matrix_get (LLT, i, j);
+	      gsl_matrix_set (LLT, j, i, A_ij);
+	    }
+	}
+>>>>>>> config
 
       return GSL_SUCCESS;
     }
@@ -340,7 +511,11 @@ gsl_linalg_cholesky_decomp_unit(gsl_matrix * A, gsl_vector * D)
     {
       for(j = 0; j < N; ++j)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gsl_matrix_set(A, i, j, gsl_matrix_get(A, i, j) / sqrt(gsl_vector_get(D, j)));
+=======
+	gsl_matrix_set(A, i, j, gsl_matrix_get(A, i, j) / sqrt(gsl_vector_get(D, j)));
+>>>>>>> config
       }
     }
 
@@ -351,7 +526,11 @@ gsl_linalg_cholesky_decomp_unit(gsl_matrix * A, gsl_vector * D)
        */
     for(i = 0; i < N; ++i)
       for(j = i + 1; j < N; ++j)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gsl_matrix_set(A, i, j, gsl_matrix_get(A, j, i));
+=======
+	gsl_matrix_set(A, i, j, gsl_matrix_get(A, j, i));
+>>>>>>> config
   }
 
   return stat_chol;

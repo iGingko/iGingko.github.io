@@ -1,17 +1,31 @@
 /* specfunc/bessel_Inu.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -56,7 +70,11 @@ gsl_sf_bessel_Inu_scaled_e(double nu, double x, gsl_sf_result * result)
   }
   else {
     int N = (int)(nu + 0.5);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     double mu = nu - N;      /* -1/2 <= mu <= 1/2 */ 
+=======
+    double mu = nu - N;      /* -1/2 <= mu <= 1/2 */
+>>>>>>> config
     double K_mu, K_mup1, Kp_mu;
     double K_nu, K_nup1, K_num1;
     double I_nu_ratio;
@@ -100,8 +118,13 @@ gsl_sf_bessel_Inu_e(double nu, double x, gsl_sf_result * result)
   gsl_sf_result b;
   int stat_I = gsl_sf_bessel_Inu_scaled_e(nu, x, &b);
   int stat_e = gsl_sf_exp_mult_err_e(x, fabs(x*GSL_DBL_EPSILON),
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                         b.val, b.err,
                                         result);
+=======
+					b.val, b.err,
+					result);
+>>>>>>> config
   return GSL_ERROR_SELECT_2(stat_e, stat_I);
 }
 

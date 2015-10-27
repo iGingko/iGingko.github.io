@@ -1,17 +1,31 @@
 /* fft/factorize.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -25,8 +39,13 @@
 
 static int
 fft_complex_factorize (const size_t n,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                            size_t *nf,
                            size_t factors[])
+=======
+			   size_t *nf,
+			   size_t factors[])
+>>>>>>> config
 {
   const size_t complex_subtransforms[] =
   {7, 6, 5, 4, 3, 2, 0};
@@ -40,8 +59,13 @@ fft_complex_factorize (const size_t n,
 
 static int
 fft_halfcomplex_factorize (const size_t n,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                size_t *nf,
                                size_t factors[])
+=======
+			       size_t *nf,
+			       size_t factors[])
+>>>>>>> config
 {
   const size_t halfcomplex_subtransforms[] =
   {5, 4, 3, 2, 0};
@@ -52,8 +76,13 @@ fft_halfcomplex_factorize (const size_t n,
 
 static int
 fft_real_factorize (const size_t n,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         size_t *nf,
                         size_t factors[])
+=======
+			size_t *nf,
+			size_t factors[])
+>>>>>>> config
 {
   const size_t real_subtransforms[] =
   {5, 4, 3, 2, 0};
@@ -65,9 +94,15 @@ fft_real_factorize (const size_t n,
 
 static int
 fft_factorize (const size_t n,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                    const size_t implemented_subtransforms[],
                    size_t *n_factors,
                    size_t factors[])
+=======
+		   const size_t implemented_subtransforms[],
+		   size_t *n_factors,
+		   size_t factors[])
+>>>>>>> config
 
 {
   size_t nf = 0;
@@ -93,11 +128,19 @@ fft_factorize (const size_t n,
     {
       factor = implemented_subtransforms[i];
       while ((ntest % factor) == 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           ntest = ntest / factor;
           factors[nf] = factor;
           nf++;
         }
+=======
+	{
+	  ntest = ntest / factor;
+	  factors[nf] = factor;
+	  nf++;
+	}
+>>>>>>> config
       i++;
     }
 
@@ -119,9 +162,15 @@ fft_factorize (const size_t n,
   while (ntest != 1)
     {
       while ((ntest % factor) != 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           factor += 2;
         }
+=======
+	{
+	  factor += 2;
+	}
+>>>>>>> config
       ntest = ntest / factor;
       factors[nf] = factor;
       nf++;
@@ -133,12 +182,20 @@ fft_factorize (const size_t n,
 
     for (i = 0; i < nf; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         product *= factors[i];
+=======
+	product *= factors[i];
+>>>>>>> config
       }
 
     if (product != n)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         GSL_ERROR ("factorization failed", GSL_ESANITY);
+=======
+	GSL_ERROR ("factorization failed", GSL_ESANITY);
+>>>>>>> config
       }
   }
 
@@ -148,7 +205,11 @@ fft_factorize (const size_t n,
 }
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static int 
+=======
+static int
+>>>>>>> config
 fft_binary_logn (const size_t n)
 {
   size_t ntest ;
@@ -163,6 +224,7 @@ fft_binary_logn (const size_t n)
 
   ntest = (1 << binary_logn) ;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (n != ntest )       
     {
       return -1 ; /* n is not a power of 2 */
@@ -174,3 +236,12 @@ fft_binary_logn (const size_t n)
 
 
 
+=======
+  if (n != ntest )
+    {
+      return -1 ; /* n is not a power of 2 */
+    }
+
+  return binary_logn;
+}
+>>>>>>> config

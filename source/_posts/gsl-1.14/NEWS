@@ -11,7 +11,11 @@
    tensor in n-space. (Rhys Ulerich)
 
 ** Added gsl_integrate_glfixed routines for performing fixed order
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    Gauss-Legendre integration 
+=======
+   Gauss-Legendre integration
+>>>>>>> config
    (Pavel Holoborodko, Konstantin Holoborodko, Rhys Ulerich)
 
 ** In the LMDER multi-dimensional fitting routines, the return code
@@ -141,7 +145,11 @@
 
 ** Modified gsl_poly_complex_solve_cubic and gsl_poly_solve_cubic to
    avoid returning NaNs in cases where excess precision causes a
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    change in the number of roots. 
+=======
+   change in the number of roots.
+>>>>>>> config
 
 ** Fixed incorrect length check in gsl_blas_drotm. [bug #26503]
 
@@ -256,7 +264,11 @@
    gsl_ran_chisq()).
 
 ** Added missing error terms in gsl_sf_exp_mult_e10_e to prevent
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    the error being underestimated (bug #22041).  
+=======
+   the error being underestimated (bug #22041).
+>>>>>>> config
 
 ** Updated some constants to the CODATA 2006 values.
 
@@ -585,8 +597,13 @@ solving the transpose of the original system.  This allows more
 efficient memory access, and is useful for solving large least-squares
 problems.
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 ** Fixed a bug in the SYRK and HERK blas functions gsl_blas_{s,d,c,z}syrk 
 and gsl_blas_{c,z}herk which caused invalid memory access for non-square 
+=======
+** Fixed a bug in the SYRK and HERK blas functions gsl_blas_{s,d,c,z}syrk
+and gsl_blas_{c,z}herk which caused invalid memory access for non-square
+>>>>>>> config
 matrices.
 
 ** Fixed a bug in gsl_swap_vectors which caused it to return incorrect
@@ -626,7 +643,11 @@ distribution.
 consistent results of 0 or 1 for out of range values, x<0 and x>1,
 rather than 0 for left and right tails simultaneously.
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 ** The Jacobi eigensolvers gsl_eigen_jacobi and gsl_eigen_jacobi_invert 
+=======
+** The Jacobi eigensolvers gsl_eigen_jacobi and gsl_eigen_jacobi_invert
+>>>>>>> config
 have new implementations from Golub and Van Loan.
 
 ** The standard output and standard error streams are now flushed by
@@ -680,7 +701,11 @@ computing the SVD of matrices containing Inf and Nan.
 ** Fixed gsl_linalg_balance_columns() to avoid an infinite loop when
 rescaling matrices containing Inf and NaN.
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 ** Fixed header file <gsl/gsl_sf_log.h> to include declarations for 
+=======
+** Fixed header file <gsl/gsl_sf_log.h> to include declarations for
+>>>>>>> config
 error codes in inline versions of gsl_sf_log functions
 
 ** Fixed header file <gsl/gsl_const.h> to include new MKSA and CGSM
@@ -753,7 +778,11 @@ data to be returned for some distributions.
 
 ** Fixed the dependencies for gsl_chebyshev.h to include gsl_math.h.
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 ** Fixed a bug in gsl_complex_arccsc_real which caused it to return 
+=======
+** Fixed a bug in gsl_complex_arccsc_real which caused it to return
+>>>>>>> config
 the incorrect sign for the imaginary part when -1<x<0.
 
 ** Fixed a bug in the QAWC Cauchy integration routine which could
@@ -797,7 +826,11 @@ and will be removed at some point in the future.
 ** Added new functions for computing Em(x)=exp(-x)*Ei(x), the modified
 (scaled) form of the exponential integral, gsl_sf_expint_E1_scaled,
 gsl_sf_expint_E2_scaled, gsl_sf_expint_Ei_scaled.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    
+=======
+
+>>>>>>> config
 ** Fixed compilation problems with gcc -ansi and other ANSI compilers.
 
 ** Fixed uninitialized memory access in the Niederreiter quasi-random
@@ -816,7 +849,11 @@ gsl_rng_taus2 which affected a small number of seeds.
 zero, which could cause NaNs to be returned by the gsl_eigen_hermv
 eigenvalue decomposition.
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 ** The Nelder-Mead simplex algorithm for multidimensional 
+=======
+** The Nelder-Mead simplex algorithm for multidimensional
+>>>>>>> config
 minimisation has been added.
 
 ** The random number distributions now include the Dirichlet and
@@ -871,7 +908,11 @@ the best solution so far.
 ** The values of the physical constants have been updated to the
 CODATA 1998 recommendations.
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 ** Added new physical constants, newton, dyne, joule, erg and 
+=======
+** Added new physical constants, newton, dyne, joule, erg and
+>>>>>>> config
 power-of-ten prefixes, Mega, Giga, Tera, etc.
 
 ** The error estimate for the elliptic function gsl_sf_ellint_Kcomp_e
@@ -1107,7 +1148,11 @@ extended precision registers
 * What was new in gsl-0.9:
 
 ** There is a new system of vector and matrix views.  Any code using
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 vector and matrix views will need to be updated.  
+=======
+vector and matrix views will need to be updated.
+>>>>>>> config
 
 ** The order of arguments of the view functions involving strides have
 been changed to be consistent with the rest of the library.
@@ -1347,12 +1392,21 @@ fail.
 ** Most Alpha specific problems have been fixed. In particular the
 random number generators rand48 and ranf now work on the Alpha
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 ** Additional random number distributions: 
    Rayleigh distribution
    n-dimensional spherical distribution 
      (ie, points at random on an n-dimensional sphere)
    Gaussian tail distribution 
      (ie, choosing values from a gaussian distribution subject to a 
+=======
+** Additional random number distributions:
+   Rayleigh distribution
+   n-dimensional spherical distribution
+     (ie, points at random on an n-dimensional sphere)
+   Gaussian tail distribution
+     (ie, choosing values from a gaussian distribution subject to a
+>>>>>>> config
       constraint that they be larger than some fixed value, eg 5 sigmas)
    Walker's algorithm for arbitrary discrete distributions
 

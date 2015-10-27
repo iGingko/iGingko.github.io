@@ -12,6 +12,7 @@ The functions described in this chapter are defined in the header file
 @file{gsl_combination.h}.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * The Combination struct::      
 * Combination allocation::      
 * Accessing combination elements::  
@@ -19,6 +20,15 @@ The functions described in this chapter are defined in the header file
 * Combination functions::       
 * Reading and writing combinations::  
 * Combination Examples::        
+=======
+* The Combination struct::
+* Combination allocation::
+* Accessing combination elements::
+* Combination properties::
+* Combination functions::
+* Reading and writing combinations::
+* Combination Examples::
+>>>>>>> config
 * Combination References and Further Reading::
 @end menu
 
@@ -165,10 +175,17 @@ binary format on the same architecture.
 @deftypefun int gsl_combination_fprintf (FILE * @var{stream}, const gsl_combination * @var{c}, const char * @var{format})
 This function writes the elements of the combination @var{c}
 line-by-line to the stream @var{stream} using the format specifier
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @var{format}, which should be suitable for a type of @var{size_t}.  
 In ISO C99 the type modifier @code{z} represents @code{size_t}, so
 @code{"%zu\n"} is a suitable format.@footnote{In versions of the 
 GNU C library prior to the ISO C99 standard, 
+=======
+@var{format}, which should be suitable for a type of @var{size_t}.
+In ISO C99 the type modifier @code{z} represents @code{size_t}, so
+@code{"%zu\n"} is a suitable format.@footnote{In versions of the
+GNU C library prior to the ISO C99 standard,
+>>>>>>> config
 the type modifier @code{Z} was used instead.}  The function returns
 @code{GSL_EFAILED} if there was a problem writing to the file.
 @end deftypefun
@@ -196,7 +213,11 @@ ordered lexicographically.
 Here is the output from the program,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 $ ./a.out 
+=======
+$ ./a.out
+>>>>>>> config
 @verbatiminclude examples/combination.out
 @end example
 
@@ -219,5 +240,8 @@ Generation, Enumeration and Search}, 1998, CRC Press LLC, ISBN
 @end itemize
 
 @noindent
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
+=======
+>>>>>>> config

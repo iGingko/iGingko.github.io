@@ -1,17 +1,31 @@
 /* integration/qc25c.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -28,11 +42,19 @@ static double fn_cauchy (double t, void *params);
 static void compute_moments (double cc, double *moment);
 
 static void
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 qc25c (gsl_function * f, double a, double b, double c, 
        double *result, double *abserr, int *err_reliable);
 
 static void
 qc25c (gsl_function * f, double a, double b, double c, 
+=======
+qc25c (gsl_function * f, double a, double b, double c,
+       double *result, double *abserr, int *err_reliable);
+
+static void
+qc25c (gsl_function * f, double a, double b, double c,
+>>>>>>> config
        double *result, double *abserr, int *err_reliable)
 {
   double cc = (2 * c - b - a) / (b - a);
@@ -51,6 +73,7 @@ qc25c (gsl_function * f, double a, double b, double c,
       weighted_function.params = &fn_params;
 
       gsl_integration_qk15 (&weighted_function, a, b, result, abserr,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                             &resabs, &resasc);
       
       if (*abserr == resasc)
@@ -61,6 +84,18 @@ qc25c (gsl_function * f, double a, double b, double c,
         {
           *err_reliable = 1;
         }
+=======
+			    &resabs, &resasc);
+
+      if (*abserr == resasc)
+	{
+	  *err_reliable = 0;
+	}
+      else
+	{
+	  *err_reliable = 1;
+	}
+>>>>>>> config
 
       return;
     }
@@ -73,6 +108,7 @@ qc25c (gsl_function * f, double a, double b, double c,
       compute_moments (cc, moment);
 
       for (i = 0; i < 13; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           res12 += cheb12[i] * moment[i];
         }
@@ -81,6 +117,16 @@ qc25c (gsl_function * f, double a, double b, double c,
         {
           res24 += cheb24[i] * moment[i];
         }
+=======
+	{
+	  res12 += cheb12[i] * moment[i];
+	}
+
+      for (i = 0; i < 25; i++)
+	{
+	  res24 += cheb24[i] * moment[i];
+	}
+>>>>>>> config
 
       *result = res24;
       *abserr = fabs(res24 - res12) ;
@@ -115,6 +161,7 @@ compute_moments (double cc, double *moment)
       double a2;
 
       if ((k % 2) == 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           a2 = 2.0 * cc * a1 - a0;
         }
@@ -123,6 +170,16 @@ compute_moments (double cc, double *moment)
           const double km1 = k - 1.0;
           a2 = 2.0 * cc * a1 - a0 - 4.0 / (km1 * km1 - 1.0);
         }
+=======
+	{
+	  a2 = 2.0 * cc * a1 - a0;
+	}
+      else
+	{
+	  const double km1 = k - 1.0;
+	  a2 = 2.0 * cc * a1 - a0 - 4.0 / (km1 * km1 - 1.0);
+	}
+>>>>>>> config
 
       moment[k] = a2;
 

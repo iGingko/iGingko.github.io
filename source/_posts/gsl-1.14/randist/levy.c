@@ -1,17 +1,31 @@
 /* randist/levy.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -27,7 +41,11 @@
 
    p(x) dx = (1/(2 pi)) \int dt exp(- it x - |c t|^alpha)
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    with 0 < alpha <= 2. 
+=======
+   with 0 < alpha <= 2.
+>>>>>>> config
 
    For alpha = 1, we get the Cauchy distribution
    For alpha = 2, we get the Gaussian distribution with sigma = sqrt(2) c.
@@ -92,15 +110,24 @@ gsl_ran_levy (const gsl_rng * r, const double c, const double alpha)
    For alpha = 1, beta=0, we get the Lorentz distribution
    For alpha = 2, beta=0, we get the Gaussian distribution
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    See A. Weron and R. Weron: Computer simulation of Lévy alpha-stable 
+=======
+   See A. Weron and R. Weron: Computer simulation of Lévy alpha-stable
+>>>>>>> config
    variables and processes, preprint Technical University of Wroclaw.
    http://www.im.pwr.wroc.pl/~hugo/Publications.html
 
 */
 
 double
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_ran_levy_skew (const gsl_rng * r, const double c, 
                    const double alpha, const double beta)
+=======
+gsl_ran_levy_skew (const gsl_rng * r, const double c,
+		   const double alpha, const double beta)
+>>>>>>> config
 {
   double V, W, X;
 
@@ -120,7 +147,11 @@ gsl_ran_levy_skew (const gsl_rng * r, const double c,
   if (alpha == 1)
     {
       X = ((M_PI_2 + beta * V) * tan (V) -
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
            beta * log (M_PI_2 * W * cos (V) / (M_PI_2 + beta * V))) / M_PI_2;
+=======
+	   beta * log (M_PI_2 * W * cos (V) / (M_PI_2 + beta * V))) / M_PI_2;
+>>>>>>> config
       return c * (X + beta * log (c) / M_PI_2);
     }
   else
@@ -130,7 +161,11 @@ gsl_ran_levy_skew (const gsl_rng * r, const double c,
       double S = pow (1 + t * t, 1/(2 * alpha));
 
       X = S * sin (alpha * (V + B)) / pow (cos (V), 1 / alpha)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         * pow (cos (V - alpha * (V + B)) / W, (1 - alpha) / alpha);
+=======
+	* pow (cos (V - alpha * (V + B)) / W, (1 - alpha) / alpha);
+>>>>>>> config
       return c * X;
     }
 }

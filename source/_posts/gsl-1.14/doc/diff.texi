@@ -10,9 +10,15 @@ choice of finite difference and to estimate the error in the derivative.
 These functions are declared in the header file @file{gsl_deriv.h}.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Numerical Differentiation functions::  
 * Numerical Differentiation Examples::  
 * Numerical Differentiation References::  
+=======
+* Numerical Differentiation functions::
+* Numerical Differentiation Examples::
+* Numerical Differentiation References::
+>>>>>>> config
 @end menu
 
 @node Numerical Differentiation functions
@@ -50,7 +56,11 @@ derivative calculation.  The derivative at @math{x} is computed using an
 ``open'' 4-point rule for equally spaced abscissae at @math{x+h/4},
 @math{x+h/2}, @math{x+3h/4}, @math{x+h}, with an error estimate taken
 from the difference between the 4-point rule and the corresponding
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 2-point rule @math{x+h/2}, @math{x+h}. 
+=======
+2-point rule @math{x+h/2}, @math{x+h}.
+>>>>>>> config
 @end deftypefun
 
 @deftypefun int gsl_deriv_backward (const gsl_function * @var{f}, double @var{x}, double @var{h}, double * @var{result}, double * @var{abserr})
@@ -70,9 +80,15 @@ negative step-size.
 @node Numerical Differentiation Examples
 @section Examples
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 The following code estimates the derivative of the function 
 @c{$f(x) = x^{3/2}$}
 @math{f(x) = x^@{3/2@}} 
+=======
+The following code estimates the derivative of the function
+@c{$f(x) = x^{3/2}$}
+@math{f(x) = x^@{3/2@}}
+>>>>>>> config
 at @math{x=2} and at @math{x=0}.  The function @math{f(x)} is
 undefined for @math{x<0} so the derivative at @math{x=0} is computed
 using @code{gsl_deriv_forward}.

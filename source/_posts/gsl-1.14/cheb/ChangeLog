@@ -52,12 +52,20 @@ Fri May 24 19:23:47 2002  Brian Gough  <bjg@network-theory.co.uk>
 Fri Aug 24 19:18:23 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* test.c (main): renamed fsin to f_sin to avoid conflicts with
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	irix math libs.
+=======
+	irix math libs.
+>>>>>>> config
 
 Sun May  6 09:49:28 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* eval.c (gsl_cheb_eval_err): take roundoff into account when
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	computing evaluation error (important when result is near zero).
+=======
+	computing evaluation error (important when result is near zero).
+>>>>>>> config
 	(gsl_cheb_eval_n_err): ditto
 
 Tue Apr 24 17:08:29 2001  Brian Gough  <bjg@network-theory.co.uk>
@@ -65,5 +73,8 @@ Tue Apr 24 17:08:29 2001  Brian Gough  <bjg@network-theory.co.uk>
 	* made deriv/integ functions thread safe
 
 	* split out from specfunc directory
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	
 
+=======
+>>>>>>> config

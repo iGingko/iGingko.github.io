@@ -1,17 +1,31 @@
 /* err/gsl_message.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -42,7 +56,11 @@ __BEGIN_DECLS
  * by defining GSL_MESSAGING_OFF.  */
 
 void gsl_message(const char * message, const char * file, int line,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  unsigned int mask);
+=======
+		 unsigned int mask);
+>>>>>>> config
 
 #ifndef GSL_MESSAGE_MASK
 #define GSL_MESSAGE_MASK 0xffffffffu /* default all messages allowed */
@@ -63,18 +81,29 @@ enum {
   GSL_MESSAGE_MASK_H = 128
 } ;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 #ifdef GSL_MESSAGING_OFF        /* throw away messages */ 
+=======
+#ifdef GSL_MESSAGING_OFF        /* throw away messages */
+>>>>>>> config
 #define GSL_MESSAGE(message, mask) do { } while(0)
 #else                           /* output all messages */
 #define GSL_MESSAGE(message, mask) \
        do { \
        if (mask & GSL_MESSAGE_MASK) \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          gsl_message (message, __FILE__, __LINE__, mask) ; \
+=======
+	 gsl_message (message, __FILE__, __LINE__, mask) ; \
+>>>>>>> config
        } while (0)
 #endif
 
 __END_DECLS
 
 #endif /* __GSL_MESSAGE_H__ */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
+=======
+>>>>>>> config

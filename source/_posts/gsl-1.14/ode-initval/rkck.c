@@ -1,17 +1,31 @@
 /* ode-initval/rkck.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -179,6 +193,7 @@ rkck_alloc (size_t dim)
 
 static int
 rkck_apply (void *vstate,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             size_t dim,
             double t,
             double h,
@@ -186,6 +201,15 @@ rkck_apply (void *vstate,
             double yerr[],
             const double dydt_in[],
             double dydt_out[], const gsl_odeiv_system * sys)
+=======
+	    size_t dim,
+	    double t,
+	    double h,
+	    double y[],
+	    double yerr[],
+	    const double dydt_in[],
+	    double dydt_out[], const gsl_odeiv_system * sys)
+>>>>>>> config
 {
   rkck_state_t *state = (rkck_state_t *) vstate;
 
@@ -210,7 +234,11 @@ rkck_apply (void *vstate,
   else
     {
       int s = GSL_ODEIV_FN_EVAL (sys, t, y, k1);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
       if (s != GSL_SUCCESS)
 	{
 	  return s;
@@ -223,7 +251,11 @@ rkck_apply (void *vstate,
   /* k2 step */
   {
     int s = GSL_ODEIV_FN_EVAL (sys, t + ah[0] * h, ytmp, k2);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
     if (s != GSL_SUCCESS)
       {
 	return s;
@@ -236,7 +268,11 @@ rkck_apply (void *vstate,
   /* k3 step */
   {
     int s = GSL_ODEIV_FN_EVAL (sys, t + ah[1] * h, ytmp, k3);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
     if (s != GSL_SUCCESS)
       {
 	return s;
@@ -249,7 +285,11 @@ rkck_apply (void *vstate,
   /* k4 step */
   {
     int s = GSL_ODEIV_FN_EVAL (sys, t + ah[2] * h, ytmp, k4);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     if (s != GSL_SUCCESS)
       {
 	return s;
@@ -259,12 +299,20 @@ rkck_apply (void *vstate,
   for (i = 0; i < dim; i++)
     ytmp[i] =
       y[i] + h * (b5[0] * k1[i] + b5[1] * k2[i] + b5[2] * k3[i] +
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   b5[3] * k4[i]);
+=======
+		  b5[3] * k4[i]);
+>>>>>>> config
 
   /* k5 step */
   {
     int s = GSL_ODEIV_FN_EVAL (sys, t + ah[3] * h, ytmp, k5);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
     if (s != GSL_SUCCESS)
       {
 	return s;
@@ -274,12 +322,20 @@ rkck_apply (void *vstate,
   for (i = 0; i < dim; i++)
     ytmp[i] =
       y[i] + h * (b6[0] * k1[i] + b6[1] * k2[i] + b6[2] * k3[i] +
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   b6[3] * k4[i] + b6[4] * k5[i]);
+=======
+		  b6[3] * k4[i] + b6[4] * k5[i]);
+>>>>>>> config
 
   /* k6 step and final sum */
   {
     int s = GSL_ODEIV_FN_EVAL (sys, t + ah[4] * h, ytmp, k6);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
     if (s != GSL_SUCCESS)
       {
 	return s;
@@ -309,8 +365,13 @@ rkck_apply (void *vstate,
   /* difference between 4th and 5th order */
   for (i = 0; i < dim; i++)
     {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       yerr[i] = h * (ec[1] * k1[i] + ec[3] * k3[i] + ec[4] * k4[i] 
                      + ec[5] * k5[i] + ec[6] * k6[i]);
+=======
+      yerr[i] = h * (ec[1] * k1[i] + ec[3] * k3[i] + ec[4] * k4[i]
+		     + ec[5] * k5[i] + ec[6] * k6[i]);
+>>>>>>> config
     }
 
   return GSL_SUCCESS;

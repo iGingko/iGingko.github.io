@@ -1,30 +1,52 @@
 /* roots/falsepos.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Reid Priedhorsky, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Reid Priedhorsky, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* falsepos.c -- falsepos root finding algorithm 
+=======
+/* falsepos.c -- falsepos root finding algorithm
+>>>>>>> config
 
    The false position algorithm uses bracketing by linear interpolation.
 
    If a linear interpolation step would decrease the size of the
    bracket by less than a bisection step would then the algorithm
    takes a bisection step instead.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    
+=======
+
+>>>>>>> config
    The last linear interpolation estimate of the root is used. If a
    bisection step causes it to fall outside the brackets then it is
    replaced by the bisection estimate (x_upper + x_lower)/2.
@@ -65,7 +87,11 @@ falsepos_init (void * vstate, gsl_function * f, double * root, double x_lower, d
 
   SAFE_FUNC_CALL (f, x_lower, &f_lower);
   SAFE_FUNC_CALL (f, x_upper, &f_upper);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   state->f_lower = f_lower;
   state->f_upper = f_upper;
 
@@ -89,7 +115,11 @@ falsepos_iterate (void * vstate, gsl_function * f, double * root, double * x_low
   double x_left = *x_lower ;
   double x_right = *x_upper ;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   double f_lower = state->f_lower; 
+=======
+  double f_lower = state->f_lower;
+>>>>>>> config
   double f_upper = state->f_upper;
 
   double w ;
@@ -100,13 +130,18 @@ falsepos_iterate (void * vstate, gsl_function * f, double * root, double * x_low
       *x_upper = x_left;
       return GSL_SUCCESS;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   if (f_upper == 0.0)
     {
       *root = x_right ;
       *x_lower = x_right;
       return GSL_SUCCESS;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
   /* Draw a line between f(*lower_bound) and f(*upper_bound) and
      note where it crosses the X axis; that's where we will
@@ -116,6 +151,17 @@ falsepos_iterate (void * vstate, gsl_function * f, double * root, double * x_low
 
   SAFE_FUNC_CALL (f, x_linear, &f_linear);
       
+=======
+
+  /* Draw a line between f(*lower_bound) and f(*upper_bound) and
+     note where it crosses the X axis; that's where we will
+     split the interval. */
+
+  x_linear = x_right - (f_upper * (x_left - x_right) / (f_lower - f_upper));
+
+  SAFE_FUNC_CALL (f, x_linear, &f_linear);
+
+>>>>>>> config
   if (f_linear == 0.0)
     {
       *root = x_linear;
@@ -123,9 +169,15 @@ falsepos_iterate (void * vstate, gsl_function * f, double * root, double * x_low
       *x_upper = x_linear;
       return GSL_SUCCESS;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
   /* Discard the half of the interval which doesn't contain the root. */
   
+=======
+
+  /* Discard the half of the interval which doesn't contain the root. */
+
+>>>>>>> config
   if ((f_lower > 0.0 && f_linear < 0.0) || (f_lower < 0.0 && f_linear > 0.0))
     {
       *root = x_linear ;
@@ -141,7 +193,11 @@ falsepos_iterate (void * vstate, gsl_function * f, double * root, double * x_low
       w = x_right - x_linear;
     }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (w < 0.5 * (x_right - x_left)) 
+=======
+  if (w < 0.5 * (x_right - x_left))
+>>>>>>> config
     {
       return GSL_SUCCESS ;
     }
@@ -155,14 +211,22 @@ falsepos_iterate (void * vstate, gsl_function * f, double * root, double * x_low
       *x_upper = x_bisect;
       state->f_upper = f_bisect;
       if (*root > x_bisect)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         *root = 0.5 * (x_left + x_bisect) ;
+=======
+	*root = 0.5 * (x_left + x_bisect) ;
+>>>>>>> config
     }
   else
     {
       *x_lower = x_bisect;
       state->f_lower = f_bisect;
       if (*root < x_bisect)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         *root = 0.5 * (x_bisect + x_right) ;
+=======
+	*root = 0.5 * (x_bisect + x_right) ;
+>>>>>>> config
     }
 
   return GSL_SUCCESS;

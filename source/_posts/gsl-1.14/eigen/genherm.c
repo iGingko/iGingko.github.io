@@ -1,17 +1,31 @@
 /* eigen/genherm.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2007 Patrick Alken
  * 
+=======
+ *
+ * Copyright (C) 2007 Patrick Alken
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -54,7 +68,11 @@ gsl_eigen_genherm_alloc(const size_t n)
   if (n == 0)
     {
       GSL_ERROR_NULL ("matrix dimension must be positive integer",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       GSL_EINVAL);
+=======
+		      GSL_EINVAL);
+>>>>>>> config
     }
 
   w = (gsl_eigen_genherm_workspace *) calloc (1, sizeof (gsl_eigen_genherm_workspace));
@@ -102,16 +120,26 @@ A x = \lambda B x
 for the eigenvalues \lambda.
 
 Inputs: A    - complex hermitian matrix
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         B    - complex hermitian and positive definite matrix
         eval - where to store eigenvalues
         w    - workspace
+=======
+	B    - complex hermitian and positive definite matrix
+	eval - where to store eigenvalues
+	w    - workspace
+>>>>>>> config
 
 Return: success or error
 */
 
 int
 gsl_eigen_genherm (gsl_matrix_complex * A, gsl_matrix_complex * B,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                    gsl_vector * eval, gsl_eigen_genherm_workspace * w)
+=======
+		   gsl_vector * eval, gsl_eigen_genherm_workspace * w)
+>>>>>>> config
 {
   const size_t N = A->size1;
 
@@ -140,7 +168,11 @@ gsl_eigen_genherm (gsl_matrix_complex * A, gsl_matrix_complex * B,
       /* compute Cholesky factorization of B */
       s = gsl_linalg_complex_cholesky_decomp(B);
       if (s != GSL_SUCCESS)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         return s; /* B is not positive definite */
+=======
+	return s; /* B is not positive definite */
+>>>>>>> config
 
       /* transform to standard hermitian eigenvalue problem */
       gsl_eigen_genherm_standardize(A, B);
@@ -161,7 +193,11 @@ C = L^{-1} A L^{-H}
 where L L^H is the Cholesky decomposition of B
 
 Inputs: A - (input/output) complex hermitian matrix
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         B - complex hermitian, positive definite matrix in Cholesky form
+=======
+	B - complex hermitian, positive definite matrix in Cholesky form
+>>>>>>> config
 
 Return: success
 
@@ -170,7 +206,11 @@ Notes: A is overwritten by L^{-1} A L^{-H}
 
 int
 gsl_eigen_genherm_standardize(gsl_matrix_complex *A,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                               const gsl_matrix_complex *B)
+=======
+			      const gsl_matrix_complex *B)
+>>>>>>> config
 {
   const size_t N = A->size1;
   size_t i;
@@ -192,6 +232,7 @@ gsl_eigen_genherm_standardize(gsl_matrix_complex *A,
       gsl_matrix_complex_set(A, i, i, z);
 
       if (i < N - 1)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           gsl_vector_complex_view ai =
             gsl_matrix_complex_subcolumn(A, i, i + 1, N - i - 1);
@@ -221,6 +262,37 @@ gsl_eigen_genherm_standardize(gsl_matrix_complex *A,
                          &mb.matrix,
                          &ai.vector);
         }
+=======
+	{
+	  gsl_vector_complex_view ai =
+	    gsl_matrix_complex_subcolumn(A, i, i + 1, N - i - 1);
+	  gsl_matrix_complex_view ma =
+	    gsl_matrix_complex_submatrix(A, i + 1, i + 1, N - i - 1, N - i - 1);
+	  gsl_vector_complex_const_view bi =
+	    gsl_matrix_complex_const_subcolumn(B, i, i + 1, N - i - 1);
+	  gsl_matrix_complex_const_view mb =
+	    gsl_matrix_complex_const_submatrix(B, i + 1, i + 1, N - i - 1, N - i - 1);
+
+	  gsl_blas_zdscal(1.0 / b, &ai.vector);
+
+	  GSL_SET_REAL(&z, -0.5 * a);
+	  gsl_blas_zaxpy(z, &bi.vector, &ai.vector);
+
+	  gsl_blas_zher2(CblasLower,
+			 GSL_COMPLEX_NEGONE,
+			 &ai.vector,
+			 &bi.vector,
+			 &ma.matrix);
+
+	  gsl_blas_zaxpy(z, &bi.vector, &ai.vector);
+
+	  gsl_blas_ztrsv(CblasLower,
+			 CblasNoTrans,
+			 CblasNonUnit,
+			 &mb.matrix,
+			 &ai.vector);
+	}
+>>>>>>> config
     }
 
   return GSL_SUCCESS;

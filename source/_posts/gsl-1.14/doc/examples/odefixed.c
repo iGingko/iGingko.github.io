@@ -1,10 +1,17 @@
 int
 main (void)
 {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   const gsl_odeiv_step_type * T 
     = gsl_odeiv_step_rk4;
 
   gsl_odeiv_step * s 
+=======
+  const gsl_odeiv_step_type * T
+    = gsl_odeiv_step_rk4;
+
+  gsl_odeiv_step * s
+>>>>>>> config
     = gsl_odeiv_step_alloc (T, 2);
 
   double mu = 10;
@@ -20,6 +27,7 @@ main (void)
 
   while (t < t1)
     {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       int status = gsl_odeiv_step_apply (s, t, h, 
                                          y, y_err, 
                                          dydt_in, 
@@ -28,6 +36,16 @@ main (void)
 
       if (status != GSL_SUCCESS)
           break;
+=======
+      int status = gsl_odeiv_step_apply (s, t, h,
+					 y, y_err,
+					 dydt_in,
+					 dydt_out,
+					 &sys);
+
+      if (status != GSL_SUCCESS)
+	  break;
+>>>>>>> config
 
       dydt_in[0] = dydt_out[0];
       dydt_in[1] = dydt_out[1];

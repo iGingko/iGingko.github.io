@@ -14,9 +14,15 @@ see Abramowitz & Stegun, Section 27.9.  The functions described in this
 section are declared in the header file @file{gsl_sf_coupling.h}.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * 3-j Symbols::                 
 * 6-j Symbols::                 
 * 9-j Symbols::                 
+=======
+* 3-j Symbols::
+* 6-j Symbols::
+* 9-j Symbols::
+>>>>>>> config
 @end menu
 
 @node 3-j Symbols
@@ -24,12 +30,20 @@ section are declared in the header file @file{gsl_sf_coupling.h}.
 
 @deftypefun double gsl_sf_coupling_3j (int @var{two_ja}, int @var{two_jb}, int @var{two_jc}, int @var{two_ma}, int @var{two_mb}, int @var{two_mc})
 @deftypefunx int gsl_sf_coupling_3j_e (int @var{two_ja}, int @var{two_jb}, int @var{two_jc}, int @var{two_ma}, int @var{two_mb}, int @var{two_mc}, gsl_sf_result * @var{result})
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 These routines compute the Wigner 3-j coefficient, 
+=======
+These routines compute the Wigner 3-j coefficient,
+>>>>>>> config
 @tex
 \beforedisplay
 $$
 \pmatrix{ja & jb & jc\cr
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          ma & mb & mc\cr}
+=======
+	 ma & mb & mc\cr}
+>>>>>>> config
 $$
 \afterdisplay
 @end tex
@@ -52,13 +66,22 @@ where the arguments are given in half-integer units, @math{ja} =
 @subsection 6-j Symbols
 
 @deftypefun double gsl_sf_coupling_6j (int @var{two_ja}, int @var{two_jb}, int @var{two_jc}, int @var{two_jd}, int @var{two_je}, int @var{two_jf})
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @deftypefunx int gsl_sf_coupling_6j_e (int @var{two_ja}, int @var{two_jb}, int @var{two_jc}, int @var{two_jd}, int @var{two_je}, int @var{two_jf}, gsl_sf_result * @var{result}) 
 These routines compute the Wigner 6-j coefficient, 
+=======
+@deftypefunx int gsl_sf_coupling_6j_e (int @var{two_ja}, int @var{two_jb}, int @var{two_jc}, int @var{two_jd}, int @var{two_je}, int @var{two_jf}, gsl_sf_result * @var{result})
+These routines compute the Wigner 6-j coefficient,
+>>>>>>> config
 @tex
 \beforedisplay
 $$
 \left\{\matrix{ja & jb & jc\cr
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                jd & je & jf\cr}\right\}
+=======
+	       jd & je & jf\cr}\right\}
+>>>>>>> config
 $$
 \afterdisplay
 @end tex
@@ -81,14 +104,24 @@ where the arguments are given in half-integer units, @math{ja} =
 @subsection 9-j Symbols
 
 @deftypefun double gsl_sf_coupling_9j (int @var{two_ja}, int @var{two_jb}, int @var{two_jc}, int @var{two_jd}, int @var{two_je}, int @var{two_jf}, int @var{two_jg}, int @var{two_jh}, int @var{two_ji})
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @deftypefunx int gsl_sf_coupling_9j_e (int @var{two_ja}, int @var{two_jb}, int @var{two_jc}, int @var{two_jd}, int @var{two_je}, int @var{two_jf}, int @var{two_jg}, int @var{two_jh}, int @var{two_ji}, gsl_sf_result * @var{result}) 
 These routines compute the Wigner 9-j coefficient, 
+=======
+@deftypefunx int gsl_sf_coupling_9j_e (int @var{two_ja}, int @var{two_jb}, int @var{two_jc}, int @var{two_jd}, int @var{two_je}, int @var{two_jf}, int @var{two_jg}, int @var{two_jh}, int @var{two_ji}, gsl_sf_result * @var{result})
+These routines compute the Wigner 9-j coefficient,
+>>>>>>> config
 @tex
 \beforedisplay
 $$
 \left\{\matrix{ja & jb & jc\cr
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                jd & je & jf\cr
                jg & jh & ji\cr}\right\}
+=======
+	       jd & je & jf\cr
+	       jg & jh & ji\cr}\right\}
+>>>>>>> config
 $$
 \afterdisplay
 @end tex
@@ -106,4 +139,7 @@ where the arguments are given in half-integer units, @math{ja} =
 @var{two_ja}/2, @math{ma} = @var{two_ma}/2, etc.
 @comment Exceptional Return Values: GSL_EDOM, GSL_EOVRFLW
 @end deftypefun
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

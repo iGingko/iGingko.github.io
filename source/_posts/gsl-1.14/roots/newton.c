@@ -1,23 +1,41 @@
 /* roots/newton.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Reid Priedhorsky, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Reid Priedhorsky, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* newton.c -- newton root finding algorithm 
+=======
+/* newton.c -- newton root finding algorithm
+>>>>>>> config
 
    This is the classical Newton-Raphson iteration.
 
@@ -66,7 +84,11 @@ static int
 newton_iterate (void * vstate, gsl_function_fdf * fdf, double * root)
 {
   newton_state_t * state = (newton_state_t *) vstate;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   double root_new, f_new, df_new;
 
   if (state->df == 0.0)
@@ -77,7 +99,11 @@ newton_iterate (void * vstate, gsl_function_fdf * fdf, double * root)
   root_new = *root - (state->f / state->df);
 
   *root = root_new ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   GSL_FN_FDF_EVAL_F_DF(fdf, root_new, &f_new, &df_new);
 
   state->f = f_new ;
@@ -92,7 +118,11 @@ newton_iterate (void * vstate, gsl_function_fdf * fdf, double * root)
     {
       GSL_ERROR ("derivative value is not finite", GSL_EBADFUNC);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
   return GSL_SUCCESS;
 }
 

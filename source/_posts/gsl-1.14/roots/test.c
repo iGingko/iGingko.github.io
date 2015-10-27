@@ -1,17 +1,31 @@
 /* roots/test.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Reid Priedhorsky, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Reid Priedhorsky, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -34,7 +48,11 @@ const double EPSABS = (10 * GSL_DBL_EPSILON);
 const unsigned int MAX_ITERATIONS = 150;
 
 void my_error_handler (const char *reason, const char *file,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                        int line, int err);
+=======
+		       int line, int err);
+>>>>>>> config
 
 #define WITHIN_TOL(a, b, epsrel, epsabs) \
  ((fabs((a) - (b)) < (epsrel) * GSL_MIN(fabs(a), fabs(b)) + (epsabs)))
@@ -44,7 +62,11 @@ main (void)
 {
   gsl_function F_sin, F_cos, F_func1, F_func2, F_func3, F_func4,
     F_func5, F_func6;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   gsl_function_fdf FDF_sin, FDF_cos, FDF_func1, FDF_func2, FDF_func3, FDF_func4,
     FDF_func5, FDF_func6;
 
@@ -67,7 +89,11 @@ main (void)
   fdfsolver[3] = 0;
 
   F_sin = create_function (sin_f) ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   F_cos = create_function (cos_f) ; 
+=======
+  F_cos = create_function (cos_f) ;
+>>>>>>> config
   F_func1 = create_function (func1) ;
   F_func2 = create_function (func2) ;
   F_func3 = create_function (func3) ;
@@ -98,7 +124,11 @@ main (void)
       test_f (*T, "x^2 - 1e-8 [0, 1]", &F_func3, 0.0, 1.0, sqrt (1e-8));
       test_f (*T, "x exp(-x) [-1/3, 2]", &F_func4, -1.0 / 3.0, 2.0, 0.0);
       test_f (*T, "(x - 1)^7 [0.9995, 1.0002]", &F_func6, 0.9995, 1.0002, 1.0);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
       test_f_e (*T, "invalid range check [4, 0]", &F_sin, 4.0, 0.0, M_PI);
       test_f_e (*T, "invalid range check [1, 1]", &F_sin, 1.0, 1.0, M_PI);
       test_f_e (*T, "invalid range check [0.1, 0.2]", &F_sin, 0.1, 0.2, M_PI);
@@ -121,7 +151,11 @@ main (void)
     }
 
   test_fdf (gsl_root_fdfsolver_steffenson,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
             "(x - 1)^7 {0.9}", &FDF_func6, 0.9, 1.0);    
+=======
+	    "(x - 1)^7 {0.9}", &FDF_func6, 0.9, 1.0);
+>>>>>>> config
 
   /* now summarize the results */
 
@@ -135,7 +169,11 @@ main (void)
 
 void
 test_f (const gsl_root_fsolver_type * T, const char * description, gsl_function *f,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         double lower_bound, double upper_bound, double correct_root)
+=======
+	double lower_bound, double upper_bound, double correct_root)
+>>>>>>> config
 {
   int status;
   size_t iterations = 0;
@@ -148,8 +186,13 @@ test_f (const gsl_root_fsolver_type * T, const char * description, gsl_function 
 
   s = gsl_root_fsolver_alloc(T);
   gsl_root_fsolver_set(s, f, x_lower, x_upper) ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   do 
+=======
+
+  do
+>>>>>>> config
     {
       iterations++ ;
 
@@ -159,21 +202,36 @@ test_f (const gsl_root_fsolver_type * T, const char * description, gsl_function 
 
       a = gsl_root_fsolver_x_lower(s);
       b = gsl_root_fsolver_x_upper(s);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
       if (a > b)
         gsl_test (GSL_FAILURE, "interval is invalid (%g,%g)", a, b);
 
       if (r < a || r > b)
         gsl_test (GSL_FAILURE, "r lies outside interval %g (%g,%g)", r, a, b);
+=======
+
+      if (a > b)
+	gsl_test (GSL_FAILURE, "interval is invalid (%g,%g)", a, b);
+
+      if (r < a || r > b)
+	gsl_test (GSL_FAILURE, "r lies outside interval %g (%g,%g)", r, a, b);
+>>>>>>> config
 
       status = gsl_root_test_interval (a,b, EPSABS, EPSREL);
     }
   while (status == GSL_CONTINUE && iterations < MAX_ITERATIONS);
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   gsl_test (status, "%s, %s (%g obs vs %g expected) ", 
             gsl_root_fsolver_name(s), description, 
             gsl_root_fsolver_root(s), correct_root);
+=======
+  gsl_test (status, "%s, %s (%g obs vs %g expected) ",
+	    gsl_root_fsolver_name(s), description,
+	    gsl_root_fsolver_root(s), correct_root);
+>>>>>>> config
 
   if (iterations == MAX_ITERATIONS)
     {
@@ -184,6 +242,7 @@ test_f (const gsl_root_fsolver_type * T, const char * description, gsl_function 
 
   if (!WITHIN_TOL (r, correct_root, EPSREL, EPSABS))
     {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       gsl_test (GSL_FAILURE, "incorrect precision (%g obs vs %g expected)", 
                 r, correct_root);
 
@@ -196,6 +255,20 @@ void
 test_f_e (const gsl_root_fsolver_type * T, 
           const char * description, gsl_function *f,
           double lower_bound, double upper_bound, double correct_root)
+=======
+      gsl_test (GSL_FAILURE, "incorrect precision (%g obs vs %g expected)",
+		r, correct_root);
+
+    }
+
+  gsl_root_fsolver_free(s);
+}
+
+void
+test_f_e (const gsl_root_fsolver_type * T,
+	  const char * description, gsl_function *f,
+	  double lower_bound, double upper_bound, double correct_root)
+>>>>>>> config
 {
   int status;
   size_t iterations = 0;
@@ -210,18 +283,27 @@ test_f_e (const gsl_root_fsolver_type * T,
 
   gsl_test (status != GSL_EINVAL, "%s (set), %s", T->name, description);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (status == GSL_EINVAL) 
+=======
+  if (status == GSL_EINVAL)
+>>>>>>> config
     {
       gsl_root_fsolver_free(s);
       return ;
     }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   do 
+=======
+  do
+>>>>>>> config
     {
       iterations++ ;
       gsl_root_fsolver_iterate (s);
       x_lower = gsl_root_fsolver_x_lower(s);
       x_upper = gsl_root_fsolver_x_lower(s);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       status = gsl_root_test_interval (x_lower, x_upper, 
                                       EPSABS, EPSREL);
     }
@@ -229,13 +311,27 @@ test_f_e (const gsl_root_fsolver_type * T,
 
   gsl_test (!status, "%s, %s", gsl_root_fsolver_name(s), description, 
             gsl_root_fsolver_root(s) - correct_root);
+=======
+      status = gsl_root_test_interval (x_lower, x_upper,
+				      EPSABS, EPSREL);
+    }
+  while (status == GSL_CONTINUE && iterations < MAX_ITERATIONS);
+
+  gsl_test (!status, "%s, %s", gsl_root_fsolver_name(s), description,
+	    gsl_root_fsolver_root(s) - correct_root);
+>>>>>>> config
 
   gsl_root_fsolver_free(s);
 }
 
 void
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 test_fdf (const gsl_root_fdfsolver_type * T, const char * description, 
         gsl_function_fdf *fdf, double root, double correct_root)
+=======
+test_fdf (const gsl_root_fdfsolver_type * T, const char * description,
+	gsl_function_fdf *fdf, double root, double correct_root)
+>>>>>>> config
 {
   int status;
   size_t iterations = 0;
@@ -244,11 +340,16 @@ test_fdf (const gsl_root_fdfsolver_type * T, const char * description,
   gsl_root_fdfsolver * s = gsl_root_fdfsolver_alloc(T);
   gsl_root_fdfsolver_set (s, fdf, root) ;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   do 
+=======
+  do
+>>>>>>> config
     {
       iterations++ ;
       prev = gsl_root_fdfsolver_root(s);
       gsl_root_fdfsolver_iterate (s);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       status = gsl_root_test_delta(gsl_root_fdfsolver_root(s), prev, 
                                    EPSABS, EPSREL);
     }
@@ -257,6 +358,16 @@ test_fdf (const gsl_root_fdfsolver_type * T, const char * description,
   gsl_test (status, "%s, %s (%g obs vs %g expected) ", 
             gsl_root_fdfsolver_name(s), description, 
             gsl_root_fdfsolver_root(s), correct_root);
+=======
+      status = gsl_root_test_delta(gsl_root_fdfsolver_root(s), prev,
+				   EPSABS, EPSREL);
+    }
+  while (status == GSL_CONTINUE && iterations < MAX_ITERATIONS);
+
+  gsl_test (status, "%s, %s (%g obs vs %g expected) ",
+	    gsl_root_fdfsolver_name(s), description,
+	    gsl_root_fdfsolver_root(s), correct_root);
+>>>>>>> config
 
   if (iterations == MAX_ITERATIONS)
     {
@@ -265,20 +376,34 @@ test_fdf (const gsl_root_fdfsolver_type * T, const char * description,
 
   /* check the validity of the returned result */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (!WITHIN_TOL (gsl_root_fdfsolver_root(s), correct_root, 
                    EPSREL, EPSABS))
     {
       gsl_test (GSL_FAILURE, "incorrect precision (%g obs vs %g expected)", 
                 gsl_root_fdfsolver_root(s), correct_root);
+=======
+  if (!WITHIN_TOL (gsl_root_fdfsolver_root(s), correct_root,
+		   EPSREL, EPSABS))
+    {
+      gsl_test (GSL_FAILURE, "incorrect precision (%g obs vs %g expected)",
+		gsl_root_fdfsolver_root(s), correct_root);
+>>>>>>> config
 
     }
   gsl_root_fdfsolver_free(s);
 }
 
 void
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 test_fdf_e (const gsl_root_fdfsolver_type * T, 
             const char * description, gsl_function_fdf *fdf,
             double root, double correct_root)
+=======
+test_fdf_e (const gsl_root_fdfsolver_type * T,
+	    const char * description, gsl_function_fdf *fdf,
+	    double root, double correct_root)
+>>>>>>> config
 {
   int status;
   size_t iterations = 0;
@@ -289,11 +414,16 @@ test_fdf_e (const gsl_root_fdfsolver_type * T,
 
   gsl_test (status, "%s (set), %s", T->name, description);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   do 
+=======
+  do
+>>>>>>> config
     {
       iterations++ ;
       prev = gsl_root_fdfsolver_root(s);
       gsl_root_fdfsolver_iterate (s);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       status = gsl_root_test_delta(gsl_root_fdfsolver_root(s), prev, 
                                    EPSABS, EPSREL);
     }
@@ -301,6 +431,15 @@ test_fdf_e (const gsl_root_fdfsolver_type * T,
 
   gsl_test (!status, "%s, %s", gsl_root_fdfsolver_name(s), 
             description, gsl_root_fdfsolver_root(s) - correct_root);
+=======
+      status = gsl_root_test_delta(gsl_root_fdfsolver_root(s), prev,
+				   EPSABS, EPSREL);
+    }
+  while (status == GSL_CONTINUE && iterations < MAX_ITERATIONS);
+
+  gsl_test (!status, "%s, %s", gsl_root_fdfsolver_name(s),
+	    description, gsl_root_fdfsolver_root(s) - correct_root);
+>>>>>>> config
   gsl_root_fdfsolver_free(s);
 }
 
@@ -310,6 +449,9 @@ my_error_handler (const char *reason, const char *file, int line, int err)
   if (0)
     printf ("(caught [%s:%d: %s (%d)])\n", file, line, reason, err);
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
 
+=======
+>>>>>>> config

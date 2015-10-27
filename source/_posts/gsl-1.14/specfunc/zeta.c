@@ -1,17 +1,31 @@
 /* specfunc/zeta.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2004 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2004 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -138,7 +152,11 @@ static double zetam1_inter_data[24] = {
   -1.25597782748190416118082322061e-12,
    3.61280740072222650030134104162e-13,
   -9.66437239205745207188920348801e-14
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 }; 
+=======
+};
+>>>>>>> config
 static cheb_series zetam1_inter_cs = {
   zetam1_inter_data,
   22,
@@ -236,12 +254,21 @@ riemann_zeta_minus1_large_s(double s, gsl_sf_result * result)
   double t2 = a*(b+c+d+e+f) + b*(c+d+e+f) + c*(d+e+f) + d*(e+f) + e*f;
   /*
   double t3 = a*(b*(c+d+e+f) + c*(d+e+f) + d*(e+f) + e*f) +
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
               b*(c*(d+e+f) + d*(e+f) + e*f) +
               c*(d*(e+f) + e*f) +
               d*e*f;
   double t4 = a*(b*(c*(d + e + f) + d*(e + f) + e*f) + c*(d*(e+f) + e*f) + d*e*f) +
               b*(c*(d*(e+f) + e*f) + d*e*f) +
               c*d*e*f;
+=======
+	      b*(c*(d+e+f) + d*(e+f) + e*f) +
+	      c*(d*(e+f) + e*f) +
+	      d*e*f;
+  double t4 = a*(b*(c*(d + e + f) + d*(e + f) + e*f) + c*(d*(e+f) + e*f) + d*e*f) +
+	      b*(c*(d*(e+f) + e*f) + d*e*f) +
+	      c*d*e*f;
+>>>>>>> config
   double t5 = b*c*d*e*f + a*c*d*e*f+ a*b*d*e*f+ a*b*c*e*f+ a*b*c*d*f+ a*b*c*d*e;
   double t6 = a*b*c*d*e*f;
   */
@@ -720,7 +747,11 @@ int gsl_sf_hzeta_e(const double s, const double q, gsl_sf_result * result)
   }
   else {
     const double max_bits = 54.0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     const double ln_term0 = -s * log(q);  
+=======
+    const double ln_term0 = -s * log(q);
+>>>>>>> config
 
     if(ln_term0 < GSL_LOG_DBL_MIN + 1.0) {
       UNDERFLOW_ERROR(result);
@@ -742,7 +773,11 @@ int gsl_sf_hzeta_e(const double s, const double q, gsl_sf_result * result)
       return GSL_SUCCESS;
     }
     else {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       /* Euler-Maclaurin summation formula 
+=======
+      /* Euler-Maclaurin summation formula
+>>>>>>> config
        * [Moshier, p. 400, with several typo corrections]
        */
       const int jmax = 12;
@@ -754,6 +789,7 @@ int gsl_sf_hzeta_e(const double s, const double q, gsl_sf_result * result)
       double ans = pmax*((kmax+q)/(s-1.0) + 0.5);
 
       for(k=0; k<kmax; k++) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ans += pow(k + q, -s);
       }
 
@@ -763,6 +799,17 @@ int gsl_sf_hzeta_e(const double s, const double q, gsl_sf_result * result)
         if(fabs(delta/ans) < 0.5*GSL_DBL_EPSILON) break;
         scp *= (s+2*j+1)*(s+2*j+2);
         pcp /= (kmax + q)*(kmax + q);
+=======
+	ans += pow(k + q, -s);
+      }
+
+      for(j=0; j<=jmax; j++) {
+	double delta = hzeta_c[j+1] * scp * pcp;
+	ans += delta;
+	if(fabs(delta/ans) < 0.5*GSL_DBL_EPSILON) break;
+	scp *= (s+2*j+1)*(s+2*j+2);
+	pcp /= (kmax + q)*(kmax + q);
+>>>>>>> config
       }
 
       result->val = ans;
@@ -803,6 +850,7 @@ int gsl_sf_zeta_e(const double s, gsl_sf_result * result)
        * We keep an array of (2 Pi)^(10 n).
        */
       const double twopi_pow[18] = { 1.0,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                      9.589560061550901348e+007,
                                      9.195966217409212684e+015,
                                      8.818527036583869903e+023,
@@ -821,6 +869,26 @@ int gsl_sf_zeta_e(const double s, gsl_sf_result * result)
                                      5.114214477385391780e+127,
                                      4.904306689854036836e+135
                                     };
+=======
+				     9.589560061550901348e+007,
+				     9.195966217409212684e+015,
+				     8.818527036583869903e+023,
+				     8.456579467173150313e+031,
+				     8.109487671573504384e+039,
+				     7.776641909496069036e+047,
+				     7.457457466828644277e+055,
+				     7.151373628461452286e+063,
+				     6.857852693272229709e+071,
+				     6.576379029540265771e+079,
+				     6.306458169130020789e+087,
+				     6.047615938853066678e+095,
+				     5.799397627482402614e+103,
+				     5.561367186955830005e+111,
+				     5.333106466365131227e+119,
+				     5.114214477385391780e+127,
+				     4.904306689854036836e+135
+				    };
+>>>>>>> config
       const int n = floor((-s)/10.0);
       const double fs = s + 10.0*n;
       const double p = pow(2.0*M_PI, fs) / twopi_pow[n];
@@ -919,8 +987,13 @@ int gsl_sf_zetam1_int_e(const int n, gsl_sf_result * result)
     }
     else {
       /* could use gsl_sf_zetam1_e here but subtracting 1 makes no difference
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          for such large values, so go straight to the result */
       return gsl_sf_zeta_e((double)n, result);  
+=======
+	 for such large values, so go straight to the result */
+      return gsl_sf_zeta_e((double)n, result);
+>>>>>>> config
     }
   }
   else if(n == 1){

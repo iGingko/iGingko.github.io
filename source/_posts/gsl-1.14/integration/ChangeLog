@@ -29,13 +29,22 @@
 Mon Apr 29 20:05:56 2002  Brian Gough  <bjg@network-theory.co.uk>
 
 	* qcheb.c (gsl_integration_qcheb): avoid loss of precision by
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	replacing endpoints center+half_length by b and center-half_length
  	by a
+=======
+	replacing endpoints center+half_length by b and center-half_length
+	by a
+>>>>>>> config
 
 Mon Jul 30 17:46:42 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* test.c (main): reduced tolerance on qagiu(f455) smooth elist
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	test slightly
+=======
+	test slightly
+>>>>>>> config
 
 Mon Jul  2 15:42:41 2001  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -44,20 +53,35 @@ Mon Jul  2 15:42:41 2001  Brian Gough  <bjg@network-theory.co.uk>
 Tue Apr 17 22:11:28 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* qc25f.c (qc25f): need GSL_ERROR_VOID because function does not
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	return value
+=======
+	return value
+>>>>>>> config
 
 Mon Apr 16 20:09:09 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* qc25f.c (qc25f): removed unnecessary variables, replaced use of
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	abort by GSL_ERROR
 
 	* qmomof.c (gsl_integration_qawo_table_set_length): removed
  	unnecessary duplicate variable declaration for i
+=======
+	abort by GSL_ERROR
+
+	* qmomof.c (gsl_integration_qawo_table_set_length): removed
+	unnecessary duplicate variable declaration for i
+>>>>>>> config
 
 Mon Jan 22 12:35:05 2001  Brian Gough  <bjg@network-theory.co.uk>
 
 	* qmomof.c: moments are now precomputed in a read-only table
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	instead of being computed on the fly (cached)
+=======
+	instead of being computed on the fly (cached)
+>>>>>>> config
 
 Fri Dec  8 19:45:52 2000  Brian Gough  <bjg@network-theory.co.uk>
 
@@ -66,21 +90,34 @@ Fri Dec  8 19:45:52 2000  Brian Gough  <bjg@network-theory.co.uk>
 Thu Nov 16 19:45:19 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* qag_impl.c (gsl_integration_qag_impl): replace use of volatile
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	with the macro GSL_COERCE_DBL
+=======
+	with the macro GSL_COERCE_DBL
+>>>>>>> config
 
 Wed May 31 19:35:57 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* test.c (main): increased tolerances on some results to allow
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	tests to pass with other compilers
+=======
+	tests to pass with other compilers
+>>>>>>> config
 
 Mon May 15 14:21:00 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* test.c (main): increased one test limit slightly to allow for
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	rounding errors
+=======
+	rounding errors
+>>>>>>> config
 
 Wed Feb 23 14:35:31 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* qpsrt.c (qpsrt): changed ordering of while conditions to avoid
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	segmentation faults due to accessing values before testing end of
  	loop condition. Thanks to Brett Viren
  	<bviren@superk.physics.sunysb.edu> for pointing this out.
@@ -88,21 +125,41 @@ Wed Feb 23 14:35:31 2000  Brian Gough  <bjg@network-theory.co.uk>
 	* qelg.c (qelg): changed update of nres from the original quadpack
  	so that uninitialized elements of the res3la array are never
  	accessed.
+=======
+	segmentation faults due to accessing values before testing end of
+	loop condition. Thanks to Brett Viren
+	<bviren@superk.physics.sunysb.edu> for pointing this out.
+
+	* qelg.c (qelg): changed update of nres from the original quadpack
+	so that uninitialized elements of the res3la array are never
+	accessed.
+>>>>>>> config
 
 	* test.c (main): eliminate small memory leak from test
 
 Mon Feb 14 13:45:04 2000  Brian Gough  <bjg@network-theory.co.uk>
 
 	* qk.c: renamed function qk to gsl_integration_qk since it is
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	exported
 
 	* err.c: made internal function rescale_err static, only used in
  	qk.c and qng.c
+=======
+	exported
+
+	* err.c: made internal function rescale_err static, only used in
+	qk.c and qng.c
+>>>>>>> config
 
 Mon Jul 12 11:37:55 1999  Brian Gough  <bjg@network-theory.co.uk>
 
 	* qawc_impl.c (gsl_integration_qawc_impl): removed, no longer
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	necessary since everything goes into qawc.c
+=======
+	necessary since everything goes into qawc.c
+>>>>>>> config
 
 Fri Apr  2 20:57:09 1999  Brian Gough  <bjg@netsci.freeserve.co.uk>
 
@@ -113,13 +170,22 @@ Fri Apr  2 20:57:09 1999  Brian Gough  <bjg@netsci.freeserve.co.uk>
 Thu Mar 11 15:15:46 1999  Brian Gough  <bjg@netsci.freeserve.co.uk>
 
 	* qags_impl.c (gsl_integration_qags_impl): removed dependency in
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	quadrature function calls by introducing dummy variables resabs1
  	and resabs2
+=======
+	quadrature function calls by introducing dummy variables resabs1
+	and resabs2
+>>>>>>> config
 
 Wed Mar 10 19:05:41 1999  Brian Gough  <bjg@netsci.freeserve.co.uk>
 
 	* added integrators QAGI, QAGIU, QAGIL for infinite and
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	semi-infinite ranges
+=======
+	semi-infinite ranges
+>>>>>>> config
 
 1999-01-01  Mark Galassi  <rosalia@cygnus.com>
 
@@ -129,7 +195,11 @@ Wed Mar 10 19:05:41 1999  Brian Gough  <bjg@netsci.freeserve.co.uk>
 Sat Nov 21 12:43:03 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* Makefile.am (libgslintegration_a_SOURCES): eliminated local
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	max.h in favor of global GSL_MAX
+=======
+	max.h in favor of global GSL_MAX
+>>>>>>> config
 
 	* added missing gsl_math.h headers for new GSL_DBL_EPSILON macros
 
@@ -140,17 +210,31 @@ Tue Nov 17 17:16:51 1998  Brian Gough  <bjg@vvv.lanl.gov>
 Fri Jun 12 22:30:21 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* qage_impl.c: started using volatile (selectively) to enforce
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	strict IEEE behavior for the branches where it matters. I was
  	going to use gcc's -ffloat-store option but it didn't work for me.
   	Using volatile is not really a complete solution but is probably
  	close enough for all practical purposes (also it doesn't degrade
  	the performance as much as -ffloat-store would).
 	
+=======
+	strict IEEE behavior for the branches where it matters. I was
+	going to use gcc's -ffloat-store option but it didn't work for me.
+	Using volatile is not really a complete solution but is probably
+	close enough for all practical purposes (also it doesn't degrade
+	the performance as much as -ffloat-store would).
+
+>>>>>>> config
 Sat May 30 15:40:51 1998  Brian Gough  <bjg@vvv.lanl.gov>
 
 	* test.c (main): basic tests of qage are now complete
 
 	* qage_impl.c (gsl_integration_qage_impl): fixed serious bug for
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  	index i, which was incremented at the end of the do loop and
  	give an extra undefined entry in the result list!
 	
+=======
+	index i, which was incremented at the end of the do loop and
+	give an extra undefined entry in the result list!
+>>>>>>> config

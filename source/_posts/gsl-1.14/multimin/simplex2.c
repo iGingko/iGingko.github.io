@@ -1,18 +1,33 @@
 /* multimin/simplex2.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2007, 2008, 2009 Brian Gough
  * Copyright (C) 2002 Tuomo Keskitalo, Ivo Alxneit
  * 
+=======
+ *
+ * Copyright (C) 2007, 2008, 2009 Brian Gough
+ * Copyright (C) 2002 Tuomo Keskitalo, Ivo Alxneit
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -20,6 +35,7 @@
 
 /*
    - Originally written by Tuomo Keskitalo <tuomo.keskitalo@iki.fi>
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    - Corrections to nmsimplex_iterate and other functions 
      by Ivo Alxneit <ivo.alxneit@psi.ch>
    - Additional help by Brian Gough <bjg@network-theory.co.uk>
@@ -28,6 +44,16 @@
          + keep track of the center to avoid unnecessary computation
          + compute size as RMS value, allowing linear update on each step
            instead of recomputing from all N+1 vectors.
+=======
+   - Corrections to nmsimplex_iterate and other functions
+     by Ivo Alxneit <ivo.alxneit@psi.ch>
+   - Additional help by Brian Gough <bjg@network-theory.co.uk>
+   - Optimisations added by Brian Gough <bjg@network-theory.co.uk>
+	 + use BLAS for frequently-called functions
+	 + keep track of the center to avoid unnecessary computation
+	 + compute size as RMS value, allowing linear update on each step
+	   instead of recomputing from all N+1 vectors.
+>>>>>>> config
 */
 
 /* The Simplex method of Nelder and Mead, also known as the polytope
@@ -68,10 +94,17 @@ try_corner_move (const double coeff,
 		 size_t corner,
 		 gsl_vector * xc, const gsl_multimin_function * f)
 {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   /* moves a simplex corner scaled by coeff (negative value represents 
      mirroring by the middle point of the "other" corner points)
      and gives new corner in xc and function value at xc as a 
      return value 
+=======
+  /* moves a simplex corner scaled by coeff (negative value represents
+     mirroring by the middle point of the "other" corner points)
+     and gives new corner in xc and function value at xc as a
+     return value
+>>>>>>> config
    */
 
   gsl_matrix *x1 = state->x1;
@@ -213,8 +246,13 @@ compute_center (const nmsimplex_state_t * state, gsl_vector * center)
 static double
 compute_size (nmsimplex_state_t * state, const gsl_vector * center)
 {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   /* calculates simplex size as rms sum of length of vectors 
      from simplex center to corner points:     
+=======
+  /* calculates simplex size as rms sum of length of vectors
+     from simplex center to corner points:
+>>>>>>> config
 
      sqrt( sum ( || y - y_middlepoint ||^2 ) / n )
    */
@@ -495,7 +533,11 @@ nmsimplex_iterate (void *vstate, gsl_multimin_function * f,
   else if (!gsl_finite (val) || val > gsl_vector_get (y1, s_hi))
     {
       /* reflection does not improve things enough, or we got a
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          non-finite function value */
+=======
+	 non-finite function value */
+>>>>>>> config
 
       if (gsl_finite (val) && val <= gsl_vector_get (y1, hi))
 	{
@@ -528,7 +570,11 @@ nmsimplex_iterate (void *vstate, gsl_multimin_function * f,
   else
     {
       /* trial point is better than second highest point.  Replace
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          highest point by it */
+=======
+	 highest point by it */
+>>>>>>> config
 
       update_point (state, hi, xc, val);
     }
@@ -540,7 +586,11 @@ nmsimplex_iterate (void *vstate, gsl_multimin_function * f,
   *fval = gsl_vector_get (y1, lo);
 
   /* Update simplex size */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   {
     double S2 = state->S2;
 
@@ -558,7 +608,11 @@ nmsimplex_iterate (void *vstate, gsl_multimin_function * f,
   return GSL_SUCCESS;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static const gsl_multimin_fminimizer_type nmsimplex_type = 
+=======
+static const gsl_multimin_fminimizer_type nmsimplex_type =
+>>>>>>> config
 { "nmsimplex2",	/* name */
   sizeof (nmsimplex_state_t),
   &nmsimplex_alloc,
@@ -627,8 +681,13 @@ nmsimplex_set_rand (void *vstate, gsl_multimin_function * f,
     /* start with random reflections */
     for (i = 0; i < x->size; i++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         double s = ran_unif (&seed);
         if (s > 0.5) gsl_matrix_set (&m.matrix, i, i, -1.0);
+=======
+	double s = ran_unif (&seed);
+	if (s > 0.5) gsl_matrix_set (&m.matrix, i, i, -1.0);
+>>>>>>> config
       }
 
     /* apply random rotations */
@@ -688,7 +747,11 @@ nmsimplex_set_rand (void *vstate, gsl_multimin_function * f,
   return GSL_SUCCESS;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static const gsl_multimin_fminimizer_type nmsimplex2rand_type = 
+=======
+static const gsl_multimin_fminimizer_type nmsimplex2rand_type =
+>>>>>>> config
 { "nmsimplex2rand",	/* name */
   sizeof (nmsimplex_state_t),
   &nmsimplex_alloc,

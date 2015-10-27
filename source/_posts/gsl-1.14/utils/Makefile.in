@@ -206,7 +206,11 @@ noinst_LTLIBRARIES = libutils.la
 
 # Don't need to list alloca.c, etc., Automake includes them.
 libutils_la_SOURCES = system.h placeholder.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 libutils_la_LIBADD = @LIBOBJS@ 
+=======
+libutils_la_LIBADD = @LIBOBJS@
+>>>>>>> config
 EXTRA_DIST = README
 all: all-am
 
@@ -217,7 +221,11 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__confi
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
 	      ( cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh ) \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	        && { if test -f $@; then exit 0; else break; fi; }; \
+=======
+		&& { if test -f $@; then exit 0; else break; fi; }; \
+>>>>>>> config
 	      exit 1;; \
 	  esac; \
 	done; \
@@ -251,7 +259,11 @@ clean-noinstLTLIBRARIES:
 	  echo "rm -f \"$${dir}/so_locations\""; \
 	  rm -f "$${dir}/so_locations"; \
 	done
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 libutils.la: $(libutils_la_OBJECTS) $(libutils_la_DEPENDENCIES) 
+=======
+libutils.la: $(libutils_la_OBJECTS) $(libutils_la_DEPENDENCIES)
+>>>>>>> config
 	$(LINK)  $(libutils_la_OBJECTS) $(libutils_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:

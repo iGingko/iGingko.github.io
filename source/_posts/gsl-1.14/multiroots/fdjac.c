@@ -1,17 +1,31 @@
 /* multiroots/fdjac.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -22,8 +36,13 @@
 
 int
 gsl_multiroot_fdjacobian (gsl_multiroot_function * F,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                            const gsl_vector * x, const gsl_vector * f,
                            double epsrel, gsl_matrix * jacobian)
+=======
+			   const gsl_vector * x, const gsl_vector * f,
+			   double epsrel, gsl_matrix * jacobian)
+>>>>>>> config
 {
   const size_t n = x->size;
   const size_t m = f->size;
@@ -44,22 +63,33 @@ gsl_multiroot_fdjacobian (gsl_multiroot_function * F,
 
     if (x1 == 0)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         GSL_ERROR ("failed to allocate space for x1 workspace", GSL_ENOMEM);
+=======
+	GSL_ERROR ("failed to allocate space for x1 workspace", GSL_ENOMEM);
+>>>>>>> config
       }
 
     f1 = gsl_vector_alloc (m);
 
     if (f1 == 0)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         gsl_vector_free (x1);
 
         GSL_ERROR ("failed to allocate space for f1 workspace", GSL_ENOMEM);
+=======
+	gsl_vector_free (x1);
+
+	GSL_ERROR ("failed to allocate space for f1 workspace", GSL_ENOMEM);
+>>>>>>> config
       }
 
     gsl_vector_memcpy (x1, x);  /* copy x into x1 */
 
     for (j = 0; j < n; j++)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         double xj = gsl_vector_get (x, j);
         double dx = epsrel * fabs (xj);
 
@@ -98,6 +128,46 @@ gsl_multiroot_fdjacobian (gsl_multiroot_function * F,
             status = GSL_ESING;
           }
         }
+=======
+	double xj = gsl_vector_get (x, j);
+	double dx = epsrel * fabs (xj);
+
+	if (dx == 0)
+	  {
+	    dx = epsrel;
+	  }
+
+	gsl_vector_set (x1, j, xj + dx);
+
+	{
+	  int f_stat = GSL_MULTIROOT_FN_EVAL (F, x1, f1);
+
+	  if (f_stat != GSL_SUCCESS)
+	    {
+	      status = GSL_EBADFUNC;
+	      break; /* n.b. avoid memory leak for x1,f1 */
+	    }
+	}
+
+	gsl_vector_set (x1, j, xj);
+
+	for (i = 0; i < m; i++)
+	  {
+	    double g1 = gsl_vector_get (f1, i);
+	    double g0 = gsl_vector_get (f, i);
+	    gsl_matrix_set (jacobian, i, j, (g1 - g0) / dx);
+	  }
+
+	{
+	  gsl_vector_view col = gsl_matrix_column (jacobian, j);
+	  int null_col = gsl_vector_isnull (&col.vector);
+	  /* if column is null, return an error - this may be due to
+	     dx being too small. Try increasing epsrel */
+	  if (null_col) {
+	    status = GSL_ESING;
+	  }
+	}
+>>>>>>> config
       }
 
     gsl_vector_free (x1);

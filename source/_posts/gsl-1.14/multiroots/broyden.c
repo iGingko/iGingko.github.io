@@ -1,17 +1,31 @@
 /* multiroots/broyden.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -253,9 +267,15 @@ broyden_iterate (void *vstate, gsl_multiroot_function * function, gsl_vector * x
       double sum = 0;
 
       for (j = 0; j < n; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           sum += gsl_matrix_get (H, i, j) * gsl_vector_get (f, j);
         }
+=======
+	{
+	  sum += gsl_matrix_get (H, i, j) * gsl_vector_get (f, j);
+	}
+>>>>>>> config
       gsl_vector_set (p, i, sum);
     }
 
@@ -273,12 +293,21 @@ new_step:
       gsl_vector_set (x_trial, i, xi + t * pi);
     }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   { 
     int status = GSL_MULTIROOT_FN_EVAL (function, x_trial, fnew);
 
     if (status != GSL_SUCCESS) 
       {
         return GSL_EBADFUNC;
+=======
+  {
+    int status = GSL_MULTIROOT_FN_EVAL (function, x_trial, fnew);
+
+    if (status != GSL_SUCCESS)
+      {
+	return GSL_EBADFUNC;
+>>>>>>> config
       }
   }
 
@@ -289,7 +318,11 @@ new_step:
   if (phi1 > phi0 && iter < 10 && t > 0.1)
     {
       /* full step goes uphill, take a reduced step instead */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
       double theta = phi1 / phi0;
       t *= (sqrt (1.0 + 6.0 * theta) - 1.0) / (3.0 * theta);
       goto new_step;
@@ -299,6 +332,7 @@ new_step:
     {
       /* need to recompute Jacobian */
       int signum = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
       gsl_multiroot_fdjacobian (function, x, f, GSL_SQRT_DBL_EPSILON, lu);
       
@@ -310,10 +344,24 @@ new_step:
       gsl_linalg_LU_invert (lu, perm, H);
       
       gsl_linalg_LU_solve (lu, perm, f, p);          
+=======
+
+      gsl_multiroot_fdjacobian (function, x, f, GSL_SQRT_DBL_EPSILON, lu);
+
+      for (i = 0; i < n; i++)
+	for (j = 0; j < n; j++)
+	  gsl_matrix_set(lu,i,j,-gsl_matrix_get(lu,i,j));
+
+      gsl_linalg_LU_decomp (lu, perm, &signum);
+      gsl_linalg_LU_invert (lu, perm, H);
+
+      gsl_linalg_LU_solve (lu, perm, f, p);
+>>>>>>> config
 
       t = 1;
 
       for (i = 0; i < n; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double pi = gsl_vector_get (p, i);
           double xi = gsl_vector_get (x, i);
@@ -332,6 +380,26 @@ new_step:
       phi1 = enorm (fnew);
     }
   
+=======
+	{
+	  double pi = gsl_vector_get (p, i);
+	  double xi = gsl_vector_get (x, i);
+	  gsl_vector_set (x_trial, i, xi + t * pi);
+	}
+
+      {
+	int status = GSL_MULTIROOT_FN_EVAL (function, x_trial, fnew);
+
+	if (status != GSL_SUCCESS)
+	  {
+	    return GSL_EBADFUNC;
+	  }
+      }
+
+      phi1 = enorm (fnew);
+    }
+
+>>>>>>> config
   /* y = f' - f */
 
   for (i = 0; i < n; i++)
@@ -347,9 +415,15 @@ new_step:
       double sum = 0;
 
       for (j = 0; j < n; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           sum += gsl_matrix_get (H, i, j) * gsl_vector_get (y, j);
         }
+=======
+	{
+	  sum += gsl_matrix_get (H, i, j) * gsl_vector_get (y, j);
+	}
+>>>>>>> config
 
       gsl_vector_set (v, i, sum);
     }
@@ -383,9 +457,15 @@ new_step:
       double sum = 0;
 
       for (j = 0; j < n; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           sum += gsl_matrix_get (H, j, i) * gsl_vector_get (p, j);
         }
+=======
+	{
+	  sum += gsl_matrix_get (H, j, i) * gsl_vector_get (p, j);
+	}
+>>>>>>> config
 
       gsl_vector_set (w, i, sum);
     }
@@ -397,11 +477,19 @@ new_step:
       double vi = gsl_vector_get (v, i);
 
       for (j = 0; j < n; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double wj = gsl_vector_get (w, j);
           double Hij = gsl_matrix_get (H, i, j) - vi * wj / lambda;
           gsl_matrix_set (H, i, j, Hij);
         }
+=======
+	{
+	  double wj = gsl_vector_get (w, j);
+	  double Hij = gsl_matrix_get (H, i, j) - vi * wj / lambda;
+	  gsl_matrix_set (H, i, j, Hij);
+	}
+>>>>>>> config
     }
 
   /* copy fnew into f */
@@ -433,7 +521,11 @@ broyden_free (void *vstate)
 
   gsl_matrix_free (state->lu);
   gsl_permutation_free (state->permutation);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   gsl_vector_free (state->v);
   gsl_vector_free (state->w);
   gsl_vector_free (state->y);
@@ -441,7 +533,11 @@ broyden_free (void *vstate)
 
   gsl_vector_free (state->fnew);
   gsl_vector_free (state->x_trial);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
 }
 
 

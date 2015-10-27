@@ -18,10 +18,17 @@
  */
 /***************************************************************
  *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * File gsl_histogram2d_calloc_range.c: 
  * Routine to create a variable binning 2D histogram providing 
  * the input range vectors. Need GSL library and header.
  * Do range check and allocate the histogram data. 
+=======
+ * File gsl_histogram2d_calloc_range.c:
+ * Routine to create a variable binning 2D histogram providing
+ * the input range vectors. Need GSL library and header.
+ * Do range check and allocate the histogram data.
+>>>>>>> config
  *
  * Author: S. Piccardi
  * Jan. 2000
@@ -32,13 +39,22 @@
 #include <gsl/gsl_errno.h>
 #include <gsl/gsl_histogram2d.h>
 /*
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * Routine that create a 2D histogram using the given 
+=======
+ * Routine that create a 2D histogram using the given
+>>>>>>> config
  * values for X and Y ranges
  */
 gsl_histogram2d *
 gsl_histogram2d_calloc_range (size_t nx, size_t ny,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                               double *xrange,
                               double *yrange)
+=======
+			      double *xrange,
+			      double *yrange)
+>>>>>>> config
 {
   size_t i, j;
   gsl_histogram2d *h;
@@ -48,13 +64,21 @@ gsl_histogram2d_calloc_range (size_t nx, size_t ny,
   if (nx == 0)
     {
       GSL_ERROR_VAL ("histogram length nx must be positive integer",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_EDOM, 0);
+=======
+			GSL_EDOM, 0);
+>>>>>>> config
     }
 
   if (ny == 0)
     {
       GSL_ERROR_VAL ("histogram length ny must be positive integer",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_EDOM, 0);
+=======
+			GSL_EDOM, 0);
+>>>>>>> config
     }
 
   /* init ranges */
@@ -62,19 +86,33 @@ gsl_histogram2d_calloc_range (size_t nx, size_t ny,
   for (i = 0; i < nx; i++)
     {
       if (xrange[i] >= xrange[i + 1])
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           GSL_ERROR_VAL ("histogram xrange not in increasing order",
                             GSL_EDOM, 0);
         }
+=======
+	{
+	  GSL_ERROR_VAL ("histogram xrange not in increasing order",
+			    GSL_EDOM, 0);
+	}
+>>>>>>> config
     }
 
   for (j = 0; j < ny; j++)
     {
       if (yrange[j] >= yrange[j + 1])
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           GSL_ERROR_VAL ("histogram yrange not in increasing order"
                             ,GSL_EDOM, 0);
         }
+=======
+	{
+	  GSL_ERROR_VAL ("histogram yrange not in increasing order"
+			    ,GSL_EDOM, 0);
+	}
+>>>>>>> config
     }
 
   /* Allocate histogram  */
@@ -84,7 +122,11 @@ gsl_histogram2d_calloc_range (size_t nx, size_t ny,
   if (h == 0)
     {
       GSL_ERROR_VAL ("failed to allocate space for histogram struct",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_ENOMEM, 0);
+=======
+			GSL_ENOMEM, 0);
+>>>>>>> config
     }
 
   h->xrange = (double *) malloc ((nx + 1) * sizeof (double));
@@ -95,7 +137,11 @@ gsl_histogram2d_calloc_range (size_t nx, size_t ny,
       free (h);
 
       GSL_ERROR_VAL ("failed to allocate space for histogram xrange",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_ENOMEM, 0);
+=======
+			GSL_ENOMEM, 0);
+>>>>>>> config
     }
 
   h->yrange = (double *) malloc ((ny + 1) * sizeof (double));
@@ -106,7 +152,11 @@ gsl_histogram2d_calloc_range (size_t nx, size_t ny,
       free (h);
 
       GSL_ERROR_VAL ("failed to allocate space for histogram yrange",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_ENOMEM, 0);
+=======
+			GSL_ENOMEM, 0);
+>>>>>>> config
     }
 
   h->bin = (double *) malloc (nx * ny * sizeof (double));
@@ -119,7 +169,11 @@ gsl_histogram2d_calloc_range (size_t nx, size_t ny,
       free (h);
 
       GSL_ERROR_VAL ("failed to allocate space for histogram bins",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                         GSL_ENOMEM, 0);
+=======
+			GSL_ENOMEM, 0);
+>>>>>>> config
     }
 
   /* init histogram */
@@ -141,9 +195,15 @@ gsl_histogram2d_calloc_range (size_t nx, size_t ny,
   for (i = 0; i < nx; i++)
     {
       for (j = 0; j < ny; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           h->bin[i * ny + j] = 0;
         }
+=======
+	{
+	  h->bin[i * ny + j] = 0;
+	}
+>>>>>>> config
     }
 
   h->nx = nx;

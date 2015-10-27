@@ -7,7 +7,11 @@ main (void)
   const gsl_multimin_fdfminimizer_type *T;
   gsl_multimin_fdfminimizer *s;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   /* Position of the minimum (1,2), scale factors 
+=======
+  /* Position of the minimum (1,2), scale factors
+>>>>>>> config
      10,20, height 30. */
   double par[5] = { 1.0, 2.0, 10.0, 20.0, 30.0 };
 
@@ -36,17 +40,30 @@ main (void)
       status = gsl_multimin_fdfminimizer_iterate (s);
 
       if (status)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         break;
+=======
+	break;
+>>>>>>> config
 
       status = gsl_multimin_test_gradient (s->gradient, 1e-3);
 
       if (status == GSL_SUCCESS)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         printf ("Minimum found at:\n");
 
       printf ("%5d %.5f %.5f %10.5f\n", iter,
               gsl_vector_get (s->x, 0), 
               gsl_vector_get (s->x, 1), 
               s->f);
+=======
+	printf ("Minimum found at:\n");
+
+      printf ("%5d %.5f %.5f %10.5f\n", iter,
+	      gsl_vector_get (s->x, 0),
+	      gsl_vector_get (s->x, 1),
+	      s->f);
+>>>>>>> config
 
     }
   while (status == GSL_CONTINUE && iter < 100);

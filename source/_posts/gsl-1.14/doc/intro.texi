@@ -9,6 +9,7 @@ General Public License.
 
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Routines available in GSL::   
 * GSL is Free Software::        
 * Obtaining GSL::               
@@ -16,6 +17,15 @@ General Public License.
 * Reporting Bugs::              
 * Further Information::         
 * Conventions used in this manual::  
+=======
+* Routines available in GSL::
+* GSL is Free Software::
+* Obtaining GSL::
+* No Warranty::
+* Reporting Bugs::
+* Further Information::
+* Conventions used in this manual::
+>>>>>>> config
 @end menu
 
 @node Routines available in GSL
@@ -28,6 +38,7 @@ Routines are available for the following areas,
 @sp 1
 @end iftex
 @multitable @columnfractions 0.05 0.45 0.45 0.05
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @item @tab Complex Numbers            @tab Roots of Polynomials        
 @item @tab Special Functions          @tab Vectors and Matrices        
 @item @tab Permutations               @tab Combinations              
@@ -44,6 +55,24 @@ Routines are available for the following areas,
 @item @tab Root-Finding               @tab Discrete Hankel Transforms 
 @item @tab Least-Squares Fitting      @tab Minimization               
 @item @tab IEEE Floating-Point        @tab Physical Constants         
+=======
+@item @tab Complex Numbers            @tab Roots of Polynomials
+@item @tab Special Functions          @tab Vectors and Matrices
+@item @tab Permutations               @tab Combinations
+@item @tab Sorting                    @tab BLAS Support
+@item @tab Linear Algebra             @tab CBLAS Library
+@item @tab Fast Fourier Transforms    @tab Eigensystems
+@item @tab Random Numbers             @tab Quadrature
+@item @tab Random Distributions       @tab Quasi-Random Sequences
+@item @tab Histograms                 @tab Statistics
+@item @tab Monte Carlo Integration    @tab N-Tuples
+@item @tab Differential Equations     @tab Simulated Annealing
+@item @tab Numerical Differentiation  @tab Interpolation
+@item @tab Series Acceleration        @tab Chebyshev Approximations
+@item @tab Root-Finding               @tab Discrete Hankel Transforms
+@item @tab Least-Squares Fitting      @tab Minimization
+@item @tab IEEE Floating-Point        @tab Physical Constants
+>>>>>>> config
 @item @tab Basis Splines              @tab Wavelets
 @end multitable
 @iftex
@@ -101,7 +130,11 @@ license is available from the GNU Project webpage @cite{Frequently Asked
 Questions about the GNU GPL},
 
 @itemize @w{}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @item 
+=======
+@item
+>>>>>>> config
 @uref{http://www.gnu.org/copyleft/gpl-faq.html}
 @end itemize
 
@@ -122,7 +155,11 @@ from the internet. A list of public ftp servers which carry the source
 code can be found on the GNU website,
 
 @itemize @w{}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @item 
+=======
+@item
+>>>>>>> config
 @uref{http://www.gnu.org/software/gsl/}
 @end itemize
 
@@ -130,14 +167,22 @@ code can be found on the GNU website,
 The preferred platform for the library is a GNU system, which allows it
 to take advantage of additional features in the GNU C compiler and GNU C
 library.  However, the library is fully portable and should compile on
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 most systems with a C compiler. 
+=======
+most systems with a C compiler.
+>>>>>>> config
 
 Announcements of new releases, updates and other relevant events are
 made on the @code{info-gsl@@gnu.org} mailing list.  To subscribe to this
 low-volume list, send an email of the following form:
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 To: info-gsl-request@@gnu.org 
+=======
+To: info-gsl-request@@gnu.org
+>>>>>>> config
 Subject: subscribe
 @end example
 
@@ -197,7 +242,11 @@ same address.
 @cindex contacting the GSL developers
 Additional information, including online copies of this manual, links to
 related projects, and mailing list archives are available from the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 website mentioned above.  
+=======
+website mentioned above.
+>>>>>>> config
 
 Any questions about the use and installation of the library can be asked
 on the mailing list @code{help-gsl@@gnu.org}.  To subscribe to this
@@ -242,5 +291,8 @@ The examples assume the use of the GNU operating system.  There may be
 minor differences in the output on other systems.  The commands for
 setting environment variables use the Bourne shell syntax of the
 standard GNU shell (@code{bash}).
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
+=======
+>>>>>>> config

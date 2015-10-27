@@ -59,7 +59,11 @@ edit = $(SED) \
 	-e 's|@LIBS[@]|$(LIBS)|g' \
 	-e 's|@VERSION[@]|$(VERSION)|g'
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl-config gsl.pc: Makefile 
+=======
+gsl-config gsl.pc: Makefile
+>>>>>>> config
 	@rm -f $@ $@.tmp
 	@$(edit) '$(srcdir)/$@.in' >>$@.tmp
 	@chmod a-w $@.tmp
@@ -68,4 +72,7 @@ gsl-config gsl.pc: Makefile
 
 gsl-config: $(srcdir)/gsl-config.in
 gsl.pc: $(srcdir)/gsl.pc.in
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

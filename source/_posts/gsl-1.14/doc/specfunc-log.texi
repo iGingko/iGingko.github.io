@@ -42,6 +42,10 @@ algorithm that is accurate for small @math{x}.
 @deftypefunx int gsl_sf_log_1plusx_mx_e (double @var{x}, gsl_sf_result * @var{result})
 These routines compute @math{\log(1 + x) - x} for @math{x > -1} using an
 algorithm that is accurate for small @math{x}.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment Domain: x > -1.0 
+=======
+@comment Domain: x > -1.0
+>>>>>>> config
 @comment Exceptional Return Values: GSL_EDOM
 @end deftypefun

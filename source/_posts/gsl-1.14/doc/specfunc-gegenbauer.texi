@@ -12,7 +12,11 @@ described in this section are declared in the header file
 @deftypefunx int gsl_sf_gegenpoly_2_e (double @var{lambda}, double @var{x}, gsl_sf_result * @var{result})
 @deftypefunx int gsl_sf_gegenpoly_3_e (double @var{lambda}, double @var{x}, gsl_sf_result * @var{result})
 These functions evaluate the Gegenbauer polynomials
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @c{$C^{(\lambda)}_n(x)$} 
+=======
+@c{$C^{(\lambda)}_n(x)$}
+>>>>>>> config
 @math{C^@{(\lambda)@}_n(x)} using explicit
 representations for @math{n =1, 2, 3}.
 @comment Exceptional Return Values: none
@@ -21,7 +25,11 @@ representations for @math{n =1, 2, 3}.
 
 @deftypefun double gsl_sf_gegenpoly_n (int @var{n}, double @var{lambda}, double @var{x})
 @deftypefunx int gsl_sf_gegenpoly_n_e (int @var{n}, double @var{lambda}, double @var{x}, gsl_sf_result * @var{result})
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 These functions evaluate the Gegenbauer polynomial @c{$C^{(\lambda)}_n(x)$} 
+=======
+These functions evaluate the Gegenbauer polynomial @c{$C^{(\lambda)}_n(x)$}
+>>>>>>> config
 @math{C^@{(\lambda)@}_n(x)} for a specific value of @var{n},
 @var{lambda}, @var{x} subject to @math{\lambda > -1/2}, @c{$n \ge 0$}
 @math{n >= 0}.
@@ -32,7 +40,11 @@ These functions evaluate the Gegenbauer polynomial @c{$C^{(\lambda)}_n(x)$}
 
 @deftypefun int gsl_sf_gegenpoly_array (int @var{nmax}, double @var{lambda}, double @var{x}, double @var{result_array}[])
 This function computes an array of Gegenbauer polynomials
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @c{$C^{(\lambda)}_n(x)$} 
+=======
+@c{$C^{(\lambda)}_n(x)$}
+>>>>>>> config
 @math{C^@{(\lambda)@}_n(x)} for @math{n = 0, 1, 2, \dots, nmax}, subject
 to @math{\lambda > -1/2}, @c{$nmax \ge 0$}
 @math{nmax >= 0}.

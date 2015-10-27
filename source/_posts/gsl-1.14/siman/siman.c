@@ -1,18 +1,33 @@
 /* siman/siman.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 2007 Brian Gough
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Mark Galassi
  * 
+=======
+ *
+ * Copyright (C) 2007 Brian Gough
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Mark Galassi
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -46,6 +61,7 @@ copy_state(void *src, void *dst, size_t size, gsl_siman_copy_t copyfunc)
     memcpy(dst, src, size);
   }
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
 /* implementation of a basic simulated annealing algorithm */
 
@@ -59,6 +75,21 @@ gsl_siman_solve (const gsl_rng * r, void *x0_p, gsl_siman_Efunc_t Ef,
                  gsl_siman_destroy_t destructor,
                  size_t element_size,
                  gsl_siman_params_t params)
+=======
+
+/* implementation of a basic simulated annealing algorithm */
+
+void
+gsl_siman_solve (const gsl_rng * r, void *x0_p, gsl_siman_Efunc_t Ef,
+		 gsl_siman_step_t take_step,
+		 gsl_siman_metric_t distance,
+		 gsl_siman_print_t print_position,
+		 gsl_siman_copy_t copyfunc,
+		 gsl_siman_copy_construct_t copy_constructor,
+		 gsl_siman_destroy_t destructor,
+		 size_t element_size,
+		 gsl_siman_params_t params)
+>>>>>>> config
 {
   void *x, *new_x, *best_x;
   double E, new_E, best_E;
@@ -70,7 +101,11 @@ gsl_siman_solve (const gsl_rng * r, void *x0_p, gsl_siman_Efunc_t Ef,
      copy_constructor and destrcutor) are passed, or that an element
      size is given */
   assert((copyfunc != NULL && copy_constructor != NULL && destructor != NULL)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          || (element_size != 0));
+=======
+	 || (element_size != 0));
+>>>>>>> config
 
   distance = 0 ; /* This parameter is not currently used */
   E = Ef(x0_p);
@@ -110,17 +145,30 @@ gsl_siman_solve (const gsl_rng * r, void *x0_p, gsl_siman_Efunc_t Ef,
       new_E = Ef (new_x);
 
       if(new_E <= best_E){
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         if (copyfunc) {
           copyfunc(new_x,best_x);
         } else {
           memcpy (best_x, new_x, element_size);
         }
         best_E=new_E;
+=======
+	if (copyfunc) {
+	  copyfunc(new_x,best_x);
+	} else {
+	  memcpy (best_x, new_x, element_size);
+	}
+	best_E=new_E;
+>>>>>>> config
       }
 
       ++n_evals;                /* keep track of Ef() evaluations */
       /* now take the crucial step: see if the new point is accepted
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          or not, as determined by the boltzmann probability */
+=======
+	 or not, as determined by the boltzmann probability */
+>>>>>>> config
       if (new_E < E) {
 
 	if (new_E < best_E) {
@@ -128,6 +176,7 @@ gsl_siman_solve (const gsl_rng * r, void *x0_p, gsl_siman_Efunc_t Ef,
 	  best_E = new_E;
 	}
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         /* yay! take a step */
 	copy_state(new_x, x, element_size, copyfunc);
         E = new_E;
@@ -141,6 +190,21 @@ gsl_siman_solve (const gsl_rng * r, void *x0_p, gsl_siman_Efunc_t Ef,
 
       } else {
         ++n_rejects;
+=======
+	/* yay! take a step */
+	copy_state(new_x, x, element_size, copyfunc);
+	E = new_E;
+	++n_eless;
+
+      } else if (gsl_rng_uniform(r) < boltzmann(E, new_E, T, &params)) {
+	/* yay! take a step */
+	copy_state(new_x, x, element_size, copyfunc);
+	E = new_E;
+	++n_accepts;
+
+      } else {
+	++n_rejects;
+>>>>>>> config
       }
     }
 
@@ -180,6 +244,7 @@ gsl_siman_solve (const gsl_rng * r, void *x0_p, gsl_siman_Efunc_t Ef,
 
 /* implementation of a simulated annealing algorithm with many tries */
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 void 
 gsl_siman_solve_many (const gsl_rng * r, void *x0_p, gsl_siman_Efunc_t Ef,
                       gsl_siman_step_t take_step,
@@ -187,6 +252,15 @@ gsl_siman_solve_many (const gsl_rng * r, void *x0_p, gsl_siman_Efunc_t Ef,
                       gsl_siman_print_t print_position,
                       size_t element_size,
                       gsl_siman_params_t params)
+=======
+void
+gsl_siman_solve_many (const gsl_rng * r, void *x0_p, gsl_siman_Efunc_t Ef,
+		      gsl_siman_step_t take_step,
+		      gsl_siman_metric_t distance,
+		      gsl_siman_print_t print_position,
+		      size_t element_size,
+		      gsl_siman_params_t params)
+>>>>>>> config
 {
   /* the new set of trial points, and their energies and probabilities */
   void *x, *new_x;
@@ -218,6 +292,7 @@ gsl_siman_solve_many (const gsl_rng * r, void *x0_p, gsl_siman_Efunc_t Ef,
     {
       Ex = Ef (x);
       for (i = 0; i < params.n_tries - 1; ++i)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {                       /* only go to N_TRIES-2 */
           /* center the new_x[] around x, then pass it to take_step() */
           sum_probs[i] = 0;
@@ -226,6 +301,16 @@ gsl_siman_solve_many (const gsl_rng * r, void *x0_p, gsl_siman_Efunc_t Ef,
           energies[i] = Ef ((char *)new_x + i * element_size);
           probs[i] = boltzmann(Ex, energies[i], T, &params);
         }
+=======
+	{                       /* only go to N_TRIES-2 */
+	  /* center the new_x[] around x, then pass it to take_step() */
+	  sum_probs[i] = 0;
+	  memcpy ((char *)new_x + i * element_size, x, element_size);
+	  take_step (r, (char *)new_x + i * element_size, params.step_size);
+	  energies[i] = Ef ((char *)new_x + i * element_size);
+	  probs[i] = boltzmann(Ex, energies[i], T, &params);
+	}
+>>>>>>> config
       /* now add in the old value of "x", so it is a contendor */
       memcpy ((char *)new_x + (params.n_tries - 1) * element_size, x, element_size);
       energies[params.n_tries - 1] = Ex;
@@ -234,6 +319,7 @@ gsl_siman_solve_many (const gsl_rng * r, void *x0_p, gsl_siman_Efunc_t Ef,
       /* now throw biased die to see which new_x[i] we choose */
       sum_probs[0] = probs[0];
       for (i = 1; i < params.n_tries; ++i)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           sum_probs[i] = sum_probs[i - 1] + probs[i];
         }
@@ -252,12 +338,36 @@ gsl_siman_solve_many (const gsl_rng * r, void *x0_p, gsl_siman_Efunc_t Ef,
           print_position (x);
           printf ("\t%12g\t%12g\n", distance (x, x0_p), Ex);
         }
+=======
+	{
+	  sum_probs[i] = sum_probs[i - 1] + probs[i];
+	}
+      u = gsl_rng_uniform (r) * sum_probs[params.n_tries - 1];
+      for (i = 0; i < params.n_tries; ++i)
+	{
+	  if (u < sum_probs[i])
+	    {
+	      memcpy (x, (char *) new_x + i * element_size, element_size);
+	      break;
+	    }
+	}
+      if (print_position)
+	{
+	  printf ("%5d\t%12g\t", n_iter, T);
+	  print_position (x);
+	  printf ("\t%12g\t%12g\n", distance (x, x0_p), Ex);
+	}
+>>>>>>> config
       T *= T_factor;
       ++n_iter;
       if (T < params.t_min)
 	{
 	  break;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         }
+=======
+	}
+>>>>>>> config
     }
 
   /* now return the value via x0_p */

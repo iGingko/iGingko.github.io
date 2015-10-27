@@ -1,17 +1,31 @@
 /* fft/real_main.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -29,8 +43,13 @@
 
 int
 FUNCTION(gsl_fft_real,transform) (BASE data[], const size_t stride, const size_t n,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                   const TYPE(gsl_fft_real_wavetable) * wavetable,
                                   TYPE(gsl_fft_real_workspace) * work)
+=======
+				  const TYPE(gsl_fft_real_wavetable) * wavetable,
+				  TYPE(gsl_fft_real_workspace) * work)
+>>>>>>> config
 {
   const size_t nf = wavetable->nf;
 
@@ -48,7 +67,11 @@ FUNCTION(gsl_fft_real,transform) (BASE data[], const size_t stride, const size_t
   size_t istride = stride ;
   BASE *out = scratch;
   size_t ostride = 1 ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   if (n == 0)
     {
       GSL_ERROR ("length n must be positive integer", GSL_EDOM);
@@ -79,6 +102,7 @@ FUNCTION(gsl_fft_real,transform) (BASE data[], const size_t stride, const size_t
       tskip = (product_1 + 1) / 2 - 1;
 
       if (state == 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           in = data;
           istride = stride;
@@ -130,14 +154,73 @@ FUNCTION(gsl_fft_real,transform) (BASE data[], const size_t stride, const size_t
           FUNCTION(fft_real,pass_n) (in, istride, out, ostride, factor, product, n,
                                      twiddle1);
         }
+=======
+	{
+	  in = data;
+	  istride = stride;
+	  out = scratch;
+	  ostride = 1;
+	  state = 1;
+	}
+      else
+	{
+	  in = scratch;
+	  istride = 1;
+	  out = data;
+	  ostride = stride;
+	  state = 0;
+	}
+
+      if (factor == 2)
+	{
+	  twiddle1 = wavetable->twiddle[i];
+	  FUNCTION(fft_real,pass_2) (in, istride, out, ostride, product, n, twiddle1);
+	}
+      else if (factor == 3)
+	{
+	  twiddle1 = wavetable->twiddle[i];
+	  twiddle2 = twiddle1 + tskip;
+	  FUNCTION(fft_real,pass_3) (in, istride, out, ostride, product, n, twiddle1,
+			       twiddle2);
+	}
+      else if (factor == 4)
+	{
+	  twiddle1 = wavetable->twiddle[i];
+	  twiddle2 = twiddle1 + tskip;
+	  twiddle3 = twiddle2 + tskip;
+	  FUNCTION(fft_real,pass_4) (in, istride, out, ostride, product, n, twiddle1,
+				     twiddle2, twiddle3);
+	}
+      else if (factor == 5)
+	{
+	  twiddle1 = wavetable->twiddle[i];
+	  twiddle2 = twiddle1 + tskip;
+	  twiddle3 = twiddle2 + tskip;
+	  twiddle4 = twiddle3 + tskip;
+	  FUNCTION(fft_real,pass_5) (in, istride, out, ostride, product, n, twiddle1,
+				     twiddle2, twiddle3, twiddle4);
+	}
+      else
+	{
+	  twiddle1 = wavetable->twiddle[i];
+	  FUNCTION(fft_real,pass_n) (in, istride, out, ostride, factor, product, n,
+				     twiddle1);
+	}
+>>>>>>> config
     }
 
   if (state == 1)               /* copy results back from scratch to data */
     {
       for (i = 0; i < n; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           data[stride*i] = scratch[i] ;
         }
+=======
+	{
+	  data[stride*i] = scratch[i] ;
+	}
+>>>>>>> config
     }
 
   return 0;

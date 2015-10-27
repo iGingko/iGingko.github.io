@@ -1,17 +1,31 @@
 /* integration/qng.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -29,14 +43,24 @@
 
 int
 gsl_integration_qng (const gsl_function *f,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                      double a, double b,
                      double epsabs, double epsrel,
                      double * result, double * abserr, size_t * neval)
+=======
+		     double a, double b,
+		     double epsabs, double epsrel,
+		     double * result, double * abserr, size_t * neval)
+>>>>>>> config
 {
   double fv1[5], fv2[5], fv3[5], fv4[5];
   double savfun[21];  /* array of function values which have been computed */
   double res10, res21, res43, res87;    /* 10, 21, 43 and 87 point results */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   double result_kronrod, err ; 
+=======
+  double result_kronrod, err ;
+>>>>>>> config
   double resabs; /* approximation to the integral of abs(f) */
   double resasc; /* approximation to the integral of abs(f-i/(b-a)) */
 
@@ -53,7 +77,11 @@ gsl_integration_qng (const gsl_function *f,
       * abserr = 0;
       * neval = 0;
       GSL_ERROR ("tolerance cannot be acheived with given epsabs and epsrel",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  GSL_EBADTOL);
+=======
+		 GSL_EBADTOL);
+>>>>>>> config
     };
 
   /* Compute the integral using the 10- and 21-point formula. */
@@ -91,6 +119,7 @@ gsl_integration_qng (const gsl_function *f,
 
   resabs *= abs_half_length ;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   { 
     const double mean = 0.5 * res21;
   
@@ -101,12 +130,28 @@ gsl_integration_qng (const gsl_function *f,
         resasc +=
           (w21a[k] * (fabs (fv1[k] - mean) + fabs (fv2[k] - mean))
           + w21b[k] * (fabs (fv3[k] - mean) + fabs (fv4[k] - mean)));
+=======
+  {
+    const double mean = 0.5 * res21;
+
+    resasc = w21b[5] * fabs (f_center - mean);
+
+    for (k = 0; k < 5; k++)
+      {
+	resasc +=
+	  (w21a[k] * (fabs (fv1[k] - mean) + fabs (fv2[k] - mean))
+	  + w21b[k] * (fabs (fv3[k] - mean) + fabs (fv4[k] - mean)));
+>>>>>>> config
       }
     resasc *= abs_half_length ;
   }
 
   result_kronrod = res21 * half_length;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   err = rescale_error ((res21 - res10) * half_length, resabs, resasc) ;
 
   /*   test for convergence. */
@@ -131,8 +176,13 @@ gsl_integration_qng (const gsl_function *f,
   for (k = 0; k < 11; k++)
     {
       const double abscissa = half_length * x3[k];
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       const double fval = (GSL_FN_EVAL(f, center + abscissa) 
                            + GSL_FN_EVAL(f, center - abscissa));
+=======
+      const double fval = (GSL_FN_EVAL(f, center + abscissa)
+			   + GSL_FN_EVAL(f, center - abscissa));
+>>>>>>> config
       res43 += fval * w43b[k];
       savfun[k + 10] = fval;
     }
@@ -162,16 +212,27 @@ gsl_integration_qng (const gsl_function *f,
   for (k = 0; k < 22; k++)
     {
       const double abscissa = half_length * x4[k];
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       res87 += w87b[k] * (GSL_FN_EVAL(f, center + abscissa) 
                           + GSL_FN_EVAL(f, center - abscissa));
+=======
+      res87 += w87b[k] * (GSL_FN_EVAL(f, center + abscissa)
+			  + GSL_FN_EVAL(f, center - abscissa));
+>>>>>>> config
     }
 
   /*  test for convergence */
 
   result_kronrod = res87 * half_length ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   err = rescale_error ((res87 - res43) * half_length, resabs, resasc);
   
+=======
+
+  err = rescale_error ((res87 - res43) * half_length, resabs, resasc);
+
+>>>>>>> config
   if (err < epsabs || err < epsrel * fabs (result_kronrod))
     {
       * result = result_kronrod ;

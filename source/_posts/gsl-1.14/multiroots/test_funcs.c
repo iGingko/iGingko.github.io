@@ -1,17 +1,31 @@
 /* multiroots/test_funcs.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -87,7 +101,11 @@ rosenbrock_df (const gsl_vector * x, void *params, gsl_matrix * df)
 
 int
 rosenbrock_fdf (const gsl_vector * x, void *params,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                 gsl_vector * f, gsl_matrix * df)
+=======
+		gsl_vector * f, gsl_matrix * df)
+>>>>>>> config
 {
   rosenbrock_f (x, params, f);
   rosenbrock_df (x, params, df);
@@ -150,7 +168,11 @@ roth_df (const gsl_vector * x, void *params, gsl_matrix * df)
 
 int
 roth_fdf (const gsl_vector * x, void *params,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                 gsl_vector * f, gsl_matrix * df)
+=======
+		gsl_vector * f, gsl_matrix * df)
+>>>>>>> config
 {
   roth_f (x, params, f);
   roth_df (x, params, df);
@@ -213,7 +235,11 @@ powellscal_df (const gsl_vector * x, void *params, gsl_matrix * df)
 
 int
 powellscal_fdf (const gsl_vector * x, void *params,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   gsl_vector * f, gsl_matrix * df)
+=======
+		  gsl_vector * f, gsl_matrix * df)
+>>>>>>> config
 {
   powellscal_f (x, params, f);
   powellscal_df (x, params, df);
@@ -275,7 +301,11 @@ brownscal_df (const gsl_vector * x, void *params, gsl_matrix * df)
 
 int
 brownscal_fdf (const gsl_vector * x, void *params,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                   gsl_vector * f, gsl_matrix * df)
+=======
+		  gsl_vector * f, gsl_matrix * df)
+>>>>>>> config
 {
   brownscal_f (x, params, f);
   brownscal_df (x, params, df);
@@ -364,7 +394,11 @@ powellsing_df (const gsl_vector * x, void *params, gsl_matrix * df)
 
 int
 powellsing_fdf (const gsl_vector * x, void *params,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                     gsl_vector * f, gsl_matrix * df)
+=======
+		    gsl_vector * f, gsl_matrix * df)
+>>>>>>> config
 {
   powellsing_f (x, params, f);
   powellsing_df (x, params, df);
@@ -459,7 +493,11 @@ wood_df (const gsl_vector * x, void *params, gsl_matrix * df)
 
 int
 wood_fdf (const gsl_vector * x, void *params,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                     gsl_vector * f, gsl_matrix * df)
+=======
+		    gsl_vector * f, gsl_matrix * df)
+>>>>>>> config
 {
   wood_f (x, params, f);
   wood_df (x, params, df);
@@ -494,7 +532,11 @@ helical_f (const gsl_vector * x, void *params, gsl_vector * f)
   double t1, t2;
   double y0, y1, y2;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (x0 > 0) 
+=======
+  if (x0 > 0)
+>>>>>>> config
     {
       t1 = atan(x1/x0) / (2.0 * M_PI);
     }
@@ -508,7 +550,11 @@ helical_f (const gsl_vector * x, void *params, gsl_vector * f)
     }
 
   t2 = sqrt(x0*x0 + x1*x1) ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   y0 = 10 * (x2 - 10 * t1);
   y1 = 10 * (t2 - 1);
   y2 = x2 ;
@@ -555,7 +601,11 @@ helical_df (const gsl_vector * x, void *params, gsl_matrix * df)
 
 int
 helical_fdf (const gsl_vector * x, void *params,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                     gsl_vector * f, gsl_matrix * df)
+=======
+		    gsl_vector * f, gsl_matrix * df)
+>>>>>>> config
 {
   helical_f (x, params, f);
   helical_df (x, params, df);
@@ -601,12 +651,21 @@ dbv_f (const gsl_vector * x, void *params, gsl_vector * f)
       double xi = 0, xim1 = 0, xip1 = 0;
 
       xi = gsl_vector_get (x, i);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
       if (i > 0)
         xim1 = gsl_vector_get (x, i - 1);
 
       if (i < N - 1)
         xip1 = gsl_vector_get (x, i + 1);
+=======
+
+      if (i > 0)
+	xim1 = gsl_vector_get (x, i - 1);
+
+      if (i < N - 1)
+	xip1 = gsl_vector_get (x, i + 1);
+>>>>>>> config
 
       z = 2 * xi - xim1 - xip1 + h * h * pow(xi + ti + 1, 3.0) / 2.0;
 
@@ -635,6 +694,7 @@ dbv_df (const gsl_vector * x, void *params, gsl_matrix * df)
       double dz_dxi, ti = (i + 1) * h;
 
       double xi = gsl_vector_get (x, i);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
       dz_dxi = 2.0 + (3.0 / 2.0) * h * h * pow(xi + ti + 1, 2.0) ;
       
@@ -645,6 +705,18 @@ dbv_df (const gsl_vector * x, void *params, gsl_matrix * df)
 
       if (i < N - 1)
         gsl_matrix_set (df, i, i+1, -1.0);
+=======
+
+      dz_dxi = 2.0 + (3.0 / 2.0) * h * h * pow(xi + ti + 1, 2.0) ;
+
+      gsl_matrix_set (df, i, i, dz_dxi);
+
+      if (i > 0)
+	gsl_matrix_set (df, i, i-1, -1.0);
+
+      if (i < N - 1)
+	gsl_matrix_set (df, i, i+1, -1.0);
+>>>>>>> config
 
     }
 
@@ -655,7 +727,11 @@ dbv_df (const gsl_vector * x, void *params, gsl_matrix * df)
 
 int
 dbv_fdf (const gsl_vector * x, void *params,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                     gsl_vector * f, gsl_matrix * df)
+=======
+		    gsl_vector * f, gsl_matrix * df)
+>>>>>>> config
 {
   dbv_f (x, params, f);
   dbv_df (x, params, df);
@@ -678,7 +754,11 @@ trig_initpt (gsl_vector * x)
 
   for (i = 0; i < N; i++)       /* choose an initial point which converges */
     {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       gsl_vector_set (x, i, 0.05);   
+=======
+      gsl_vector_set (x, i, 0.05);
+>>>>>>> config
     }
 }
 
@@ -714,6 +794,7 @@ trig_df (const gsl_vector * x, void *params, gsl_matrix * df)
   for (i = 0; i < N; i++)
     {
       for (j = 0; j < N; j++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double dz;
           double xi = gsl_vector_get(x, i);
@@ -726,6 +807,20 @@ trig_df (const gsl_vector * x, void *params, gsl_matrix * df)
           
           gsl_matrix_set(df, i, j, dz);
         }
+=======
+	{
+	  double dz;
+	  double xi = gsl_vector_get(x, i);
+	  double xj = gsl_vector_get(x, j);
+
+	  if (j == i)
+	    dz = sin(xi) + (i + 1) * sin(xi) - cos(xi);
+	  else
+	    dz = sin(xj);
+
+	  gsl_matrix_set(df, i, j, dz);
+	}
+>>>>>>> config
     }
 
   params = 0;                   /* avoid warning about unused parameters */
@@ -735,7 +830,11 @@ trig_df (const gsl_vector * x, void *params, gsl_matrix * df)
 
 int
 trig_fdf (const gsl_vector * x, void *params,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                     gsl_vector * f, gsl_matrix * df)
+=======
+		    gsl_vector * f, gsl_matrix * df)
+>>>>>>> config
 {
   trig_f (x, params, f);
   trig_df (x, params, df);

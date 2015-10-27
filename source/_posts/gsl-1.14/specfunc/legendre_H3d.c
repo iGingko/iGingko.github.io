@@ -1,17 +1,31 @@
 /* specfunc/legendre_H3d.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -95,7 +109,11 @@ legendre_H3d_lnnorm(const int ell, const double lambda, double * result)
 static
 int
 legendre_H3d_series(const int ell, const double lambda, const double eta,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                     gsl_sf_result * result)
+=======
+		    gsl_sf_result * result)
+>>>>>>> config
 {
   const int nmax = 5000;
   const double shheta = sinh(0.5*eta);
@@ -140,7 +158,11 @@ legendre_H3d_series(const int ell, const double lambda, const double eta,
 static
 int
 legendre_H3d_CF1(const int ell, const double lambda, const double coth_eta,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                  gsl_sf_result * result)
+=======
+		 gsl_sf_result * result)
+>>>>>>> config
 {
   const double RECUR_BIG = GSL_SQRT_DBL_MAX;
   const int maxiter = 5000;
@@ -181,7 +203,11 @@ legendre_H3d_CF1(const int ell, const double lambda, const double coth_eta,
     old_fn = fn;
     fn = An/Bn;
     del = old_fn/fn;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     if(fabs(del - 1.0) < 4.0*GSL_DBL_EPSILON) break;
   }
 
@@ -208,7 +234,11 @@ legendre_H3d_CF1(const int ell, const double lambda, const double coth_eta,
 static
 int
 legendre_H3d_CF1_ser(const int ell, const double lambda, const double coth_eta,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                      gsl_sf_result * result)
+=======
+		     gsl_sf_result * result)
+>>>>>>> config
 {
   const double pre = hypot(lambda, ell+1.0)/((2.0*ell+3)*coth_eta);
   const int maxk = 20000;
@@ -217,7 +247,11 @@ legendre_H3d_CF1_ser(const int ell, const double lambda, const double coth_eta,
   double rhok = 0.0;
   double sum_err = 0.0;
   int k;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  
+=======
+
+>>>>>>> config
   for(k=1; k<maxk; k++) {
     double tlk = (2.0*ell + 1.0 + 2.0*k);
     double l1k = (ell + 1.0 + k);
@@ -362,7 +396,11 @@ gsl_sf_legendre_H3d_1_e(const double lambda, const double eta, gsl_sf_result * r
 
 int
 gsl_sf_legendre_H3d_e(const int ell, const double lambda, const double eta,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                          gsl_sf_result * result)
+=======
+			 gsl_sf_result * result)
+>>>>>>> config
 {
   const double abs_lam = fabs(lambda);
   const double lsq     = abs_lam*abs_lam;
@@ -426,9 +464,15 @@ gsl_sf_legendre_H3d_e(const int ell, const double lambda, const double eta,
     gsl_sf_result P;
     double lm;
     int stat_P = gsl_sf_conicalP_xgt1_neg_mu_largetau_e(ell+0.5,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                                            lambda,
                                                            cosh_eta, eta,
                                                            &P, &lm);
+=======
+							   lambda,
+							   cosh_eta, eta,
+							   &P, &lm);
+>>>>>>> config
     if(P.val == 0.0) {
       result->val = 0.0;
       result->err = 0.0;
@@ -546,7 +590,11 @@ gsl_sf_legendre_H3d_array(const int lmax, const double lambda, const double eta,
     return GSL_ERROR_SELECT_2(stat_recursion, stat_max);
   }
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
 
 /*-*-*-*-*-*-*-*-*-* Functions w/ Natural Prototypes *-*-*-*-*-*-*-*-*-*-*/
 

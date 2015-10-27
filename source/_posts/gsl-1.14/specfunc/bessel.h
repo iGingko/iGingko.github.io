@@ -1,17 +1,31 @@
 /* specfunc/bessel.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -30,11 +44,19 @@
  *   sign = +1  ==> Inu
  */
 int gsl_sf_bessel_IJ_taylor_e(const double nu, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                  const int sign,
                                  const int kmax,
                                  const double threshold,
                                  gsl_sf_result * result
                                  );
+=======
+				 const int sign,
+				 const int kmax,
+				 const double threshold,
+				 gsl_sf_result * result
+				 );
+>>>>>>> config
 
 int gsl_sf_bessel_Jnu_asympx_e(const double nu, const double x, gsl_sf_result * result);
 int gsl_sf_bessel_Ynu_asympx_e(const double nu, const double x, gsl_sf_result * result);
@@ -65,19 +87,33 @@ gsl_sf_bessel_I_CF1_ser(const double nu, const double x, double * ratio);
  */
 int
 gsl_sf_bessel_JY_steed_CF2(const double nu, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                            double * P, double * Q);
+=======
+			   double * P, double * Q);
+>>>>>>> config
 
 
 int
 gsl_sf_bessel_JY_mu_restricted(const double mu, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                gsl_sf_result * Jmu, gsl_sf_result * Jmup1,
                                gsl_sf_result * Ymu, gsl_sf_result * Ymup1);
+=======
+			       gsl_sf_result * Jmu, gsl_sf_result * Jmup1,
+			       gsl_sf_result * Ymu, gsl_sf_result * Ymup1);
+>>>>>>> config
 
 
 int
 gsl_sf_bessel_K_scaled_steed_temme_CF2(const double nu, const double x,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                        double * K_nu, double * K_nup1,
                                        double * Kp_nu);
+=======
+				       double * K_nu, double * K_nup1,
+				       double * Kp_nu);
+>>>>>>> config
 
 
 /* These are of use in calculating the oscillating

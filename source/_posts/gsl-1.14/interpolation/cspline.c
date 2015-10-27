@@ -1,17 +1,31 @@
 /* interpolation/cspline.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2004 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2004 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -46,9 +60,15 @@ cspline_alloc (size_t size)
     {
       GSL_ERROR_NULL("failed to allocate space for state", GSL_ENOMEM);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   state->c = (double *) malloc (size * sizeof (double));
   
+=======
+
+  state->c = (double *) malloc (size * sizeof (double));
+
+>>>>>>> config
   if (state->c == NULL)
     {
       free (state);
@@ -56,7 +76,11 @@ cspline_alloc (size_t size)
     }
 
   state->g = (double *) malloc (size * sizeof (double));
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   if (state->g == NULL)
     {
       free (state->c);
@@ -65,7 +89,11 @@ cspline_alloc (size_t size)
     }
 
   state->diag = (double *) malloc (size * sizeof (double));
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   if (state->diag == NULL)
     {
       free (state->g);
@@ -75,7 +103,11 @@ cspline_alloc (size_t size)
     }
 
   state->offdiag = (double *) malloc (size * sizeof (double));
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   if (state->offdiag == NULL)
     {
       free (state->diag);
@@ -94,7 +126,11 @@ cspline_alloc (size_t size)
  */
 static int
 cspline_init (void * vstate, const double xa[], const double ya[],
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
               size_t size)
+=======
+	      size_t size)
+>>>>>>> config
 {
   cspline_state_t *state = (cspline_state_t *) vstate;
 
@@ -130,11 +166,19 @@ cspline_init (void * vstate, const double xa[], const double ya[],
       gsl_vector_view diag_vec = gsl_vector_view_array(state->diag, sys_size);
       gsl_vector_view offdiag_vec = gsl_vector_view_array(state->offdiag, sys_size - 1);
       gsl_vector_view solution_vec = gsl_vector_view_array ((state->c) + 1, sys_size);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
       int status = gsl_linalg_solve_symm_tridiag(&diag_vec.vector, 
                                                  &offdiag_vec.vector, 
                                                  &g_vec.vector, 
                                                  &solution_vec.vector);
+=======
+
+      int status = gsl_linalg_solve_symm_tridiag(&diag_vec.vector,
+						 &offdiag_vec.vector,
+						 &g_vec.vector,
+						 &solution_vec.vector);
+>>>>>>> config
       return status;
     }
 }
@@ -145,7 +189,11 @@ cspline_init (void * vstate, const double xa[], const double ya[],
  */
 static int
 cspline_init_periodic (void * vstate, const double xa[], const double ya[],
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                        size_t size)
+=======
+		       size_t size)
+>>>>>>> config
 {
   cspline_state_t *state = (cspline_state_t *) vstate;
 
@@ -156,7 +204,11 @@ cspline_init_periodic (void * vstate, const double xa[], const double ya[],
 
   if (sys_size == 2) {
     /* solve 2x2 system */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     const double h0 = xa[1] - xa[0];
     const double h1 = xa[2] - xa[1];
 
@@ -164,18 +216,32 @@ cspline_init_periodic (void * vstate, const double xa[], const double ya[],
     const double B = h0 + h1;
     double g[2];
     double det;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     g[0] = 3.0 * ((ya[2] - ya[1]) / h1 - (ya[1] - ya[0]) / h0);
     g[1] = 3.0 * ((ya[1] - ya[2]) / h0 - (ya[2] - ya[1]) / h1);
     
+=======
+
+    g[0] = 3.0 * ((ya[2] - ya[1]) / h1 - (ya[1] - ya[0]) / h0);
+    g[1] = 3.0 * ((ya[1] - ya[2]) / h0 - (ya[2] - ya[1]) / h1);
+
+>>>>>>> config
     det = 3.0 * (h0 + h1) * (h0 + h1);
     state->c[1] = ( A * g[0] - B * g[1])/det;
     state->c[2] = (-B * g[0] + A * g[1])/det;
     state->c[0] = state->c[2];
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     return GSL_SUCCESS;
   } else {
     
+=======
+
+    return GSL_SUCCESS;
+  } else {
+
+>>>>>>> config
     for (i = 0; i < sys_size-1; i++) {
       const double h_i       = xa[i + 1] - xa[i];
       const double h_ip1     = xa[i + 2] - xa[i + 1];
@@ -201,12 +267,17 @@ cspline_init_periodic (void * vstate, const double xa[], const double ya[],
       state->diag[i] = 2.0 * (h_ip1 + h_i);
       state->g[i] = 3.0 * (ydiff_ip1 * g_ip1 - ydiff_i * g_i);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     {
       gsl_vector_view g_vec = gsl_vector_view_array(state->g, sys_size);
       gsl_vector_view diag_vec = gsl_vector_view_array(state->diag, sys_size);
       gsl_vector_view offdiag_vec = gsl_vector_view_array(state->offdiag, sys_size);
       gsl_vector_view solution_vec = gsl_vector_view_array ((state->c) + 1, sys_size);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
       int status = gsl_linalg_solve_symm_cyc_tridiag(&diag_vec.vector, 
                                                      &offdiag_vec.vector, 
@@ -214,6 +285,15 @@ cspline_init_periodic (void * vstate, const double xa[], const double ya[],
                                                      &solution_vec.vector);
       state->c[0] = state->c[max_index];
       
+=======
+
+      int status = gsl_linalg_solve_symm_cyc_tridiag(&diag_vec.vector,
+						     &offdiag_vec.vector,
+						     &g_vec.vector,
+						     &solution_vec.vector);
+      state->c[0] = state->c[max_index];
+
+>>>>>>> config
       return status;
     }
   }
@@ -225,7 +305,11 @@ void
 cspline_free (void * vstate)
 {
   cspline_state_t *state = (cspline_state_t *) vstate;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   free (state->c);
   free (state->g);
   free (state->diag);
@@ -236,8 +320,13 @@ cspline_free (void * vstate)
 /* function for common coefficient determination
  */
 static inline void
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 coeff_calc (const double c_array[], double dy, double dx, size_t index,  
             double * b, double * c, double * d)
+=======
+coeff_calc (const double c_array[], double dy, double dx, size_t index,
+	    double * b, double * c, double * d)
+>>>>>>> config
 {
   const double c_i = c_array[index];
   const double c_ip1 = c_array[index + 1];
@@ -250,17 +339,28 @@ coeff_calc (const double c_array[], double dy, double dx, size_t index,
 static
 int
 cspline_eval (const void * vstate,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
               const double x_array[], const double y_array[], size_t size,
               double x,
               gsl_interp_accel * a,
               double *y)
+=======
+	      const double x_array[], const double y_array[], size_t size,
+	      double x,
+	      gsl_interp_accel * a,
+	      double *y)
+>>>>>>> config
 {
   const cspline_state_t *state = (const cspline_state_t *) vstate;
 
   double x_lo, x_hi;
   double dx;
   size_t index;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   if (a != 0)
     {
       index = gsl_interp_accel_find (a, x_array, size, x);
@@ -269,7 +369,11 @@ cspline_eval (const void * vstate,
     {
       index = gsl_interp_bsearch (x_array, x, 0, size - 1);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   /* evaluate */
   x_hi = x_array[index + 1];
   x_lo = x_array[index];
@@ -280,7 +384,11 @@ cspline_eval (const void * vstate,
       const double y_hi = y_array[index + 1];
       const double dy = y_hi - y_lo;
       double delx = x - x_lo;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       double b_i, c_i, d_i; 
+=======
+      double b_i, c_i, d_i;
+>>>>>>> config
       coeff_calc(state->c, dy, dx, index,  &b_i, &c_i, &d_i);
       *y = y_lo + delx * (b_i + delx * (c_i + delx * d_i));
       return GSL_SUCCESS;
@@ -296,17 +404,28 @@ cspline_eval (const void * vstate,
 static
 int
 cspline_eval_deriv (const void * vstate,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                     const double x_array[], const double y_array[], size_t size,
                     double x,
                     gsl_interp_accel * a,
                     double *dydx)
+=======
+		    const double x_array[], const double y_array[], size_t size,
+		    double x,
+		    gsl_interp_accel * a,
+		    double *dydx)
+>>>>>>> config
 {
   const cspline_state_t *state = (const cspline_state_t *) vstate;
 
   double x_lo, x_hi;
   double dx;
   size_t index;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   if (a != 0)
     {
       index = gsl_interp_accel_find (a, x_array, size, x);
@@ -315,7 +434,11 @@ cspline_eval_deriv (const void * vstate,
     {
       index = gsl_interp_bsearch (x_array, x, 0, size - 1);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   /* evaluate */
   x_hi = x_array[index + 1];
   x_lo = x_array[index];
@@ -326,7 +449,11 @@ cspline_eval_deriv (const void * vstate,
       const double y_hi = y_array[index + 1];
       const double dy = y_hi - y_lo;
       double delx = x - x_lo;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       double b_i, c_i, d_i; 
+=======
+      double b_i, c_i, d_i;
+>>>>>>> config
       coeff_calc(state->c, dy, dx, index,  &b_i, &c_i, &d_i);
       *dydx = b_i + delx * (2.0 * c_i + 3.0 * d_i * delx);
       return GSL_SUCCESS;
@@ -342,17 +469,28 @@ cspline_eval_deriv (const void * vstate,
 static
 int
 cspline_eval_deriv2 (const void * vstate,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                      const double x_array[], const double y_array[], size_t size,
                      double x,
                      gsl_interp_accel * a,
                      double * y_pp)
+=======
+		     const double x_array[], const double y_array[], size_t size,
+		     double x,
+		     gsl_interp_accel * a,
+		     double * y_pp)
+>>>>>>> config
 {
   const cspline_state_t *state = (const cspline_state_t *) vstate;
 
   double x_lo, x_hi;
   double dx;
   size_t index;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   if (a != 0)
     {
       index = gsl_interp_accel_find (a, x_array, size, x);
@@ -361,7 +499,11 @@ cspline_eval_deriv2 (const void * vstate,
     {
       index = gsl_interp_bsearch (x_array, x, 0, size - 1);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   /* evaluate */
   x_hi = x_array[index + 1];
   x_lo = x_array[index];
@@ -388,15 +530,26 @@ cspline_eval_deriv2 (const void * vstate,
 static
 int
 cspline_eval_integ (const void * vstate,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                     const double x_array[], const double y_array[], size_t size,
                     gsl_interp_accel * acc,
                     double a, double b,
                     double * result)
+=======
+		    const double x_array[], const double y_array[], size_t size,
+		    gsl_interp_accel * acc,
+		    double a, double b,
+		    double * result)
+>>>>>>> config
 {
   const cspline_state_t *state = (const cspline_state_t *) vstate;
 
   size_t i, index_a, index_b;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   if (acc != 0)
     {
       index_a = gsl_interp_accel_find (acc, x_array, size, a);
@@ -409,7 +562,11 @@ cspline_eval_integ (const void * vstate,
     }
 
   *result = 0.0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   /* interior intervals */
   for(i=index_a; i<=index_b; i++) {
     const double x_hi = x_array[i + 1];
@@ -419,6 +576,7 @@ cspline_eval_integ (const void * vstate,
     const double dx = x_hi - x_lo;
     const double dy = y_hi - y_lo;
     if(dx != 0.0) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       double b_i, c_i, d_i; 
       coeff_calc(state->c, dy, dx, i,  &b_i, &c_i, &d_i);
       
@@ -432,12 +590,28 @@ cspline_eval_integ (const void * vstate,
         {
           *result += dx * (y_lo + dx*(0.5*b_i + dx*(c_i/3.0 + 0.25*d_i*dx)));
         }
+=======
+      double b_i, c_i, d_i;
+      coeff_calc(state->c, dy, dx, i,  &b_i, &c_i, &d_i);
+
+      if (i == index_a || i == index_b)
+	{
+	  double x1 = (i == index_a) ? a : x_lo;
+	  double x2 = (i == index_b) ? b : x_hi;
+	  *result += integ_eval(y_lo, b_i, c_i, d_i, x_lo, x1, x2);
+	}
+      else
+	{
+	  *result += dx * (y_lo + dx*(0.5*b_i + dx*(c_i/3.0 + 0.25*d_i*dx)));
+	}
+>>>>>>> config
     }
     else {
       *result = 0.0;
       return GSL_FAILURE;
     }
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   return GSL_SUCCESS;
 }
@@ -445,6 +619,15 @@ cspline_eval_integ (const void * vstate,
 static const gsl_interp_type cspline_type = 
 {
   "cspline", 
+=======
+
+  return GSL_SUCCESS;
+}
+
+static const gsl_interp_type cspline_type =
+{
+  "cspline",
+>>>>>>> config
   3,
   &cspline_alloc,
   &cspline_init,
@@ -457,9 +640,15 @@ static const gsl_interp_type cspline_type =
 
 const gsl_interp_type * gsl_interp_cspline = &cspline_type;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static const gsl_interp_type cspline_periodic_type = 
 {
   "cspline-periodic", 
+=======
+static const gsl_interp_type cspline_periodic_type =
+{
+  "cspline-periodic",
+>>>>>>> config
   2,
   &cspline_alloc,
   &cspline_init_periodic,
@@ -471,5 +660,8 @@ static const gsl_interp_type cspline_periodic_type =
 };
 
 const gsl_interp_type * gsl_interp_cspline_periodic = &cspline_periodic_type;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
+=======
+>>>>>>> config

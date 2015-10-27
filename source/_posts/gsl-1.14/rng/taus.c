@@ -1,17 +1,31 @@
 /* rng/taus.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -24,7 +38,11 @@
 /* This is a maximally equidistributed combined Tausworthe
    generator. The sequence is,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    x_n = (s1_n ^ s2_n ^ s3_n) 
+=======
+   x_n = (s1_n ^ s2_n ^ s3_n)
+>>>>>>> config
 
    s1_{n+1} = (((s1_n & 4294967294) <<12) ^ (((s1_n <<13) ^ s1_n) >>19))
    s2_{n+1} = (((s2_n & 4294967288) << 4) ^ (((s2_n << 2) ^ s2_n) >>25))
@@ -52,7 +70,11 @@
    This is available on the net from L'Ecuyer's home page,
 
    http://www.iro.umontreal.ca/~lecuyer/myftp/papers/tausme.ps
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    ftp://ftp.iro.umontreal.ca/pub/simulation/lecuyer/papers/tausme.ps 
+=======
+   ftp://ftp.iro.umontreal.ca/pub/simulation/lecuyer/papers/tausme.ps
+>>>>>>> config
 
    Update: April 2002
 
@@ -61,11 +83,19 @@
    Computation, 68, 225 (1999), 261--269:
    http://www.iro.umontreal.ca/~lecuyer/myftp/papers/tausme2.ps
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         ... the k_j most significant bits of z_j must be non-
         zero, for each j. (Note: this restriction also applies to the 
         computer code given in [4], but was mistakenly not mentioned in
         that paper.)
    
+=======
+	... the k_j most significant bits of z_j must be non-
+	zero, for each j. (Note: this restriction also applies to the
+	computer code given in [4], but was mistakenly not mentioned in
+	that paper.)
+
+>>>>>>> config
    This affects the seeding procedure by imposing the requirement
    s1 > 1, s2 > 7, s3 > 15.
 

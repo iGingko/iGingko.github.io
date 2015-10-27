@@ -7,7 +7,11 @@
 %
 \usepackage{algorithmic}
 \newenvironment{algorithm}{\begin{quote} %\vspace{1em}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 \begin{algorithmic}\samepage}{\end{algorithmic} %\vspace{1em} 
+=======
+\begin{algorithmic}\samepage}{\end{algorithmic} %\vspace{1em}
+>>>>>>> config
 \end{quote}}
 \newcommand{\Real}{\mathop{\mathrm{Re}}}
 \newcommand{\Imag}{\mathop{\mathrm{Im}}}
@@ -139,7 +143,11 @@ for more details see the theoretical books mentioned earlier.
 %The mixed-radix algorithm can be made self-sorting. The additional
 %scratch space helps here, although it is in fact possible to design
 %self-sorting algorithms which do not require scratch
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 %space. 
+=======
+%space.
+>>>>>>> config
 
 
 %The in-place radix-2 algorithm is not self-sorting. The data is
@@ -212,7 +220,11 @@ More precisely, an FFT of length $N$ can be broken up into,
 $(N/f_1)$ FFTs of length $f_1$, \\
 $(N/f_2)$ FFTs of length $f_2$, \\
 \dots \\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 $(N/f_{n_f})$ FFTs of length $f_{n_f}$. 
+=======
+$(N/f_{n_f})$ FFTs of length $f_{n_f}$.
+>>>>>>> config
 \end{tabular}
 \end{quote}
 %
@@ -234,7 +246,11 @@ and split the sum into even and odd terms,
 \begin{eqnarray}
 \phantom{h_a}
 %   &=& \left(\sum_{b=0,2,4,\dots} + \sum_{b=1,3,5,\dots}\right) g_b W_N^{ab}\\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    &=& \sum_{b=0}^{N/2-1} g_{2b} W_N^{a(2b)} + 
+=======
+   &=& \sum_{b=0}^{N/2-1} g_{2b} W_N^{a(2b)} +
+>>>>>>> config
       \sum_{b=0}^{N/2-1} g_{2b+1} W_N^{a(2b+1)}.
 \end{eqnarray}
 %
@@ -242,8 +258,13 @@ This converts the original DFT of length $N$ into two DFTs of length
 $N/2$,
 %
 \begin{equation}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 h_a = \sum_{b=0}^{N/2-1} g_{2b} W_{(N/2)}^{ab} + 
       W_N^a \sum_{b=0}^{N/2-1} g_{2b+1} W_{(N/2)}^{ab} 
+=======
+h_a = \sum_{b=0}^{N/2-1} g_{2b} W_{(N/2)}^{ab} +
+      W_N^a \sum_{b=0}^{N/2-1} g_{2b+1} W_{(N/2)}^{ab}
+>>>>>>> config
 \end{equation}
 %
 The first term is a DFT of the even elements of $g$. The second term
@@ -300,12 +321,17 @@ $b$.
 Using this notation the original definition of the DFT
 can be rewritten as a sum over the bits of $b$,
 %
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 \begin{equation} 
+=======
+\begin{equation}
+>>>>>>> config
 h(a) = \sum_{b=0}^{N-1} g_b \exp(-2\pi i a b /N)
 \end{equation}
 %
 to give an equivalent summation like this,
 %
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 \begin{equation} 
 h([a_{n-1} \dots a_1 a_0]) = 
 \sum_{b_0=0}^{1} 
@@ -316,6 +342,18 @@ h([a_{n-1} \dots a_1 a_0]) =
 \end{equation}
 %
 where the bits of $a$ are $a=[a_{n-1} \dots a_1 a_0]$. 
+=======
+\begin{equation}
+h([a_{n-1} \dots a_1 a_0]) =
+\sum_{b_0=0}^{1}
+\sum_{b_1=0}^{1}
+\dots
+\sum_{b_{n-1}=0}^{1}
+ g([b_{n-1} \dots b_1 b_0]) W_N^{ab}
+\end{equation}
+%
+where the bits of $a$ are $a=[a_{n-1} \dots a_1 a_0]$.
+>>>>>>> config
 
 To reduce the number of operations in the sum we will use the
 periodicity of the exponential term,
@@ -344,6 +382,7 @@ out the most significant bit of the index $b$,
 Now we can evaluate the innermost sum of the DFT without any
 dependence on the remaining bits of $b$ in the exponential,
 %
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 \begin{eqnarray} 
 h([a_{n-1} \dots a_1 a_0]) &=& 
 \sum_{b_0=0}^{1} 
@@ -360,6 +399,24 @@ W_N^{a(2^{n-1}b_{n-1}+[b_{n-2} \dots b_1 b_0])} \\
 W_N^{a[b_{n-2} \dots b_1 b_0]}
 \sum_{b_{n-1}=0}^{1} 
  g(b) 
+=======
+\begin{eqnarray}
+h([a_{n-1} \dots a_1 a_0]) &=&
+\sum_{b_0=0}^{1}
+\sum_{b_1=0}^{1}
+\dots
+\sum_{b_{n-1}=0}^{1}
+ g(b)
+W_N^{a(2^{n-1}b_{n-1}+[b_{n-2} \dots b_1 b_0])} \\
+ &=&
+\sum_{b_0=0}^{1}
+\sum_{b_1=0}^{1}
+\dots
+\sum_{b_{n-2}=0}^{1}
+W_N^{a[b_{n-2} \dots b_1 b_0]}
+\sum_{b_{n-1}=0}^{1}
+ g(b)
+>>>>>>> config
 W_N^{a(2^{n-1}b_{n-1})}
 \end{eqnarray}
 %
@@ -382,6 +439,7 @@ and the sum can be reduced to,
 %
 \begin{equation}
 h([a_{n-1} \dots a_1 a_0])
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 = 
 \sum_{b_0=0}^{1} 
 \sum_{b_1=0}^{1} 
@@ -390,6 +448,16 @@ h([a_{n-1} \dots a_1 a_0])
 W_N^{a[b_{n-2} \dots b_1 b_0]}
 \sum_{b_{n-1}=0}^{1} 
  g(b) 
+=======
+=
+\sum_{b_0=0}^{1}
+\sum_{b_1=0}^{1}
+\dots
+\sum_{b_{n-2}=0}^{1}
+W_N^{a[b_{n-2} \dots b_1 b_0]}
+\sum_{b_{n-1}=0}^{1}
+ g(b)
+>>>>>>> config
 W_2^{a_0 b_{n-1}}.
 \end{equation}
 %
@@ -397,11 +465,16 @@ We can repeat this this procedure for the next most significant bit of
 $b$, $b_{n-2}$, using a similar identity,
 %
 \begin{eqnarray}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 W_N^{a(2^{n-2}b_{n-2})} 
+=======
+W_N^{a(2^{n-2}b_{n-2})}
+>>>>>>> config
 &=& \exp(-2\pi i [a_{n-1} \dots a_1 a_0] 2^{n-2} b_{n-2}/ 2^n )\\
 &=& W_4^{ [a_1 a_0] b_{n-2}}.
 \end{eqnarray}
 %
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 to give a formula with even less dependence on the bits of $a$, 
 %
 \begin{equation}
@@ -416,6 +489,22 @@ W_N^{a[b_{n-3} \dots b_1 b_0]}
 W_4^{[a_1 a_0] b_{n-2}}
 \sum_{b_{n-1}=0}^{1} 
  g(b) 
+=======
+to give a formula with even less dependence on the bits of $a$,
+%
+\begin{equation}
+h([a_{n-1} \dots a_1 a_0])
+=
+\sum_{b_0=0}^{1}
+\sum_{b_1=0}^{1}
+\dots
+\sum_{b_{n-3}=0}^{1}
+W_N^{a[b_{n-3} \dots b_1 b_0]}
+\sum_{b_{n-2}=0}^{1}
+W_4^{[a_1 a_0] b_{n-2}}
+\sum_{b_{n-1}=0}^{1}
+ g(b)
+>>>>>>> config
 W_2^{a_0 b_{n-1}}.
 \end{equation}
 %
@@ -424,6 +513,7 @@ simplified DFT formula which is the basis of the radix-2
 decimation-in-time algorithm,
 %
 \begin{eqnarray}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 h([a_{n-1} \dots a_1 a_0]) &=& 
 \sum_{b_0=0}^{1} 
 W_{N}^{[a_{n-1} \dots a_1 a_0]b_0} 
@@ -433,6 +523,17 @@ W_{N}^{[a_{n-1} \dots a_1 a_0]b_0}
 \sum_{b_{n-2}=0}^{1} 
 W_4^{ [a_1 a_0] b_{n-2}}
 \sum_{b_{n-1}=0}^{1} 
+=======
+h([a_{n-1} \dots a_1 a_0]) &=&
+\sum_{b_0=0}^{1}
+W_{N}^{[a_{n-1} \dots a_1 a_0]b_0}
+%\sum_{b_1=0}^{1}
+%W_{N/2}^{[a_{n-1} \dots a_1 a_0]b_1}
+\dots
+\sum_{b_{n-2}=0}^{1}
+W_4^{ [a_1 a_0] b_{n-2}}
+\sum_{b_{n-1}=0}^{1}
+>>>>>>> config
 W_2^{a_0 b_{n-1}}
 g(b)
 \end{eqnarray}
@@ -442,6 +543,7 @@ recursively, evaluating each of the intermediate summations, which we
 denote by $g_1$, $g_2$, \dots, $g_n$,
 %
 \begin{eqnarray}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 g_1(a_0,  b_{n-2}, b_{n-3}, \dots, b_1, b_0) 
 &=& 
 \sum_{b_{n-1}=0}^{1} 
@@ -463,16 +565,47 @@ g_n(a_0, a_{1}, a_{2}, \dots, a_{n-2}, a_{n-1})
 \sum_{b_{0}=0}^{1} 
 W_N^{[a_{n-1} \dots a_1 a_0]b_0}
 g_{n-1}(a_0, a_1, a_2, \dots, a_{n-2}, b_0) 
+=======
+g_1(a_0,  b_{n-2}, b_{n-3}, \dots, b_1, b_0)
+&=&
+\sum_{b_{n-1}=0}^{1}
+W_2^{a_0 b_{n-1}}
+g([b_{n-1}  b_{n-2}  b_{n-3}  \dots  b_1  b_0]) \\
+g_2(a_0, {}_{\phantom{-2}} a_{1}, b_{n-3}, \dots, b_1, b_0)
+&=&
+\sum_{b_{n-2}=0}^{1}
+W_4^{[a_1 a_0] b_{n-2}}
+g_1(a_0, b_{n-2}, b_{n-3}, \dots, b_1, b_0) \\
+g_3(a_0, {}_{\phantom{-2}} a_{1}, {}_{\phantom{-3}} a_{2}, \dots, b_1, b_0)
+&=&
+\sum_{b_{n-3}=0}^{1}
+W_8^{[a_2 a_1 a_0] b_{n-2}}
+g_2(a_0, a_1, b_{n-3}, \dots, b_1, b_0) \\
+\dots &=& \dots \\
+g_n(a_0, a_{1}, a_{2}, \dots, a_{n-2}, a_{n-1})
+&=&
+\sum_{b_{0}=0}^{1}
+W_N^{[a_{n-1} \dots a_1 a_0]b_0}
+g_{n-1}(a_0, a_1, a_2, \dots, a_{n-2}, b_0)
+>>>>>>> config
 \end{eqnarray}
 %
 After the final sum, we can obtain the transform $h$ from $g_n$,
 %
 \begin{equation}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 h([a_{n-1} \dots a_1 a_0]) 
 = 
 g_n(a_0, a_1, \dots, a_{n-1}) 
 \end{equation}
 % 
+=======
+h([a_{n-1} \dots a_1 a_0])
+=
+g_n(a_0, a_1, \dots, a_{n-1})
+\end{equation}
+%
+>>>>>>> config
 Note that we left the storage arrangements of the intermediate sums
 unspecified by using the bits as function arguments and not as an
 index. The storage of intermediate sums is different for the
@@ -521,6 +654,7 @@ needed for an $N=16$ decimation-in-time FFT, with the initial data
 stored in bit-reversed order,
 %
 \begin{eqnarray}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 g_1([b_0 b_1 b_2 a_0]) 
 &=& 
 \sum_{b_3=0}^{1} W_2^{a_0 b_3} g([b_0 b_1 b_2 b_3])
@@ -535,6 +669,22 @@ g_3([b_0 a_2 a_1 a_0])
 \\
 h(a) = g_4([a_3 a_2 a_1 a_0]) 
 &=& 
+=======
+g_1([b_0 b_1 b_2 a_0])
+&=&
+\sum_{b_3=0}^{1} W_2^{a_0 b_3} g([b_0 b_1 b_2 b_3])
+\\
+g_2([b_0 b_1 a_1 a_0])
+&=&
+\sum_{b_2=0}^{1} W_4^{[a_1 a_0] b_2} g_1([b_0 b_1 b_2 a_0])
+\\
+g_3([b_0 a_2 a_1 a_0])
+&=&
+\sum_{b_1=0}^{1} W_8^{[a_2 a_1 a_0] b_1} g_2([b_0 b_1 a_1 a_0])
+\\
+h(a) = g_4([a_3 a_2 a_1 a_0])
+&=&
+>>>>>>> config
 \sum_{b_0=0}^{1} W_{16}^{[a_3 a_2 a_1 a_0] b_0} g_3([b_0 a_2 a_1 a_0])
 \end{eqnarray}
 %
@@ -548,7 +698,11 @@ $b$.
 Let's examine the third pass in detail,
 %
 \begin{equation}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 g_3([b_0 a_2 a_1 a_0]) 
+=======
+g_3([b_0 a_2 a_1 a_0])
+>>>>>>> config
 =
 \sum_{b_1=0}^{1} W_8^{[a_2 a_1 a_0] b_1} g_2([b_0 b_1 a_1 a_0])
 \end{equation}
@@ -565,7 +719,11 @@ the sums involving $b_1=0,1$ and $a_2=0,1$ simultaneously.
 \left(
 \begin{array}{c}
 g_3([b_0 0 a_1 a_0]) \vphantom{W_8^{[]}} \\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 g_3([b_0 1 a_1 a_0]) \vphantom{W_8^{[]}} 
+=======
+g_3([b_0 1 a_1 a_0]) \vphantom{W_8^{[]}}
+>>>>>>> config
 \end{array}
 \right)
 =
@@ -580,8 +738,13 @@ g_2([b_0 0 a_1 a_0]) + W_8^{[1 a_1 a_0]} g_2([b_2 1 a_1 a_0])
 We can write this in a more symmetric form by simplifying the exponential,
 %
 \begin{equation}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 W_8^{[a_2 a_1 a_0]} 
 = W_8^{4 a_2 + [a_1 a_0]} 
+=======
+W_8^{[a_2 a_1 a_0]}
+= W_8^{4 a_2 + [a_1 a_0]}
+>>>>>>> config
 = (-1)^{a_2} W_8^{[a_1 a_0]}
 \end{equation}
 %
@@ -589,7 +752,11 @@ W_8^{[a_2 a_1 a_0]}
 \left(
 \begin{array}{c}
 g_3([b_0 0 a_1 a_0]) \vphantom{W_8^{[]}} \\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 g_3([b_0 1 a_1 a_0]) \vphantom{W_8^{[]}} 
+=======
+g_3([b_0 1 a_1 a_0]) \vphantom{W_8^{[]}}
+>>>>>>> config
 \end{array}
 \right)
 =
@@ -624,12 +791,21 @@ would be drawn like this,
 \put(1,3){\vector(1,0){0.5}}\put(1.5,3){\line(1,0){0.5}}
 \put(2,1){\circle*{0.1}}
 \put(2,3){\circle*{0.1}}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 \put(2,1){\vector(1,1){2}} 
 \put(2,1){\vector(1,0){1}} 
 \put(3,1){\line(1,0){1}}
 \put(3,0.5){$-1$}
 \put(2,3){\vector(1,-1){2}} 
 \put(2,3){\vector(1,0){1}} 
+=======
+\put(2,1){\vector(1,1){2}}
+\put(2,1){\vector(1,0){1}}
+\put(3,1){\line(1,0){1}}
+\put(3,0.5){$-1$}
+\put(2,3){\vector(1,-1){2}}
+\put(2,3){\vector(1,0){1}}
+>>>>>>> config
 \put(3,3){\line(1,0){1}}
 \put(4,1){\circle*{0.1}}
 \put(4,3){\circle*{0.1}}
@@ -681,10 +857,17 @@ for $2^n$ data points stored in the array $g(0) \dots g(2^n-1)$.
   \STATE {$W \Leftarrow \exp(-2 \pi i / 2\Delta)$}
   \FOR {$(a = 0 ; a < \Delta ; a{++})$}
     \FOR{$(b = 0 ; b < N ; b {+=} 2*\Delta)$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         \STATE{$t_0 \Leftarrow g(b+a) + W^a g(b+\Delta+a)$}
         \STATE{$t_1 \Leftarrow g(b+a) - W^a g(b+\Delta+a)$}
         \STATE{$g(b+a) \Leftarrow t_0$}
         \STATE{$g(b+\Delta+a) \Leftarrow t_1$}
+=======
+	\STATE{$t_0 \Leftarrow g(b+a) + W^a g(b+\Delta+a)$}
+	\STATE{$t_1 \Leftarrow g(b+a) - W^a g(b+\Delta+a)$}
+	\STATE{$g(b+a) \Leftarrow t_0$}
+	\STATE{$g(b+\Delta+a) \Leftarrow t_1$}
+>>>>>>> config
     \ENDFOR
   \ENDFOR
   \STATE{$\Delta \Leftarrow 2\Delta$}
@@ -702,10 +885,17 @@ unnecessary multiplications when $W^a=1$,
 %
 \begin{algorithm}
     \FOR{$(b = 0 ; b < N ; b {+=} 2*\Delta)$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         \STATE{$t_0 \Leftarrow g(b) + g(b+\Delta)$}
         \STATE{$t_1 \Leftarrow g(b) - g(b+\Delta)$}
         \STATE{$g(b) \Leftarrow t_0$}
         \STATE{$g(b+\Delta) \Leftarrow t_1$}
+=======
+	\STATE{$t_0 \Leftarrow g(b) + g(b+\Delta)$}
+	\STATE{$t_1 \Leftarrow g(b) - g(b+\Delta)$}
+	\STATE{$g(b) \Leftarrow t_0$}
+	\STATE{$g(b+\Delta) \Leftarrow t_1$}
+>>>>>>> config
     \ENDFOR
 \end{algorithm}
 %
@@ -715,6 +905,7 @@ space,
 %
 \begin{algorithm}
 \FOR{$i = 0 \dots n - 2$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         \STATE {$ k = n / 2 $}
         \IF {$i < j$}
                 \STATE {swap $g(i)$ and $g(j)$}
@@ -725,6 +916,18 @@ space,
                 \STATE{$k \Leftarrow k / 2$} 
         \ENDWHILE
       
+=======
+	\STATE {$ k = n / 2 $}
+	\IF {$i < j$}
+		\STATE {swap $g(i)$ and $g(j)$}
+	\ENDIF
+
+	\WHILE {$k \leq j$}
+		\STATE{$j \Leftarrow j - k$}
+		\STATE{$k \Leftarrow k / 2$}
+	\ENDWHILE
+
+>>>>>>> config
       \STATE{$j \Leftarrow j + k$}
 \ENDFOR
 \end{algorithm}
@@ -742,7 +945,11 @@ recursion relation,
 %
 \begin{eqnarray}
 W^{a+1} &=& W W^a \\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         &=& (\cos(2\pi/2\Delta) + i \sin(2\pi/2\Delta)) W^a
+=======
+	&=& (\cos(2\pi/2\Delta) + i \sin(2\pi/2\Delta)) W^a
+>>>>>>> config
 \end{eqnarray}
 %
 This requires only $2 \log_2 N$ trigonometric calls, to compute the
@@ -755,7 +962,11 @@ out the lowest order bit of the index $a$. Here is an example for the
 decimation-in-frequency $N=16$ DFT.
 %
 \begin{eqnarray}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 W_{16}^{[a_3 a_2 a_1 a_0][b_3 b_2 b_1 b_0]} 
+=======
+W_{16}^{[a_3 a_2 a_1 a_0][b_3 b_2 b_1 b_0]}
+>>>>>>> config
 &=&
 W_{16}^{[a_3 a_2 a_1 a_0][b_2 b_1 b_0]} W_{16}^{[a_3 a_2 a_1 a_0] [b_3
 0 0 0]} \\
@@ -775,7 +986,11 @@ W_8^{[a_3 a_2 a_1][b_2 b_1 b_0]}
 we can reduce the transform to an alternative simple form,
 %
 \begin{equation}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 h(a) = 
+=======
+h(a) =
+>>>>>>> config
 \sum_{b_0=0}^1 (-1)^{a_3 b_0} W_4^{a_2 b_0}
 \sum_{b_1=0}^1 (-1)^{a_2 b_1} W_8^{a_1 [b_1 b_0]}
 \sum_{b_2=0}^1 (-1)^{a_1 b_2} W_{16}^{a_0 [b_2 b_1 b_0]}
@@ -788,6 +1003,7 @@ the calculation can be done in-place using the natural ordering of
 $a$ and $b$,
 %
 \begin{eqnarray}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 g_1([a_0 b_2 b_1 b_0]) 
 &=&
 W_{16}^{a_0 [b_2 b_1 b_0]} 
@@ -803,6 +1019,23 @@ W_{4}^{a_2 b_0}
 h(a)
 = 
 g_4([a_0 a_1 a_2 a_3]) 
+=======
+g_1([a_0 b_2 b_1 b_0])
+&=&
+W_{16}^{a_0 [b_2 b_1 b_0]}
+\sum_{b_3=0}^1 (-1)^{a_0 b_3} g([b_3 b_2 b_1 b_0]) \\
+g_2([a_0 a_1 b_1 b_0])
+&=&
+W_{8}^{a_1 [b_1 b_0]}
+\sum_{b_2=0}^1 (-1)^{a_1 b_2} g_1([a_0 b_2 b_1 b_0]) \\
+g_3([a_0 a_1 a_2 b_0])
+&=&
+W_{4}^{a_2 b_0}
+\sum_{b_1=0}^1 (-1)^{a_2 b_1} g_2([a_0 a_1 b_1 b_0]) \\
+h(a)
+=
+g_4([a_0 a_1 a_2 a_3])
+>>>>>>> config
 &=&
 \sum_{b_0=0}^1 (-1)^{a_3 b_0} g_3([a_0 a_1 a_2 b_0])
 \end{eqnarray}
@@ -824,7 +1057,11 @@ g({\hat a} + \Delta + {\hat b}) \\
 \left(
 \begin{array}{c}
 g({\hat a} + {\hat b}) +  g({\hat a} + \Delta + {\hat b})\\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 W_{\Delta}^{\hat b} 
+=======
+W_{\Delta}^{\hat b}
+>>>>>>> config
 \left( g({\hat a} + {\hat b}) -  g({\hat a} + \Delta + {\hat b}) \right)
 \end{array}
 \right)
@@ -845,10 +1082,17 @@ g(2^n-1)$.
   \STATE {$W \Leftarrow \exp(-2 \pi i / 2\Delta)$}
   \FOR {$(b = 0 ; b < \Delta ; b++)$}
     \FOR{$(a = 0 ; a < N ; a += 2*\Delta)$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         \STATE{$t_0 \Leftarrow g(b+a) + g(a+\Delta+b)$}
         \STATE{$t_1 \Leftarrow W^b \left( g(a+b) - g(a+\Delta+b) \right)$}
         \STATE{$g(a+b) \Leftarrow t_0$}
         \STATE{$g(a+\Delta+b) \Leftarrow t_1$}
+=======
+	\STATE{$t_0 \Leftarrow g(b+a) + g(a+\Delta+b)$}
+	\STATE{$t_1 \Leftarrow W^b \left( g(a+b) - g(a+\Delta+b) \right)$}
+	\STATE{$g(a+b) \Leftarrow t_0$}
+	\STATE{$g(a+\Delta+b) \Leftarrow t_1$}
+>>>>>>> config
     \ENDFOR
   \ENDFOR
   \STATE{$\Delta \Leftarrow \Delta/2$}
@@ -880,7 +1124,11 @@ function notation,
 M_{ij} = M(i,j)
 \end{equation}
 %
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 with (C-like) indices running from 0 to $N-1$.  Matrix products will be 
+=======
+with (C-like) indices running from 0 to $N-1$.  Matrix products will be
+>>>>>>> config
 denoted using square brackets,
 %
 \begin{equation}
@@ -914,7 +1162,11 @@ with the property,
 %
 \begin{eqnarray}
 P^a_b(j,k) &=& 1 ~\mbox{if}~ j=ra+s ~\mbox{and}~ k=sb+r \\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
            &=& 0 ~\mbox{otherwise}
+=======
+	   &=& 0 ~\mbox{otherwise}
+>>>>>>> config
 \end{eqnarray}
 %
 
@@ -924,7 +1176,11 @@ size $ab \times ab$ with the definition,
 %
 \begin{eqnarray}
 D^a_b(j,k) &=& \omega^{sr}_{ab} ~\mbox{if}~ j=k=sb+r \\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
            &=& 0 ~\mbox{otherwise}
+=======
+	   &=& 0 ~\mbox{otherwise}
+>>>>>>> config
 \end{eqnarray}
 %
 where $\omega_{ab} = e^{-2\pi i/ab}$.
@@ -947,11 +1203,19 @@ example. If we take a $2 \times 2$ matrix and a $3
 %
 \begin{equation}
 \begin{array}{ll}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 A = 
 \left(
 \begin{array}{cc}
 a_{11} & a_{12} \\
 a_{21} & a_{22} 
+=======
+A =
+\left(
+\begin{array}{cc}
+a_{11} & a_{12} \\
+a_{21} & a_{22}
+>>>>>>> config
 \end{array}
 \right)
 &
@@ -960,7 +1224,11 @@ B =
 \begin{array}{ccc}
 b_{11} & b_{12} & b_{13} \\
 b_{21} & b_{22} & b_{23} \\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 b_{31} & b_{32} & b_{33} 
+=======
+b_{31} & b_{32} & b_{33}
+>>>>>>> config
 \end{array}
 \right)
 \end{array}
@@ -1002,9 +1270,15 @@ and $0\leq t\leq a$, we can see this explicitly by looking at components,
 %
 \begin{eqnarray}
 [(A \otimes B) v]_{(tb+u)}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 & = & \sum_{t'=0}^{a-1} \sum_{u'=0}^{b-1} 
         [A \otimes B]_{(tb+u,t'b+u')} v_{t'b+u'} \\
 & = & \sum_{t'u'} A_{tt'} B_{uu'} v_{t'b+u'} 
+=======
+& = & \sum_{t'=0}^{a-1} \sum_{u'=0}^{b-1}
+	[A \otimes B]_{(tb+u,t'b+u')} v_{t'b+u'} \\
+& = & \sum_{t'u'} A_{tt'} B_{uu'} v_{t'b+u'}
+>>>>>>> config
 \end{eqnarray}
 %
 The matrix $B$ operates on the ``index'' $u'$, for all values of $t'$, and
@@ -1049,7 +1323,11 @@ m, r \leq a$, $0 \leq l, s \leq b$.  The first term in the sum can
 easily be reduced to its component form,
 %
 \begin{eqnarray}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 [(W_b \otimes I_a)](la+m,ua+t) 
+=======
+[(W_b \otimes I_a)](la+m,ua+t)
+>>>>>>> config
 &=& W_b(l,u) I_a(m,t) \\
 &=& \omega_b^{lu} \delta_{mt}
 \end{eqnarray}
@@ -1066,8 +1344,13 @@ and use this term to build up the product, $P^a_b D^a_b (W_a \otimes
 I_b)$. We first multiply by $D^a_b$,
 %
 \begin{equation}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 [D^a_b (W_a \otimes I_b)](tb+u,rb+s) 
 = 
+=======
+[D^a_b (W_a \otimes I_b)](tb+u,rb+s)
+=
+>>>>>>> config
 \omega^{tu}_{ab} \omega^{tr}_{a} \delta_{su}
 \end{equation}
 %
@@ -1075,8 +1358,13 @@ and then apply the permutation matrix, $P^a_b$, which digit-reverses
 the ordering of the first index, to obtain,
 %
 \begin{equation}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 [P^a_b D^a_b (W_a \otimes I_b)](ua+t,rb+s) 
 = 
+=======
+[P^a_b D^a_b (W_a \otimes I_b)](ua+t,rb+s)
+=
+>>>>>>> config
 \omega^{tu}_{ab} \omega^{tr}_{a} \delta_{su}
 \end{equation}
 %
@@ -1096,14 +1384,22 @@ full DFT matrix $W_{ab}$,
 %
 \begin{eqnarray}
 \sum_{u=0}^{b-1} \sum_{t=0}^{a-1}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 \omega_b^{lu} \delta_{mt} \omega^{tu}_{ab} \omega^{tr}_{a} \delta_{su} 
+=======
+\omega_b^{lu} \delta_{mt} \omega^{tu}_{ab} \omega^{tr}_{a} \delta_{su}
+>>>>>>> config
 &=& \omega^{ls}_b \omega^{ms}_{ab} \omega^{mr}_a \\
 &=& \omega^{als + ms +bmr}_{ab} \\
 &=& \omega^{als + ms +bmr}_{ab} \omega^{lrab}_{ab} \quad\mbox{using~} \omega^{ab}_{ab} =1\\
 &=& \omega^{(la+m)(rb+s)}_{ab} \\
 &=& W_{ab}(la+m,rb+s)
 \end{eqnarray}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 % 
+=======
+%
+>>>>>>> config
 The final line shows that matrix product given above is identical to
 the full two-factor DFT matrix, $W_{ab}$.
 %
@@ -1150,7 +1446,11 @@ where we read off $T_1$, $T_2$ and $T_3$,
 \begin{eqnarray}
 T_1 &=& P^a_{bc} D^a_{bc} (W_a \otimes I_{bc}) \\
 T_2 &=& (P^b_c D^b_c \otimes I_a) (W_b \otimes I_{ac}) \\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 T_3 &=& (W_c \otimes I_{ab} ) 
+=======
+T_3 &=& (W_c \otimes I_{ab} )
+>>>>>>> config
 \end{eqnarray}
 %
 
@@ -1165,14 +1465,22 @@ the pattern we can rewrite the three factor case as,
 \begin{eqnarray}
 T_1 &=& (P^a_{bc} D^a_{bc} \otimes I_1) (W_a \otimes I_{bc}) \\
 T_2 &=& (P^b_c D^b_c \otimes I_a) (W_b \otimes I_{ac}) \\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 T_3 &=& (P^c_1 D^c_1 \otimes I_{ab}) (W_c \otimes I_{ab} ) 
+=======
+T_3 &=& (P^c_1 D^c_1 \otimes I_{ab}) (W_c \otimes I_{ab} )
+>>>>>>> config
 \end{eqnarray}
 %
 using the special cases $P^c_1 = D^c_1 = I_c$.
 %
 In general, we can write the factorization of $W_N$ for $N= f_1 f_2
 \dots f_{n_f}$ as,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 %       
+=======
+%
+>>>>>>> config
 \begin{equation}
 W_N = T_{n_f} \dots T_2 T_1
 \end{equation}
@@ -1190,7 +1498,11 @@ $m$ to denote different partial products of the factors,
 \begin{eqnarray}
 p_i &=& f_1 f_2 \dots f_i \quad (p_0 = 1)  \\
 q_i &=& N / p_i  \\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 m_i &=& N / f_i 
+=======
+m_i &=& N / f_i
+>>>>>>> config
 \end{eqnarray}
 %
 Note that the FFT modules $W$ are applied before the permutations $P$,
@@ -1215,7 +1527,11 @@ build up the complete transform.
 %
 \begin{algorithm}
 \FOR{$(i = 1 \dots n_f)$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         \STATE{$v \Leftarrow T_i v $}
+=======
+	\STATE{$v \Leftarrow T_i v $}
+>>>>>>> config
 \ENDFOR
 \end{algorithm}
 %
@@ -1223,7 +1539,11 @@ The order of the factors is not important. Now we examine the iteration
 $v \Leftarrow T_i v$, which we'll write as,
 %
 \begin{equation}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 v' = 
+=======
+v' =
+>>>>>>> config
 (P^{f_i}_{q_i} D^{f_i}_{q_i} \otimes I_{p_{i-1}}) ~
 ( W_{f_i} \otimes I_{m_i}) v
 \end{equation}
@@ -1242,7 +1562,11 @@ twiddle-factors. We'll call this $v'$, since it is the result of the
 full iteration on $v$,
 %
 \begin{equation}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 v' = (P^{f_i}_{q_i} D^{f_i}_{q_i} \otimes I_{p_{i-1}}) t 
+=======
+v' = (P^{f_i}_{q_i} D^{f_i}_{q_i} \otimes I_{p_{i-1}}) t
+>>>>>>> config
 \end{equation}
 
 The effect of the matrix $(W_{f_i} \otimes I_{m_i})$ is best seen by
@@ -1250,7 +1574,11 @@ an example. Suppose the factor is $f_i = 3$, and the length of the FFT
 is $N=6$, then the relevant Kronecker product is,
 %
 \begin{equation}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 t = (W_3 \otimes I_2) v 
+=======
+t = (W_3 \otimes I_2) v
+>>>>>>> config
 \end{equation}
 %
 which expands out to,
@@ -1274,7 +1602,11 @@ W_3(1,1) & 0 & W_3(1,2) & 0 & W_3(1,3) & 0 \\
 W_3(2,1) & 0 & W_3(2,2) & 0 & W_3(2,3) & 0 \\
 0 & W_3(2,1) & 0 & W_3(2,2) & 0 & W_3(2,3) \\
 W_3(3,1) & 0 & W_3(3,2) & 0 & W_3(3,3) & 0 \\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 0 & W_3(3,1) & 0 & W_3(3,2) & 0 & W_3(3,3) 
+=======
+0 & W_3(3,1) & 0 & W_3(3,2) & 0 & W_3(3,3)
+>>>>>>> config
 \end{array}
 \right)
 \left(
@@ -1335,17 +1667,29 @@ independent subsets of data. We can see this by showing the
 calculation with all indices present,
 %
 \begin{equation}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 t = (W_f \otimes I_m) z 
+=======
+t = (W_f \otimes I_m) z
+>>>>>>> config
 \end{equation}
 %
 becomes,
 %
 \begin{eqnarray}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 t_{\lambda m + \mu} &=& \sum_{\lambda'=0}^{f-1} \sum_{\mu'=0}^{m-1} 
         (W_f \otimes I_m)_{(\lambda m + \mu)(\lambda' m + \mu')}
         z_{\lambda'm + \mu} \\
 &=& \sum_{\lambda'\mu'} (W_f)_{\lambda\lambda'} \delta_{\mu\mu'} 
         z_{\lambda'm+\mu'} \\
+=======
+t_{\lambda m + \mu} &=& \sum_{\lambda'=0}^{f-1} \sum_{\mu'=0}^{m-1}
+	(W_f \otimes I_m)_{(\lambda m + \mu)(\lambda' m + \mu')}
+	z_{\lambda'm + \mu} \\
+&=& \sum_{\lambda'\mu'} (W_f)_{\lambda\lambda'} \delta_{\mu\mu'}
+	z_{\lambda'm+\mu'} \\
+>>>>>>> config
 &=& \sum_{\lambda'} (W_f)_{\lambda\lambda'} z_{\lambda'm+\mu}
 \end{eqnarray}
 %
@@ -1367,13 +1711,18 @@ p_{i-1} + b$, where $a = 0 \dots q-1$ and $b=0 \dots p_{i-1}$,
 %
 \begin{eqnarray}
 \lambda m + \mu &=& \lambda m + a p_{i-1} + b \\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         &=& (\lambda q + a) p_{i-1} + b.
+=======
+	&=& (\lambda q + a) p_{i-1} + b.
+>>>>>>> config
 \end{eqnarray}
 %
 Now we can expand the second stage,
 %
 \begin{eqnarray}
 v'&=& (P^f_q D^f_q \otimes I_{p_{i-1}}) t \\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 v'_{\lambda m + \mu} &=& \sum_{\lambda' \mu'} 
  (P^f_q D^f_q \otimes I_{p_{i-1}})_{(\lambda m + \mu)(\lambda' m + \mu')}
         t_{\lambda' m + \mu'} \\
@@ -1382,6 +1731,16 @@ v'_{(\lambda q + a) p_{i-1} + b} &=& \sum_{\lambda' a' b'}
 P^f_q D^f_q \otimes I_{p_{i-1}}
 )_{((\lambda q+ a)p_{i-1} + b)((\lambda' q+ a')p_{i-1} + b')} 
 t_{(\lambda' q + a')p_{i-1} +b'} 
+=======
+v'_{\lambda m + \mu} &=& \sum_{\lambda' \mu'}
+ (P^f_q D^f_q \otimes I_{p_{i-1}})_{(\lambda m + \mu)(\lambda' m + \mu')}
+	t_{\lambda' m + \mu'} \\
+v'_{(\lambda q + a) p_{i-1} + b} &=& \sum_{\lambda' a' b'}
+(
+P^f_q D^f_q \otimes I_{p_{i-1}}
+)_{((\lambda q+ a)p_{i-1} + b)((\lambda' q+ a')p_{i-1} + b')}
+t_{(\lambda' q + a')p_{i-1} +b'}
+>>>>>>> config
 \end{eqnarray}
 %
 The first step in removing redundant indices is to take advantage of
@@ -1391,7 +1750,11 @@ product,
 \begin{equation}
 (
 P^f_q D^f_q \otimes I_{p_{i-1}}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 )_{((\lambda q+ a)p_{i-1} + b)((\lambda' q+ a')p_{i-1} + b')} 
+=======
+)_{((\lambda q+ a)p_{i-1} + b)((\lambda' q+ a')p_{i-1} + b')}
+>>>>>>> config
 =
 (P^f_q D^f_q)_{(\lambda q + a)(\lambda' q + a')}
 \delta_{bb'}
@@ -1400,8 +1763,13 @@ P^f_q D^f_q \otimes I_{p_{i-1}}
 This eliminates one sum, leaving us with,
 %
 \begin{equation}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 v'_{(\lambda q + a) p_{i-1} + b} 
 = 
+=======
+v'_{(\lambda q + a) p_{i-1} + b}
+=
+>>>>>>> config
 \sum_{\lambda' a' }
 (P^f_q D^f_q)_{(\lambda q + a)(\lambda' q + a')} t_{(\lambda'q+a')p_{i-1} + b}
 \end{equation}
@@ -1410,7 +1778,11 @@ We can insert the definition of $D^f_q$ to give,
 %
 \begin{equation}
 \phantom{v'_{(\lambda q + a) p_{i-1} + b}}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 = \sum_{\lambda'a'} (P^f_q)_{(\lambda q + a)(\lambda'q + a')} 
+=======
+= \sum_{\lambda'a'} (P^f_q)_{(\lambda q + a)(\lambda'q + a')}
+>>>>>>> config
 \omega^{\lambda'a'}_{q_{i-1}} t_{(\lambda'q+a')p_{i-1}+b}
 \end{equation}
 %
@@ -1434,13 +1806,22 @@ Here is the algorithm to implement the mixed-radix FFT,
 \FOR{$a = 0 \dots q-1$}
 \FOR{$b = 0 \dots p_{i-1} - 1$}
 \FOR{$\lambda = 0 \dots f-1$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 \STATE{$t_\lambda \Leftarrow 
+=======
+\STATE{$t_\lambda \Leftarrow
+>>>>>>> config
        \sum_{\lambda'=0}^{f-1} W_f(\lambda,\lambda') v_{b+\lambda'm+ap_{i-1}}$}
        \COMMENT{DFT matrix-multiply module}
 \ENDFOR
 \FOR{$\lambda = 0 \dots f-1$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 \STATE{$v'_{(af+\lambda)p_{i-1}+b} 
         \Leftarrow \omega^{\lambda a}_{q_{i-1}} t_\lambda$}
+=======
+\STATE{$v'_{(af+\lambda)p_{i-1}+b}
+	\Leftarrow \omega^{\lambda a}_{q_{i-1}} t_\lambda$}
+>>>>>>> config
 \ENDFOR
 \ENDFOR
 \ENDFOR
@@ -1479,7 +1860,11 @@ to compute $\omega_{q_i-1}^{\lambda a} t_\lambda$ in
 the FFT. In terms of the lookup table we can write this as,
 %
 \begin{eqnarray}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 \omega_{q_{i-1}}^{\lambda a} t_\lambda 
+=======
+\omega_{q_{i-1}}^{\lambda a} t_\lambda
+>>>>>>> config
 &=&  \exp(-2\pi i \lambda a/q_{i-1}) t_\lambda \\
 &=&  \exp(-2\pi i \lambda a p_{i-1}/N) t_\lambda \\
 &=& \left\{
@@ -1491,7 +1876,11 @@ the FFT. In terms of the lookup table we can write this as,
 \end{eqnarray}
 %
 \begin{sloppypar}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 \noindent 
+=======
+\noindent
+>>>>>>> config
 The array {\tt twiddle[i]} maintains a set of pointers into {\tt trig}
 for the starting points for the outer loop.  The core of the
 implementation is {\tt gsl\_fft\_complex}. This function loops over
@@ -1507,10 +1896,17 @@ gsl\_fft\_complex\_pass\_3}. For a pass with a factor of 3 we have to
 calculate the following expression,
 \end{sloppypar}%
 \begin{equation}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 v'_{(a f + \lambda) p_{i-1} + b} 
 = 
 \sum_{\lambda' = 0,1,2} 
 \omega^{\lambda a}_{q_{i-1}} W^{\lambda \lambda'}_{3} 
+=======
+v'_{(a f + \lambda) p_{i-1} + b}
+=
+\sum_{\lambda' = 0,1,2}
+\omega^{\lambda a}_{q_{i-1}} W^{\lambda \lambda'}_{3}
+>>>>>>> config
 v_{b + \lambda' m + a p_{i-1}}
 \end{equation}
 %
@@ -1521,6 +1917,7 @@ for $b = 0 \dots p_{i-1} - 1$, $a = 0 \dots q_{i} - 1$ and $\lambda =
 \FOR {$a = 0 \dots q-1$}
 \FOR {$b = 0 \dots p_{i-1} - 1$}
 \STATE {$
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         \left(
         \begin{array}{c}
         t_0 \\ t_1 \\ t_2
@@ -1544,6 +1941,31 @@ for $b = 0 \dots p_{i-1} - 1$, $a = 0 \dots q_{i} - 1$ and $\lambda =
         \STATE {$ v'_{a p_{i} + b}  = t_0$}
         \STATE {$ v'_{a p_{i} + b + p_{i-1}} = \omega^{a}_{q_{i-1}} t_1$} 
         \STATE {$ v'_{a p_{i} + b + 2 p_{i-1}} = \omega^{2a}_{q_{i-1}} t_2$}
+=======
+	\left(
+	\begin{array}{c}
+	t_0 \\ t_1 \\ t_2
+	\end{array}
+	\right)
+	=
+	\left(
+	\begin{array}{ccc}
+	W^{0}_3 & W^{0}_3 & W^{0}_3 \\
+	W^{0}_3 & W^{1}_3 & W^{2}_3 \\
+	W^{0}_3 & W^{2}_3 & W^{4}_3
+	\end{array}
+	\right)
+	\left(
+	\begin{array}{l}
+	v_{b + a p_{i-1}} \\
+	v_{b + a p_{i-1} + m} \\
+	v_{b + a p_{i-1} +2m}
+	\end{array}
+	\right)$}
+	\STATE {$ v'_{a p_{i} + b}  = t_0$}
+	\STATE {$ v'_{a p_{i} + b + p_{i-1}} = \omega^{a}_{q_{i-1}} t_1$}
+	\STATE {$ v'_{a p_{i} + b + 2 p_{i-1}} = \omega^{2a}_{q_{i-1}} t_2$}
+>>>>>>> config
 \ENDFOR
 \ENDFOR
 \end{algorithm}
@@ -1575,7 +1997,11 @@ fourier transform and note that the inverse matrix is just the complex
 conjugate of the forward matrix (with a factor of $1/N$),
 %
 \begin{equation}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 W^{-1}_N = W^*_N / N 
+=======
+W^{-1}_N = W^*_N / N
+>>>>>>> config
 \end{equation}
 %
 Therefore we can easily compute the inverse transform by conjugating
@@ -1607,7 +2033,11 @@ For the $N=2$ DFT,
 \begin{equation}
 \begin{array}{ll}
 x_0 = z_0 + z_1, &
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 x_1 = z_0 - z_1. 
+=======
+x_1 = z_0 - z_1.
+>>>>>>> config
 \end{array}
 \end{equation}
 %
@@ -1617,14 +2047,22 @@ For the $N=3$ DFT,
 \begin{array}{lll}
 t_1 = z_1 + z_2, &
 t_2 = z_0 - t_1/2, &
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 t_3 = \sin(\pi/3) (z_1 - z_2), 
+=======
+t_3 = \sin(\pi/3) (z_1 - z_2),
+>>>>>>> config
 \end{array}
 \end{equation}
 \begin{equation}
 \begin{array}{lll}
 x_0 = z_0 + t_1, &
 x_1 = t_2 + i t_3, &
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 x_2 = t_2 - i t_3. 
+=======
+x_2 = t_2 - i t_3.
+>>>>>>> config
 \end{array}
 \end{equation}
 %
@@ -1708,7 +2146,11 @@ x_1 \\
 x_5
 \end{array}
 \right)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 = 
+=======
+=
+>>>>>>> config
 \left(
 \begin{array}{ccc|ccc}
   &   &  &  &   & \\
@@ -1716,7 +2158,11 @@ x_5
   &   &  &  &   & \\
 \hline  &   &  &  &   & \\
   &W_3&  &  &-W_3& \\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   &   &  &  &   & 
+=======
+  &   &  &  &   &
+>>>>>>> config
 \end{array}
 \right)
 \left(
@@ -1726,7 +2172,11 @@ z_2 \\
 z_4 \\
 \hline z_3 \\
 z_5 \\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 z_1 
+=======
+z_1
+>>>>>>> config
 \end{array}
 \right)
 \end{equation}
@@ -1748,7 +2198,11 @@ t_3 = \sin(\pi/3) (z_2 - z_4),
 \begin{array}{lll}
 t_4 = z_5 + z_1, &
 t_5 = z_3 - t_4/2, &
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 t_6 = \sin(\pi/3) (z_5 - z_1), 
+=======
+t_6 = \sin(\pi/3) (z_5 - z_1),
+>>>>>>> config
 \end{array}
 \end{equation}
 \begin{equation}
@@ -1762,14 +2216,22 @@ t_9 = t_2 - i t_3,
 \begin{array}{lll}
 t_{10} = z_3 + t_4, &
 t_{11} = t_5 + i t_6, &
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 t_{12} = t_5 - i t_6, 
+=======
+t_{12} = t_5 - i t_6,
+>>>>>>> config
 \end{array}
 \end{equation}
 \begin{equation}
 \begin{array}{lll}
 x_0 = t_7 + t_{10}, &
 x_4 = t_8 + t_{11}, &
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 x_2 = t_9 + t_{12}, 
+=======
+x_2 = t_9 + t_{12},
+>>>>>>> config
 \end{array}
 \end{equation}
 \begin{equation}
@@ -1805,7 +2267,11 @@ h_{N-1}
 1 & W & W & \cdots & W & W \\
 \vdots & \vdots & \vdots & \cdots & \vdots & \vdots \\
 1 & W & W & \cdots & W & W \\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 1 & W & W & \cdots & W & W 
+=======
+1 & W & W & \cdots & W & W
+>>>>>>> config
 \end{array}
 \right)
 \left(
@@ -1841,10 +2307,17 @@ a_0 + i b_0 = \sum_{j=0}^{(f-1)} x_j + i y_j
 We can rewrite the remaining components as,
 %
 \begin{eqnarray}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 a_k + i b_k & =   x_0 + i y_0 & + 
   \sum_{j=1}^{(f-1)/2} (x_j + x_{f-j}) \cos(2\pi jk/f)
  + (y_j - y_{f-j}) \sin(2\pi jk/f) \\
 & & + i\sum_{j=1}^{(f-1)/2} (y_j + y_{f-j}) \cos(2\pi jk/f) 
+=======
+a_k + i b_k & =   x_0 + i y_0 & +
+  \sum_{j=1}^{(f-1)/2} (x_j + x_{f-j}) \cos(2\pi jk/f)
+ + (y_j - y_{f-j}) \sin(2\pi jk/f) \\
+& & + i\sum_{j=1}^{(f-1)/2} (y_j + y_{f-j}) \cos(2\pi jk/f)
+>>>>>>> config
  - (x_j - x_{f-j}) \sin(2\pi jk/f)
 \end{eqnarray}
 %
@@ -1907,8 +2380,13 @@ real. It is straightforward to prove the symmetry,
 \begin{eqnarray}
 h(a) &=& \sum W^{ab}_N g(b) \\
 h(N-a)^* &=& \sum W^{-(N-a)b}_N g(b)^*  \\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          &=& \sum W^{-Nb}_N W^{ab}_N g(b) \qquad{(W^N_N=1)} \\
          &=& \sum W^{ab}_N g(b)
+=======
+	 &=& \sum W^{-Nb}_N W^{ab}_N g(b) \qquad{(W^N_N=1)} \\
+	 &=& \sum W^{ab}_N g(b)
+>>>>>>> config
 \end{eqnarray}
 %
 Real-valued data is very common in practice (perhaps more common that
@@ -1960,7 +2438,11 @@ p_0 & = & 1 \\
 p_1 & = & f_1 = 2 \\
 p_2 & = & f_1 f_2 = 4 \\
 \dots &=& \dots \\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 p_i & = & f_1 f_2 \dots f_i = 2^i 
+=======
+p_i & = & f_1 f_2 \dots f_i = 2^i
+>>>>>>> config
 \end{eqnarray}
 %
 Using this notation we can rewrite the radix-2 decimation-in-time
@@ -1971,6 +2453,7 @@ algorithm as,
 \FOR {$i = 1 \dots n$}
   \FOR {$a = 0 \dots p_{i-1} - 1$}
     \FOR{$b = 0 \dots q_i - 1$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         \STATE{$
                 \left(
                 \begin{array}{c} 
@@ -1985,6 +2468,22 @@ algorithm as,
                 g(b p_i + a) - W^a_{p_i} g(b p_i + p_{i-1} + a)
                 \end{array}
                 \right) $}
+=======
+	\STATE{$
+		\left(
+		\begin{array}{c}
+		g(b p_i + a) \\
+		g(b p_i + p_{i-1} + a)
+		\end{array}
+		\right)
+		=
+		\left(
+		\begin{array}{c}
+		g(b p_i + a) + W^a_{p_i} g(b p_i + p_{i-1} + a) \\
+		g(b p_i + a) - W^a_{p_i} g(b p_i + p_{i-1} + a)
+		\end{array}
+		\right) $}
+>>>>>>> config
      \ENDFOR
   \ENDFOR
 \ENDFOR
@@ -2007,12 +2506,17 @@ condition,
 %
 \begin{eqnarray}
 g_1([b_0 b_1 b_2 0]) &=& \mbox{real} \\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 g_1([b_0 b_1 b_2 1]) &=& \mbox{real'} 
+=======
+g_1([b_0 b_1 b_2 1]) &=& \mbox{real'}
+>>>>>>> config
 \end{eqnarray}
 %
 In the next pass we have a set of length-4 FFTs on the original data,
 %
 \begin{eqnarray}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 g_2([b_0 b_1 b_1 a_0]) 
 &=&
 \sum_{b_2}\sum_{b_3} 
@@ -2020,6 +2524,15 @@ W^{[a_1 a_0]b_2}_4 W^{a_0 b_3}_2
 g([b_0 b_1 b_2 b_3]) \\
 &=&
 \sum_{b_2}\sum_{b_3} 
+=======
+g_2([b_0 b_1 b_1 a_0])
+&=&
+\sum_{b_2}\sum_{b_3}
+W^{[a_1 a_0]b_2}_4 W^{a_0 b_3}_2
+g([b_0 b_1 b_2 b_3]) \\
+&=&
+\sum_{b_2}\sum_{b_3}
+>>>>>>> config
 W^{[a_1 a_0][b_3 b_2]}_4
 g([b_0 b_1 b_2 b_3])
 \end{eqnarray}
@@ -2031,15 +2544,24 @@ transformed data,
 g_2([b_0 b_1 0 0]) &=& \mbox{real} \\
 g_2([b_0 b_1 0 1]) &=& x + i y  \\
 g_2([b_0 b_1 1 0]) &=& \mbox{real'} \\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 g_2([b_0 b_1 1 1]) &=& x - i y 
+=======
+g_2([b_0 b_1 1 1]) &=& x - i y
+>>>>>>> config
 \end{eqnarray}
 %
 We can see a pattern emerging here: the $i$-th pass computes a set of
 independent length-$2^i$ FFTs on the original real data,
 %
 \begin{eqnarray}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 g_i ( b p_i  + a ) = \sum_{a' = 0}^{p_i-1} W_{p_i}^{aa'} g(b p_i + a') 
 \quad 
+=======
+g_i ( b p_i  + a ) = \sum_{a' = 0}^{p_i-1} W_{p_i}^{aa'} g(b p_i + a')
+\quad
+>>>>>>> config
 \mbox{for $b = 0 \dots q_i - 1$}
 \end{eqnarray}
 %
@@ -2051,7 +2573,11 @@ have the symmetry,
 \begin{eqnarray}
 g_i(b p_i) &=& \mbox{real} \\
 g_i(b p_i + a) &=& g_i(b p_i + p_i - a)^* \qquad a = 1 \dots p_{i}/2 - 1  \\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 g_i(b p_i + p_{i}/2) &=& \mbox{real'} 
+=======
+g_i(b p_i + p_{i}/2) &=& \mbox{real'}
+>>>>>>> config
 \end{eqnarray}
 %
 In the next section we'll show that this is a general property of
@@ -2075,6 +2601,7 @@ gives the following algorithm,
 \begin{algorithm}
 \FOR {$a = 0 \dots p_{i-1}/2$}
   \FOR{$b = 0 \dots q_i - 1$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         \STATE{$
                 \left(
                 \begin{array}{c} 
@@ -2089,6 +2616,22 @@ gives the following algorithm,
                 g(b p_{i} + a) - W^a_{p_i} g(b p_i + p_{i-1} + a)
                 \end{array}
                 \right) $}
+=======
+	\STATE{$
+		\left(
+		\begin{array}{c}
+		g(b p_i + a) \\
+		g(b p_i + p_{i-1} - a)^*
+		\end{array}
+		\right)
+		=
+		\left(
+		\begin{array}{c}
+		g(b p_{i} + a) + W^a_{p_i} g(b p_i + p_{i-1} + a) \\
+		g(b p_{i} + a) - W^a_{p_i} g(b p_i + p_{i-1} + a)
+		\end{array}
+		\right) $}
+>>>>>>> config
      \ENDFOR
   \ENDFOR
 \end{algorithm}
@@ -2132,7 +2675,11 @@ Let's start with the butterfly for $a = 0$,
 %
 \begin{equation}
 \left(
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 \begin{array}{c} 
+=======
+\begin{array}{c}
+>>>>>>> config
 g(b p_i) \\
 g(b p_i + p_{i-1})^*
 \end{array}
@@ -2145,7 +2692,11 @@ g(2 b p_{i-1}) - g((2 b + 1) p_{i-1})
 \end{array}
 \right)
 \end{equation}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 % 
+=======
+%
+>>>>>>> config
 By the symmetry $g_{i-1}(b p_{i-1} + a) = g_{i-1}(b p_{i-1} + p_{i-1}
 - a)^*$ all the inputs are purely real.  The input $g(2 b p_{i-1})$ is
 read from location $2 b p_{i-1}$ and $g((2 b + 1) p_{i-1})$ is read
@@ -2156,6 +2707,7 @@ from the location $(2 b + 1) p_{i-1}$. Here is the full breakdown,
 \begin{tabular}{|l|lll|}
 \hline Term & & Location & \\
 \hline
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 $g(2 b p_{i-1})$        
         & real part & $2 b p_{i-1} $ &$= b p_i$ \\
         & imag part & --- & \\
@@ -2169,6 +2721,21 @@ $g(b p_{i})$
 $g(b p_{i} + p_{i-1})$ 
         & real part & $b p_i + p_{i-1}$& \\
         & imag part & --- &  \\
+=======
+$g(2 b p_{i-1})$
+	& real part & $2 b p_{i-1} $ &$= b p_i$ \\
+	& imag part & --- & \\
+$g((2 b+1) p_{i-1})$
+	& real part & $(2 b + 1) p_{i-1}  $&$= b p_i + p_{i-1} $ \\
+	& imag part & --- & \\
+\hline
+$g(b p_{i})$
+	& real part & $b p_i$ &\\
+	& imag part & --- & \\
+$g(b p_{i} + p_{i-1})$
+	& real part & $b p_i + p_{i-1}$& \\
+	& imag part & --- &  \\
+>>>>>>> config
 \hline
 \end{tabular}
 \end{center}
@@ -2182,7 +2749,11 @@ The general butterfly for $a = 1 \dots p_{i-1}/2 - 1$ is,
 %
 \begin{equation}
 \left(
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 \begin{array}{c} 
+=======
+\begin{array}{c}
+>>>>>>> config
 g(b p_i + a) \\
 g(b p_i + p_{i-1} - a)^*
 \end{array}
@@ -2209,6 +2780,7 @@ butterfly,
 \begin{tabular}{|l|lll|}
 \hline Term & & Location & \\
 \hline
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 $g(2 b p_{i-1} + a)$    
         & real part & $2 b p_{i-1} + a $ &$= b p_i + a$ \\
         & imag part & $2 b p_{i-1} + p_{i-1} - a$ &$= b p_i + p_{i-1} - a$ \\
@@ -2222,6 +2794,21 @@ $g(b p_{i} + a)$
 $g(b p_{i} + p_{i-1} - a)$ 
         & real part & $b p_i + p_{i-1} - a$& \\
         & imag part & $b p_i + p_{i-1} + a$&  \\
+=======
+$g(2 b p_{i-1} + a)$
+	& real part & $2 b p_{i-1} + a $ &$= b p_i + a$ \\
+	& imag part & $2 b p_{i-1} + p_{i-1} - a$ &$= b p_i + p_{i-1} - a$ \\
+$g((2 b+1) p_{i-1} + a)$
+	& real part & $(2 b+1) p_{i-1} + a $&$= b p_i + p_{i-1} + a $ \\
+	& imag part & $(2 b+1) p_{i-1} + p_{i-1} - a $&$= b p_i + p_i - a$\\
+\hline
+$g(b p_{i} + a)$
+	& real part & $b p_i + a$ &\\
+	& imag part & $b p_i + p_i - a$& \\
+$g(b p_{i} + p_{i-1} - a)$
+	& real part & $b p_i + p_{i-1} - a$& \\
+	& imag part & $b p_i + p_{i-1} + a$&  \\
+>>>>>>> config
 \hline
 \end{tabular}
 \end{center}
@@ -2233,7 +2820,11 @@ The final butterfly for $a = p_{i-1}/2$ is,
 %
 \begin{equation}
 \left(
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 \begin{array}{c} 
+=======
+\begin{array}{c}
+>>>>>>> config
 g(b p_i + p_{i-1}/2) \\
 g(b p_i + p_{i-1} - p_{i-1}/2)^*
 \end{array}
@@ -2251,8 +2842,13 @@ where we have substituted for the twiddle factor, $W^a_{p_i} = -i$,
 %
 \begin{eqnarray}
 W^{p_{i-1}/2}_{p_i} &=& \exp(-2\pi i p_{i-1}/2 p_i) \\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                     &=& \exp(-2\pi i /4) \\
                     &=& -i 
+=======
+		    &=& \exp(-2\pi i /4) \\
+		    &=& -i
+>>>>>>> config
 \end{eqnarray}
 %
 For this butterfly the second line is just the conjugate of the first,
@@ -2264,6 +2860,7 @@ consider the first line. The breakdown of the inputs and outputs is,
 \begin{tabular}{|l|lll|}
 \hline Term & & Location & \\
 \hline
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 $g(2 b p_{i-1} + p_{i-1}/2)$    
         & real part & $2 b p_{i-1} + p_{i-1}/2 $ &$= b p_i + p_{i-1}/2$ \\
         & imag part & --- & \\
@@ -2274,6 +2871,18 @@ $g((2 b + 1) p_{i-1} + p_{i-1}/2)$
 $g(b p_{i} + p_{i-1}/2)$ 
         & real part & $b p_i + p_{i-1}/2$ &\\
         & imag part & $b p_i + p_i - p_{i-1}/2$& \\
+=======
+$g(2 b p_{i-1} + p_{i-1}/2)$
+	& real part & $2 b p_{i-1} + p_{i-1}/2 $ &$= b p_i + p_{i-1}/2$ \\
+	& imag part & --- & \\
+$g((2 b + 1) p_{i-1} + p_{i-1}/2)$
+	& real part & $(2 b + 1) p_{i-1} + p_{i-1}/2 $&$= b p_i + p_{i} - p_{i-1}/2 $ \\
+	& imag part & --- & \\
+\hline
+$g(b p_{i} + p_{i-1}/2)$
+	& real part & $b p_i + p_{i-1}/2$ &\\
+	& imag part & $b p_i + p_i - p_{i-1}/2$& \\
+>>>>>>> config
 \hline
 \end{tabular}
 \end{center}
@@ -2293,6 +2902,7 @@ blocks,
 \FOR {$i = 1 \dots n$}
   \FOR{$b = 0 \dots q_i - 1$}
   \STATE{$\left(
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           \begin{array}{c} 
           g(b p_i) \\
           g(b p_i + p_{i-1})
@@ -2305,10 +2915,25 @@ blocks,
           g(b p_{i}) - g(b p_{i} + p_{i-1})
           \end{array}
           \right)$}
+=======
+	  \begin{array}{c}
+	  g(b p_i) \\
+	  g(b p_i + p_{i-1})
+	  \end{array}
+	  \right)
+	  \Leftarrow
+	  \left(
+	  \begin{array}{c}
+	  g(b p_{i}) + g(b p_{i} + p_{i-1}) \\
+	  g(b p_{i}) - g(b p_{i} + p_{i-1})
+	  \end{array}
+	  \right)$}
+>>>>>>> config
   \ENDFOR
 
   \FOR {$a = 1 \dots p_{i-1}/2 - 1$}
     \FOR{$b = 0 \dots q_i - 1$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         \STATE{$(\Real z_0, \Imag z_0) \Leftarrow 
                 (g(b p_i + a),  g(b p_i + p_{i-1} - a))$}
         \STATE{$(\Real z_1, \Imag z_1) \Leftarrow 
@@ -2320,11 +2945,28 @@ blocks,
         \STATE{$(g(b p_{i} + p_{i-1} - a), g(b p_{i} + p_{i-1} + a))
                  \Leftarrow 
                 (\Real t_1, -\Imag t_1)$}
+=======
+	\STATE{$(\Real z_0, \Imag z_0) \Leftarrow
+		(g(b p_i + a),  g(b p_i + p_{i-1} - a))$}
+	\STATE{$(\Real z_1, \Imag z_1) \Leftarrow
+		(g(b p_i + p_{i-1} + a), g(b p_i + p_{i} - a))$}
+	\STATE{$t_0 \Leftarrow z_0 + W^a_{p_i} z_1$}
+	\STATE{$t_1 \Leftarrow z_0 - W^a_{p_i} z_1$}
+	\STATE{$(g(b p_{i} + a),g(b p_{i} + p_i - a) \Leftarrow
+		(\Real t_0, \Imag t_0)$}
+	\STATE{$(g(b p_{i} + p_{i-1} - a), g(b p_{i} + p_{i-1} + a))
+		 \Leftarrow
+		(\Real t_1, -\Imag t_1)$}
+>>>>>>> config
      \ENDFOR
   \ENDFOR
 
   \FOR{$b = 0 \dots q_i - 1$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         \STATE{$g(b p_{i} - p_{i-1}/2) \Leftarrow -g(b p_{i} - p_{i-1}/2)$}
+=======
+	\STATE{$g(b p_{i} - p_{i-1}/2) \Leftarrow -g(b p_{i} - p_{i-1}/2)$}
+>>>>>>> config
   \ENDFOR
 
 \ENDFOR
@@ -2343,7 +2985,11 @@ The inverse FFT of complex data was easy to calculate, simply by
 taking the complex conjugate of the DFT matrix. The input data and
 output data were both complex and did not have any special
 symmetry. For real data the inverse FFT is more complicated because
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 the half-complex symmetry of the transformed data is 
+=======
+the half-complex symmetry of the transformed data is
+>>>>>>> config
 different from the purely real input data.
 
 We can compute an inverse by stepping backwards through the forward
@@ -2354,6 +3000,7 @@ forward algorithm with the butterfly in matrix form,
 \FOR {$i = 1 \dots n$}
   \FOR {$a = 0 \dots p_{i-1}/2$}
     \FOR{$b = 0 \dots q_i - 1$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         \STATE{$
                 \left(
                 \begin{array}{c} 
@@ -2374,6 +3021,28 @@ forward algorithm with the butterfly in matrix form,
                 g((2 b + 1) p_{i-1} + a)
                 \end{array}
                 \right) $}
+=======
+	\STATE{$
+		\left(
+		\begin{array}{c}
+		g(b p_i + a) \\
+		g(b p_i + p_{i-1} + a)
+		\end{array}
+		\right)
+		=
+		\left(
+		\begin{array}{cc}
+		1 & W^a_{p_{i}} \\
+		1 & -W^a_{p_{i}}
+		\end{array}
+		\right)
+		\left(
+		\begin{array}{c}
+		g(2 b p_{i-1} + a) \\
+		g((2 b + 1) p_{i-1} + a)
+		\end{array}
+		\right) $}
+>>>>>>> config
      \ENDFOR
   \ENDFOR
 \ENDFOR
@@ -2386,6 +3055,7 @@ matrix multiplication in the innermost loop,
 \FOR {$i = n \dots 1$}
   \FOR {$a = 0 \dots p_{i-1}/2$}
     \FOR{$b = 0 \dots q_i - 1$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         \STATE{$
                 \left(
                 \begin{array}{c}
@@ -2406,6 +3076,28 @@ matrix multiplication in the innermost loop,
                 g(b p_i + p_{i-1} + a)
                 \end{array}
                 \right) $}
+=======
+	\STATE{$
+		\left(
+		\begin{array}{c}
+		g(2 b p_{i-1} + a) \\
+		g((2 b + 1) p_{i-1} + a)
+		\end{array}
+		\right)
+		=
+		\left(
+		\begin{array}{cc}
+		1 & W^a_{p_{i}} \\
+		1 & -W^a_{p_{i}}
+		\end{array}
+		\right)^{-1}
+		\left(
+		\begin{array}{c}
+		g(b p_i + a) \\
+		g(b p_i + p_{i-1} + a)
+		\end{array}
+		\right) $}
+>>>>>>> config
      \ENDFOR
   \ENDFOR
 \ENDFOR
@@ -2443,6 +3135,7 @@ into account the radix-2 storage scheme,
 \FOR {$i = n \dots 1$}
   \FOR{$b = 0 \dots q_i - 1$}
   \STATE{$\left(
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           \begin{array}{c} 
           g(b p_i) \\
           g(b p_i + p_{i-1})
@@ -2455,10 +3148,25 @@ into account the radix-2 storage scheme,
           g(b p_{i}) - g(b p_{i} + p_{i-1})
           \end{array}
           \right)$}
+=======
+	  \begin{array}{c}
+	  g(b p_i) \\
+	  g(b p_i + p_{i-1})
+	  \end{array}
+	  \right)
+	  \Leftarrow
+	  \left(
+	  \begin{array}{c}
+	  g(b p_{i}) + g(b p_{i} + p_{i-1}) \\
+	  g(b p_{i}) - g(b p_{i} + p_{i-1})
+	  \end{array}
+	  \right)$}
+>>>>>>> config
   \ENDFOR
 
   \FOR {$a = 1 \dots p_{i-1}/2 - 1$}
     \FOR{$b = 0 \dots q_i - 1$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         \STATE{$(\Real z_0, \Imag z_0)
                 \Leftarrow 
                 (g(b p_i + a), g(b p_i + p_{i} - a))$}
@@ -2473,12 +3181,33 @@ into account the radix-2 storage scheme,
         \STATE{$(g(b p_{i} + p_{i-1} + a),g(b p_{i} + p_{i} - a)) 
                 \Leftarrow 
                 (\Real(W^a_{p_i}t_1), \Imag(W^a_{p_i}t_1))$}
+=======
+	\STATE{$(\Real z_0, \Imag z_0)
+		\Leftarrow
+		(g(b p_i + a), g(b p_i + p_{i} - a))$}
+	\STATE{$(\Real z_1, \Imag z_1)
+		\Leftarrow
+		(g(b p_i + p_{i-1} - a),  -g(b p_i + p_{i-1} + a))$}
+	\STATE{$t_0 \Leftarrow z_0 + z_1$}
+	\STATE{$t_1 \Leftarrow z_0 - z_1$}
+	\STATE{$(g(b p_{i} + a), g(b p_{i} + p_{i-1} - a))
+		 \Leftarrow
+		(\Real t_0, \Imag t_0) $}
+	\STATE{$(g(b p_{i} + p_{i-1} + a),g(b p_{i} + p_{i} - a))
+		\Leftarrow
+		(\Real(W^a_{p_i}t_1), \Imag(W^a_{p_i}t_1))$}
+>>>>>>> config
      \ENDFOR
   \ENDFOR
 
   \FOR{$b = 0 \dots q_i - 1$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         \STATE{$g(b p_{i} + p_{i-1}/2) \Leftarrow 2 g(b p_{i} + p_{i-1}/2)$}
         \STATE{$g(b p_{i} + p_{i-1} + p_{i-1}/2) \Leftarrow -2 g(b p_{i} + p_{i-1} + p_{i-1}/2)$}
+=======
+	\STATE{$g(b p_{i} + p_{i-1}/2) \Leftarrow 2 g(b p_{i} + p_{i-1}/2)$}
+	\STATE{$g(b p_{i} + p_{i-1} + p_{i-1}/2) \Leftarrow -2 g(b p_{i} + p_{i-1} + p_{i-1}/2)$}
+>>>>>>> config
   \ENDFOR
 
 \ENDFOR
@@ -2507,9 +3236,15 @@ with,
 %
 \begin{eqnarray}
 T_i^T &=& \left( (P^{f_i}_{q_i} D^{f_i}_{q_i} \otimes I_{p_{i-1}})
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         (W_{f_i} \otimes I_{m_i}) \right)^T \\
         &=&     (W_{f_i} \otimes I_{m_i})
                 ( D^{f_i}_{q_i} (P^{f_i}_{q_i})^T \otimes I_{p_{i-1}}).
+=======
+	(W_{f_i} \otimes I_{m_i}) \right)^T \\
+	&=&     (W_{f_i} \otimes I_{m_i})
+		( D^{f_i}_{q_i} (P^{f_i}_{q_i})^T \otimes I_{p_{i-1}}).
+>>>>>>> config
 \end{eqnarray}
 %
 We have used the fact that $W$, $D$ and $I$ are symmetric and that the
@@ -2529,7 +3264,11 @@ This allows us to put the transpose into a simple form,
 %
 \begin{equation}
 T_i^T =         (W_{f_i} \otimes I_{m_i})
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                 (P^{q_i}_{f_i} D^{q_i}_{f_i} \otimes I_{p_{i-1}}).
+=======
+		(P^{q_i}_{f_i} D^{q_i}_{f_i} \otimes I_{p_{i-1}}).
+>>>>>>> config
 \end{equation}
 %
 The transposed matrix, $T^T$ applies the digit-reversal $P$ before the
@@ -2547,8 +3286,13 @@ W_N = T_{n_f} \dots T_2 T_1
 \end{equation}
 %
 \begin{equation}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 T_i = (W_{f_i} \otimes I_{m_i}) 
         (P^{p_{i-1}}_{f_i} D^{p_{i-1}}_{f_i} \otimes I_{q_i})
+=======
+T_i = (W_{f_i} \otimes I_{m_i})
+	(P^{p_{i-1}}_{f_i} D^{p_{i-1}}_{f_i} \otimes I_{q_i})
+>>>>>>> config
 \end{equation}
 %
 where $p_i$, $q_i$ and $m_i$ now have the same meanings as before,
@@ -2557,7 +3301,11 @@ namely,
 \begin{eqnarray}
 p_i &=& f_1 f_2 \dots f_i \quad (p_0 = 1)  \\
 q_i &=& N / p_i \\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 m_i &=& N / f_i 
+=======
+m_i &=& N / f_i
+>>>>>>> config
 \end{eqnarray}
 %
 Now we would like to prove that the iteration for computing $x = W z =
@@ -2570,7 +3318,11 @@ v^{(0)} &=& z \\
 v^{(1)} &=& T_1 v^{(0)} \\
 v^{(2)} &=& T_2 v^{(1)} \\
 \dots   &=& \dots \\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 v^{(i)} &=& T_i v^{(i-1)} 
+=======
+v^{(i)} &=& T_i v^{(i-1)}
+>>>>>>> config
 \end{eqnarray}
 %
 then we will show that the intermediate results $v^{(i)}$ on any pass
@@ -2592,10 +3344,17 @@ And then we examine the next iteration using this assumption,
 %
 \begin{eqnarray}
 v^{(i)} &=& T_i v^{(i-1)} \\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         &=& T_i (W_{p_{i-1}} \otimes I_{q_{i-1}}) z \\
         &=& (W_{f_i} \otimes I_{m_i}) 
                 (P^{p_{i-1}}_{f_i} D^{p_{i-1}}_{f_i} \otimes I_{q_i})
                 (W_{p_{i-1}} \otimes I_{q_{i-1}}) z \label{dit-induction}
+=======
+	&=& T_i (W_{p_{i-1}} \otimes I_{q_{i-1}}) z \\
+	&=& (W_{f_i} \otimes I_{m_i})
+		(P^{p_{i-1}}_{f_i} D^{p_{i-1}}_{f_i} \otimes I_{q_i})
+		(W_{p_{i-1}} \otimes I_{q_{i-1}}) z \label{dit-induction}
+>>>>>>> config
 \end{eqnarray}
 %
 Using the relation $m_i = p_{i-1} q_i$, we can write $I_{m_i}$ as
@@ -2609,18 +3368,30 @@ I_{ab} = I_a \otimes I_b
 we can rewrite $v^{(i)}$ in the following form,
 %
 \begin{equation}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 v^{(i)} =  (((W_{f_i} \otimes I_{p_{i-1}}) 
                 (P^{p_{i-1}}_{f_i} D^{p_{i-1}}_{f_i})
                 (W_{p_{i-1}} \otimes I_{f_i})) \otimes I_{q_i}) z .
+=======
+v^{(i)} =  (((W_{f_i} \otimes I_{p_{i-1}})
+		(P^{p_{i-1}}_{f_i} D^{p_{i-1}}_{f_i})
+		(W_{p_{i-1}} \otimes I_{f_i})) \otimes I_{q_i}) z .
+>>>>>>> config
 \end{equation}
 %
 The first part of this matrix product is the two-factor expansion of
 $W_{ab}$, for $a = p_{i-1}$ and $b = f_i$,
 %
 \begin{equation}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 W_{p_{i-1} f_i} = ((W_{f_i} \otimes I_{p_{i-1}}) 
                   (P^{p_{i-1}}_{f_i} D^{p_{i-1}}_{f_i})
                   (W_{p_{i-1}} \otimes I_{f_i})).
+=======
+W_{p_{i-1} f_i} = ((W_{f_i} \otimes I_{p_{i-1}})
+		  (P^{p_{i-1}}_{f_i} D^{p_{i-1}}_{f_i})
+		  (W_{p_{i-1}} \otimes I_{f_i})).
+>>>>>>> config
 \end{equation}
 %
 If we substitute this result, remembering that $p_i = p_{i-1} f_i$, we
@@ -2659,7 +3430,11 @@ vector in turn to build up the complete transform,
 %
 \begin{algorithm}
 \FOR{$(i = 1 \dots n_f)$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         \STATE{$v \Leftarrow T_i v $}
+=======
+	\STATE{$v \Leftarrow T_i v $}
+>>>>>>> config
 \ENDFOR
 \end{algorithm}
 %
@@ -2667,8 +3442,13 @@ In this case the definition of $T_i$ is different because we have
 taken the transpose,
 %
 \begin{equation}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 T_i = 
   (W_{f_i} \otimes I_{m_i}) 
+=======
+T_i =
+  (W_{f_i} \otimes I_{m_i})
+>>>>>>> config
   (P^{p_{i-1}}_{f_i} D^{p_{i-1}}_{f_i} \otimes I_{q_i}).
 \end{equation}
 %
@@ -2683,6 +3463,7 @@ If we expand this out into individual components, as before, we find a
 similar simplification,
 %
 \begin{eqnarray}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 t_{aq+b} 
 &=&
 \sum_{a'b'} 
@@ -2692,6 +3473,17 @@ v_{a'q+b'} \\
 \sum_{a'} 
 (P^{p_{i-1}}_{f_i} D^{p_{i-1}}_{f_i})_{a a'}
 v_{a'q+b} 
+=======
+t_{aq+b}
+&=&
+\sum_{a'b'}
+(P^{p_{i-1}}_{f_i} D^{p_{i-1}}_{f_i} \otimes I_{q_i})_{(aq+b)(a'q+b')}
+v_{a'q+b'} \\
+&=&
+\sum_{a'}
+(P^{p_{i-1}}_{f_i} D^{p_{i-1}}_{f_i})_{a a'}
+v_{a'q+b}
+>>>>>>> config
 \end{eqnarray}
 %
 We have factorized the indices into the form $aq+b$, with $0 \leq a <
@@ -2701,6 +3493,7 @@ multiplication completely. We have to write $a$ as $\mu f + \lambda$,
 where $0 \leq \mu < p_{i-1}$ and $0 \leq \lambda < f$,
 %
 \begin{eqnarray}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 t_{(\mu f + \lambda)q+b} 
 &=&
 \sum_{\mu'\lambda'} 
@@ -2709,6 +3502,16 @@ v_{(\mu' f + \lambda')q+b}
 \\
 &=&
 \sum_{\mu'\lambda'} 
+=======
+t_{(\mu f + \lambda)q+b}
+&=&
+\sum_{\mu'\lambda'}
+(P^{p_{i-1}}_{f_i} D^{p_{i-1}}_{f_i})_{(\mu f + \lambda)(\mu' f + \lambda')}
+v_{(\mu' f + \lambda')q+b}
+\\
+&=&
+\sum_{\mu'\lambda'}
+>>>>>>> config
 (P^{p_{i-1}}_{f_i})_{(\mu f + \lambda)(\mu' f + \lambda')}
 \omega^{\mu'\lambda'}_{p_{i}}
 v_{(\mu' f + \lambda')q+b}
@@ -2719,8 +3522,13 @@ The matrix $P^{p_{i-1}}_{f_i}$ exchanges an index of $(\mu f +
 result of,
 %
 \begin{eqnarray}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 t_{(\lambda p_{i-1} + \mu) q + b} 
 = 
+=======
+t_{(\lambda p_{i-1} + \mu) q + b}
+=
+>>>>>>> config
 w^{\mu\lambda}_{p_i} v_{(\mu f + \lambda)q +b}
 \end{eqnarray}
 %
@@ -2734,7 +3542,11 @@ we temporarily rearrange the index of $t$ to separate the $m_{i}$
 independent DFTs in the Kronecker product,
 %
 \begin{equation}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 v'_{(\lambda p_{i-1} + \mu) q + b} 
+=======
+v'_{(\lambda p_{i-1} + \mu) q + b}
+>>>>>>> config
 =
 \sum_{\lambda' \mu' b'}
 (W_{f_i} \otimes I_{m_i})_{
@@ -2763,7 +3575,11 @@ t_{(\lambda' p_{i-1} + \mu') q + b'}\\
 &=&
 \sum_{\lambda'}
 (W_{f_i})_{\lambda \lambda'}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 t_{\lambda' m_i + (\mu q + b)} 
+=======
+t_{\lambda' m_i + (\mu q + b)}
+>>>>>>> config
 \end{eqnarray}
 %
 If we switch back to the original form of the index in the last line we obtain,
@@ -2779,8 +3595,13 @@ t_{(\lambda p_{i-1} + \mu) q + b}
 which allows us to substitute our previous result for $t$,
 %
 \begin{equation}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 v'_{(\lambda p_{i-1} + \mu) q + b} 
 = 
+=======
+v'_{(\lambda p_{i-1} + \mu) q + b}
+=
+>>>>>>> config
 \sum_{\lambda'}
 (W_{f_i})_{\lambda \lambda'}
 w^{\mu\lambda'}_{p_i} v_{(\mu f + \lambda')q + b}
@@ -2794,8 +3615,13 @@ complex data which we will be able to specialize to real data,
 \FOR{$\mu = 0 \dots p_{i-1} - 1$}
 \FOR{$b = 0 \dots q-1$}
 \FOR{$\lambda = 0 \dots f-1$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 \STATE{$t_\lambda \Leftarrow 
                \omega^{\mu\lambda'}_{p_{i}} v_{(\mu f + \lambda')q + b}$}
+=======
+\STATE{$t_\lambda \Leftarrow
+	       \omega^{\mu\lambda'}_{p_{i}} v_{(\mu f + \lambda')q + b}$}
+>>>>>>> config
 \ENDFOR
 \FOR{$\lambda = 0 \dots f-1$}
 \STATE{$v'_{(\lambda p_{i-1} + \mu)q + b} =
@@ -2838,8 +3664,13 @@ looks after this index transformation,
 \FOR{$\mu = 0 \dots p_{i-1} - 1$}
 \FOR{$b = 0 \dots q-1$}
 \FOR{$\lambda = 0 \dots f-1$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 \STATE{$t_\lambda \Leftarrow 
                \omega^{\mu\lambda'}_{p_{i}} v_{(\lambda'q + b)p_{i-1} + \mu}$}
+=======
+\STATE{$t_\lambda \Leftarrow
+	       \omega^{\mu\lambda'}_{p_{i}} v_{(\lambda'q + b)p_{i-1} + \mu}$}
+>>>>>>> config
 \ENDFOR
 \FOR{$\lambda = 0 \dots f-1$}
 \STATE{$v'_{b p + (\lambda p_{i-1} + \mu)} =
@@ -2895,6 +3726,7 @@ stored. Here are the full details of the scheme,
 \begin{tabular}{|l|lll|}
 \hline Term & & Location & \\
 \hline
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 $g(b p_i)$        
         & real part & $b p_{i} $ & \\
         & imag part & --- & \\
@@ -2906,6 +3738,19 @@ $g(b p_i + a)$
 $g(b p_{i} + p_{i}/2)$ 
         & real part & $b p_i + p_{i} - 1$ & if $p_i$ is even\\
         & imag part & --- & \\
+=======
+$g(b p_i)$
+	& real part & $b p_{i} $ & \\
+	& imag part & --- & \\
+\hline
+$g(b p_i + a)$
+	& real part & $b p_{i} + 2a - 1 $& for $a = 1 \dots p_i/2 - 1$ \\
+	& imag part & $b p_{i} + 2a$ & \\
+\hline
+$g(b p_{i} + p_{i}/2)$
+	& real part & $b p_i + p_{i} - 1$ & if $p_i$ is even\\
+	& imag part & --- & \\
+>>>>>>> config
 \hline
 \end{tabular}
 \end{center}
@@ -2919,7 +3764,11 @@ the term for $a = p/2$ is purely real and we store it in location $bp
 When we compute the basic iteration,
 %
 \begin{equation}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 v^{(i)}_{b p + (\lambda p_{i-1} + \mu)} = \sum_{\lambda'} 
+=======
+v^{(i)}_{b p + (\lambda p_{i-1} + \mu)} = \sum_{\lambda'}
+>>>>>>> config
 W^{\lambda \lambda'}_f
 \omega^{\mu\lambda'}_{p_i} v^{(i-1)}_{(\lambda' q + b)p_{i-1} + \mu}
 \end{equation}
@@ -2952,14 +3801,22 @@ For example the $N=3$ module was,
 \begin{array}{lll}
 t_1 = z_1 + z_2, &
 t_2 = z_0 - t_1/2, &
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 t_3 = \sin(\pi/3) (z_1 - z_2), 
+=======
+t_3 = \sin(\pi/3) (z_1 - z_2),
+>>>>>>> config
 \end{array}
 \end{equation}
 \begin{equation}
 \begin{array}{lll}
 x_0 = z_0 + t_1, &
 x_1 = t_2 + i t_3, &
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 x_2 = t_2 - i t_3. 
+=======
+x_2 = t_2 - i t_3.
+>>>>>>> config
 \end{array}
 \end{equation}
 %
@@ -2985,7 +3842,11 @@ are not unity,
 %
 \begin{eqnarray}
 \omega^{\mu\lambda'}_{p_i} &=& \omega^{(p_{i-1}/2)\lambda'}_{p_i} \\
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 &=& \exp(-i\pi\lambda'/f_i) 
+=======
+&=& \exp(-i\pi\lambda'/f_i)
+>>>>>>> config
 \end{eqnarray}
 %
 These twiddle factors introduce an additional phase which modifies the
@@ -3000,6 +3861,7 @@ t_\lambda = t^*_{f-(\lambda+1)}
 This is easily proved,
 %
 \begin{eqnarray}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 t_\lambda 
 &=& 
 \sum e^{-2\pi i \lambda\lambda'/f_i} e^{-i\pi \lambda'/f_i} r_{\lambda'} \\
@@ -3007,6 +3869,15 @@ t_{f - (\lambda + 1)}
 &=& 
 \sum e^{-2\pi i (f-\lambda-1)\lambda'/f_i} e^{-i\pi \lambda'/f_i} r_{\lambda'} \\
 &=& 
+=======
+t_\lambda
+&=&
+\sum e^{-2\pi i \lambda\lambda'/f_i} e^{-i\pi \lambda'/f_i} r_{\lambda'} \\
+t_{f - (\lambda + 1)}
+&=&
+\sum e^{-2\pi i (f-\lambda-1)\lambda'/f_i} e^{-i\pi \lambda'/f_i} r_{\lambda'} \\
+&=&
+>>>>>>> config
 \sum e^{2\pi i \lambda\lambda'/f_i} e^{i\pi \lambda'/f_i} r_{\lambda'} \\
 &=& t^*_\lambda
 \end{eqnarray}
@@ -3033,7 +3904,11 @@ For $N=2$,
 %
 \begin{equation}
 \begin{array}{ll}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 a_0 = x_0, & 
+=======
+a_0 = x_0, &
+>>>>>>> config
 b_0 = - x_1.
 \end{array}
 \end{equation}
@@ -3093,12 +3968,20 @@ t_5 = t_1 - t_3, & t_6 = x_0 + t_5 / 4,
 \end{equation}
 \begin{equation}
 \begin{array}{ll}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 t_7 = (\sqrt{5}/4)(t_1 + t_3) & 
+=======
+t_7 = (\sqrt{5}/4)(t_1 + t_3) &
+>>>>>>> config
 \end{array}
 \end{equation}
 \begin{equation}
 \begin{array}{ll}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 a_0 = t_6 + t_7, & b_0 = -\sin(2\pi/10) t_2 - \sin(2\pi/5) t_4, 
+=======
+a_0 = t_6 + t_7, & b_0 = -\sin(2\pi/10) t_2 - \sin(2\pi/5) t_4,
+>>>>>>> config
 \end{array}
 \end{equation}
 \begin{equation}
@@ -3163,8 +4046,13 @@ This gives the following algorithm using FFTPACK indexing,
        \COMMENT{DFT matrix-multiply module}
 \ENDFOR
 \FOR{$\lambda = 0 \dots f-1$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 \STATE{$v'_{(\lambda'q + b)p_{i-1} + \mu} \Leftarrow 
                \omega^{-\mu\lambda'}_{p_{i}} t_\lambda$}
+=======
+\STATE{$v'_{(\lambda'q + b)p_{i-1} + \mu} \Leftarrow
+	       \omega^{-\mu\lambda'}_{p_{i}} t_\lambda$}
+>>>>>>> config
 \ENDFOR
 
 \ENDFOR
@@ -3179,7 +4067,11 @@ this as a special case, just as we did for the forward routine. We
 start with complex module and eliminate the redundant terms. In this
 case it is the final result which has the zero imaginary part, and we
 eliminate redundant terms by using the half-complex symmetry of the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 input data. 
+=======
+input data.
+>>>>>>> config
 
 When $\mu=1 \dots p_{i-1}/2 - 1$ we have full complex transforms on
 complex data, so no simplification is possible.
@@ -3210,7 +4102,11 @@ t_1 = a_0 - a_1, & t_2 = \sqrt{3} b_1, \\
 \end{equation}
 \begin{equation}
 \begin{array}{lll}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 x_0 = 2 a_0 + a_1, & x_1 = t_1 - t_2, & x_2 = - t_1 - t_2 
+=======
+x_0 = 2 a_0 + a_1, & x_1 = t_1 - t_2, & x_2 = - t_1 - t_2
+>>>>>>> config
 \end{array}
 \end{equation}
 %
@@ -3222,7 +4118,11 @@ t_1 = \sqrt{2} (b_0 + b_1), & t_2 = \sqrt{2} (a_0 - a_1),
 \end{equation}
 \begin{equation}
 \begin{array}{ll}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 x_0 = 2(a_0 + a_1), & x_1 = t_2 - t_1 , 
+=======
+x_0 = 2(a_0 + a_1), & x_1 = t_2 - t_1 ,
+>>>>>>> config
 \end{array}
 \end{equation}
 \begin{equation}
@@ -3240,7 +4140,11 @@ t_1 = 2 (a_0 + a_1), & t_2 = t_1 / 4 - a_2,
 \end{equation}
 \begin{equation}
 \begin{array}{ll}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 t_3 = (\sqrt{5}/2) (a_0 - a_1), 
+=======
+t_3 = (\sqrt{5}/2) (a_0 - a_1),
+>>>>>>> config
 \end{array}
 \end{equation}
 \begin{equation}
@@ -3286,6 +4190,7 @@ multidimensional FFTs.
 %\section{Testing FFTs, Numerical Analysis}
 
 %\nocite{*}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 \bibliographystyle{unsrt} 
 \bibliography{fftalgorithms} 
 
@@ -3294,3 +4199,9 @@ multidimensional FFTs.
 
 
 
+=======
+\bibliographystyle{unsrt}
+\bibliography{fftalgorithms}
+
+\end{document}
+>>>>>>> config

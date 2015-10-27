@@ -1,17 +1,31 @@
 /* multiroots/newton.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -50,8 +64,13 @@ newton_alloc (void * vstate, size_t n)
   gsl_matrix * m;
 
   m = gsl_matrix_calloc (n,n);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   if (m == 0) 
+=======
+
+  if (m == 0)
+>>>>>>> config
     {
       GSL_ERROR ("failed to allocate space for lu", GSL_ENOMEM);
     }
@@ -72,7 +91,11 @@ newton_alloc (void * vstate, size_t n)
   return GSL_SUCCESS;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 static int 
+=======
+static int
+>>>>>>> config
 newton_set (void * vstate, gsl_multiroot_function_fdf * FDF, gsl_vector * x, gsl_vector * f, gsl_matrix * J, gsl_vector * dx)
 {
   newton_state_t * state = (newton_state_t *) vstate;
@@ -95,7 +118,11 @@ static int
 newton_iterate (void * vstate, gsl_multiroot_function_fdf * fdf, gsl_vector * x, gsl_vector * f, gsl_matrix * J, gsl_vector * dx)
 {
   newton_state_t * state = (newton_state_t *) vstate;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   int signum;
 
   size_t i;
@@ -107,7 +134,11 @@ newton_iterate (void * vstate, gsl_multiroot_function_fdf * fdf, gsl_vector * x,
   gsl_linalg_LU_decomp (state->lu, state->permutation, &signum);
 
   gsl_linalg_LU_solve (state->lu, state->permutation, f, dx);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
   for (i = 0; i < n; i++)
     {
       double e = gsl_vector_get (dx, i);
@@ -118,10 +149,17 @@ newton_iterate (void * vstate, gsl_multiroot_function_fdf * fdf, gsl_vector * x,
 
   {
     int status = GSL_MULTIROOT_FN_EVAL_F_DF (fdf, x, f, J);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     if (status != GSL_SUCCESS) 
       {
         return GSL_EBADFUNC;
+=======
+
+    if (status != GSL_SUCCESS)
+      {
+	return GSL_EBADFUNC;
+>>>>>>> config
       }
   }
 

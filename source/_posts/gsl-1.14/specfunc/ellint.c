@@ -1,17 +1,31 @@
 /* specfunc/ellint.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -50,7 +64,11 @@ static double locMAX4(double x, double y, double z, double w)
 
 /* based on Carlson's algorithms:
    [B. C. Carlson Numer. Math. 33, 1 (1979)]
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    
+=======
+
+>>>>>>> config
    see also:
    [B.C. Carlson, Special Functions of Applied Mathematics (1977)]
  */
@@ -63,7 +81,11 @@ static double locMAX4(double x, double y, double z, double w)
      errtol     precision
      ------     ----------
      0.001       1.0e-17
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
      0.003       2.0e-14 
+=======
+     0.003       2.0e-14
+>>>>>>> config
      0.01        2.0e-11
      0.03        2.0e-8
      0.1         2.0e-5
@@ -82,7 +104,11 @@ gsl_sf_ellint_RC_e(double x, double y, gsl_mode_t mode, gsl_sf_result * result)
   if(x < 0.0 || y < 0.0 || x + y < lolim) {
     DOMAIN_ERROR(result);
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else if(GSL_MAX(x, y) < uplim) { 
+=======
+  else if(GSL_MAX(x, y) < uplim) {
+>>>>>>> config
     const double c1 = 1.0 / 7.0;
     const double c2 = 9.0 / 22.0;
     double xn = x;
@@ -182,7 +208,11 @@ gsl_sf_ellint_RF_e(double x, double y, double z, gsl_mode_t mode, gsl_sf_result 
   else if(x+y < lolim || x+z < lolim || y+z < lolim) {
     DOMAIN_ERROR(result);
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else if(locMAX3(x,y,z) < uplim) { 
+=======
+  else if(locMAX3(x,y,z) < uplim) {
+>>>>>>> config
     const double c1 = 1.0 / 24.0;
     const double c2 = 3.0 / 44.0;
     const double c3 = 1.0 / 14.0;
@@ -270,9 +300,15 @@ gsl_sf_ellint_RJ_e(double x, double y, double z, double p, gsl_mode_t mode, gsl_
       beta = pn * (pn + lamda) * (pn + lamda);
       rcstatus = gsl_sf_ellint_RC_e(alfa, beta, mode, &rcresult);
       if(rcstatus != GSL_SUCCESS) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         result->val = 0.0;
         result->err = 0.0;
         return rcstatus;
+=======
+	result->val = 0.0;
+	result->err = 0.0;
+	return rcstatus;
+>>>>>>> config
       }
       sigma  += power4 * rcresult.val;
       power4 *= 0.25;
@@ -281,7 +317,11 @@ gsl_sf_ellint_RJ_e(double x, double y, double z, double p, gsl_mode_t mode, gsl_
       zn = (zn + lamda) * 0.25;
       pn = (pn + lamda) * 0.25;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
     ea = xndev * (yndev + zndev) + yndev * zndev;
     eb = xndev * yndev * zndev;
     ec = pndev * pndev;
@@ -310,7 +350,11 @@ gsl_sf_ellint_F_e(double phi, double k, gsl_mode_t mode, gsl_sf_result * result)
   double nc = floor(phi/M_PI + 0.5);
   double phi_red = phi - nc * M_PI;
   phi = phi_red;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   {
     double sin_phi  = sin(phi);
     double sin2_phi = sin_phi*sin_phi;
@@ -324,7 +368,11 @@ gsl_sf_ellint_F_e(double phi, double k, gsl_mode_t mode, gsl_sf_result * result)
       return status;
     } else {
       gsl_sf_result rk;  /* add extra terms from periodicity */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       const int rkstatus = gsl_sf_ellint_Kcomp_e(k, mode, &rk);  
+=======
+      const int rkstatus = gsl_sf_ellint_Kcomp_e(k, mode, &rk);
+>>>>>>> config
       result->val += 2*nc*rk.val;
       result->err += 2*fabs(nc)*rk.err;
       return GSL_ERROR_SELECT_2(status, rkstatus);
@@ -352,7 +400,11 @@ gsl_sf_ellint_E_e(double phi, double k, gsl_mode_t mode, gsl_sf_result * result)
 
     if(x < GSL_DBL_EPSILON) {
       gsl_sf_result re;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       const int status = gsl_sf_ellint_Ecomp_e(k, mode, &re);  
+=======
+      const int status = gsl_sf_ellint_Ecomp_e(k, mode, &re);
+>>>>>>> config
       /* could use A&S 17.4.14 to improve the value below */
       result->val = 2*nc*re.val + GSL_SIGN(sin_phi) * re.val;
       result->err = 2*fabs(nc)*re.err + re.err;
@@ -369,6 +421,7 @@ gsl_sf_ellint_E_e(double phi, double k, gsl_mode_t mode, gsl_sf_result * result)
       result->err += k*k/3.0 * GSL_DBL_EPSILON * fabs(sin3_phi * rd.val);
       result->err += k*k/3.0 * fabs(sin3_phi*rd.err);
       if (nc == 0) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         return GSL_ERROR_SELECT_2(rfstatus, rdstatus);
       } else {
         gsl_sf_result re;  /* add extra terms from periodicity */
@@ -376,6 +429,15 @@ gsl_sf_ellint_E_e(double phi, double k, gsl_mode_t mode, gsl_sf_result * result)
         result->val += 2*nc*re.val;
         result->err += 2*fabs(nc)*re.err;
         return GSL_ERROR_SELECT_3(rfstatus, rdstatus, restatus);
+=======
+	return GSL_ERROR_SELECT_2(rfstatus, rdstatus);
+      } else {
+	gsl_sf_result re;  /* add extra terms from periodicity */
+	const int restatus = gsl_sf_ellint_Ecomp_e(k, mode, &re);
+	result->val += 2*nc*re.val;
+	result->err += 2*fabs(nc)*re.err;
+	return GSL_ERROR_SELECT_3(rfstatus, rdstatus, restatus);
+>>>>>>> config
       }
     }
   }
@@ -414,7 +476,11 @@ gsl_sf_ellint_P_e(double phi, double k, double n, gsl_mode_t mode, gsl_sf_result
       return GSL_ERROR_SELECT_2(rfstatus, rjstatus);
     } else {
       gsl_sf_result rp;  /* add extra terms from periodicity */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       const int rpstatus = gsl_sf_ellint_Pcomp_e(k, n, mode, &rp);  
+=======
+      const int rpstatus = gsl_sf_ellint_Pcomp_e(k, n, mode, &rp);
+>>>>>>> config
       result->val += 2*nc*rp.val;
       result->err += 2*fabs(nc)*rp.err;
       return GSL_ERROR_SELECT_3(rfstatus, rjstatus, rpstatus);
@@ -449,7 +515,11 @@ gsl_sf_ellint_D_e(double phi, double k, double n, gsl_mode_t mode, gsl_sf_result
       return status;
     } else {
       gsl_sf_result rd;  /* add extra terms from periodicity */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       const int rdstatus = gsl_sf_ellint_Dcomp_e(k, mode, &rd);  
+=======
+      const int rdstatus = gsl_sf_ellint_Dcomp_e(k, mode, &rd);
+>>>>>>> config
       result->val += 2*nc*rd.val;
       result->err += 2*fabs(nc)*rd.err;
       return GSL_ERROR_SELECT_2(status, rdstatus);
@@ -494,9 +564,15 @@ gsl_sf_ellint_Kcomp_e(double k, gsl_mode_t mode, gsl_sf_result * result)
   else {
     /* This was previously computed as,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          return gsl_sf_ellint_RF_e(0.0, 1.0 - k*k, 1.0, mode, result);
 
        but this underestimated the total error for small k, since the 
+=======
+	 return gsl_sf_ellint_RF_e(0.0, 1.0 - k*k, 1.0, mode, result);
+
+       but this underestimated the total error for small k, since the
+>>>>>>> config
        argument y=1-k^2 is not exact (there is an absolute error of
        GSL_DBL_EPSILON near y=0 due to cancellation in the subtraction).
        Taking the singular behavior of -log(y) above gives an error

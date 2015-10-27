@@ -1,17 +1,31 @@
 /* ode-initval/rk4imp.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -57,7 +71,11 @@ rk4imp_alloc (size_t dim)
   if (state == 0)
     {
       GSL_ERROR_NULL ("failed to allocate space for rk4imp_state",
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                       GSL_ENOMEM);
+=======
+		      GSL_ENOMEM);
+>>>>>>> config
     }
 
   state->k1nu = (double *) malloc (dim * sizeof (double));
@@ -141,6 +159,7 @@ rk4imp_alloc (size_t dim)
 }
 
 static int
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 rk4imp_step (double *y, rk4imp_state_t *state, 
 	     const double h, const double t, 
 	     const size_t dim, const gsl_odeiv_system *sys)
@@ -152,6 +171,19 @@ rk4imp_step (double *y, rk4imp_state_t *state,
 
      Y1 = y0 + h * a11 * f(t + h * c1, Y1) + h * a12 * f(t + h * c2, Y2) 
      Y2 = y0 + h * a21 * f(t + h * c1, Y1) + h * a22 * f(t + h * c2, Y2) 
+=======
+rk4imp_step (double *y, rk4imp_state_t *state,
+	     const double h, const double t,
+	     const size_t dim, const gsl_odeiv_system *sys)
+{
+  /* Makes a Runge-Kutta 4th order implicit advance with step size h.
+     y0 is initial values of variables y.
+
+     The implicit matrix equations to solve are:
+
+     Y1 = y0 + h * a11 * f(t + h * c1, Y1) + h * a12 * f(t + h * c2, Y2)
+     Y2 = y0 + h * a21 * f(t + h * c1, Y1) + h * a22 * f(t + h * c2, Y2)
+>>>>>>> config
 
      y = y0 + h * b1 * f(t + h * c1, Y1) + h * b2 * f(t + h * c2, Y2)
 
@@ -173,12 +205,17 @@ rk4imp_step (double *y, rk4imp_state_t *state,
   /* iterative solution of Y1 and Y2.
 
      Note: This method does not check for convergence of the
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
      iterative solution! 
+=======
+     iterative solution!
+>>>>>>> config
   */
 
   for (nu = 0; nu < iter_steps; nu++)
     {
       for (i = 0; i < dim; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           ytmp1[i] =
             y[i] + h * (0.25 * k1nu[i] + 0.5 * (0.5 - ir3) * k2nu[i]);
@@ -202,11 +239,40 @@ rk4imp_step (double *y, rk4imp_state_t *state,
 	  {
 	    return s;
 	  }    
+=======
+	{
+	  ytmp1[i] =
+	    y[i] + h * (0.25 * k1nu[i] + 0.5 * (0.5 - ir3) * k2nu[i]);
+	  ytmp2[i] =
+	    y[i] + h * (0.25 * k2nu[i] + 0.5 * (0.5 + ir3) * k1nu[i]);
+	}
+      {
+	int s =
+	  GSL_ODEIV_FN_EVAL (sys, t + 0.5 * h * (1.0 - ir3), ytmp1, k1nu);
+
+	if (s != GSL_SUCCESS)
+	  {
+	    return s;
+	  }
+      }
+      {
+	int s =
+	  GSL_ODEIV_FN_EVAL (sys, t + 0.5 * h * (1.0 + ir3), ytmp2, k2nu);
+
+	if (s != GSL_SUCCESS)
+	  {
+	    return s;
+	  }
+>>>>>>> config
       }
     }
 
   /* assignment */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   for (i = 0; i < dim; i++)
     {
       const double d_i = 0.5 * (k1nu[i] + k2nu[i]);
@@ -218,6 +284,7 @@ rk4imp_step (double *y, rk4imp_state_t *state,
 
 static int
 rk4imp_apply (void *vstate,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
               size_t dim,
               double t,
               double h,
@@ -226,6 +293,16 @@ rk4imp_apply (void *vstate,
               const double dydt_in[],
               double dydt_out[], 
               const gsl_odeiv_system * sys)
+=======
+	      size_t dim,
+	      double t,
+	      double h,
+	      double y[],
+	      double yerr[],
+	      const double dydt_in[],
+	      double dydt_out[],
+	      const gsl_odeiv_system * sys)
+>>>>>>> config
 {
   rk4imp_state_t *state = (rk4imp_state_t *) vstate;
 
@@ -252,9 +329,15 @@ rk4imp_apply (void *vstate,
       int s = GSL_ODEIV_FN_EVAL (sys, t, y, k1nu);
 
       if (s != GSL_SUCCESS)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           return s;
         }
+=======
+	{
+	  return s;
+	}
+>>>>>>> config
     }
 
   DBL_MEMCPY (k2nu, k1nu, dim);
@@ -266,11 +349,16 @@ rk4imp_apply (void *vstate,
   {
     int s = rk4imp_step (y_onestep, state, h, t, dim, sys);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     if (s != GSL_SUCCESS) 
+=======
+    if (s != GSL_SUCCESS)
+>>>>>>> config
       {
 	return s;
       }
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
  /* Then with two steps with half step length (save to y) */ 
   
@@ -278,6 +366,15 @@ rk4imp_apply (void *vstate,
     int s = rk4imp_step (y, state, h/2.0, t, dim, sys);
 
     if (s != GSL_SUCCESS) 
+=======
+
+ /* Then with two steps with half step length (save to y) */
+
+  {
+    int s = rk4imp_step (y, state, h/2.0, t, dim, sys);
+
+    if (s != GSL_SUCCESS)
+>>>>>>> config
       {
 	/* Restore original y vector */
 	DBL_MEMCPY (y, y0_orig, dim);
@@ -299,17 +396,26 @@ rk4imp_apply (void *vstate,
   }
 
   DBL_MEMCPY (k2nu, k1nu, dim);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   {
     int s = rk4imp_step (y, state, h/2.0, t + h/2.0, dim, sys);
 
     if (s != GSL_SUCCESS) 
+=======
+
+  {
+    int s = rk4imp_step (y, state, h/2.0, t + h/2.0, dim, sys);
+
+    if (s != GSL_SUCCESS)
+>>>>>>> config
       {
 	/* Restore original y vector */
 	DBL_MEMCPY (y, y0_orig, dim);
 	return s;
       }
   }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   /* Derivatives at output */
   
@@ -317,10 +423,20 @@ rk4imp_apply (void *vstate,
     {
       int s = GSL_ODEIV_FN_EVAL (sys, t + h, y, dydt_out);
       
+=======
+
+  /* Derivatives at output */
+
+  if (dydt_out != NULL)
+    {
+      int s = GSL_ODEIV_FN_EVAL (sys, t + h, y, dydt_out);
+
+>>>>>>> config
       if (s != GSL_SUCCESS) {
 	/* Restore original y vector */
 	DBL_MEMCPY (y, y0_orig, dim);
 	return s;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       } 
     }
     
@@ -335,6 +451,22 @@ rk4imp_apply (void *vstate,
       yerr[i] = 8.0 * 0.5 * (y[i] - y_onestep[i]) / 15.0;
     }
   
+=======
+      }
+    }
+
+  /* Error estimation */
+
+  /* Denominator in step doubling error equation
+   *  yerr = 0.5 * | y(onestep) - y(twosteps) | / (2^order - 1)
+   */
+
+  for (i = 0; i < dim; i++)
+    {
+      yerr[i] = 8.0 * 0.5 * (y[i] - y_onestep[i]) / 15.0;
+    }
+
+>>>>>>> config
   return GSL_SUCCESS;
 }
 

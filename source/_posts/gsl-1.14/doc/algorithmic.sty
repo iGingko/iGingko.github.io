@@ -41,6 +41,7 @@
 \def\ALC@item[#1]{%
 \if@noparitem \@donoparitem
   \else \if@inlabel \indent \par \fi
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
          \ifhmode \unskip\unskip \par \fi
          \if@newlist \if@nobreak \@nbitem \else
                         \addpenalty\@beginparpenalty
@@ -53,14 +54,33 @@
           \if@inlabel\global\@inlabelfalse \hskip -\parindent \box\@labels
              \penalty\z@ \fi
           \everypar{}}\global\@nobreakfalse
+=======
+	 \ifhmode \unskip\unskip \par \fi
+	 \if@newlist \if@nobreak \@nbitem \else
+			\addpenalty\@beginparpenalty
+			\addvspace\@topsep \addvspace{-\parskip}\fi
+	   \else \addpenalty\@itempenalty \addvspace\itemsep
+	  \fi
+    \global\@inlabeltrue
+\fi
+\everypar{\global\@minipagefalse\global\@newlistfalse
+	  \if@inlabel\global\@inlabelfalse \hskip -\parindent \box\@labels
+	     \penalty\z@ \fi
+	  \everypar{}}\global\@nobreakfalse
+>>>>>>> config
 \if@noitemarg \@noitemargfalse \if@nmbrlist \refstepcounter{\@listctr}\fi \fi
 \sbox\@tempboxa{\makelabel{#1}}%
 \global\setbox\@labels
  \hbox{\unhbox\@labels \hskip \itemindent
        \hskip -\labelwidth \hskip -\ALC@tlm
        \ifdim \wd\@tempboxa >\labelwidth
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                 \box\@tempboxa
           \else \hbox to\labelwidth {\unhbox\@tempboxa}\fi
+=======
+		\box\@tempboxa
+	  \else \hbox to\labelwidth {\unhbox\@tempboxa}\fi
+>>>>>>> config
        \hskip \ALC@tlm}\ignorespaces}
 %
 \newenvironment{algorithmic}[1][0]{
@@ -77,7 +97,11 @@
 \let\@listvii\@listi
   \newenvironment{ALC@g}{
     \begin{list}{\ALC@lno}{ \itemsep\z@ \itemindent\z@
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     \listparindent\z@ \rightmargin\z@ 
+=======
+    \listparindent\z@ \rightmargin\z@
+>>>>>>> config
     \topsep\z@ \partopsep\z@ \parskip\z@\parsep\z@
     \leftmargin 1em
     \addtolength{\ALC@tlm}{\leftmargin}
@@ -127,7 +151,11 @@
     \newcommand{\ENDFOR}{\end{ALC@for}\ALC@it\algorithmicendfor}
     \newcommand{\ENDWHILE}{\end{ALC@whl}\ALC@it\algorithmicendwhile}
     \newcommand{\ENDLOOP}{\end{ALC@loop}\ALC@it\algorithmicendloop}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   } 
+=======
+  }
+>>>>>>> config
   \renewcommand{\@toodeep}{}
   \begin{list}{\ALC@lno}{\setcounter{ALC@line}{0}\setcounter{ALC@rem}{0}%
     \itemsep\z@ \itemindent\z@ \listparindent\z@%
@@ -141,6 +169,7 @@
   }
 }
 {\end{list}}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
 
@@ -156,3 +185,5 @@
 
 
 
+=======
+>>>>>>> config

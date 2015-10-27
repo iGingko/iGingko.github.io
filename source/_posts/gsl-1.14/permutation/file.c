@@ -1,17 +1,31 @@
 /* permutation/file.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -32,12 +46,20 @@ gsl_permutation_fread (FILE * stream, gsl_permutation * p)
   size_t * data = p->data ;
 
   size_t items = fread (data, sizeof (size_t), n, stream);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   if (items != n)
     {
       GSL_ERROR ("fread failed", GSL_EFAILED);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       
+=======
+
+>>>>>>> config
   return GSL_SUCCESS;
 }
 
@@ -47,9 +69,15 @@ gsl_permutation_fwrite (FILE * stream, const gsl_permutation * p)
   size_t n = p->size ;
 
   size_t * data = p->data ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   size_t items = fwrite (data, sizeof (size_t), n, stream);
   
+=======
+
+  size_t items = fwrite (data, sizeof (size_t), n, stream);
+
+>>>>>>> config
   if (items != n)
     {
       GSL_ERROR ("fwrite failed", GSL_EFAILED);
@@ -62,9 +90,15 @@ int
 gsl_permutation_fprintf (FILE * stream, const gsl_permutation * p, const char *format)
 {
   size_t n = p->size ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   size_t * data = p->data ;
   
+=======
+
+  size_t * data = p->data ;
+
+>>>>>>> config
   size_t i;
 
   for (i = 0; i < n; i++)
@@ -72,9 +106,15 @@ gsl_permutation_fprintf (FILE * stream, const gsl_permutation * p, const char *f
       int status = fprintf (stream, format, data[i]);
 
       if (status < 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           GSL_ERROR ("fprintf failed", GSL_EFAILED);
         }
+=======
+	{
+	  GSL_ERROR ("fprintf failed", GSL_EFAILED);
+	}
+>>>>>>> config
     }
 
   return GSL_SUCCESS;
@@ -84,13 +124,18 @@ int
 gsl_permutation_fscanf (FILE * stream, gsl_permutation * p)
 {
   size_t n = p->size ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   size_t * data = p->data ;
 
   size_t i;
 
   for (i = 0; i < n; i++)
     {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       unsigned long j ;  
 
       /* FIXME: what if size_t != unsigned long ??? 
@@ -104,10 +149,28 @@ gsl_permutation_fscanf (FILE * stream, gsl_permutation * p)
         {
           GSL_ERROR ("fscanf failed", GSL_EFAILED);
         }
+=======
+      unsigned long j ;
+
+      /* FIXME: what if size_t != unsigned long ???
+
+	 want read in size_t but have to read in unsigned long to avoid
+	 error from compiler */
+
+      int status = fscanf (stream, IN_FORMAT, &j);
+
+      if (status != 1)
+	{
+	  GSL_ERROR ("fscanf failed", GSL_EFAILED);
+	}
+>>>>>>> config
 
       data[i] = j;
     }
 
   return GSL_SUCCESS;
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

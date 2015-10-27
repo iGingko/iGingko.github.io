@@ -31,6 +31,7 @@ main (int argc, char **argv)
     {
       abscoeff[i] = fabs (data[i]);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   gsl_sort_index (p, abscoeff, 1, n);
   
@@ -39,11 +40,25 @@ main (int argc, char **argv)
   
   gsl_wavelet_transform_inverse (w, data, 1, n, work);
   
+=======
+
+  gsl_sort_index (p, abscoeff, 1, n);
+
+  for (i = 0; (i + nc) < n; i++)
+    data[p[i]] = 0;
+
+  gsl_wavelet_transform_inverse (w, data, 1, n, work);
+
+>>>>>>> config
   for (i = 0; i < n; i++)
     {
       printf ("%g\n", data[i]);
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   gsl_wavelet_free (w);
   gsl_wavelet_workspace_free (work);
 

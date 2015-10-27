@@ -1,17 +1,31 @@
 /* min/gsl_min.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007, 2009 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007, 2009 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -59,6 +73,7 @@ gsl_min_fminimizer;
 
 gsl_min_fminimizer *
 gsl_min_fminimizer_alloc (const gsl_min_fminimizer_type * T) ;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                       
 void gsl_min_fminimizer_free (gsl_min_fminimizer * s);
 
@@ -71,6 +86,20 @@ int gsl_min_fminimizer_set_with_values (gsl_min_fminimizer * s,
                                         double x_minimum, double f_minimum,
                                         double x_lower, double f_lower,
                                         double x_upper, double f_upper);
+=======
+
+void gsl_min_fminimizer_free (gsl_min_fminimizer * s);
+
+int gsl_min_fminimizer_set (gsl_min_fminimizer * s,
+			    gsl_function * f, double x_minimum,
+			    double x_lower, double x_upper);
+
+int gsl_min_fminimizer_set_with_values (gsl_min_fminimizer * s,
+					gsl_function * f,
+					double x_minimum, double f_minimum,
+					double x_lower, double f_lower,
+					double x_upper, double f_upper);
+>>>>>>> config
 
 int gsl_min_fminimizer_iterate (gsl_min_fminimizer * s);
 
@@ -95,6 +124,7 @@ GSL_VAR const gsl_min_fminimizer_type  * gsl_min_fminimizer_quad_golden;
 
 typedef
 int (*gsl_min_bracketing_function)(gsl_function *f,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                    double *x_minimum,double * f_minimum,
                                    double *x_lower, double * f_lower,
                                    double *x_upper, double * f_upper,
@@ -105,6 +135,18 @@ gsl_min_find_bracket(gsl_function *f,double *x_minimum,double * f_minimum,
                      double *x_lower, double * f_lower,
                      double *x_upper, double * f_upper,
                      size_t eval_max);
+=======
+				   double *x_minimum,double * f_minimum,
+				   double *x_lower, double * f_lower,
+				   double *x_upper, double * f_upper,
+				   size_t eval_max);
+
+int
+gsl_min_find_bracket(gsl_function *f,double *x_minimum,double * f_minimum,
+		     double *x_lower, double * f_lower,
+		     double *x_upper, double * f_upper,
+		     size_t eval_max);
+>>>>>>> config
 
 __END_DECLS
 

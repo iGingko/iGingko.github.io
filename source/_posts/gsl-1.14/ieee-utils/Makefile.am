@@ -1,4 +1,8 @@
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 noinst_LTLIBRARIES = libgslieeeutils.la 
+=======
+noinst_LTLIBRARIES = libgslieeeutils.la
+>>>>>>> config
 
 pkginclude_HEADERS = gsl_ieee_utils.h
 

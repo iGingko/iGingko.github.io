@@ -14,6 +14,7 @@ The functions described in this section are declared in the header file
 @file{gsl_qrng.h}.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Quasi-random number generator initialization::  
 * Sampling from a quasi-random number generator::  
 * Auxiliary quasi-random number generator functions::  
@@ -21,6 +22,15 @@ The functions described in this section are declared in the header file
 * Quasi-random number generator algorithms::  
 * Quasi-random number generator examples::  
 * Quasi-random number references::  
+=======
+* Quasi-random number generator initialization::
+* Sampling from a quasi-random number generator::
+* Auxiliary quasi-random number generator functions::
+* Saving and resorting quasi-random number generator state::
+* Quasi-random number generator algorithms::
+* Quasi-random number generator examples::
+* Quasi-random number references::
+>>>>>>> config
 @end menu
 
 @node Quasi-random number generator initialization
@@ -62,7 +72,11 @@ dimension of the generator.  The point @var{x} will lie in the range
 
 @deftypefun {const char *} gsl_qrng_name (const gsl_qrng * @var{q})
 This function returns a pointer to the name of the generator.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @end deftypefun 
+=======
+@end deftypefun
+>>>>>>> config
 
 @deftypefun size_t gsl_qrng_size (const gsl_qrng * @var{q})
 @deftypefunx {void *} gsl_qrng_state (const gsl_qrng * @var{q})
@@ -146,7 +160,11 @@ $ ./a.out
 
 @noindent
 It can be seen that successive points progressively fill-in the spaces
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 between previous points. 
+=======
+between previous points.
+>>>>>>> config
 
 @iftex
 @need 4000
@@ -155,7 +173,11 @@ The following plot shows the distribution in the x-y plane of the first
 @sp 1
 @center @image{qrng,3.4in}
 @sp 1
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @center Distribution of the first 1024 points 
+=======
+@center Distribution of the first 1024 points
+>>>>>>> config
 @center from the quasi-random Sobol sequence
 @end iftex
 
@@ -171,4 +193,7 @@ to Generate Niederreiter's Low-discrepancy Sequences'', @cite{ACM
 Transactions on Mathematical Software}, Vol.@: 20, No.@: 4, December, 1994,
 p.@: 494--495.
 @end itemize
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

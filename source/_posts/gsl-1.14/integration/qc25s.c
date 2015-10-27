@@ -1,17 +1,31 @@
 /* integration/qc25s.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -31,7 +45,11 @@ static double fn_qaws_R (double x, void *params);
 
 static void
 compute_result (const double * r, const double * cheb12, const double * cheb24,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                 double * result12, double * result24);
+=======
+		double * result12, double * result24);
+>>>>>>> config
 
 
 static void
@@ -46,14 +64,22 @@ qc25s (gsl_function * f, double a, double b, double a1, double b1,
 {
   gsl_function weighted_function;
   struct fn_qaws_params fn_params;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   fn_params.function = f;
   fn_params.a = a;
   fn_params.b = b;
   fn_params.table = t;
 
   weighted_function.params = &fn_params;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
+=======
+
+>>>>>>> config
   if (a1 == a && (t->alpha != 0.0 || t->mu != 0))
     {
       double cheb12[13], cheb24[25];
@@ -65,6 +91,7 @@ qc25s (gsl_function * f, double a, double b, double a1, double b1,
       gsl_integration_qcheb (&weighted_function, a1, b1, cheb12, cheb24);
 
       if (t->mu == 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double res12 = 0, res24 = 0;
           double u = factor;
@@ -88,6 +115,31 @@ qc25s (gsl_function * f, double a, double b, double a1, double b1,
           *result = u * res24a + v * res24b;
           *abserr = fabs(u * (res24a - res12a)) + fabs(v * (res24b - res12b));
         }
+=======
+	{
+	  double res12 = 0, res24 = 0;
+	  double u = factor;
+
+	  compute_result (t->ri, cheb12, cheb24, &res12, &res24);
+
+	  *result = u * res24;
+	  *abserr = fabs(u * (res24 - res12));
+	}
+      else
+	{
+	  double res12a = 0, res24a = 0;
+	  double res12b = 0, res24b = 0;
+
+	  double u = factor * log(b1 - a1);
+	  double v = factor;
+
+	  compute_result (t->ri, cheb12, cheb24, &res12a, &res24a);
+	  compute_result (t->rg, cheb12, cheb24, &res12b, &res24b);
+
+	  *result = u * res24a + v * res24b;
+	  *abserr = fabs(u * (res24a - res12a)) + fabs(v * (res24b - res12b));
+	}
+>>>>>>> config
 
       *err_reliable = 0;
 
@@ -103,6 +155,7 @@ qc25s (gsl_function * f, double a, double b, double a1, double b1,
       gsl_integration_qcheb (&weighted_function, a1, b1, cheb12, cheb24);
 
       if (t->nu == 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           double res12 = 0, res24 = 0;
           double u = factor;
@@ -126,6 +179,31 @@ qc25s (gsl_function * f, double a, double b, double a1, double b1,
           *result = u * res24a + v * res24b;
           *abserr = fabs(u * (res24a - res12a)) + fabs(v * (res24b - res12b));
         }
+=======
+	{
+	  double res12 = 0, res24 = 0;
+	  double u = factor;
+
+	  compute_result (t->rj, cheb12, cheb24, &res12, &res24);
+
+	  *result = u * res24;
+	  *abserr = fabs(u * (res24 - res12));
+	}
+      else
+	{
+	  double res12a = 0, res24a = 0;
+	  double res12b = 0, res24b = 0;
+
+	  double u = factor * log(b1 - a1);
+	  double v = factor;
+
+	  compute_result (t->rj, cheb12, cheb24, &res12a, &res24a);
+	  compute_result (t->rh, cheb12, cheb24, &res12b, &res24b);
+
+	  *result = u * res24a + v * res24b;
+	  *abserr = fabs(u * (res24a - res12a)) + fabs(v * (res24b - res12b));
+	}
+>>>>>>> config
 
       *err_reliable = 0;
 
@@ -136,6 +214,7 @@ qc25s (gsl_function * f, double a, double b, double a1, double b1,
       double resabs, resasc;
 
       weighted_function.function = &fn_qaws;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
       gsl_integration_qk15 (&weighted_function, a1, b1, result, abserr,
                             &resabs, &resasc);
@@ -148,6 +227,20 @@ qc25s (gsl_function * f, double a, double b, double a1, double b1,
         {
           *err_reliable = 1;
         }
+=======
+
+      gsl_integration_qk15 (&weighted_function, a1, b1, result, abserr,
+			    &resabs, &resasc);
+
+      if (*abserr == resasc)
+	{
+	  *err_reliable = 0;
+	}
+      else
+	{
+	  *err_reliable = 1;
+	}
+>>>>>>> config
 
       return;
     }
@@ -162,7 +255,11 @@ fn_qaws (double x, void *params)
   gsl_integration_qaws_table *t = p->table;
 
   double factor = 1.0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   if (t->alpha != 0.0)
     factor *= pow(x - p->a, t->alpha);
 
@@ -186,7 +283,11 @@ fn_qaws_L (double x, void *params)
   gsl_integration_qaws_table *t = p->table;
 
   double factor = 1.0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   if (t->alpha != 0.0)
     factor *= pow(x - p->a, t->alpha);
 
@@ -204,7 +305,11 @@ fn_qaws_R (double x, void *params)
   gsl_integration_qaws_table *t = p->table;
 
   double factor = 1.0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   if (t->beta != 0.0)
     factor *= pow(p->b - x, t->beta);
 
@@ -217,22 +322,38 @@ fn_qaws_R (double x, void *params)
 
 static void
 compute_result (const double * r, const double * cheb12, const double * cheb24,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                 double * result12, double * result24)
+=======
+		double * result12, double * result24)
+>>>>>>> config
 {
   size_t i;
   double res12 = 0;
   double res24 = 0;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   for (i = 0; i < 13; i++)
     {
       res12 += r[i] * cheb12[i];
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   for (i = 0; i < 25; i++)
     {
       res24 += r[i] * cheb24[i];
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   *result12 = res12;
   *result24 = res24;
 }

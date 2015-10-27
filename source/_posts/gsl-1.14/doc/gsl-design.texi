@@ -31,6 +31,7 @@ Documentation License''.
 @title GNU Scientific Library -- Design document
 @comment @subtitle Edition @value{EDITION}, for gsl Version @value{VERSION}
 @comment @subtitle @value{UPDATED}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @author Mark Galassi 
 Los Alamos National Laboratory
 
@@ -38,6 +39,15 @@ Los Alamos National Laboratory
 Astrophysics and Radiation Measurements Group, Los Alamos National Laboratory
 
 @author Brian Gough 
+=======
+@author Mark Galassi
+Los Alamos National Laboratory
+
+@author James Theiler
+Astrophysics and Radiation Measurements Group, Los Alamos National Laboratory
+
+@author Brian Gough
+>>>>>>> config
 Network Theory Limited
 
 @page
@@ -88,12 +98,21 @@ provide something which is generally useful, and the library is aimed at
 general users rather than specialists.
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Motivation::                  
 * Contributing::                
 * Design::                      
 * Bibliography::                
 * Copying::                     
 * GNU Free Documentation License::  
+=======
+* Motivation::
+* Contributing::
+* Design::
+* Bibliography::
+* Copying::
+* GNU Free Documentation License::
+>>>>>>> config
 @end menu
 
 @node Motivation, Contributing, Top, Top
@@ -202,7 +221,11 @@ been released under the GPL.
 Wolfgang Hoschek.  It is under a BSD-style license.
 
 The long-term goal will be to provide a framework to which the real
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 numerical experts (or their graduate students) will contribute. 
+=======
+numerical experts (or their graduate students) will contribute.
+>>>>>>> config
 
 @node  Contributing, Design, Motivation, Top
 @chapter Contributing
@@ -226,7 +249,11 @@ author, as in other free software projects (such as the Perl CPAN
 archive and TeX CTAN archive, etc).
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Packages::                    
+=======
+* Packages::
+>>>>>>> config
 @end menu
 
 @node Packages,  , Contributing, Contributing
@@ -307,6 +334,7 @@ number generators can be found at
 @chapter Design
 
 @menu
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Language for implementation::  
 * Interface to other languages::  
 * What routines are implemented::  
@@ -349,6 +377,50 @@ number generators can be found at
 * Parallelism::                 
 * Precision::                   
 * Miscellaneous::               
+=======
+* Language for implementation::
+* Interface to other languages::
+* What routines are implemented::
+* What routines are not implemented::
+* Design of  Numerical Libraries::
+* Code Reuse::
+* Standards and conventions::
+* Background and Preparation::
+* Choice of Algorithms::
+* Documentation::
+* Namespace::
+* Header files::
+* Target system::
+* Function Names::
+* Object-orientation::
+* Comments::
+* Minimal structs::
+* Algorithm decomposition::
+* Memory allocation and ownership::
+* Memory layout::
+* Linear Algebra Levels::
+* Error estimates::
+* Exceptions and Error handling::
+* Persistence::
+* Using Return Values::
+* Variable Names::
+* Datatype widths::
+* size_t::
+* Arrays vs Pointers::
+* Pointers::
+* Constness::
+* Pseudo-templates::
+* Arbitrary Constants::
+* Test suites::
+* Compilation::
+* Thread-safety::
+* Legal issues::
+* Non-UNIX portability::
+* Compatibility with other libraries::
+* Parallelism::
+* Precision::
+* Miscellaneous::
+>>>>>>> config
 @end menu
 
 @node Language for implementation, Interface to other languages, Design, Design
@@ -384,7 +456,11 @@ sense to prioritize and write code for the most important areas first.
 
 @c What I (jt) envision for this section is a collection of routines for
 @c reliable and accurate (but not necessarily fast or efficient) estimation
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @c of values for special functions, explicitly using Taylor series, asymptotic 
+=======
+@c of values for special functions, explicitly using Taylor series, asymptotic
+>>>>>>> config
 @c expansions, continued fraction expansions, etc.  As well as these routines,
 @c fast approximations will also be provided, primarily based on Chebyschev
 @c polynomials and ratios of polynomials.  In this vision, the approximations
@@ -520,7 +596,11 @@ version then so be it.  It is not worthwhile making the library
 over-complicated.  There are numerical libraries in other languages, and
 if people need the features of those languages it would be sensible for
 them to use the corresponding libraries, rather than coercing a C
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 library into doing that job.  
+=======
+library into doing that job.
+>>>>>>> config
 
 It should be borne in mind at all time that C is a macro-assembler.  If
 you are in doubt about something being too complicated ask yourself the
@@ -530,7 +610,11 @@ is obviously "No" then do not try to include it in GSL. [BJG]
 It will be useful to read the following papers,
 
 @itemize @w{}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @item 
+=======
+@item
+>>>>>>> config
 Kiem-Phong Vo, ``The Discipline and Method Architecture for Reusable
 Libraries'', Software - Practice & Experience, v.30, pp.107-128, 2000.
 @end itemize
@@ -588,7 +672,11 @@ sci.math.num-analysis and the web in general. This should also provide
 you with a list of existing proprietary libraries which are relevant,
 keep a note of these for future reference in step 2.
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @item 
+=======
+@item
+>>>>>>> config
 make a comparative survey of existing implementations in the
 commercial/free libraries. Examine the typical APIs, methods of
 communication between program and subroutine, and classify them so that
@@ -687,7 +775,11 @@ copies of papers.
 
 @c And we furthermore promise to try as hard as possible to document
 @c the software: this will ideally involve discussion of why you might want
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @c to use it, what precisely it does, how precisely to invoke it, 
+=======
+@c to use it, what precisely it does, how precisely to invoke it,
+>>>>>>> config
 @c how more-or-less it works, and where we learned about the algorithm,
 @c and (unless we wrote it from scratch) where we got the code.
 @c We do not plan to write this entire package from scratch, but to cannibalize
@@ -709,7 +801,11 @@ documentation.
 Note that you cannot use the special characters @{ and @}
 inside the @code{@@math} command because these conflict between TeX
 and Texinfo.  This is a problem if you want to write something like
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @code{\sqrt@{x+y@}}.  
+=======
+@code{\sqrt@{x+y@}}.
+>>>>>>> config
 
 To work around it you can preceed the math command with a special
 macro @code{@@c} which contains the explicit TeX commands you want to
@@ -717,7 +813,11 @@ use (no restrictions), and put an ASCII approximation into the
 @code{@@math} command (you can write @code{@@@{} and
 @code{@@@}} there for the left and right braces).  The explicit TeX
 commands are used in the TeX ouput and the argument of @code{@@math}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 in the plain info output.  
+=======
+in the plain info output.
+>>>>>>> config
 
 Note that the @code{@@c@{@}} macro must go at the end of the
 preceeding line, because everything else after it is ignored---as far
@@ -735,7 +835,11 @@ this is a test @@c@{$\sqrt@{x+y@}$@}
 
 @noindent
 is equivalent to @code{this is a test $\sqrt@{x+y@}$} in plain TeX
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 and @code{this is a test @@math@{\sqrt@@@{x+y@@@}@}} in Info.  
+=======
+and @code{this is a test @@math@{\sqrt@@@{x+y@@@}@}} in Info.
+>>>>>>> config
 
 It looks nicer if some of the more cryptic TeX commands are given
 a C-style ascii version, e.g.
@@ -811,10 +915,17 @@ easy in portable ANSI C.  The use of casting or other tricks to simulate
 inheritance is not desirable, and the user should not have to be aware
 of anything like that.  This means many types of patterns are ruled
 out.  However, this is not considered a problem -- they are too
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 complicated for the library.  
 
 Note: it is possible to define an abstract base class easily in C, using
 function pointers.  See the rng directory for an example. 
+=======
+complicated for the library.
+
+Note: it is possible to define an abstract base class easily in C, using
+function pointers.  See the rng directory for an example.
+>>>>>>> config
 
 When reimplementing public domain fortran code, please try to introduce
 the appropriate object concepts as structs, rather than translating the
@@ -881,7 +992,11 @@ call-backs or using flags to control whether the function prints out
 intermediate results.  In fact, call-backs should not be used -- if they
 seem necessary then it's a sign that the algorithm should be broken down
 further into individual components so that the user has complete control
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 over them.  
+=======
+over them.
+>>>>>>> config
 
 For example, when solving a differential equation the user may need to
 be able to advance the solution by individual steps, while tracking a
@@ -915,7 +1030,11 @@ rather than derived from other structs.
 
 We use flat blocks of memory to store matrices and vectors, not C-style
 pointer-to-pointer arrays.  The matrices are stored in row-major order
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 -- i.e. the column index (second index) moves continuously through memory. 
+=======
+-- i.e. the column index (second index) moves continuously through memory.
+>>>>>>> config
 
 @node Linear Algebra Levels, Error estimates, Memory layout, Design
 @section Linear Algebra Levels
@@ -928,7 +1047,11 @@ program, without needing to invoke all the gsl_vector machinery.
 
 The philosophy here is to minimize the learning curve. If someone only
 needs to use one function, like an fft, they can do so without having
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 to learn about gsl_vector.  
+=======
+to learn about gsl_vector.
+>>>>>>> config
 
 This leads to the question of why we don't do the same for matrices.
 In that case the argument list gets too long and confusing, with
@@ -966,12 +1089,20 @@ in practice.
 The basic error handling procedure is the return code (see gsl_errno.h
 for a list of allowed values).  Use the GSL_ERROR macro to mark an
 error.  The current definition of this macro is not ideal but it can be
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 changed at compile time. 
+=======
+changed at compile time.
+>>>>>>> config
 
 You should always use the GSL_ERROR macro to indicate an error, rather
 than just returning an error code. The macro allows the user to trap
 errors using the debugger (by setting a breakpoint on the function
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 gsl_error).  
+=======
+gsl_error).
+>>>>>>> config
 
 The only circumstances where GSL_ERROR should not be used are where the
 return value is "indicative" rather than an error -- for example, the
@@ -1064,12 +1195,17 @@ Try to follow existing conventions for variable names,
 @item dim
 number of dimensions
 @item w
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 pointer to workspace 
+=======
+pointer to workspace
+>>>>>>> config
 @item state
 pointer to state variable (use @code{s} if you need to save characters)
 @item result
 pointer to result (output variable)
 @item abserr
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 absolute error 
 @item relerr
 relative error
@@ -1079,6 +1215,17 @@ absolute tolerance
 relative tolerance
 @item size
 the size of an array or vector e.g. double array[size] 
+=======
+absolute error
+@item relerr
+relative error
+@item epsabs
+absolute tolerance
+@item epsrel
+relative tolerance
+@item size
+the size of an array or vector e.g. double array[size]
+>>>>>>> config
 @item stride
 the stride of a vector
 @item size1
@@ -1106,7 +1253,11 @@ the ANSI standard rather than a specific platform.
 
 All objects (blocks of memory, etc) should be measured in terms of a
 @code{size_t} type.  Therefore any iterations (e.g. @code{for(i=0; i<N;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 i++)}) should also use an index of type @code{size_t}.  
+=======
+i++)}) should also use an index of type @code{size_t}.
+>>>>>>> config
 
 Don't mix @code{int} and @code{size_t}.  They are @emph{not}
 interchangeable.
@@ -1168,6 +1319,7 @@ required to be unity, the pointer form is preferred.
 
 @smallexample
 /* real value, set on output */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 int foo (double * x);                           
 
 /* real vector, modified */
@@ -1181,6 +1333,21 @@ int bar (double x[], size_t n);
 
 /* real array, not modified */
 int baz (const double x[], size_t n);           
+=======
+int foo (double * x);
+
+/* real vector, modified */
+int foo (double * x, size_t stride, size_t n);
+
+/* constant real vector */
+int foo (const double * x, size_t stride, size_t n);
+
+/* real array, modified */
+int bar (double x[], size_t n);
+
+/* real array, not modified */
+int baz (const double x[], size_t n);
+>>>>>>> config
 @end smallexample
 
 @node  Pointers, Constness, Arrays vs Pointers, Design
@@ -1204,7 +1371,11 @@ while (fabs (f) < 0.5)
 is better written as,
 
 @example
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @{ 
+=======
+@{
+>>>>>>> config
   int p = *e;
 
   while (fabs(f) < 0.5)
@@ -1245,7 +1416,11 @@ produced by an 8-bit counter.
 All other functions can use double, for floating point, or the
 appropriate integer type for integers (e.g. unsigned long int for random
 numbers).  It is not the intention to provide a fully templated version
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 of the library. 
+=======
+of the library.
+>>>>>>> config
 
 That would be "putting a quart into a pint pot". To summarize, almost
 everything should be in a "natural type" which is appropriate for
@@ -1289,7 +1464,11 @@ This should be rewritten as,
 @end example
 
 @noindent
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 in order to allow the user to determine whether the residual is 
+=======
+in order to allow the user to determine whether the residual is
+>>>>>>> config
 significant or not.
 
 The only place where it is acceptable to use constants like
@@ -1326,7 +1505,11 @@ such as 1 or 0 may not reveal bugs.  For example, a test using a value
 of @math{x=1} will not pick up a missing factor of @math{x} in the code.
 Similarly, a test using a value of @math{x=0} will not pick any missing
 terms involving @math{x} in the code.  Use values like @math{2.385} to
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 avoid silent failures. 
+=======
+avoid silent failures.
+>>>>>>> config
 
 If your test uses multiple values make sure there are no simple
 relations between them that could allow bugs to be missed through silent
@@ -1347,9 +1530,15 @@ Make sure everything compiles cleanly.  Use the strict compilation
 options for extra checking.
 
 @smallexample
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 make CFLAGS="-ansi -pedantic -Werror -W -Wall -Wtraditional -Wconversion 
   -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings 
   -Wstrict-prototypes -fshort-enums -fno-common -Wmissing-prototypes 
+=======
+make CFLAGS="-ansi -pedantic -Werror -W -Wall -Wtraditional -Wconversion
+  -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings
+  -Wstrict-prototypes -fshort-enums -fno-common -Wmissing-prototypes
+>>>>>>> config
   -Wnested-externs -Dinline= -g -O4"
 @end smallexample
 
@@ -1397,7 +1586,11 @@ License (GPL).   This means getting a disclaimer from your employer.
 We must clearly understand ownership of existing code and algorithms.
 @item
 Each contributor can retain ownership of their code, or sign it over to
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 FSF as they prefer. 
+=======
+FSF as they prefer.
+>>>>>>> config
 
 There is a standard disclaimer in the GPL (take a look at it).  The more
 specific you make your disclaimer the more likely it is that it will be
@@ -1412,8 +1605,13 @@ legendre functions numerically in C) written by James Hacker.
 Ty Coon, President of Vice
 @end smallexample
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @item 
 Obviously: don't use or translate non-free code. 
+=======
+@item
+Obviously: don't use or translate non-free code.
+>>>>>>> config
 
 In particular don't copy or translate code from @cite{Numerical Recipes}
 or @cite{ACM TOMS}.
@@ -1422,7 +1620,11 @@ Numerical Recipes is under a strict license and is not free software.
 The publishers Cambridge University Press claim copyright on all aspects
 of the book and the code, including function names, variable names and
 ordering of mathematical subexpressions.  Routines in GSL should not
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 refer to Numerical Recipes or be based on it in any way.  
+=======
+refer to Numerical Recipes or be based on it in any way.
+>>>>>>> config
 
 The ACM algorithms published in TOMS (Transactions on Mathematical
 Software) are not public domain, even though they are distributed on the
@@ -1472,7 +1674,11 @@ separate wrapper that can be maintained and shipped separately.
 There is a separate issue of system libraries, such as BSD math library
 and functions like @code{expm1}, @code{log1p}, @code{hypot}.  The
 functions in this library are available on nearly every platform (but
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 not all).  
+=======
+not all).
+>>>>>>> config
 
 In this case, it is best to write code in terms of these native
 functions to take advantage of the vendor-supplied system library (for
@@ -1509,7 +1715,11 @@ Final tip: one perfect routine is better than any number of routines
 containing errors.
 
 @node Bibliography, Copying, Design, Top
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @chapter Bibliography 
+=======
+@chapter Bibliography
+>>>>>>> config
 
 @section General numerics
 
@@ -1520,7 +1730,11 @@ containing errors.
 Springer 1997,  ISBN 3540620583  (Vol 1) and  ISBN 3540620575  (Vol 2).
 
 @item
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @cite{Accuracy and Stability of Numerical Algorithms} by  N.J. Higham, 
+=======
+@cite{Accuracy and Stability of Numerical Algorithms} by  N.J. Higham,
+>>>>>>> config
 SIAM,  ISBN 0898715210.
 
 @item
@@ -1541,7 +1755,11 @@ Hard to find (ISBN 13578980X or 0135789982, possibly others).
 
 @item
 @cite{Real Computing Made Real: Preventing Errors in Scientific and Engineering Calculations} by Forman S. Acton,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  ISBN 0486442217. 
+=======
+ ISBN 0486442217.
+>>>>>>> config
 @end itemize
 
 @section Reference

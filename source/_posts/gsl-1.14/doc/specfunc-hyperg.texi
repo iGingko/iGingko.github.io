@@ -8,7 +8,11 @@ Hypergeometric functions are described in Abramowitz & Stegun, Chapters
 @deftypefun double gsl_sf_hyperg_0F1 (double @var{c}, double @var{x})
 @deftypefunx int gsl_sf_hyperg_0F1_e (double @var{c}, double @var{x}, gsl_sf_result * @var{result})
 These routines compute the hypergeometric function @c{${}_0F_1(c,x)$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{0F1(c,x)}.  
+=======
+@math{0F1(c,x)}.
+>>>>>>> config
 @comment It is related to Bessel functions
 @comment 0F1[c,x] =
 @comment   Gamma[c]    x^(1/2(1-c)) I_(c-1)(2 Sqrt[x])
@@ -21,7 +25,11 @@ These routines compute the hypergeometric function @c{${}_0F_1(c,x)$}
 These routines compute the confluent hypergeometric function
 @c{${}_1F_1(m,n,x) = M(m,n,x)$}
 @math{1F1(m,n,x) = M(m,n,x)} for integer parameters @var{m}, @var{n}.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @comment exceptions: 
+=======
+@comment exceptions:
+>>>>>>> config
 @end deftypefun
 
 @deftypefun double gsl_sf_hyperg_1F1 (double @var{a}, double @var{b}, double @var{x})
@@ -54,15 +62,25 @@ These routines compute the confluent hypergeometric function @math{U(a,b,x)}.
 @deftypefun int gsl_sf_hyperg_U_e10_e (double @var{a}, double @var{b}, double @var{x}, gsl_sf_result_e10 * @var{result})
 This routine computes the confluent hypergeometric function
 @math{U(a,b,x)} using the @code{gsl_sf_result_e10} type to return a
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 result with extended range. 
+=======
+result with extended range.
+>>>>>>> config
 @comment exceptions:
 @end deftypefun
 
 @deftypefun double gsl_sf_hyperg_2F1 (double @var{a}, double @var{b}, double @var{c}, double @var{x})
 @deftypefunx int gsl_sf_hyperg_2F1_e (double @var{a}, double @var{b}, double @var{c}, double @var{x}, gsl_sf_result * @var{result})
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 These routines compute the Gauss hypergeometric function 
 @c{${}_2F_1(a,b,c,x) = F(a,b,c,x)$}
 @math{2F1(a,b,c,x) = F(a,b,c,x)} for @math{|x| < 1}.  
+=======
+These routines compute the Gauss hypergeometric function
+@c{${}_2F_1(a,b,c,x) = F(a,b,c,x)$}
+@math{2F1(a,b,c,x) = F(a,b,c,x)} for @math{|x| < 1}.
+>>>>>>> config
 
 If the arguments @math{(a,b,c,x)} are too close to a singularity then
 the function can return the error code @code{GSL_EMAXITER} when the
@@ -75,7 +93,11 @@ series approximation converges too slowly.  This occurs in the region of
 @deftypefunx int gsl_sf_hyperg_2F1_conj_e (double @var{aR}, double @var{aI}, double @var{c}, double @var{x}, gsl_sf_result * @var{result})
 These routines compute the Gauss hypergeometric function
 @c{${}_2F_1(a_R + i a_I, aR - i aI, c, x)$}
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 @math{2F1(a_R + i a_I, a_R - i a_I, c, x)} with complex parameters 
+=======
+@math{2F1(a_R + i a_I, a_R - i a_I, c, x)} with complex parameters
+>>>>>>> config
 for @math{|x| < 1}.
 @end deftypefun
 
@@ -100,7 +122,11 @@ These routines compute the renormalized Gauss hypergeometric function
 These routines compute the hypergeometric function @c{${}_2F_0(a,b,x)$}
 @math{2F0(a,b,x)}.  The series representation
 is a divergent hypergeometric series.  However, for @math{x < 0} we
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 have 
+=======
+have
+>>>>>>> config
 @c{${}_2F_0(a,b,x) = (-1/x)^a U(a,1+a-b,-1/x)$}
 @math{2F0(a,b,x) = (-1/x)^a U(a,1+a-b,-1/x)}
 @comment exceptions: GSL_EDOM

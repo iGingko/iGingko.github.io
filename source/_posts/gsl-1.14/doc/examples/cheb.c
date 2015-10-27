@@ -14,7 +14,11 @@ f (double x, void *p)
 int
 main (void)
 {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   int i, n = 10000; 
+=======
+  int i, n = 10000;
+>>>>>>> config
 
   gsl_cheb_series *cs = gsl_cheb_alloc (40);
 
@@ -30,8 +34,13 @@ main (void)
       double x = i / (double)n;
       double r10 = gsl_cheb_eval_n (cs, 10, x);
       double r40 = gsl_cheb_eval (cs, x);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       printf ("%g %g %g %g\n", 
               x, GSL_FN_EVAL (&F, x), r10, r40);
+=======
+      printf ("%g %g %g %g\n",
+	      x, GSL_FN_EVAL (&F, x), r10, r40);
+>>>>>>> config
     }
 
   gsl_cheb_free (cs);

@@ -1,17 +1,31 @@
 /* rng/ranlxd.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -22,7 +36,11 @@
 #include <gsl/gsl_rng.h>
 
 /* This is an implementation of Martin Luescher's second generation
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
    double-precision (48-bit) version of the RANLUX generator. 
+=======
+   double-precision (48-bit) version of the RANLUX generator.
+>>>>>>> config
 
    Thanks to Martin Luescher for providing information on this
    generator.
@@ -40,6 +58,7 @@ static const int next[12] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0};
 static const double one_bit = 1.0 / 281474976710656.0;  /* 1/2^48 */
 
 #define RANLUX_STEP(x1,x2,i1,i2,i3)      \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
           x1=xdbl[i1] - xdbl[i2];        \
           if (x2 < 0)                    \
           {                              \
@@ -51,6 +70,19 @@ static const double one_bit = 1.0 / 281474976710656.0;  /* 1/2^48 */
 typedef struct
   {
     double xdbl[12]; 
+=======
+	  x1=xdbl[i1] - xdbl[i2];        \
+	  if (x2 < 0)                    \
+	  {                              \
+	    x1-=one_bit;                 \
+	    x2+=1;                       \
+	  }                              \
+	 xdbl[i3]=x2
+
+typedef struct
+  {
+    double xdbl[12];
+>>>>>>> config
     double carry;
     unsigned int ir;
     unsigned int jr;
@@ -77,6 +109,7 @@ increment_state (ranlxd_state_t * state)
       y1 = xdbl[jr] - xdbl[ir];
       y2 = y1 - carry;
       if (y2 < 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           carry = one_bit;
           y2 += 1;
@@ -85,6 +118,16 @@ increment_state (ranlxd_state_t * state)
         {
           carry = 0;
         }
+=======
+	{
+	  carry = one_bit;
+	  y2 += 1;
+	}
+      else
+	{
+	  carry = 0;
+	}
+>>>>>>> config
       xdbl[ir] = y2;
       ir = next[ir];
       jr = next[jr];
@@ -110,6 +153,7 @@ increment_state (ranlxd_state_t * state)
       RANLUX_STEP (y3, y2, 6, 11, 10);
 
       if (y3 < 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           carry = one_bit;
           y3 += 1;
@@ -118,6 +162,16 @@ increment_state (ranlxd_state_t * state)
         {
           carry = 0;
         }
+=======
+	{
+	  carry = one_bit;
+	  y3 += 1;
+	}
+      else
+	{
+	  carry = 0;
+	}
+>>>>>>> config
       xdbl[11] = y3;
     }
 
@@ -128,6 +182,7 @@ increment_state (ranlxd_state_t * state)
       y1 = xdbl[jr] - xdbl[ir];
       y2 = y1 - carry;
       if (y2 < 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           carry = one_bit;
           y2 += 1;
@@ -136,6 +191,16 @@ increment_state (ranlxd_state_t * state)
         {
           carry = 0;
         }
+=======
+	{
+	  carry = one_bit;
+	  y2 += 1;
+	}
+      else
+	{
+	  carry = 0;
+	}
+>>>>>>> config
       xdbl[ir] = y2;
       ir = next[ir];
       jr = next[jr];
@@ -198,6 +263,7 @@ ranlxd_set_lux (void *vstate, unsigned long int s, unsigned int luxury)
       x = 0;
 
       for (l = 1; l <= 48; ++l)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           y = (double) ((xbit[ibit] + 1) % 2);
           x += x + y;
@@ -205,6 +271,15 @@ ranlxd_set_lux (void *vstate, unsigned long int s, unsigned int luxury)
           ibit = (ibit + 1) % 31;
           jbit = (jbit + 1) % 31;
         }
+=======
+	{
+	  y = (double) ((xbit[ibit] + 1) % 2);
+	  x += x + y;
+	  xbit[ibit] = (xbit[ibit] + xbit[jbit]) % 2;
+	  ibit = (ibit + 1) % 31;
+	  jbit = (jbit + 1) % 31;
+	}
+>>>>>>> config
       state->xdbl[k] = one_bit * x;
     }
 

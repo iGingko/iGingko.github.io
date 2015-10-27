@@ -1,17 +1,31 @@
 /* specfunc/bessel_y.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -37,7 +51,11 @@
 /* [Abramowitz+Stegun, 10.1.3]
  * with lmax=15, precision ~ 15D for x < 3
  *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * checked OK [GJ] Wed May 13 15:41:25 MDT 1998 
+=======
+ * checked OK [GJ] Wed May 13 15:41:25 MDT 1998
+>>>>>>> config
  */
 static int bessel_yl_small_x(int l, const double x, gsl_sf_result * result)
 {
@@ -216,7 +234,11 @@ int gsl_sf_bessel_yl_e(int l, const double x, gsl_sf_result * result)
     double by  = r_by.val;
     double byp;
     int j;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     for(j=1; j<l; j++) { 
+=======
+    for(j=1; j<l; j++) {
+>>>>>>> config
       byp = (2*j+1)/x*by - bym;
       bym = by;
       by  = byp;
@@ -288,5 +310,8 @@ double gsl_sf_bessel_yl(const int l, const double x)
 {
   EVAL_RESULT(gsl_sf_bessel_yl_e(l, x, &result));
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
 
+=======
+>>>>>>> config

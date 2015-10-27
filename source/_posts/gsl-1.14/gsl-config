@@ -11,7 +11,11 @@ Usage: gsl-config [OPTION]
 
 Known values for OPTION are:
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   --prefix		show GSL installation prefix 
+=======
+  --prefix		show GSL installation prefix
+>>>>>>> config
   --libs		print library linking information, with cblas
   --libs-without-cblas	print library linking information, without cblas
   --cflags		print pre-processor and compiler flags
@@ -58,6 +62,7 @@ while test $# -gt 0; do
 	;;
 
     --cflags)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
        	echo -I/usr/local/include 
        	;;
 
@@ -69,6 +74,19 @@ while test $# -gt 0; do
     --libs-without-cblas)
        	echo -L/usr/local/lib -lgsl -lm
        	;;
+=======
+	echo -I/usr/local/include
+	;;
+
+    --libs)
+	: ${GSL_CBLAS_LIB=-lgslcblas}
+	echo -L/usr/local/lib -lgsl $GSL_CBLAS_LIB -lm
+	;;
+
+    --libs-without-cblas)
+	echo -L/usr/local/lib -lgsl -lm
+	;;
+>>>>>>> config
     *)
 	usage
 	exit 1

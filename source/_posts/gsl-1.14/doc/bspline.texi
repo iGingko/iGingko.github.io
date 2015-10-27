@@ -39,11 +39,19 @@ the @math{n} basis splines of order @math{k} are defined by
 \beforedisplay
 $$
 B_{i,1}(x) = \left\{\matrix{1, & t_i \le x < t_{i+1}\cr
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                             0, & else}\right.
 $$
 $$
 B_{i,k}(x) = {(x - t_i) \over (t_{i+k-1} - t_i)} B_{i,k-1}(x) +
              {(t_{i+k} - x) \over (t_{i+k} - t_{i+1})} B_{i+1,k-1}(x)
+=======
+			    0, & else}\right.
+$$
+$$
+B_{i,k}(x) = {(x - t_i) \over (t_{i+k-1} - t_i)} B_{i,k-1}(x) +
+	     {(t_{i+k} - x) \over (t_{i+k} - t_{i+1})} B_{i+1,k-1}(x)
+>>>>>>> config
 $$
 \afterdisplay
 @end tex
@@ -51,9 +59,15 @@ $$
 
 @example
 B_(i,1)(x) = (1, t_i <= x < t_(i+1)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              (0, else
 B_(i,k)(x) = [(x - t_i)/(t_(i+k-1) - t_i)] B_(i,k-1)(x)
               + [(t_(i+k) - x)/(t_(i+k) - t_(i+1))] B_(i+1,k-1)(x)
+=======
+	     (0, else
+B_(i,k)(x) = [(x - t_i)/(t_(i+k-1) - t_i)] B_(i,k-1)(x)
+	      + [(t_(i+k) - x)/(t_(i+k) - t_(i+1))] B_(i+1,k-1)(x)
+>>>>>>> config
 @end example
 
 @end ifinfo

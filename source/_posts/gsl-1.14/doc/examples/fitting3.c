@@ -8,9 +8,15 @@ main (void)
   double x;
   const gsl_rng_type * T;
   gsl_rng * r;
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   gsl_rng_env_setup ();
   
+=======
+
+  gsl_rng_env_setup ();
+
+>>>>>>> config
   T = gsl_rng_default;
   r = gsl_rng_alloc (T);
 

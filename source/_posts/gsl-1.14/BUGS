@@ -3,13 +3,22 @@ The GSL Bugs Database is at http://savannah.gnu.org/bugs/?group=gsl
 This file was generated from it at Thu Mar  4 12:16:25 2010
 
 ------------------------------------------------------------------------
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 BUG-ID:   28267   
 STATUS:   Open/Postponed  
+=======
+BUG-ID:   28267
+STATUS:   Open/Postponed
+>>>>>>> config
 CATEGORY: Accuracy problem
 SUMMARY:  poor convergence region for gsl_sf_hyperg_1F1
 
 The magnitude of the error is greater than the value itself for
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 a<<0, b>0, x>>0 
+=======
+a<<0, b>0, x>>0
+>>>>>>> config
 
 gsl_sf_hyperg1F1(-3.78e+01, 2, 1.035e+02) =>  -7.00055e+18 +/- 3.77654e+19
 
@@ -61,8 +70,13 @@ Weibin
 -It's inherently difficult to compute the value in this region either way as there is massive cancellation in both the series and the Kummer transformed series.I cannot find any algorithm which handles this case.Confirmed
 
 ------------------------------------------------------------------------
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 BUG-ID:   27515   
 STATUS:   Open/Fixed      
+=======
+BUG-ID:   27515
+STATUS:   Open/Fixed
+>>>>>>> config
 CATEGORY: Build
 SUMMARY:  install-sh is broken with current automake
 
@@ -103,6 +117,7 @@ Date: Thu, 24 Sep 2009 00:05:31 -0400
 
 Hello Sasha,
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 please keep bug-gsl in cc (especially since I'm just a user and not the 
 maintainer)
 
@@ -130,6 +145,35 @@ explain why the files have never been updated.
 
 >
 > I've fixed it for my installation by lifting install-sh from another 
+=======
+please keep bug-gsl in cc (especially since I'm just a user and not the
+maintainer)
+
+Alexander Belikoff wrote:
+> Hello Peter - thanks for the quick response. Cannot check right now,
+> will do tomorrow morning. GSL itself was downloaded as a .tgz package
+> from GNU FTP server (version 1.13). What install-sh does, is the
+> following: the moment it finds a non-option argument it assigns it to
+> *src* variable. Next time it finds a non-option argument, given that
+> *$src* is non-empty, it assigns it to *dst*. As a result, after
+> processing the command-line arguments, *$src* is the first non-option
+> arg, and *$dst* is the last one with everything in between ignored.
+I downloaded the latest gsl (1.13) and indeed the behavior of install-sh
+is sub-optimal. When I previously claimed that install-sh worked as
+expected for me that was based on an install-sh that comes with automake
+1.11 (script version 2009-04-28.21). That version of install-sh differs
+significantly from the one in gsl 1.13. It seems like the install-sh has
+not been updated when the maintainer has updated his automake. The
+Makefile.ins that come in gsl 1.13 are created by automake 1.11 but
+install-sh is probably an older version. In order to update install-sh
+(and friends) one needs to (as a maintainer) call automake with the
+--force switch. I noticed that the autogen.sh script in the git
+repository calls automake without the --force switch, which might
+explain why the files have never been updated.
+
+>
+> I've fixed it for my installation by lifting install-sh from another
+>>>>>>> config
 > package and putting it in place of the one in GSL.
 Seems like a good workaround.
 >
@@ -147,8 +191,13 @@ See the errata section on http://www.gnu.org/software/gsl/
 for a link to a working install-shConfirmedVersion in the repository is updated. Need to make sure it gets in the release!
 
 ------------------------------------------------------------------------
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 BUG-ID:   21828   
 STATUS:   Open/Confirmed  
+=======
+BUG-ID:   21828
+STATUS:   Open/Confirmed
+>>>>>>> config
 CATEGORY: Performance
 SUMMARY:  suboptimal performance of gsl_fdfsolver_lmsder
 
@@ -176,7 +225,11 @@ that that of gsl.
 
 Could anyone explain such a big difference in performace?
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 -- 
+=======
+--
+>>>>>>> config
 Best regards,
   Alexander.
 
@@ -197,11 +250,19 @@ Alexander Usov wrote:
 > At some moment I have notices that for the bigger images (about 550
 > pixels, 20-30 parameters) gsl's lmsder algorithm spends a large fraction
 > of the run-time (about 50%) doing household transform.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 > 
 > While looking around for are different minimization algorithms I have made
 > a surprising finding that original netlib/minpack/lmder is almost twice faster
 > that that of gsl.
 > 
+=======
+>
+> While looking around for are different minimization algorithms I have made
+> a surprising finding that original netlib/minpack/lmder is almost twice faster
+> that that of gsl.
+>
+>>>>>>> config
 > Could anyone explain such a big difference in performace?
 
 I have a vague memory that there was some quantity (Jacobian?) that
@@ -210,7 +271,11 @@ the user at each step so I felt I had to update it on each iteration
 in the absence of some alternate scheme.  Sorry this is not a great
 answer but I am not able to look at it in detail now.
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 -- 
+=======
+--
+>>>>>>> config
 Brian Gough
 
 _______________________________________________
@@ -219,8 +284,13 @@ Help-gsl@gnu.org
 http://lists.gnu.org/mailman/listinfo/help-gsl
 
 ------------------------------------------------------------------------
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 BUG-ID:   21831   
 STATUS:   Open            
+=======
+BUG-ID:   21831
+STATUS:   Open
+>>>>>>> config
 CATEGORY: Accuracy problem
 SUMMARY:  Levý random number generator for alpha < 1
 
@@ -229,6 +299,7 @@ To: bug-gsl@gnu.org
 Subject: [Bug-gsl] Levý random number generator
 Date: Mon, 26 Mar 2007 19:48:01 -0300
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 The Levý skew random number generator (gsl_ran_levy_skew) does not  
 procuce a Levý random number when beta=0 (symmetric case), and the  
 gsl_ran_levy function does not work as stated in the docs. I made some  
@@ -241,6 +312,20 @@ For alpha<=0.3 the algorithm does not work properly, even worse, the
 error increases as you add more random numbers. This contradicts the  
 manual that says "the algoritm only works for alpha (0,2]". The  
 function gsl_ran_levy_skew does not produce levy random numbers when  
+=======
+The Levý skew random number generator (gsl_ran_levy_skew) does not
+procuce a Levý random number when beta=0 (symmetric case), and the
+gsl_ran_levy function does not work as stated in the docs. I made some
+histograms from 10^6 samples to check the accuracy of the algorithms,
+by comparison agaisnt the numerical integration of the equation of
+Levý's PDF. For the gsl_ran_levy function there is a good precison for
+alpha [1,2], for alpha (0.3,1) you must sum a series of random numbers
+to get the same precision (tipicaly 100 or more gsl_ran_levy numbers).
+For alpha<=0.3 the algorithm does not work properly, even worse, the
+error increases as you add more random numbers. This contradicts the
+manual that says "the algoritm only works for alpha (0,2]". The
+function gsl_ran_levy_skew does not produce levy random numbers when
+>>>>>>> config
 beta=0, instead the pdf of the random numbers is a linear (?!?!) one.
 
 ----------------------------------------------------------------
@@ -253,6 +338,7 @@ http://lists.gnu.org/mailman/listinfo/bug-gsl
 
 From: rafael@fis.unb.br
 To: Brian Gough <bjg@network-theory.co.uk>
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 Cc: 
 Subject: Re: [Bug-gsl] Lev? random number generator
 Date: Tue, 27 Mar 2007 09:35:15 -0300
@@ -267,10 +353,27 @@ numericaly integrates the characteristic function for levy process
 levy numbers to get better precision. The code saves 2 files:  
 lhist-$alpha-$n (the normalized histogram) and lpdf-$alpha (the pdf  
 for the levy process). It also prints to the stdout the absolute error  
+=======
+Cc:
+Subject: Re: [Bug-gsl] Lev? random number generator
+Date: Tue, 27 Mar 2007 09:35:15 -0300
+
+Thanks for your quick answer, and sorry about my poor english, it is
+not my natural language.
+
+The code below generates 10^6 random numbers, and makes a normalized
+histogram wich is compared to the levy pdf. To get the levy pdf, it
+numericaly integrates the characteristic function for levy process
+(the function f in the code). The n parameter just adds a series of
+levy numbers to get better precision. The code saves 2 files:
+lhist-$alpha-$n (the normalized histogram) and lpdf-$alpha (the pdf
+for the levy process). It also prints to the stdout the absolute error
+>>>>>>> config
 (square of the difference) between the histogram and the pdf.
 
 The function levy skew shows problems for alpha<1.
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 With this code, you can also check the problems related to the  
 gsl_ran_levy function (just change gsl_ran_levy_skew by gsl_ran_levy,  
 cutting the last paramenter).
@@ -281,6 +384,18 @@ version 1.8.2).
 If you are interested, I also encoded a routine to generate levy skew  
 random numbers, it is not fully tested, but it works for beta=0 and  
 alpha<1 (it suffers from the same precision problem as gsl_ran_levy  
+=======
+With this code, you can also check the problems related to the
+gsl_ran_levy function (just change gsl_ran_levy_skew by gsl_ran_levy,
+cutting the last paramenter).
+
+I am using the pre-compiled gsl that comes with debian etch (gsl
+version 1.8.2).
+
+If you are interested, I also encoded a routine to generate levy skew
+random numbers, it is not fully tested, but it works for beta=0 and
+alpha<1 (it suffers from the same precision problem as gsl_ran_levy
+>>>>>>> config
 function for small alpha)
 
 #include <stdio.h>
@@ -310,7 +425,11 @@ double *levy_pdf(double alpha,int hist_size,double a,double b)
 	int i;
 	gsl_integration_workspace *w=gsl_integration_workspace_alloc(1000);
 	gsl_integration_workspace *cw=gsl_integration_workspace_alloc(1000);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 	gsl_integration_qawo_table  
+=======
+	gsl_integration_qawo_table
+>>>>>>> config
 *wf=gsl_integration_qawo_table_alloc(0.0,1.0,GSL_INTEG_COSINE,200);
 	lpdf=(double*)calloc(hist_size,sizeof(double));
 	F.function=&f;
@@ -367,7 +486,11 @@ int main (int argc,char *argv[])
 		l[i]=0.0;
 		for (j=1;j<n;j++) l[i]+=gsl_ran_levy_skew(r,1.0,alpha,0.0);
 		l[i]=l[i]/pow(n,1.0/alpha);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 		if (abs(l[i])<=20) i++;//picks only random numbers in the interval  
+=======
+		if (abs(l[i])<=20) i++;//picks only random numbers in the interval
+>>>>>>> config
 [a,b] to get good precision in the histogram
 	}while(i<rand_numbers);
 	gsl_histogram_set_ranges_uniform(h,a,b);
@@ -427,8 +550,13 @@ http://lists.gnu.org/mailman/listinfo/bug-gsl
 -
 
 ------------------------------------------------------------------------
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 BUG-ID:   21833   
 STATUS:   Open            
+=======
+BUG-ID:   21833
+STATUS:   Open
+>>>>>>> config
 CATEGORY: Performance
 SUMMARY:  suboptimal performance of gsl permutation?
 
@@ -438,6 +566,7 @@ Subject: gsl permutation
 Date: Wed, 24 Jan 2007 07:42:06 +0000
 
 Hi.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 i am sending you this email about a possible issue in glibc permutation 
 algorithm.i think it has qudratic worst case running time.for example if we 
 have the permutation
@@ -452,22 +581,51 @@ is that it will destroy the original permutation.
 2-use a bit array of size n bits.each time we permute an element we set the 
 relevant bit.if at iteration i we find that bit i is already set we skip to 
 next iteration.the disavantage of this is that it equires additional storage 
+=======
+i am sending you this email about a possible issue in glibc permutation
+algorithm.i think it has qudratic worst case running time.for example if we
+have the permutation
+1,2,3,4,,,,,n,0
+we will permute all elements in first iteration then for each iteration we
+will traverse on average half the cycle (which is of size n) before we know
+that the elements of cycle have already been permuted.there is two possible
+solutions to make the algorithm linear:
+1-at each step we traverse the full cycle and permute all elements in the
+cycle.for each permuted element i  we assign p[i]=i.the disavantage of this
+is that it will destroy the original permutation.
+2-use a bit array of size n bits.each time we permute an element we set the
+relevant bit.if at iteration i we find that bit i is already set we skip to
+next iteration.the disavantage of this is that it equires additional storage
+>>>>>>> config
 allocation.
 best regards.
 
 _________________________________________________________________
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 MSN Hotmail sur i-mode? : envoyez et recevez des e-mails depuis votre 
+=======
+MSN Hotmail sur i-mode? : envoyez et recevez des e-mails depuis votre
+>>>>>>> config
 téléphone portable ! http://www.msn.fr/hotmailimode/
 
 3 - Normal
 
 ------------------------------------------------------------------------
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 BUG-ID:   21835   
 STATUS:   Open            
 CATEGORY: Accuracy problem
 SUMMARY:  gsl_sf_hyperg_2F1 problematic arguments
 
 BUG#1 -- gsl_sf_hyperg_2F1_e fails for some arguments 
+=======
+BUG-ID:   21835
+STATUS:   Open
+CATEGORY: Accuracy problem
+SUMMARY:  gsl_sf_hyperg_2F1 problematic arguments
+
+BUG#1 -- gsl_sf_hyperg_2F1_e fails for some arguments
+>>>>>>> config
 
 From: keith.briggs@bt.com
 Subject: gsl_sf_hyperg_2F1 bug report
@@ -514,7 +672,11 @@ int main (void)
 
 The correct value is -2.
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 See also, 
+=======
+See also,
+>>>>>>> config
 
 From: Olaf Wucknitz <wucknitz@jive.nl>
 To: bug-gsl@gnu.org
@@ -523,6 +685,7 @@ Subject: [Bug-gsl] gsl_sf_hyperg_2F1
 Hi,
 
 I am having a problem with gsl_sf_hyperg_2F1.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 With the parameters (-0.5, 0.5, 1, x) the returned values show a jump at 
 x=0.5. For x<0.5 the results seem to be correct, while for x>0.5 they 
 aren't.
@@ -532,16 +695,36 @@ an integer (which it is in my case). If I change one of the parameters
 a,b,c by a small amount, the other branch of the function is taken and the 
 results are correct again.
 Unfortunately I know too little about the numerics of 2F1 to suggest a 
+=======
+With the parameters (-0.5, 0.5, 1, x) the returned values show a jump at
+x=0.5. For x<0.5 the results seem to be correct, while for x>0.5 they
+aren't.
+The function gsl_sf_hyperg_2F1_e calls hyperg_2F1_series for x<0.5, but
+hyperg_2F1_reflect for x>0.5. The latter function checks for c-a-b being
+an integer (which it is in my case). If I change one of the parameters
+a,b,c by a small amount, the other branch of the function is taken and the
+results are correct again.
+Unfortunately I know too little about the numerics of 2F1 to suggest a
+>>>>>>> config
 patch at the moment.
 
 Regards,
 Olaf Wucknitz
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 -- 
 Joint Institute for VLBI in Europe                wucknitz@jive.nl
 
 ------------------------------------------------------------------------
 BUG-ID:   21836   
 STATUS:   Open/Confirmed  
+=======
+--
+Joint Institute for VLBI in Europe                wucknitz@jive.nl
+
+------------------------------------------------------------------------
+BUG-ID:   21836
+STATUS:   Open/Confirmed
+>>>>>>> config
 CATEGORY: Accuracy problem
 SUMMARY:  gamma_inc_P and gamma_inc_Q only satisfy P+Q=1 within errors
 
@@ -575,13 +758,22 @@ $ ./a.out
 3 - NormalNone
 
 ------------------------------------------------------------------------
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 BUG-ID:   21837   
 STATUS:   Open/Confirmed  
+=======
+BUG-ID:   21837
+STATUS:   Open/Confirmed
+>>>>>>> config
 CATEGORY: Runtime error
 SUMMARY:  gsl_linalg_solve_symm_tridiag requires positive definite matrix
 
 A zero on the diagonal will cause NaNs even though a reasonable
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 solution could be computed in principle. 
+=======
+solution could be computed in principle.
+>>>>>>> config
 
 #include <gsl/gsl_linalg.h>
 
@@ -623,8 +815,13 @@ we would need to do a permutation, see slatec/dgtsl.f
 3 - NormalNone
 
 ------------------------------------------------------------------------
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 BUG-ID:   24252   
 STATUS:   Open/Confirmed  
+=======
+BUG-ID:   24252
+STATUS:   Open/Confirmed
+>>>>>>> config
 CATEGORY: None
 SUMMARY:  suggestion: add gamma tail distribution
 
@@ -646,8 +843,13 @@ ing. phys. EPFL, math. UNIL
 --None
 
 ------------------------------------------------------------------------
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 BUG-ID:   24812   
 STATUS:   Open/Confirmed  
+=======
+BUG-ID:   24812
+STATUS:   Open/Confirmed
+>>>>>>> config
 CATEGORY: Runtime error
 SUMMARY:  gsl_sf_hyperg_2F1(11, -1 ; 11/2; 0.125) fails
 
@@ -686,8 +888,13 @@ line 740:
 I think these should have a=>ap for consistency
 
 ------------------------------------------------------------------------
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 BUG-ID:   24871   
 STATUS:   Open/Confirmed  
+=======
+BUG-ID:   24871
+STATUS:   Open/Confirmed
+>>>>>>> config
 CATEGORY: None
 SUMMARY:  suggestion, add support for E_n
 
@@ -731,8 +938,13 @@ Bug-gsl@gnu.org
 http://lists.gnu.org/mailman/listinfo/bug-gsl
 
 ------------------------------------------------------------------------
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 BUG-ID:   25320   
 STATUS:   Open            
+=======
+BUG-ID:   25320
+STATUS:   Open
+>>>>>>> config
 CATEGORY: Accuracy problem
 SUMMARY:  Import fresnel, bugs on GSL Extension Fresnel
 

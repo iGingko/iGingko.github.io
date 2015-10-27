@@ -1,4 +1,8 @@
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 noinst_LTLIBRARIES = libgslblock.la 
+=======
+noinst_LTLIBRARIES = libgslblock.la
+>>>>>>> config
 
 check_PROGRAMS = test
 

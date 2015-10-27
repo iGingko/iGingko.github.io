@@ -1,17 +1,29 @@
 /* randist/landau.c
  *
  * Copyright (C) 2001, 2004 David Morrison
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -23,7 +35,11 @@
  *
  * The distribution is given by the complex path integral,
  *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  *  p(x) = (1/(2 pi i)) \int_{c-i\inf}^{c+i\inf} ds exp(s log(s) + x s) 
+=======
+ *  p(x) = (1/(2 pi i)) \int_{c-i\inf}^{c+i\inf} ds exp(s log(s) + x s)
+>>>>>>> config
  *
  * which can be converted into a real integral over [0,+\inf]
  *
@@ -117,45 +133,77 @@ gsl_ran_landau_pdf(const double x)
     {
       U = exp(V + 1.0);
       DENLAN = 0.3989422803 * (exp( -1 / U) / sqrt(U)) *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         (1 + (A1[0] + (A1[1] + A1[2] * U) * U) * U);
+=======
+	(1 + (A1[0] + (A1[1] + A1[2] * U) * U) * U);
+>>>>>>> config
     }
   else if (V < -1)
     {
       U = exp( -V - 1);
       DENLAN = exp( -U) * sqrt(U) *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         (P1[0] + (P1[1] + (P1[2] + (P1[3] + P1[4] * V) * V) * V) * V) /
         (Q1[0] + (Q1[1] + (Q1[2] + (Q1[3] + Q1[4] * V) * V) * V) * V);
+=======
+	(P1[0] + (P1[1] + (P1[2] + (P1[3] + P1[4] * V) * V) * V) * V) /
+	(Q1[0] + (Q1[1] + (Q1[2] + (Q1[3] + Q1[4] * V) * V) * V) * V);
+>>>>>>> config
     }
   else if (V < 1)
     {
       DENLAN = (P2[0] + (P2[1] + (P2[2] + (P2[3] + P2[4] * V) * V) * V) * V) /
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         (Q2[0] + (Q2[1] + (Q2[2] + (Q2[3] + Q2[4] * V) * V) * V) * V);
+=======
+	(Q2[0] + (Q2[1] + (Q2[2] + (Q2[3] + Q2[4] * V) * V) * V) * V);
+>>>>>>> config
     }
   else if (V < 5)
     {
       DENLAN = (P3[0] + (P3[1] + (P3[2] + (P3[3] + P3[4] * V) * V) * V) * V) /
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         (Q3[0] + (Q3[1] + (Q3[2] + (Q3[3] + Q3[4] * V) * V) * V) * V);
+=======
+	(Q3[0] + (Q3[1] + (Q3[2] + (Q3[3] + Q3[4] * V) * V) * V) * V);
+>>>>>>> config
     }
   else if (V < 12)
     {
       U = 1 / V;
       DENLAN = U * U *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         (P4[0] + (P4[1] + (P4[2] + (P4[3] + P4[4] * U) * U) * U) * U) /
         (Q4[0] + (Q4[1] + (Q4[2] + (Q4[3] + Q4[4] * U) * U) * U) * U);
+=======
+	(P4[0] + (P4[1] + (P4[2] + (P4[3] + P4[4] * U) * U) * U) * U) /
+	(Q4[0] + (Q4[1] + (Q4[2] + (Q4[3] + Q4[4] * U) * U) * U) * U);
+>>>>>>> config
     }
   else if (V < 50)
     {
       U = 1 / V;
       DENLAN = U * U *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         (P5[0] + (P5[1] + (P5[2] + (P5[3] + P5[4] * U) * U) * U) * U) /
         (Q5[0] + (Q5[1] + (Q5[2] + (Q5[3] + Q5[4] * U) * U) * U) * U);
+=======
+	(P5[0] + (P5[1] + (P5[2] + (P5[3] + P5[4] * U) * U) * U) * U) /
+	(Q5[0] + (Q5[1] + (Q5[2] + (Q5[3] + Q5[4] * U) * U) * U) * U);
+>>>>>>> config
     }
   else if (V < 300)
     {
       U = 1 / V;
       DENLAN = U * U *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         (P6[0] + (P6[1] + (P6[2] + (P6[3] + P6[4] * U) * U) * U) * U) /
         (Q6[0] + (Q6[1] + (Q6[2] + (Q6[3] + Q6[4] * U) * U) * U) * U);
+=======
+	(P6[0] + (P6[1] + (P6[2] + (P6[3] + P6[4] * U) * U) * U) * U) /
+	(Q6[0] + (Q6[1] + (Q6[2] + (Q6[3] + Q6[4] * U) * U) * U) * U);
+>>>>>>> config
     }
   else
     {
@@ -266,42 +314,71 @@ gsl_ran_landau_dislan(const double x)
     {
       U = exp(V + 1);
       DISLAN = 0.3989422803 * exp( -1 / U) * sqrt(U) *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                (1 + (A1[0] + (A1[1] + A1[2] * U) * U) * U);
+=======
+	       (1 + (A1[0] + (A1[1] + A1[2] * U) * U) * U);
+>>>>>>> config
     }
   else if (V < -1)
     {
       U = exp( -V - 1);
       DISLAN = (exp( -U) / sqrt(U)) *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                (P1[0] + (P1[1] + (P1[2] + (P1[3] + P1[4] * V) * V) * V) * V) /
                (Q1[0] + (Q1[1] + (Q1[2] + (Q1[3] + Q1[4] * V) * V) * V) * V);
+=======
+	       (P1[0] + (P1[1] + (P1[2] + (P1[3] + P1[4] * V) * V) * V) * V) /
+	       (Q1[0] + (Q1[1] + (Q1[2] + (Q1[3] + Q1[4] * V) * V) * V) * V);
+>>>>>>> config
     }
   else if (V < 1)
     {
       DISLAN = (P2[0] + (P2[1] + (P2[2] + P2[3] * V) * V) * V) /
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                (Q2[0] + (Q2[1] + (Q2[2] + Q2[3] * V) * V) * V);
+=======
+	       (Q2[0] + (Q2[1] + (Q2[2] + Q2[3] * V) * V) * V);
+>>>>>>> config
     }
   else if (V < 4)
     {
       DISLAN = (P3[0] + (P3[1] + (P3[2] + P3[3] * V) * V) * V) /
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                (Q3[0] + (Q3[1] + (Q3[2] + Q3[3] * V) * V) * V);
+=======
+	       (Q3[0] + (Q3[1] + (Q3[2] + Q3[3] * V) * V) * V);
+>>>>>>> config
     }
   else if (V < 12)
     {
       U = 1 / V;
       DISLAN = (P4[0] + (P4[1] + (P4[2] + P4[3] * U) * U) * U) /
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                (Q4[0] + (Q4[1] + (Q4[2] + Q4[3] * U) * U) * U);
+=======
+	       (Q4[0] + (Q4[1] + (Q4[2] + Q4[3] * U) * U) * U);
+>>>>>>> config
     }
   else if (V < 50)
     {
       U = 1 / V;
       DISLAN = (P5[0] + (P5[1] + (P5[2] + P5[3] * U) * U) * U) /
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                (Q5[0] + (Q5[1] + (Q5[2] + Q5[3] * U) * U) * U);
+=======
+	       (Q5[0] + (Q5[1] + (Q5[2] + Q5[3] * U) * U) * U);
+>>>>>>> config
     }
   else if (V < 300)
     {
       U = 1 / V;
       DISLAN = (P6[0] + (P6[1] + (P6[2] + P6[3] * U) * U) * U) /
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                (Q6[0] + (Q6[1] + (Q6[2] + Q6[3] * U) * U) * U);
+=======
+	       (Q6[0] + (Q6[1] + (Q6[2] + Q6[3] * U) * U) * U);
+>>>>>>> config
     }
   else
     {
@@ -318,8 +395,13 @@ gsl_ran_landau(const gsl_rng * r)
 {
   static double F[983] =
     {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       0.0000000,   /* Add empty element [0] to account for difference 
                       between C and Fortran convention for lower bound. */
+=======
+      0.0000000,   /* Add empty element [0] to account for difference
+		      between C and Fortran convention for lower bound. */
+>>>>>>> config
       00.000000, 00.000000, 00.000000, 00.000000, 00.000000,
       -2.244733, -2.204365, -2.168163, -2.135219, -2.104898,
       -2.076740, -2.050397, -2.025605, -2.002150, -1.979866,
@@ -532,23 +614,35 @@ gsl_ran_landau(const gsl_rng * r)
     }
   else if (I >= 7 && I <= 980)
     {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       RANLAN = F[I] 
         + U * (F[I + 1] - F[I] 
                - 0.25 * (1 - U) * (F[I + 2] - F[I + 1] - F[I] + F[I - 1]));
+=======
+      RANLAN = F[I]
+	+ U * (F[I + 1] - F[I]
+	       - 0.25 * (1 - U) * (F[I + 2] - F[I + 1] - F[I] + F[I - 1]));
+>>>>>>> config
     }
   else if (I < 7)
     {
       V = log(X);
       U = 1 / V;
       RANLAN = ((0.99858950 + (3.45213058E1 + 1.70854528E1 * U) * U) /
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                 (1 + (3.41760202E1 + 4.01244582 * U) * U)) *
                ( -log( -0.91893853 - V) - 1);
+=======
+		(1 + (3.41760202E1 + 4.01244582 * U) * U)) *
+	       ( -log( -0.91893853 - V) - 1);
+>>>>>>> config
     }
   else
     {
       U = 1 - X;
       V = U * U;
       if (X <= 0.999)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           RANLAN = (1.00060006 + 2.63991156E2 * U + 4.37320068E3 * V) /
                    ((1 + 2.57368075E2 * U + 3.41448018E3 * V) * U);
@@ -558,8 +652,22 @@ gsl_ran_landau(const gsl_rng * r)
           RANLAN = (1.00001538 + 6.07514119E3 * U + 7.34266409E5 * V) /
                    ((1 + 6.06511919E3 * U + 6.94021044E5 * V) * U);
         }
+=======
+	{
+	  RANLAN = (1.00060006 + 2.63991156E2 * U + 4.37320068E3 * V) /
+		   ((1 + 2.57368075E2 * U + 3.41448018E3 * V) * U);
+	}
+      else
+	{
+	  RANLAN = (1.00001538 + 6.07514119E3 * U + 7.34266409E5 * V) /
+		   ((1 + 6.06511919E3 * U + 6.94021044E5 * V) * U);
+	}
+>>>>>>> config
     }
 
   return RANLAN;
 }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 
+=======
+>>>>>>> config

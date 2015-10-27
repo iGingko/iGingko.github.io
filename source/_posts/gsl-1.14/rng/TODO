@@ -57,8 +57,13 @@ improvements)
 are listing as "Simulation Quality" -- some of those are a bit old and
 might fail one or two diehard tests.
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 * Add  NAG,       missing, gave up! 
        CDC 48-bit missing 
+=======
+* Add  NAG,       missing, gave up!
+       CDC 48-bit missing
+>>>>>>> config
 
 * Check out the bug fix to mrand48 that was made in glibc2, pr757
 

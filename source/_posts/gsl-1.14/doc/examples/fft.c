@@ -25,8 +25,13 @@ main (void)
 
   for (i = 0; i < 128; i++)
     {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       printf ("%d %e %e\n", i, 
               REAL(data,i), IMAG(data,i));
+=======
+      printf ("%d %e %e\n", i,
+	      REAL(data,i), IMAG(data,i));
+>>>>>>> config
     }
   printf ("\n");
 
@@ -34,9 +39,15 @@ main (void)
 
   for (i = 0; i < 128; i++)
     {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
       printf ("%d %e %e\n", i, 
               REAL(data,i)/sqrt(128), 
               IMAG(data,i)/sqrt(128));
+=======
+      printf ("%d %e %e\n", i,
+	      REAL(data,i)/sqrt(128),
+	      IMAG(data,i)/sqrt(128));
+>>>>>>> config
     }
 
   return 0;

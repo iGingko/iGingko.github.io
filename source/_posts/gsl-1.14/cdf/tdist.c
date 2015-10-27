@@ -19,6 +19,7 @@
 
 /*
  * Computes the Student's t cumulative distribution function using
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * the method detailed in 
  * 
  * W.J. Kennedy and J.E. Gentle, "Statistical Computing." 1980. 
@@ -26,6 +27,15 @@
  *
  * G.W. Hill and A.W. Davis. "Generalized asymptotic expansions
  * of Cornish-Fisher type." Annals of Mathematical Statistics, 
+=======
+ * the method detailed in
+ *
+ * W.J. Kennedy and J.E. Gentle, "Statistical Computing." 1980.
+ * Marcel Dekker. ISBN 0-8247-6898-1.
+ *
+ * G.W. Hill and A.W. Davis. "Generalized asymptotic expansions
+ * of Cornish-Fisher type." Annals of Mathematical Statistics,
+>>>>>>> config
  * vol. 39, 1264-1273. 1968.
  *
  * G.W. Hill. "Algorithm 395: Student's t-distribution," Communications
@@ -60,10 +70,17 @@ poly_eval (const double c[], unsigned int n, double x)
   return y;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* 
  * Use the Cornish-Fisher asymptotic expansion to find a point u such
  * that gsl_cdf_gauss(y) = tcdf(t).
  * 
+=======
+/*
+ * Use the Cornish-Fisher asymptotic expansion to find a point u such
+ * that gsl_cdf_gauss(y) = tcdf(t).
+ *
+>>>>>>> config
  */
 
 static double
@@ -137,7 +154,11 @@ cornish_fisher (double t, double n)
  * Series approximation for t > 4.0. This needs to be fixed;
  * it shouldn't subtract the result from 1.0. A better way is
  * to use two different series expansions. Figuring this out
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * means rummaging through Fisher's paper in Metron, v5, 1926, 
+=======
+ * means rummaging through Fisher's paper in Metron, v5, 1926,
+>>>>>>> config
  * "Expansion of Student's integral in powers of n^{-1}."
  */
 
@@ -196,6 +217,7 @@ gsl_cdf_tdist_P (const double x, const double nu)
       double eps = u / (1 + u);
 
       if (x >= 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           P = beta_inc_AXPY (0.5, 0.5, 0.5, nu / 2.0, eps);
         }
@@ -203,6 +225,15 @@ gsl_cdf_tdist_P (const double x, const double nu)
         {
           P = beta_inc_AXPY (-0.5, 0.5, 0.5, nu / 2.0, eps);
         }
+=======
+	{
+	  P = beta_inc_AXPY (0.5, 0.5, 0.5, nu / 2.0, eps);
+	}
+      else
+	{
+	  P = beta_inc_AXPY (-0.5, 0.5, 0.5, nu / 2.0, eps);
+	}
+>>>>>>> config
     }
   else
     {
@@ -210,6 +241,7 @@ gsl_cdf_tdist_P (const double x, const double nu)
       double eps = v / (1 + v);
 
       if (x >= 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           P = beta_inc_AXPY (-0.5, 1.0, nu / 2.0, 0.5, eps);
         }
@@ -217,6 +249,15 @@ gsl_cdf_tdist_P (const double x, const double nu)
         {
           P = beta_inc_AXPY (0.5, 0.0, nu / 2.0, 0.5, eps);
         }
+=======
+	{
+	  P = beta_inc_AXPY (-0.5, 1.0, nu / 2.0, 0.5, eps);
+	}
+      else
+	{
+	  P = beta_inc_AXPY (0.5, 0.0, nu / 2.0, 0.5, eps);
+	}
+>>>>>>> config
     }
 
   return P;
@@ -244,6 +285,7 @@ gsl_cdf_tdist_Q (const double x, const double nu)
       double eps = u / (1 + u);
 
       if (x >= 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           Q = beta_inc_AXPY (-0.5, 0.5, 0.5, nu / 2.0, eps);
         }
@@ -251,6 +293,15 @@ gsl_cdf_tdist_Q (const double x, const double nu)
         {
           Q = beta_inc_AXPY (0.5, 0.5, 0.5, nu / 2.0, eps);
         }
+=======
+	{
+	  Q = beta_inc_AXPY (-0.5, 0.5, 0.5, nu / 2.0, eps);
+	}
+      else
+	{
+	  Q = beta_inc_AXPY (0.5, 0.5, 0.5, nu / 2.0, eps);
+	}
+>>>>>>> config
     }
   else
     {
@@ -258,6 +309,7 @@ gsl_cdf_tdist_Q (const double x, const double nu)
       double eps = v / (1 + v);
 
       if (x >= 0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           Q = beta_inc_AXPY (0.5, 0.0, nu / 2.0, 0.5, eps);
         }
@@ -265,6 +317,15 @@ gsl_cdf_tdist_Q (const double x, const double nu)
         {
           Q = beta_inc_AXPY (-0.5, 1.0, nu / 2.0, 0.5, eps);
         }
+=======
+	{
+	  Q = beta_inc_AXPY (0.5, 0.0, nu / 2.0, 0.5, eps);
+	}
+      else
+	{
+	  Q = beta_inc_AXPY (-0.5, 1.0, nu / 2.0, 0.5, eps);
+	}
+>>>>>>> config
     }
 
   return Q;

@@ -1,17 +1,31 @@
 /* specfunc/recurse.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -32,6 +46,7 @@
  */
 #define GEN_RECURSE_FORWARD_SIMPLE(func)                                      \
 int CONCAT(recurse_forward_simple, func) (                                    \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                const int n_max, const int n_min,              \
                                const double parameters[],                     \
                                const double f_n_min,                          \
@@ -42,6 +57,18 @@ int CONCAT(recurse_forward_simple, func) (                                    \
 {                                                                             \
   int n;                                                                      \
                                                                               \
+=======
+			       const int n_max, const int n_min,              \
+			       const double parameters[],                     \
+			       const double f_n_min,                          \
+			       const double f_n_min_p1,                       \
+			       double * f,                                    \
+			       double * f_n_max                               \
+			       )                                              \
+{                                                                             \
+  int n;                                                                      \
+									      \
+>>>>>>> config
   if(f == 0) {                                                                \
     double f2 = f_n_min;                                                      \
     double f1 = f_n_min_p1;                                                   \
@@ -61,12 +88,20 @@ int CONCAT(recurse_forward_simple, func) (                                    \
     }                                                                         \
     *f_n_max = f[n_max];                                                      \
   }                                                                           \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                                                               \
+=======
+									      \
+>>>>>>> config
   return GSL_SUCCESS;                                                         \
 }                                                                             \
 
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* n_start >= n_max >= n_min 
+=======
+/* n_start >= n_max >= n_min
+>>>>>>> config
  * f[n+1] + a[n] f[n] + b[n] f[n-1] = 0
  *
  * Generate the minimal solution of the above recursion relation,
@@ -75,6 +110,7 @@ int CONCAT(recurse_forward_simple, func) (                                    \
  */
 #define GEN_RECURSE_BACKWARD_MINIMAL_SIMPLE(func)                             \
 int CONCAT(recurse_backward_minimal_simple, func) (                           \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                const int n_start,                             \
                                const int n_max, const int n_min,              \
                                const double parameters[],                     \
@@ -82,17 +118,34 @@ int CONCAT(recurse_backward_minimal_simple, func) (                           \
                                double * f,                                    \
                                double * f_n_max                               \
                                )                                              \
+=======
+			       const int n_start,                             \
+			       const int n_max, const int n_min,              \
+			       const double parameters[],                     \
+			       const double f_n_min,                          \
+			       double * f,                                    \
+			       double * f_n_max                               \
+			       )                                              \
+>>>>>>> config
 {                                                                             \
   int n;                                                                      \
   double r_n = 0.;                                                            \
   double r_nm1;                                                               \
   double ratio;                                                               \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                                                               \
+=======
+									      \
+>>>>>>> config
   for(n=n_start; n > n_max; n--) {                                            \
     r_nm1 = -REC_COEFF_B(n, parameters) / (REC_COEFF_A(n, parameters) + r_n); \
     r_n = r_nm1;                                                              \
   }                                                                           \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                                                               \
+=======
+									      \
+>>>>>>> config
   if(f != 0) {                                                                \
     f[n_max] = 10.*DBL_MIN;                                                      \
     for(n=n_max; n > n_min; n--) {                                               \
@@ -117,7 +170,11 @@ int CONCAT(recurse_backward_minimal_simple, func) (                           \
     ratio = f_n_min / f_nm1;                                                  \
     *f_n_max *= ratio;                                                        \
   }                                                                           \
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                                                               \
+=======
+									      \
+>>>>>>> config
   return GSL_SUCCESS;                                                         \
 }                                                                             \
 

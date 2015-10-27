@@ -16,14 +16,23 @@ interp_quad (double f0, double fp0, double f1, double zl, double zh)
 
   double zmin = zl, fmin = fl;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (fh < fmin) { zmin = zh; fmin = fh; } 
+=======
+  if (fh < fmin) { zmin = zh; fmin = fh; }
+>>>>>>> config
 
   if (c > 0)  /* positive curvature required for a minimum */
     {
       double z = -fp0 / c;      /* location of minimum */
       if (z > zl && z < zh) {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         double f = f0 + z*(fp0 + z*(f1 - f0 -fp0));
         if (f < fmin) { zmin = z; fmin = f; };
+=======
+	double f = f0 + z*(fp0 + z*(f1 - f0 -fp0));
+	if (f < fmin) { zmin = z; fmin = f; };
+>>>>>>> config
       }
     }
 
@@ -37,7 +46,11 @@ interp_quad (double f0, double fp0, double f1, double zl, double zh)
  *
  * c(x) = f0 + fp0 * z + eta * z^2 + xi * z^3
  *
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * where eta=3*(f1-f0)-2*fp0-fp1, xi=fp0+fp1-2*(f1-f0). 
+=======
+ * where eta=3*(f1-f0)-2*fp0-fp1, xi=fp0+fp1-2*(f1-f0).
+>>>>>>> config
  */
 
 static double
@@ -48,13 +61,21 @@ cubic (double c0, double c1, double c2, double c3, double z)
 
 static void
 check_extremum (double c0, double c1, double c2, double c3, double z,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                 double *zmin, double *fmin)
+=======
+		double *zmin, double *fmin)
+>>>>>>> config
 {
   /* could make an early return by testing curvature >0 for minimum */
 
   double y = cubic (c0, c1, c2, c3, z);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if (y < *fmin)  
+=======
+  if (y < *fmin)
+>>>>>>> config
     {
       *zmin = z;  /* accepted new point*/
       *fmin = y;
@@ -75,6 +96,7 @@ interp_cubic (double f0, double fp0, double f1, double fp1, double zl, double zh
 
   {
     int n = gsl_poly_solve_quadratic (3 * c3, 2 * c2, c1, &z0, &z1);
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
     
     if (n == 2)  /* found 2 roots */
       {
@@ -87,6 +109,20 @@ interp_cubic (double f0, double fp0, double f1, double fp1, double zl, double zh
       {
         if (z0 > zl && z0 < zh) 
           check_extremum (c0, c1, c2, c3, z0, &zmin, &fmin);
+=======
+
+    if (n == 2)  /* found 2 roots */
+      {
+	if (z0 > zl && z0 < zh)
+	  check_extremum (c0, c1, c2, c3, z0, &zmin, &fmin);
+	if (z1 > zl && z1 < zh)
+	  check_extremum (c0, c1, c2, c3, z1, &zmin, &fmin);
+      }
+    else if (n == 1)  /* found 1 root */
+      {
+	if (z0 > zl && z0 < zh)
+	  check_extremum (c0, c1, c2, c3, z0, &zmin, &fmin);
+>>>>>>> config
       }
   }
 
@@ -96,8 +132,13 @@ interp_cubic (double f0, double fp0, double f1, double fp1, double zl, double zh
 
 static double
 interpolate (double a, double fa, double fpa,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
              double b, double fb, double fpb, double xmin, double xmax,
              int order)
+=======
+	     double b, double fb, double fpb, double xmin, double xmax,
+	     int order)
+>>>>>>> config
 {
   /* Map [a,b] to [0,1] */
   double z, alpha, zmin, zmax;
@@ -111,7 +152,11 @@ interpolate (double a, double fa, double fpa,
       zmin = zmax;
       zmax = tmp;
     };
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
+=======
+
+>>>>>>> config
   if (order > 2 && GSL_IS_REAL(fpb)) {
     z = interp_cubic (fa, fpa * (b - a), fb, fpb * (b - a), zmin, zmax);
   } else {
@@ -123,6 +168,7 @@ interpolate (double a, double fa, double fpa,
   return alpha;
 }
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
 /* recommended values from Fletcher are 
    rho = 0.01, sigma = 0.1, tau1 = 9, tau2 = 0.05, tau3 = 0.5 */
 
@@ -130,6 +176,15 @@ static int
 minimize (gsl_function_fdf * fn, double rho, double sigma, 
           double tau1, double tau2, double tau3,
           int order, double alpha1, double *alpha_new)
+=======
+/* recommended values from Fletcher are
+   rho = 0.01, sigma = 0.1, tau1 = 9, tau2 = 0.05, tau3 = 0.5 */
+
+static int
+minimize (gsl_function_fdf * fn, double rho, double sigma,
+	  double tau1, double tau2, double tau3,
+	  int order, double alpha1, double *alpha_new)
+>>>>>>> config
 {
   double f0, fp0, falpha, falpha_prev, fpalpha, fpalpha_prev, delta,
     alpha_next;
@@ -147,7 +202,11 @@ minimize (gsl_function_fdf * fn, double rho, double sigma,
   fa = f0; fb = 0.0;
   fpa = fp0; fpb = 0.0;
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   /* Begin bracketing */  
+=======
+  /* Begin bracketing */
+>>>>>>> config
 
   while (i++ < bracket_iters)
     {
@@ -156,17 +215,26 @@ minimize (gsl_function_fdf * fn, double rho, double sigma,
       /* Fletcher's rho test */
 
       if (falpha > f0 + alpha * rho * fp0 || falpha >= falpha_prev)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           a = alpha_prev; fa = falpha_prev; fpa = fpalpha_prev;
           b = alpha; fb = falpha; fpb = GSL_NAN;
           break;                /* goto sectioning */
         }
+=======
+	{
+	  a = alpha_prev; fa = falpha_prev; fpa = fpalpha_prev;
+	  b = alpha; fb = falpha; fpb = GSL_NAN;
+	  break;                /* goto sectioning */
+	}
+>>>>>>> config
 
       fpalpha = GSL_FN_FDF_EVAL_DF (fn, alpha);
 
       /* Fletcher's sigma test */
 
       if (fabs (fpalpha) <= -sigma * fp0)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           *alpha_new = alpha;
           return GSL_SUCCESS;
@@ -178,15 +246,36 @@ minimize (gsl_function_fdf * fn, double rho, double sigma,
           b = alpha_prev; fb = falpha_prev; fpb = fpalpha_prev;
           break;                /* goto sectioning */
         }
+=======
+	{
+	  *alpha_new = alpha;
+	  return GSL_SUCCESS;
+	}
+
+      if (fpalpha >= 0)
+	{
+	  a = alpha; fa = falpha; fpa = fpalpha;
+	  b = alpha_prev; fb = falpha_prev; fpb = fpalpha_prev;
+	  break;                /* goto sectioning */
+	}
+>>>>>>> config
 
       delta = alpha - alpha_prev;
 
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         double lower = alpha + delta;
         double upper = alpha + tau1 * delta;
 
         alpha_next = interpolate (alpha_prev, falpha_prev, fpalpha_prev,
                              alpha, falpha, fpalpha, lower, upper, order);
+=======
+	double lower = alpha + delta;
+	double upper = alpha + tau1 * delta;
+
+	alpha_next = interpolate (alpha_prev, falpha_prev, fpalpha_prev,
+			     alpha, falpha, fpalpha, lower, upper, order);
+>>>>>>> config
 
       }
 
@@ -197,6 +286,7 @@ minimize (gsl_function_fdf * fn, double rho, double sigma,
     }
 
   /*  Sectioning of bracket [a,b] */
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   
   while (i++ < section_iters)
     {
@@ -241,6 +331,52 @@ minimize (gsl_function_fdf * fn, double rho, double sigma,
               a = alpha; fa = falpha; fpa = fpalpha;
             }
         }
+=======
+
+  while (i++ < section_iters)
+    {
+      delta = b - a;
+
+      {
+	double lower = a + tau2 * delta;
+	double upper = b - tau3 * delta;
+
+	alpha = interpolate (a, fa, fpa, b, fb, fpb, lower, upper, order);
+      }
+
+      falpha = GSL_FN_FDF_EVAL_F (fn, alpha);
+
+      if ((a-alpha)*fpa <= GSL_DBL_EPSILON) {
+	/* roundoff prevents progress */
+	return GSL_ENOPROG;
+      };
+
+      if (falpha > f0 + rho * alpha * fp0 || falpha >= fa)
+	{
+	  /*  a_next = a; */
+	  b = alpha; fb = falpha; fpb = GSL_NAN;
+	}
+      else
+	{
+	  fpalpha = GSL_FN_FDF_EVAL_DF (fn, alpha);
+
+	  if (fabs(fpalpha) <= -sigma * fp0)
+	    {
+	      *alpha_new = alpha;
+	      return GSL_SUCCESS;  /* terminate */
+	    }
+
+	  if ( ((b-a) >= 0 && fpalpha >= 0) || ((b-a) <=0 && fpalpha <= 0))
+	    {
+	      b = a; fb = fa; fpb = fpa;
+	      a = alpha; fa = falpha; fpa = fpalpha;
+	    }
+	  else
+	    {
+	      a = alpha; fa = falpha; fpa = fpalpha;
+	    }
+	}
+>>>>>>> config
     }
 
   return GSL_SUCCESS;

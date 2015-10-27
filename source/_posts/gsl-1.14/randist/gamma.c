@@ -1,17 +1,31 @@
 /* randist/gamma.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 James Theiler, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -43,7 +57,11 @@ gsl_ran_gamma_knuth (const gsl_rng * r, const double a, const double b)
   /* assume a > 0 */
   unsigned int na = floor (a);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   if(a >= UINT_MAX) 
+=======
+  if(a >= UINT_MAX)
+>>>>>>> config
     {
       return b * (gamma_large (r, floor (a)) + gamma_frac (r, a - floor (a)));
     }
@@ -70,6 +88,7 @@ gsl_ran_gamma_int (const gsl_rng * r, const unsigned int a)
       double prod = 1;
 
       for (i = 0; i < a; i++)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           prod *= gsl_rng_uniform_pos (r);
         }
@@ -78,6 +97,16 @@ gsl_ran_gamma_int (const gsl_rng * r, const unsigned int a)
          the smallest positive random number is O(2^-32). This means
          the smallest possible product is 2^(-12*32) = 10^-116 which
          is within the range of double precision. */
+=======
+	{
+	  prod *= gsl_rng_uniform_pos (r);
+	}
+
+      /* Note: for 12 iterations we are safe against underflow, since
+	 the smallest positive random number is O(2^-32). This means
+	 the smallest possible product is 2^(-12*32) = 10^-116 which
+	 is within the range of double precision. */
+>>>>>>> config
 
       return -log (prod);
     }
@@ -101,10 +130,17 @@ gamma_large (const gsl_rng * r, const double a)
   do
     {
       do
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           y = tan (M_PI * gsl_rng_uniform (r));
           x = sqa * y + a - 1;
         }
+=======
+	{
+	  y = tan (M_PI * gsl_rng_uniform (r));
+	  x = sqa * y + a - 1;
+	}
+>>>>>>> config
       while (x <= 0);
       v = gsl_rng_uniform (r);
     }
@@ -127,6 +163,7 @@ gamma_frac (const gsl_rng * r, const double a)
       v = gsl_rng_uniform_pos (r);
 
       if (u < p)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         {
           x = exp ((1 / a) * log (v));
           q = exp (-x);
@@ -136,6 +173,17 @@ gamma_frac (const gsl_rng * r, const double a)
           x = 1 - log (v);
           q = exp ((a - 1) * log (x));
         }
+=======
+	{
+	  x = exp ((1 / a) * log (v));
+	  q = exp (-x);
+	}
+      else
+	{
+	  x = 1 - log (v);
+	  q = exp ((a - 1) * log (x));
+	}
+>>>>>>> config
     }
   while (gsl_rng_uniform (r) >= q);
 
@@ -152,15 +200,25 @@ gsl_ran_gamma_pdf (const double x, const double a, const double b)
   else if (x == 0)
     {
       if (a == 1)
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         return 1/b ;
       else
         return 0 ;
+=======
+	return 1/b ;
+      else
+	return 0 ;
+>>>>>>> config
     }
   else if (a == 1)
     {
       return exp(-x/b)/b ;
     }
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   else 
+=======
+  else
+>>>>>>> config
     {
       double p;
       double lngamma = gsl_sf_lngamma (a);
@@ -202,6 +260,7 @@ gsl_ran_gamma (const gsl_rng * r, const double a, const double b)
 
     while (1)
       {
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
         do
           {
             x = gsl_ran_gaussian_ziggurat (r, 1.0);
@@ -219,6 +278,25 @@ gsl_ran_gamma (const gsl_rng * r, const double a, const double b)
           break;
       }
     
+=======
+	do
+	  {
+	    x = gsl_ran_gaussian_ziggurat (r, 1.0);
+	    v = 1.0 + c * x;
+	  }
+	while (v <= 0);
+
+	v = v * v * v;
+	u = gsl_rng_uniform_pos (r);
+
+	if (u < 1 - 0.0331 * x * x * x * x)
+	  break;
+
+	if (log (u) < 0.5 * x * x + d * (1 - v + log (v)))
+	  break;
+      }
+
+>>>>>>> config
     return b * d * v;
   }
 }

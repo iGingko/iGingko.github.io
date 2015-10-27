@@ -1,17 +1,31 @@
 /* vector/test.c
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -123,7 +137,11 @@ int status = 0;
 #undef  BASE_CHAR
 
 void my_error_handler (const char *reason, const char *file,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                        int line, int err);
+=======
+		       int line, int err);
+>>>>>>> config
 
 int
 main (void)
@@ -132,6 +150,7 @@ main (void)
 
   gsl_ieee_env_setup ();
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   for (N = 10; N < 1024; N = 2*N + 1) 
     {
       for (stride = 1; stride < 5 ; stride++)
@@ -205,11 +224,87 @@ main (void)
           test_complex_float_file (stride, N);
           test_complex_long_double_file (stride, N);
         }
+=======
+  for (N = 10; N < 1024; N = 2*N + 1)
+    {
+      for (stride = 1; stride < 5 ; stride++)
+	{
+	  test_func (stride, N);
+	  test_float_func (stride, N);
+	  test_long_double_func (stride, N);
+	  test_ulong_func (stride, N);
+	  test_long_func (stride, N);
+	  test_uint_func (stride, N);
+	  test_int_func (stride, N);
+	  test_ushort_func (stride, N);
+	  test_short_func (stride, N);
+	  test_uchar_func (stride, N);
+	  test_char_func (stride, N);
+
+	  test_complex_func (stride, N);
+	  test_complex_float_func (stride, N);
+	  test_complex_long_double_func (stride, N);
+
+	  for (ostride = 1; ostride < 5 ; ostride++)
+	    {
+	      test_ops (stride, ostride, N);
+	      test_float_ops (stride, ostride, N);
+	      test_long_double_ops (stride, ostride, N);
+	      test_ulong_ops (stride, ostride, N);
+	      test_long_ops (stride, ostride, N);
+	      test_uint_ops (stride, ostride, N);
+	      test_int_ops (stride, ostride, N);
+	      test_ushort_ops (stride, ostride, N);
+	      test_short_ops (stride, ostride, N);
+	      test_uchar_ops (stride, ostride, N);
+	      test_char_ops (stride, ostride, N);
+	      test_complex_ops (stride, ostride, N);
+	      test_complex_float_ops (stride, ostride, N);
+	      test_complex_long_double_ops (stride, ostride, N);
+	    }
+
+	  test_text (stride, N);
+	  test_float_text (stride, N);
+#if HAVE_PRINTF_LONGDOUBLE
+	  test_long_double_text (stride, N);
+#endif
+	  test_ulong_text (stride, N);
+	  test_long_text (stride, N);
+	  test_uint_text (stride, N);
+	  test_int_text (stride, N);
+	  test_ushort_text (stride, N);
+	  test_short_text (stride, N);
+	  test_uchar_text (stride, N);
+	  test_char_text (stride, N);
+
+	  test_complex_text (stride, N);
+	  test_complex_float_text (stride, N);
+#if HAVE_PRINTF_LONGDOUBLE
+	  test_complex_long_double_text (stride, N);
+#endif
+
+	  test_file (stride, N);
+	  test_float_file (stride, N);
+	  test_long_double_file (stride, N);
+	  test_ulong_file (stride, N);
+	  test_long_file (stride, N);
+	  test_uint_file (stride, N);
+	  test_int_file (stride, N);
+	  test_ushort_file (stride, N);
+	  test_short_file (stride, N);
+	  test_uchar_file (stride, N);
+	  test_char_file (stride, N);
+	  test_complex_file (stride, N);
+	  test_complex_float_file (stride, N);
+	  test_complex_long_double_file (stride, N);
+	}
+>>>>>>> config
     }
 
 #if GSL_RANGE_CHECK
   gsl_set_error_handler (&my_error_handler);
 
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
   for (N = 1; N < 1024; N *=2) 
     {
       for (stride = 1; stride < 5 ; stride++)
@@ -229,6 +324,27 @@ main (void)
           test_complex_float_trap (stride, N);
           test_complex_long_double_trap (stride, N);
         }
+=======
+  for (N = 1; N < 1024; N *=2)
+    {
+      for (stride = 1; stride < 5 ; stride++)
+	{
+	  test_trap (stride, N);
+	  test_float_trap (stride, N);
+	  test_long_double_trap (stride, N);
+	  test_ulong_trap (stride, N);
+	  test_long_trap (stride, N);
+	  test_uint_trap (stride, N);
+	  test_int_trap (stride, N);
+	  test_ushort_trap (stride, N);
+	  test_short_trap (stride, N);
+	  test_uchar_trap (stride, N);
+	  test_char_trap (stride, N);
+	  test_complex_trap (stride, N);
+	  test_complex_float_trap (stride, N);
+	  test_complex_long_double_trap (stride, N);
+	}
+>>>>>>> config
     }
 #endif
 

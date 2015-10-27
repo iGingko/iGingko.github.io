@@ -1,17 +1,31 @@
 /* fft/gsl_fft_complex.h
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
+=======
+ *
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
+ *
+>>>>>>> config
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
  * 
+=======
+ *
+>>>>>>> config
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -42,6 +56,7 @@ __BEGIN_DECLS
 
 
 int gsl_fft_complex_radix2_forward (gsl_complex_packed_array data,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                                     const size_t stride,
                                     const size_t n);
 
@@ -74,6 +89,40 @@ int gsl_fft_complex_radix2_dif_transform (gsl_complex_packed_array data,
                                           const size_t stride,
                                           const size_t n,
                                           const gsl_fft_direction sign);
+=======
+				    const size_t stride,
+				    const size_t n);
+
+int gsl_fft_complex_radix2_backward (gsl_complex_packed_array data,
+				     const size_t stride,
+				     const size_t n);
+
+int gsl_fft_complex_radix2_inverse (gsl_complex_packed_array data,
+				    const size_t stride,
+				    const size_t n);
+
+int gsl_fft_complex_radix2_transform (gsl_complex_packed_array data,
+				      const size_t stride,
+				      const size_t n,
+				      const gsl_fft_direction sign);
+
+int gsl_fft_complex_radix2_dif_forward (gsl_complex_packed_array data,
+					const size_t stride,
+					const size_t n);
+
+int gsl_fft_complex_radix2_dif_backward (gsl_complex_packed_array data,
+					 const size_t stride,
+					 const size_t n);
+
+int gsl_fft_complex_radix2_dif_inverse (gsl_complex_packed_array data,
+					const size_t stride,
+					const size_t n);
+
+int gsl_fft_complex_radix2_dif_transform (gsl_complex_packed_array data,
+					  const size_t stride,
+					  const size_t n,
+					  const gsl_fft_direction sign);
+>>>>>>> config
 
 /*  Mixed Radix general-N routines  */
 
@@ -104,6 +153,7 @@ gsl_fft_complex_workspace *gsl_fft_complex_workspace_alloc (size_t n);
 void gsl_fft_complex_workspace_free (gsl_fft_complex_workspace * workspace);
 
 int gsl_fft_complex_memcpy (gsl_fft_complex_wavetable * dest,
+<<<<<<< 2157652494b7e03d4345b81d263b74e6846f75d8
                             gsl_fft_complex_wavetable * src);
 
 
@@ -130,6 +180,34 @@ int gsl_fft_complex_transform (gsl_complex_packed_array data,
                                const gsl_fft_complex_wavetable * wavetable,
                                gsl_fft_complex_workspace * work,
                                const gsl_fft_direction sign);
+=======
+			    gsl_fft_complex_wavetable * src);
+
+
+int gsl_fft_complex_forward (gsl_complex_packed_array data,
+			     const size_t stride,
+			     const size_t n,
+			     const gsl_fft_complex_wavetable * wavetable,
+			     gsl_fft_complex_workspace * work);
+
+int gsl_fft_complex_backward (gsl_complex_packed_array data,
+			      const size_t stride,
+			      const size_t n,
+			      const gsl_fft_complex_wavetable * wavetable,
+			      gsl_fft_complex_workspace * work);
+
+int gsl_fft_complex_inverse (gsl_complex_packed_array data,
+			     const size_t stride,
+			     const size_t n,
+			     const gsl_fft_complex_wavetable * wavetable,
+			     gsl_fft_complex_workspace * work);
+
+int gsl_fft_complex_transform (gsl_complex_packed_array data,
+			       const size_t stride, const size_t n,
+			       const gsl_fft_complex_wavetable * wavetable,
+			       gsl_fft_complex_workspace * work,
+			       const gsl_fft_direction sign);
+>>>>>>> config
 
 __END_DECLS
 
